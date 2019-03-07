@@ -263,6 +263,10 @@ namespace TeeJee.System{
 	// internet helpers ----------------------
 	
 	public bool check_internet_connectivity(){
+
+	    if (App.skip_connection_check) {
+	        return true;
+	    }
 		
 		string std_err, std_out;
 
@@ -270,7 +274,7 @@ namespace TeeJee.System{
 
 		// Note: minimum of 3 seconds is required for timeout, to avoid wrong results
 		
-		cmd += "httpCode=$(curl -o /dev/null --silent --max-time 5 --head --write-out '%{http_code}\n' $url) \n"; 
+		cmd += "httpCode=$(curl -o /dev/null --silent --max-time " + App.connection_timeout_seconds.to_string() + " --head --write-out '%{http_code}\n' $url) \n";
 		
 		cmd += "test $httpCode -lt 400 -a $httpCode -gt 0 \n";
 
