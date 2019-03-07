@@ -65,6 +65,7 @@ public class Main : GLib.Object{
 	public bool notify_dialog = true;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
+	public int connection_timeout_seconds = 15;
 
 	public bool message_shown = false;
 
@@ -149,8 +150,10 @@ public class Main : GLib.Object{
 		//config.set_string_member("show_grub_menu", LinuxKernel.show_grub_menu.to_string());
 		config.set_string_member("grub_timeout", LinuxKernel.grub_timeout.to_string()); 
 		config.set_string_member("update_grub_timeout", LinuxKernel.update_grub_timeout.to_string());
+        config.set_string_member("connection_timeout_seconds", connection_timeout_seconds.to_string());
 
 		config.set_string_member("message_shown", message_shown.to_string());
+
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -208,6 +211,7 @@ public class Main : GLib.Object{
 		notify_dialog = json_get_bool(config, "notify_dialog", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
+		connection_timeout_seconds = json_get_int(config, "connection_timeout_seconds", 15);
 
 		LinuxKernel.hide_unstable = json_get_bool(config, "hide_unstable", true);
 		LinuxKernel.hide_older = json_get_bool(config, "hide_older", true);

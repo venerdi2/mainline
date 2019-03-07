@@ -232,6 +232,37 @@ public class SettingsDialog : Gtk.Dialog {
 		
 		chk_update_grub_timeout.toggled();
 		
+		// other
+		label = new Label("<b>" + _("Other") + "</b>");
+		label.set_use_markup(true);
+		label.xalign = (float) 0.0;
+		label.margin_top = 12;
+		label.margin_bottom = 6;
+		vbox_main.add (label);
+
+		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		vbox_main.add (hbox);
+
+		label = new Label(_("Internect connection timeout in "));
+		label.xalign = (float) 0.0;
+		label.margin_left = 6;
+		hbox.add (label);
+
+		var adjustment = new Gtk.Adjustment(App.connection_timeout_seconds, 1, 20, 1, 1, 0);
+		var spin = new Gtk.SpinButton (adjustment, 1, 0);
+		spin.xalign = (float) 0.5;
+		hbox.add(spin);
+		var spin_notify = spin;
+
+		spin.changed.connect(()=>{
+			App.connection_timeout_seconds = (int) spin_notify.get_value();
+		});
+
+		// combo
+		label = new Label(_("seconds"));
+		label.xalign = (float) 0.0;
+        hbox.add(combo);
+
 		// actions -------------------------
 		
 		// ok
