@@ -269,7 +269,7 @@ public class SettingsDialog : Gtk.Dialog {
 		});
 
 		label = new Label(_("seconds"));
-        hbox.add(combo);
+        hbox.add(label);
 
 		// actions -------------------------
 		
