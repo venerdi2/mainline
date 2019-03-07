@@ -1,10 +1,18 @@
-> A [paid version of Ukuu](https://teejeetech.in/tag/ukuu/) is now available with more features and a new UI. This repository contains source code for v18.9 and previous versions.
-
 ### Ubuntu Kernel Update Utility (Ukuu)
 
 This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions.
 
 ![](https://2.bp.blogspot.com/-76C_l3BcJyg/WNdzTpSoiKI/AAAAAAAAGKs/xOvB-LCH2cYiDpdbqWkeOLhY9I7TVACJwCLcB/s1600/ukuu_main_window.png)
+
+### About This Fork
+
+Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), I forked this project and will be maintaining and adding features to it here.
+
+### Enhancements
+
+*   Option in settings to skip internet connection check
+
+Please feel free to submit a feature request in the Issues section.
 
 ### Features
 
@@ -40,7 +48,7 @@ Ukuu should not be used on older Ubuntu systems as upgrading to very new kernels
 This application fetches kernels from [kernel.ubuntu.com](http://kernel.ubuntu.com/~kernel-ppa/mainline/) which are provided by Canonical and meant for installation on Ubuntu-based distributions. These should not be used on Debian and other non-Ubuntu distributions such as Arch Linux, Fedora, etc.
 
 
-### Downloads & Source Code 
+### Downloads & Source Code
 Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are available from the [GitHub project page](https://github.com/teejee2008/ukuu).
 
 ### Build instruction
