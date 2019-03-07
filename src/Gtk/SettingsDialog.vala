@@ -240,7 +240,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_bottom = 6;
 		vbox_main.add (label);
 
-		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
 
 		label = new Label(_("Internect connection timeout in "));
@@ -248,14 +248,13 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_left = 6;
 		hbox.add (label);
 
-		var adjustment = new Gtk.Adjustment(App.connection_timeout_seconds, 1, 20, 1, 1, 0);
-		var spin = new Gtk.SpinButton (adjustment, 1, 0);
+		adjustment = new Gtk.Adjustment(App.connection_timeout_seconds, 1, 20, 1, 1, 0);
+		spin = new Gtk.SpinButton (adjustment, 1, 0);
 		spin.xalign = (float) 0.5;
 		hbox.add(spin);
-		var spin_notify = spin;
 
 		spin.changed.connect(()=>{
-			App.connection_timeout_seconds = (int) spin_notify.get_value();
+			App.connection_timeout_seconds = (int) spin.get_value();
 		});
 
 		// combo
