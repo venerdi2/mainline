@@ -6,7 +6,12 @@ This is a tool for installing the latest mainline Linux kernel on Ubuntu-based d
 
 ### About This Fork
 
-Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), I forked this project and will be maintaining and adding features to it here.
+Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), Several people have forked this project, and this is but one more. This fork starts with https://github.com/stevenpwered/ukuu, and merges in https://github.com/cloyce/ukuu, and then I intend to add my own tweaks:
+* First TODO Item (not done yet): STOP SAVING 6 GIGS OF KERNEL PACKAGES IN ~/.cache/ukuu HOLY GOBSMACK WTF ?????
+<pre>
+bkw@negre:~$ du -sh .cache/ukuu
+5.5G    .cache/ukuu
+</pre>
 
 ### Enhancements
 
