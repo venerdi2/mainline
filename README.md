@@ -6,7 +6,7 @@ This is a tool for installing the latest mainline Linux kernel on Ubuntu-based d
 
 ### About This Fork
 
-Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), Several people have forked this project, and this is but one more. This fork starts with https://github.com/stevenpwered/ukuu, and merges in https://github.com/cloyce/ukuu, and then I intend to add my own tweaks:
+Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), Several people have forked this project, and this is but one more. This fork started with https://github.com/stevenpwered/ukuu, and merged in https://github.com/cloyce/ukuu, and then I intend to add my own tweaks:
 * First TODO Item (not done yet): STOP SAVING 6 GIGS OF KERNEL PACKAGES IN ~/.cache/ukuu HOLY GOBSMACK WTF ?????
 <pre>
 bkw@negre:~$ du -sh .cache/ukuu
@@ -37,7 +37,7 @@ _Settings Window_
 _Console Options_
 
 ### Downloads & Source Code
-Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are available from the [GitHub project page](https://github.com/stevenpowered/ukuu).
+Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are available from the [GitHub project page](https://github.com/aljex/ukuu).
 
 ### Build instruction
 
@@ -45,8 +45,8 @@ Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are availa
 
  in a terminal window:  
 
-    sudo apt-get install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
-    git clone https://github.com/stevenpowered/ukuu.git
+    sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
+    git clone https://github.com/aljex/ukuu.git
     cd ukuu
     make all
     sudo make install
