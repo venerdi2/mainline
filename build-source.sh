@@ -1,7 +1,7 @@
 #!/bin/bash
 
-backup=`pwd`
-DIR="$( cd "$( dirname "$0" )" && pwd )"
+backup=${PWD}
+DIR=${0%/*}
 cd "$DIR"
 
 . ./BUILD_CONFIG

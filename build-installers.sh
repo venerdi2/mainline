@@ -1,7 +1,11 @@
 #!/bin/bash
+# Generates *.run installers
+# Requires (at least):
+#    Run build-deb.sh first
+#    "sanity" from https://github.com/teejee2008/sanity-installer
 
-backup=`pwd`
-DIR="$( cd "$( dirname "$0" )" && pwd )"
+backup=${PWD}
+DIR=${0%/*}
 cd $DIR
 
 . ./BUILD_CONFIG
@@ -33,6 +37,8 @@ echo "--------------------------------------------------------------------------
 
 rm -rfv release/${arch}/${pkg_name}*.* # remove source files created by pbuilder
 cp -pv --no-preserve=ownership release/sanity.config release/${arch}/sanity.config
+
+# "sanity" command comes from https://github.com/teejee2008/sanity-installer
 sanity --generate --base-path release/${arch} --out-path release --arch ${arch} --xz
 
 if [ $? -ne 0 ]; then cd "$backup"; echo "Failed"; exit 1; fi

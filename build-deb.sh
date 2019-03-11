@@ -1,7 +1,12 @@
 #!/bin/bash
+# Generates .deb packages
+# Requires (at least):
+#   apt install ubuntu-dev-tools	# install pbuilder-dist
+#   pbuilder-dist cosmic i386 create	# create a build environment
+#   pbuilder-disp cosmic amd64 create	# create a build environment
 
-backup=`pwd`
-DIR="$( cd "$( dirname "$0" )" && pwd )"
+backup=${PWD}
+DIR=${0%*/}
 cd $DIR
 
 . ./BUILD_CONFIG
@@ -37,8 +42,8 @@ echo "--------------------------------------------------------------------------
 
 }
 
-build_deb_for_dist xenial i386
-build_deb_for_dist xenial amd64
+build_deb_for_dist cosmic i386
+build_deb_for_dist cosmic amd64
 #build_deb_for_dist stretch armel
 #build_deb_for_dist stretch armhf
 
