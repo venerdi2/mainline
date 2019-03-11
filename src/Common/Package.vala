@@ -88,7 +88,7 @@ public class Package : GLib.Object {
 		// get installed packages from aptitude --------------
 		
 		string std_out, std_err;
-		int status = exec_sync("aptitude search --disable-columns -F '%p|%v|%M|%d' '?installed'", out std_out, out std_err);
+		exec_sync("aptitude search --disable-columns -F '%p|%v|%M|%d' '?installed'", out std_out, out std_err);
 		file_write(temp_file, std_out);
 
 		// parse ------------------------
@@ -150,7 +150,7 @@ public class Package : GLib.Object {
 		
 		string std_out, std_err;
 		string cmd = "aptitude search --disable-columns -F '%%p|%%v|%%M|%%d' '!installed ?architecture(native) %s'".printf(search_string);
-		int status = exec_sync(cmd, out std_out, out std_err);
+		exec_sync(cmd, out std_out, out std_err);
 		file_write(temp_file, std_out);
 
 		// parse ------------------------

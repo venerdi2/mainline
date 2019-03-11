@@ -21,7 +21,7 @@
  *
  *
  */
- 
+
 namespace TeeJee.FileSystem{
 
 	/* Convenience functions for handling files and directories */
@@ -714,8 +714,8 @@ namespace TeeJee.FileSystem{
 		return false;
 	}
 
+/*
 	// hashing -----------
-	
 	private string hash_md5(string path){
 		Checksum checksum = new Checksum (ChecksumType.MD5);
 		FileStream stream = FileStream.open (path, "rb");
@@ -730,6 +730,7 @@ namespace TeeJee.FileSystem{
 
 		return digest;
 	}
+*/
 
 	// misc --------------------
 

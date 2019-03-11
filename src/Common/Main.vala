@@ -67,9 +67,6 @@ public class Main : GLib.Object{
 	public int notify_interval_value = 2;
 	public bool skip_connection_check = false;
 	public int connection_timeout_seconds = 15;
-
-	public bool message_shown = false;
-
 	public bool confirm = true;
 
 	// constructors ------------
@@ -128,11 +125,11 @@ public class Main : GLib.Object{
 		user_home = get_user_home(user_login);
 
 		// app config files
-		APP_CONFIG_FILE = user_home + "/.config/ukuu.json";
-		STARTUP_SCRIPT_FILE = user_home + "/.config/ukuu-notify.sh";
-		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/ukuu.desktop";
+		APP_CONFIG_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + ".json";
+		STARTUP_SCRIPT_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + "-notify.sh";
+		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
 
-		LinuxKernel.CACHE_DIR = user_home + "/.cache/ukuu";
+		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
 	}
@@ -153,9 +150,6 @@ public class Main : GLib.Object{
 		config.set_string_member("update_grub_timeout", LinuxKernel.update_grub_timeout.to_string());
         config.set_string_member("connection_timeout_seconds", connection_timeout_seconds.to_string());
         config.set_string_member("skip_connection_check", skip_connection_check.to_string());
-
-		config.set_string_member("message_shown", message_shown.to_string());
-
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -222,8 +216,6 @@ public class Main : GLib.Object{
 		LinuxKernel.grub_timeout = json_get_int(config, "grub_timeout", 2);
 		LinuxKernel.update_grub_timeout = json_get_bool(config, "update_grub_timeout", false);
 
-		message_shown = json_get_bool(config, "message_shown", false);
-
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}
 
@@ -260,7 +252,7 @@ public class Main : GLib.Object{
 		txt += "sleep %ds\n".printf(startup_delay);
 		txt += "while true\n";
 		txt += "do\n";
-		txt += "  ukuu --notify ; sleep %d%s \n".printf(count, suffix);
+		txt += "  "+BRANDING_SHORTNAME+" --notify ; sleep %d%s \n".printf(count, suffix);
 		txt += "done\n";
 		
 		if (file_exists(STARTUP_SCRIPT_FILE)){
@@ -322,7 +314,7 @@ Comment=Ukuu Notification
 
 		update_startup_script();
 
-		process_quit_by_name("sh", "ukuu-notify.sh", false);
+		process_quit_by_name("sh", BRANDING_SHORTNAME+" -notify.sh", false);
 
 		// don't start script again
 	}

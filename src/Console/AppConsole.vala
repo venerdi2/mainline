@@ -34,13 +34,12 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public Main App;
-public const string AppName = "Ubuntu Kernel Update Utility";
-public const string AppShortName = "ukuu";
-public const string AppVersion = "18.9.3";
-public const string AppAuthor = "Tony George";
-public const string AppAuthorEmail = "teejeetech@gmail.com";
+[CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
+[CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
+[CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
+[CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
+[CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 
-const string GETTEXT_PACKAGE = "";
 const string LOCALE_DIR = "/usr/share/locale";
 
 public class AppConsole : GLib.Object {
@@ -49,9 +48,9 @@ public class AppConsole : GLib.Object {
 		
 		set_locale();
 
-		log_msg("%s v%s".printf(AppShortName, AppVersion));
+		log_msg("%s v%s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
-		init_tmp("ukuu");
+		init_tmp(BRANDING_SHORTNAME);
 
 		//check_if_admin();
 		
@@ -74,17 +73,17 @@ public class AppConsole : GLib.Object {
 	}
 
 	private static void set_locale() {
-		Intl.setlocale(GLib.LocaleCategory.MESSAGES, "ukuu");
-		Intl.textdomain(GETTEXT_PACKAGE);
-		Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
-		Intl.bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
+		Intl.setlocale(GLib.LocaleCategory.MESSAGES, "%s".printf(BRANDING_SHORTNAME));
+		Intl.textdomain(BRANDING_SHORTNAME);
+		Intl.bind_textdomain_codeset(BRANDING_SHORTNAME, "utf-8");
+		Intl.bindtextdomain(BRANDING_SHORTNAME, LOCALE_DIR);
 	}
 
 	private static string help_message() {
 		
-		string msg = "\n" + AppName + " v" + AppVersion + " by Tony George (teejeetech@gmail.com)" + "\n";
+		string msg = "\n" + BRANDING_LONGNAME + " v" + BRANDING_VERSION + " by " + BRANDING_AUTHORNAME + " (" + BRANDING_AUTHOREMAIL + ")\n";
 		msg += "\n";
-		msg += _("Syntax") + ": ukuu <command> [options]\n";
+		msg += _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n";
 		msg += "\n";
 		msg += _("Commands") + ":\n";
 		msg += "\n";
@@ -129,7 +128,7 @@ public class AppConsole : GLib.Object {
 
 	public bool parse_arguments(string[] args) {
 
-		string txt = "ukuu ";
+		string txt = BRANDING_SHORTNAME + " ";
 		for (int k = 1; k < args.length; k++) {
 			txt += "'%s' ".printf(args[k]);
 		}
@@ -201,7 +200,8 @@ public class AppConsole : GLib.Object {
 			default:
 				// unknown option
 				log_error(_("Unknown option") + ": %s".printf(args[k]));
-				log_error(_("Run 'ukuu --help' to list all options"));
+				// FIXME use argv[0] instead of hardcoded app name
+				log_error(_("Run '"+BRANDING_SHORTNAME+" --help' to list all options"));
 				return false;
 			}
 		}
@@ -315,7 +315,7 @@ public class AppConsole : GLib.Object {
 					msg += ": %s".printf(requested_version);
 					log_error(msg);
 					
-					log_error(_("Run 'ukuu --list' and use the version string listed in first column"));
+					log_error(_("Run '"+BRANDING_SHORTNAME+" --list' and use the version string listed in first column"));
 					
 					exit(1);
 				}
@@ -344,7 +344,7 @@ public class AppConsole : GLib.Object {
 		default:
 			// unknown option
 			log_error(_("Command not specified"));
-			log_error(_("Run 'ukuu --help' to list all commands"));
+			log_error(_("Run '"+BRANDING_SHORTNAME+" --help' to list all commands"));
 			break;
 		}
 
@@ -403,7 +403,7 @@ public class AppConsole : GLib.Object {
 			log_msg(message);
 			
 			if (App.notify_dialog){
-				exec_script_async("ukuu-gtk --notify");
+				exec_script_async(BRANDING_SHORTNAME+"-gtk --notify");
 				exit(0);
 			}
 
@@ -425,7 +425,7 @@ public class AppConsole : GLib.Object {
 			log_msg(message);
 			
 			if (App.notify_dialog){				
-				exec_script_async("ukuu-gtk --notify");
+				exec_script_async(BRANDING_SHORTNAME+"-gtk --notify");
 				exit(0);
 			}
 
@@ -445,7 +445,7 @@ public class AppConsole : GLib.Object {
 		if (App.notify_dialog){
 			
 			var win = new UpdateNotificationWindow(
-					AppName,
+					BRANDING_LONGNAME,
 					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
 					null);
 					

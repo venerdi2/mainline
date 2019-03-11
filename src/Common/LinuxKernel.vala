@@ -38,7 +38,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// static
 	
 	public static string URI_KERNEL_UBUNTU_MAINLINE = "http://kernel.ubuntu.com/~kernel-ppa/mainline/";
-	public static string CACHE_DIR = "/var/cache/ukuu";
+	public static string CACHE_DIR = "/var/cache/" + BRANDING_SHORTNAME;
 	public static string NATIVE_ARCH;
 	public static string LINUX_DISTRO;
 	public static string RUNNING_KERNEL;
@@ -1146,6 +1146,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_list = list;
 	}
 
+/*
 	private void get_package_version(){
 
 		if (NATIVE_ARCH.length == 0){
@@ -1172,7 +1173,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 	}
-	
+*/
+
 	// actions
 
 	public static void print_list(){

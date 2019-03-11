@@ -107,16 +107,6 @@ public class AboutWindow : Dialog {
 		}
 	}
 
-	private string[] _donations;
-	public string[] donations{
-		get{
-			return _donations;
-		}
-		set{
-			_donations = value;
-		}
-	}
-
 	private string _license = "";
 	public string license{
 		get{
@@ -363,14 +353,6 @@ public class AboutWindow : Dialog {
 		if (documenters.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Documenters")));
 			foreach(string name in documenters){
-				add_line("%s\n".printf(name));
-			}
-			add_line("\n");
-		}
-
-		if (donations.length > 0){
-			add_header("<b>%s</b>\n".printf(_("Donations")));
-			foreach(string name in donations){
 				add_line("%s\n".printf(name));
 			}
 			add_line("\n");

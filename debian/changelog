@@ -1,3 +1,16 @@
+ukuu (18.9.3-bkw) disco; urgency=medium
+
+  * Fork from stevenpowerd
+  * merge cloyce
+  * remove references to paid version
+  * remove donation window and other donation links
+  * fix compile error
+  * update Readme.md
+  * branding - change all branding strings to defines derived from makefile
+
+ -- Brian K. White <bw.aljex@gmail.com>  Fri, 8 Mar 2019 22:57:57 -0500
+
+
 ukuu (18.9.3) xenial; urgency=medium
 
   * Fix build issue

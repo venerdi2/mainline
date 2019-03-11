@@ -7,11 +7,15 @@ This is a tool for installing the latest mainline Linux kernel on Ubuntu-based d
 ### About This Fork
 
 Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), Several people have forked this project, and this is but one more. This fork started with https://github.com/stevenpwered/ukuu, and merged in https://github.com/cloyce/ukuu, and then I intend to add my own tweaks:
+
 * First TODO Item (not done yet): STOP SAVING 6 GIGS OF KERNEL PACKAGES IN ~/.cache/ukuu HOLY GOBSMACK WTF ?????
 <pre>
 bkw@negre:~$ du -sh .cache/ukuu
 5.5G    .cache/ukuu
 </pre>
+  Until then: As a work-around, you can create a wrapper shell script or menu entry to always run "ukuu --clean-cache" after "ukuu-gtk"
+
+* Remove all grub options. A kernel package installer has no business messing with grub. dpkg already does the necessary part, which is just adding/removing entries without making any other changes.
 
 ### Enhancements
 

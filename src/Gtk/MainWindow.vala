@@ -55,7 +55,7 @@ public class MainWindow : Gtk.Window{
 	
 	public MainWindow() {
 		
-		title = AppName; //"%s (Ukuu) v%s".printf(AppName, AppVersion);
+		title = BRANDING_LONGNAME;
         window_position = WindowPosition.CENTER;
         icon = get_app_icon(16,".svg");
 
@@ -111,11 +111,6 @@ public class MainWindow : Gtk.Window{
 		case "notify":
 
 			notify_user();
-			break;
-
-		default:
-
-			show_paid_version_message();
 			break;
 		}
 
@@ -268,11 +263,11 @@ public class MainWindow : Gtk.Window{
 		Gdk.Pixbuf pix_mainline_rc = null;
 		
 		try {
-			pix_ubuntu = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/ubuntu-logo.png");
+			pix_ubuntu = new Gdk.Pixbuf.from_file ("/usr/share/" + BRANDING_SHORTNAME + "/images/ubuntu-logo.png");
 
-			pix_mainline = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/tux.png");
+			pix_mainline = new Gdk.Pixbuf.from_file ("/usr/share/" + BRANDING_SHORTNAME + "/images/tux.png");
 
-			pix_mainline_rc = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/tux-red.png");
+			pix_mainline_rc = new Gdk.Pixbuf.from_file ("/usr/share/" + BRANDING_SHORTNAME + "/images/tux-red.png");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -402,7 +397,7 @@ public class MainWindow : Gtk.Window{
 
 				string sh = "";
 				sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
-				sh += "ukuu --user %s".printf(App.user_login);
+				sh += BRANDING_SHORTNAME+" --user %s".printf(App.user_login);
 				if (LOG_DEBUG){
 					sh += " --debug";
 				}
@@ -447,8 +442,8 @@ public class MainWindow : Gtk.Window{
 			});
 
 			string sh = "";
-			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
-			sh += "ukuu --user %s".printf(App.user_login);
+			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ";
+			sh += BRANDING_SHORTNAME+" --user "+App.user_login;
 			if (LOG_DEBUG){
 				sh += " --debug";
 			}
@@ -497,15 +492,6 @@ public class MainWindow : Gtk.Window{
 			tv_refresh();
 		});
 
-		// donate
-		button = new Gtk.Button.with_label (_("Donate"));
-		hbox.pack_start (button, true, true, 0);
-
-		button.clicked.connect(() => {
-			var dlg = new DonationWindow(this);
-			dlg.show_all();
-		});
-
 		// about
 		button = new Gtk.Button.with_label (_("About"));
 		hbox.pack_start (button, true, true, 0);
@@ -519,7 +505,8 @@ public class MainWindow : Gtk.Window{
 		dialog.set_transient_for (this);
 
 		dialog.authors = {
-			"Tony George:teejeetech@gmail.com"
+			"Tony George:teejeetech@gmail.com",
+			BRANDING_AUTHORNAME+":"+BRANDING_AUTHOREMAIL
 		};
 
 		dialog.third_party = {
@@ -539,17 +526,16 @@ public class MainWindow : Gtk.Window{
 
 		dialog.documenters = null;
 		dialog.artists = null;
-		dialog.donations = null;
 
-		dialog.program_name = AppName;
+		dialog.program_name = BRANDING_LONGNAME;
 		dialog.comments = _("Kernel upgrade utility for Ubuntu-based distributions");
-		dialog.copyright = "Copyright © 2012-17 Tony George (%s)".printf(AppAuthorEmail);
-		dialog.version = AppVersion;
+		dialog.copyright = "Original copyright © 2012-17 Tony George, Forked 2019 "+BRANDING_AUTHORNAME+" ("+BRANDING_AUTHOREMAIL+")";
+		dialog.version = BRANDING_VERSION;
 		dialog.logo = get_app_icon(128);
 
 		dialog.license = "This program is free for personal and commercial use and comes with absolutely no warranty. You use this program entirely at your own risk. The author will not be liable for any damages arising from the use of this program.";
-		dialog.website = "http://teejeetech.in";
-		dialog.website_label = "http://teejeetech.blogspot.in";
+		dialog.website = BRANDING_WEBSITE;
+		dialog.website_label = BRANDING_WEBSITE;
 
 		dialog.initialize();
 		dialog.show_all();
@@ -724,7 +710,7 @@ public class MainWindow : Gtk.Window{
 
 		string sh = "";
 		sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ";
-		sh += "ukuu --user %s".printf(App.user_login);
+		sh += BRANDING_SHORTNAME+" --user "+App.user_login;
 		if (LOG_DEBUG){
 			sh += " --debug";
 		}
@@ -755,7 +741,7 @@ public class MainWindow : Gtk.Window{
 			if (App.notify_dialog){
 				
 				var win = new UpdateNotificationWindow(
-					AppName,
+					BRANDING_LONGNAME,
 					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
 					null,
 					kern);
@@ -788,7 +774,7 @@ public class MainWindow : Gtk.Window{
 			if (App.notify_dialog){
 				
 				var win = new UpdateNotificationWindow(
-					AppName,
+					BRANDING_LONGNAME,
 					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
 					this,
 					kern);
@@ -819,7 +805,7 @@ public class MainWindow : Gtk.Window{
 		if (App.notify_dialog){
 			
 			var win = new UpdateNotificationWindow(
-					AppName,
+					BRANDING_LONGNAME,
 					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
 					null);
 					
@@ -840,17 +826,6 @@ public class MainWindow : Gtk.Window{
 		if (App.command != "list"){
 			Gtk.main_quit();
 			App.exit_app(0);
-		}
-	}
-
-	public void show_paid_version_message(){
-		
-		if (!App.message_shown){
-			
-			App.message_shown = true;
-			App.save_app_config();
-
-			var win = new VersionMessageWindow(this);
 		}
 	}
 }
