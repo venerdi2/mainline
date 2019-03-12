@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 07:00-0400\n"
-"PO-Revision-Date: 2018-03-30 20:59+0300\n"
-"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"POT-Creation-Date: 2019-03-10 23:56-0400\n"
+"PO-Revision-Date: 2019-03-12 19:35+0300\n"
+"Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Gtk/MainWindow.vala:496
@@ -30,8 +30,7 @@ msgstr "Bu uygulamayı çalıştırmak için yönetici izni gerekiyor."
 msgid "Another instance of this application is running"
 msgstr "Bu uygulamanın başka bir örneği çalışıyor"
 
-#: Common/LinuxKernel.vala:105
-#, fuzzy
+#: Common/LinuxKernel.vala:108
 msgid "Architecture"
 msgstr "Sistem mimarisi"
 
@@ -42,7 +41,7 @@ msgstr "Sanatçılar"
 
 #: Console/AppConsole.vala:104
 msgid "Assume Yes for all prompts (non-interactive mode)"
-msgstr ""
+msgstr "Tüm istemler için Evet'i kabul edin (etkileşimsiz kip)"
 
 #: Utility/Gtk/AboutWindow.vala:314
 #, c-format
@@ -59,7 +58,7 @@ msgstr "Geri"
 
 #: Console/AppConsole.vala:207 Gtk/AppGtk.vala:110
 msgid "Cache"
-msgstr ""
+msgstr "Önbellek"
 
 #: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:168
 #: Gtk/UpdateNotificationWindow.vala:167
@@ -79,10 +78,9 @@ msgstr "Kontrol aralığı"
 msgid "Check for kernel updates"
 msgstr "Çekirdek güncellemelerini kontrol et"
 
-#: Console/AppConsole.vala:89
-#, fuzzy
+#: Console/AppConsole.vala:91
 msgid "Check for kernel updates and notify current user"
-msgstr "Çekirdek güncellemelerini kontrol et"
+msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 
 #: Gtk/TerminalWindow.vala:178 Utility/Gtk/AboutWindow.vala:295
 msgid "Close"
@@ -90,11 +88,11 @@ msgstr "Kapat"
 
 #: Console/AppConsole.vala:344
 msgid "Command not specified"
-msgstr ""
+msgstr "Komut belirtilmedi"
 
 #: Console/AppConsole.vala:86
 msgid "Commands"
-msgstr ""
+msgstr "Komutlar"
 
 #: Common/Main.vala:106
 msgid "Commands listed below are not available on this system"
@@ -103,26 +101,24 @@ msgstr "Aşağıda listelenen komutlar bu sistemde mevcut değil"
 #: Common/LinuxKernel.vala:737
 #, c-format
 msgid "Continue ?"
-msgstr ""
+msgstr "Devam et ?"
 
 #: Utility/Gtk/AboutWindow.vala:322
 #, c-format
 msgid "Contributions"
 msgstr "Destek verenler"
 
-#: Common/LinuxKernel.vala:721
-#, fuzzy
+#: Common/LinuxKernel.vala:724
 msgid "Could not find any kernels to remove"
-msgstr "Kaldırma için çekirdek seçin"
+msgstr "Kaldırılacak çekirdek bulunamadı"
 
 #: Console/AppConsole.vala:312 Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "İstenen sürüm bulunamadı"
 
-#: Common/LinuxKernel.vala:715
-#, fuzzy
+#: Common/LinuxKernel.vala:718
 msgid "Could not find running kernel in list!"
-msgstr "İstenen sürüm bulunamadı"
+msgstr "İstenen sürüm bulunamadı!"
 
 #: Utility/TeeJee.FileSystem.vala:349 Utility/TeeJee.FileSystem.vala:352
 #: Utility/TeeJee.FileSystem.vala:378
@@ -206,11 +202,11 @@ msgstr "Dosya yazma başarısız"
 
 #: Common/LinuxKernel.vala:396
 msgid "Fetching index from kernel.ubuntu.com..."
-msgstr "kernel.ubuntu.com alanından içerik listesi alınıyor ..."
+msgstr "İçerik listesi kernel.ubuntu.com alanından alınıyor..."
 
 #: Common/LinuxKernel.vala:353
 msgid "Fetching index..."
-msgstr ""
+msgstr "İçerik dizini alınıyor..."
 
 #: Utility/TeeJee.FileSystem.vala:210 Utility/TeeJee.FileSystem.vala:213
 msgid "File copied"
@@ -244,7 +240,7 @@ msgstr "Dosya kaydedildi"
 #: Common/LinuxKernel.vala:730
 #, c-format
 msgid "Following kernels will be removed"
-msgstr ""
+msgstr "Aşağıdaki çekirdekler silinecek"
 
 #: Gtk/SettingsDialog.vala:180
 msgid "Hide kernels older than 4.0"
@@ -277,16 +273,15 @@ msgstr "Kur"
 #: Common/LinuxKernel.vala:794
 #, c-format
 msgid "Install Linux v%s ? (y/n): "
-msgstr ""
+msgstr "Linux v%s Kur ? (e/h): "
 
-#: Console/AppConsole.vala:92
-#, fuzzy
+#: Console/AppConsole.vala:94
 msgid "Install latest mainline kernel"
-msgstr "Belirtilen mainline çekirdeğini kur"
+msgstr "En son mainline çekirdeğini kur"
 
 #: Console/AppConsole.vala:93
 msgid "Install latest point update for current series"
-msgstr ""
+msgstr "Mevcut çekirdek serisi için en güncelleme noktasını kur"
 
 #: Console/AppConsole.vala:94
 msgid "Install specified mainline kernel"
@@ -309,10 +304,9 @@ msgstr ""
 msgid "Installed"
 msgstr "Kurulu"
 
-#: Gtk/SettingsDialog.vala:212
-#, fuzzy
+#: Gtk/SettingsDialog.vala:257
 msgid "Internect connection timeout in "
-msgstr "İnternet bağlantısı aktif değil"
+msgstr "İnternet bağlantısı aktif değil "
 
 #: Gtk/MainWindow.vala:350 Gtk/MainWindow.vala:547 Gtk/MainWindow.vala:683
 #: Utility/TeeJee.System.vala:292
@@ -330,12 +324,12 @@ msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 #: Common/LinuxKernel.vala:776 Console/AppConsole.vala:370
 #, c-format
 msgid "Latest point update"
-msgstr ""
+msgstr "Son güncelleme noktası"
 
 #: Common/LinuxKernel.vala:765 Console/AppConsole.vala:363
 #, c-format
 msgid "Latest update"
-msgstr ""
+msgstr "Son güncelleme"
 
 #: Console/AppConsole.vala:90
 msgid "List all available mainline kernels"
@@ -345,10 +339,9 @@ msgstr "Tüm mainline çekirdeklerini listele"
 msgid "List available kernels"
 msgstr "Tüm çekirdekleri listele"
 
-#: Console/AppConsole.vala:91
-#, fuzzy
+#: Console/AppConsole.vala:93
 msgid "List installed kernels"
-msgstr "Tüm çekirdekleri listele"
+msgstr "Kurulu çekirdekleri listele"
 
 #: Utility/Gtk/GtkHelper.vala:272
 msgid "Missing Icon"
@@ -372,7 +365,7 @@ msgstr "İnternet Yok"
 
 #: Console/AppConsole.vala:288 Console/AppConsole.vala:325
 msgid "No kernels specified"
-msgstr ""
+msgstr "Belirtilen çekirdek yok"
 
 #: Common/LinuxKernel.vala:784 Console/AppConsole.vala:375
 #: Console/AppConsole.vala:433 Gtk/MainWindow.vala:793
@@ -407,7 +400,7 @@ msgstr "Seçenekler"
 
 #: Gtk/SettingsDialog.vala:191
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
 #: Common/LinuxKernel.vala:1060
 #, c-format
@@ -433,7 +426,7 @@ msgstr "Hata ayıklama bilgisini yazdır"
 
 #: Gtk/MainWindow.vala:425
 msgid "Purge"
-msgstr ""
+msgstr "Kaldır"
 
 #: Gtk/MainWindow.vala:343
 msgid "Refresh"
@@ -453,17 +446,16 @@ msgstr "Dosyaları uygulama önbelleğinden sil"
 
 #: Console/AppConsole.vala:96 Gtk/MainWindow.vala:426
 msgid "Remove installed kernels older than running kernel"
-msgstr ""
+msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
-#: Console/AppConsole.vala:95
-#, fuzzy
+#: Console/AppConsole.vala:97
 msgid "Remove specified kernel"
-msgstr "Belirtilen mainline çekirdeğini kaldır"
+msgstr "Belirtilen çekirdeği kaldır"
 
 #: Console/AppConsole.vala:202 Console/AppConsole.vala:316
 #: Console/AppConsole.vala:345
 msgid "Run '"
-msgstr ""
+msgstr "Çalıştır '"
 
 #: Console/AppConsole.vala:120
 msgid "Run the application as admin with pkexec or sudo."
@@ -513,15 +505,13 @@ msgstr "Masaüstünde bildirim baloncuğu göster"
 msgid "Show notification dialog"
 msgstr "Bildirim iletişimini göster"
 
-#: Console/AppConsole.vala:99
-#, fuzzy
+#: Console/AppConsole.vala:101
 msgid "Show unstable and RC releases"
-msgstr "Kararsız ve RC sürümleri gizle"
+msgstr "Kararsız ve RC sürümleri göster"
 
-#: Gtk/SettingsDialog.vala:199
-#, fuzzy
+#: Gtk/SettingsDialog.vala:244
 msgid "Skip internet connection check"
-msgstr "İnternet bağlantısı aktif değil"
+msgstr "İnternet bağlantı kontrolünü atla"
 
 #: Gtk/MainWindow.vala:196
 msgid "Status"
@@ -537,7 +527,7 @@ msgstr "Sözdizimi"
 
 #: Console/AppConsole.vala:208 Gtk/AppGtk.vala:111
 msgid "Temp"
-msgstr ""
+msgstr "Geçici"
 
 #: Utility/Gtk/AboutWindow.vala:330
 #, c-format
@@ -595,7 +585,7 @@ msgstr "[Uyarı] Geçersiz kilit silindi"
 
 #: Gtk/SettingsDialog.vala:226
 msgid "seconds"
-msgstr ""
+msgstr "saniye"
 
 #~ msgid "Booting previous kernels"
 #~ msgstr "Önceki çekirdeklerin önyüklenmesi"
