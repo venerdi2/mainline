@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 07:00-0400\n"
+"POT-Creation-Date: 2019-03-12 14:47-0400\n"
 "PO-Revision-Date: 2016-12-13 16:46+0300\n"
 "Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Commands"
 msgstr ""
 
-#: Common/Main.vala:106
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr "Команды перечисленные ниже недоступны на этой системе"
 
@@ -426,7 +426,7 @@ msgstr ""
 msgid "Packages Installed"
 msgstr "Установлено"
 
-#: Common/Main.vala:107
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr "Установить необходимые пакеты и попробуйте снова"
 

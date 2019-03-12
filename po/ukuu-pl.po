@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 07:00-0400\n"
+"POT-Creation-Date: 2019-03-12 14:47-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Commands"
 msgstr ""
 
-#: Common/Main.vala:106
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr "Poniższe polecenia nie są dostępne na tym systemie"
 
@@ -419,7 +419,7 @@ msgstr "Dostępne pakiety (DEB)"
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: Common/Main.vala:107
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr "Zainstaluj wymagane pakiety i spróbuj ponownie"
 

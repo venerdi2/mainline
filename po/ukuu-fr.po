@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 07:00-0400\n"
+"POT-Creation-Date: 2019-03-12 14:47-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -96,7 +96,7 @@ msgstr "Impossible de trouver le fichier"
 msgid "Commands"
 msgstr ""
 
-#: Common/Main.vala:106
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr "Les commandes listées ne sont pas valables pour ce système"
 
@@ -424,7 +424,7 @@ msgstr "Paquets disponibles (DEB)"
 msgid "Packages Installed"
 msgstr "Paquets installés"
 
-#: Common/Main.vala:107
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr "Veuillez installer les paquets requis et réessayer"
 

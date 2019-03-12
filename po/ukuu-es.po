@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 07:00-0400\n"
+"POT-Creation-Date: 2019-03-12 14:47-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Commands"
 msgstr ""
 
-#: Common/Main.vala:106
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr ""
 "Las órdenes enumeradas a continuación no están disponibles en este sistema"
@@ -421,7 +421,7 @@ msgstr "Paquetes disponibles (DEB)"
 msgid "Packages Installed"
 msgstr "Paquetes instalados"
 
-#: Common/Main.vala:107
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr "Instale los paquetes requeridos e inténtelo de nuevo"
 

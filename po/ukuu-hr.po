@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 07:00-0400\n"
+"POT-Creation-Date: 2019-03-12 14:47-0400\n"
 "PO-Revision-Date: 2017-12-24 00:52+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Commands"
 msgstr ""
 
-#: Common/Main.vala:106
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr "Naredbe navedene ispod nisu dostupne na ovom sustavu"
 
@@ -420,7 +420,7 @@ msgstr "Dostupni paketi (DEB)"
 msgid "Packages Installed"
 msgstr "Instalirani paketi"
 
-#: Common/Main.vala:107
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr "Instalirajte potrebni paket i pokušajte ponovno"
 

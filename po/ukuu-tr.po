@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-10 23:56-0400\n"
+"POT-Creation-Date: 2019-03-12 14:47-0400\n"
 "PO-Revision-Date: 2019-03-12 19:35+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -30,7 +30,7 @@ msgstr "Bu uygulamayı çalıştırmak için yönetici izni gerekiyor."
 msgid "Another instance of this application is running"
 msgstr "Bu uygulamanın başka bir örneği çalışıyor"
 
-#: Common/LinuxKernel.vala:108
+#: Common/LinuxKernel.vala:105
 msgid "Architecture"
 msgstr "Sistem mimarisi"
 
@@ -78,7 +78,7 @@ msgstr "Kontrol aralığı"
 msgid "Check for kernel updates"
 msgstr "Çekirdek güncellemelerini kontrol et"
 
-#: Console/AppConsole.vala:91
+#: Console/AppConsole.vala:89
 msgid "Check for kernel updates and notify current user"
 msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 
@@ -94,7 +94,7 @@ msgstr "Komut belirtilmedi"
 msgid "Commands"
 msgstr "Komutlar"
 
-#: Common/Main.vala:106
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr "Aşağıda listelenen komutlar bu sistemde mevcut değil"
 
@@ -108,7 +108,7 @@ msgstr "Devam et ?"
 msgid "Contributions"
 msgstr "Destek verenler"
 
-#: Common/LinuxKernel.vala:724
+#: Common/LinuxKernel.vala:721
 msgid "Could not find any kernels to remove"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
@@ -116,7 +116,7 @@ msgstr "Kaldırılacak çekirdek bulunamadı"
 msgid "Could not find requested version"
 msgstr "İstenen sürüm bulunamadı"
 
-#: Common/LinuxKernel.vala:718
+#: Common/LinuxKernel.vala:715
 msgid "Could not find running kernel in list!"
 msgstr "İstenen sürüm bulunamadı!"
 
@@ -275,7 +275,7 @@ msgstr "Kur"
 msgid "Install Linux v%s ? (y/n): "
 msgstr "Linux v%s Kur ? (e/h): "
 
-#: Console/AppConsole.vala:94
+#: Console/AppConsole.vala:92
 msgid "Install latest mainline kernel"
 msgstr "En son mainline çekirdeğini kur"
 
@@ -304,7 +304,7 @@ msgstr ""
 msgid "Installed"
 msgstr "Kurulu"
 
-#: Gtk/SettingsDialog.vala:257
+#: Gtk/SettingsDialog.vala:212
 msgid "Internect connection timeout in "
 msgstr "İnternet bağlantısı aktif değil "
 
@@ -339,7 +339,7 @@ msgstr "Tüm mainline çekirdeklerini listele"
 msgid "List available kernels"
 msgstr "Tüm çekirdekleri listele"
 
-#: Console/AppConsole.vala:93
+#: Console/AppConsole.vala:91
 msgid "List installed kernels"
 msgstr "Kurulu çekirdekleri listele"
 
@@ -412,7 +412,7 @@ msgstr "Mevcut Paketler (DEB)"
 msgid "Packages Installed"
 msgstr "Paketler Kuruldu"
 
-#: Common/Main.vala:107
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr "Lütfen gerekli paketleri yükleyin ve tekrar deneyin"
 
@@ -448,7 +448,7 @@ msgstr "Dosyaları uygulama önbelleğinden sil"
 msgid "Remove installed kernels older than running kernel"
 msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
-#: Console/AppConsole.vala:97
+#: Console/AppConsole.vala:95
 msgid "Remove specified kernel"
 msgstr "Belirtilen çekirdeği kaldır"
 
@@ -505,11 +505,11 @@ msgstr "Masaüstünde bildirim baloncuğu göster"
 msgid "Show notification dialog"
 msgstr "Bildirim iletişimini göster"
 
-#: Console/AppConsole.vala:101
+#: Console/AppConsole.vala:99
 msgid "Show unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri göster"
 
-#: Gtk/SettingsDialog.vala:244
+#: Gtk/SettingsDialog.vala:199
 msgid "Skip internet connection check"
 msgstr "İnternet bağlantı kontrolünü atla"
 
