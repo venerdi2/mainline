@@ -42,7 +42,6 @@ public class Main : GLib.Object{
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
 
-	public int startup_delay = 300;
 	public string user_login = "";
 	public string user_home = "";
 
@@ -125,8 +124,8 @@ public class Main : GLib.Object{
 		user_home = get_user_home(user_login);
 
 		// app config files
-		APP_CONFIG_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + ".json";
-		STARTUP_SCRIPT_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + "-notify.sh";
+		APP_CONFIG_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + "/config.json";
+		STARTUP_SCRIPT_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + "/" + BRANDING_SHORTNAME + "-notify.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
 
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
@@ -145,9 +144,6 @@ public class Main : GLib.Object{
 		config.set_string_member("hide_older", LinuxKernel.hide_older.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
-		//config.set_string_member("show_grub_menu", LinuxKernel.show_grub_menu.to_string());
-		config.set_string_member("grub_timeout", LinuxKernel.grub_timeout.to_string()); 
-		config.set_string_member("update_grub_timeout", LinuxKernel.update_grub_timeout.to_string());
         config.set_string_member("connection_timeout_seconds", connection_timeout_seconds.to_string());
         config.set_string_member("skip_connection_check", skip_connection_check.to_string());
 
@@ -185,8 +181,6 @@ public class Main : GLib.Object{
 			// initialize static
 			LinuxKernel.hide_unstable = true;
 			LinuxKernel.hide_older = true;
-			LinuxKernel.update_grub_timeout = false;
-			LinuxKernel.grub_timeout = 2;
 			return;
 		}
 
@@ -212,9 +206,6 @@ public class Main : GLib.Object{
 
 		LinuxKernel.hide_unstable = json_get_bool(config, "hide_unstable", true);
 		LinuxKernel.hide_older = json_get_bool(config, "hide_older", true);
-		//LinuxKernel.show_grub_menu = json_get_bool(config, "show_grub_menu", true);
-		LinuxKernel.grub_timeout = json_get_int(config, "grub_timeout", 2);
-		LinuxKernel.update_grub_timeout = json_get_bool(config, "update_grub_timeout", false);
 
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}
@@ -244,31 +235,18 @@ public class Main : GLib.Object{
 			count = App.notify_interval_value * 7;
 			break;
 		}
-
-		//count = 20;
-		//suffix = "s";
-		
-		string txt = "";
-		txt += "sleep %ds\n".printf(startup_delay);
-		txt += "while true\n";
-		txt += "do\n";
-		txt += "  "+BRANDING_SHORTNAME+" --notify ; sleep %d%s \n".printf(count, suffix);
-		txt += "done\n";
 		
 		if (file_exists(STARTUP_SCRIPT_FILE)){
 			file_delete(STARTUP_SCRIPT_FILE);
 		}
 
+		// UGLY - this should be a cron job
+		string txt = "# Notifications are disabled\nexit 0\n";
 		if (notify_minor || notify_major){
-			file_write(
-				STARTUP_SCRIPT_FILE,
-				txt);
+			txt = "while sleep %d%s".printf(count, suffix)+" ;do "+BRANDING_SHORTNAME+" --notify ;done\n";
 		}
-		else{
-			file_write(
-				STARTUP_SCRIPT_FILE,
-				"# Notifications are disabled\n\nexit 0"); // write dummy script
-		}
+
+		file_write(STARTUP_SCRIPT_FILE,txt);
 
 		chown(STARTUP_SCRIPT_FILE, user_login, user_login);
 	}
@@ -276,20 +254,14 @@ public class Main : GLib.Object{
 	private void update_startup_desktop_file(){
 		if (notify_minor || notify_major){
 			
-			string txt =
-"""[Desktop Entry]
-Type=Application
-Exec={command}
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name[en_IN]=Ukuu Notification
-Name=Ukuu Notification
-Comment[en_IN]=Ukuu Notification
-Comment=Ukuu Notification
-""";
-
-			txt = txt.replace("{command}", "sh \"%s\"".printf(STARTUP_SCRIPT_FILE));
+			string txt = "[Desktop Entry]\n"
+				+ "Type=Application\n"
+				+ "Exec=sh \"" + STARTUP_SCRIPT_FILE + "\"\n"
+				+ "Hidden=false\n"
+				+ "NoDisplay=false\n"
+				+ "X-GNOME-Autostart-enabled=true\n"
+				+ "Name=Ukuu Notification\n"
+				+ "Comment=Ukuu Notification\n";
 
 			file_write(STARTUP_DESKTOP_FILE, txt);
 
@@ -298,25 +270,6 @@ Comment=Ukuu Notification
 		else{
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
-	}
-
-	public void fix_startup_script_error(){
-		
-		/* This fixes a critical issue with startup script in versions prior to Ukuu v16.12 */
-		
-		if (!file_exists(STARTUP_SCRIPT_FILE)){
-			return;
-		}
-
-		if (!file_read(STARTUP_SCRIPT_FILE).contains("&&")){
-			return;
-		}
-
-		update_startup_script();
-
-		process_quit_by_name("sh", BRANDING_SHORTNAME+" -notify.sh", false);
-
-		// don't start script again
 	}
 }
 

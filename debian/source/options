@@ -1,0 +1,3 @@
+#git-ref = "master"
+#git-depth = "1"
+compression = "bzip2"

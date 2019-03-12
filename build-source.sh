@@ -1,45 +1,50 @@
 #!/bin/bash
+# Generates debian source dsc and tar files
+# This is run by build-deb.sh
 
-backup=${PWD}
-DIR=${0%/*}
-cd "$DIR"
+################################################################################
+#functions
 
-. ./BUILD_CONFIG
+abrt () { echo "${SELF}: ${@:-Failed}" >&2 ; exit 1 ; }
+
+################################################################################
+# main
+
+SELF=${0##*/}
+cd ${0%/*} || abrt "Failed to cd \"${0%/*}\"" 
 
 echo ""
 echo "=========================================================================="
-echo " build-source.sh"
+echo " ${0}"
 echo "=========================================================================="
 echo ""
 
-echo "app_name: $app_name"
-echo "pkg_name: $pkg_name"
+# get pkg name from BRANDING.mak
+[[ "${BRANDING[SHORTNAME]}" ]] || {
+	unset BRANDING ;declare -A BRANDING
+	[[ -s BRANDING.mak ]] && while read k x v ; do
+		[[ "${k}" =~ ^BRANDING_ ]] && BRANDING[${k#*_}]="${v}"
+	done < BRANDING.mak
+}
+[[ "${BRANDING[SHORTNAME]}" ]] || abrt "Missing BRANDING_SHORTNAME (check BRANDING.mak)"
+
+echo "pkg name: ${BRANDING[SHORTNAME]}"
 echo "--------------------------------------------------------------------------"
 
 # clean build dir
-
 rm -rfv /tmp/builds
 mkdir -pv /tmp/builds
-
 make clean
-
 mkdir -pv release/source
-
 echo "--------------------------------------------------------------------------"
 
 # build source package
-dpkg-source --build ./
-
-mv -vf ../$pkg_name*.dsc release/source/
-mv -vf ../$pkg_name*.tar.xz release/source/
-
-if [ $? -ne 0 ]; then cd "$backup"; echo "Failed"; exit 1; fi
+dpkg-source --build . || abrt
+mv -vf ../${BRANDING[SHORTNAME]}*.dsc release/source/ || abrt
+mv -vf ../${BRANDING[SHORTNAME]}*.tar.* release/source/ || abrt
 
 echo "--------------------------------------------------------------------------"
 
 # list files
 ls -l release/source
-
 echo "-------------------------------------------------------------------------"
-
-cd "$backup"

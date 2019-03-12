@@ -693,9 +693,7 @@ public class MainWindow : Gtk.Window{
 		});
 		
 		term.destroy.connect(()=>{
-			
-			show_grub_message();
-			
+
 			if (App.command == "list"){
 				this.present();
 				refresh_cache();
@@ -792,40 +790,6 @@ public class MainWindow : Gtk.Window{
 			return;
 		}
 
-		// dummy
-
-		/*
-		var title = "Linux v4.7 Available";
-		var message = "Minor update available for installation";
-		
-		if (App.notify_bubble){
-			OSDNotify.notify_send(title,message,3000,"normal","info");
-		}
-		
-		if (App.notify_dialog){
-			
-			var win = new UpdateNotificationWindow(
-					BRANDING_LONGNAME,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
-					
-			win.destroy.connect(Gtk.main_quit);
-			Gtk.main(); // start event loop
-		}
-		* */
-
 		log_msg(_("No updates found"));
-	}
-
-	public void show_grub_message(){
-		
-		string title = _("Booting previous kernels");
-		string msg = _("Mainline kernels can sometimes cause problems if there are proprietary drivers installed on your system. These issues include:\n\n▰ WiFi not working\n▰ Black screen on startup\n▰ Random system freeze\n\nIf you face any of these issues there is no need to panic.\n\n▰ Reboot your system\n▰ Select 'Advanced Boot Options' from the GRUB boot menu\n▰ Select an older kernel from the list displayed on this screen\n▰ Your system will boot using the selected kernel\n▰ You can now uninstall the kernel that is causing issues\n");
-		gtk_messagebox(title, msg, this, false);
-
-		if (App.command != "list"){
-			Gtk.main_quit();
-			App.exit_app(0);
-		}
 	}
 }
