@@ -67,8 +67,6 @@ public class AppConsole : GLib.Object {
 		var console =  new AppConsole();
 		bool is_success = console.parse_arguments(args);
 
-		App.fix_startup_script_error();
-
 		return (is_success) ? 0 : 1;
 	}
 
@@ -432,36 +430,12 @@ public class AppConsole : GLib.Object {
 			return;
 		}
 
-		// dummy
-
-		/*
-		var title = "Linux v4.7 Available";
-		var message = "Minor update available for installation";
-		
-		if (App.notify_bubble){
-			OSDNotify.notify_send(title,message,3000,"normal","info");
-		}
-		
-		if (App.notify_dialog){
-			
-			var win = new UpdateNotificationWindow(
-					BRANDING_LONGNAME,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
-					
-			win.destroy.connect(Gtk.main_quit);
-			Gtk.main(); // start event loop
-		}
-		* */
-
 		log_msg(_("No updates found"));
 	}
 
 	public void check_if_internet_is_active(bool exit_app = true){
 		
 		if (!check_internet_connectivity()){
-			
-			App.fix_startup_script_error();
 			
 			if (exit_app){
 				exit(1);

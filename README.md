@@ -2,55 +2,47 @@
 
 This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions.
 
-![](https://2.bp.blogspot.com/-76C_l3BcJyg/WNdzTpSoiKI/AAAAAAAAGKs/xOvB-LCH2cYiDpdbqWkeOLhY9I7TVACJwCLcB/s1600/ukuu_main_window.png)
-
-### About This Fork
-
-Since the original author stopped maintaining the free version of Ukuu and turned to a [paid version](https://teejeetech.in/tag/ukuu/), Several people have forked this project, and this is but one more. This fork started with https://github.com/stevenpwered/ukuu, and merged in https://github.com/cloyce/ukuu, and then I intend to add my own tweaks:
-
-* First TODO Item (not done yet): STOP SAVING 6 GIGS OF KERNEL PACKAGES IN ~/.cache/ukuu HOLY GOBSMACK WTF ?????
-<pre>
-bkw@negre:~$ du -sh .cache/ukuu
-5.5G    .cache/ukuu
-</pre>
-  Until then: As a work-around, you can create a wrapper shell script or menu entry to always run "ukuu --clean-cache" after "ukuu-gtk"
-
-* Remove all grub options. A kernel package installer has no business messing with grub. dpkg already does the necessary part, which is just adding/removing entries without making any other changes.
-
-### Enhancements
-
-*   Option in settings to skip internet connection check
-
-Please feel free to submit a feature request in the Issues section.
+![Main window screenshot](main_window.png)
 
 ### Features
 
-*   Fetches list of kernels from [kernel.ubuntu.com](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
-*   Displays notifications when a new kernel update is available.
-*   Downloads and installs packages automatically
-
-### Screenshots
-
-![](https://2.bp.blogspot.com/-76C_l3BcJyg/WNdzTpSoiKI/AAAAAAAAGKs/xOvB-LCH2cYiDpdbqWkeOLhY9I7TVACJwCLcB/s1600/ukuu_main_window.png)
-_Main Window_
-
-![](https://2.bp.blogspot.com/-ATv4vsOVOnc/WNdztEZHJNI/AAAAAAAAGKw/1pOIuyu8ITo4z8mnMK6MfCZ3T_Nd4gQNQCLcB/s1600/ukuu_settings.png)
-_Settings Window_
-
-![](https://4.bp.blogspot.com/-Y-1zhHcpk1M/WNd42_ybTyI/AAAAAAAAGLE/gLaBdWpoh54OGrvF81Ka1bCVJjZ0WqKrQCLcB/s1600/ukuu_console_options.png)
-_Console Options_
+* Fetches list of available kernels from [Ubuntu Mainline PPA](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
+* Optionally watches and displays notifications when a new kernel update is available
+* Downloads and installs packages automatically
+* Display available and installed kernels conveniently
+* Install/remove kernels from gui
+* For each kernel, the related packages (headers & modules) are installed or removed at the same time
 
 ### Downloads & Source Code
 Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are available from the [GitHub project page](https://github.com/aljex/ukuu).
 
-### Build instruction
+### Build
+		sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
+		git clone https://github.com/aljex/ukuu.git
+		cd ukuu
+		make
+		sudo make install
 
-#### Ubuntu-based Distributions (Ubuntu, Linux Mint, Elementary, etc)  
+### About This Fork
+The original author stopped maintaining the original GPL version of ukuu and switched to a [paid license](https://teejeetech.in/tag/ukuu/) for future versions. So, several people have forked that project, and this is one.
 
- in a terminal window:  
+### Enhancements / Deviations from the original author's final GPL version
 
-    sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
-    git clone https://github.com/aljex/ukuu.git
-    cd ukuu
-    make all
-    sudo make install
+* (from [stevenpowerd](https://github.com/stevenpowered/ukuu)) Option to skip internet connection check
+* (from [cloyce](https://github.com/cloyce/ukuu)) Option to include or hide pre-release kernels
+* Removed all GRUB options
+* Removed all donate buttons, links, dialogs
+
+### Development Plans / TODO
+* Stop consuming over 5GB in ```~/.cache/ukuu``` with kernel package files
+:Until then: As a work-around, "ukuu --clean-cache" deletes the cache
+* Better (more automatic) initial sizes for the window and the columns in the kernel list display so you don't have to manually expand them
+* More efficient download & caching of info about available kernels, without the kernel packages
+* Clean up build warnings
+* Clean up run-time GTK warnings
+* Make http client configurable (curl/wget/other)
+* Reduce dependencies, stop using aptitude just to query installed packages when you can get the info from apt or even dpkg, use the same download client for everything instead of using both curl and aria
+* Customizable appearance
+* Option to specify kernel variant (generic, lowlatency, snapdragon, etc...)
+* Configurable version threshhold instead of arbitrary hard-coded "hide older than 4.0"
+* Improve the annoying pkexec behavior. It would be nicer to run lxqt-sudo or gsudo or pkexec etc one time for the whole session, and only have to enter a password once, instead of once per user action. But currently, if you do that, it creates files in the users home directory that are owned by root, which the user cannot then remove.

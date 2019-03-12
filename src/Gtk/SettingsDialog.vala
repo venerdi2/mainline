@@ -41,7 +41,6 @@ public class SettingsDialog : Gtk.Dialog {
 	private Gtk.CheckButton chk_notify_dialog;
 	private Gtk.CheckButton chk_hide_unstable;
 	private Gtk.CheckButton chk_hide_older;
-	private Gtk.CheckButton chk_update_grub_timeout;
 		
 	public SettingsDialog.with_parent(Window parent) {
 		set_transient_for(parent);
@@ -187,50 +186,6 @@ public class SettingsDialog : Gtk.Dialog {
 		chk.toggled.connect(()=>{
 			LinuxKernel.hide_older = chk_hide_older.active;
 		});
-
-		// grub
-		label = new Label("<b>" + _("GRUB Options") + "</b>");
-		label.set_use_markup(true);
-		label.xalign = (float) 0.0;
-		label.margin_top = 12;
-		label.margin_bottom = 6;
-		vbox_main.add (label);
-
-		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-		vbox_main.add(hbox);
-		
-		// chk_update_grub_timeout
-		chk = new CheckButton.with_label(_("Set GRUB menu timeout"));
-		chk.active = LinuxKernel.update_grub_timeout;
-		chk.margin_left = 6;
-		chk.hexpand = true;
-		hbox.add(chk);
-		chk_update_grub_timeout = chk;
-
-		chk.set_tooltip_text(_("Updates the GRUB menu after installing or removing kernels, so that the menu is displayed for 2 seconds at boot time. This will help you recover from a bad kernel update by selecting another kernel to boot. During boot, use the 'Advanced options for Ubuntu' menu entry to select another kernel.\n\n0 = Do not show menu\n-1 = Show indefinitely till user selects"));
-		
-		chk.toggled.connect(()=>{
-			LinuxKernel.update_grub_timeout = chk_update_grub_timeout.active;
-		});
-
-		adjustment = new Gtk.Adjustment(LinuxKernel.grub_timeout, 1, 9999, 1, 1, 0);
-		spin = new Gtk.SpinButton (adjustment, 1, 0);
-		spin.xalign = (float) 0.5;
-		spin.margin_right = 6;
-		hbox.add(spin);
-		var spin_grub = spin;
-
-		spin.set_tooltip_text(_("Time (in seconds) to display the GRUB menu\n\n0 = Do not show menu\n-1 = Show indefinitely till user selects"));
-		
-		spin.changed.connect(()=>{
-			LinuxKernel.grub_timeout = (int) spin_grub.get_value();
-		});
-
-		chk_update_grub_timeout.toggled.connect(()=>{
-			spin_grub.sensitive = chk_update_grub_timeout.active;
-		});
-		
-		chk_update_grub_timeout.toggled();
 		
 		// other
 		label = new Label("<b>" + _("Other") + "</b>");

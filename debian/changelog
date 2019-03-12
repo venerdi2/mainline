@@ -1,12 +1,24 @@
-ukuu (18.9.3-bkw) disco; urgency=medium
+ukuu (18.9.4-bkw) disco; urgency=medium
+  * Removed all grub options
+  * Fix formatting in per-kernel package list tooltip
+  * New screenshots for readme, and self-hosted
+  * Removed build-installers.sh and other references to sanity *.run installers
+  * Relocate config.json & ukuu-notify.sh to .config/ukuu/ dir
+  * Moved branding to BRANDING.mak so other scripts can read it too
+  * Removed all hard-coding from build-deb.sh & build-source.sh
+  
+ -- Brian K. White <bw.aljex@gmail.com>  Mon, 11 Mar 2019 17:50:38 -0500
 
-  * Fork from stevenpowerd
-  * merge cloyce
-  * remove references to paid version
-  * remove donation window and other donation links
-  * fix compile error
-  * update Readme.md
-  * branding - change all branding strings to defines derived from makefile
+
+ukuu (18.9.3-bkw) cosmic; urgency=medium
+
+  * Fork from http://github.com/stevenpowerd/ukuu
+  * Merge http://github.com/cloyce/ukuu
+  * Remove references to paid version
+  * Remove donation window and other donation links
+  * Fix compile error
+  * Update Readme.md
+  * Branding - Change all branding strings to variables derived from makefile
 
  -- Brian K. White <bw.aljex@gmail.com>  Fri, 8 Mar 2019 22:57:57 -0500
 
