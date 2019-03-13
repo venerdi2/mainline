@@ -21,7 +21,7 @@
  *
  *
  */
- 
+
 namespace TeeJee.System{
 
 	using TeeJee.ProcessHelper;
@@ -261,66 +261,25 @@ namespace TeeJee.System{
 	}
 
 	// internet helpers ----------------------
-	
 	public bool check_internet_connectivity(){
 
 	    if (App.skip_connection_check) {
 	        return true;
 	    }
-		
+
 		string std_err, std_out;
 
-		string cmd = "url='https://www.google.com' \n";
+		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+App.connection_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet https://www.google.com/";
 
-		// Note: minimum of 3 seconds is required for timeout, to avoid wrong results
-		
-		cmd += "httpCode=$(curl -o /dev/null --silent --max-time " + App.connection_timeout_seconds.to_string() + " --head --write-out '%{http_code}\n' $url) \n";
-		
-		cmd += "test $httpCode -lt 400 -a $httpCode -gt 0 \n";
-
-		cmd += "exit $?"; 
-		
 		int status = exec_script_sync(cmd, out std_out, out std_err, false);
 
 		if (std_err.length > 0){
-			
 			log_error(std_err);
 		}
 
 		if (status != 0){
-
 			log_error(_("Internet connection is not active"));
 		}
-
-	    return (status == 0);
-	}
-
-	public bool check_internet_connectivity_test1(){
-
-		// Deprecated: 'ping' may be disabled on enterprise systems
-
-		string std_err, std_out;
-
-		string cmd = "ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3`\n";
-		
-		cmd += "exit $?";
-		
-		int status = exec_script_sync(cmd, out std_out, out std_err, false);
-
-	    return (status == 0);
-	}
-
-	public bool check_internet_connectivity_test2(){
-
-		// Deprecated: 'ping' may be disabled on enterprise systems
-		
-		string std_err, std_out;
-
-		string cmd = "ping -q -w 1 -c 1 google.com\n";
-		
-		cmd += "exit $?";
-		
-		int status = exec_script_sync(cmd, out std_out, out std_err, false);
 
 	    return (status == 0);
 	}

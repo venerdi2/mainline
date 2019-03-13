@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-13 11:41-0400\n"
+"POT-Creation-Date: 2019-03-13 16:02-0400\n"
 "PO-Revision-Date: 2019-03-12 19:35+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "About"
 msgstr "Hakkında"
 
-#: Console/AppConsole.vala:117
+#: Console/AppConsole.vala:116
 msgid "Admin access is required for running this application."
 msgstr "Bu uygulamayı çalıştırmak için yönetici izni gerekiyor."
 
@@ -39,7 +39,7 @@ msgstr "Sistem mimarisi"
 msgid "Artists"
 msgstr "Sanatçılar"
 
-#: Console/AppConsole.vala:104
+#: Console/AppConsole.vala:103
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Tüm istemler için Evet'i kabul edin (etkileşimsiz kip)"
 
@@ -56,7 +56,7 @@ msgstr "Mevcut Çekirdekler"
 msgid "Back"
 msgstr "Geri"
 
-#: Console/AppConsole.vala:207 Gtk/AppGtk.vala:110
+#: Console/AppConsole.vala:206 Gtk/AppGtk.vala:110
 msgid "Cache"
 msgstr "Önbellek"
 
@@ -74,11 +74,11 @@ msgstr "Değişiklikler"
 msgid "Check every"
 msgstr "Kontrol aralığı"
 
-#: Console/AppConsole.vala:88
+#: Console/AppConsole.vala:87
 msgid "Check for kernel updates"
 msgstr "Çekirdek güncellemelerini kontrol et"
 
-#: Console/AppConsole.vala:89
+#: Console/AppConsole.vala:88
 msgid "Check for kernel updates and notify current user"
 msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 
@@ -86,11 +86,11 @@ msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 msgid "Close"
 msgstr "Kapat"
 
-#: Console/AppConsole.vala:344
+#: Console/AppConsole.vala:343
 msgid "Command not specified"
 msgstr "Komut belirtilmedi"
 
-#: Console/AppConsole.vala:86
+#: Console/AppConsole.vala:85
 msgid "Commands"
 msgstr "Komutlar"
 
@@ -112,7 +112,7 @@ msgstr "Destek verenler"
 msgid "Could not find any kernels to remove"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
-#: Console/AppConsole.vala:312 Gtk/MainWindow.vala:100
+#: Console/AppConsole.vala:311 Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "İstenen sürüm bulunamadı"
 
@@ -154,7 +154,7 @@ msgstr "Dağıtım"
 msgid "Documenters"
 msgstr "Belgelendirenler"
 
-#: Console/AppConsole.vala:97
+#: Console/AppConsole.vala:96
 msgid "Download packages for specified kernel"
 msgstr "Belirtilen çekirdek için paketleri indir"
 
@@ -270,15 +270,15 @@ msgstr "Kur"
 msgid "Install Linux v%s ? (y/n): "
 msgstr "Linux v%s Kur ? (e/h): "
 
-#: Console/AppConsole.vala:92
+#: Console/AppConsole.vala:91
 msgid "Install latest mainline kernel"
 msgstr "En son mainline çekirdeğini kur"
 
-#: Console/AppConsole.vala:93
+#: Console/AppConsole.vala:92
 msgid "Install latest point update for current series"
 msgstr "Mevcut çekirdek serisi için en güncelleme noktasını kur"
 
-#: Console/AppConsole.vala:94
+#: Console/AppConsole.vala:93
 msgid "Install specified mainline kernel"
 msgstr "Belirtilen mainline çekirdeğini kur"
 
@@ -300,7 +300,7 @@ msgid "Installed"
 msgstr "Kurulu"
 
 #: Gtk/MainWindow.vala:350 Gtk/MainWindow.vala:547 Gtk/MainWindow.vala:683
-#: Utility/TeeJee.System.vala:292
+#: Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
 
@@ -317,17 +317,17 @@ msgstr "Çekirdek"
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
-#: Common/LinuxKernel.vala:776 Console/AppConsole.vala:370
+#: Common/LinuxKernel.vala:776 Console/AppConsole.vala:369
 #, c-format
 msgid "Latest point update"
 msgstr "Son güncelleme noktası"
 
-#: Common/LinuxKernel.vala:765 Console/AppConsole.vala:363
+#: Common/LinuxKernel.vala:765 Console/AppConsole.vala:362
 #, c-format
 msgid "Latest update"
 msgstr "Son güncelleme"
 
-#: Console/AppConsole.vala:90
+#: Console/AppConsole.vala:89
 msgid "List all available mainline kernels"
 msgstr "Tüm mainline çekirdeklerini listele"
 
@@ -335,7 +335,7 @@ msgstr "Tüm mainline çekirdeklerini listele"
 msgid "List available kernels"
 msgstr "Tüm çekirdekleri listele"
 
-#: Console/AppConsole.vala:91
+#: Console/AppConsole.vala:90
 msgid "List installed kernels"
 msgstr "Kurulu çekirdekleri listele"
 
@@ -347,7 +347,7 @@ msgstr "Eksik Simge"
 msgid "Multiple Kernels Selected"
 msgstr "Çoklu Çekirdek Seçildi"
 
-#: Console/AppConsole.vala:294
+#: Console/AppConsole.vala:293
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Kurulum için çoklu çekirdek seçildi. Sadece bir tane seçiniz."
 
@@ -359,12 +359,12 @@ msgstr "Hayır"
 msgid "No Internet"
 msgstr "İnternet Yok"
 
-#: Console/AppConsole.vala:288 Console/AppConsole.vala:325
+#: Console/AppConsole.vala:287 Console/AppConsole.vala:324
 msgid "No kernels specified"
 msgstr "Belirtilen çekirdek yok"
 
-#: Common/LinuxKernel.vala:784 Console/AppConsole.vala:375
-#: Console/AppConsole.vala:433 Gtk/MainWindow.vala:793
+#: Common/LinuxKernel.vala:784 Console/AppConsole.vala:374
+#: Console/AppConsole.vala:432 Gtk/MainWindow.vala:793
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
@@ -390,7 +390,7 @@ msgstr "Ara sürüm mevcutsa bildir"
 msgid "OK"
 msgstr "TAMAM"
 
-#: Console/AppConsole.vala:101 Gtk/AppGtk.vala:181
+#: Console/AppConsole.vala:100 Gtk/AppGtk.vala:181
 msgid "Options"
 msgstr "Seçenekler"
 
@@ -436,24 +436,24 @@ msgstr "Yenileniyor..."
 msgid "Remove"
 msgstr "Kaldır"
 
-#: Console/AppConsole.vala:98 Console/AppConsole.vala:103
+#: Console/AppConsole.vala:97 Console/AppConsole.vala:102
 msgid "Remove files from application cache"
 msgstr "Dosyaları uygulama önbelleğinden sil"
 
-#: Console/AppConsole.vala:96 Gtk/MainWindow.vala:426
+#: Console/AppConsole.vala:95 Gtk/MainWindow.vala:426
 msgid "Remove installed kernels older than running kernel"
 msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
-#: Console/AppConsole.vala:95
+#: Console/AppConsole.vala:94
 msgid "Remove specified kernel"
 msgstr "Belirtilen çekirdeği kaldır"
 
-#: Console/AppConsole.vala:202 Console/AppConsole.vala:316
-#: Console/AppConsole.vala:345
+#: Console/AppConsole.vala:201 Console/AppConsole.vala:315
+#: Console/AppConsole.vala:344
 msgid "Run '"
 msgstr "Çalıştır '"
 
-#: Console/AppConsole.vala:120
+#: Console/AppConsole.vala:119
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Bu uygulamayı pkexec yada sudo ile yönetici haklarıyla çalıştırın."
 
@@ -501,7 +501,7 @@ msgstr "Masaüstünde bildirim baloncuğu göster"
 msgid "Show notification dialog"
 msgstr "Bildirim iletişimini göster"
 
-#: Console/AppConsole.vala:99
+#: Console/AppConsole.vala:98
 msgid "Show unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri göster"
 
@@ -517,11 +517,11 @@ msgstr "Durum"
 msgid "Stopped"
 msgstr "Durduruldu"
 
-#: Console/AppConsole.vala:84 Gtk/AppGtk.vala:179
+#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:179
 msgid "Syntax"
 msgstr "Sözdizimi"
 
-#: Console/AppConsole.vala:208 Gtk/AppGtk.vala:111
+#: Console/AppConsole.vala:207 Gtk/AppGtk.vala:111
 msgid "Temp"
 msgstr "Geçici"
 
@@ -560,7 +560,7 @@ msgstr "Kaldırma tamamlandı"
 msgid "Un-install completed with errors"
 msgstr "Kaldırma hatalarla tamamlandı"
 
-#: Console/AppConsole.vala:200 Gtk/AppGtk.vala:166
+#: Console/AppConsole.vala:199 Gtk/AppGtk.vala:166
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 

@@ -29,7 +29,7 @@ app-gtk:
 
 app:
 	valac ${branding_symbols} --Xcc="-lm" \
-		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0 \
+		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gee-0.8 --pkg json-glib-1.0 \
 		Common/*.vala Console/*.vala Utility/*.vala -o ${BRANDING_SHORTNAME}
 
 # $(miscs) is a special case.

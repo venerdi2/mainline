@@ -6,6 +6,8 @@ ukuu (18.9.5-bkw) disco; urgency=medium
   * Removed some more source cruft, stuff we aren't using from TeeJee utilities
   * Updated the Spanish translation just from google translate.
   * Remove ukuu-uninstall
+  * Make aria2 retry a few times
+  * Remove pointless curl dependency by using aria2c for connection test
 
  -- Brian K. White <bw.aljex@gmail.com>  Wed, 13 Mar 2019 2:35:02 -0500
 

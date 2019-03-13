@@ -8,7 +8,7 @@
 
 BRANDING_SHORTNAME = ukuu
 BRANDING_LONGNAME = Ubuntu Kernel Update Utility
-BRANDING_VERSION = 18.9
+BRANDING_VERSION = 18.9.5-bkw
 BRANDING_AUTHORNAME = Brian K. White
 BRANDING_AUTHOREMAIL = bw.aljex@gmail.com
 BRANDING_WEBSITE = https://github.com/aljex/ukuu
