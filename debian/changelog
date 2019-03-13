@@ -5,6 +5,7 @@ ukuu (18.9.5-bkw) disco; urgency=medium
     Now we have "make deb"
   * Removed some more source cruft, stuff we aren't using from TeeJee utilities
   * Updated the Spanish translation just from google translate.
+  * Remove ukuu-uninstall
 
  -- Brian K. White <bw.aljex@gmail.com>  Wed, 13 Mar 2019 2:35:02 -0500
 
