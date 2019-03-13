@@ -4,7 +4,6 @@ include BRANDING.mak
 include src/miscs.mak
 
 '': all
-.PHONY: all deb-src deb
 
 # FIXME these globbing patters are unsafe
 # FIXME allowing dpkg-source to generate files in the parent outside the source tree is unsafe
