@@ -18,7 +18,6 @@ public class DownloadTask : AsyncTask{
 	private Gee.HashMap<string, DownloadItem> map;
 
 	private Gee.HashMap<string,Regex> regex = null;
-	private static TeeJee.Version tool_version = null;
 
 	public DownloadTask(){
 

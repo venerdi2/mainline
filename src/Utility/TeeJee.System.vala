@@ -284,22 +284,6 @@ namespace TeeJee.System{
 	    return (status == 0);
 	}
 
-	public bool shutdown (){
-
-		/* Shutdown the system immediately */
-
-		try{
-			string[] argv = { "shutdown", "-h", "now" };
-			Pid procId;
-			Process.spawn_async(null, argv, null, SpawnFlags.SEARCH_PATH, null, out procId);
-			return true;
-		}
-		catch (Error e) {
-			log_error (e.message);
-			return false;
-		}
-	}
-
 	public bool command_exists(string command){
 		string path = get_cmd_path(command);
 		return ((path != null) && (path.length > 0));
@@ -420,7 +404,6 @@ namespace TeeJee.System{
 		}
 		log_msg("%s %lu\n".printf(seconds.to_string(), microseconds));
 	}	
-
 
 	public void set_numeric_locale(string type){
 		Intl.setlocale(GLib.LocaleCategory.NUMERIC, type);

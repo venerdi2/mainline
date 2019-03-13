@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-13 16:02-0400\n"
+"POT-Creation-Date: 2019-03-13 17:28-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -60,7 +60,7 @@ msgstr "Retour"
 msgid "Cache"
 msgstr ""
 
-#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:151
+#: Gtk/ProgressWindow.vala:143 Gtk/TerminalWindow.vala:151
 #: Gtk/UpdateNotificationWindow.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
 msgid "Cancel"

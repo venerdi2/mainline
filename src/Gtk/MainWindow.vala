@@ -47,8 +47,8 @@ public class MainWindow : Gtk.Window{
 	
 	// helper members
 
-	private int window_width = 600;
-	private int window_height = 400;
+	private int window_width = 800;
+	private int window_height = 600;
 	private uint tmr_init = -1;
 
 	private Gee.ArrayList<LinuxKernel> selected_kernels;
