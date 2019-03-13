@@ -48,3 +48,7 @@ Until then: As a work-around, "ukuu --clean-cache" deletes the cache
 * Improve the annoying pkexec behavior.  
 It would be nicer to run lxqt-sudo or gksudo or pkexec etc one time for the whole session, and only have to enter a password once, instead of once per user action.  
 But currently, if you do that, it creates files in the users home directory that are owned by root, so don't do that.
+I think this might be addressed by getting the policy kit file working.
+* Write a man page
+* Make all the terminal & child processes more robust. It's always really been pretty 9/10ths-baked. Kernel downloads fail, but work if you just do it again. dpkg installs fail, but work if you just do it again. Populating the main window fails, but works if you just do it again... That could all be a lot better.
+* More careful temp file / temp working dir management. It too-often creates dirs as one user and then can't remove or use them later as another user. It too-often fails to deal with the possibility of a user running the app via pkexec or sudo etc.
