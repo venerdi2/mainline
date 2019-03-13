@@ -34,15 +34,17 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Removed all donate buttons, links, dialogs
 
 ### Development Plans / TODO
-* Stop consuming over 5GB in ```~/.cache/ukuu``` with kernel package files
-:Until then: As a work-around, "ukuu --clean-cache" deletes the cache
+* Stop consuming over 5GB in ```~/.cache/ukuu``` with kernel package files  
+Until then: As a work-around, "ukuu --clean-cache" deletes the cache
 * Better (more automatic) initial sizes for the window and the columns in the kernel list display so you don't have to manually expand them
 * More efficient download & caching of info about available kernels, without the kernel packages
 * Clean up build warnings
 * Clean up run-time GTK warnings
 * Make http client configurable (curl/wget/other)
 * Reduce dependencies, stop using aptitude just to query installed packages when you can get the info from apt or even dpkg, use the same download client for everything instead of using both curl and aria
-* Customizable appearance
+* Customizable appearance, at least colors
 * Option to specify kernel variant (generic, lowlatency, snapdragon, etc...)
 * Configurable version threshhold instead of arbitrary hard-coded "hide older than 4.0"
-* Improve the annoying pkexec behavior. It would be nicer to run lxqt-sudo or gsudo or pkexec etc one time for the whole session, and only have to enter a password once, instead of once per user action. But currently, if you do that, it creates files in the users home directory that are owned by root, which the user cannot then remove.
+* Improve the annoying pkexec behavior.  
+It would be nicer to run lxqt-sudo or gksudo or pkexec etc one time for the whole session, and only have to enter a password once, instead of once per user action.  
+But currently, if you do that, it creates files in the users home directory that are owned by root, so don't do that.

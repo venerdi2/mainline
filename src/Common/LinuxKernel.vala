@@ -727,8 +727,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (confirm){
 			
-			var message = "\n%s:\n".printf(_("Following kernels will be removed"));
-			
+			var message = "\n%s:\n".printf(_("The following kernels will be removed:"));
+
 			foreach(var kern in list){
 
 				message += " ▰ v%s\n".printf(kern.version_main);
@@ -1057,7 +1057,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			list += "\n%s".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n%s".printf(_("Packages Available (DEB)"), list);
+			txt += "<b>%s</b>\n%s".printf(_("Packages Available"), list);
 		}
 
 		list = "";

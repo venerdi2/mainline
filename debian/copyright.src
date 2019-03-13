@@ -1,9 +1,9 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: ukuu
-Source: <https://github.com/aljex/ukuu>
+Upstream-Name: BRANDING_SHORTNAME
+Source: <BRANDING_WEBSITE>
 
 Files: *
-Copyright: 2013 Tony George <tony.george.kol@gmail.com> , Forked: 2019 Brian K. White <bw.aljex@gmail.com>
+Copyright: 2013 Tony George <tony.george.kol@gmail.com> , Forked: 2019 BRANDING_AUTHORNAME <BRANDING_AUTHOREMAIL>
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

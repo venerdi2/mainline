@@ -1,12 +1,24 @@
+ukuu (18.9.5-bkw) disco; urgency=medium
+  * More un-hardcoding branding/name/maintainer strings in source files
+    ukuu.desktop, debian/control, debian/copyright, ukuu.policy all generated from BRANDING.mak
+  * Remove build-deb.sh and build-source.sh
+    Now we have "make deb"
+  * Removed some more source cruft, stuff we aren't using from TeeJee utilities
+  * Updated the Spanish translation just from google translate.
+
+ -- Brian K. White <bw.aljex@gmail.com>  Wed, 13 Mar 2019 2:35:02 -0500
+
 ukuu (18.9.4-bkw) disco; urgency=medium
   * Removed all grub options
   * Fix formatting in per-kernel package list tooltip
-  * New screenshots for readme, and self-hosted
+  * Clean up README.md
   * Removed build-installers.sh and other references to sanity *.run installers
   * Relocate config.json & ukuu-notify.sh to .config/ukuu/ dir
   * Moved branding to BRANDING.mak so other scripts can read it too
   * Removed all hard-coding from build-deb.sh & build-source.sh
-  
+  * Turkish translation (github/kelebek333)
+  * Remove misc cruft
+
  -- Brian K. White <bw.aljex@gmail.com>  Mon, 11 Mar 2019 17:50:38 -0500
 
 

@@ -1,13 +1,11 @@
 [Desktop Entry]
-Name=Ukuu Kernel Update Utility
+Name=Ubuntu Kernel Update Utility
 MimeType=
 Exec=ukuu-gtk
 Type=Application
-GenericName=Kernel Update Utility
-GenericName[ru]=Программа обновления ядра
+GenericName=Ubuntu Kernel Update Utility
 Terminal=false
 Icon=ukuu
-Comment=Kernel Update Utility
-Comment[ru]=Программа обновления ядра
+Comment=Ubuntu Kernel Update Utility
 X-KDE-StartupNotify=false
 Categories=System;

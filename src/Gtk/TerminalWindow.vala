@@ -237,11 +237,12 @@ public class TerminalWindow : Gtk.Window {
 		process_quit(child_pid);
 	}
 
-/* when building in xenial environment:
+/* builds in cosmic and disco
+ * xenial fails with:
 Gtk/TerminalWindow.vala:242.19-242.29: error: Argument 1: Cannot convert from `char[]' to `string'
                 term.feed_child(c.to_utf8());
                                 ^^^^^^^^^^^
-*/
+ */
 
 	public void execute_command(string command){
 		string c = command.concat("\n");

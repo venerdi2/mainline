@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 18.9\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 14:47-0400\n"
+"POT-Creation-Date: 2019-03-13 07:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,11 +236,6 @@ msgstr ""
 msgid "File saved"
 msgstr ""
 
-#: Common/LinuxKernel.vala:730
-#, c-format
-msgid "Following kernels will be removed"
-msgstr ""
-
 #: Gtk/SettingsDialog.vala:180
 msgid "Hide kernels older than 4.0"
 msgstr ""
@@ -402,7 +397,7 @@ msgstr ""
 
 #: Common/LinuxKernel.vala:1060
 #, c-format
-msgid "Packages Available (DEB)"
+msgid "Packages Available"
 msgstr ""
 
 #: Common/LinuxKernel.vala:1068
@@ -523,6 +518,11 @@ msgstr ""
 
 #: Console/AppConsole.vala:208 Gtk/AppGtk.vala:111
 msgid "Temp"
+msgstr ""
+
+#: Common/LinuxKernel.vala:730
+#, c-format
+msgid "The following kernels will be removed:"
 msgstr ""
 
 #: Utility/Gtk/AboutWindow.vala:330

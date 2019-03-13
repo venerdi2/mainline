@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=BRANDING_LONGNAME
+MimeType=
+Exec=BRANDING_SHORTNAME-gtk
+Type=Application
+GenericName=BRANDING_LONGNAME
+Terminal=false
+Icon=ukuu
+Comment=BRANDING_LONGNAME
+X-KDE-StartupNotify=false
+Categories=System;

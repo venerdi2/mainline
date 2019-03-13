@@ -2,12 +2,12 @@
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the ukuu package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 14:47-0400\n"
+"POT-Creation-Date: 2019-03-13 05:37-0400\n"
 "PO-Revision-Date: 2016-12-13 16:46+0300\n"
 "Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -246,11 +246,6 @@ msgstr "Файл не найден: %s"
 msgid "File saved"
 msgstr "Файловая система"
 
-#: Common/LinuxKernel.vala:730
-#, c-format
-msgid "Following kernels will be removed"
-msgstr ""
-
 #: Gtk/SettingsDialog.vala:180
 msgid "Hide kernels older than 4.0"
 msgstr "Скрыть ядра старше версии 4.0"
@@ -417,9 +412,9 @@ msgid "Other"
 msgstr ""
 
 #: Common/LinuxKernel.vala:1060
-#, c-format
-msgid "Packages Available (DEB)"
-msgstr ""
+#, fuzzy, c-format
+msgid "Packages Available"
+msgstr "Установлено"
 
 #: Common/LinuxKernel.vala:1068
 #, fuzzy, c-format
@@ -546,6 +541,11 @@ msgstr "Синтаксис"
 
 #: Console/AppConsole.vala:208 Gtk/AppGtk.vala:111
 msgid "Temp"
+msgstr ""
+
+#: Common/LinuxKernel.vala:730
+#, c-format
+msgid "The following kernels will be removed:"
 msgstr ""
 
 #: Utility/Gtk/AboutWindow.vala:330

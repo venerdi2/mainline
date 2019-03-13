@@ -2,12 +2,12 @@
 # Copyright (C) YEAR Tony George (teejeetech@gmail.com)
 # This file is distributed under the same license as the ukuu package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2016.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-12 14:47-0400\n"
+"POT-Creation-Date: 2019-03-13 07:31-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -242,11 +242,6 @@ msgstr "Filen kunde inte hittas: %s"
 msgid "File saved"
 msgstr "Fil sparad"
 
-#: Common/LinuxKernel.vala:730
-#, c-format
-msgid "Following kernels will be removed"
-msgstr ""
-
 #: Gtk/SettingsDialog.vala:180
 msgid "Hide kernels older than 4.0"
 msgstr "Dölj kärnor, äldre än 4.0"
@@ -411,8 +406,8 @@ msgstr ""
 
 #: Common/LinuxKernel.vala:1060
 #, c-format
-msgid "Packages Available (DEB)"
-msgstr "Tillgängliga paket (DEB)"
+msgid "Packages Available"
+msgstr "Tillgängliga paket"
 
 #: Common/LinuxKernel.vala:1068
 #, c-format
@@ -537,6 +532,11 @@ msgstr "Syntax"
 
 #: Console/AppConsole.vala:208 Gtk/AppGtk.vala:111
 msgid "Temp"
+msgstr ""
+
+#: Common/LinuxKernel.vala:730
+#, c-format
+msgid "The following kernels will be removed:"
 msgstr ""
 
 #: Utility/Gtk/AboutWindow.vala:330

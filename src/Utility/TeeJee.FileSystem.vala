@@ -817,16 +817,4 @@ namespace TeeJee.FileSystem{
 
 	    return filePath2;
 	}
-
-	public int rsync (string sourceDirectory, string destDirectory, bool updateExisting, bool deleteExtra){
-
-		/* Sync files with rsync */
-
-		string cmd = "rsync -avh";
-		cmd += updateExisting ? "" : " --ignore-existing";
-		cmd += deleteExtra ? " --delete" : "";
-		cmd += " '%s'".printf(escape_single_quote(sourceDirectory) + "//");
-		cmd += " '%s'".printf(escape_single_quote(destDirectory));
-		return exec_sync (cmd, null, null);
-	}
 }

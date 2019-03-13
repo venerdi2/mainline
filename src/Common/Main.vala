@@ -260,8 +260,8 @@ public class Main : GLib.Object{
 				+ "Hidden=false\n"
 				+ "NoDisplay=false\n"
 				+ "X-GNOME-Autostart-enabled=true\n"
-				+ "Name=Ukuu Notification\n"
-				+ "Comment=Ukuu Notification\n";
+				+ "Name="+BRANDING_SHORTNAME+" notification\n"
+				+ "Comment="+BRANDING_SHORTNAME+" notification\n";
 
 			file_write(STARTUP_DESKTOP_FILE, txt);
 
