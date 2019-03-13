@@ -14,7 +14,6 @@ translations = es fr hr nl pl ru sv tr
 include ../BRANDING.mak
 include miscs.mak
 
-vte_symbol = -D VTE_291
 vte_version = vte-2.91
 
 ################################################################################
@@ -24,7 +23,7 @@ branding_symbols = -X -D'BRANDING_SHORTNAME="${BRANDING_SHORTNAME}"' -X -D'BRAND
 all: app app-gtk translations $(miscs)
 
 app-gtk:
-	valac ${branding_symbols} ${vte_symbol} --Xcc="-lm" \
+	valac ${branding_symbols} --Xcc="-lm" \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg ${vte_version} \
 		Common/*.vala Gtk/*.vala Utility/*.vala Utility/Gtk/*.vala -o ${BRANDING_SHORTNAME}-gtk
 

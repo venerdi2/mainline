@@ -209,7 +209,7 @@ public class SettingsDialog : Gtk.Dialog {
 		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
 
-		label = new Label(_("Internect connection timeout in "));
+		label = new Label(_("Internet connection timeout in "));
 		label.xalign = (float) 0.0;
 		label.margin_left = 6;
 		hbox.add (label);
@@ -243,5 +243,3 @@ public class SettingsDialog : Gtk.Dialog {
 		App.save_app_config();
 	}
 }
-
-

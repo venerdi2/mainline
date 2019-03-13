@@ -111,47 +111,30 @@ public class TerminalWindow : Gtk.Window {
 		scroll_win.hscrollbar_policy = PolicyType.AUTOMATIC;
 		scroll_win.vscrollbar_policy = PolicyType.AUTOMATIC;
 		vbox_main.add(scroll_win);
-		
-		#if VTE_291
-		
+
 		term.input_enabled = true;
 		term.backspace_binding = Vte.EraseBinding.AUTO;
 		term.cursor_blink_mode = Vte.CursorBlinkMode.SYSTEM;
 		term.cursor_shape = Vte.CursorShape.UNDERLINE;
 		term.rewrap_on_resize = true;
 		
-		#endif
-		
 		term.scroll_on_keystroke = true;
 		term.scroll_on_output = true;
 		term.scrollback_lines = 100000;
 
 		// colors -----------------------------
-		
-		#if VTE_291
-		
+
 		var color = Gdk.RGBA();
 		color.parse("#FFFFFF");
 		term.set_color_foreground(color);
 
 		color.parse("#404040");
 		term.set_color_background(color);
-		
-		#else
-		
-		Gdk.Color color;
-		Gdk.Color.parse("#FFFFFF", out color);
-		term.set_color_foreground(color);
 
-		Gdk.Color.parse("#404040", out color);
-		term.set_color_background(color);
-
-		#endif
-		
 		// grab focus ----------------
-		
+
 		term.grab_focus();
-		
+
 		// add cancel button --------------
 
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
@@ -199,9 +182,7 @@ public class TerminalWindow : Gtk.Window {
 		try{
 
 			is_running = true;
-			
-			#if VTE_291
-			
+
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, //pty_flags
 				TEMP_DIR, //working_directory
@@ -213,19 +194,6 @@ public class TerminalWindow : Gtk.Window {
 				null
 			);
 
-			#else
-
-			term.fork_command_full(
-				Vte.PtyFlags.DEFAULT, //pty_flags
-				TEMP_DIR, //working_directory
-				argv, //argv
-				env, //env
-				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-				null, //child_setup
-				out child_pid
-			);
-
-			#endif
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -258,9 +226,7 @@ Gtk/TerminalWindow.vala:242.19-242.29: error: Argument 1: Cannot convert from `c
 		try{
 
 			is_running = true;
-			
-			#if VTE_291
-			
+
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, //pty_flags
 				TEMP_DIR, //working_directory
@@ -271,20 +237,6 @@ Gtk/TerminalWindow.vala:242.19-242.29: error: Argument 1: Cannot convert from `c
 				out child_pid,
 				null
 			);
-
-			#else
-
-			term.fork_command_full(
-				Vte.PtyFlags.DEFAULT, //pty_flags
-				TEMP_DIR, //working_directory
-				argv, //argv
-				env, //env
-				GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, //spawn_flags
-				null, //child_setup
-				out child_pid
-			);
-
-			#endif
 
 			term.watch_child(child_pid);
 	
@@ -302,15 +254,11 @@ Gtk/TerminalWindow.vala:242.19-242.29: error: Argument 1: Cannot convert from `c
 		}
 	}
 
-	#if VTE_291
 	public void script_exit(int status){
-	#else
-	public void script_exit(){
-	#endif
 
 		is_running = false;
 
-		Process.close_pid(child_pid); //required on Windows, doesn't do anything on Unix
+		//Process.close_pid(child_pid); //required on Windows, doesn't do anything on Unix
 
 		btn_cancel.visible = false;
 		btn_close.visible = true;

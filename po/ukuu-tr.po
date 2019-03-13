@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-13 07:31-0400\n"
+"POT-Creation-Date: 2019-03-13 11:41-0400\n"
 "PO-Revision-Date: 2019-03-12 19:35+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -60,7 +60,7 @@ msgstr "Geri"
 msgid "Cache"
 msgstr "Önbellek"
 
-#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:168
+#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:151
 #: Gtk/UpdateNotificationWindow.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
 msgid "Cancel"
@@ -82,7 +82,7 @@ msgstr "Çekirdek güncellemelerini kontrol et"
 msgid "Check for kernel updates and notify current user"
 msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 
-#: Gtk/TerminalWindow.vala:178 Utility/Gtk/AboutWindow.vala:295
+#: Gtk/TerminalWindow.vala:161 Utility/Gtk/AboutWindow.vala:295
 msgid "Close"
 msgstr "Kapat"
 
@@ -299,14 +299,15 @@ msgstr ""
 msgid "Installed"
 msgstr "Kurulu"
 
-#: Gtk/SettingsDialog.vala:212
-msgid "Internect connection timeout in "
-msgstr "İnternet bağlantısı aktif değil "
-
 #: Gtk/MainWindow.vala:350 Gtk/MainWindow.vala:547 Gtk/MainWindow.vala:683
 #: Utility/TeeJee.System.vala:292
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
+
+#: Gtk/SettingsDialog.vala:212
+#, fuzzy
+msgid "Internet connection timeout in "
+msgstr "İnternet bağlantısı aktif değil "
 
 #: Gtk/MainWindow.vala:150
 msgid "Kernel"

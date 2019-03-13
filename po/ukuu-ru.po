@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-13 05:37-0400\n"
+"POT-Creation-Date: 2019-03-13 11:41-0400\n"
 "PO-Revision-Date: 2016-12-13 16:46+0300\n"
 "Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -61,7 +61,7 @@ msgstr "Назад"
 msgid "Cache"
 msgstr ""
 
-#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:168
+#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:151
 #: Gtk/UpdateNotificationWindow.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
 msgid "Cancel"
@@ -84,7 +84,7 @@ msgstr "Проверить обновления ядра"
 msgid "Check for kernel updates and notify current user"
 msgstr "Проверить обновления ядра"
 
-#: Gtk/TerminalWindow.vala:178 Utility/Gtk/AboutWindow.vala:295
+#: Gtk/TerminalWindow.vala:161 Utility/Gtk/AboutWindow.vala:295
 msgid "Close"
 msgstr "Закрыть"
 
@@ -310,14 +310,14 @@ msgstr ""
 msgid "Installed"
 msgstr "Установлено"
 
-#: Gtk/SettingsDialog.vala:212
-#, fuzzy
-msgid "Internect connection timeout in "
-msgstr "Интернет соединение не активно"
-
 #: Gtk/MainWindow.vala:350 Gtk/MainWindow.vala:547 Gtk/MainWindow.vala:683
 #: Utility/TeeJee.System.vala:292
 msgid "Internet connection is not active"
+msgstr "Интернет соединение не активно"
+
+#: Gtk/SettingsDialog.vala:212
+#, fuzzy
+msgid "Internet connection timeout in "
 msgstr "Интернет соединение не активно"
 
 #: Gtk/MainWindow.vala:150

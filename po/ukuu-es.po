@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-13 07:31-0400\n"
+"POT-Creation-Date: 2019-03-13 11:41-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -60,7 +60,7 @@ msgstr "Atrás"
 msgid "Cache"
 msgstr "Cache"
 
-#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:168
+#: Gtk/ProgressWindow.vala:144 Gtk/TerminalWindow.vala:151
 #: Gtk/UpdateNotificationWindow.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
 msgid "Cancel"
@@ -82,7 +82,7 @@ msgstr "Buscar actualizaciones del núcleo"
 msgid "Check for kernel updates and notify current user"
 msgstr "Compruebe las actualizaciones del kernel y notifique al usuario actual"
 
-#: Gtk/TerminalWindow.vala:178 Utility/Gtk/AboutWindow.vala:295
+#: Gtk/TerminalWindow.vala:161 Utility/Gtk/AboutWindow.vala:295
 msgid "Close"
 msgstr "Cerrar"
 
@@ -300,13 +300,14 @@ msgstr ""
 msgid "Installed"
 msgstr "Instalado"
 
-#: Gtk/SettingsDialog.vala:212
-msgid "Internect connection timeout in "
-msgstr "La conexión a Internet está inactiva"
-
 #: Gtk/MainWindow.vala:350 Gtk/MainWindow.vala:547 Gtk/MainWindow.vala:683
 #: Utility/TeeJee.System.vala:292
 msgid "Internet connection is not active"
+msgstr "La conexión a Internet está inactiva"
+
+#: Gtk/SettingsDialog.vala:212
+#, fuzzy
+msgid "Internet connection timeout in "
 msgstr "La conexión a Internet está inactiva"
 
 #: Gtk/MainWindow.vala:150

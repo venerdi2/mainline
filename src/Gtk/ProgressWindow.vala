@@ -227,5 +227,3 @@ public class ProgressWindow : Gtk.Window {
 		gtk_do_events();
 	}
 }
-
-
