@@ -258,8 +258,6 @@ Gtk/TerminalWindow.vala:242.19-242.29: error: Argument 1: Cannot convert from `c
 
 		is_running = false;
 
-		//Process.close_pid(child_pid); //required on Windows, doesn't do anything on Unix
-
 		btn_cancel.visible = false;
 		btn_close.visible = true;
 

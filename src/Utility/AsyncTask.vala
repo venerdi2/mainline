@@ -279,9 +279,6 @@ public abstract class AsyncTask : GLib.Object{
 		dos_in = null;
 		GLib.FileUtils.close(input_fd);
 
-		// dispose child process
-		Process.close_pid(child_pid); //required on Windows, doesn't do anything on Unix
-
 		try{
 			// dispose log
 			if ((dos_log != null) && !dos_log.is_closed() && !dos_log.is_closing()){

@@ -17,7 +17,7 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=23
+current_page=13
 FILE_NAME_0=0;None;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fdebian%2Fchangelog;0;4
 FILE_NAME_1=7410;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
 FILE_NAME_2=1200;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
@@ -28,10 +28,10 @@ FILE_NAME_6=4608;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FAp
 FILE_NAME_7=13538;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
 FILE_NAME_8=4984;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FProgressWindow.vala;0;4
 FILE_NAME_9=6653;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FSettingsDialog.vala;0;4
-FILE_NAME_10=5975;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
+FILE_NAME_10=5806;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
 FILE_NAME_11=4555;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FGtk%2FUpdateNotificationWindow.vala;0;4
 FILE_NAME_12=2255;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FUtility%2FAppLock.vala;0;4
-FILE_NAME_13=8914;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FUtility%2FAsyncTask.vala;0;4
+FILE_NAME_13=7083;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FUtility%2FAsyncTask.vala;0;4
 FILE_NAME_14=2171;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FUtility%2FOSDNotify.vala;0;4
 FILE_NAME_15=20451;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FUtility%2FTeeJee.FileSystem.vala;0;4
 FILE_NAME_16=33;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fbkw%2Fsrc%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Json.vala;0;4
