@@ -14,8 +14,6 @@ polkitdir=$(sharedir)/polkit-1/actions
 mandir=$(sharedir)/man
 man1dir=$(mandir)/man1
 
-translations = es fr hr nl pl ru sv tr
-
 vte_version = vte-2.91
 glib_version = glib-2.0
 gio_version = gio-unix-2.0
@@ -32,7 +30,6 @@ misc_files := README.md ${BRANDING_SHORTNAME}.desktop debian/control debian/copy
 # ... share/polkit-1/actions/${BRANDING_SHORTNAME}.policy
 
 ################################################################################
-
 
 all: ${misc_files} app app-gtk translations
 
@@ -63,8 +60,8 @@ translations:
 		--package-version="${BRANDING_VERSION}" \
 		--msgid-bugs-address="${BRANDING_AUTHOREMAIL}" \
 		--escape --sort-output -o po/_messages.pot
-	for lang in ${translations} ; do \
-		msgmerge --update -v po/$$lang.po po/_messages.pot ; \
+	for p in po/*.po ; do \
+		msgmerge --backup=none --update -v $${p} po/_messages.pot ; \
 	done
 
 clean:
@@ -88,9 +85,10 @@ install:
 	#install -m 0644 share/polkit-1/actions/${BRANDING_SHORTNAME}.policy "$(DESTDIR)$(polkitdir)"
 	install -m 0755 ${BRANDING_SHORTNAME}.desktop "$(DESTDIR)$(launcherdir)"
 	install -m 0755 share/pixmaps/${BRANDING_SHORTNAME}.* "$(DESTDIR)$(sharedir)/pixmaps"
-	for lang in ${translations}; do \
-		mkdir -p "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES"; \
-		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/${BRANDING_SHORTNAME}.mo" po/$$lang.po ; \
+	for p in po/*.po; do \
+		l=$${p#*/} l=$${l%.*}; \
+		mkdir -p "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES"; \
+		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES/${BRANDING_SHORTNAME}.mo" $${p} ; \
 	done
 
 uninstall:
