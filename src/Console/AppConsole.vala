@@ -78,7 +78,7 @@ public class AppConsole : GLib.Object {
 
 	private static string help_message() {
 		
-		string msg = "\n" + BRANDING_LONGNAME + " v" + BRANDING_VERSION + " by " + BRANDING_AUTHORNAME + " (" + BRANDING_AUTHOREMAIL + ")\n";
+		string msg = "\n" + BRANDING_SHORTNAME + " v" + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n";
 		msg += "\n";
 		msg += _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n";
 		msg += "\n";

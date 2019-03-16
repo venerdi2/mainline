@@ -67,4 +67,4 @@ Determining what is currently install & running fails, but works if you just do 
 ...that is really kind of inexcusable crap could all be a lot better.
 * More careful temp file / temp working dir management.  
 It does avoidable dumb things like creating dirs/files as one user and then can't remove or use them later as another user.
-* Replace the entire thing with a bash script, maybe with zenity for an optional gui. I think this vala/gtk project is actually kind of crap.
+* Replace the entire thing with a bash script, maybe with zenity for an optional gui.

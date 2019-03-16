@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-16 04:27-0400\n"
+"POT-Creation-Date: 2019-03-16 06:19-0400\n"
 "PO-Revision-Date: 2019-03-12 19:35+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -306,8 +306,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Kurulu"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:547
-#: src/Gtk/MainWindow.vala:683 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
 
@@ -320,7 +320,7 @@ msgstr "İnternet bağlantısı aktif değil "
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:532
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
@@ -362,8 +362,8 @@ msgstr "Kurulum için çoklu çekirdek seçildi. Sadece bir tane seçiniz."
 msgid "No"
 msgstr "Hayır"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:547
-#: src/Gtk/MainWindow.vala:683
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:684
 msgid "No Internet"
 msgstr "İnternet Yok"
 
@@ -372,7 +372,7 @@ msgid "No kernels specified"
 msgstr "Belirtilen çekirdek yok"
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:793
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:794
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
@@ -438,7 +438,7 @@ msgstr "Kaldır"
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/Gtk/MainWindow.vala:566
+#: src/Gtk/MainWindow.vala:567
 msgid "Refreshing..."
 msgstr "Yenileniyor..."
 
@@ -545,7 +545,7 @@ msgstr "Aşağıdaki çekirdekler silinecek"
 msgid "Third Party Tools"
 msgstr "Üçüncü Parti Araçlar"
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:678
+#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:679
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 

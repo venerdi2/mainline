@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-16 04:27-0400\n"
+"POT-Creation-Date: 2019-03-16 06:19-0400\n"
 "PO-Revision-Date: 2017-12-24 00:52+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -312,8 +312,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Instalirano"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:547
-#: src/Gtk/MainWindow.vala:683 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Internet povezivanje nije aktivno"
 
@@ -326,7 +326,7 @@ msgstr "Internet povezivanje nije aktivno"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:532
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
@@ -369,8 +369,8 @@ msgstr "Više kernela je odabrano za instalaciju. odaberite samo jedan."
 msgid "No"
 msgstr "Ne"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:547
-#: src/Gtk/MainWindow.vala:683
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:684
 msgid "No Internet"
 msgstr "Nema pristupa internetu"
 
@@ -379,7 +379,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:793
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:794
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
@@ -445,7 +445,7 @@ msgstr ""
 msgid "Refresh"
 msgstr "Osvježi"
 
-#: src/Gtk/MainWindow.vala:566
+#: src/Gtk/MainWindow.vala:567
 msgid "Refreshing..."
 msgstr "Osvježavanje..."
 
@@ -555,7 +555,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr "Alati treće strane"
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:678
+#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:679
 msgid "This kernel is already installed."
 msgstr "Ovaj kernel je već instaliran."
 
