@@ -33,6 +33,7 @@ misc_files := README.md ${BRANDING_SHORTNAME}.desktop debian/control debian/copy
 
 ################################################################################
 
+
 all: ${misc_files} app app-gtk translations
 
 app-gtk:
@@ -103,6 +104,9 @@ uninstall:
 	rm -f $(DESTDIR)/home/*/.config/autostart/${BRANDING_SHORTNAME}.desktop
 
 deb-src: clean ${misc_files}
+ifneq (${BRANDING_VERSION},${pkg_version})
+	echo "Version numbers in BRANDING.mak (${BRANDING_VERSION}) and debian/changelog (${pkg_version}) do not match." >&2 ; exit 1
+endif
 	dpkg-source --build .
 	mkdir -pv release/deb-src
 	mv -fv ../${BRANDING_SHORTNAME}_$(pkg_version).dsc release/deb-src/
