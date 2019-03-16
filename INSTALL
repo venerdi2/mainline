@@ -1,6 +1,6 @@
 # build
 
-make all
+make
 
 # install
 
@@ -8,6 +8,7 @@ sudo make install
 
 # building only some components
 
-make app              # console app
-make app-gtk          # GTK app
-make app-translations # update POT and PO files from source
+make app		# console app
+make app-gtk		# GTK app
+make translations	# update POT and PO files from source
+

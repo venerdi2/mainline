@@ -1,3 +1,17 @@
+mainline (1.0.0) disco; urgency=medium
+
+  * Rename project from "ukuu" to "mainline"
+  * Start version number over at 1.0.0
+  * Much reoganizing of source files
+  * Removed confliciting LICENCE.md, COPYING, and text in debian/copyright
+    COPYING had GPL3
+    LICENSE.md had LGPL2
+    debian/copyright had GPL2+
+    Asserting only GPL3 going forward
+  * Reformatted AUTHORS file per gnu.org example
+
+ -- Brian K. White <bw.aljex@gmail.com>  Sat, 16 Mar 2019 04:34:40 -0400
+
 ukuu (18.9.5-bkw) disco; urgency=medium
   * More un-hardcoding branding/name/maintainer strings in source files
     ukuu.desktop, debian/control, debian/copyright, ukuu.policy all generated from BRANDING.mak
