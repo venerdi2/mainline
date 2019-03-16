@@ -33,7 +33,7 @@ misc_files := README.md ${BRANDING_SHORTNAME}.desktop debian/control debian/copy
 
 ################################################################################
 
-all: $(misc_files) app app-gtk translations
+all: ${misc_files} app app-gtk translations
 
 app-gtk:
 	valac ${branding_symbols} --Xcc="-lm" \
@@ -102,7 +102,7 @@ uninstall:
 	rm -f $(DESTDIR)/home/*/.config/${BRANDING_SHORTNAME}/${BRANDING_SHORTNAME}-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/${BRANDING_SHORTNAME}.desktop
 
-deb-src: clean ${miscs}
+deb-src: clean ${misc_files}
 	dpkg-source --build .
 	mkdir -pv release/deb-src
 	mv -fv ../${BRANDING_SHORTNAME}_$(pkg_version).dsc release/deb-src/
