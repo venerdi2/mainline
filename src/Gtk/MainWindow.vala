@@ -530,7 +530,7 @@ public class MainWindow : Gtk.Window{
 
 		dialog.program_name = BRANDING_LONGNAME;
 		dialog.comments = _("Kernel upgrade utility for Ubuntu-based distributions");
-		dialog.copyright = "Original: \"ukuu\" © 2015-18 Tony George\nForked: \""+BRANDING_SHORTNAME+"\"2019 "+BRANDING_AUTHORNAME+" ("+BRANDING_AUTHOREMAIL+")";
+		dialog.copyright = "Original: \"ukuu\" © 2015-18 Tony George\nForked: \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME+" ("+BRANDING_AUTHOREMAIL+")";
 		dialog.version = BRANDING_VERSION;
 		dialog.logo = get_app_icon(128);
 
