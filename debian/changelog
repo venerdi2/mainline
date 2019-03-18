@@ -1,3 +1,10 @@
+mainline (1.0.1) disco; urgency=medium
+
+  * Disabled buggy progress bar
+  * Add missing translators on credits window
+
+ -- Brian K. White <bw.aljex@gmail.com>  Mon, 18 Mar 2019 09:10:23 -0400
+
 mainline (1.0.0) disco; urgency=medium
 
   * Rename project from "ukuu" to "mainline"

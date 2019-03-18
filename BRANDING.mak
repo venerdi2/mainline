@@ -8,7 +8,7 @@
 
 BRANDING_SHORTNAME = mainline
 BRANDING_LONGNAME = Ubuntu Mainline Kernel Installer
-BRANDING_VERSION = 1.0.0
+BRANDING_VERSION = 1.0.1
 BRANDING_AUTHORNAME = Brian K. White
 BRANDING_AUTHOREMAIL = bw.aljex@gmail.com
 BRANDING_WEBSITE = https://github.com/aljex/mainline
