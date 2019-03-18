@@ -39,7 +39,7 @@ public class ProgressWindow : Gtk.Window {
 	private Gtk.Spinner spinner;
 	private Gtk.Label lbl_msg;
 	private Gtk.Label lbl_status;
-	private ProgressBar progressbar;
+	//private ProgressBar progressbar;
 	private Gtk.Button btn_cancel;
 	
 	private uint tmr_init = 0;
@@ -121,11 +121,13 @@ public class ProgressWindow : Gtk.Window {
 		vbox_main.add(hbox);
 		
 		//progressbar
+		/*
 		progressbar = new Gtk.ProgressBar();
 		progressbar.set_size_request(300, -1);
 		progressbar.hexpand = true;
 		//progressbar.pulse_step = 0.1;
 		hbox.add(progressbar);
+		*/
 
 		//lbl_status
 		lbl_status = new Gtk.Label ("");
@@ -177,25 +179,26 @@ public class ProgressWindow : Gtk.Window {
 		//title = "Threads: %d".printf(DownloadManager.download_count);
 		//gtk_do_events();
 	}
-	
+
+/*	
 	public void update_progressbar(){
 		
-		double fraction = App.progress_count / (App.progress_total * 1.0);
+		double f = App.progress_count / (App.progress_total * 1.0);
 		
-		if (fraction > 1.0){
-			fraction = 1.0;
+		if (f > 1.0){
+			f = 1.0;
 		}
-		
-		progressbar.fraction = fraction;
-		//gtk_do_events();
+
+		progressbar.fraction = f;
+		gtk_do_events();
 	}
-	
+*/	
 	public void finish(string message = "") {
 		
 		btn_cancel.sensitive = false;
 		
 		//pulse_stop();
-		progressbar.fraction = 1.0;
+		//progressbar.fraction = 1.0;
 		
 		lbl_msg.label = message;
 		lbl_status.label = "";

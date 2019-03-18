@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.0\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-18 05:48-0400\n"
+"POT-Creation-Date: 2019-03-18 09:04-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Cache"
 msgstr ""
 
-#: src/Gtk/ProgressWindow.vala:143 src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:151
 #: src/Gtk/UpdateNotificationWindow.vala:167
 #: src/Utility/Gtk/CustomMessageDialog.vala:172
 #: src/Utility/Gtk/GtkHelper.vala:112
@@ -305,7 +305,7 @@ msgid "Installed"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:688 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -360,7 +360,7 @@ msgid "No"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:686
+#: src/Gtk/MainWindow.vala:688
 msgid "No Internet"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:796
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:798
 msgid "No updates found"
 msgstr ""
 
@@ -540,7 +540,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:681
+#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:683
 msgid "This kernel is already installed."
 msgstr ""
 

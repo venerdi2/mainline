@@ -609,10 +609,12 @@ public class MainWindow : Gtk.Window{
 					
 			dlg.update_status_line();
 			
-			dlg.update_progressbar();
-			
-			dlg.sleep(200);
+			// FIXME - GTK error messages, and progressbar is always 100%
+			//dlg.update_progressbar();
+
 			gtk_do_events();
+
+			dlg.sleep(200);
 
 			count++;
 		}

@@ -22,7 +22,7 @@
  *
  */
 
-// FIXME - Stop creating temp dirs and files for no reason
+// FIXME - Stop creating temp dirs and files just to execute shell commands.
 namespace TeeJee.ProcessHelper{
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
