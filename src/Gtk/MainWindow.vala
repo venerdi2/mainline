@@ -514,7 +514,7 @@ public class MainWindow : Gtk.Window{
 			"Elementary project (various icons):github.com/elementary/icons",
 			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project"
 		};
-		
+		// FIXME - generate from files
 		dialog.translators = {
 			"Åke Engelbrektson (Swedish):eson@svenskasprakfiler.se",
 			"Иннусик (Russian):slavusik1988@gmail.com",
@@ -522,7 +522,9 @@ public class MainWindow : Gtk.Window{
 			"gogo (Croatian):trebelnik2@gmail.com",
 			"Adolfo Jayme Barrientos (Spanish):fitojb@ubuntu.com",
             "yolateng0 (French):github.com/yolateng0",
-            "Hugo Posnic (French):hugo.posnic@gmail.com"
+            "Hugo Posnic (French):hugo.posnic@gmail.com",
+            "Faust3000 (Russian):slavusik1988@gmail.com",
+            "Gökhan GÖKKAYA (Turkish):gokhanlnx@gmail.com"
 		};
 
 		dialog.documenters = null;

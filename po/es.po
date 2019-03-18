@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-16 06:19-0400\n"
+"POT-Creation-Date: 2019-03-18 05:35-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -63,7 +63,7 @@ msgstr "Cache"
 #: src/Gtk/ProgressWindow.vala:143 src/Gtk/TerminalWindow.vala:151
 #: src/Gtk/UpdateNotificationWindow.vala:167
 #: src/Utility/Gtk/CustomMessageDialog.vala:172
-#: src/Utility/Gtk/GtkHelper.vala:122
+#: src/Utility/Gtk/GtkHelper.vala:112
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -307,8 +307,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Instalado"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
+#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "La conexión a Internet está inactiva"
 
@@ -321,7 +321,7 @@ msgstr "La conexión a Internet está inactiva"
 msgid "Kernel"
 msgstr "Núcleo"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:534
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
@@ -348,7 +348,7 @@ msgstr "Mostrar núcleos disponibles"
 msgid "List installed kernels"
 msgstr "Mostrar kernels disponibles"
 
-#: src/Utility/Gtk/GtkHelper.vala:272
+#: src/Utility/Gtk/GtkHelper.vala:262
 msgid "Missing Icon"
 msgstr "Falta el icono"
 
@@ -364,8 +364,8 @@ msgstr "Se seleccionaron varios núcleos para su instalación. Elija solo uno."
 msgid "No"
 msgstr "No"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
+#: src/Gtk/MainWindow.vala:686
 msgid "No Internet"
 msgstr "No hay Internet"
 
@@ -374,7 +374,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:794
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:796
 msgid "No updates found"
 msgstr "No se encontró ninguna actualización"
 
@@ -397,7 +397,7 @@ msgstr "Notificar si hay una versión puntual disponible"
 #: src/Common/LinuxKernel.vala:1246
 #: src/Utility/Gtk/CustomMessageDialog.vala:167
 #: src/Utility/Gtk/CustomMessageDialog.vala:171
-#: src/Utility/Gtk/GtkHelper.vala:121
+#: src/Utility/Gtk/GtkHelper.vala:111
 #, c-format
 msgid "OK"
 msgstr "Aceptar"
@@ -440,7 +440,7 @@ msgstr ""
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: src/Gtk/MainWindow.vala:567
+#: src/Gtk/MainWindow.vala:569
 msgid "Refreshing..."
 msgstr "Actualizando…"
 
@@ -525,7 +525,7 @@ msgstr "La conexión a Internet está inactiva"
 msgid "Status"
 msgstr "Estado"
 
-#: src/Utility/TeeJee.Process.vala:512
+#: src/Utility/TeeJee.Process.vala:513
 msgid "Stopped"
 msgstr "Detenido"
 
@@ -547,7 +547,7 @@ msgstr "Los siguientes kernels serán eliminados:"
 msgid "Third Party Tools"
 msgstr "Herramientas de terceros"
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:679
+#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:681
 msgid "This kernel is already installed."
 msgstr "Este núcleo ya se instaló."
 

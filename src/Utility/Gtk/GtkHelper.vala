@@ -66,16 +66,6 @@ namespace TeeJee.GtkHelper{
 			type = Gtk.MessageType.INFO;
 		}
 
-		/*var dlg = new Gtk.MessageDialog.with_markup(null, Gtk.DialogFlags.MODAL, type, Gtk.ButtonsType.OK, message);
-		dlg.title = title;
-		dlg.set_default_size (200, -1);
-		if (parent_win != null){
-			dlg.set_transient_for(parent_win);
-			dlg.set_modal(true);
-		}
-		dlg.run();
-		dlg.destroy();*/
-
 		var dlg = new CustomMessageDialog(title,message,type,parent_win, Gtk.ButtonsType.OK);
 		dlg.run();
 		dlg.destroy();
@@ -432,17 +422,6 @@ namespace TeeJee.GtkHelper{
 			}
 		}
 		return false;
-	}
-
-	// file chooser ----------------
-	
-	public Gtk.FileFilter create_file_filter(string group_name, string[] patterns) {
-		var filter = new Gtk.FileFilter ();
-		filter.set_filter_name(group_name);
-		foreach(string pattern in patterns) {
-			filter.add_pattern (pattern);
-		}
-		return filter;
 	}
 
 }

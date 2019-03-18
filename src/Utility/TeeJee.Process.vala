@@ -21,7 +21,8 @@
  *
  *
  */
- 
+
+// FIXME - Stop creating temp dirs and files for no reason
 namespace TeeJee.ProcessHelper{
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
