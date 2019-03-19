@@ -10,7 +10,7 @@ bindir=$(prefix)/bin
 sharedir=$(prefix)/share
 localedir=$(sharedir)/locale
 launcherdir=$(sharedir)/applications
-polkitdir=$(sharedir)/polkit-1/actions
+#polkitdir=$(sharedir)/polkit-1/actions
 mandir=$(sharedir)/man
 man1dir=$(mandir)/man1
 
@@ -71,11 +71,9 @@ clean:
 install:
 	mkdir -p "$(DESTDIR)$(bindir)"
 	mkdir -p "$(DESTDIR)$(sharedir)"
-	mkdir -p "$(DESTDIR)$(mandir)"
 	mkdir -p "$(DESTDIR)$(man1dir)"
 	mkdir -p "$(DESTDIR)$(launcherdir)"
-	mkdir -p "$(DESTDIR)$(polkitdir)"
-	mkdir -p "$(DESTDIR)$(sharedir)/glib-2.0/schemas/"
+	#mkdir -p "$(DESTDIR)$(polkitdir)"
 	mkdir -p "$(DESTDIR)$(sharedir)/${BRANDING_SHORTNAME}"
 	mkdir -p "$(DESTDIR)$(sharedir)/pixmaps"
 	install -m 0755 ${BRANDING_SHORTNAME} "$(DESTDIR)$(bindir)"
