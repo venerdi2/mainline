@@ -14,12 +14,12 @@ launcherdir=$(sharedir)/applications
 mandir=$(sharedir)/man
 man1dir=$(mandir)/man1
 
-vte_version = vte-2.91
-glib_version = glib-2.0
-gio_version = gio-unix-2.0
-gtk_version = gtk+-3.0
-json-glib_version = json-glib-1.0
-gee_version = gee-0.8
+vte = vte-2.91
+glib = glib-2.0
+gio-unix = gio-unix-2.0
+gtk+ = gtk+-3.0
+json-glib = json-glib-1.0
+gee = gee-0.8
 
 host_dist:=$(shell lsb_release -sc)
 host_arch:=$(shell dpkg --print-architecture)
@@ -32,16 +32,19 @@ misc_files := README.md ${BRANDING_SHORTNAME}.desktop debian/control debian/copy
 ################################################################################
 
 all: ${misc_files} app app-gtk translations
+.PHONY: all
 
 app-gtk:
 	valac ${branding_symbols} --Xcc="-lm" \
-		--pkg ${glib_version} --pkg ${gio_version} --pkg posix --pkg ${gee_version} --pkg ${json-glib_version} --pkg ${gtk_version} --pkg ${vte_version} \
+		--pkg ${glib} --pkg ${gio-unix} --pkg posix --pkg ${gee} --pkg ${json-glib} --pkg ${gtk+} --pkg ${vte} \
 		src/Common/*.vala src/Gtk/*.vala src/Utility/*.vala src/Utility/Gtk/*.vala -o ${BRANDING_SHORTNAME}-gtk
+.PHONY: app-gtk
 
 app:
 	valac ${branding_symbols} --Xcc="-lm" \
-		--pkg ${glib_version} --pkg ${gio_version} --pkg posix --pkg ${gee_version} --pkg ${json-glib_version} \
+		--pkg ${glib} --pkg ${gio-unix} --pkg posix --pkg ${gee} --pkg ${json-glib} \
 		src/Common/*.vala src/Console/*.vala src/Utility/*.vala -o ${BRANDING_SHORTNAME}
+.PHONY: app
 
 $(misc_files): %: %.src BRANDING.mak
 	sed -e 's/BRANDING_SHORTNAME/${BRANDING_SHORTNAME}/g' \
@@ -63,10 +66,12 @@ translations:
 	for p in po/*.po ; do \
 		msgmerge --backup=none --update -v $${p} po/_messages.pot ; \
 	done
+.PHONY: translations
 
 clean:
 	rm -rfv release *.c *.o *.po~
 	rm -fv ${BRANDING_SHORTNAME} ${BRANDING_SHORTNAME}-gtk
+.PHONY: clean
 
 install:
 	mkdir -p "$(DESTDIR)$(bindir)"
@@ -88,6 +93,7 @@ install:
 		mkdir -p "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES"; \
 		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES/${BRANDING_SHORTNAME}.mo" $${p} ; \
 	done
+.PHONY: install
 
 uninstall:
 	rm -f "$(DESTDIR)$(bindir)/${BRANDING_SHORTNAME}"
@@ -98,6 +104,7 @@ uninstall:
 	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${BRANDING_SHORTNAME}.mo
 	rm -f $(DESTDIR)/home/*/.config/${BRANDING_SHORTNAME}/${BRANDING_SHORTNAME}-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/${BRANDING_SHORTNAME}.desktop
+.PHONY: uninstall
 
 deb-src: clean ${misc_files}
 ifneq (${BRANDING_VERSION},${pkg_version})
@@ -108,11 +115,13 @@ endif
 	mv -fv ../${BRANDING_SHORTNAME}_$(pkg_version).dsc release/deb-src/
 	mv -fv ../${BRANDING_SHORTNAME}_$(pkg_version).tar.* release/deb-src/
 	ls -l release/deb-src
+.PHONY: deb-src
 
 deb: deb-src
 	mkdir -pv release/deb
 	pbuilder-dist ${host_dist} build release/deb-src/${BRANDING_SHORTNAME}_$(pkg_version).dsc --buildresult release/deb
 	ls -lv release/deb
+.PHONY: deb
 
 install-deb:
 	sudo dpkg -i release/deb/${BRANDING_SHORTNAME}_$(pkg_version)_${host_arch}.deb

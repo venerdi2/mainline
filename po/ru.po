@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-18 09:04-0400\n"
+"POT-Creation-Date: 2019-03-20 06:33-0400\n"
 "PO-Revision-Date: 2016-12-13 16:46+0300\n"
 "Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Authors"
 msgstr "Авторы"
 
-#: src/Common/LinuxKernel.vala:1181
+#: src/Common/LinuxKernel.vala:1152
 msgid "Available Kernels"
 msgstr "Доступные ядра"
 
@@ -165,7 +165,7 @@ msgstr "Составители документации"
 msgid "Download packages for specified kernel"
 msgstr "Скачать пакеты для указанного ядра"
 
-#: src/Common/LinuxKernel.vala:1227
+#: src/Common/LinuxKernel.vala:1198
 #, c-format
 msgid "Downloading"
 msgstr "Загрузка"
@@ -174,7 +174,7 @@ msgstr "Загрузка"
 msgid "E"
 msgstr "E"
 
-#: src/Common/LinuxKernel.vala:1255
+#: src/Common/LinuxKernel.vala:1226
 #, c-format
 msgid "ERROR"
 msgstr "ОШИБКА"
@@ -303,22 +303,22 @@ msgstr "Установить указанную ветку ядра"
 msgid "Install this kernel"
 msgstr "Установить это ядро"
 
-#: src/Common/LinuxKernel.vala:1301
+#: src/Common/LinuxKernel.vala:1272
 msgid "Installation completed with errors"
 msgstr "Установка завершена с ошибками"
 
-#: src/Common/LinuxKernel.vala:1298
+#: src/Common/LinuxKernel.vala:1269
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Установка завершена. Обязательно выполните перезагрузку, чтобы использовать "
 "новое ядро."
 
-#: src/Common/LinuxKernel.vala:1198 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
 msgid "Installed"
 msgstr "Установлено"
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:688 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:690 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Интернет соединение не активно"
 
@@ -376,7 +376,7 @@ msgid "No"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:688
+#: src/Gtk/MainWindow.vala:690
 msgid "No Internet"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:798
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:800
 msgid "No updates found"
 msgstr "Обновлений не найдено"
 
@@ -405,7 +405,7 @@ msgstr "Уведомлять, если доступно крупное обно�
 msgid "Notify if a point release is available"
 msgstr "Уведомлять, если доступно небольшое обновление"
 
-#: src/Common/LinuxKernel.vala:1246
+#: src/Common/LinuxKernel.vala:1217
 #: src/Utility/Gtk/CustomMessageDialog.vala:167
 #: src/Utility/Gtk/CustomMessageDialog.vala:171
 #: src/Utility/Gtk/GtkHelper.vala:111
@@ -435,7 +435,7 @@ msgstr "Установлено"
 msgid "Please install required packages and try again"
 msgstr "Установить необходимые пакеты и попробуйте снова"
 
-#: src/Common/LinuxKernel.vala:1322
+#: src/Common/LinuxKernel.vala:1293
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
@@ -482,7 +482,7 @@ msgstr ""
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Запустите программу с правами Root или используйте gksu/sudo."
 
-#: src/Common/LinuxKernel.vala:1198 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
 msgid "Running"
 msgstr "Используется"
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1317
+#: src/Common/LinuxKernel.vala:1288
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
@@ -563,11 +563,11 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr "Сторонние инструменты"
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:683
+#: src/Common/LinuxKernel.vala:1240 src/Gtk/MainWindow.vala:685
 msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
-#: src/Common/LinuxKernel.vala:1373
+#: src/Common/LinuxKernel.vala:1341
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -580,11 +580,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Переводчики"
 
-#: src/Common/LinuxKernel.vala:1357 src/Common/LinuxKernel.vala:1413
+#: src/Common/LinuxKernel.vala:1325 src/Common/LinuxKernel.vala:1378
 msgid "Un-install completed"
 msgstr "Удаление завершено"
 
-#: src/Common/LinuxKernel.vala:1360 src/Common/LinuxKernel.vala:1416
+#: src/Common/LinuxKernel.vala:1328 src/Common/LinuxKernel.vala:1381
 msgid "Un-install completed with errors"
 msgstr "Удаление завершено с ошибками"
 

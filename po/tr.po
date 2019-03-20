@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-18 09:04-0400\n"
+"POT-Creation-Date: 2019-03-20 06:33-0400\n"
 "PO-Revision-Date: 2019-03-12 19:35+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -48,7 +48,7 @@ msgstr "Tüm istemler için Evet'i kabul edin (etkileşimsiz kip)"
 msgid "Authors"
 msgstr "Yazar"
 
-#: src/Common/LinuxKernel.vala:1181
+#: src/Common/LinuxKernel.vala:1152
 msgid "Available Kernels"
 msgstr "Mevcut Çekirdekler"
 
@@ -160,7 +160,7 @@ msgstr "Belgelendirenler"
 msgid "Download packages for specified kernel"
 msgstr "Belirtilen çekirdek için paketleri indir"
 
-#: src/Common/LinuxKernel.vala:1227
+#: src/Common/LinuxKernel.vala:1198
 #, c-format
 msgid "Downloading"
 msgstr "İndiriliyor"
@@ -169,7 +169,7 @@ msgstr "İndiriliyor"
 msgid "E"
 msgstr "H"
 
-#: src/Common/LinuxKernel.vala:1255
+#: src/Common/LinuxKernel.vala:1226
 #, c-format
 msgid "ERROR"
 msgstr "HATA"
@@ -293,21 +293,21 @@ msgstr "Belirtilen mainline çekirdeğini kur"
 msgid "Install this kernel"
 msgstr "Bu çekirdeği kur"
 
-#: src/Common/LinuxKernel.vala:1301
+#: src/Common/LinuxKernel.vala:1272
 msgid "Installation completed with errors"
 msgstr "Kurulum hatalarla tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1298
+#: src/Common/LinuxKernel.vala:1269
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Kurulum tamamlandı. Yeni çekirdeği kullanmak için yeniden başlatma gerekiyor."
 
-#: src/Common/LinuxKernel.vala:1198 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
 msgid "Installed"
 msgstr "Kurulu"
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:688 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:690 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
 
@@ -363,7 +363,7 @@ msgid "No"
 msgstr "Hayır"
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:688
+#: src/Gtk/MainWindow.vala:690
 msgid "No Internet"
 msgstr "İnternet Yok"
 
@@ -372,7 +372,7 @@ msgid "No kernels specified"
 msgstr "Belirtilen çekirdek yok"
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:798
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:800
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
@@ -392,7 +392,7 @@ msgstr "Ana sürüm mevcutsa bildir"
 msgid "Notify if a point release is available"
 msgstr "Ara sürüm mevcutsa bildir"
 
-#: src/Common/LinuxKernel.vala:1246
+#: src/Common/LinuxKernel.vala:1217
 #: src/Utility/Gtk/CustomMessageDialog.vala:167
 #: src/Utility/Gtk/CustomMessageDialog.vala:171
 #: src/Utility/Gtk/GtkHelper.vala:111
@@ -422,7 +422,7 @@ msgstr "Paketler Kuruldu"
 msgid "Please install required packages and try again"
 msgstr "Lütfen gerekli paketleri yükleyin ve tekrar deneyin"
 
-#: src/Common/LinuxKernel.vala:1322
+#: src/Common/LinuxKernel.vala:1293
 msgid "Preparing to remove selected kernels"
 msgstr "Seçilen çekirdekleri kaldırmak için hazırlanıyor"
 
@@ -467,7 +467,7 @@ msgstr "Çalıştır '"
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Bu uygulamayı pkexec yada sudo ile yönetici haklarıyla çalıştırın."
 
-#: src/Common/LinuxKernel.vala:1198 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
 msgid "Running"
 msgstr "Çalışıyor"
 
@@ -483,7 +483,7 @@ msgstr "Kurulum için çekirdek seçin"
 msgid "Select the kernels to remove"
 msgstr "Kaldırma için çekirdek seçin"
 
-#: src/Common/LinuxKernel.vala:1317
+#: src/Common/LinuxKernel.vala:1288
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -545,11 +545,11 @@ msgstr "Aşağıdaki çekirdekler silinecek"
 msgid "Third Party Tools"
 msgstr "Üçüncü Parti Araçlar"
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:683
+#: src/Common/LinuxKernel.vala:1240 src/Gtk/MainWindow.vala:685
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 
-#: src/Common/LinuxKernel.vala:1373
+#: src/Common/LinuxKernel.vala:1341
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -562,11 +562,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Çevirenler"
 
-#: src/Common/LinuxKernel.vala:1357 src/Common/LinuxKernel.vala:1413
+#: src/Common/LinuxKernel.vala:1325 src/Common/LinuxKernel.vala:1378
 msgid "Un-install completed"
 msgstr "Kaldırma tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1360 src/Common/LinuxKernel.vala:1416
+#: src/Common/LinuxKernel.vala:1328 src/Common/LinuxKernel.vala:1381
 msgid "Un-install completed with errors"
 msgstr "Kaldırma hatalarla tamamlandı"
 

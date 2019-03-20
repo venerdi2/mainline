@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-18 09:04-0400\n"
+"POT-Creation-Date: 2019-03-20 06:33-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Authors"
 msgstr "Аutorzy"
 
-#: src/Common/LinuxKernel.vala:1181
+#: src/Common/LinuxKernel.vala:1152
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
@@ -162,7 +162,7 @@ msgstr "Dokumentujący"
 msgid "Download packages for specified kernel"
 msgstr "Pobierz pakiety dla wybranego jądra"
 
-#: src/Common/LinuxKernel.vala:1227
+#: src/Common/LinuxKernel.vala:1198
 #, c-format
 msgid "Downloading"
 msgstr "Pobieranie"
@@ -171,7 +171,7 @@ msgstr "Pobieranie"
 msgid "E"
 msgstr "E"
 
-#: src/Common/LinuxKernel.vala:1255
+#: src/Common/LinuxKernel.vala:1226
 #, c-format
 msgid "ERROR"
 msgstr "BŁĄD"
@@ -296,22 +296,22 @@ msgstr "Zainstaluj wybrane jądro"
 msgid "Install this kernel"
 msgstr "Zainstaluj to jądro"
 
-#: src/Common/LinuxKernel.vala:1301
+#: src/Common/LinuxKernel.vala:1272
 msgid "Installation completed with errors"
 msgstr "Instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1298
+#: src/Common/LinuxKernel.vala:1269
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalacja zakończona. Aby korzystać z nowego jądra, konieczne jest ponowne "
 "uruchomienie."
 
-#: src/Common/LinuxKernel.vala:1198 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
 msgid "Installed"
 msgstr "Zainstalowany"
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:688 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:690 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Brak połączenia z internetem"
 
@@ -369,7 +369,7 @@ msgid "No"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:688
+#: src/Gtk/MainWindow.vala:690
 msgid "No Internet"
 msgstr "Brak internetu"
 
@@ -378,7 +378,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:374
-#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:798
+#: src/Console/AppConsole.vala:432 src/Gtk/MainWindow.vala:800
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
@@ -398,7 +398,7 @@ msgstr "Powiadom, jeśli pojawi się główna wersja"
 msgid "Notify if a point release is available"
 msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 
-#: src/Common/LinuxKernel.vala:1246
+#: src/Common/LinuxKernel.vala:1217
 #: src/Utility/Gtk/CustomMessageDialog.vala:167
 #: src/Utility/Gtk/CustomMessageDialog.vala:171
 #: src/Utility/Gtk/GtkHelper.vala:111
@@ -428,7 +428,7 @@ msgstr "Pakiety zainstalowane"
 msgid "Please install required packages and try again"
 msgstr "Zainstaluj wymagane pakiety i spróbuj ponownie"
 
-#: src/Common/LinuxKernel.vala:1322
+#: src/Common/LinuxKernel.vala:1293
 msgid "Preparing to remove selected kernels"
 msgstr "Przygotowanie do usunięcia wybranych jąder"
 
@@ -475,7 +475,7 @@ msgstr ""
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Uruchom aplikację jako root albo użyj gksu/sudo."
 
-#: src/Common/LinuxKernel.vala:1198 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
 msgid "Running"
 msgstr "Uruchomiony"
 
@@ -491,7 +491,7 @@ msgstr "Wybierz pojedyncze do instalacji"
 msgid "Select the kernels to remove"
 msgstr "Wybierz jądro do usunięcia"
 
-#: src/Common/LinuxKernel.vala:1317
+#: src/Common/LinuxKernel.vala:1288
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -555,11 +555,11 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr "Narzędzia osób trzecich"
 
-#: src/Common/LinuxKernel.vala:1269 src/Gtk/MainWindow.vala:683
+#: src/Common/LinuxKernel.vala:1240 src/Gtk/MainWindow.vala:685
 msgid "This kernel is already installed."
 msgstr "To jądro jest już zainstalowane."
 
-#: src/Common/LinuxKernel.vala:1373
+#: src/Common/LinuxKernel.vala:1341
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -572,11 +572,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Tłumacze"
 
-#: src/Common/LinuxKernel.vala:1357 src/Common/LinuxKernel.vala:1413
+#: src/Common/LinuxKernel.vala:1325 src/Common/LinuxKernel.vala:1378
 msgid "Un-install completed"
 msgstr "De-instalacja zakończona"
 
-#: src/Common/LinuxKernel.vala:1360 src/Common/LinuxKernel.vala:1416
+#: src/Common/LinuxKernel.vala:1328 src/Common/LinuxKernel.vala:1381
 msgid "Un-install completed with errors"
 msgstr "De-instalacja zakończona z błędami"
 

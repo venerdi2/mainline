@@ -1143,35 +1143,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_list = list;
 	}
 
-/*
-	private void get_package_version(){
-
-		if (NATIVE_ARCH.length == 0){
-			log_error("Native architecture is unknown!");
-			exit(1);
-		}
-
-		//linux_image_pkg_version
-		Regex rex_image = null;
-		MatchInfo match;
-		
-		try{
-			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image = new Regex("""linux-image-[0-9.\-_]*generic_([0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
-		}
-		catch (Error e) {
-			log_error (e.message);
-		}
-
-		foreach(string file_name in deb_list.keys){
-			if (rex_image.match(file_name, 0, out match)) {
-				
-				continue;
-			}
-		}
-	}
-*/
-
 	// actions
 
 	public static void print_list(){
@@ -1341,15 +1312,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				}
 			}
 			else{
-				stdout.printf("");
 				log_error("Could not find the packages to remove!");
 				return false;
 			}
 		}
 
-		log_msg("");
 		status = Posix.system(cmd); // execute
-		log_msg("");
 
 		ok = (status == 0);
 
@@ -1394,15 +1362,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 		else{
-			stdout.printf("");
 			log_error("Could not find the packages to remove!");
 			return false;
 		}
 
 		if (write_to_terminal){
-			log_msg("");
 			status = Posix.system(cmd); // execute
-			log_msg("");
 		}
 		else{
 			status = exec_script_sync(cmd); // execute
@@ -1419,4 +1384,3 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ok;
 	}
 }
-

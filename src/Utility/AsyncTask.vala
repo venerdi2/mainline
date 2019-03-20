@@ -63,8 +63,6 @@ public abstract class AsyncTask : GLib.Object{
 	public double percent = 0.0;
 	public int64 prg_count = 0;
 	public int64 prg_count_total = 0;
-	public int64 prg_bytes = 0;
-	public int64 prg_bytes_total = 0;
 	public string eta = "";
 	//public bool is_running = false;
 	
@@ -92,7 +90,6 @@ public abstract class AsyncTask : GLib.Object{
 		finish_called = false;
 		
 		prg_count = 0;
-		prg_bytes = 0;
 		error_msg = "";
 		
 		string[] spawn_args = new string[1];

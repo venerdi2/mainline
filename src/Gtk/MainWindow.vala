@@ -602,9 +602,7 @@ public class MainWindow : Gtk.Window{
 			}
 
 			if (App.progress_total > 0){
-				
-				dlg.update_message("%s %lld/%lld (%s)".printf(
-					message, App.progress_count, App.progress_total, msg_remaining));
+				dlg.update_message("%s %s/%s (%s)".printf(message, App.progress_count.to_string(), App.progress_total.to_string(), msg_remaining));
 			}
 					
 			dlg.update_status_line();
