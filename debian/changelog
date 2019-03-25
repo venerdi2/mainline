@@ -1,9 +1,24 @@
-mainline (1.0.1) disco; urgency=medium
+mainline (1.0.1) UNRELEASED; urgency=medium
 
   * Disabled buggy progress bar
   * Add missing translators on credits window
+  * Makefile:
+    - Use one variable style everywhere
+    - Only regenerate .pot file if any source files changed
+    - Only regenerate .po files if .pot file changed
+    - Only rebuild .deb if any files changed
+    - Automatically run dch to edit debian/changelog when needed
+    - New $(BUILD_NUMBER) for deb filename
+    - New target "release_deb"
+      o automatic increment build number
+      o automatic reset build number when pkg_version changes
+      o unconditional full "make clean deb" every time
+      Allows to generate updated deb files with icrementing filenames without having to update pkg version
+    - Get most targets other than "release_deb" to properly do nothing unless something actually changed.
+      Example, run "make deb" twice in a row with no changes, the 2nd one will say "nothing to do"
+    Makefile is now officially more feature rich and more robust than the application itself ¯\_(ツ)_/¯
 
- -- Brian K. White <bw.aljex@gmail.com>  Mon, 18 Mar 2019 09:10:23 -0400
+ -- Brian K. White <bw.aljex@gmail.com>  Mon, 25 Mar 2019 13:56:26 -0400
 
 mainline (1.0.0) disco; urgency=medium
 
@@ -220,15 +235,15 @@ ukuu (16.12) trusty; urgency=medium
   * Remove startup scripts when application is uninstalled
 
  -- Tony George <tony.george.kol@gmail.com>  Wed, 7 Dec 2016 10:00:00 +0530
- 
- 
+
+
 ukuu (16.11.1) trusty; urgency=medium
 
   * Fixed build for xenial: Added dependency for 'valac'
 
  -- Tony George <tony.george.kol@gmail.com>  Sun, 27 Nov 2016 10:00:00 +0530
 
- 
+
 ukuu (16.11) trusty; urgency=medium
 
   * Changed main window layout

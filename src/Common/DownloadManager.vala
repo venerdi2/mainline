@@ -6,7 +6,7 @@ using TeeJee.Misc;
 
 
 public class DownloadTask : AsyncTask{
-	
+
 	// settings
 	public bool status_in_kb = false;
 	public int connect_timeout_secs = 60;
@@ -44,7 +44,7 @@ public class DownloadTask : AsyncTask{
 			log_error (e.message);
 		}
 	}
-	
+
 	// execution ----------------------------
 
 	public void add_to_queue(DownloadItem item){
@@ -67,7 +67,7 @@ public class DownloadTask : AsyncTask{
 		downloads.clear();
 		map.clear();
 	}
-	
+
 	public void execute() {
 
 		prepare();
@@ -75,8 +75,6 @@ public class DownloadTask : AsyncTask{
 		begin();
 
 		if (status == AppStatus.RUNNING){
-			
-			
 		}
 	}
 
@@ -112,10 +110,6 @@ public class DownloadTask : AsyncTask{
 		cmd += " --max-concurrent-downloads=%d".printf(concurrent_downloads);
 		cmd += " --max-file-not-found=3";
 		cmd += " --retry-wait=2";
-		//cmd += " --optimize-concurrent-downloads=true"; // not supported by all versions
-		//cmd += " -l download.log";
-		//cmd += " --direct-file-mapping=false";
-		//cmd += " --dry-run";
 
 		log_debug(cmd);
 
@@ -126,15 +120,15 @@ public class DownloadTask : AsyncTask{
 		if (is_terminated) {
 			return;
 		}
-		
+
 		update_progress_parse_console_output(out_line);
 	}
-	
+
 	public override void parse_stderr_line(string err_line){
 		if (is_terminated) {
 			return;
 		}
-		
+
 		update_progress_parse_console_output(err_line);
 	}
 
@@ -146,7 +140,7 @@ public class DownloadTask : AsyncTask{
 		//log_debug(line);
 
 		MatchInfo match;
-		
+
 		if (regex["file-complete"].match(line, 0, out match)) {
 			//log_debug("match: file-complete: " + line);
 			prg_count++;
@@ -156,10 +150,10 @@ public class DownloadTask : AsyncTask{
 			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
 
 			//log_debug("match: file-status: " + line);
-			
+
 			// always display
 			//log_debug(line);
-			
+
 			string gid_key = match.fetch(1).strip();
 			string status = match.fetch(2).strip();
 			int64 rate = int64.parse(match.fetch(3).strip());
@@ -201,12 +195,12 @@ public class DownloadTask : AsyncTask{
 		else {
 			//log_debug("unmatched: '%s'".printf(line));
 		}
-		
+
 		return true;
 	}
 
 	protected override void finish_task(){
-		
+
 		verify();
 
 		dir_delete(working_dir);
@@ -215,7 +209,7 @@ public class DownloadTask : AsyncTask{
 	private void verify() {
 
 		log_debug("verify()");
-		
+
 		foreach(var item in downloads){
 
 			if (!file_exists(item.file_path_partial)){
@@ -224,7 +218,7 @@ public class DownloadTask : AsyncTask{
 			}
 
 			//log_msg("status=%s".printf(item.status));
-			
+
 			if (item.status == "OK"){
 				file_move(item.file_path_partial, item.file_path);
 			}
@@ -252,7 +246,7 @@ public class DownloadItem : GLib.Object
 	 * after successful completion. File will always be saved with
 	 * the specified name 'file_name' instead of the source file name.
 	 * */
-	 
+
 	public string file_name = "";
 	public string download_dir = "";
 	public string partial_dir = "";
@@ -266,7 +260,7 @@ public class DownloadItem : GLib.Object
 	public string status = "";
 
 	public DownloadTask task = null;
-	
+
 	public string file_path{
 		owned get{
 			return path_combine(download_dir, file_name);
@@ -294,7 +288,7 @@ public class DownloadItem : GLib.Object
 	}
 
 	public string status_line(){
-		
+
 		if (task.status_in_kb){
 			return "%s / %s, %s/s (%s)".printf(
 				format_file_size(bytes_received, false, "", true, 1),
