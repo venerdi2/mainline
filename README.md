@@ -32,7 +32,7 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 
 * (from [stevenpowerd](https://github.com/stevenpowered/ukuu)) Options controlling the internet connection check
 * (from [cloyce](https://github.com/cloyce/ukuu)) Option to include or hide pre-release kernels
-* Renamed from "ukuu" to "mainline"
+* Changed name from "ukuu" to "mainline"
 * Removed all GRUB options
 * Removed all donate buttons, links, dialogs
 * Remove source cruft
