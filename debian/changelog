@@ -18,7 +18,7 @@ mainline (1.0.1) UNRELEASED; urgency=medium
       Example, run "make deb" twice in a row with no changes, the 2nd one will say "nothing to do"
     Makefile is now officially more feature rich and more robust than the application itself ¯\_(ツ)_/¯
 
- -- Brian K. White <bw.aljex@gmail.com>  Mon, 25 Mar 2019 13:56:26 -0400
+ -- Brian K. White <bw.aljex@gmail.com>  Mon, 25 Mar 2019 22:40:40 -0400
 
 mainline (1.0.0) disco; urgency=medium
 
