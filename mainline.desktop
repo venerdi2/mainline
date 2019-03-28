@@ -9,3 +9,4 @@ Icon=mainline
 Comment=Ubuntu Mainline Kernel Installer
 X-KDE-StartupNotify=false
 Categories=System;
+StartupWMClass=mainline-gtk

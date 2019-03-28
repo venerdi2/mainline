@@ -521,10 +521,10 @@ public class MainWindow : Gtk.Window{
 			"Waldemar Konik (Polish):valdi74@github",
 			"gogo (Croatian):trebelnik2@gmail.com",
 			"Adolfo Jayme Barrientos (Spanish):fitojb@ubuntu.com",
-            "yolateng0 (French):github.com/yolateng0",
-            "Hugo Posnic (French):hugo.posnic@gmail.com",
-            "Faust3000 (Russian):slavusik1988@gmail.com",
-            "Gökhan GÖKKAYA (Turkish):gokhanlnx@gmail.com"
+			"yolateng0 (French):github.com/yolateng0",
+			"Hugo Posnic (French):hugo.posnic@gmail.com",
+			"Faust3000 (Russian):slavusik1988@gmail.com",
+			"Gökhan GÖKKAYA (Turkish):gokhanlnx@gmail.com"
 		};
 
 		dialog.documenters = null;

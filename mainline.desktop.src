@@ -9,3 +9,4 @@ Icon=BRANDING_SHORTNAME
 Comment=BRANDING_LONGNAME
 X-KDE-StartupNotify=false
 Categories=System;
+StartupWMClass=BRANDING_SHORTNAME-gtk
