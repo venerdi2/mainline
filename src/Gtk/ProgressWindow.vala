@@ -34,14 +34,14 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public class ProgressWindow : Gtk.Window {
-	
+
 	private Gtk.Box vbox_main;
 	private Gtk.Spinner spinner;
 	private Gtk.Label lbl_msg;
 	private Gtk.Label lbl_status;
 	//private ProgressBar progressbar;
 	private Gtk.Button btn_cancel;
-	
+
 	private uint tmr_init = 0;
 	private uint tmr_close = 0;
 	private int def_width = 400;
@@ -50,11 +50,11 @@ public class ProgressWindow : Gtk.Window {
 	private string status_message;
 	private bool allow_cancel = false;
 	private bool allow_close = false;
-	
+
 	// init
-	
+
 	public ProgressWindow.with_parent(Window parent, string message, bool allow_cancel = false) {
-		
+
 		set_transient_for(parent);
 		set_modal(true);
 		set_skip_taskbar_hint(true);
@@ -65,21 +65,21 @@ public class ProgressWindow : Gtk.Window {
 		set_default_size(def_width, def_height);
 
 		icon = get_app_icon(16,".svg");
-		
+
 		App.status_line = "";
 		App.progress_count = 0;
 		App.progress_total = 0;
-		
+
 		this.status_message = message;
 		this.allow_cancel = allow_cancel;
 
 		App.cancelled = false;
-		
+
 		this.delete_event.connect(close_window);
-		
+
 		init_window();
 	}
-	
+
 	private bool close_window(){
 		if (allow_close){
 			// allow window to close 
@@ -90,14 +90,14 @@ public class ProgressWindow : Gtk.Window {
 			return true;
 		}
 	}
-	
+
 	public void init_window () {
-		
+
 		title = "";
 		icon = get_app_icon(16);
 		resizable = false;
 		set_deletable(false);
-		
+
 		//vbox_main
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 12;
@@ -105,11 +105,11 @@ public class ProgressWindow : Gtk.Window {
 
 		var hbox_status = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox_status);
-		
+
 		spinner = new Gtk.Spinner();
 		spinner.active = true;
 		hbox_status.add(spinner);
-		
+
 		//lbl_msg
 		lbl_msg = new Gtk.Label (status_message);
 		lbl_msg.halign = Align.START;
@@ -119,7 +119,7 @@ public class ProgressWindow : Gtk.Window {
 
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add(hbox);
-		
+
 		//progressbar
 		/*
 		progressbar = new Gtk.ProgressBar();
@@ -161,14 +161,14 @@ public class ProgressWindow : Gtk.Window {
 	// common
 
 	public void update_message(string msg){
-		
+
 		if (msg.length > 0){
 			lbl_msg.label = msg;
 		}
 	}
 
 	public void update_status_line(bool clear = false){
-		
+
 		if (clear){
 			lbl_status.label = "";
 		}
@@ -180,11 +180,11 @@ public class ProgressWindow : Gtk.Window {
 		//gtk_do_events();
 	}
 
-/*	
+/*
 	public void update_progressbar(){
-		
+
 		double f = App.progress_count / (App.progress_total * 1.0);
-		
+
 		if (f > 1.0){
 			f = 1.0;
 		}
@@ -192,39 +192,40 @@ public class ProgressWindow : Gtk.Window {
 		progressbar.fraction = f;
 		gtk_do_events();
 	}
-*/	
+*/
+
 	public void finish(string message = "") {
-		
+
 		btn_cancel.sensitive = false;
-		
+
 		//pulse_stop();
 		//progressbar.fraction = 1.0;
-		
+
 		lbl_msg.label = message;
 		lbl_status.label = "";
-		
+
 		spinner.visible = false;
-		
+
 		gtk_do_events();
 		auto_close_window();
 	}
 
 	private void auto_close_window() {
-		
+
 		tmr_close = Timeout.add(2000, ()=>{
 			if (tmr_init > 0) {
 				Source.remove(tmr_init);
 				tmr_init = 0;
 			}
-			
+
 			allow_close = true;
 			this.close();
 			return false;
 		});
 	}
-	
+
 	public void sleep(int ms){
-		
+
 		Thread.usleep ((ulong) ms * 1000);
 		gtk_do_events();
 	}

@@ -1,9 +1,6 @@
 using TeeJee.Logging;
 using TeeJee.FileSystem;
-//using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-//using TeeJee.Multimedia;
-//using TeeJee.System;
 using TeeJee.Misc;
 
 public class Package : GLib.Object {
@@ -14,7 +11,6 @@ public class Package : GLib.Object {
 	public string repo = "";
 	public string repo_section = "";
 	public string arch = "";
-	public string status = "";
 	public string section = "";
 	public string version = "";
 	public string version_installed = "";
@@ -42,10 +38,7 @@ public class Package : GLib.Object {
 
 	public static void initialize(){
 		string std_out, std_err;
-		int status = exec_sync("dpkg --print-architecture", out std_out, out std_err);
-		if ((status == 0) && (std_out != null)){
-			NATIVE_ARCH = std_out.strip();
-		}
+		exec_sync("dpkg --print-architecture", out std_out, out std_err);
 	}
 	
 	public Package(string _name){

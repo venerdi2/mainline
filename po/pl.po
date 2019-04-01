@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-25 06:02-0400\n"
+"POT-Creation-Date: 2019-04-01 11:08-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
@@ -61,8 +61,7 @@ msgstr ""
 
 #: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:149
 #: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:172
-#: src/Utility/Gtk/GtkHelper.vala:112
+#: src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -176,7 +175,7 @@ msgstr "E"
 msgid "ERROR"
 msgstr "BŁĄD"
 
-#: src/Utility/Gtk/GtkHelper.vala:18
+#: src/Utility/Gtk/GtkHelper.vala:17
 msgid "Error"
 msgstr "Błąd"
 
@@ -236,7 +235,7 @@ msgstr "Plik przeniesiony"
 msgid "File not found"
 msgstr "Nie odnaleziono pliku"
 
-#: src/Common/Package.vala:133 src/Common/Package.vala:195
+#: src/Common/Package.vala:126 src/Common/Package.vala:188
 #, c-format
 msgid "File not found: %s"
 msgstr "Nie odnaleziono pliku: %s"
@@ -352,7 +351,7 @@ msgstr "Pokaż wszystkie dostępne jądra"
 msgid "List installed kernels"
 msgstr "Pokaż wszystkie dostępne jądra"
 
-#: src/Utility/Gtk/GtkHelper.vala:262
+#: src/Utility/Gtk/GtkHelper.vala:93
 msgid "Missing Icon"
 msgstr "Brakująca ikona"
 
@@ -364,7 +363,7 @@ msgstr "Wybrano kilka jąder"
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Wybrano kilka jąder do instalacji. Wybierz tylko jedno."
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:177
+#: src/Utility/Gtk/CustomMessageDialog.vala:160
 msgid "No"
 msgstr ""
 
@@ -399,9 +398,8 @@ msgid "Notify if a point release is available"
 msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 
 #: src/Common/LinuxKernel.vala:1217
-#: src/Utility/Gtk/CustomMessageDialog.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:171
-#: src/Utility/Gtk/GtkHelper.vala:111
+#: src/Utility/Gtk/CustomMessageDialog.vala:150
+#: src/Utility/Gtk/CustomMessageDialog.vala:154
 #, c-format
 msgid "OK"
 msgstr "OK"
@@ -596,7 +594,7 @@ msgstr "W"
 msgid "Week(s)"
 msgstr "Tygodni"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:176
+#: src/Utility/Gtk/CustomMessageDialog.vala:159
 msgid "Yes"
 msgstr ""
 

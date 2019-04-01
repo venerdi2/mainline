@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.1\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-03-28 18:18-0400\n"
+"POT-Creation-Date: 2019-04-01 11:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,8 +61,7 @@ msgstr ""
 
 #: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:149
 #: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:172
-#: src/Utility/Gtk/GtkHelper.vala:112
+#: src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr ""
 
@@ -173,7 +172,7 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-#: src/Utility/Gtk/GtkHelper.vala:18
+#: src/Utility/Gtk/GtkHelper.vala:17
 msgid "Error"
 msgstr ""
 
@@ -233,7 +232,7 @@ msgstr ""
 msgid "File not found"
 msgstr ""
 
-#: src/Common/Package.vala:133 src/Common/Package.vala:195
+#: src/Common/Package.vala:126 src/Common/Package.vala:188
 #, c-format
 msgid "File not found: %s"
 msgstr ""
@@ -343,7 +342,7 @@ msgstr ""
 msgid "List installed kernels"
 msgstr ""
 
-#: src/Utility/Gtk/GtkHelper.vala:262
+#: src/Utility/Gtk/GtkHelper.vala:93
 msgid "Missing Icon"
 msgstr ""
 
@@ -355,7 +354,7 @@ msgstr ""
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:177
+#: src/Utility/Gtk/CustomMessageDialog.vala:160
 msgid "No"
 msgstr ""
 
@@ -390,9 +389,8 @@ msgid "Notify if a point release is available"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1217
-#: src/Utility/Gtk/CustomMessageDialog.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:171
-#: src/Utility/Gtk/GtkHelper.vala:111
+#: src/Utility/Gtk/CustomMessageDialog.vala:150
+#: src/Utility/Gtk/CustomMessageDialog.vala:154
 #, c-format
 msgid "OK"
 msgstr ""
@@ -579,7 +577,7 @@ msgstr ""
 msgid "Week(s)"
 msgstr ""
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:176
+#: src/Utility/Gtk/CustomMessageDialog.vala:159
 msgid "Yes"
 msgstr ""
 
