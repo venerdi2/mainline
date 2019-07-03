@@ -442,7 +442,7 @@ public class MainWindow : Gtk.Window{
 			});
 
 			string sh = "";
-			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ";
+			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY http_proxy=$http_proxy https_proxy=$https_proxy HTTP_PROXY=$HTTP_PROXY HTTPS_PROXY=$HTTPS_PROXY ";
 			sh += BRANDING_SHORTNAME+" --user "+App.user_login;
 			if (LOG_DEBUG){
 				sh += " --debug";
