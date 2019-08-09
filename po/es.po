@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-04-01 11:08-0400\n"
+"POT-Creation-Date: 2019-08-09 18:47-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -60,9 +60,8 @@ msgstr "Atrás"
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:149
-#: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:155
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/UpdateNotificationWindow.vala:167
+#: src/Gtk/TerminalWindow.vala:149 src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -268,7 +267,7 @@ msgstr "El índice está al día"
 msgid "Index is stale"
 msgstr "El índice es obsoleto"
 
-#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
 msgid "Install"
 msgstr "Instalar"
 
@@ -491,7 +490,7 @@ msgstr ""
 "El núcleo seleccionado está en ejecución y no puede desinstalarse.\n"
 "Instale otro núcleo antes de desinstalar este."
 
-#: src/Gtk/MainWindow.vala:475 src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsDialog.vala:56 src/Gtk/MainWindow.vala:475
 msgid "Settings"
 msgstr "Configuración"
 

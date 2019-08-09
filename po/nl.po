@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-04-01 11:08-0400\n"
+"POT-Creation-Date: 2019-08-09 18:47-0400\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
@@ -62,9 +62,8 @@ msgstr "Terug"
 msgid "Cache"
 msgstr ""
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:149
-#: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:155
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/UpdateNotificationWindow.vala:167
+#: src/Gtk/TerminalWindow.vala:149 src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -272,7 +271,7 @@ msgstr "De index is up-to-date"
 msgid "Index is stale"
 msgstr "De index is verouderd"
 
-#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
 msgid "Install"
 msgstr "Installeren"
 
@@ -503,7 +502,7 @@ msgstr ""
 "verwijderd.\n"
 " Installeer een andere kernel voordat u deze verwijdert."
 
-#: src/Gtk/MainWindow.vala:475 src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsDialog.vala:56 src/Gtk/MainWindow.vala:475
 msgid "Settings"
 msgstr "Instellingen"
 
