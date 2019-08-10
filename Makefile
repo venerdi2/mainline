@@ -116,6 +116,7 @@ install: all
 
 .PHONY: uninstall
 uninstall:
+#	$(BRANDING_SHORTNAME) --clean-cache
 	rm -f "$(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)"
 	rm -rf "$(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)"
 #	rm -f "$(DESTDIR)$(polkitdir)/$(BRANDING_SHORTNAME).policy"
