@@ -18,8 +18,9 @@ mainline (1.0.1) UNRELEASED; urgency=medium
       Example, run "make deb" twice in a row with no changes, the 2nd one will say "nothing to do"
     The Makefile is now officially more feature rich and robust than the application itself ¯\_(ツ)_/¯
   * Desktop icon fix for Wayland from Hugo Posnic <hugo.posnic@gmail.com>
+  * Ukranian translation - github:cappelikan
 
- -- Brian K. White <bw.aljex@gmail.com>  Thu, 28 Mar 2019 18:17:47 -0400
+ -- Brian K. White <bw.aljex@gmail.com>  Fri, 09 Aug 2019 19:15:18 -0400
 
 mainline (1.0.0) disco; urgency=medium
 
