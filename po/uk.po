@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-08-07 03:26+0300\n"
+"POT-Creation-Date: 2019-09-02 20:03-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -55,8 +55,8 @@ msgstr "Назад"
 msgid "Cache"
 msgstr "Кеш"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:155 src/Gtk/ProgressWindow.vala:145
-#: src/Gtk/UpdateNotificationWindow.vala:167 src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/UpdateNotificationWindow.vala:167
+#: src/Gtk/TerminalWindow.vala:149 src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr "Відміна"
 
@@ -76,7 +76,7 @@ msgstr "Перевірити оновлення ядра"
 msgid "Check for kernel updates and notify current user"
 msgstr "Перевірте наявність оновлень ядра та повідомте поточного користувача"
 
-#: src/Utility/Gtk/AboutWindow.vala:295 src/Gtk/TerminalWindow.vala:159
+#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:295
 msgid "Close"
 msgstr "Закрити"
 
@@ -261,7 +261,7 @@ msgstr "Відомості актуальні"
 msgid "Index is stale"
 msgstr "Відомості застаріли"
 
-#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
 msgid "Install"
 msgstr "Встановити"
 
@@ -300,8 +300,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Встановлено"
 
-#: src/Utility/TeeJee.System.vala:281 src/Gtk/MainWindow.vala:350
-#: src/Gtk/MainWindow.vala:550 src/Gtk/MainWindow.vala:686
+#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
+#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 
@@ -317,12 +317,12 @@ msgstr "Ядро"
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
-#: src/Console/AppConsole.vala:367 src/Common/LinuxKernel.vala:776
+#: src/Common/LinuxKernel.vala:776 src/Console/AppConsole.vala:367
 #, c-format
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Console/AppConsole.vala:360 src/Common/LinuxKernel.vala:765
+#: src/Common/LinuxKernel.vala:765 src/Console/AppConsole.vala:360
 #, c-format
 msgid "Latest update"
 msgstr "Останнє оновлення"
@@ -364,8 +364,8 @@ msgstr "Інтернету немає"
 msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
-#: src/Console/AppConsole.vala:372 src/Console/AppConsole.vala:430
-#: src/Common/LinuxKernel.vala:784 src/Gtk/MainWindow.vala:796
+#: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:372
+#: src/Console/AppConsole.vala:430 src/Gtk/MainWindow.vala:796
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -385,9 +385,9 @@ msgstr "Повідомити, чи доступний великий випус�
 msgid "Notify if a point release is available"
 msgstr "Повідомити, чи доступний невеликий випуск"
 
+#: src/Common/LinuxKernel.vala:1217
 #: src/Utility/Gtk/CustomMessageDialog.vala:150
 #: src/Utility/Gtk/CustomMessageDialog.vala:154
-#: src/Common/LinuxKernel.vala:1217
 #, c-format
 msgid "OK"
 msgstr "OK"
@@ -483,7 +483,7 @@ msgstr ""
 "Це ядро ​​зараз працює і не може бути видалено. \n"
 "Встановіть інше ядро, перш ніж видаляти його."
 
-#: src/Gtk/MainWindow.vala:475 src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsDialog.vala:56 src/Gtk/MainWindow.vala:475
 msgid "Settings"
 msgstr "Налаштування"
 
