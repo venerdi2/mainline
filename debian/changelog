@@ -20,7 +20,7 @@ mainline (1.0.1) UNRELEASED; urgency=medium
   * Desktop icon fix for Wayland from Hugo Posnic <hugo.posnic@gmail.com>
   * Ukranian translation - github:cappelikan
 
- -- Brian K. White <bw.aljex@gmail.com>  Sat, 10 Aug 2019 18:32:56 -0400
+ -- Brian K. White <bw.aljex@gmail.com>  Wed, 11 Sep 2019 15:54:11 -0400
 
 mainline (1.0.0) disco; urgency=medium
 
