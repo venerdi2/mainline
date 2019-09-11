@@ -19,6 +19,8 @@ gtk+ := gtk+-3.0
 json-glib := json-glib-1.0
 gee := gee-0.8
 
+GLIB_LT_2_58 := $(shell pkg-config glib-2.0 --atleast-version=2.58.0 || echo '-D GLIB_LT_2_58')
+
 include BRANDING.mak
 BRANDING_VERSION := $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_MICRO)
 branding_symbols := -X -D'BRANDING_SHORTNAME="$(BRANDING_SHORTNAME)"' \
@@ -56,12 +58,12 @@ deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk $(po_files)
 
 $(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files)
-	valac -X -w $(branding_symbols) --Xcc="-lm" \
+	valac -X -w $(branding_symbols) $(GLIB_LT_2_58) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files)
-	valac -X -w $(branding_symbols) --Xcc="-lm" \
+	valac -X -w $(branding_symbols) $(GLIB_LT_2_58) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
 
