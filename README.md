@@ -23,7 +23,7 @@ mainline is written using Vala and GTK3. Source code and binaries are available 
 		sudo apt install mainline
 
 ### Build
-		sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
+		sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aptitude aria2
 		git clone https://github.com/aljex/mainline.git
 		cd mainline
 		make
