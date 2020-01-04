@@ -23,7 +23,7 @@ BRANDING_SHORTNAME is written using Vala and GTK3. Source code and binaries are 
 		sudo apt install mainline
 
 ### Build
-		sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
+		sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
 		git clone BRANDING_GITREPO
 		cd BRANDING_SHORTNAME
 		make
