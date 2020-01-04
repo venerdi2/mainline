@@ -1,13 +1,19 @@
-mainline (1.0.3) UNRELEASED; urgency=medium
+mainline (1.0.4) unstable; urgency=medium
+  * Support vala 0.46 / Uubuntu 20.04
+    copy fix from https://gitlab.manjaro.org/applications/pamac/issues/649
+    Fill in a few missing dependencies (README.md.src, debian/control.src)
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 04 Jan 2020 03:58:01 -0500
+
+mainline (1.0.3) unstable; urgency=medium
   * Change setting kernel_version_threshold to show_prev_majors
     Instead of saying hide kernels older than major version N, where the user has to periodically increase N manually,
     Now the setting says, hide kernels older than major version (CURRENT_HIGHEST minus N), where CURRENT_HIGHEST is determined on the fly every time, and N can stay the same 0 or 1 etc forever.
     All of the current highest major version is always shown. The setting says how many previous major versions to add to that.
-  * Fill in a few missing dependencies (README.md.src, debian/control.src)
 
- -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 04 Jan 2020 03:35:56 -0500
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 04 Jan 2020 01:13:54 -0500
 
-mainline (1.0.2) UNRELEASED; urgency=medium
+mainline (1.0.2) unstable; urgency=medium
   * Makefile:
     - Use one variable style everywhere
     - Only regenerate .pot file if any source files changed
@@ -31,7 +37,7 @@ mainline (1.0.2) UNRELEASED; urgency=medium
 
  -- Brian K. White <b.kenyon.w@gmail.com>  Fri, 03 Jan 2020 18:01:59 -0500
 
-mainline (1.0.1) UNRELEASED; urgency=medium
+mainline (1.0.1) unstable; urgency=medium
   * Disabled buggy progress bar
   * Add missing translators on credits window
 
