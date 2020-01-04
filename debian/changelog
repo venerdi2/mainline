@@ -21,7 +21,7 @@ mainline (1.0.2) UNRELEASED; urgency=medium
   * Ukranian translation - github:cappelikan
   * Change bool hide_older to int kernel_version_threshold
 
- -- Brian K. White <b.kenyon.w@gmail.com>  Fri, 03 Jan 2020 20:12:59 -0500
+ -- Brian K. White <b.kenyon.w@gmail.com>  Fri, 03 Jan 2020 20:19:03 -0500
 
 mainline (1.0.0) disco; urgency=medium
 

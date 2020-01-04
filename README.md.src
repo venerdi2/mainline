@@ -60,7 +60,7 @@ libsoup or other library instead of shell commands for downloads?
 * Customizable appearance, at least colors
 * Option to specify kernel variant (generic, lowlatency, snapdragon, etc...)
 * Configurable lowest version threshhold instead of the current hard-coded 4.0  
-...or, automatically subtract 1 from whatever the current highest release version is..
+...or, automatically subtract 1 from whatever the current highest release version is  
 (first part done: as of v1.0.2 setting is a number instead of a true/false)
 * Improve the annoying pkexec behavior.  
 It would be nicer to run pkexec (or lxqt-sudo, etc) one time for the whole session, and only have to enter a password once, instead of once per action.  
