@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-03 18:52-0500\n"
+"POT-Creation-Date: 2020-01-03 19:34-0500\n"
 "PO-Revision-Date: 2017-12-24 00:52+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -272,7 +272,7 @@ msgstr "Sadržaj je osvježen"
 msgid "Index is stale"
 msgstr "Sadržaj je zastario"
 
-#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
 msgid "Install"
 msgstr "Instaliraj"
 

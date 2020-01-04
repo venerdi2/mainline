@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-03 18:52-0500\n"
+"POT-Creation-Date: 2020-01-03 19:34-0500\n"
 "PO-Revision-Date: 2019-08-31 18:33+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -268,7 +268,7 @@ msgstr "İçerik listesi güncel"
 msgid "Index is stale"
 msgstr "İçerik listesi eski"
 
-#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
 msgid "Install"
 msgstr "Kur"
 
