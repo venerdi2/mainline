@@ -1,6 +1,7 @@
 # Makefile for "mainline"
 
-DEFAULT_KERNEL_VERSION_THRESHOLD = 5
+# number of major kernel version numbers to show, older than current highest major available.
+DEFAULT_SHOW_PREV_MAJORS = 0
 
 SHELL := /bin/bash
 CFLAGS := --std=c99
@@ -32,7 +33,7 @@ branding_symbols := -X -D'BRANDING_SHORTNAME="$(BRANDING_SHORTNAME)"' \
 	-X -D'BRANDING_AUTHOREMAIL="$(BRANDING_AUTHOREMAIL)"' \
 	-X -D'BRANDING_WEBSITE="$(BRANDING_WEBSITE)"' \
 	-X -D'GETTEXT_PACKAGE="$(BRANDING_SHORTNAME)"' \
-	-X -D'DEFAULT_KERNEL_VERSION_THRESHOLD="$(DEFAULT_KERNEL_VERSION_THRESHOLD)"'
+	-X -D'DEFAULT_SHOW_PREV_MAJORS="$(DEFAULT_SHOW_PREV_MAJORS)"'
 
 misc_files := README.md \
 	INSTALL \

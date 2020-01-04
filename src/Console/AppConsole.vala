@@ -36,7 +36,7 @@ public Main App;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
-[CCode(cname="DEFAULT_KERNEL_VERSION_THRESHOLD")] extern const string DEFAULT_KERNEL_VERSION_THRESHOLD;
+[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
 
 const string LOCALE_DIR = "/usr/share/locale";
 
@@ -99,7 +99,9 @@ public class AppConsole : GLib.Object {
 		msg += _("Options") + ":\n";
 		msg += "\n";
 		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
+		msg += "  --debug           " + _("Enable verbose debugging output") + "\n";
 		msg += "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n";
+		msg += "  --user            " + _("Override user") + "\n";
 		msg += "\n";
 		msg += "Notes:\n";
 		msg += "1. Comma separated list of version strings can be specified for --remove and --download\n";

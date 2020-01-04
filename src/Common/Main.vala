@@ -141,7 +141,7 @@ public class Main : GLib.Object{
 		config.set_string_member("notify_bubble", notify_bubble.to_string());
 		config.set_string_member("notify_dialog", notify_dialog.to_string());
 		config.set_string_member("hide_unstable", LinuxKernel.hide_unstable.to_string());
-		config.set_string_member("kernel_version_threshold", LinuxKernel.kernel_version_threshold.to_string());
+		config.set_string_member("show_prev_majors", LinuxKernel.show_prev_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
         config.set_string_member("connection_timeout_seconds", connection_timeout_seconds.to_string());
@@ -180,7 +180,7 @@ public class Main : GLib.Object{
 		if (!f.query_exists()) {
 			// initialize static
 			LinuxKernel.hide_unstable = true;
-			LinuxKernel.kernel_version_threshold = int.parse(DEFAULT_KERNEL_VERSION_THRESHOLD);
+			LinuxKernel.show_prev_majors = int.parse(DEFAULT_SHOW_PREV_MAJORS);
 			return;
 		}
 
@@ -205,7 +205,7 @@ public class Main : GLib.Object{
 		skip_connection_check = json_get_bool(config, "skip_connection_check", false);
 
 		LinuxKernel.hide_unstable = json_get_bool(config, "hide_unstable", true);
-		LinuxKernel.kernel_version_threshold = json_get_int(config, "kernel_version_threshold", int.parse(DEFAULT_KERNEL_VERSION_THRESHOLD));
+		LinuxKernel.show_prev_majors = json_get_int(config, "show_prev_majors", int.parse(DEFAULT_SHOW_PREV_MAJORS));
 
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}

@@ -45,7 +45,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
 	
-	public static int kernel_version_threshold;
+	public static int show_prev_majors;
 	public static bool hide_unstable;
 		
 	public static LinuxKernel kernel_active;
@@ -68,6 +68,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static bool cancelled;
 	public static bool task_is_running;
 	public static bool _temp_refresh;
+	public static int highest_maj;
 
 	// class initialize
 	
@@ -244,7 +245,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	private static void query_thread() {
 
-		log_debug("query: kernel_version_threshold: %s".printf(kernel_version_threshold.to_string()));
+		log_debug("query: show_prev_majors: %s".printf(show_prev_majors.to_string()));
 		log_debug("query: hide_unstable: %s".printf(hide_unstable.to_string()));
 
 		//DownloadManager.reset_counter();
@@ -269,13 +270,23 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// TODO: Implement locking for multiple download threads
 
-		var kvt = new LinuxKernel.from_version(kernel_version_threshold.to_string());
-		
+		// find highest major
+		highest_maj = 0;
+		foreach(var kern in kernel_list){
+
+			//log_debug("kern.version_maj = %d".printf(kern.version_maj));
+			if (kern.version_maj > highest_maj){
+				highest_maj = kern.version_maj;
+				log_debug("highest_maj = %d".printf(highest_maj));
+			}
+		}
+
 		status_line = "";
 		progress_total = 0;
 		progress_count = 0;
 		foreach(var kern in kernel_list){
-			if (kern.compare_to(kvt) < 0){
+
+			if (kern.version_maj < highest_maj-show_prev_majors){
 				continue;
 			}
 
@@ -308,8 +319,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
-			if (kern.compare_to(kvt) < 0){
-				//log_debug("older than %s: %s".printf(kvt).printf(kern.version_main));
+			if (kern.version_maj < highest_maj-show_prev_majors){
+				//log_debug("major version: %s".printf(kern.version_maj));
+				//log_debug("older than: %s".printf(highest_maj-show_prev_majors));
 				continue;
 			}
 
@@ -1152,7 +1164,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_msg(_("Available Kernels"));
 		log_draw_line();
 
-		var kvt = new LinuxKernel.from_version(kernel_version_threshold.to_string());
 		foreach(var kern in kernel_list){
 			if (!kern.is_valid){
 				continue;
@@ -1160,7 +1171,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (hide_unstable && kern.is_unstable){
 				continue;
 			}
-			if (kern.compare_to(kvt) < 0){
+
+			if (kern.version_maj < highest_maj-show_prev_majors){
 				continue;
 			}
 			

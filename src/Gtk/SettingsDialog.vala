@@ -179,18 +179,18 @@ public class SettingsDialog : Gtk.Dialog {
 		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
 
-		label = new Label(_("Hide kernels older than "));
+		label = new Label(_("Show N previous major versions "));
 		label.xalign = (float) 0.0;
 		label.margin_start = 6;
 		hbox.add (label);
 
-		var kvt_adj = new Gtk.Adjustment(LinuxKernel.kernel_version_threshold, 0, 99, 1, 1, 0);
-		var kvt_spin = new Gtk.SpinButton (kvt_adj, 1, 0);
-		kvt_spin.xalign = (float) 0.5;
-		hbox.add(kvt_spin);
+		var spm_adj = new Gtk.Adjustment(LinuxKernel.show_prev_majors, 0, 99, 1, 1, 0);
+		var spm_spin = new Gtk.SpinButton (spm_adj, 1, 0);
+		spm_spin.xalign = (float) 0.5;
+		hbox.add(spm_spin);
 
-		kvt_spin.changed.connect(()=>{
-			LinuxKernel.kernel_version_threshold = (int) kvt_spin.get_value();
+		spm_spin.changed.connect(()=>{
+			LinuxKernel.show_prev_majors = (int) spm_spin.get_value();
 		});
 		
 		// other

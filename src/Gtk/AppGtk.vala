@@ -40,7 +40,7 @@ public Main App;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
-[CCode(cname="DEFAULT_KERNEL_VERSION_THRESHOLD")] extern const string DEFAULT_KERNEL_VERSION_THRESHOLD;
+[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
 
 public const string ICON_DIR = BRANDING_SHORTNAME;
 
@@ -183,7 +183,7 @@ public class AppGtk : GLib.Object {
 		msg += _("Options") + ":\n";
 		msg += "\n";
 		msg += "  --debug      " + _("Print debug information") + "\n";
-		msg += "  --h[elp]     " + _("Show all options") + "\n";
+		msg += "  --help       " + _("Show all options") + "\n";
 		msg += "\n";
 		return msg;
 	}

@@ -273,8 +273,6 @@ public class MainWindow : Gtk.Window{
 			log_error (e.message);
 		}
 
-		var kvt = new LinuxKernel.from_version(LinuxKernel.kernel_version_threshold.to_string());
-
 		TreeIter iter;
 		bool odd_row = false;
 		foreach(var kern in LinuxKernel.kernel_list) {
@@ -284,7 +282,7 @@ public class MainWindow : Gtk.Window{
 			if (LinuxKernel.hide_unstable && kern.is_unstable){
 				continue;
 			}
-			if (kern.compare_to(kvt) < 0){
+			if (kern.version_maj < LinuxKernel.highest_maj-LinuxKernel.show_prev_majors){
 				continue;
 			}
 
@@ -477,14 +475,14 @@ public class MainWindow : Gtk.Window{
 
 		button.clicked.connect(() => {
 
-			int prev_kvt = LinuxKernel.kernel_version_threshold;
+			int prev_spm = LinuxKernel.show_prev_majors;
 			bool prev_hide_unstable = LinuxKernel.hide_unstable;
 
 			var dlg = new SettingsDialog.with_parent(this);
 			dlg.run();
 			dlg.destroy();
 
-			if ((prev_kvt != LinuxKernel.kernel_version_threshold)
+			if ((prev_spm != LinuxKernel.show_prev_majors)
 				|| (prev_hide_unstable != LinuxKernel.hide_unstable)){
 				refresh_cache();
 			}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-03 19:34-0500\n"
+"POT-Creation-Date: 2020-01-04 00:31-0500\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
@@ -18,11 +18,11 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Gtk/MainWindow.vala:496
+#: src/Gtk/MainWindow.vala:494
 msgid "About"
 msgstr "Over"
 
-#: src/Console/AppConsole.vala:115
+#: src/Console/AppConsole.vala:117
 msgid "Admin access is required for running this application."
 msgstr ""
 "U heeft administrator-rechten nodig om deze applicatie te kunnen draaien."
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Another instance of this application is running"
 msgstr "Er is al een venster geopend van deze applicatie"
 
-#: src/Common/LinuxKernel.vala:105
+#: src/Common/LinuxKernel.vala:106
 #, fuzzy
 msgid "Architecture"
 msgstr "Systeemarchitectuur"
@@ -41,7 +41,7 @@ msgstr "Systeemarchitectuur"
 msgid "Artists"
 msgstr "Artiesten"
 
-#: src/Console/AppConsole.vala:102
+#: src/Console/AppConsole.vala:103
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Authors"
 msgstr "Auteurs"
 
-#: src/Common/LinuxKernel.vala:1152
+#: src/Common/LinuxKernel.vala:1164
 msgid "Available Kernels"
 msgstr "Beschikbare kernels"
 
@@ -58,7 +58,7 @@ msgstr "Beschikbare kernels"
 msgid "Back"
 msgstr "Terug"
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:112
+#: src/Console/AppConsole.vala:207 src/Gtk/AppGtk.vala:112
 msgid "Cache"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Gtk/MainWindow.vala:464
+#: src/Gtk/MainWindow.vala:462
 msgid "Changes"
 msgstr "Wijzigingen"
 
@@ -89,7 +89,7 @@ msgstr "Controleren op kernel-updates"
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:344
 msgid "Command not specified"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Commands listed below are not available on this system"
 msgstr "De onderstaande opdrachten zijn niet beschikbaar op dit systeem"
 
-#: src/Common/LinuxKernel.vala:737
+#: src/Common/LinuxKernel.vala:749
 #, c-format
 msgid "Continue ?"
 msgstr ""
@@ -111,16 +111,16 @@ msgstr ""
 msgid "Contributions"
 msgstr "Bijdragen"
 
-#: src/Common/LinuxKernel.vala:721
+#: src/Common/LinuxKernel.vala:733
 #, fuzzy
 msgid "Could not find any kernels to remove"
 msgstr "Selecteer de te verwijderen kernels"
 
-#: src/Console/AppConsole.vala:310 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:312 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "De vereiste versie kan niet worden gevonden"
 
-#: src/Common/LinuxKernel.vala:715
+#: src/Common/LinuxKernel.vala:727
 #, fuzzy
 msgid "Could not find running kernel in list!"
 msgstr "De vereiste versie kan niet worden gevonden"
@@ -151,7 +151,7 @@ msgstr "Map niet gevonden"
 msgid "Display"
 msgstr "Weergave"
 
-#: src/Common/LinuxKernel.vala:91
+#: src/Common/LinuxKernel.vala:92
 msgid "Distribution"
 msgstr "Distributie"
 
@@ -164,7 +164,7 @@ msgstr "Documenteerders"
 msgid "Download packages for specified kernel"
 msgstr "Pakketten downloaden voor opgegeven kernel"
 
-#: src/Common/LinuxKernel.vala:1198
+#: src/Common/LinuxKernel.vala:1210
 #, c-format
 msgid "Downloading"
 msgstr "Bezig met downloaden"
@@ -173,10 +173,14 @@ msgstr "Bezig met downloaden"
 msgid "E"
 msgstr "E"
 
-#: src/Common/LinuxKernel.vala:1226
+#: src/Common/LinuxKernel.vala:1238
 #, c-format
 msgid "ERROR"
 msgstr "FOUT"
+
+#: src/Console/AppConsole.vala:102
+msgid "Enable verbose debugging output"
+msgstr ""
 
 #: src/Utility/Gtk/GtkHelper.vala:17
 msgid "Error"
@@ -206,11 +210,11 @@ msgstr "Lezen van bestand is mislukt"
 msgid "Failed to write file"
 msgstr "Schrijven naar bestand is mislukt"
 
-#: src/Common/LinuxKernel.vala:396
+#: src/Common/LinuxKernel.vala:408
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Bezig met ophalen van index van kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:353
+#: src/Common/LinuxKernel.vala:365
 msgid "Fetching index..."
 msgstr ""
 
@@ -248,11 +252,6 @@ msgstr "Bestand niet gevonden: %s"
 msgid "File saved"
 msgstr "Bestand opgeslagen"
 
-#: src/Gtk/SettingsDialog.vala:182
-#, fuzzy
-msgid "Hide kernels older than "
-msgstr "Kernels ouder dan 4.0 verbergen"
-
 #: src/Gtk/SettingsDialog.vala:168
 msgid "Hide unstable and RC releases"
 msgstr "Instabiele en RC-uitgaven verbergen"
@@ -265,19 +264,19 @@ msgstr "uur"
 msgid "Ignore this update"
 msgstr "Deze update negeren"
 
-#: src/Common/LinuxKernel.vala:259
+#: src/Common/LinuxKernel.vala:260
 msgid "Index is fresh"
 msgstr "De index is up-to-date"
 
-#: src/Common/LinuxKernel.vala:256
+#: src/Common/LinuxKernel.vala:257
 msgid "Index is stale"
 msgstr "De index is verouderd"
 
-#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
+#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:357
 msgid "Install"
 msgstr "Installeren"
 
-#: src/Common/LinuxKernel.vala:794
+#: src/Common/LinuxKernel.vala:806
 #, c-format
 msgid "Install Linux v%s ? (y/n): "
 msgstr ""
@@ -299,22 +298,22 @@ msgstr "Opgegeven mainline-kernel installeren"
 msgid "Install this kernel"
 msgstr "Deze kernel installeren"
 
-#: src/Common/LinuxKernel.vala:1272
+#: src/Common/LinuxKernel.vala:1284
 msgid "Installation completed with errors"
 msgstr "De installatie is foutloos voltooid"
 
-#: src/Common/LinuxKernel.vala:1269
+#: src/Common/LinuxKernel.vala:1281
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "De installatie is voltooid. Herstart de computer om de nieuwe kernel te "
 "gebruiken."
 
-#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
 msgid "Installed"
 msgstr "Geïnstalleerd"
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "U bent niet verbonden met het internet"
 
@@ -327,16 +326,16 @@ msgstr "U bent niet verbonden met het internet"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: src/Gtk/MainWindow.vala:534
+#: src/Gtk/MainWindow.vala:532
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kernel-upgradehulpmiddel voor op Ubuntu-gebaseerde distributies"
 
-#: src/Common/LinuxKernel.vala:776 src/Console/AppConsole.vala:368
+#: src/Common/LinuxKernel.vala:788 src/Console/AppConsole.vala:370
 #, c-format
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:765 src/Console/AppConsole.vala:361
+#: src/Common/LinuxKernel.vala:777 src/Console/AppConsole.vala:363
 #, c-format
 msgid "Latest update"
 msgstr ""
@@ -359,11 +358,11 @@ msgstr "Alle beschikbare mainline-kernels weergeven"
 msgid "Missing Icon"
 msgstr "Ontbrekend pictogram"
 
-#: src/Gtk/MainWindow.vala:368
+#: src/Gtk/MainWindow.vala:366
 msgid "Multiple Kernels Selected"
 msgstr "Meerdere kernels geselecteerd"
 
-#: src/Console/AppConsole.vala:292
+#: src/Console/AppConsole.vala:294
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Er zijn meerdere te installeren kernels geselecteerd. Selecteer er slechts "
@@ -373,21 +372,21 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/MainWindow.vala:550
-#: src/Gtk/MainWindow.vala:686
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:684
 msgid "No Internet"
 msgstr "Geen internetverbinding"
 
-#: src/Console/AppConsole.vala:286 src/Console/AppConsole.vala:323
+#: src/Console/AppConsole.vala:288 src/Console/AppConsole.vala:325
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:373
-#: src/Console/AppConsole.vala:431 src/Gtk/MainWindow.vala:796
+#: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:375
+#: src/Console/AppConsole.vala:433 src/Gtk/MainWindow.vala:794
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
-#: src/Gtk/MainWindow.vala:371 src/Gtk/MainWindow.vala:382
+#: src/Gtk/MainWindow.vala:369 src/Gtk/MainWindow.vala:380
 msgid "Not Selected"
 msgstr "Niet geselecteerd"
 
@@ -403,7 +402,7 @@ msgstr "Melding weergeven als er een grote update beschikbaar is"
 msgid "Notify if a point release is available"
 msgstr "Melding weergeven als er een puntupdate beschikbaar is"
 
-#: src/Common/LinuxKernel.vala:1217
+#: src/Common/LinuxKernel.vala:1229
 #: src/Utility/Gtk/CustomMessageDialog.vala:150
 #: src/Utility/Gtk/CustomMessageDialog.vala:154
 #, c-format
@@ -418,12 +417,16 @@ msgstr "Opties"
 msgid "Other"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1060
+#: src/Console/AppConsole.vala:104
+msgid "Override user"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:1072
 #, c-format
 msgid "Packages Available"
 msgstr "Beschikbare pakketten"
 
-#: src/Common/LinuxKernel.vala:1068
+#: src/Common/LinuxKernel.vala:1080
 #, c-format
 msgid "Packages Installed"
 msgstr "Geïnstalleerde pakketten"
@@ -432,7 +435,7 @@ msgstr "Geïnstalleerde pakketten"
 msgid "Please install required packages and try again"
 msgstr "Installeer de vereiste pakketten en probeer het opnieuw"
 
-#: src/Common/LinuxKernel.vala:1293
+#: src/Common/LinuxKernel.vala:1305
 msgid "Preparing to remove selected kernels"
 msgstr "Bezig met voorbereiden van verwijderen van geselecteerde kernels"
 
@@ -440,19 +443,19 @@ msgstr "Bezig met voorbereiden van verwijderen van geselecteerde kernels"
 msgid "Print debug information"
 msgstr "Foutopsporingsinformatie printen"
 
-#: src/Gtk/MainWindow.vala:425
+#: src/Gtk/MainWindow.vala:423
 msgid "Purge"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:343
+#: src/Gtk/MainWindow.vala:341
 msgid "Refresh"
 msgstr "Verversen"
 
-#: src/Gtk/MainWindow.vala:569
+#: src/Gtk/MainWindow.vala:567
 msgid "Refreshing..."
 msgstr "Bezig met verversen..."
 
-#: src/Gtk/MainWindow.vala:376
+#: src/Gtk/MainWindow.vala:374
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -460,7 +463,7 @@ msgstr "Verwijderen"
 msgid "Remove files from application cache"
 msgstr "Bestanden verwijderen uit applicatie-cache"
 
-#: src/Console/AppConsole.vala:94 src/Gtk/MainWindow.vala:426
+#: src/Console/AppConsole.vala:94 src/Gtk/MainWindow.vala:424
 msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
@@ -469,33 +472,33 @@ msgstr ""
 msgid "Remove specified kernel"
 msgstr "Opgegeven mainline-kernel verwijderen"
 
-#: src/Console/AppConsole.vala:200 src/Console/AppConsole.vala:314
-#: src/Console/AppConsole.vala:343
+#: src/Console/AppConsole.vala:202 src/Console/AppConsole.vala:316
+#: src/Console/AppConsole.vala:345
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:118
+#: src/Console/AppConsole.vala:120
 #, fuzzy
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Draai de applicatie als root of m.b.v. gksu/sudo."
 
-#: src/Common/LinuxKernel.vala:1169 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
 msgid "Running"
 msgstr "Bezig met draaien"
 
-#: src/Gtk/MainWindow.vala:368
+#: src/Gtk/MainWindow.vala:366
 msgid "Select a single kernel to install"
 msgstr "Selecteer een enkele te installeren kernel"
 
-#: src/Gtk/MainWindow.vala:371
+#: src/Gtk/MainWindow.vala:369
 msgid "Select the kernel to install"
 msgstr "Selecteer de te installeren kernel"
 
-#: src/Gtk/MainWindow.vala:382
+#: src/Gtk/MainWindow.vala:380
 msgid "Select the kernels to remove"
 msgstr "Selecteer de te verwijderen kernels"
 
-#: src/Common/LinuxKernel.vala:1288
+#: src/Common/LinuxKernel.vala:1300
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -504,12 +507,16 @@ msgstr ""
 "verwijderd.\n"
 " Installeer een andere kernel voordat u deze verwijdert."
 
-#: src/Gtk/MainWindow.vala:475 src/Gtk/SettingsDialog.vala:55
+#: src/Gtk/MainWindow.vala:473 src/Gtk/SettingsDialog.vala:55
 msgid "Settings"
 msgstr "Instellingen"
 
 #: src/Gtk/UpdateNotificationWindow.vala:157
 msgid "Show"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:182
+msgid "Show N previous major versions "
 msgstr ""
 
 #: src/Gtk/AppGtk.vala:186
@@ -546,11 +553,11 @@ msgstr "Gestopt"
 msgid "Syntax"
 msgstr "Syntax"
 
-#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:113
+#: src/Console/AppConsole.vala:208 src/Gtk/AppGtk.vala:113
 msgid "Temp"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:730
+#: src/Common/LinuxKernel.vala:742
 #, c-format
 msgid "The following kernels will be removed:"
 msgstr ""
@@ -560,11 +567,11 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr "Externe hulpmiddelen"
 
-#: src/Common/LinuxKernel.vala:1240 src/Gtk/MainWindow.vala:681
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:679
 msgid "This kernel is already installed."
 msgstr "Deze kernel is al geïnstalleerd."
 
-#: src/Common/LinuxKernel.vala:1341
+#: src/Common/LinuxKernel.vala:1353
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -577,15 +584,15 @@ msgstr ""
 msgid "Translators"
 msgstr "Vertalers"
 
-#: src/Common/LinuxKernel.vala:1325 src/Common/LinuxKernel.vala:1378
+#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
 msgid "Un-install completed"
 msgstr "Deïnstalleren voltooid"
 
-#: src/Common/LinuxKernel.vala:1328 src/Common/LinuxKernel.vala:1381
+#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
 msgid "Un-install completed with errors"
 msgstr "Deïnstalleren voltooid, maar met fouten"
 
-#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:168
+#: src/Console/AppConsole.vala:200 src/Gtk/AppGtk.vala:168
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
@@ -612,6 +619,10 @@ msgstr "[Waarschuwing] Ongeldige lock verwijderd"
 #: src/Gtk/SettingsDialog.vala:232
 msgid "seconds"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Hide kernels older than "
+#~ msgstr "Kernels ouder dan 4.0 verbergen"
 
 #~ msgid "Booting previous kernels"
 #~ msgstr "Opstarten van vorige kernels"
