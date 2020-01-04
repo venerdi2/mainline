@@ -40,6 +40,8 @@ public Main App;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
+[CCode(cname="DEFAULT_KERNEL_VERSION_THRESHOLD")] extern const string DEFAULT_KERNEL_VERSION_THRESHOLD;
+
 public const string ICON_DIR = BRANDING_SHORTNAME;
 
 const string LOCALE_DIR = "/usr/share/locale";

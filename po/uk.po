@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
-"Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-09-11 18:04-0400\n"
+"Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
+"POT-Creation-Date: 2020-01-03 18:52-0500\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 msgid "About"
 msgstr "Про программу"
 
-#: src/Console/AppConsole.vala:114
+#: src/Console/AppConsole.vala:115
 msgid "Admin access is required for running this application."
 msgstr "Для запуску програми потрібно мати права адміністратора."
 
@@ -34,7 +34,7 @@ msgstr "Системна архитектура"
 msgid "Artists"
 msgstr "Художники"
 
-#: src/Console/AppConsole.vala:101
+#: src/Console/AppConsole.vala:102
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Припустимо, так для всіх підказок (неінтерактивний режим)"
 
@@ -51,12 +51,13 @@ msgstr "Доступні ядра"
 msgid "Back"
 msgstr "Назад"
 
-#: src/Console/AppConsole.vala:204 src/Gtk/AppGtk.vala:110
+#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:112
 msgid "Cache"
 msgstr "Кеш"
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Gtk/TerminalWindow.vala:148 src/Utility/Gtk/CustomMessageDialog.vala:155
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:148
+#: src/Gtk/UpdateNotificationWindow.vala:167
+#: src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr "Відміна"
 
@@ -64,15 +65,15 @@ msgstr "Відміна"
 msgid "Changes"
 msgstr "Зміни"
 
-#: src/Gtk/SettingsDialog.vala:121
+#: src/Gtk/SettingsDialog.vala:120
 msgid "Check every"
 msgstr "Перевіряти кожні"
 
-#: src/Console/AppConsole.vala:85
+#: src/Console/AppConsole.vala:86
 msgid "Check for kernel updates"
 msgstr "Перевірити оновлення ядра"
 
-#: src/Console/AppConsole.vala:86
+#: src/Console/AppConsole.vala:87
 msgid "Check for kernel updates and notify current user"
 msgstr "Перевірте наявність оновлень ядра та повідомте поточного користувача"
 
@@ -80,11 +81,11 @@ msgstr "Перевірте наявність оновлень ядра та п�
 msgid "Close"
 msgstr "Закрити"
 
-#: src/Console/AppConsole.vala:341
+#: src/Console/AppConsole.vala:342
 msgid "Command not specified"
 msgstr "Команда не вказана"
 
-#: src/Console/AppConsole.vala:83
+#: src/Console/AppConsole.vala:84
 msgid "Commands"
 msgstr "Команди"
 
@@ -106,7 +107,7 @@ msgstr "Внески"
 msgid "Could not find any kernels to remove"
 msgstr "Не вдалося знайти жодне ядро ​​для видалення"
 
-#: src/Console/AppConsole.vala:309 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:310 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Не вдалося знайти запитувану версію"
 
@@ -124,7 +125,7 @@ msgstr "Використовувана кеш-папка"
 msgid "Credits"
 msgstr "Творці"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Day(s)"
 msgstr "День(днів)"
 
@@ -136,7 +137,7 @@ msgstr "Видалений каталог"
 msgid "Dir not found"
 msgstr "Тека не знайдена"
 
-#: src/Gtk/SettingsDialog.vala:161
+#: src/Gtk/SettingsDialog.vala:160
 msgid "Display"
 msgstr "Вид"
 
@@ -149,7 +150,7 @@ msgstr "Дистрибутив"
 msgid "Documenters"
 msgstr "Укладачі документації"
 
-#: src/Console/AppConsole.vala:94
+#: src/Console/AppConsole.vala:95
 msgid "Download packages for specified kernel"
 msgstr "Завантажити пакети для зазначеного ядра"
 
@@ -237,15 +238,16 @@ msgstr "Файл не знайдено: %s"
 msgid "File saved"
 msgstr "Файл збережено"
 
-#: src/Gtk/SettingsDialog.vala:180
-msgid "Hide kernels older than 4.0"
+#: src/Gtk/SettingsDialog.vala:182
+#, fuzzy
+msgid "Hide kernels older than "
 msgstr "Приховати ядра старіши версії 4.0"
 
-#: src/Gtk/SettingsDialog.vala:169
+#: src/Gtk/SettingsDialog.vala:168
 msgid "Hide unstable and RC releases"
 msgstr "Приховати нестабільні і реліз-кандидат версії"
 
-#: src/Gtk/SettingsDialog.vala:152
+#: src/Gtk/SettingsDialog.vala:151
 msgid "Hour(s)"
 msgstr "Година(дин)"
 
@@ -261,7 +263,7 @@ msgstr "Відомості актуальні"
 msgid "Index is stale"
 msgstr "Відомості застаріли"
 
-#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
+#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
 msgid "Install"
 msgstr "Встановити"
 
@@ -270,15 +272,15 @@ msgstr "Встановити"
 msgid "Install Linux v%s ? (y/n): "
 msgstr "Встановити Linux v% s? (так/ні): "
 
-#: src/Console/AppConsole.vala:89
+#: src/Console/AppConsole.vala:90
 msgid "Install latest mainline kernel"
 msgstr "Встановити зазначену гілку ядра"
 
-#: src/Console/AppConsole.vala:90
+#: src/Console/AppConsole.vala:91
 msgid "Install latest point update for current series"
 msgstr "Встановіть останню точку оновлення для поточної серії"
 
-#: src/Console/AppConsole.vala:91
+#: src/Console/AppConsole.vala:92
 msgid "Install specified mainline kernel"
 msgstr "Встановити зазначену гілку ядра"
 
@@ -305,7 +307,7 @@ msgstr "Встановлено"
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 
-#: src/Gtk/SettingsDialog.vala:212
+#: src/Gtk/SettingsDialog.vala:218
 msgid "Internet connection timeout in "
 msgstr "Час очікування підключення до Інтернету в "
 
@@ -317,17 +319,17 @@ msgstr "Ядро"
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
-#: src/Common/LinuxKernel.vala:776 src/Console/AppConsole.vala:367
+#: src/Common/LinuxKernel.vala:776 src/Console/AppConsole.vala:368
 #, c-format
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Common/LinuxKernel.vala:765 src/Console/AppConsole.vala:360
+#: src/Common/LinuxKernel.vala:765 src/Console/AppConsole.vala:361
 #, c-format
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Console/AppConsole.vala:87
+#: src/Console/AppConsole.vala:88
 msgid "List all available mainline kernels"
 msgstr "Список всіх доступних основних ядер"
 
@@ -335,7 +337,7 @@ msgstr "Список всіх доступних основних ядер"
 msgid "List available kernels"
 msgstr "Список всіх доступних основних ядер"
 
-#: src/Console/AppConsole.vala:88
+#: src/Console/AppConsole.vala:89
 msgid "List installed kernels"
 msgstr "Список всіх доступних основних ядер"
 
@@ -347,7 +349,7 @@ msgstr "Нема значка"
 msgid "Multiple Kernels Selected"
 msgstr "Вибрано кілька ядер"
 
-#: src/Console/AppConsole.vala:291
+#: src/Console/AppConsole.vala:292
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Для встановлення вибрано кілька ядер. Виберіть лише одну."
 
@@ -360,12 +362,12 @@ msgstr "Ні"
 msgid "No Internet"
 msgstr "Інтернету немає"
 
-#: src/Console/AppConsole.vala:285 src/Console/AppConsole.vala:322
+#: src/Console/AppConsole.vala:286 src/Console/AppConsole.vala:323
 msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
-#: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:372
-#: src/Console/AppConsole.vala:430 src/Gtk/MainWindow.vala:796
+#: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:373
+#: src/Console/AppConsole.vala:431 src/Gtk/MainWindow.vala:796
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -373,15 +375,15 @@ msgstr "Оновлень не знайдено"
 msgid "Not Selected"
 msgstr "Не вибрано"
 
-#: src/Gtk/SettingsDialog.vala:66
+#: src/Gtk/SettingsDialog.vala:65
 msgid "Notification"
 msgstr "Повідомлення"
 
-#: src/Gtk/SettingsDialog.vala:73
+#: src/Gtk/SettingsDialog.vala:72
 msgid "Notify if a major release is available"
 msgstr "Повідомити, чи доступний великий випуск"
 
-#: src/Gtk/SettingsDialog.vala:84
+#: src/Gtk/SettingsDialog.vala:83
 msgid "Notify if a point release is available"
 msgstr "Повідомити, чи доступний невеликий випуск"
 
@@ -392,11 +394,11 @@ msgstr "Повідомити, чи доступний невеликий вип�
 msgid "OK"
 msgstr "OK"
 
-#: src/Console/AppConsole.vala:98 src/Gtk/AppGtk.vala:181
+#: src/Console/AppConsole.vala:99 src/Gtk/AppGtk.vala:183
 msgid "Options"
 msgstr "Параметри"
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:197
 msgid "Other"
 msgstr "Інший"
 
@@ -418,7 +420,7 @@ msgstr "Встановити необхідні пакети і спробуйт
 msgid "Preparing to remove selected kernels"
 msgstr "Підготовка до видалення вибраних ядер"
 
-#: src/Gtk/AppGtk.vala:183
+#: src/Gtk/AppGtk.vala:185
 msgid "Print debug information"
 msgstr "Роздрукувати зневадження"
 
@@ -438,24 +440,24 @@ msgstr "Оновлення..."
 msgid "Remove"
 msgstr "Видалити"
 
-#: src/Console/AppConsole.vala:95 src/Console/AppConsole.vala:100
+#: src/Console/AppConsole.vala:96 src/Console/AppConsole.vala:101
 msgid "Remove files from application cache"
 msgstr "Видалити файли з кешу програми"
 
-#: src/Console/AppConsole.vala:93 src/Gtk/MainWindow.vala:426
+#: src/Console/AppConsole.vala:94 src/Gtk/MainWindow.vala:426
 msgid "Remove installed kernels older than running kernel"
 msgstr "Видаліть встановлені ядра, старші за запущене"
 
-#: src/Console/AppConsole.vala:92
+#: src/Console/AppConsole.vala:93
 msgid "Remove specified kernel"
 msgstr "Видаліть вказане ядро"
 
-#: src/Console/AppConsole.vala:199 src/Console/AppConsole.vala:313
-#: src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:200 src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:343
 msgid "Run '"
 msgstr "Запуск"
 
-#: src/Console/AppConsole.vala:117
+#: src/Console/AppConsole.vala:118
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Запустіть додаток як адміністратор за допомогою pkexec або sudo."
 
@@ -483,7 +485,7 @@ msgstr ""
 "Це ядро ​​зараз працює і не може бути видалено. \n"
 "Встановіть інше ядро, перш ніж видаляти його."
 
-#: src/Gtk/SettingsDialog.vala:56 src/Gtk/MainWindow.vala:475
+#: src/Gtk/MainWindow.vala:475 src/Gtk/SettingsDialog.vala:55
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -491,23 +493,23 @@ msgstr "Налаштування"
 msgid "Show"
 msgstr "Показати"
 
-#: src/Gtk/AppGtk.vala:184
+#: src/Gtk/AppGtk.vala:186
 msgid "Show all options"
 msgstr "Показати усі параметри"
 
-#: src/Gtk/SettingsDialog.vala:95
+#: src/Gtk/SettingsDialog.vala:94
 msgid "Show notification bubble on desktop"
 msgstr "Показувати вікно сповіщень на робочому столі"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:105
 msgid "Show notification dialog"
 msgstr "Показувати вікно сповіщень"
 
-#: src/Console/AppConsole.vala:96
+#: src/Console/AppConsole.vala:97
 msgid "Show unstable and RC releases"
 msgstr "Приховати нестабільні і реліз-кандидат версії"
 
-#: src/Gtk/SettingsDialog.vala:199
+#: src/Gtk/SettingsDialog.vala:205
 msgid "Skip internet connection check"
 msgstr "Пропустити перевірку підключення до Інтернету"
 
@@ -519,11 +521,11 @@ msgstr "Стан"
 msgid "Stopped"
 msgstr "Зупинено"
 
-#: src/Console/AppConsole.vala:81 src/Gtk/AppGtk.vala:179
+#: src/Console/AppConsole.vala:82 src/Gtk/AppGtk.vala:181
 msgid "Syntax"
 msgstr "Синтаксис"
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:111
+#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:113
 msgid "Temp"
 msgstr "Темп"
 
@@ -562,7 +564,7 @@ msgstr "Удаление завершено"
 msgid "Un-install completed with errors"
 msgstr "Удаление завершено с ошибками"
 
-#: src/Console/AppConsole.vala:197 src/Gtk/AppGtk.vala:166
+#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:168
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
@@ -574,7 +576,7 @@ msgstr "Версія"
 msgid "W"
 msgstr "W"
 
-#: src/Gtk/SettingsDialog.vala:156
+#: src/Gtk/SettingsDialog.vala:155
 msgid "Week(s)"
 msgstr "Тиждень (ні)"
 
@@ -586,6 +588,6 @@ msgstr "Так"
 msgid "[Warning] Deleted invalid lock"
 msgstr "[Увага] Вилучено неправильне блокування"
 
-#: src/Gtk/SettingsDialog.vala:226
+#: src/Gtk/SettingsDialog.vala:232
 msgid "seconds"
 msgstr "секунди"

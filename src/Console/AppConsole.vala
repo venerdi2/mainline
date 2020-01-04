@@ -36,6 +36,7 @@ public Main App;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
+[CCode(cname="DEFAULT_KERNEL_VERSION_THRESHOLD")] extern const string DEFAULT_KERNEL_VERSION_THRESHOLD;
 
 const string LOCALE_DIR = "/usr/share/locale";
 

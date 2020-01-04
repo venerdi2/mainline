@@ -273,7 +273,7 @@ public class MainWindow : Gtk.Window{
 			log_error (e.message);
 		}
 
-		var kern_4 = new LinuxKernel.from_version("4.0");
+		var kvt = new LinuxKernel.from_version(LinuxKernel.kernel_version_threshold.to_string());
 
 		TreeIter iter;
 		bool odd_row = false;
@@ -284,7 +284,7 @@ public class MainWindow : Gtk.Window{
 			if (LinuxKernel.hide_unstable && kern.is_unstable){
 				continue;
 			}
-			if (LinuxKernel.hide_older && (kern.compare_to(kern_4) < 0)){
+			if (kern.compare_to(kvt) < 0){
 				continue;
 			}
 
@@ -477,15 +477,15 @@ public class MainWindow : Gtk.Window{
 
 		button.clicked.connect(() => {
 
-			bool prev_hide_older = LinuxKernel.hide_older;
+			int prev_kvt = LinuxKernel.kernel_version_threshold;
 			bool prev_hide_unstable = LinuxKernel.hide_unstable;
 
 			var dlg = new SettingsDialog.with_parent(this);
 			dlg.run();
 			dlg.destroy();
 
-			if (((prev_hide_older == true) && (LinuxKernel.hide_older == false))
-				|| ((prev_hide_unstable == true) && (LinuxKernel.hide_unstable == false))){
+			if ((prev_kvt != LinuxKernel.kernel_version_threshold)
+				|| (prev_hide_unstable != LinuxKernel.hide_unstable)){
 				refresh_cache();
 			}
 

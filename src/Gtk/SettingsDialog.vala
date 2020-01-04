@@ -40,8 +40,7 @@ public class SettingsDialog : Gtk.Dialog {
 	private Gtk.CheckButton chk_notify_bubble;
 	private Gtk.CheckButton chk_notify_dialog;
 	private Gtk.CheckButton chk_hide_unstable;
-	private Gtk.CheckButton chk_hide_older;
-		
+
 	public SettingsDialog.with_parent(Window parent) {
 		set_transient_for(parent);
 		set_modal(true);
@@ -176,15 +175,22 @@ public class SettingsDialog : Gtk.Dialog {
 			LinuxKernel.hide_unstable = chk_hide_unstable.active;
 		});
 
-		// chk_hide_older
-		chk = new CheckButton.with_label(_("Hide kernels older than 4.0"));
-		chk.active = LinuxKernel.hide_older;
-		chk.margin_start = 6;
-		vbox_main.add(chk);
-		chk_hide_older = chk;
-		
-		chk.toggled.connect(()=>{
-			LinuxKernel.hide_older = chk_hide_older.active;
+        // kernel version threshold
+		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		vbox_main.add (hbox);
+
+		label = new Label(_("Hide kernels older than "));
+		label.xalign = (float) 0.0;
+		label.margin_start = 6;
+		hbox.add (label);
+
+		var kvt_adj = new Gtk.Adjustment(LinuxKernel.kernel_version_threshold, 0, 99, 1, 1, 0);
+		var kvt_spin = new Gtk.SpinButton (kvt_adj, 1, 0);
+		kvt_spin.xalign = (float) 0.5;
+		hbox.add(kvt_spin);
+
+		kvt_spin.changed.connect(()=>{
+			LinuxKernel.kernel_version_threshold = (int) kvt_spin.get_value();
 		});
 		
 		// other

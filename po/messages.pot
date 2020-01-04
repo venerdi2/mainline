@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Brian K. White (bw.aljex@gmail.com)
+# Copyright (C) YEAR Brian K. White (b.kenyon.w@gmail.com)
 # This file is distributed under the same license as the mainline package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mainline 1.0.1\n"
-"Report-Msgid-Bugs-To: bw.aljex@gmail.com\n"
-"POT-Creation-Date: 2019-09-11 18:24-0400\n"
+"Project-Id-Version: mainline 1.0.2\n"
+"Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
+"POT-Creation-Date: 2020-01-03 19:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: src/Console/AppConsole.vala:114
+#: src/Console/AppConsole.vala:115
 msgid "Admin access is required for running this application."
 msgstr ""
 
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Artists"
 msgstr ""
 
-#: src/Console/AppConsole.vala:101
+#: src/Console/AppConsole.vala:102
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr ""
 
@@ -55,12 +55,13 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: src/Console/AppConsole.vala:204 src/Gtk/AppGtk.vala:110
+#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:112
 msgid "Cache"
 msgstr ""
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Gtk/TerminalWindow.vala:148 src/Utility/Gtk/CustomMessageDialog.vala:155
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:148
+#: src/Gtk/UpdateNotificationWindow.vala:167
+#: src/Utility/Gtk/CustomMessageDialog.vala:155
 msgid "Cancel"
 msgstr ""
 
@@ -68,15 +69,15 @@ msgstr ""
 msgid "Changes"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:121
+#: src/Gtk/SettingsDialog.vala:120
 msgid "Check every"
 msgstr ""
 
-#: src/Console/AppConsole.vala:85
+#: src/Console/AppConsole.vala:86
 msgid "Check for kernel updates"
 msgstr ""
 
-#: src/Console/AppConsole.vala:86
+#: src/Console/AppConsole.vala:87
 msgid "Check for kernel updates and notify current user"
 msgstr ""
 
@@ -84,11 +85,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/Console/AppConsole.vala:341
+#: src/Console/AppConsole.vala:342
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:83
+#: src/Console/AppConsole.vala:84
 msgid "Commands"
 msgstr ""
 
@@ -110,7 +111,7 @@ msgstr ""
 msgid "Could not find any kernels to remove"
 msgstr ""
 
-#: src/Console/AppConsole.vala:309 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:310 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr ""
 
@@ -128,7 +129,7 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Day(s)"
 msgstr ""
 
@@ -140,7 +141,7 @@ msgstr ""
 msgid "Dir not found"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:161
+#: src/Gtk/SettingsDialog.vala:160
 msgid "Display"
 msgstr ""
 
@@ -153,7 +154,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: src/Console/AppConsole.vala:94
+#: src/Console/AppConsole.vala:95
 msgid "Download packages for specified kernel"
 msgstr ""
 
@@ -241,15 +242,15 @@ msgstr ""
 msgid "File saved"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:180
-msgid "Hide kernels older than 4.0"
+#: src/Gtk/SettingsDialog.vala:182
+msgid "Hide kernels older than "
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:169
+#: src/Gtk/SettingsDialog.vala:168
 msgid "Hide unstable and RC releases"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:152
+#: src/Gtk/SettingsDialog.vala:151
 msgid "Hour(s)"
 msgstr ""
 
@@ -265,7 +266,7 @@ msgstr ""
 msgid "Index is stale"
 msgstr ""
 
-#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:359
+#: src/Gtk/MainWindow.vala:359 src/Gtk/UpdateNotificationWindow.vala:147
 msgid "Install"
 msgstr ""
 
@@ -274,15 +275,15 @@ msgstr ""
 msgid "Install Linux v%s ? (y/n): "
 msgstr ""
 
-#: src/Console/AppConsole.vala:89
+#: src/Console/AppConsole.vala:90
 msgid "Install latest mainline kernel"
 msgstr ""
 
-#: src/Console/AppConsole.vala:90
+#: src/Console/AppConsole.vala:91
 msgid "Install latest point update for current series"
 msgstr ""
 
-#: src/Console/AppConsole.vala:91
+#: src/Console/AppConsole.vala:92
 msgid "Install specified mainline kernel"
 msgstr ""
 
@@ -307,7 +308,7 @@ msgstr ""
 msgid "Internet connection is not active"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:212
+#: src/Gtk/SettingsDialog.vala:218
 msgid "Internet connection timeout in "
 msgstr ""
 
@@ -319,17 +320,17 @@ msgstr ""
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:776 src/Console/AppConsole.vala:367
+#: src/Common/LinuxKernel.vala:776 src/Console/AppConsole.vala:368
 #, c-format
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:765 src/Console/AppConsole.vala:360
+#: src/Common/LinuxKernel.vala:765 src/Console/AppConsole.vala:361
 #, c-format
 msgid "Latest update"
 msgstr ""
 
-#: src/Console/AppConsole.vala:87
+#: src/Console/AppConsole.vala:88
 msgid "List all available mainline kernels"
 msgstr ""
 
@@ -337,7 +338,7 @@ msgstr ""
 msgid "List available kernels"
 msgstr ""
 
-#: src/Console/AppConsole.vala:88
+#: src/Console/AppConsole.vala:89
 msgid "List installed kernels"
 msgstr ""
 
@@ -349,7 +350,7 @@ msgstr ""
 msgid "Multiple Kernels Selected"
 msgstr ""
 
-#: src/Console/AppConsole.vala:291
+#: src/Console/AppConsole.vala:292
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 
@@ -362,12 +363,12 @@ msgstr ""
 msgid "No Internet"
 msgstr ""
 
-#: src/Console/AppConsole.vala:285 src/Console/AppConsole.vala:322
+#: src/Console/AppConsole.vala:286 src/Console/AppConsole.vala:323
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:372
-#: src/Console/AppConsole.vala:430 src/Gtk/MainWindow.vala:796
+#: src/Common/LinuxKernel.vala:784 src/Console/AppConsole.vala:373
+#: src/Console/AppConsole.vala:431 src/Gtk/MainWindow.vala:796
 msgid "No updates found"
 msgstr ""
 
@@ -375,15 +376,15 @@ msgstr ""
 msgid "Not Selected"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:66
+#: src/Gtk/SettingsDialog.vala:65
 msgid "Notification"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:73
+#: src/Gtk/SettingsDialog.vala:72
 msgid "Notify if a major release is available"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:84
+#: src/Gtk/SettingsDialog.vala:83
 msgid "Notify if a point release is available"
 msgstr ""
 
@@ -394,11 +395,11 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: src/Console/AppConsole.vala:98 src/Gtk/AppGtk.vala:181
+#: src/Console/AppConsole.vala:99 src/Gtk/AppGtk.vala:183
 msgid "Options"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:197
 msgid "Other"
 msgstr ""
 
@@ -420,7 +421,7 @@ msgstr ""
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
-#: src/Gtk/AppGtk.vala:183
+#: src/Gtk/AppGtk.vala:185
 msgid "Print debug information"
 msgstr ""
 
@@ -440,24 +441,24 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/Console/AppConsole.vala:95 src/Console/AppConsole.vala:100
+#: src/Console/AppConsole.vala:96 src/Console/AppConsole.vala:101
 msgid "Remove files from application cache"
 msgstr ""
 
-#: src/Console/AppConsole.vala:93 src/Gtk/MainWindow.vala:426
+#: src/Console/AppConsole.vala:94 src/Gtk/MainWindow.vala:426
 msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
-#: src/Console/AppConsole.vala:92
+#: src/Console/AppConsole.vala:93
 msgid "Remove specified kernel"
 msgstr ""
 
-#: src/Console/AppConsole.vala:199 src/Console/AppConsole.vala:313
-#: src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:200 src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:343
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:117
+#: src/Console/AppConsole.vala:118
 msgid "Run the application as admin with pkexec or sudo."
 msgstr ""
 
@@ -483,7 +484,7 @@ msgid ""
 " Install another kernel before removing this one."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:56 src/Gtk/MainWindow.vala:475
+#: src/Gtk/MainWindow.vala:475 src/Gtk/SettingsDialog.vala:55
 msgid "Settings"
 msgstr ""
 
@@ -491,23 +492,23 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: src/Gtk/AppGtk.vala:184
+#: src/Gtk/AppGtk.vala:186
 msgid "Show all options"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:95
+#: src/Gtk/SettingsDialog.vala:94
 msgid "Show notification bubble on desktop"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:105
 msgid "Show notification dialog"
 msgstr ""
 
-#: src/Console/AppConsole.vala:96
+#: src/Console/AppConsole.vala:97
 msgid "Show unstable and RC releases"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:199
+#: src/Gtk/SettingsDialog.vala:205
 msgid "Skip internet connection check"
 msgstr ""
 
@@ -519,11 +520,11 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: src/Console/AppConsole.vala:81 src/Gtk/AppGtk.vala:179
+#: src/Console/AppConsole.vala:82 src/Gtk/AppGtk.vala:181
 msgid "Syntax"
 msgstr ""
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:111
+#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:113
 msgid "Temp"
 msgstr ""
 
@@ -560,7 +561,7 @@ msgstr ""
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: src/Console/AppConsole.vala:197 src/Gtk/AppGtk.vala:166
+#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:168
 msgid "Unknown option"
 msgstr ""
 
@@ -572,7 +573,7 @@ msgstr ""
 msgid "W"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:156
+#: src/Gtk/SettingsDialog.vala:155
 msgid "Week(s)"
 msgstr ""
 
@@ -584,6 +585,6 @@ msgstr ""
 msgid "[Warning] Deleted invalid lock"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:226
+#: src/Gtk/SettingsDialog.vala:232
 msgid "seconds"
 msgstr ""

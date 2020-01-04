@@ -45,7 +45,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
 	
-	public static bool hide_older;
+	public static int kernel_version_threshold;
 	public static bool hide_unstable;
 		
 	public static LinuxKernel kernel_active;
@@ -244,7 +244,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	private static void query_thread() {
 
-		log_debug("query: hide_older: %s".printf(hide_older.to_string()));
+		log_debug("query: kernel_version_threshold: %s".printf(kernel_version_threshold.to_string()));
 		log_debug("query: hide_unstable: %s".printf(hide_unstable.to_string()));
 
 		//DownloadManager.reset_counter();
@@ -269,13 +269,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// TODO: Implement locking for multiple download threads
 
-		var kern_4 = new LinuxKernel.from_version("4.0");
+		var kvt = new LinuxKernel.from_version(kernel_version_threshold.to_string());
 		
 		status_line = "";
 		progress_total = 0;
 		progress_count = 0;
 		foreach(var kern in kernel_list){
-			if (hide_older && (kern.compare_to(kern_4) < 0)){
+			if (kern.compare_to(kvt) < 0){
 				continue;
 			}
 
@@ -308,8 +308,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
-			if (hide_older && (kern.compare_to(kern_4) < 0)){
-				//log_debug("older than 4.0: %s".printf(kern.version_main));
+			if (kern.compare_to(kvt) < 0){
+				//log_debug("older than %s: %s".printf(kvt).printf(kern.version_main));
 				continue;
 			}
 
@@ -1152,7 +1152,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_msg(_("Available Kernels"));
 		log_draw_line();
 
-		var kern_4 = new LinuxKernel.from_version("4.0");
+		var kvt = new LinuxKernel.from_version(kernel_version_threshold.to_string());
 		foreach(var kern in kernel_list){
 			if (!kern.is_valid){
 				continue;
@@ -1160,7 +1160,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (hide_unstable && kern.is_unstable){
 				continue;
 			}
-			if (hide_older && (kern.compare_to(kern_4) < 0)){
+			if (kern.compare_to(kvt) < 0){
 				continue;
 			}
 			
