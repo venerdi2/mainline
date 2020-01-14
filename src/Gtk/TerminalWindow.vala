@@ -203,6 +203,8 @@ public class TerminalWindow : Gtk.Window {
 	}
 
 	public void execute_command(string command){
+		// better way or not?
+		// https://github.com/joshuadowding/ukuu/commit/106170603fd1b554e50a61d70c87aeba77eb78a6
 #if GLIB_LT_2_58
 		term.feed_child("%s\n".printf(command), -1);
 #else

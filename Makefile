@@ -39,7 +39,7 @@ misc_files := README.md \
 	INSTALL \
 	$(BRANDING_SHORTNAME).desktop \
 	debian/control \
-	debian/copyright
+	debian/copyright \
 #	share/polkit-1/actions/$(BRANDING_SHORTNAME).policy
 
 common_vala_files := src/Common/*.vala src/Utility/*.vala
@@ -80,6 +80,7 @@ $(misc_files): %: %.src BRANDING.mak
 		-e ';s/BRANDING_VERSION/$(BRANDING_VERSION)/g' \
 		-e ';s|BRANDING_GITREPO|$(BRANDING_GITREPO)|g' \
 		$(@).src >$(@)
+#		-e ';s|DEST_BIN_DIR|$(DESTDIR)$(bindir)|g'
 
 $(pot_file): $(misc_files) $(common_vala_files) $(tui_vala_files) $(gui_vala_files)
 	find . -iname "*.vala" -print0 | xargs -0 xgettext --from-code=UTF-8 --language=C --keyword=_ \

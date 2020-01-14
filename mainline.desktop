@@ -7,6 +7,6 @@ GenericName=Ubuntu Mainline Kernel Installer
 Terminal=false
 Icon=mainline
 Comment=Ubuntu Mainline Kernel Installer
-X-KDE-StartupNotify=false
+StartupNotify=true;
 Categories=System;
 StartupWMClass=mainline-gtk

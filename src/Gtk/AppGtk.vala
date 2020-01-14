@@ -33,14 +33,12 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public Main App;
-
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
-[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
 
 public const string ICON_DIR = BRANDING_SHORTNAME;
 

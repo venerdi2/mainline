@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-04 00:31-0500\n"
+"POT-Creation-Date: 2020-01-14 12:48-0500\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "About"
 msgstr "O programie"
 
-#: src/Console/AppConsole.vala:117
+#: src/Console/AppConsole.vala:113
 msgid "Admin access is required for running this application."
 msgstr "Aby uruchomić tę aplikację niezbędne są prawa administratora."
 
@@ -38,7 +38,7 @@ msgstr "Architektura systemu"
 msgid "Artists"
 msgstr "Artyści"
 
-#: src/Console/AppConsole.vala:103
+#: src/Console/AppConsole.vala:99
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr "Dostępne jądra"
 msgid "Back"
 msgstr "Wstecz"
 
-#: src/Console/AppConsole.vala:207 src/Gtk/AppGtk.vala:112
+#: src/Console/AppConsole.vala:203 src/Gtk/AppGtk.vala:110
 msgid "Cache"
 msgstr ""
 
@@ -73,11 +73,11 @@ msgstr "Zmiany"
 msgid "Check every"
 msgstr "Sprawdzaj co"
 
-#: src/Console/AppConsole.vala:86
+#: src/Console/AppConsole.vala:82
 msgid "Check for kernel updates"
 msgstr "Sprawdź nowe wersje jądra"
 
-#: src/Console/AppConsole.vala:87
+#: src/Console/AppConsole.vala:83
 #, fuzzy
 msgid "Check for kernel updates and notify current user"
 msgstr "Sprawdź nowe wersje jądra"
@@ -86,15 +86,15 @@ msgstr "Sprawdź nowe wersje jądra"
 msgid "Close"
 msgstr "Zamknij"
 
-#: src/Console/AppConsole.vala:344
+#: src/Console/AppConsole.vala:340
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:84
+#: src/Console/AppConsole.vala:80
 msgid "Commands"
 msgstr ""
 
-#: src/Common/Main.vala:105
+#: src/Common/Main.vala:107
 msgid "Commands listed below are not available on this system"
 msgstr "Poniższe polecenia nie są dostępne na tym systemie"
 
@@ -113,7 +113,7 @@ msgstr "Wkład"
 msgid "Could not find any kernels to remove"
 msgstr "Wybierz jądro do usunięcia"
 
-#: src/Console/AppConsole.vala:312 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:308 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Nie można odnaleźć żądanej wersji"
 
@@ -157,7 +157,7 @@ msgstr "Dystrybucja"
 msgid "Documenters"
 msgstr "Dokumentujący"
 
-#: src/Console/AppConsole.vala:95
+#: src/Console/AppConsole.vala:91
 msgid "Download packages for specified kernel"
 msgstr "Pobierz pakiety dla wybranego jądra"
 
@@ -175,7 +175,7 @@ msgstr "E"
 msgid "ERROR"
 msgstr "BŁĄD"
 
-#: src/Console/AppConsole.vala:102
+#: src/Console/AppConsole.vala:98
 msgid "Enable verbose debugging output"
 msgstr ""
 
@@ -278,16 +278,16 @@ msgstr "Zainstaluj"
 msgid "Install Linux v%s ? (y/n): "
 msgstr ""
 
-#: src/Console/AppConsole.vala:90
+#: src/Console/AppConsole.vala:86
 #, fuzzy
 msgid "Install latest mainline kernel"
 msgstr "Zainstaluj wybrane jądro"
 
-#: src/Console/AppConsole.vala:91
+#: src/Console/AppConsole.vala:87
 msgid "Install latest point update for current series"
 msgstr ""
 
-#: src/Console/AppConsole.vala:92
+#: src/Console/AppConsole.vala:88
 msgid "Install specified mainline kernel"
 msgstr "Zainstaluj wybrane jądro"
 
@@ -327,17 +327,17 @@ msgstr "Jądro"
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Narzędzie uaktualniania jądra dla dystrybucji z rodziny Ubuntu"
 
-#: src/Common/LinuxKernel.vala:788 src/Console/AppConsole.vala:370
+#: src/Common/LinuxKernel.vala:788 src/Console/AppConsole.vala:366
 #, c-format
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:777 src/Console/AppConsole.vala:363
+#: src/Common/LinuxKernel.vala:777 src/Console/AppConsole.vala:359
 #, c-format
 msgid "Latest update"
 msgstr ""
 
-#: src/Console/AppConsole.vala:88
+#: src/Console/AppConsole.vala:84
 msgid "List all available mainline kernels"
 msgstr "Pokaż wszystkie dostępne jądra"
 
@@ -346,7 +346,7 @@ msgstr "Pokaż wszystkie dostępne jądra"
 msgid "List available kernels"
 msgstr "Pokaż wszystkie dostępne jądra"
 
-#: src/Console/AppConsole.vala:89
+#: src/Console/AppConsole.vala:85
 #, fuzzy
 msgid "List installed kernels"
 msgstr "Pokaż wszystkie dostępne jądra"
@@ -359,7 +359,7 @@ msgstr "Brakująca ikona"
 msgid "Multiple Kernels Selected"
 msgstr "Wybrano kilka jąder"
 
-#: src/Console/AppConsole.vala:294
+#: src/Console/AppConsole.vala:290
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Wybrano kilka jąder do instalacji. Wybierz tylko jedno."
 
@@ -372,12 +372,12 @@ msgstr ""
 msgid "No Internet"
 msgstr "Brak internetu"
 
-#: src/Console/AppConsole.vala:288 src/Console/AppConsole.vala:325
+#: src/Console/AppConsole.vala:284 src/Console/AppConsole.vala:321
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:375
-#: src/Console/AppConsole.vala:433 src/Gtk/MainWindow.vala:794
+#: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:794
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
@@ -404,7 +404,7 @@ msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 msgid "OK"
 msgstr "OK"
 
-#: src/Console/AppConsole.vala:99 src/Gtk/AppGtk.vala:183
+#: src/Console/AppConsole.vala:95 src/Gtk/AppGtk.vala:181
 msgid "Options"
 msgstr "Opcje"
 
@@ -412,7 +412,7 @@ msgstr "Opcje"
 msgid "Other"
 msgstr ""
 
-#: src/Console/AppConsole.vala:104
+#: src/Console/AppConsole.vala:100
 msgid "Override user"
 msgstr ""
 
@@ -426,7 +426,7 @@ msgstr "Dostępne pakiety"
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: src/Common/Main.vala:106
+#: src/Common/Main.vala:108
 msgid "Please install required packages and try again"
 msgstr "Zainstaluj wymagane pakiety i spróbuj ponownie"
 
@@ -434,7 +434,7 @@ msgstr "Zainstaluj wymagane pakiety i spróbuj ponownie"
 msgid "Preparing to remove selected kernels"
 msgstr "Przygotowanie do usunięcia wybranych jąder"
 
-#: src/Gtk/AppGtk.vala:185
+#: src/Gtk/AppGtk.vala:183
 msgid "Print debug information"
 msgstr "Wypisz informacje debugujące"
 
@@ -454,25 +454,25 @@ msgstr "Odświeżam..."
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/Console/AppConsole.vala:96 src/Console/AppConsole.vala:101
+#: src/Console/AppConsole.vala:92 src/Console/AppConsole.vala:97
 msgid "Remove files from application cache"
 msgstr "Usuń pliki z pamięci podręcznej aplikacji"
 
-#: src/Console/AppConsole.vala:94 src/Gtk/MainWindow.vala:424
+#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:424
 msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
-#: src/Console/AppConsole.vala:93
+#: src/Console/AppConsole.vala:89
 #, fuzzy
 msgid "Remove specified kernel"
 msgstr "Usuń wybrane jądro"
 
-#: src/Console/AppConsole.vala:202 src/Console/AppConsole.vala:316
-#: src/Console/AppConsole.vala:345
+#: src/Console/AppConsole.vala:198 src/Console/AppConsole.vala:312
+#: src/Console/AppConsole.vala:341
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:120
+#: src/Console/AppConsole.vala:116
 #, fuzzy
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Uruchom aplikację jako root albo użyj gksu/sudo."
@@ -513,7 +513,7 @@ msgstr ""
 msgid "Show N previous major versions "
 msgstr ""
 
-#: src/Gtk/AppGtk.vala:186
+#: src/Gtk/AppGtk.vala:184
 msgid "Show all options"
 msgstr "Pokaż wszystkie opcje"
 
@@ -525,7 +525,7 @@ msgstr "Pokaż powiadomienia na pulpicie"
 msgid "Show notification dialog"
 msgstr "Pokaż okno powiadomień"
 
-#: src/Console/AppConsole.vala:97
+#: src/Console/AppConsole.vala:93
 #, fuzzy
 msgid "Show unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
@@ -543,11 +543,11 @@ msgstr "Status"
 msgid "Stopped"
 msgstr "Zatrzymany"
 
-#: src/Console/AppConsole.vala:82 src/Gtk/AppGtk.vala:181
+#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:179
 msgid "Syntax"
 msgstr "Składnia"
 
-#: src/Console/AppConsole.vala:208 src/Gtk/AppGtk.vala:113
+#: src/Console/AppConsole.vala:204 src/Gtk/AppGtk.vala:111
 msgid "Temp"
 msgstr ""
 
@@ -586,7 +586,7 @@ msgstr "De-instalacja zakończona"
 msgid "Un-install completed with errors"
 msgstr "De-instalacja zakończona z błędami"
 
-#: src/Console/AppConsole.vala:200 src/Gtk/AppGtk.vala:168
+#: src/Console/AppConsole.vala:196 src/Gtk/AppGtk.vala:166
 msgid "Unknown option"
 msgstr "Nieznana opcja"
 

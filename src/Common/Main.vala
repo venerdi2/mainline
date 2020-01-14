@@ -37,7 +37,8 @@ extern void exit(int exit_code);
 public class Main : GLib.Object{
 
 	// constants ----------
-	
+	[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
+
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
@@ -89,7 +90,8 @@ public class Main : GLib.Object{
 	
 	public static bool check_dependencies(out string msg) {
 		
-		string[] dependencies = { "aptitude", "aria2c", "dpkg", "uname", "lsb_release" };
+		string[] dependencies = { "apt-get", "aptitude", "aria2c", "dpkg", "gpg", "lsb_release", "pgrep", "pkexec", "uname" };
+		// bash cat chmod chown cd cp du echo env find gzip gunzip id kill ln mv notify-user pidof ps read realpath rm setsid sh stat tar wc which while xdg-open
 
 		msg = "";
 		
@@ -243,7 +245,7 @@ public class Main : GLib.Object{
 		// UGLY - this should be a cron job
 		string txt = "# Notifications are disabled\nexit 0\n";
 		if (notify_minor || notify_major){
-			txt = "while sleep %d%s".printf(count, suffix)+" ;do "+BRANDING_SHORTNAME+" --notify ;done\n";
+			txt = "while sleep %d%s".printf(count, suffix)+" ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,txt);
@@ -260,8 +262,8 @@ public class Main : GLib.Object{
 				+ "Hidden=false\n"
 				+ "NoDisplay=false\n"
 				+ "X-GNOME-Autostart-enabled=true\n"
-				+ "Name="+BRANDING_SHORTNAME+" notification\n"
-				+ "Comment="+BRANDING_SHORTNAME+" notification\n";
+				+ "Name=" + BRANDING_SHORTNAME + " notification\n"
+				+ "Comment=" + BRANDING_SHORTNAME + " notification\n";
 
 			file_write(STARTUP_DESKTOP_FILE, txt);
 

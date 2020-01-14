@@ -72,6 +72,8 @@ Populating the main window fails, but works if you just do it again.
 Determining what is currently installed & running fails, but works if you just do it again  
 ...that is really kind of inexcusable crap and could all be a lot better.
 * More careful temp file / temp working dir management.  
-It does avoidable dumb things like creating dirs/files as one user and then can't remove or use them later as another user.
+It does avoidable dumb things like creating dirs/files as one user and then can't remove or use them later as another user.  
+Maybe do clean_cache() after every action?  
+https://github.com/joshuadowding/ukuu/commit/ca03723a7a542cd591246a0f6d6a62bad4fac57c
 * Maybe replace the entire thing with a bash script, maybe with zenity for an optional gui?  
 https://github.com/pimlie/ubuntu-mainline-kernel.sh

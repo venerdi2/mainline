@@ -114,8 +114,6 @@ public abstract class AsyncTask : GLib.Object{
 			    out output_fd,
 			    out error_fd);
 
-			set_priority();
-
 			log_debug("AsyncTask: child_pid: %d".printf(child_pid));
 			
 			// create stream readers
@@ -358,53 +356,6 @@ public abstract class AsyncTask : GLib.Object{
 		process_quit(child_pid);
 		
 		log_debug("process_quit: %d".printf(child_pid));
-	}
-
-	public void set_priority() {
-		if (background_mode){
-			set_priority_value(5);
-		}
-		else{
-			set_priority_value(0);
-		}
-	}
-
-	public void set_priority_value(int prio) {
-		Pid app_pid = Posix.getpid();
-		process_set_priority (app_pid, prio);
-
-		if (status == AppStatus.RUNNING) {
-			process_set_priority (child_pid, prio);
-
-			Pid sub_child_pid;
-			foreach (long pid in get_process_children (child_pid)) {
-				sub_child_pid = (Pid) pid;
-				process_set_priority (sub_child_pid, prio);
-			}
-		}
-	}
-
-	public string stat_time_elapsed{
-		owned get{
-			long elapsed = (long) timer_elapsed(timer);
-			return format_duration(elapsed);
-		}
-	}
-
-	public string stat_time_remaining{
-		owned get{
-			if (progress > 0){
-				long elapsed = (long) timer_elapsed(timer);
-				long remaining = (long)((elapsed / progress) * (1.0 - progress));
-				if (remaining < 0){
-					remaining = 0;
-				}
-				return format_duration(remaining);
-			}
-			else{
-				return "???";
-			}
-		}
 	}
 
 	public void print_app_status(){

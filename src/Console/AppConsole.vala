@@ -34,9 +34,6 @@ public Main App;
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
-[CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
-[CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
-[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
 
 const string LOCALE_DIR = "/usr/share/locale";
 
@@ -49,15 +46,14 @@ public class AppConsole : GLib.Object {
 		log_msg("%s v%s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
 		init_tmp(BRANDING_SHORTNAME);
-
-		//check_if_admin();
 		
 		LOG_TIMESTAMP = false;
 
 		//check dependencies
 		string message;
 		if (!Main.check_dependencies(out message)) {
-			exit(1);
+			log_error(message);
+			return(0);
 		}
 
 		App = new Main(args, false);

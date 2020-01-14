@@ -515,34 +515,4 @@ namespace TeeJee.ProcessHelper{
 		}
 	}
 
-	// process priority ---------------------------------------
-	
-	public void process_set_priority (Pid procID, int prio){
-
-		/* Set process priority */
-
-		if (Posix.getpriority (Posix.PRIO_PROCESS, procID) != prio)
-			Posix.setpriority (Posix.PRIO_PROCESS, procID, prio);
-	}
-
-	public int process_get_priority (Pid procID){
-
-		/* Get process priority */
-
-		return Posix.getpriority (Posix.PRIO_PROCESS, procID);
-	}
-
-	public void process_set_priority_normal (Pid procID){
-
-		/* Set normal priority for process */
-
-		process_set_priority (procID, 0);
-	}
-
-	public void process_set_priority_low (Pid procID){
-
-		/* Set low priority for process */
-
-		process_set_priority (procID, 5);
-	}
 }
