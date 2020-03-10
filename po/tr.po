@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
 "POT-Creation-Date: 2020-01-14 12:48-0500\n"
-"PO-Revision-Date: 2019-08-31 18:33+0300\n"
+"PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -175,7 +175,7 @@ msgstr "HATA"
 
 #: src/Console/AppConsole.vala:98
 msgid "Enable verbose debugging output"
-msgstr ""
+msgstr "Ayrıntılı hata ayıklama çıktısını etkinleştir"
 
 #: src/Utility/Gtk/GtkHelper.vala:17
 msgid "Error"
@@ -298,8 +298,7 @@ msgstr "Kurulum hatalarla tamamlandı"
 
 #: src/Common/LinuxKernel.vala:1281
 msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr ""
-"Kurulum tamamlandı. Yeni çekirdeği kullanmak için yeniden başlatma gerekiyor."
+msgstr "Kurulum tamamlandı. Yeni çekirdeği kullanmak için yeniden başlatma gerekiyor."
 
 #: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
 msgid "Installed"
@@ -407,7 +406,7 @@ msgstr "Diğer"
 
 #: src/Console/AppConsole.vala:100
 msgid "Override user"
-msgstr ""
+msgstr "Kullanıcıyı geçersiz kıl"
 
 #: src/Common/LinuxKernel.vala:1072
 #, c-format
@@ -417,7 +416,7 @@ msgstr "Mevcut Paketler"
 #: src/Common/LinuxKernel.vala:1080
 #, c-format
 msgid "Packages Installed"
-msgstr "Paketler Kuruldu"
+msgstr "Kurulu Paketler"
 
 #: src/Common/Main.vala:108
 msgid "Please install required packages and try again"
@@ -502,7 +501,7 @@ msgstr "Göster"
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Show N previous major versions "
-msgstr ""
+msgstr "Önceki ana sürümleri gösterme sayısı "
 
 #: src/Gtk/AppGtk.vala:184
 msgid "Show all options"
