@@ -202,17 +202,6 @@ public class TerminalWindow : Gtk.Window {
 		process_quit(child_pid);
 	}
 
-	public void execute_command(string command){
-		// better way or not?
-		// https://github.com/joshuadowding/ukuu/commit/106170603fd1b554e50a61d70c87aeba77eb78a6
-#if GLIB_LT_2_58
-		term.feed_child("%s\n".printf(command), -1);
-#else
-		string c = command.concat("\n");
-		term.feed_child(c.to_utf8());
-#endif
-	}
-
 	public void execute_script(string script_path, bool wait = false){
 		string[] argv = new string[1];
 		argv[0] = script_path;
