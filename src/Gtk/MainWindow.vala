@@ -504,25 +504,35 @@ public class MainWindow : Gtk.Window{
 
 		// FIXME - this should come from the AUTHORS file, or from git
 		dialog.authors = {
-			"Tony George:teejeetech@gmail.com",
-			BRANDING_AUTHORNAME+":"+BRANDING_AUTHOREMAIL
+			"Tony George <teejeetech@gmail.com>",
+			BRANDING_AUTHORNAME+" <"+BRANDING_AUTHOREMAIL+">"
 		};
 
 		dialog.third_party = {
 			"Elementary project (various icons):github.com/elementary/icons",
 			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project"
 		};
-		// FIXME - generate from files
+		// FIXME - generate this list from the .po files
+		/*
 		dialog.translators = {
-			"Åke Engelbrektson (Swedish):eson@svenskasprakfiler.se",
-			"Иннусик (Russian):slavusik1988@gmail.com",
-			"Waldemar Konik (Polish):valdi74@github",
-			"gogo (Croatian):trebelnik2@gmail.com",
-			"Adolfo Jayme Barrientos (Spanish):fitojb@ubuntu.com",
-			"yolateng0 (French):github.com/yolateng0",
-			"Hugo Posnic (French):hugo.posnic@gmail.com",
-			"Faust3000 (Russian):slavusik1988@gmail.com",
-			"Gökhan GÖKKAYA (Turkish):gokhanlnx@gmail.com"
+			"name",
+			"name",
+			"name"
+		};
+		*/
+		// For now, run "make TRANSLATORS"
+		// then cut & paste from generated TRANSLATORS file
+		// and add the quotes & commas
+		dialog.translators = {
+			"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>",
+			"fr: Yolateng0 <yo@yo.nohost.me>",
+			"hr: gogo <trebelnik2@gmail.com>",
+			"nl: Heimen Stoffels <vistausss@outlook.com>",
+			"pl: Waldemar Konik <valdi74@github>",
+			"ru: Faust3000 <slavusik1988@gmail.com>",
+			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
+			"tr: Gökhan GÖKKAYA <gokhanlnx@gmail.com>",
+			"uk: Serhii Golovko <cappelikan@gmail.com>"
 		};
 
 		dialog.documenters = null;

@@ -345,7 +345,7 @@ public class AboutWindow : Dialog {
 		if (translators.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Translators")));
 			foreach(string name in translators){
-				add_line("%s\n".printf(name));
+				add_line("%s\n".printf(name),true,false);
 			}
 			add_line("\n");
 		}
@@ -363,9 +363,9 @@ public class AboutWindow : Dialog {
 		}
 	}
 
-	public void add_line(string text, bool escape_html_chars = true){
+	public void add_line(string text, bool escape_html_chars = true, bool parse = true){
 		
-		if (text.split(":").length >= 2){
+		if (text.split(":").length >= 2 && parse == true){
 			var link = new LinkButton(escape_html(text.split(":")[0]));
 			vbox_lines.add(link);
 

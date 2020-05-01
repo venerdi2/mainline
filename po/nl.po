@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-14 12:48-0500\n"
+"POT-Creation-Date: 2020-05-01 13:31-0400\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
@@ -312,8 +312,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Geïnstalleerd"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "U bent niet verbonden met het internet"
 
@@ -326,7 +326,7 @@ msgstr "U bent niet verbonden met het internet"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:542
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kernel-upgradehulpmiddel voor op Ubuntu-gebaseerde distributies"
 
@@ -372,8 +372,8 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694
 msgid "No Internet"
 msgstr "Geen internetverbinding"
 
@@ -382,7 +382,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:794
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
@@ -451,7 +451,7 @@ msgstr ""
 msgid "Refresh"
 msgstr "Verversen"
 
-#: src/Gtk/MainWindow.vala:567
+#: src/Gtk/MainWindow.vala:577
 msgid "Refreshing..."
 msgstr "Bezig met verversen..."
 
@@ -567,7 +567,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr "Externe hulpmiddelen"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:679
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
 msgid "This kernel is already installed."
 msgstr "Deze kernel is al geïnstalleerd."
 

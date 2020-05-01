@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-14 12:48-0500\n"
+"POT-Creation-Date: 2020-05-01 13:31-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -301,8 +301,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Встановлено"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 
@@ -314,7 +314,7 @@ msgstr "Час очікування підключення до Інтернет
 msgid "Kernel"
 msgstr "Ядро"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:542
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
@@ -356,8 +356,8 @@ msgstr "Для встановлення вибрано кілька ядер. В
 msgid "No"
 msgstr "Ні"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694
 msgid "No Internet"
 msgstr "Інтернету немає"
 
@@ -366,7 +366,7 @@ msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
 #: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:794
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -435,7 +435,7 @@ msgstr "Чистити"
 msgid "Refresh"
 msgstr "Оновити"
 
-#: src/Gtk/MainWindow.vala:567
+#: src/Gtk/MainWindow.vala:577
 msgid "Refreshing..."
 msgstr "Оновлення..."
 
@@ -546,7 +546,7 @@ msgstr "Наступні ядра будуть видалені:"
 msgid "Third Party Tools"
 msgstr "Сторонние инструменты"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:679
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
 msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 

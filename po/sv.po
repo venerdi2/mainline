@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-14 12:48-0500\n"
+"POT-Creation-Date: 2020-05-01 13:31-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -310,8 +310,8 @@ msgstr "Installation slutförd. Omstart krävs för att tillämpa den nya kärna
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Internetuppkopplingen är inte aktiv"
 
@@ -324,7 +324,7 @@ msgstr "Internetuppkopplingen är inte aktiv"
 msgid "Kernel"
 msgstr "Kärna"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:542
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kärnuppgraderingsverktyg för Ubuntu-baserade distributioner"
 
@@ -367,8 +367,8 @@ msgstr "Flera kärnor valda för installation. Välj endast en."
 msgid "No"
 msgstr "Nej"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694
 msgid "No Internet"
 msgstr "Inget internet"
 
@@ -377,7 +377,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:794
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
@@ -446,7 +446,7 @@ msgstr "Rensa"
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: src/Gtk/MainWindow.vala:567
+#: src/Gtk/MainWindow.vala:577
 msgid "Refreshing..."
 msgstr "Uppdaterar ..."
 
@@ -560,7 +560,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr "Tredjepartsverktyg"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:679
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
 msgid "This kernel is already installed."
 msgstr "Denna kärna är redan installerad"
 

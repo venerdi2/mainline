@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-01-14 12:48-0500\n"
+"POT-Creation-Date: 2020-05-01 13:31-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -306,8 +306,8 @@ msgstr ""
 msgid "Installed"
 msgstr "Instalado"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "La conexión a Internet está inactiva"
 
@@ -320,7 +320,7 @@ msgstr "La conexión a Internet está inactiva"
 msgid "Kernel"
 msgstr "Núcleo"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:542
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
@@ -363,8 +363,8 @@ msgstr "Se seleccionaron varios núcleos para su instalación. Elija solo uno."
 msgid "No"
 msgstr "No"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:548
-#: src/Gtk/MainWindow.vala:684
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694
 msgid "No Internet"
 msgstr "No hay Internet"
 
@@ -373,7 +373,7 @@ msgid "No kernels specified"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:794
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
 msgid "No updates found"
 msgstr "No se encontró ninguna actualización"
 
@@ -442,7 +442,7 @@ msgstr ""
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: src/Gtk/MainWindow.vala:567
+#: src/Gtk/MainWindow.vala:577
 msgid "Refreshing..."
 msgstr "Actualizando…"
 
@@ -553,7 +553,7 @@ msgstr "Los siguientes kernels serán eliminados:"
 msgid "Third Party Tools"
 msgstr "Herramientas de terceros"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:679
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
 msgid "This kernel is already installed."
 msgstr "Este núcleo ya se instaló."
 
