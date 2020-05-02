@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
-"Report-Msgid-Bugs-To: b.kenyon.w@gmail.com\n"
-"POT-Creation-Date: 2020-05-01 13:31-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-02 16:29-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -17,62 +17,163 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: src/Gtk/MainWindow.vala:494
-msgid "About"
-msgstr "À propos"
-
-#: src/Console/AppConsole.vala:113
-msgid "Admin access is required for running this application."
-msgstr "Accès administrateur requis pour lancer cette application."
-
-#: src/Utility/AppLock.vala:51
-msgid "Another instance of this application is running"
-msgstr "Une autre instance de l'application est en cours d'exécution"
+#: src/Common/LinuxKernel.vala:92
+msgid "Distribution"
+msgstr "Distribution"
 
 #: src/Common/LinuxKernel.vala:106
 #, fuzzy
 msgid "Architecture"
 msgstr "Architecture du système"
 
-#: src/Utility/Gtk/AboutWindow.vala:338
-#, c-format
-msgid "Artists"
-msgstr "Artistes"
+#: src/Common/LinuxKernel.vala:257
+msgid "Index is stale"
+msgstr "L'index est obsolète"
 
-#: src/Console/AppConsole.vala:99
-msgid "Assume Yes for all prompts (non-interactive mode)"
+#: src/Common/LinuxKernel.vala:260
+msgid "Index is fresh"
+msgstr "L'index est à jour"
+
+#: src/Common/LinuxKernel.vala:365
+msgid "Fetching index..."
 msgstr ""
 
-#: src/Utility/Gtk/AboutWindow.vala:314
+#: src/Common/LinuxKernel.vala:408
+msgid "Fetching index from kernel.ubuntu.com..."
+msgstr "Récupération de l'index depuis kernel.ubuntu.com..."
+
+#: src/Common/LinuxKernel.vala:727
+#, fuzzy
+msgid "Could not find running kernel in list!"
+msgstr "Impossible de trouver la version demandée"
+
+#: src/Common/LinuxKernel.vala:733
+#, fuzzy
+msgid "Could not find any kernels to remove"
+msgstr "Sélectionnez les noyaux à supprimer"
+
+#: src/Common/LinuxKernel.vala:742
+msgid "The following kernels will be removed:"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:749
+msgid "Continue ?"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:777 src/Console/AppConsole.vala:359
+msgid "Latest update"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:788 src/Console/AppConsole.vala:366
+msgid "Latest point update"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
+msgid "No updates found"
+msgstr "Aucune mise à jour disponible"
+
+#: src/Common/LinuxKernel.vala:806
 #, c-format
-msgid "Authors"
-msgstr "Auteurs"
+msgid "Install Linux v%s ? (y/n): "
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:1072
+msgid "Packages Available"
+msgstr "Paquets disponibles"
+
+#: src/Common/LinuxKernel.vala:1080
+msgid "Packages Installed"
+msgstr "Paquets installés"
 
 #: src/Common/LinuxKernel.vala:1164
 msgid "Available Kernels"
 msgstr "Noyaux disponibles"
 
-#: src/Utility/Gtk/AboutWindow.vala:285
-msgid "Back"
-msgstr "Retour"
+#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
+msgid "Installed"
+msgstr "Installé"
 
-#: src/Console/AppConsole.vala:203 src/Gtk/AppGtk.vala:110
-msgid "Cache"
+#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
+msgid "Running"
+msgstr "En cours"
+
+#: src/Common/LinuxKernel.vala:1210
+msgid "Downloading"
+msgstr "Téléchargement"
+
+#: src/Common/LinuxKernel.vala:1229
+#: src/Utility/Gtk/CustomMessageDialog.vala:150
+#: src/Utility/Gtk/CustomMessageDialog.vala:154
+msgid "OK"
+msgstr "OK"
+
+#: src/Common/LinuxKernel.vala:1238
+msgid "ERROR"
+msgstr "ERREUR"
+
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
+msgid "This kernel is already installed."
+msgstr "Ce noyau est déjà installé."
+
+#: src/Common/LinuxKernel.vala:1281
+msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
+"Installation complétée. Un redémarrage est nécessaire pour utiliser le "
+"nouveau noyau."
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:148
-#: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:155
-msgid "Cancel"
-msgstr "Annuler"
+#: src/Common/LinuxKernel.vala:1284
+msgid "Installation completed with errors"
+msgstr "Installation terminée avec des erreurs"
 
-#: src/Gtk/MainWindow.vala:462
-msgid "Changes"
-msgstr "Changements"
+#: src/Common/LinuxKernel.vala:1300
+msgid ""
+"Selected kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+"Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
+" Installez un autre noyau avant de retirer celui-ci."
 
-#: src/Gtk/SettingsDialog.vala:120
-msgid "Check every"
-msgstr "Vérifier toutes les"
+#: src/Common/LinuxKernel.vala:1305
+msgid "Preparing to remove selected kernels"
+msgstr "Préparation à la suppression des noyaux sélectionnés"
+
+#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
+msgid "Un-install completed"
+msgstr "Désinstallation complète"
+
+#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
+msgid "Un-install completed with errors"
+msgstr "Désinstallation terminée avec des erreurs"
+
+#: src/Common/LinuxKernel.vala:1353
+msgid ""
+"This kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+"Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
+" Installez un autre noyau avant de retirer celui-ci."
+
+#: src/Common/Main.vala:107
+msgid "Commands listed below are not available on this system"
+msgstr "Les commandes listées ne sont pas valables pour ce système"
+
+#: src/Common/Main.vala:108
+msgid "Please install required packages and try again"
+msgstr "Veuillez installer les paquets requis et réessayer"
+
+#: src/Common/Package.vala:126 src/Common/Package.vala:188
+#, c-format
+msgid "File not found: %s"
+msgstr "Fichier non trouvé: %s"
+
+#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:179
+msgid "Syntax"
+msgstr "Syntaxe"
+
+#: src/Console/AppConsole.vala:80
+msgid "Commands"
+msgstr ""
 
 #: src/Console/AppConsole.vala:82
 msgid "Check for kernel updates"
@@ -83,202 +184,14 @@ msgstr "Vérifier les mises à jour des noyaux"
 msgid "Check for kernel updates and notify current user"
 msgstr "Vérifier les mises à jour des noyaux"
 
-#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:295
-msgid "Close"
-msgstr "Fermer"
+#: src/Console/AppConsole.vala:84
+msgid "List all available mainline kernels"
+msgstr "Lister tous les noyaux mainline disponibles"
 
-#: src/Console/AppConsole.vala:340
+#: src/Console/AppConsole.vala:85
 #, fuzzy
-msgid "Command not specified"
-msgstr "Impossible de trouver le fichier"
-
-#: src/Console/AppConsole.vala:80
-msgid "Commands"
-msgstr ""
-
-#: src/Common/Main.vala:107
-msgid "Commands listed below are not available on this system"
-msgstr "Les commandes listées ne sont pas valables pour ce système"
-
-#: src/Common/LinuxKernel.vala:749
-#, c-format
-msgid "Continue ?"
-msgstr ""
-
-#: src/Utility/Gtk/AboutWindow.vala:322
-#, c-format
-msgid "Contributions"
-msgstr "Contributions"
-
-#: src/Common/LinuxKernel.vala:733
-#, fuzzy
-msgid "Could not find any kernels to remove"
-msgstr "Sélectionnez les noyaux à supprimer"
-
-#: src/Console/AppConsole.vala:308 src/Gtk/MainWindow.vala:100
-msgid "Could not find requested version"
-msgstr "Impossible de trouver la version demandée"
-
-#: src/Common/LinuxKernel.vala:727
-#, fuzzy
-msgid "Could not find running kernel in list!"
-msgstr "Impossible de trouver la version demandée"
-
-#: src/Utility/TeeJee.FileSystem.vala:349
-#: src/Utility/TeeJee.FileSystem.vala:352
-#: src/Utility/TeeJee.FileSystem.vala:378
-msgid "Created directory"
-msgstr "Dossier créé"
-
-#: src/Utility/Gtk/AboutWindow.vala:272 src/Utility/Gtk/AboutWindow.vala:289
-msgid "Credits"
-msgstr "Crédits"
-
-#: src/Gtk/SettingsDialog.vala:153
-msgid "Day(s)"
-msgstr "Jour(s)"
-
-#: src/Utility/TeeJee.FileSystem.vala:375
-msgid "Deleted directory"
-msgstr "Dossier éffacé"
-
-#: src/Utility/TeeJee.FileSystem.vala:509
-msgid "Dir not found"
-msgstr "Dossier non trouvé"
-
-#: src/Gtk/SettingsDialog.vala:160
-msgid "Display"
-msgstr "Afficher"
-
-#: src/Common/LinuxKernel.vala:92
-msgid "Distribution"
-msgstr "Distribution"
-
-#: src/Utility/Gtk/AboutWindow.vala:354
-#, c-format
-msgid "Documenters"
-msgstr "Documentalistes"
-
-#: src/Console/AppConsole.vala:91
-msgid "Download packages for specified kernel"
-msgstr "Télécharger les paquets pour des noyaux spécifiques"
-
-#: src/Common/LinuxKernel.vala:1210
-#, c-format
-msgid "Downloading"
-msgstr "Téléchargement"
-
-#: src/Utility/TeeJee.Logging.vala:89
-msgid "E"
-msgstr "E"
-
-#: src/Common/LinuxKernel.vala:1238
-#, c-format
-msgid "ERROR"
-msgstr "ERREUR"
-
-#: src/Console/AppConsole.vala:98
-msgid "Enable verbose debugging output"
-msgstr ""
-
-#: src/Utility/Gtk/GtkHelper.vala:17
-msgid "Error"
-msgstr "Erreur"
-
-#: src/Utility/TeeJee.FileSystem.vala:221
-msgid "Failed to copy file"
-msgstr "Impossible de copier le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:359
-msgid "Failed to create dir"
-msgstr "Impossible de créer le nouveau dossier"
-
-#: src/Utility/TeeJee.FileSystem.vala:106
-msgid "Failed to delete file"
-msgstr "Impossible d'effacer le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:253
-msgid "Failed to move file"
-msgstr "Impossible de déplacer le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:162
-msgid "Failed to read file"
-msgstr "Impossible de lire le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:197
-msgid "Failed to write file"
-msgstr "Impossible d'écrire le fichier"
-
-#: src/Common/LinuxKernel.vala:408
-msgid "Fetching index from kernel.ubuntu.com..."
-msgstr "Récupération de l'index depuis kernel.ubuntu.com..."
-
-#: src/Common/LinuxKernel.vala:365
-msgid "Fetching index..."
-msgstr ""
-
-#: src/Utility/TeeJee.FileSystem.vala:210
-#: src/Utility/TeeJee.FileSystem.vala:213
-msgid "File copied"
-msgstr "Fichier copié"
-
-#: src/Utility/TeeJee.FileSystem.vala:97 src/Utility/TeeJee.FileSystem.vala:100
-msgid "File deleted"
-msgstr "Fichier effacé"
-
-#: src/Utility/TeeJee.FileSystem.vala:662
-#: src/Utility/TeeJee.FileSystem.vala:711
-msgid "File is missing"
-msgstr "Fichier disparu"
-
-#: src/Utility/TeeJee.FileSystem.vala:245
-#: src/Utility/TeeJee.FileSystem.vala:248
-msgid "File moved"
-msgstr "Fichier déplacé"
-
-#: src/Utility/TeeJee.FileSystem.vala:231
-#: src/Utility/TeeJee.FileSystem.vala:538
-msgid "File not found"
-msgstr "Fichier non trouvé"
-
-#: src/Common/Package.vala:126 src/Common/Package.vala:188
-#, c-format
-msgid "File not found: %s"
-msgstr "Fichier non trouvé: %s"
-
-#: src/Utility/TeeJee.FileSystem.vala:187
-#: src/Utility/TeeJee.FileSystem.vala:190
-msgid "File saved"
-msgstr "Fichier sauvegardé"
-
-#: src/Gtk/SettingsDialog.vala:168
-msgid "Hide unstable and RC releases"
-msgstr "Cacher les versions instables et RC"
-
-#: src/Gtk/SettingsDialog.vala:151
-msgid "Hour(s)"
-msgstr "Heure(s)"
-
-#: src/Gtk/UpdateNotificationWindow.vala:168
-msgid "Ignore this update"
-msgstr "Ignorer cette mise à jour"
-
-#: src/Common/LinuxKernel.vala:260
-msgid "Index is fresh"
-msgstr "L'index est à jour"
-
-#: src/Common/LinuxKernel.vala:257
-msgid "Index is stale"
-msgstr "L'index est obsolète"
-
-#: src/Gtk/UpdateNotificationWindow.vala:147 src/Gtk/MainWindow.vala:357
-msgid "Install"
-msgstr "Installer"
-
-#: src/Common/LinuxKernel.vala:806
-#, c-format
-msgid "Install Linux v%s ? (y/n): "
-msgstr ""
+msgid "List installed kernels"
+msgstr "Lister les noyaux disponibles"
 
 #: src/Console/AppConsole.vala:86
 #, fuzzy
@@ -293,74 +206,72 @@ msgstr ""
 msgid "Install specified mainline kernel"
 msgstr "Installer le noyau principal spécifié"
 
-#: src/Gtk/UpdateNotificationWindow.vala:148
-msgid "Install this kernel"
-msgstr "Installer ce noyau"
-
-#: src/Common/LinuxKernel.vala:1284
-msgid "Installation completed with errors"
-msgstr "Installation terminée avec des erreurs"
-
-#: src/Common/LinuxKernel.vala:1281
-msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr ""
-"Installation complétée. Un redémarrage est nécessaire pour utiliser le "
-"nouveau noyau."
-
-#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
-msgid "Installed"
-msgstr "Installé"
-
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
-#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
-msgid "Internet connection is not active"
-msgstr "Connexion internet inexistante"
-
-#: src/Gtk/SettingsDialog.vala:218
+#: src/Console/AppConsole.vala:89
 #, fuzzy
-msgid "Internet connection timeout in "
-msgstr "Connexion internet inexistante"
+msgid "Remove specified kernel"
+msgstr "Supprimer le noyau mainline sélectionné"
 
-#: src/Gtk/MainWindow.vala:150
-msgid "Kernel"
-msgstr "Noyau"
-
-#: src/Gtk/MainWindow.vala:542
-msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr ""
-"Utilitaire de mise à niveau des noyaux pour les distributions basées pour "
-"Ubuntu"
-
-#: src/Common/LinuxKernel.vala:788 src/Console/AppConsole.vala:366
-#, c-format
-msgid "Latest point update"
+#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:424
+msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:777 src/Console/AppConsole.vala:359
-#, c-format
-msgid "Latest update"
-msgstr ""
+#: src/Console/AppConsole.vala:91
+msgid "Download packages for specified kernel"
+msgstr "Télécharger les paquets pour des noyaux spécifiques"
 
-#: src/Console/AppConsole.vala:84
-msgid "List all available mainline kernels"
-msgstr "Lister tous les noyaux mainline disponibles"
+#: src/Console/AppConsole.vala:92 src/Console/AppConsole.vala:97
+msgid "Remove files from application cache"
+msgstr "Supprimer les fichiers du cache de l'application"
 
-#: src/Gtk/UpdateNotificationWindow.vala:158
-msgid "List available kernels"
-msgstr "Lister les noyaux disponibles"
-
-#: src/Console/AppConsole.vala:85
+#: src/Console/AppConsole.vala:93
 #, fuzzy
-msgid "List installed kernels"
-msgstr "Lister les noyaux disponibles"
+msgid "Show unstable and RC releases"
+msgstr "Cacher les versions instables et RC"
 
-#: src/Utility/Gtk/GtkHelper.vala:93
-msgid "Missing Icon"
-msgstr "Icône introuvable"
+#: src/Console/AppConsole.vala:95 src/Gtk/AppGtk.vala:181
+msgid "Options"
+msgstr "Options"
 
-#: src/Gtk/MainWindow.vala:366
-msgid "Multiple Kernels Selected"
-msgstr "Plusieurs noyaux sélectionnés"
+#: src/Console/AppConsole.vala:98
+msgid "Enable verbose debugging output"
+msgstr ""
+
+#: src/Console/AppConsole.vala:99
+msgid "Assume Yes for all prompts (non-interactive mode)"
+msgstr ""
+
+#: src/Console/AppConsole.vala:100
+msgid "Override user"
+msgstr ""
+
+#: src/Console/AppConsole.vala:113
+msgid "Admin access is required for running this application."
+msgstr "Accès administrateur requis pour lancer cette application."
+
+#: src/Console/AppConsole.vala:116
+msgid "Run the application as admin with pkexec or sudo."
+msgstr "Exécutez l'application en tant qu'admin avec pkexec or sudo."
+
+#: src/Console/AppConsole.vala:196 src/Gtk/AppGtk.vala:166
+msgid "Unknown option"
+msgstr "Option inconnue"
+
+#: src/Console/AppConsole.vala:198 src/Console/AppConsole.vala:312
+#: src/Console/AppConsole.vala:341
+msgid "Run '"
+msgstr ""
+
+#: src/Console/AppConsole.vala:203 src/Gtk/AppGtk.vala:110
+msgid "Cache"
+msgstr ""
+
+#: src/Console/AppConsole.vala:204 src/Gtk/AppGtk.vala:111
+msgid "Temp"
+msgstr ""
+
+#: src/Console/AppConsole.vala:284 src/Console/AppConsole.vala:321
+msgid "No kernels specified"
+msgstr ""
 
 #: src/Console/AppConsole.vala:290
 msgid "Multiple kernels selected for installation. Select only one."
@@ -368,27 +279,108 @@ msgstr ""
 "Plusieurs noyaux sélectionnés pour être installés. Sélectionnez en seulement "
 "un."
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:160
-msgid "No"
-msgstr "Non"
+#: src/Console/AppConsole.vala:308 src/Gtk/MainWindow.vala:100
+msgid "Could not find requested version"
+msgstr "Impossible de trouver la version demandée"
+
+#: src/Console/AppConsole.vala:340
+#, fuzzy
+msgid "Command not specified"
+msgstr "Impossible de trouver le fichier"
+
+#: src/Gtk/AppGtk.vala:183
+msgid "Print debug information"
+msgstr "Afficher les informations de débogage"
+
+#: src/Gtk/AppGtk.vala:184
+msgid "Show all options"
+msgstr "Afficher toutes les options"
+
+#: src/Gtk/MainWindow.vala:150
+msgid "Kernel"
+msgstr "Noyau"
+
+#: src/Gtk/MainWindow.vala:179
+msgid "Version"
+msgstr "Version"
+
+#: src/Gtk/MainWindow.vala:196
+msgid "Status"
+msgstr "Statut"
+
+#: src/Gtk/MainWindow.vala:341
+msgid "Refresh"
+msgstr "Actualiser"
+
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
+#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
+msgid "Internet connection is not active"
+msgstr "Connexion internet inexistante"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
 #: src/Gtk/MainWindow.vala:694
 msgid "No Internet"
 msgstr "Pas d'Internet"
 
-#: src/Console/AppConsole.vala:284 src/Console/AppConsole.vala:321
-msgid "No kernels specified"
-msgstr ""
+#: src/Gtk/MainWindow.vala:357 src/Gtk/UpdateNotificationWindow.vala:147
+msgid "Install"
+msgstr "Installer"
 
-#: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
-msgid "No updates found"
-msgstr "Aucune mise à jour disponible"
+#: src/Gtk/MainWindow.vala:366
+msgid "Multiple Kernels Selected"
+msgstr "Plusieurs noyaux sélectionnés"
+
+#: src/Gtk/MainWindow.vala:366
+msgid "Select a single kernel to install"
+msgstr "Sélectionnez un seul noyau à installer"
 
 #: src/Gtk/MainWindow.vala:369 src/Gtk/MainWindow.vala:380
 msgid "Not Selected"
 msgstr "Non selectionné"
+
+#: src/Gtk/MainWindow.vala:369
+msgid "Select the kernel to install"
+msgstr "Sélectionnez le noyau à installer"
+
+#: src/Gtk/MainWindow.vala:374
+msgid "Remove"
+msgstr "Supprimer"
+
+#: src/Gtk/MainWindow.vala:380
+msgid "Select the kernels to remove"
+msgstr "Sélectionnez les noyaux à supprimer"
+
+#: src/Gtk/MainWindow.vala:423
+msgid "Purge"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:462
+msgid "Changes"
+msgstr "Changements"
+
+#: src/Gtk/MainWindow.vala:473 src/Gtk/SettingsDialog.vala:55
+msgid "Settings"
+msgstr "Paramètres"
+
+#: src/Gtk/MainWindow.vala:494
+msgid "About"
+msgstr "À propos"
+
+#: src/Gtk/MainWindow.vala:542
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr ""
+"Utilitaire de mise à niveau des noyaux pour les distributions basées pour "
+"Ubuntu"
+
+#: src/Gtk/MainWindow.vala:577
+msgid "Refreshing..."
+msgstr "Actualisation..."
+
+#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:148
+#: src/Gtk/UpdateNotificationWindow.vala:167
+#: src/Utility/Gtk/CustomMessageDialog.vala:155
+msgid "Cancel"
+msgstr "Annuler"
 
 #: src/Gtk/SettingsDialog.vala:65
 msgid "Notification"
@@ -402,125 +394,6 @@ msgstr "Notifier si une version stable majeure est disponible"
 msgid "Notify if a point release is available"
 msgstr "Notifier si une version stable mineure est disponible"
 
-#: src/Common/LinuxKernel.vala:1229
-#: src/Utility/Gtk/CustomMessageDialog.vala:150
-#: src/Utility/Gtk/CustomMessageDialog.vala:154
-#, c-format
-msgid "OK"
-msgstr "OK"
-
-#: src/Console/AppConsole.vala:95 src/Gtk/AppGtk.vala:181
-msgid "Options"
-msgstr "Options"
-
-#: src/Gtk/SettingsDialog.vala:197
-msgid "Other"
-msgstr ""
-
-#: src/Console/AppConsole.vala:100
-msgid "Override user"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:1072
-#, c-format
-msgid "Packages Available"
-msgstr "Paquets disponibles"
-
-#: src/Common/LinuxKernel.vala:1080
-#, c-format
-msgid "Packages Installed"
-msgstr "Paquets installés"
-
-#: src/Common/Main.vala:108
-msgid "Please install required packages and try again"
-msgstr "Veuillez installer les paquets requis et réessayer"
-
-#: src/Common/LinuxKernel.vala:1305
-msgid "Preparing to remove selected kernels"
-msgstr "Préparation à la suppression des noyaux sélectionnés"
-
-#: src/Gtk/AppGtk.vala:183
-msgid "Print debug information"
-msgstr "Afficher les informations de débogage"
-
-#: src/Gtk/MainWindow.vala:423
-msgid "Purge"
-msgstr ""
-
-#: src/Gtk/MainWindow.vala:341
-msgid "Refresh"
-msgstr "Actualiser"
-
-#: src/Gtk/MainWindow.vala:577
-msgid "Refreshing..."
-msgstr "Actualisation..."
-
-#: src/Gtk/MainWindow.vala:374
-msgid "Remove"
-msgstr "Supprimer"
-
-#: src/Console/AppConsole.vala:92 src/Console/AppConsole.vala:97
-msgid "Remove files from application cache"
-msgstr "Supprimer les fichiers du cache de l'application"
-
-#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:424
-msgid "Remove installed kernels older than running kernel"
-msgstr ""
-
-#: src/Console/AppConsole.vala:89
-#, fuzzy
-msgid "Remove specified kernel"
-msgstr "Supprimer le noyau mainline sélectionné"
-
-#: src/Console/AppConsole.vala:198 src/Console/AppConsole.vala:312
-#: src/Console/AppConsole.vala:341
-msgid "Run '"
-msgstr ""
-
-#: src/Console/AppConsole.vala:116
-msgid "Run the application as admin with pkexec or sudo."
-msgstr "Exécutez l'application en tant qu'admin avec pkexec or sudo."
-
-#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
-msgid "Running"
-msgstr "En cours"
-
-#: src/Gtk/MainWindow.vala:366
-msgid "Select a single kernel to install"
-msgstr "Sélectionnez un seul noyau à installer"
-
-#: src/Gtk/MainWindow.vala:369
-msgid "Select the kernel to install"
-msgstr "Sélectionnez le noyau à installer"
-
-#: src/Gtk/MainWindow.vala:380
-msgid "Select the kernels to remove"
-msgstr "Sélectionnez les noyaux à supprimer"
-
-#: src/Common/LinuxKernel.vala:1300
-msgid ""
-"Selected kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
-msgstr ""
-"Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
-" Installez un autre noyau avant de retirer celui-ci."
-
-#: src/Gtk/MainWindow.vala:473 src/Gtk/SettingsDialog.vala:55
-msgid "Settings"
-msgstr "Paramètres"
-
-#: src/Gtk/UpdateNotificationWindow.vala:157
-msgid "Show"
-msgstr "Afficher"
-
-#: src/Gtk/SettingsDialog.vala:182
-msgid "Show N previous major versions "
-msgstr ""
-
-#: src/Gtk/AppGtk.vala:184
-msgid "Show all options"
-msgstr "Afficher toutes les options"
-
 #: src/Gtk/SettingsDialog.vala:94
 msgid "Show notification bubble on desktop"
 msgstr "Afficher la bulle de notification sur le bureau"
@@ -529,363 +402,195 @@ msgstr "Afficher la bulle de notification sur le bureau"
 msgid "Show notification dialog"
 msgstr "Afficher les notifications"
 
-#: src/Console/AppConsole.vala:93
-#, fuzzy
-msgid "Show unstable and RC releases"
+#: src/Gtk/SettingsDialog.vala:120
+msgid "Check every"
+msgstr "Vérifier toutes les"
+
+#: src/Gtk/SettingsDialog.vala:151
+msgid "Hour(s)"
+msgstr "Heure(s)"
+
+#: src/Gtk/SettingsDialog.vala:153
+msgid "Day(s)"
+msgstr "Jour(s)"
+
+#: src/Gtk/SettingsDialog.vala:155
+msgid "Week(s)"
+msgstr "Semaine(s)"
+
+#: src/Gtk/SettingsDialog.vala:160
+msgid "Display"
+msgstr "Afficher"
+
+#: src/Gtk/SettingsDialog.vala:168
+msgid "Hide unstable and RC releases"
 msgstr "Cacher les versions instables et RC"
+
+#: src/Gtk/SettingsDialog.vala:182
+msgid "Show N previous major versions "
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:197
+msgid "Other"
+msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:205
 #, fuzzy
 msgid "Skip internet connection check"
 msgstr "Connexion internet inexistante"
 
-#: src/Gtk/MainWindow.vala:196
-msgid "Status"
-msgstr "Statut"
-
-#: src/Utility/TeeJee.Process.vala:513
-msgid "Stopped"
-msgstr "Arrêté"
-
-#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:179
-msgid "Syntax"
-msgstr "Syntaxe"
-
-#: src/Console/AppConsole.vala:204 src/Gtk/AppGtk.vala:111
-msgid "Temp"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:742
-#, c-format
-msgid "The following kernels will be removed:"
-msgstr ""
-
-#: src/Utility/Gtk/AboutWindow.vala:330
-#, c-format
-msgid "Third Party Tools"
-msgstr "Outils tiers"
-
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
-msgid "This kernel is already installed."
-msgstr "Ce noyau est déjà installé."
-
-#: src/Common/LinuxKernel.vala:1353
-msgid ""
-"This kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
-msgstr ""
-"Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
-" Installez un autre noyau avant de retirer celui-ci."
-
-#: src/Utility/Gtk/AboutWindow.vala:346
-#, c-format
-msgid "Translators"
-msgstr "Traducteurs"
-
-#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
-msgid "Un-install completed"
-msgstr "Désinstallation complète"
-
-#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
-msgid "Un-install completed with errors"
-msgstr "Désinstallation terminée avec des erreurs"
-
-#: src/Console/AppConsole.vala:196 src/Gtk/AppGtk.vala:166
-msgid "Unknown option"
-msgstr "Option inconnue"
-
-#: src/Gtk/MainWindow.vala:179
-msgid "Version"
-msgstr "Version"
-
-#: src/Utility/TeeJee.Logging.vala:89
-msgid "W"
-msgstr "W"
-
-#: src/Gtk/SettingsDialog.vala:155
-msgid "Week(s)"
-msgstr "Semaine(s)"
-
-#: src/Utility/Gtk/CustomMessageDialog.vala:159
-msgid "Yes"
-msgstr "Oui"
-
-#: src/Utility/AppLock.vala:56
-msgid "[Warning] Deleted invalid lock"
-msgstr "[Attention] Verrou invalide supprimé"
+#: src/Gtk/SettingsDialog.vala:218
+#, fuzzy
+msgid "Internet connection timeout in "
+msgstr "Connexion internet inexistante"
 
 #: src/Gtk/SettingsDialog.vala:232
 msgid "seconds"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Hide kernels older than "
-#~ msgstr "Masquer les noyaux antérieurs à la version 4.0"
+#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:295
+msgid "Close"
+msgstr "Fermer"
 
-#~ msgid "Booting previous kernels"
-#~ msgstr "Démarrer sur un noyau précédent"
+#: src/Gtk/UpdateNotificationWindow.vala:148
+msgid "Install this kernel"
+msgstr "Installer ce noyau"
 
-#~ msgid "GRUB Options"
-#~ msgstr "Options GRUB"
+#: src/Gtk/UpdateNotificationWindow.vala:157
+msgid "Show"
+msgstr "Afficher"
 
-#, fuzzy
-#~ msgid ""
-#~ "Mainline kernels can sometimes cause problems if there are proprietary "
-#~ "drivers installed on your system. These issues include:\n"
-#~ "\n"
-#~ "▰ WiFi not working\n"
-#~ "▰ Black screen on startup\n"
-#~ "▰ Random system freeze\n"
-#~ "\n"
-#~ "If you face any of these issues there is no need to panic.\n"
-#~ "\n"
-#~ "▰ Reboot your system\n"
-#~ "▰ Select 'Advanced Boot Options' from the GRUB boot menu\n"
-#~ "▰ Select an older kernel from the list displayed on this screen\n"
-#~ "▰ Your system will boot using the selected kernel\n"
-#~ "▰ You can now uninstall the kernel that is causing issues\n"
-#~ msgstr ""
-#~ "Certains noyaux peuvent poser problème à cause de l'absence de drivers "
-#~ "propriétaires installés sur votre système. Cela se présente par :\n"
-#~ "\n"
-#~ "\\342\\226\\260 Le WiFi qui ne fonctionne pas\n"
-#~ "\\342\\226\\260 Un écran noir au démarrage\n"
-#~ "\\342\\226\\260 Le système qui se fige et se bloque\n"
-#~ "\n"
-#~ "Si vous êtes face à ces problèmes, pas de panique.\n"
-#~ "\n"
-#~ "\\342\\226\\260 Redémarrer votre système\n"
-#~ "\\342\\226\\260 Sélectionnez 'Advanced Boot Options' dans le menu GRUB "
-#~ "boot\n"
-#~ "\\342\\226\\260 Sélectionnez un ancien noyau qui fonctionne\n"
-#~ "\\342\\226\\260 Votre système va redémarrer avec le noyau sélectionné\n"
-#~ "\\342\\226\\260 Vous pouvez supprimer le noyau responsable de cette "
-#~ "erreur\n"
+#: src/Gtk/UpdateNotificationWindow.vala:158
+msgid "List available kernels"
+msgstr "Lister les noyaux disponibles"
 
-#~ msgid ""
-#~ "Time (in seconds) to display the GRUB menu\n"
-#~ "\n"
-#~ "0 = Do not show menu\n"
-#~ "-1 = Show indefinitely till user selects"
-#~ msgstr ""
-#~ "Temps (en secondes) pour afficher le menu GRUB\n"
-#~ "\n"
-#~ "0 = Ne pas afficher de menu\n"
-#~ "-1 = Afficher indéfiniment le menu jusqu'au choix de l'utilisateur"
+#: src/Gtk/UpdateNotificationWindow.vala:168
+msgid "Ignore this update"
+msgstr "Ignorer cette mise à jour"
 
-#~ msgid ""
-#~ "Updates the GRUB menu after installing or removing kernels, so that the "
-#~ "menu is displayed for 2 seconds at boot time. This will help you recover "
-#~ "from a bad kernel update by selecting another kernel to boot. During "
-#~ "boot, use the 'Advanced options for Ubuntu' menu entry to select another "
-#~ "kernel.\n"
-#~ "\n"
-#~ "0 = Do not show menu\n"
-#~ "-1 = Show indefinitely till user selects"
-#~ msgstr ""
-#~ "Mise à jour du menu GRUB après installation ou suppression. Vous aurez 2 "
-#~ "secondes au lancement pour changer de noyau au démarrage et choisir un "
-#~ "noyau fonctionnel. Durant le démarrage, sélectionnez 'Option avancées "
-#~ "Ubuntu' et sélectionnez un autre noyau.\n"
-#~ "\n"
-#~ "0 = Ne pas afficher de menu\n"
-#~ "-1 = Afficher jusqu'au choix de l'utilisateur"
+#: src/Utility/Gtk/AboutWindow.vala:272 src/Utility/Gtk/AboutWindow.vala:289
+msgid "Credits"
+msgstr "Crédits"
 
-#~ msgid "Updating GRUB menu"
-#~ msgstr "Mise à jour du menu GRUB"
+#: src/Utility/Gtk/AboutWindow.vala:285
+msgid "Back"
+msgstr "Retour"
 
-#~ msgid "Run 'ukuu --list' and use the version string listed in first column"
-#~ msgstr ""
-#~ "Exécutez 'ukuu --list' et utilisez la chaîne de la version indiquée dans "
-#~ "la première colonne"
+#: src/Utility/Gtk/AboutWindow.vala:314
+msgid "Authors"
+msgstr "Auteurs"
 
-#~ msgid ""
-#~ "Did you find this software useful?\n"
-#~ "\n"
-#~ "You can buy me a coffee or make a donation via PayPal to show your "
-#~ "support. Or just drop me an email and say Hi. This application is "
-#~ "completely free and will continue to remain that way. Your contributions "
-#~ "will help in keeping this project alive and improving it further.\n"
-#~ "\n"
-#~ "Feel free to send me an email if you find any issues in this application "
-#~ "or if you need any changes. Suggestions and feedback are always welcome.\n"
-#~ "\n"
-#~ "Thanks,\n"
-#~ "Tony George\n"
-#~ "(teejeetech@gmail.com)"
-#~ msgstr ""
-#~ "Vous trouvez ce logiciel super utile?\n"
-#~ "\n"
-#~ "Vous pouvez m'acheter un café ou faire un don via PayPal pour montrer "
-#~ "votre soutien. Ou envoyez-moi simplement un courriel et dites moi "
-#~ "bonjour. Cette application est entièrement gratuite et continuera de "
-#~ "rester de cette façon. Vos contributions contribueront à maintenir ce "
-#~ "projet vivant et l'améliorer encore.\n"
-#~ "\n"
-#~ "N'hésitez pas à m'envoyer un courriel si vous trouvez des problèmes dans "
-#~ "cette application ou si vous avez besoin de modifications. Les "
-#~ "suggestions et les commentaires sont toujours les bienvenus.\n"
-#~ "\n"
-#~ "Merci beaucoup \n"
-#~ "Tony George\n"
-#~ "(teejeetech@gmail.com)"
+#: src/Utility/Gtk/AboutWindow.vala:322
+msgid "Contributions"
+msgstr "Contributions"
 
-#~ msgid "Display GRUB menu during boot"
-#~ msgstr "Afficher le menu GRUB durant le démarrage"
+#: src/Utility/Gtk/AboutWindow.vala:330
+msgid "Third Party Tools"
+msgstr "Outils tiers"
 
-#~ msgid "Donate"
-#~ msgstr "Dons"
+#: src/Utility/Gtk/AboutWindow.vala:338
+msgid "Artists"
+msgstr "Artistes"
 
-#~ msgid "Donate with Google Wallet"
-#~ msgstr "Dons par Google Wallet"
+#: src/Utility/Gtk/AboutWindow.vala:346
+msgid "Translators"
+msgstr "Traducteurs"
 
-#~ msgid "Donate with PayPal"
-#~ msgstr "Dons avec PayPal"
+#: src/Utility/Gtk/AboutWindow.vala:354
+msgid "Documenters"
+msgstr "Documentalistes"
 
-#~ msgid "Donations"
-#~ msgstr "Donations"
+#: src/Utility/Gtk/CustomMessageDialog.vala:159
+msgid "Yes"
+msgstr "Oui"
 
-#~ msgid "File read"
-#~ msgstr "Fichier lu"
+#: src/Utility/Gtk/CustomMessageDialog.vala:160
+msgid "No"
+msgstr "Non"
 
-#~ msgid "Notify if kernel update is available"
-#~ msgstr "Notifier si une mise à jour du noyau est disponible"
+#: src/Utility/Gtk/GtkHelper.vala:17
+msgid "Error"
+msgstr "Erreur"
 
-#~ msgid "Send Email"
-#~ msgstr "Envoyer courriel"
+#: src/Utility/Gtk/GtkHelper.vala:93
+msgid "Missing Icon"
+msgstr "Icône introuvable"
 
-#~ msgid "Use specified user's cache directory"
-#~ msgstr "Utiliser le répertoire de cache de l'utilisateur sélectionné"
+#: src/Utility/TeeJee.FileSystem.vala:97 src/Utility/TeeJee.FileSystem.vala:100
+msgid "File deleted"
+msgstr "Fichier effacé"
 
-#~ msgid "Using cache directory"
-#~ msgstr "Utiliser le dossier cache"
+#: src/Utility/TeeJee.FileSystem.vala:106
+msgid "Failed to delete file"
+msgstr "Impossible d'effacer le fichier"
 
-#~ msgid "Visit Website"
-#~ msgstr "Visiter mon site"
+#: src/Utility/TeeJee.FileSystem.vala:162
+msgid "Failed to read file"
+msgstr "Impossible de lire le fichier"
 
-#~ msgid "Open Ukuu"
-#~ msgstr "Lancer Ukuu"
+#: src/Utility/TeeJee.FileSystem.vala:187
+#: src/Utility/TeeJee.FileSystem.vala:190
+msgid "File saved"
+msgstr "Fichier sauvegardé"
 
-#~ msgid "Cron job added"
-#~ msgstr "Cron ajouter"
+#: src/Utility/TeeJee.FileSystem.vala:197
+msgid "Failed to write file"
+msgstr "Impossible d'écrire le fichier"
 
-#~ msgid "Cron job removed"
-#~ msgstr "Activités "
+#: src/Utility/TeeJee.FileSystem.vala:210
+#: src/Utility/TeeJee.FileSystem.vala:213
+msgid "File copied"
+msgstr "Fichier copié"
 
-#~ msgid "Device"
-#~ msgstr "Matériel"
+#: src/Utility/TeeJee.FileSystem.vala:221
+msgid "Failed to copy file"
+msgstr "Impossible de copier le fichier"
 
-#~ msgid "Device is unlocked"
-#~ msgstr "Le matériel est vérouillé"
+#: src/Utility/TeeJee.FileSystem.vala:231
+#: src/Utility/TeeJee.FileSystem.vala:538
+msgid "File not found"
+msgstr "Fichier non trouvé"
 
-#~ msgid "Device name is empty!"
-#~ msgstr "Le nom du matériel est absent ou vide!"
+#: src/Utility/TeeJee.FileSystem.vala:245
+#: src/Utility/TeeJee.FileSystem.vala:248
+msgid "File moved"
+msgstr "Fichier déplacé"
 
-#~ msgid "Encrypted Device"
-#~ msgstr "Matériel chiffré"
+#: src/Utility/TeeJee.FileSystem.vala:253
+msgid "Failed to move file"
+msgstr "Impossible de déplacer le fichier"
 
-#~ msgid "Enter passphrase to unlock '%s'"
-#~ msgstr "Entrer votre passphrase '%s'"
+#: src/Utility/TeeJee.FileSystem.vala:349
+#: src/Utility/TeeJee.FileSystem.vala:352
+#: src/Utility/TeeJee.FileSystem.vala:378
+msgid "Created directory"
+msgstr "Dossier créé"
 
-#~ msgid "Enter path or browse for directory"
-#~ msgstr "Spécifier l emplacement ou naviger dans vos dossiers"
+#: src/Utility/TeeJee.FileSystem.vala:359
+msgid "Failed to create dir"
+msgstr "Impossible de créer le nouveau dossier"
 
-#~ msgid "Failed to add cron job"
-#~ msgstr "Impossible d'ajouter une nouvelle planification de travail "
+#: src/Utility/TeeJee.FileSystem.vala:375
+msgid "Deleted directory"
+msgstr "Dossier éffacé"
 
-#~ msgid "Failed to export crontab file"
-#~ msgstr "Impossible d exporter le fichier de planification CronTab"
+#: src/Utility/TeeJee.FileSystem.vala:509
+msgid "Dir not found"
+msgstr "Dossier non trouvé"
 
-#~ msgid "Failed to get partition list"
-#~ msgstr "Impossible de relever la liste des partitions"
+#: src/Utility/TeeJee.FileSystem.vala:662
+#: src/Utility/TeeJee.FileSystem.vala:711
+msgid "File is missing"
+msgstr "Fichier disparu"
 
-#~ msgid "Failed to install crontab file"
-#~ msgstr "Impossible d installer le fichier de planification CronTab "
+#: src/Utility/TeeJee.Logging.vala:89
+msgid "E"
+msgstr "E"
 
-#~ msgid "Failed to read cron tab"
-#~ msgstr "Impossible de lire le fichier de planification Cron"
+#: src/Utility/TeeJee.Logging.vala:89
+msgid "W"
+msgstr "W"
 
-#~ msgid "Failed to remove cron job"
-#~ msgstr "Impossible de supprimer le fichier de plannification Cron"
-
-#~ msgid "Failed to unlock device"
-#~ msgstr "Impossible de débloquer ce matériel"
-
-#~ msgid "Failed to démonter le matériel"
-#~ msgstr "Impossibilité de "
-
-#~ msgid "Label"
-#~ msgstr "Étiquette"
-
-#~ msgid "Model"
-#~ msgstr "Modèle"
-
-#~ msgid "Mounted"
-#~ msgstr "Monté"
-
-#~ msgid "Open"
-#~ msgstr "Ouvert"
-
-#~ msgid "Parent Device"
-#~ msgstr "Matériel identique"
-
-#~ msgid "Revision"
-#~ msgstr "Revision"
-
-#~ msgid "Root Access Required"
-#~ msgstr "Accès administrateur requis"
-
-#~ msgid "Root access is required for running this application."
-#~ msgstr ""
-#~ "L'accès administrateur est requis pour l'exécution de cette application."
-
-#~ msgid "Select Path"
-#~ msgstr "Выберите путь"
-
-#~ msgid "Serial"
-#~ msgstr "Série"
-
-#~ msgid "Size"
-#~ msgstr "Taille"
-
-#~ msgid "System"
-#~ msgstr "Système"
-
-#~ msgid "This device is not encrypted"
-#~ msgstr "Cet appareil n'est pas chiffré"
-
-#~ msgid "Type"
-#~ msgstr "Type"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
-
-#~ msgid "Unlocked device is mapped to '%s'"
-#~ msgstr "Dispositif de déverrouillage est mis en correspondance '%s'"
-
-#~ msgid "Unlocked successfully"
-#~ msgstr "Débloqué avec succès"
-
-#~ msgid "Unmounting from"
-#~ msgstr "Non monté pour"
-
-#~ msgid "Used"
-#~ msgstr "Utilisé"
-
-#~ msgid "User cancelled the password prompt"
-#~ msgstr "L'utilisateur a annulé l'invite de mot de pass"
-
-#~ msgid "Vendor"
-#~ msgstr "Fabricant"
-
-#~ msgid "Wrong password"
-#~ msgstr "Mauvais mot de pass"
-
-#~ msgid "crontab file exported"
-#~ msgstr "Le fichier CronTab est exporté"
-
-#~ msgid "crontab file installed"
-#~ msgstr "Le fichier de planification Crontab est installé"
-
-#~ msgid "device"
-#~ msgstr "matériel"
+#: src/Utility/TeeJee.Process.vala:513
+msgid "Stopped"
+msgstr "Arrêté"

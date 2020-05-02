@@ -81,15 +81,18 @@ $(misc_files): %: %.src BRANDING.mak
 #		-e ';s|DEST_BIN_DIR|$(DESTDIR)$(bindir)|g'
 
 $(pot_file): $(common_vala_files) $(tui_vala_files) $(gui_vala_files)
-	find . -iname "*.vala" -print0 | xargs -0 xgettext --from-code=UTF-8 --language=C --keyword=_ \
+	xgettext \
+		--sort-by-file \
 		--copyright-holder="$(BRANDING_AUTHORNAME) ($(BRANDING_AUTHOREMAIL))" \
 		--package-name="$(BRANDING_SHORTNAME)" \
 		--package-version="$(BRANDING_VERSION)" \
-		--msgid-bugs-address="$(BRANDING_AUTHOREMAIL)" \
-		--escape --sort-output -o $(@)
+		--language=Vala \
+		--output=$(@) \
+		$(common_vala_files) $(tui_vala_files) $(gui_vala_files)
 
 $(po_files): %: $(pot_file)
 	msgmerge --backup=none --update -v $(@) $(pot_file)
+	msgattrib --output-file=$(@) --no-obsolete $(@)
 	@touch $(@)
 
 TRANSLATORS: $(po_files)
