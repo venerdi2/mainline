@@ -83,7 +83,6 @@ $(misc_files): %: %.src BRANDING.mak
 $(pot_file): $(common_vala_files) $(tui_vala_files) $(gui_vala_files)
 	xgettext \
 		--sort-by-file \
-		--copyright-holder="$(BRANDING_AUTHORNAME) ($(BRANDING_AUTHOREMAIL))" \
 		--package-name="$(BRANDING_SHORTNAME)" \
 		--package-version="$(BRANDING_VERSION)" \
 		--language=Vala \
