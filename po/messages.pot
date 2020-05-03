@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 22:49-0400\n"
+"POT-Creation-Date: 2020-05-02 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,33 +113,33 @@ msgstr ""
 msgid "This kernel is already installed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1281
+#: src/Common/LinuxKernel.vala:1283
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1284
+#: src/Common/LinuxKernel.vala:1286
 msgid "Installation completed with errors"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1300
+#: src/Common/LinuxKernel.vala:1302
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1305
+#: src/Common/LinuxKernel.vala:1307
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
+#: src/Common/LinuxKernel.vala:1339 src/Common/LinuxKernel.vala:1392
 msgid "Un-install completed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
+#: src/Common/LinuxKernel.vala:1342 src/Common/LinuxKernel.vala:1395
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1353
+#: src/Common/LinuxKernel.vala:1355
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."

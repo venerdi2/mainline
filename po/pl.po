@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 16:29-0400\n"
+"POT-Creation-Date: 2020-05-02 23:39-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: Waldemar Konik <valdi74@github>\n"
 "Language-Team: Polish\n"
@@ -115,17 +115,17 @@ msgstr "BŁĄD"
 msgid "This kernel is already installed."
 msgstr "To jądro jest już zainstalowane."
 
-#: src/Common/LinuxKernel.vala:1281
+#: src/Common/LinuxKernel.vala:1283
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalacja zakończona. Aby korzystać z nowego jądra, konieczne jest ponowne "
 "uruchomienie."
 
-#: src/Common/LinuxKernel.vala:1284
+#: src/Common/LinuxKernel.vala:1286
 msgid "Installation completed with errors"
 msgstr "Instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1300
+#: src/Common/LinuxKernel.vala:1302
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -133,19 +133,19 @@ msgstr ""
 "Wybrane jądro aktualnie działa i nie może zostać usunięte.\n"
 " Zainstaluj inne jądro przed usunięciem tego."
 
-#: src/Common/LinuxKernel.vala:1305
+#: src/Common/LinuxKernel.vala:1307
 msgid "Preparing to remove selected kernels"
 msgstr "Przygotowanie do usunięcia wybranych jąder"
 
-#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
+#: src/Common/LinuxKernel.vala:1339 src/Common/LinuxKernel.vala:1392
 msgid "Un-install completed"
 msgstr "De-instalacja zakończona"
 
-#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
+#: src/Common/LinuxKernel.vala:1342 src/Common/LinuxKernel.vala:1395
 msgid "Un-install completed with errors"
 msgstr "De-instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1353
+#: src/Common/LinuxKernel.vala:1355
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 16:29-0400\n"
+"POT-Creation-Date: 2020-05-02 23:39-0400\n"
 "PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -114,16 +114,16 @@ msgstr "HATA"
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 
-#: src/Common/LinuxKernel.vala:1281
+#: src/Common/LinuxKernel.vala:1283
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Kurulum tamamlandı. Yeni çekirdeği kullanmak için yeniden başlatma gerekiyor."
 
-#: src/Common/LinuxKernel.vala:1284
+#: src/Common/LinuxKernel.vala:1286
 msgid "Installation completed with errors"
 msgstr "Kurulum hatalarla tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1300
+#: src/Common/LinuxKernel.vala:1302
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -131,19 +131,19 @@ msgstr ""
 "Seçilen çekirdek şu anda çalışıyor ve kaldırılamıyor.\n"
 " Bunu kaldırmadan önce başka bir çekirdek yükleyin."
 
-#: src/Common/LinuxKernel.vala:1305
+#: src/Common/LinuxKernel.vala:1307
 msgid "Preparing to remove selected kernels"
 msgstr "Seçilen çekirdekleri kaldırmak için hazırlanıyor"
 
-#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
+#: src/Common/LinuxKernel.vala:1339 src/Common/LinuxKernel.vala:1392
 msgid "Un-install completed"
 msgstr "Kaldırma tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
+#: src/Common/LinuxKernel.vala:1342 src/Common/LinuxKernel.vala:1395
 msgid "Un-install completed with errors"
 msgstr "Kaldırma hatalarla tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1353
+#: src/Common/LinuxKernel.vala:1355
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."

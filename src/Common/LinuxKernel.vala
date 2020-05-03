@@ -1259,13 +1259,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (ok){
 
 			log_msg("Preparing to install '%s'".printf(name));
-			
-			var cmd = "cd '%s/%s' && dpkg -i ".printf(cache_subdir, NATIVE_ARCH);
+
+			var flist = "";
 
 			foreach(string file_name in deb_list.keys){
-				cmd += "'%s' ".printf(file_name);
+				flist += " '%s'".printf(file_name);
 			}
-			
+
+			var cmd = "cd %s/%s && dpkg -i %s && rm %s".printf(cache_subdir, NATIVE_ARCH, flist, flist);
+	
 			if (write_to_terminal){
 				log_msg("");
 				status = Posix.system(cmd); // execute

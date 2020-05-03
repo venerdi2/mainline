@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 16:29-0400\n"
+"POT-Creation-Date: 2020-05-02 23:39-0400\n"
 "PO-Revision-Date: 2017-12-24 00:52+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -117,17 +117,17 @@ msgstr "GREŠKA"
 msgid "This kernel is already installed."
 msgstr "Ovaj kernel je već instaliran."
 
-#: src/Common/LinuxKernel.vala:1281
+#: src/Common/LinuxKernel.vala:1283
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalacija je završena. Potrebno je ponovno pokretanje računala kako bi se "
 "koristio novi kernel."
 
-#: src/Common/LinuxKernel.vala:1284
+#: src/Common/LinuxKernel.vala:1286
 msgid "Installation completed with errors"
 msgstr "Instalacija je završena s greškama"
 
-#: src/Common/LinuxKernel.vala:1300
+#: src/Common/LinuxKernel.vala:1302
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -135,19 +135,19 @@ msgstr ""
 "Odabrani kernel je trenutno pokernut i ne može se ukloniti.\n"
 " Instalirajte drugi kernel prije uklanjanja trenutnog kernela."
 
-#: src/Common/LinuxKernel.vala:1305
+#: src/Common/LinuxKernel.vala:1307
 msgid "Preparing to remove selected kernels"
 msgstr "Pripremanje uklanjanja odabranih kernela"
 
-#: src/Common/LinuxKernel.vala:1337 src/Common/LinuxKernel.vala:1390
+#: src/Common/LinuxKernel.vala:1339 src/Common/LinuxKernel.vala:1392
 msgid "Un-install completed"
 msgstr "Deinstalacija završena"
 
-#: src/Common/LinuxKernel.vala:1340 src/Common/LinuxKernel.vala:1393
+#: src/Common/LinuxKernel.vala:1342 src/Common/LinuxKernel.vala:1395
 msgid "Un-install completed with errors"
 msgstr "Deinstalacija završena s greškama"
 
-#: src/Common/LinuxKernel.vala:1353
+#: src/Common/LinuxKernel.vala:1355
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
