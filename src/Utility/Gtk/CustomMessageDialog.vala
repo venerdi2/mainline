@@ -79,13 +79,11 @@ public class CustomMessageDialog : Gtk.Dialog {
 
 	public void init_window () {
 
-		this.title = "";
+		this.title = BRANDING_LONGNAME;
 		this.window_position = WindowPosition.CENTER_ON_PARENT;
 		this.icon = get_app_icon(16);
 		this.resizable = false;
 		this.deletable = false;
-		this.skip_taskbar_hint = true;
-		this.skip_pager_hint = true;
 
 		//vbox_main
 		vbox_main = get_content_area () as Gtk.Box;

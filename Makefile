@@ -127,11 +127,11 @@ install: all
 .PHONY: uninstall
 uninstall:
 #	$(BRANDING_SHORTNAME) --clean-cache
-	rm -f "$(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)"
-	rm -rf "$(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)"
-#	rm -f "$(DESTDIR)$(polkitdir)/$(BRANDING_SHORTNAME).policy"
-	rm -f "$(DESTDIR)$(launcherdir)/$(BRANDING_SHORTNAME).desktop"
-	rm -f "$(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME).*"
+	rm -f $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)
+	rm -rf $(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)
+#	rm -f $(DESTDIR)$(polkitdir)/$(BRANDING_SHORTNAME).policy
+	rm -f $(DESTDIR)$(launcherdir)/$(BRANDING_SHORTNAME).desktop
+	rm -f $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME).*
 	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/$(BRANDING_SHORTNAME).mo
 	rm -f $(DESTDIR)/home/*/.config/$(BRANDING_SHORTNAME)/$(BRANDING_SHORTNAME)-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/$(BRANDING_SHORTNAME).desktop
@@ -187,3 +187,16 @@ deb_build_number: debian/changelog
 .PHONY: release_deb
 release_deb: deb_build_number clean
 	$(MAKE) deb
+
+# disable some built-in rules
+Makefile:
+	@echo $(@)
+
+%.mak:
+	@echo $(@)
+
+%.src:
+	@echo $(@)
+
+%.vala:
+	@echo $(@)

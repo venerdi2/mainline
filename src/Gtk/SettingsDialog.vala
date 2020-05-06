@@ -44,13 +44,11 @@ public class SettingsDialog : Gtk.Dialog {
 	public SettingsDialog.with_parent(Window parent) {
 		set_transient_for(parent);
 		set_modal(true);
-		set_skip_taskbar_hint(true);
-		set_skip_pager_hint(true);
 		window_position = WindowPosition.CENTER_ON_PARENT;
 		deletable = false;
 		resizable = false;
 		
-		icon = get_app_icon(16,".svg");
+		icon = get_app_icon(16);
 
 		title = _("Settings");
 		

@@ -1,3 +1,9 @@
+mainline (1.0.8) unstable; urgency=medium
+
+  * Don't hide the terminal window from the taskbar or pager
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 05 May 2020 22:07:47 -0400
+
 mainline (1.0.7) unstable; urgency=medium
 
   * Delete .deb files after successful install, so cache/tmp doesn't just grow forever

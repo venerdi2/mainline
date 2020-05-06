@@ -57,7 +57,7 @@ public class MainWindow : Gtk.Window{
 
 		title = BRANDING_LONGNAME;
 		window_position = WindowPosition.CENTER;
-		icon = get_app_icon(16,".svg");
+		icon = get_app_icon(16);
 
 		// vbox_main
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
@@ -382,7 +382,7 @@ public class MainWindow : Gtk.Window{
 			else if (selected_kernels.size > 0){
 				
 				var term = new TerminalWindow.with_parent(this, false, true);
-
+				
 				term.script_complete.connect(()=>{
 					term.allow_window_close();
 				});
@@ -412,8 +412,6 @@ public class MainWindow : Gtk.Window{
 
 				sh += "echo ''\n";
 				sh += "echo 'Close window to exit...'\n";
-
-				this.hide();
 
 				term.execute_script(save_bash_script_temp(sh));
 			}
@@ -452,8 +450,6 @@ public class MainWindow : Gtk.Window{
 
 			sh += "echo ''\n";
 			sh += "echo 'Close window to exit...'\n";
-
-			this.hide();
 
 			term.execute_script(save_bash_script_temp(sh));
 		});
@@ -694,8 +690,6 @@ public class MainWindow : Gtk.Window{
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 			return;
 		}
-
-		this.hide();
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 23:39-0400\n"
+"POT-Creation-Date: 2020-05-06 15:08-0400\n"
 "PO-Revision-Date: 2017-12-24 00:52+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -70,7 +70,7 @@ msgid "Latest point update"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:798
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
@@ -104,8 +104,8 @@ msgid "Downloading"
 msgstr "Preuzimanje"
 
 #: src/Common/LinuxKernel.vala:1229
-#: src/Utility/Gtk/CustomMessageDialog.vala:150
-#: src/Utility/Gtk/CustomMessageDialog.vala:154
+#: src/Utility/Gtk/CustomMessageDialog.vala:148
+#: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "U redu"
 
@@ -113,7 +113,7 @@ msgstr "U redu"
 msgid "ERROR"
 msgstr "GREŠKA"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:685
 msgid "This kernel is already installed."
 msgstr "Ovaj kernel je već instaliran."
 
@@ -212,7 +212,7 @@ msgstr "Instaliraj određeni mainline kernel"
 msgid "Remove specified kernel"
 msgstr "Ukloni određeni mainline kernel"
 
-#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:424
+#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:422
 msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
@@ -310,17 +310,17 @@ msgstr "Stanje"
 msgid "Refresh"
 msgstr "Osvježi"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
-#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:554
+#: src/Gtk/MainWindow.vala:690 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Internet povezivanje nije aktivno"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
-#: src/Gtk/MainWindow.vala:694
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:554
+#: src/Gtk/MainWindow.vala:690
 msgid "No Internet"
 msgstr "Nema pristupa internetu"
 
-#: src/Gtk/MainWindow.vala:357 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/MainWindow.vala:357 src/Gtk/UpdateNotificationWindow.vala:145
 msgid "Install"
 msgstr "Instaliraj"
 
@@ -348,159 +348,159 @@ msgstr "Ukloni"
 msgid "Select the kernels to remove"
 msgstr "Odaberi kernele za uklanjanje"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:421
 msgid "Purge"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:462
+#: src/Gtk/MainWindow.vala:458
 msgid "Changes"
 msgstr "Promjene"
 
-#: src/Gtk/MainWindow.vala:473 src/Gtk/SettingsDialog.vala:55
+#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:53
 msgid "Settings"
 msgstr "Postavke"
 
-#: src/Gtk/MainWindow.vala:494
+#: src/Gtk/MainWindow.vala:490
 msgid "About"
 msgstr "O programu"
 
-#: src/Gtk/MainWindow.vala:542
+#: src/Gtk/MainWindow.vala:538
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
-#: src/Gtk/MainWindow.vala:577
+#: src/Gtk/MainWindow.vala:573
 msgid "Refreshing..."
 msgstr "Osvježavanje..."
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:148
-#: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:155
+#: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/UpdateNotificationWindow.vala:165
+#: src/Utility/Gtk/CustomMessageDialog.vala:153
 msgid "Cancel"
 msgstr "Odustani"
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Notification"
 msgstr "Obavijesti"
 
-#: src/Gtk/SettingsDialog.vala:72
+#: src/Gtk/SettingsDialog.vala:70
 msgid "Notify if a major release is available"
 msgstr "Obavijesti kada je glavno izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:83
+#: src/Gtk/SettingsDialog.vala:81
 msgid "Notify if a point release is available"
 msgstr "Obavijesti kada je pojedino izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:94
+#: src/Gtk/SettingsDialog.vala:92
 msgid "Show notification bubble on desktop"
 msgstr "Prikaži mjehurić obavijesti radne površine"
 
-#: src/Gtk/SettingsDialog.vala:105
+#: src/Gtk/SettingsDialog.vala:103
 msgid "Show notification dialog"
 msgstr "Prikaži dijalog obavijesti"
 
-#: src/Gtk/SettingsDialog.vala:120
+#: src/Gtk/SettingsDialog.vala:118
 msgid "Check every"
 msgstr "Provjeri svaka"
 
-#: src/Gtk/SettingsDialog.vala:151
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Hour(s)"
 msgstr "Sat(a)"
 
-#: src/Gtk/SettingsDialog.vala:153
+#: src/Gtk/SettingsDialog.vala:151
 msgid "Day(s)"
 msgstr "Dan(a)"
 
-#: src/Gtk/SettingsDialog.vala:155
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Week(s)"
 msgstr "Tjedan(a)"
 
-#: src/Gtk/SettingsDialog.vala:160
+#: src/Gtk/SettingsDialog.vala:158
 msgid "Display"
 msgstr "Prikaz"
 
-#: src/Gtk/SettingsDialog.vala:168
+#: src/Gtk/SettingsDialog.vala:166
 msgid "Hide unstable and RC releases"
 msgstr "Sakrij nestabilne kernele i predizdanja"
 
-#: src/Gtk/SettingsDialog.vala:182
+#: src/Gtk/SettingsDialog.vala:180
 msgid "Show N previous major versions "
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:197
+#: src/Gtk/SettingsDialog.vala:195
 msgid "Other"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:205
+#: src/Gtk/SettingsDialog.vala:203
 #, fuzzy
 msgid "Skip internet connection check"
 msgstr "Internet povezivanje nije aktivno"
 
-#: src/Gtk/SettingsDialog.vala:218
+#: src/Gtk/SettingsDialog.vala:216
 #, fuzzy
 msgid "Internet connection timeout in "
 msgstr "Internet povezivanje nije aktivno"
 
-#: src/Gtk/SettingsDialog.vala:232
+#: src/Gtk/SettingsDialog.vala:230
 msgid "seconds"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:295
+#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/Gtk/UpdateNotificationWindow.vala:148
+#: src/Gtk/UpdateNotificationWindow.vala:146
 msgid "Install this kernel"
 msgstr "Instaliraj ovaj kernel"
 
-#: src/Gtk/UpdateNotificationWindow.vala:157
+#: src/Gtk/UpdateNotificationWindow.vala:155
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Gtk/UpdateNotificationWindow.vala:158
+#: src/Gtk/UpdateNotificationWindow.vala:156
 msgid "List available kernels"
 msgstr "Prikaži sve kernele"
 
-#: src/Gtk/UpdateNotificationWindow.vala:168
+#: src/Gtk/UpdateNotificationWindow.vala:166
 msgid "Ignore this update"
 msgstr "Zanemari ovu nadopunu"
 
-#: src/Utility/Gtk/AboutWindow.vala:272 src/Utility/Gtk/AboutWindow.vala:289
+#: src/Utility/Gtk/AboutWindow.vala:271 src/Utility/Gtk/AboutWindow.vala:288
 msgid "Credits"
 msgstr "Zasluge"
 
-#: src/Utility/Gtk/AboutWindow.vala:285
+#: src/Utility/Gtk/AboutWindow.vala:284
 msgid "Back"
 msgstr "Natrag"
 
-#: src/Utility/Gtk/AboutWindow.vala:314
+#: src/Utility/Gtk/AboutWindow.vala:313
 msgid "Authors"
 msgstr "Autori"
 
-#: src/Utility/Gtk/AboutWindow.vala:322
+#: src/Utility/Gtk/AboutWindow.vala:321
 msgid "Contributions"
 msgstr "Prilozi"
 
-#: src/Utility/Gtk/AboutWindow.vala:330
+#: src/Utility/Gtk/AboutWindow.vala:329
 msgid "Third Party Tools"
 msgstr "Alati treće strane"
 
-#: src/Utility/Gtk/AboutWindow.vala:338
+#: src/Utility/Gtk/AboutWindow.vala:337
 msgid "Artists"
 msgstr "Dizajneri"
 
-#: src/Utility/Gtk/AboutWindow.vala:346
+#: src/Utility/Gtk/AboutWindow.vala:345
 msgid "Translators"
 msgstr "Prevoditelji"
 
-#: src/Utility/Gtk/AboutWindow.vala:354
+#: src/Utility/Gtk/AboutWindow.vala:353
 msgid "Documenters"
 msgstr "Autori dokumentacije"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:159
+#: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
 msgstr "Da"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:160
+#: src/Utility/Gtk/CustomMessageDialog.vala:158
 msgid "No"
 msgstr "Ne"
 

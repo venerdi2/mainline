@@ -56,6 +56,7 @@ public class TerminalWindow : Gtk.Window {
 			set_transient_for(parent);
 			parent_win = parent;
 		}
+
 		set_modal(true);
 		window_position = WindowPosition.CENTER;
 
@@ -84,7 +85,7 @@ public class TerminalWindow : Gtk.Window {
 
 	public void init_window () {
 		
-		title = "";
+		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
 		resizable = true;
 		deletable = false;

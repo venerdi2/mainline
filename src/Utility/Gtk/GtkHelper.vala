@@ -50,7 +50,7 @@ namespace TeeJee.GtkHelper{
 
 	// icon ----------------------------------------------
 
-	public Gdk.Pixbuf? get_app_icon(int icon_size, string format = ".png"){
+	public Gdk.Pixbuf? get_app_icon(int icon_size, string format = ".svg"){
 		var img_icon = get_shared_icon(BRANDING_SHORTNAME, BRANDING_SHORTNAME + format,icon_size,"pixmaps");
 		if (img_icon != null){
 			return img_icon.pixbuf;

@@ -57,14 +57,13 @@ public class ProgressWindow : Gtk.Window {
 
 		set_transient_for(parent);
 		set_modal(true);
-		set_skip_taskbar_hint(true);
-		set_skip_pager_hint(true);
+		set_decorated(false);
 		set_type_hint(Gdk.WindowTypeHint.DIALOG);
 		window_position = WindowPosition.CENTER;
 
 		set_default_size(def_width, def_height);
 
-		icon = get_app_icon(16,".svg");
+		icon = get_app_icon(16);
 
 		App.status_line = "";
 		App.progress_count = 0;

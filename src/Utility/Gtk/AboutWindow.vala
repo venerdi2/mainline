@@ -191,7 +191,6 @@ public class AboutWindow : Dialog {
         window_position = WindowPosition.CENTER_ON_PARENT;
 		set_destroy_with_parent (true);
 		set_modal (true);
-        skip_taskbar_hint = false;
         set_default_size (450, 400);
 
 	    vbox_main = get_content_area();

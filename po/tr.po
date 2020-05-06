@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 23:39-0400\n"
+"POT-Creation-Date: 2020-05-06 15:08-0400\n"
 "PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -67,7 +67,7 @@ msgid "Latest point update"
 msgstr "Son güncelleme noktası"
 
 #: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:371
-#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:804
+#: src/Console/AppConsole.vala:429 src/Gtk/MainWindow.vala:798
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
@@ -101,8 +101,8 @@ msgid "Downloading"
 msgstr "İndiriliyor"
 
 #: src/Common/LinuxKernel.vala:1229
-#: src/Utility/Gtk/CustomMessageDialog.vala:150
-#: src/Utility/Gtk/CustomMessageDialog.vala:154
+#: src/Utility/Gtk/CustomMessageDialog.vala:148
+#: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "TAMAM"
 
@@ -110,7 +110,7 @@ msgstr "TAMAM"
 msgid "ERROR"
 msgstr "HATA"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:689
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:685
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 
@@ -204,7 +204,7 @@ msgstr "Belirtilen mainline çekirdeğini kur"
 msgid "Remove specified kernel"
 msgstr "Belirtilen çekirdeği kaldır"
 
-#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:424
+#: src/Console/AppConsole.vala:90 src/Gtk/MainWindow.vala:422
 msgid "Remove installed kernels older than running kernel"
 msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
@@ -301,17 +301,17 @@ msgstr "Durum"
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
-#: src/Gtk/MainWindow.vala:694 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:554
+#: src/Gtk/MainWindow.vala:690 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:558
-#: src/Gtk/MainWindow.vala:694
+#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:554
+#: src/Gtk/MainWindow.vala:690
 msgid "No Internet"
 msgstr "İnternet Yok"
 
-#: src/Gtk/MainWindow.vala:357 src/Gtk/UpdateNotificationWindow.vala:147
+#: src/Gtk/MainWindow.vala:357 src/Gtk/UpdateNotificationWindow.vala:145
 msgid "Install"
 msgstr "Kur"
 
@@ -339,157 +339,157 @@ msgstr "Sil"
 msgid "Select the kernels to remove"
 msgstr "Kaldırma için çekirdek seçin"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:421
 msgid "Purge"
 msgstr "Temizle"
 
-#: src/Gtk/MainWindow.vala:462
+#: src/Gtk/MainWindow.vala:458
 msgid "Changes"
 msgstr "Değişiklikler"
 
-#: src/Gtk/MainWindow.vala:473 src/Gtk/SettingsDialog.vala:55
+#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:53
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/Gtk/MainWindow.vala:494
+#: src/Gtk/MainWindow.vala:490
 msgid "About"
 msgstr "Hakkında"
 
-#: src/Gtk/MainWindow.vala:542
+#: src/Gtk/MainWindow.vala:538
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
-#: src/Gtk/MainWindow.vala:577
+#: src/Gtk/MainWindow.vala:573
 msgid "Refreshing..."
 msgstr "Yenileniyor..."
 
-#: src/Gtk/ProgressWindow.vala:145 src/Gtk/TerminalWindow.vala:148
-#: src/Gtk/UpdateNotificationWindow.vala:167
-#: src/Utility/Gtk/CustomMessageDialog.vala:155
+#: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/UpdateNotificationWindow.vala:165
+#: src/Utility/Gtk/CustomMessageDialog.vala:153
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Notification"
 msgstr "Bildirim"
 
-#: src/Gtk/SettingsDialog.vala:72
+#: src/Gtk/SettingsDialog.vala:70
 msgid "Notify if a major release is available"
 msgstr "Ana sürüm mevcutsa bildir"
 
-#: src/Gtk/SettingsDialog.vala:83
+#: src/Gtk/SettingsDialog.vala:81
 msgid "Notify if a point release is available"
 msgstr "Ara sürüm mevcutsa bildir"
 
-#: src/Gtk/SettingsDialog.vala:94
+#: src/Gtk/SettingsDialog.vala:92
 msgid "Show notification bubble on desktop"
 msgstr "Masaüstünde bildirim baloncuğu göster"
 
-#: src/Gtk/SettingsDialog.vala:105
+#: src/Gtk/SettingsDialog.vala:103
 msgid "Show notification dialog"
 msgstr "Bildirim iletişimini göster"
 
-#: src/Gtk/SettingsDialog.vala:120
+#: src/Gtk/SettingsDialog.vala:118
 msgid "Check every"
 msgstr "Kontrol aralığı"
 
-#: src/Gtk/SettingsDialog.vala:151
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Hour(s)"
 msgstr "Saat"
 
-#: src/Gtk/SettingsDialog.vala:153
+#: src/Gtk/SettingsDialog.vala:151
 msgid "Day(s)"
 msgstr "Gün"
 
-#: src/Gtk/SettingsDialog.vala:155
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Week(s)"
 msgstr "Hafta"
 
-#: src/Gtk/SettingsDialog.vala:160
+#: src/Gtk/SettingsDialog.vala:158
 msgid "Display"
 msgstr "Gösterim"
 
-#: src/Gtk/SettingsDialog.vala:168
+#: src/Gtk/SettingsDialog.vala:166
 msgid "Hide unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri gizle"
 
-#: src/Gtk/SettingsDialog.vala:182
+#: src/Gtk/SettingsDialog.vala:180
 msgid "Show N previous major versions "
 msgstr "Önceki ana sürümleri gösterme sayısı "
 
-#: src/Gtk/SettingsDialog.vala:197
+#: src/Gtk/SettingsDialog.vala:195
 msgid "Other"
 msgstr "Diğer"
 
-#: src/Gtk/SettingsDialog.vala:205
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Skip internet connection check"
 msgstr "İnternet bağlantı kontrolünü atla"
 
-#: src/Gtk/SettingsDialog.vala:218
+#: src/Gtk/SettingsDialog.vala:216
 msgid "Internet connection timeout in "
 msgstr "İnternet bağlantısı zaman aşımı "
 
-#: src/Gtk/SettingsDialog.vala:232
+#: src/Gtk/SettingsDialog.vala:230
 msgid "seconds"
 msgstr "saniye"
 
-#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:295
+#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
 msgstr "Kapat"
 
-#: src/Gtk/UpdateNotificationWindow.vala:148
+#: src/Gtk/UpdateNotificationWindow.vala:146
 msgid "Install this kernel"
 msgstr "Bu çekirdeği kur"
 
-#: src/Gtk/UpdateNotificationWindow.vala:157
+#: src/Gtk/UpdateNotificationWindow.vala:155
 msgid "Show"
 msgstr "Göster"
 
-#: src/Gtk/UpdateNotificationWindow.vala:158
+#: src/Gtk/UpdateNotificationWindow.vala:156
 msgid "List available kernels"
 msgstr "Tüm çekirdekleri listele"
 
-#: src/Gtk/UpdateNotificationWindow.vala:168
+#: src/Gtk/UpdateNotificationWindow.vala:166
 msgid "Ignore this update"
 msgstr "Bu güncellemeyi yoksay"
 
-#: src/Utility/Gtk/AboutWindow.vala:272 src/Utility/Gtk/AboutWindow.vala:289
+#: src/Utility/Gtk/AboutWindow.vala:271 src/Utility/Gtk/AboutWindow.vala:288
 msgid "Credits"
 msgstr "Katkı sağlayanlar"
 
-#: src/Utility/Gtk/AboutWindow.vala:285
+#: src/Utility/Gtk/AboutWindow.vala:284
 msgid "Back"
 msgstr "Geri"
 
-#: src/Utility/Gtk/AboutWindow.vala:314
+#: src/Utility/Gtk/AboutWindow.vala:313
 msgid "Authors"
 msgstr "Yazar"
 
-#: src/Utility/Gtk/AboutWindow.vala:322
+#: src/Utility/Gtk/AboutWindow.vala:321
 msgid "Contributions"
 msgstr "Destek verenler"
 
-#: src/Utility/Gtk/AboutWindow.vala:330
+#: src/Utility/Gtk/AboutWindow.vala:329
 msgid "Third Party Tools"
 msgstr "Üçüncü Parti Araçlar"
 
-#: src/Utility/Gtk/AboutWindow.vala:338
+#: src/Utility/Gtk/AboutWindow.vala:337
 msgid "Artists"
 msgstr "Sanatçılar"
 
-#: src/Utility/Gtk/AboutWindow.vala:346
+#: src/Utility/Gtk/AboutWindow.vala:345
 msgid "Translators"
 msgstr "Çevirenler"
 
-#: src/Utility/Gtk/AboutWindow.vala:354
+#: src/Utility/Gtk/AboutWindow.vala:353
 msgid "Documenters"
 msgstr "Belgelendirenler"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:159
+#: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
 msgstr "Evet"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:160
+#: src/Utility/Gtk/CustomMessageDialog.vala:158
 msgid "No"
 msgstr "Hayır"
 
