@@ -9,6 +9,7 @@ CFLAGS := --std=c99
 prefix := /usr
 bindir := $(prefix)/bin
 sharedir := $(prefix)/share
+libdir := $(prefix)/lib
 localedir := $(sharedir)/locale
 launcherdir := $(sharedir)/applications
 #polkitdir := $(sharedir)/polkit-1/actions
@@ -24,7 +25,8 @@ gee := gee-0.8
 
 include BRANDING.mak
 BRANDING_VERSION := $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_MICRO)
-branding_symbols := -X -D'BRANDING_SHORTNAME="$(BRANDING_SHORTNAME)"' \
+build_symbols := -X -D'INSTALL_PREFIX="$(prefix)"' \
+	-X -D'BRANDING_SHORTNAME="$(BRANDING_SHORTNAME)"' \
 	-X -D'BRANDING_LONGNAME="$(BRANDING_LONGNAME)"' \
 	-X -D'BRANDING_VERSION="$(BRANDING_VERSION)"' \
 	-X -D'BRANDING_AUTHORNAME="$(BRANDING_AUTHORNAME)"' \
@@ -60,12 +62,12 @@ deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
 
 $(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) $(po_files)
-	valac -X -w $(branding_symbols) --Xcc="-lm" \
+	valac -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) $(po_files)
-	valac -X -w $(branding_symbols) --Xcc="-lm" \
+	valac -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
 
@@ -106,13 +108,13 @@ clean:
 install: all
 	mkdir -p "$(DESTDIR)$(bindir)"
 	mkdir -p "$(DESTDIR)$(sharedir)"
+	mkdir -p "$(DESTDIR)$(libdir)"
 	mkdir -p "$(DESTDIR)$(man1dir)"
 	mkdir -p "$(DESTDIR)$(launcherdir)"
 #	mkdir -p "$(DESTDIR)$(polkitdir)"
 	mkdir -p "$(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)"
+	mkdir -p "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)"
 	mkdir -p "$(DESTDIR)$(sharedir)/pixmaps"
-	install -m 0755 $(BRANDING_SHORTNAME) "$(DESTDIR)$(bindir)"
-	install -m 0755 $(BRANDING_SHORTNAME)-gtk "$(DESTDIR)$(bindir)"
 	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)" share/$(BRANDING_SHORTNAME)/*
 	chmod --recursive 0755 $(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)/*
 #	install -m 0644 share/polkit-1/actions/$(BRANDING_SHORTNAME).policy "$(DESTDIR)$(polkitdir)"
@@ -123,12 +125,16 @@ install: all
 		mkdir -p "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES"; \
 		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES/$(BRANDING_SHORTNAME).mo" $${p} ; \
 	done
+	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)" lib/*
+	install -m 0755 $(BRANDING_SHORTNAME) "$(DESTDIR)$(bindir)"
+	install -m 0755 $(BRANDING_SHORTNAME)-gtk "$(DESTDIR)$(bindir)"
 
 .PHONY: uninstall
 uninstall:
 #	$(BRANDING_SHORTNAME) --clean-cache
-	rm -f $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)
+	rm -f $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME) $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)-gtk
 	rm -rf $(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)
+	rm -rf $(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)
 #	rm -f $(DESTDIR)$(polkitdir)/$(BRANDING_SHORTNAME).policy
 	rm -f $(DESTDIR)$(launcherdir)/$(BRANDING_SHORTNAME).desktop
 	rm -f $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME).*

@@ -108,10 +108,10 @@ public class MainWindow : Gtk.Window{
 
 			break;
 
-		case "notify":
-
-			notify_user();
-			break;
+//		case "notify":
+//
+//			notify_user();
+//			break;
 		}
 
 		return false;
@@ -506,7 +506,8 @@ public class MainWindow : Gtk.Window{
 
 		dialog.third_party = {
 			"Elementary project (various icons):github.com/elementary/icons",
-			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project"
+			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project",
+			"notify-send.sh:github.com/vlevit/notify-send.sh"
 		};
 		// FIXME - generate this list from the .po files
 		/*
@@ -725,76 +726,4 @@ public class MainWindow : Gtk.Window{
 		term.execute_script(save_bash_script_temp(sh));
 	}
 
-	private void notify_user(){
-
-		LinuxKernel.check_updates();
-
-		var kern = LinuxKernel.kernel_update_major;
-
-		if ((kern != null) && App.notify_major){
-
-			var title = "Linux v%s Available".printf(kern.version_main);
-			var message = "Major update available for installation";
-
-			if (App.notify_bubble){
-
-				OSDNotify.notify_send(title,message,3000,"normal","info");
-			}
-
-			if (App.notify_dialog){
-
-				var win = new UpdateNotificationWindow(
-					BRANDING_LONGNAME,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null,
-					kern);
-
-				win.destroy.connect(()=>{
-					log_debug("UpdateNotificationWindow destroyed");
-					Gtk.main_quit();
-				});
-
-				Gtk.main(); // start event loop
-			}
-
-			log_msg(title);
-			log_msg(message);
-			return;
-		}
-
-		kern = LinuxKernel.kernel_update_minor;
-
-		if ((kern != null) && App.notify_minor){
-
-			var title = "Linux v%s Available".printf(kern.version_main);
-			var message = "Minor update available for installation";
-
-			if (App.notify_bubble){
-
-				OSDNotify.notify_send(title,message,3000,"normal","info");
-			}
-
-			if (App.notify_dialog){
-
-				var win = new UpdateNotificationWindow(
-					BRANDING_LONGNAME,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					this,
-					kern);
-
-				win.destroy.connect(()=>{
-					log_debug("UpdateNotificationWindow destroyed");
-					Gtk.main_quit();
-				});
-
-				Gtk.main(); // start event loop
-			}
-
-			log_msg(title);
-			log_msg(message);
-			return;
-		}
-
-		log_msg(_("No updates found"));
-	}
 }

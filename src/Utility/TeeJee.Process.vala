@@ -34,19 +34,12 @@ namespace TeeJee.ProcessHelper{
 
 	// execute process ---------------------------------
 	
-    public static void init_tmp(string subdir_name){
+    public static void init_tmp(){
 		
 		string std_out, std_err;
 
-		TEMP_DIR = Environment.get_tmp_dir() + "/" + subdir_name + "/" + random_string();
+		TEMP_DIR = Environment.get_tmp_dir() + "/" + BRANDING_SHORTNAME + "_" + random_string();
 		dir_create(TEMP_DIR);
-
-		exec_script_sync("echo 'ok'",out std_out,out std_err, true);
-		if ((std_out == null)||(std_out.strip() != "ok")){
-			TEMP_DIR = Environment.get_home_dir() + "/.temp/" + subdir_name + "/" + random_string();
-			exec_sync("rm -rf '%s'".printf(TEMP_DIR), null, null);
-			dir_create(TEMP_DIR);
-		}
 
 		//log_debug("TEMP_DIR=" + TEMP_DIR);
 	}

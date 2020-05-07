@@ -30,12 +30,14 @@ using TeeJee.ProcessHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
+
 public Main App;
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
+[CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
 
-const string LOCALE_DIR = "/usr/share/locale";
+const string LOCALE_DIR = INSTALL_PREFIX+"/share/locale";
 
 public class AppConsole : GLib.Object {
 
@@ -45,7 +47,7 @@ public class AppConsole : GLib.Object {
 
 		log_msg("%s v%s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
-		init_tmp(BRANDING_SHORTNAME);
+		init_tmp();
 		
 		LOG_TIMESTAMP = false;
 
@@ -385,21 +387,16 @@ public class AppConsole : GLib.Object {
 		var kern = LinuxKernel.kernel_update_major;
 		
 		if ((kern != null) && App.notify_major){
-			
-			var title = "Linux v%s Available".printf(kern.version_main);
-			var message = "Major update available for installation";
+
+			var title = _("Linux v%s Available").printf(kern.version_main);
+			var message = _("Major update available for installation");
 
 			if (App.notify_bubble){
-				OSDNotify.notify_send(title,message,3000,"normal","info");
+				OSDNotify.notify_send(title,message);
 			}
 
 			log_msg(title);
 			log_msg(message);
-			
-			if (App.notify_dialog){
-				exec_script_async(BRANDING_SHORTNAME+"-gtk --notify");
-				exit(0);
-			}
 
 			return;
 		}
@@ -408,20 +405,15 @@ public class AppConsole : GLib.Object {
 		
 		if ((kern != null) && App.notify_minor){
 			
-			var title = "Linux v%s Available".printf(kern.version_main);
-			var message = "Minor update available for installation";
+			var title = _("Linux v%s Available").printf(kern.version_main);
+			var message = _("Minor update available for installation");
 
 			if (App.notify_bubble){
-				OSDNotify.notify_send(title,message,3000,"normal","info");
+				OSDNotify.notify_send(title,message);
 			}
 
 			log_msg(title);
 			log_msg(message);
-			
-			if (App.notify_dialog){				
-				exec_script_async(BRANDING_SHORTNAME+"-gtk --notify");
-				exit(0);
-			}
 
 			return;
 		}
@@ -440,4 +432,3 @@ public class AppConsole : GLib.Object {
 	}
 
 }
-

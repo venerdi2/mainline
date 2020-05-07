@@ -98,18 +98,6 @@ public class SettingsDialog : Gtk.Dialog {
 		chk.toggled.connect(()=>{
 			App.notify_bubble = chk_notify_bubble.active;
 		});
-		
-		// show window
-		chk = new Gtk.CheckButton.with_label(_("Show notification dialog"));
-		chk.active = App.notify_dialog;
-		chk.margin_start = 6;
-		chk.margin_bottom = 6;
-		vbox_main.add(chk);
-		chk_notify_dialog = chk;
-		
-		chk.toggled.connect(()=>{
-			App.notify_dialog = chk_notify_dialog.active;
-		});
 
 		// notification interval
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);

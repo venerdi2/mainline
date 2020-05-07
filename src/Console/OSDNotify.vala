@@ -26,31 +26,16 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 
-// dep: notify-send
 public class OSDNotify : GLib.Object {
+
 	private static DateTime dt_last_notification = null;
 	public const int NOTIFICATION_INTERVAL = 3;
-	
-	public static int notify_send (
-		string title, string message, int durationMillis,
-		string urgency = "low", // low, normal, critical
-		string dialog_type = "info" //error, info, warning
-		){ 
+
+	public static int notify_send (string title, string message){ 
 
 		/* Displays notification bubble on the desktop */
 
 		int retVal = 0;
-
-		switch (dialog_type){
-			case "error":
-			case "info":
-			case "warning":
-				//ok
-				break;
-			default:
-				dialog_type = "info";
-				break;
-		}
 
 		long seconds = 9999;
 		if (dt_last_notification != null){
@@ -60,7 +45,10 @@ public class OSDNotify : GLib.Object {
 		}
 
 		if (seconds > NOTIFICATION_INTERVAL){
-			string s = "notify-send -t %d -u %s -i %s \"%s\" \"%s\"".printf(durationMillis, urgency, "gtk-dialog-" + dialog_type, title, message);
+			//string s = "notify-send -t %d -u %s -i %s \"%s\" \"%s\"".printf(durationMillis, urgency, icon, title, message);
+			// notify-send.sh -u low -a mainline -i mainline -c info -o "Show:mainline-gtk" "mainline" "New kernel is available"
+			string s = INSTALL_PREFIX+"/lib/"+BRANDING_SHORTNAME+"/notify-send.sh/notify-send.sh -u low -c info -a "+BRANDING_SHORTNAME+" -i "+BRANDING_SHORTNAME+" -o \"Show:"+BRANDING_SHORTNAME+"-gtk\" \"%s\" \"%s\"".printf(title,message);
+			//log_msg(s);
 			retVal = exec_sync (s, null, null);
 			dt_last_notification = new DateTime.now_local();
 		}
@@ -68,13 +56,4 @@ public class OSDNotify : GLib.Object {
 		return retVal;
 	}
 
-	public static bool is_supported(){
-		string path = get_cmd_path ("notify-send");
-		if ((path != null) && (path.length > 0)){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
 }

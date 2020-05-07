@@ -38,7 +38,7 @@ public class Main : GLib.Object{
 
 	// constants ----------
 	[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
-
+	
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
@@ -62,7 +62,6 @@ public class Main : GLib.Object{
 	public bool notify_major = true;
 	public bool notify_minor = true;
 	public bool notify_bubble = true;
-	public bool notify_dialog = true;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
 	public bool skip_connection_check = false;
@@ -91,7 +90,7 @@ public class Main : GLib.Object{
 	public static bool check_dependencies(out string msg) {
 		
 		string[] dependencies = { "apt-get", "aptitude", "aria2c", "dpkg", "gpg", "lsb_release", "pgrep", "pkexec", "uname" };
-		// bash cat chmod chown cd cp du echo env find gzip gunzip id kill ln mv notify-user pidof ps read realpath rm setsid sh stat tar wc which while xdg-open
+		// bash bc cat chmod chown cd cp du echo env find gdbus gzip gunzip id kill ln mv pidof ps read realpath rm setsid sh stat tar wc which while xdg-open
 
 		msg = "";
 		
@@ -141,7 +140,6 @@ public class Main : GLib.Object{
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());
 		config.set_string_member("notify_bubble", notify_bubble.to_string());
-		config.set_string_member("notify_dialog", notify_dialog.to_string());
 		config.set_string_member("hide_unstable", LinuxKernel.hide_unstable.to_string());
 		config.set_string_member("show_prev_majors", LinuxKernel.show_prev_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
@@ -200,7 +198,6 @@ public class Main : GLib.Object{
 		notify_major = json_get_bool(config, "notify_major", true);
 		notify_minor = json_get_bool(config, "notify_minor", true);
 		notify_bubble = json_get_bool(config, "notify_bubble", true);
-		notify_dialog = json_get_bool(config, "notify_dialog", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
 		connection_timeout_seconds = json_get_int(config, "connection_timeout_seconds", 15);
@@ -245,7 +242,9 @@ public class Main : GLib.Object{
 		// UGLY - this should be a cron job
 		string txt = "# Notifications are disabled\nexit 0\n";
 		if (notify_minor || notify_major){
-			txt = "while sleep %d%s".printf(count, suffix)+" ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
+			//txt = "while sleep %d%s".printf(count, suffix)+" ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
+			// debugging
+			txt = "while sleep 60 ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,txt);

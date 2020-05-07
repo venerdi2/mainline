@@ -54,7 +54,7 @@ public class AppGtk : GLib.Object {
 
 		Gtk.init(ref args);
 
-		init_tmp(BRANDING_SHORTNAME+"-gtk");
+		init_tmp();
 		
 		//check_if_admin();
 
@@ -139,10 +139,6 @@ public class AppGtk : GLib.Object {
 			case "--install":
 				App.command = "install";
 				App.requested_version = args[++k];
-				break;
-
-			case "--notify":
-				App.command = "notify";
 				break;
 				
 			// options without argument --------------------------

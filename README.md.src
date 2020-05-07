@@ -42,11 +42,11 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Removed all GRUB options
 * Removed all donate buttons, links, dialogs
 * Remove source cruft
+* Better temp and cache directory behavior
+* Better desktop notification behavior
 
 ### Development Plans / TODO
 * More efficient downloading & caching of info about available kernels  
-Stop consuming over 5GB with kernel packages in ```~/.cache/```  
-Until then, as a work-around, ```BRANDING_SHORTNAME --clean-cache``` deletes the cache
 * Better (more automatic) initial sizes for the window and the columns in the kernel list display so you don't have to manually expand them  
 ...or at least, remember the sizes the user last set.
 * Clean up build warnings
