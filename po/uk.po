@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 00:12-0400\n"
+"POT-Creation-Date: 2020-05-07 03:35-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -105,7 +105,7 @@ msgstr "OK"
 msgid "ERROR"
 msgstr "ПОМИЛКА"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:686
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:681
 msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
@@ -160,7 +160,7 @@ msgstr "Встановити необхідні пакети і спробуйт
 msgid "File not found: %s"
 msgstr "Файл не знайдено: %s"
 
-#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:175
+#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:174
 msgid "Syntax"
 msgstr "Синтаксис"
 
@@ -216,7 +216,7 @@ msgstr "Видалити файли з кешу програми"
 msgid "Show unstable and RC releases"
 msgstr "Приховати нестабільні і реліз-кандидат версії"
 
-#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:177
+#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:176
 msgid "Options"
 msgstr "Параметри"
 
@@ -240,7 +240,7 @@ msgstr "Для запуску програми потрібно мати пра�
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Запустіть додаток як адміністратор за допомогою pkexec або sudo."
 
-#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:162
+#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:161
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
@@ -249,11 +249,11 @@ msgstr "Невідомий параметр"
 msgid "Run '"
 msgstr "Запуск"
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:110
+#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:109
 msgid "Cache"
 msgstr "Кеш"
 
-#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:111
+#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:110
 msgid "Temp"
 msgstr "Темп"
 
@@ -286,11 +286,11 @@ msgstr ""
 msgid "Minor update available for installation"
 msgstr ""
 
-#: src/Gtk/AppGtk.vala:179
+#: src/Gtk/AppGtk.vala:178
 msgid "Print debug information"
 msgstr "Роздрукувати зневадження"
 
-#: src/Gtk/AppGtk.vala:180
+#: src/Gtk/AppGtk.vala:179
 msgid "Show all options"
 msgstr "Показати усі параметри"
 
@@ -311,12 +311,12 @@ msgid "Refresh"
 msgstr "Оновити"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:691 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:691
+#: src/Gtk/MainWindow.vala:686
 msgid "No Internet"
 msgstr "Інтернету немає"
 
@@ -356,7 +356,7 @@ msgstr "Чистити"
 msgid "Changes"
 msgstr "Зміни"
 
-#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:53
+#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -377,63 +377,63 @@ msgstr "Оновлення..."
 msgid "Cancel"
 msgstr "Відміна"
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsDialog.vala:62
 msgid "Notification"
 msgstr "Повідомлення"
 
-#: src/Gtk/SettingsDialog.vala:70
+#: src/Gtk/SettingsDialog.vala:69
 msgid "Notify if a major release is available"
 msgstr "Повідомити, чи доступний великий випуск"
 
-#: src/Gtk/SettingsDialog.vala:81
+#: src/Gtk/SettingsDialog.vala:80
 msgid "Notify if a point release is available"
 msgstr "Повідомити, чи доступний невеликий випуск"
 
-#: src/Gtk/SettingsDialog.vala:92
+#: src/Gtk/SettingsDialog.vala:91
 msgid "Show notification bubble on desktop"
 msgstr "Показувати вікно сповіщень на робочому столі"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:105
 msgid "Check every"
 msgstr "Перевіряти кожні"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsDialog.vala:136
 msgid "Hour(s)"
 msgstr "Година(дин)"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsDialog.vala:138
 msgid "Day(s)"
 msgstr "День(днів)"
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:140
 msgid "Week(s)"
 msgstr "Тиждень (ні)"
 
-#: src/Gtk/SettingsDialog.vala:146
+#: src/Gtk/SettingsDialog.vala:145
 msgid "Display"
 msgstr "Вид"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Hide unstable and RC releases"
 msgstr "Приховати нестабільні і реліз-кандидат версії"
 
-#: src/Gtk/SettingsDialog.vala:168
+#: src/Gtk/SettingsDialog.vala:167
 msgid "Show N previous major versions "
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:183
+#: src/Gtk/SettingsDialog.vala:182
 msgid "Other"
 msgstr "Інший"
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:190
 msgid "Skip internet connection check"
 msgstr "Пропустити перевірку підключення до Інтернету"
 
-#: src/Gtk/SettingsDialog.vala:204
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Internet connection timeout in "
 msgstr "Час очікування підключення до Інтернету в "
 
-#: src/Gtk/SettingsDialog.vala:218
+#: src/Gtk/SettingsDialog.vala:217
 msgid "seconds"
 msgstr "секунди"
 
@@ -485,7 +485,7 @@ msgstr "Ні"
 msgid "Error"
 msgstr "Помилка"
 
-#: src/Utility/Gtk/GtkHelper.vala:93
+#: src/Utility/Gtk/GtkHelper.vala:77
 msgid "Missing Icon"
 msgstr "Нема значка"
 

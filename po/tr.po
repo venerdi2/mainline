@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 00:12-0400\n"
+"POT-Creation-Date: 2020-05-07 03:35-0400\n"
 "PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -110,7 +110,7 @@ msgstr "TAMAM"
 msgid "ERROR"
 msgstr "HATA"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:686
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:681
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 
@@ -164,7 +164,7 @@ msgstr "Lütfen gerekli paketleri yükleyin ve tekrar deneyin"
 msgid "File not found: %s"
 msgstr "Şu dosya bulunamadı: %s"
 
-#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:175
+#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:174
 msgid "Syntax"
 msgstr "Sözdizimi"
 
@@ -220,7 +220,7 @@ msgstr "Dosyaları uygulama önbelleğinden sil"
 msgid "Show unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri göster"
 
-#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:177
+#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:176
 msgid "Options"
 msgstr "Seçenekler"
 
@@ -244,7 +244,7 @@ msgstr "Bu uygulamayı çalıştırmak için yönetici izni gerekiyor."
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Bu uygulamayı pkexec yada sudo ile yönetici haklarıyla çalıştırın."
 
-#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:162
+#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:161
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
@@ -253,11 +253,11 @@ msgstr "Bilinmeyen seçenek"
 msgid "Run '"
 msgstr "Çalıştır '"
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:110
+#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:109
 msgid "Cache"
 msgstr "Önbellek"
 
-#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:111
+#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:110
 msgid "Temp"
 msgstr "Geçici"
 
@@ -290,11 +290,11 @@ msgstr ""
 msgid "Minor update available for installation"
 msgstr ""
 
-#: src/Gtk/AppGtk.vala:179
+#: src/Gtk/AppGtk.vala:178
 msgid "Print debug information"
 msgstr "Hata ayıklama bilgisini yazdır"
 
-#: src/Gtk/AppGtk.vala:180
+#: src/Gtk/AppGtk.vala:179
 msgid "Show all options"
 msgstr "Tüm seçenekleri göster"
 
@@ -315,12 +315,12 @@ msgid "Refresh"
 msgstr "Yenile"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:691 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:691
+#: src/Gtk/MainWindow.vala:686
 msgid "No Internet"
 msgstr "İnternet Yok"
 
@@ -360,7 +360,7 @@ msgstr "Temizle"
 msgid "Changes"
 msgstr "Değişiklikler"
 
-#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:53
+#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -381,63 +381,63 @@ msgstr "Yenileniyor..."
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsDialog.vala:62
 msgid "Notification"
 msgstr "Bildirim"
 
-#: src/Gtk/SettingsDialog.vala:70
+#: src/Gtk/SettingsDialog.vala:69
 msgid "Notify if a major release is available"
 msgstr "Ana sürüm mevcutsa bildir"
 
-#: src/Gtk/SettingsDialog.vala:81
+#: src/Gtk/SettingsDialog.vala:80
 msgid "Notify if a point release is available"
 msgstr "Ara sürüm mevcutsa bildir"
 
-#: src/Gtk/SettingsDialog.vala:92
+#: src/Gtk/SettingsDialog.vala:91
 msgid "Show notification bubble on desktop"
 msgstr "Masaüstünde bildirim baloncuğu göster"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:105
 msgid "Check every"
 msgstr "Kontrol aralığı"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsDialog.vala:136
 msgid "Hour(s)"
 msgstr "Saat"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsDialog.vala:138
 msgid "Day(s)"
 msgstr "Gün"
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:140
 msgid "Week(s)"
 msgstr "Hafta"
 
-#: src/Gtk/SettingsDialog.vala:146
+#: src/Gtk/SettingsDialog.vala:145
 msgid "Display"
 msgstr "Gösterim"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Hide unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri gizle"
 
-#: src/Gtk/SettingsDialog.vala:168
+#: src/Gtk/SettingsDialog.vala:167
 msgid "Show N previous major versions "
 msgstr "Önceki ana sürümleri gösterme sayısı "
 
-#: src/Gtk/SettingsDialog.vala:183
+#: src/Gtk/SettingsDialog.vala:182
 msgid "Other"
 msgstr "Diğer"
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:190
 msgid "Skip internet connection check"
 msgstr "İnternet bağlantı kontrolünü atla"
 
-#: src/Gtk/SettingsDialog.vala:204
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Internet connection timeout in "
 msgstr "İnternet bağlantısı zaman aşımı "
 
-#: src/Gtk/SettingsDialog.vala:218
+#: src/Gtk/SettingsDialog.vala:217
 msgid "seconds"
 msgstr "saniye"
 
@@ -489,7 +489,7 @@ msgstr "Hayır"
 msgid "Error"
 msgstr "Hata"
 
-#: src/Utility/Gtk/GtkHelper.vala:93
+#: src/Utility/Gtk/GtkHelper.vala:77
 msgid "Missing Icon"
 msgstr "Eksik Simge"
 

@@ -107,25 +107,20 @@ clean:
 .PHONY: install
 install: all
 	mkdir -p "$(DESTDIR)$(bindir)"
-	mkdir -p "$(DESTDIR)$(sharedir)"
-	mkdir -p "$(DESTDIR)$(libdir)"
+	mkdir -p "$(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME)"
+	mkdir -p "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)"
 	mkdir -p "$(DESTDIR)$(man1dir)"
 	mkdir -p "$(DESTDIR)$(launcherdir)"
 #	mkdir -p "$(DESTDIR)$(polkitdir)"
-	mkdir -p "$(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)"
-	mkdir -p "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)"
-	mkdir -p "$(DESTDIR)$(sharedir)/pixmaps"
-	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)" share/$(BRANDING_SHORTNAME)/*
-	chmod --recursive 0755 $(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)/*
+	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(sharedir)" share/*
+	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)" lib/*
 #	install -m 0644 share/polkit-1/actions/$(BRANDING_SHORTNAME).policy "$(DESTDIR)$(polkitdir)"
 	install -m 0755 $(BRANDING_SHORTNAME).desktop "$(DESTDIR)$(launcherdir)"
-	install -m 0755 share/pixmaps/$(BRANDING_SHORTNAME).* "$(DESTDIR)$(sharedir)/pixmaps"
 	for p in $(po_files) ; do \
 		l=$${p##*/} l=$${l%.*}; \
 		mkdir -p "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES"; \
 		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES/$(BRANDING_SHORTNAME).mo" $${p} ; \
 	done
-	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)" lib/*
 	install -m 0755 $(BRANDING_SHORTNAME) "$(DESTDIR)$(bindir)"
 	install -m 0755 $(BRANDING_SHORTNAME)-gtk "$(DESTDIR)$(bindir)"
 
@@ -133,11 +128,11 @@ install: all
 uninstall:
 #	$(BRANDING_SHORTNAME) --clean-cache
 	rm -f $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME) $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)-gtk
-	rm -rf $(DESTDIR)$(sharedir)/$(BRANDING_SHORTNAME)
+	rm -f $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME).*
+	rm -rf $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME)
 	rm -rf $(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)
 #	rm -f $(DESTDIR)$(polkitdir)/$(BRANDING_SHORTNAME).policy
 	rm -f $(DESTDIR)$(launcherdir)/$(BRANDING_SHORTNAME).desktop
-	rm -f $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME).*
 	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/$(BRANDING_SHORTNAME).mo
 	rm -f $(DESTDIR)/home/*/.config/$(BRANDING_SHORTNAME)/$(BRANDING_SHORTNAME)-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/$(BRANDING_SHORTNAME).desktop

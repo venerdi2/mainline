@@ -39,10 +39,9 @@ public Main App;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
+[CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
 
-public const string ICON_DIR = BRANDING_SHORTNAME;
-
-const string LOCALE_DIR = "/usr/share/locale";
+const string LOCALE_DIR = INSTALL_PREFIX+"/share/locale";
 
 public class AppGtk : GLib.Object {
 

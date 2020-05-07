@@ -45,8 +45,6 @@ public class OSDNotify : GLib.Object {
 		}
 
 		if (seconds > NOTIFICATION_INTERVAL){
-			//string s = "notify-send -t %d -u %s -i %s \"%s\" \"%s\"".printf(durationMillis, urgency, icon, title, message);
-			// notify-send.sh -u low -a mainline -i mainline -c info -o "Show:mainline-gtk" "mainline" "New kernel is available"
 			string s = INSTALL_PREFIX+"/lib/"+BRANDING_SHORTNAME+"/notify-send.sh/notify-send.sh -u low -c info -a "+BRANDING_SHORTNAME+" -i "+BRANDING_SHORTNAME+" -o \"Show:"+BRANDING_SHORTNAME+"-gtk\" \"%s\" \"%s\"".printf(title,message);
 			//log_msg(s);
 			retVal = exec_sync (s, null, null);

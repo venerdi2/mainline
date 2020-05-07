@@ -50,8 +50,8 @@ namespace TeeJee.GtkHelper{
 
 	// icon ----------------------------------------------
 
-	public Gdk.Pixbuf? get_app_icon(int icon_size, string format = ".svg"){
-		var img_icon = get_shared_icon(BRANDING_SHORTNAME, BRANDING_SHORTNAME + format,icon_size,"pixmaps");
+	public Gdk.Pixbuf? get_app_icon(int icon_size){
+		var img_icon = get_shared_icon(BRANDING_SHORTNAME ,icon_size);
 		if (img_icon != null){
 			return img_icon.pixbuf;
 		}
@@ -60,37 +60,21 @@ namespace TeeJee.GtkHelper{
 		}
 	}
 
-	public Gtk.Image? get_shared_icon(
-		string icon_name,
-		string fallback_icon_file_name,
-		int icon_size,
-		string icon_directory = ICON_DIR + "/images"){
+	public Gtk.Image? get_shared_icon(string icon_name, int icon_size){
 
 		Gdk.Pixbuf pix_icon = null;
 		Gtk.Image img_icon = null;
 
 		try {
 			Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
-
 			pix_icon = icon_theme.load_icon_for_scale (
 				icon_name, Gtk.IconSize.MENU, icon_size, Gtk.IconLookupFlags.FORCE_SIZE);
-				
 		} catch (Error e) {
 			//log_error (e.message);
 		}
 
-		string fallback_icon_file_path = "/usr/share/%s/%s".printf(icon_directory, fallback_icon_file_name);
-
 		if (pix_icon == null){
-			try {
-				pix_icon = new Gdk.Pixbuf.from_file_at_size (fallback_icon_file_path, icon_size, icon_size);
-			} catch (Error e) {
-				log_error (e.message);
-			}
-		}
-
-		if (pix_icon == null){
-			log_error (_("Missing Icon") + ": '%s', '%s'".printf(icon_name, fallback_icon_file_path));
+			log_error (_("Missing Icon") + ": '%s'".printf(icon_name));
 		}
 		else{
 			img_icon = new Gtk.Image.from_pixbuf(pix_icon);
@@ -99,12 +83,9 @@ namespace TeeJee.GtkHelper{
 		return img_icon;
 	}
 
-	public Gdk.Pixbuf? get_shared_icon_pixbuf(string icon_name,
-		string fallback_file_name,
-		int icon_size,
-		string icon_directory = ICON_DIR + "/images"){
+	public Gdk.Pixbuf? get_shared_icon_pixbuf(string icon_name, int icon_size){
 
-		var img = get_shared_icon(icon_name, fallback_file_name, icon_size, icon_directory);
+		var img = get_shared_icon(icon_name, icon_size);
 		var pixbuf = (img == null) ? null : img.pixbuf;
 		return pixbuf;
 	}

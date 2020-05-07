@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 00:12-0400\n"
+"POT-Creation-Date: 2020-05-07 03:35-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -112,7 +112,7 @@ msgstr "OK"
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:686
+#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:681
 msgid "This kernel is already installed."
 msgstr "Ce noyau est déjà installé."
 
@@ -167,7 +167,7 @@ msgstr "Veuillez installer les paquets requis et réessayer"
 msgid "File not found: %s"
 msgstr "Fichier non trouvé: %s"
 
-#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:175
+#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:174
 msgid "Syntax"
 msgstr "Syntaxe"
 
@@ -228,7 +228,7 @@ msgstr "Supprimer les fichiers du cache de l'application"
 msgid "Show unstable and RC releases"
 msgstr "Cacher les versions instables et RC"
 
-#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:177
+#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:176
 msgid "Options"
 msgstr "Options"
 
@@ -252,7 +252,7 @@ msgstr "Accès administrateur requis pour lancer cette application."
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Exécutez l'application en tant qu'admin avec pkexec or sudo."
 
-#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:162
+#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:161
 msgid "Unknown option"
 msgstr "Option inconnue"
 
@@ -261,11 +261,11 @@ msgstr "Option inconnue"
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:110
+#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:109
 msgid "Cache"
 msgstr ""
 
-#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:111
+#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:110
 msgid "Temp"
 msgstr ""
 
@@ -301,11 +301,11 @@ msgstr ""
 msgid "Minor update available for installation"
 msgstr ""
 
-#: src/Gtk/AppGtk.vala:179
+#: src/Gtk/AppGtk.vala:178
 msgid "Print debug information"
 msgstr "Afficher les informations de débogage"
 
-#: src/Gtk/AppGtk.vala:180
+#: src/Gtk/AppGtk.vala:179
 msgid "Show all options"
 msgstr "Afficher toutes les options"
 
@@ -326,12 +326,12 @@ msgid "Refresh"
 msgstr "Actualiser"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:691 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
 msgid "Internet connection is not active"
 msgstr "Connexion internet inexistante"
 
 #: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:691
+#: src/Gtk/MainWindow.vala:686
 msgid "No Internet"
 msgstr "Pas d'Internet"
 
@@ -371,7 +371,7 @@ msgstr ""
 msgid "Changes"
 msgstr "Changements"
 
-#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:53
+#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -394,65 +394,65 @@ msgstr "Actualisation..."
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsDialog.vala:62
 msgid "Notification"
 msgstr "Notification"
 
-#: src/Gtk/SettingsDialog.vala:70
+#: src/Gtk/SettingsDialog.vala:69
 msgid "Notify if a major release is available"
 msgstr "Notifier si une version stable majeure est disponible"
 
-#: src/Gtk/SettingsDialog.vala:81
+#: src/Gtk/SettingsDialog.vala:80
 msgid "Notify if a point release is available"
 msgstr "Notifier si une version stable mineure est disponible"
 
-#: src/Gtk/SettingsDialog.vala:92
+#: src/Gtk/SettingsDialog.vala:91
 msgid "Show notification bubble on desktop"
 msgstr "Afficher la bulle de notification sur le bureau"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:105
 msgid "Check every"
 msgstr "Vérifier toutes les"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsDialog.vala:136
 msgid "Hour(s)"
 msgstr "Heure(s)"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsDialog.vala:138
 msgid "Day(s)"
 msgstr "Jour(s)"
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:140
 msgid "Week(s)"
 msgstr "Semaine(s)"
 
-#: src/Gtk/SettingsDialog.vala:146
+#: src/Gtk/SettingsDialog.vala:145
 msgid "Display"
 msgstr "Afficher"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:153
 msgid "Hide unstable and RC releases"
 msgstr "Cacher les versions instables et RC"
 
-#: src/Gtk/SettingsDialog.vala:168
+#: src/Gtk/SettingsDialog.vala:167
 msgid "Show N previous major versions "
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:183
+#: src/Gtk/SettingsDialog.vala:182
 msgid "Other"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:190
 #, fuzzy
 msgid "Skip internet connection check"
 msgstr "Connexion internet inexistante"
 
-#: src/Gtk/SettingsDialog.vala:204
+#: src/Gtk/SettingsDialog.vala:203
 #, fuzzy
 msgid "Internet connection timeout in "
 msgstr "Connexion internet inexistante"
 
-#: src/Gtk/SettingsDialog.vala:218
+#: src/Gtk/SettingsDialog.vala:217
 msgid "seconds"
 msgstr ""
 
@@ -504,7 +504,7 @@ msgstr "Non"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/Utility/Gtk/GtkHelper.vala:93
+#: src/Utility/Gtk/GtkHelper.vala:77
 msgid "Missing Icon"
 msgstr "Icône introuvable"
 

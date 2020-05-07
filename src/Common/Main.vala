@@ -242,9 +242,7 @@ public class Main : GLib.Object{
 		// UGLY - this should be a cron job
 		string txt = "# Notifications are disabled\nexit 0\n";
 		if (notify_minor || notify_major){
-			//txt = "while sleep %d%s".printf(count, suffix)+" ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
-			// debugging
-			txt = "while sleep 60 ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
+			txt = "while sleep %d%s".printf(count, suffix)+" ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,txt);

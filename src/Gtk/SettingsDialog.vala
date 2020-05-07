@@ -38,7 +38,6 @@ public class SettingsDialog : Gtk.Dialog {
 	private Gtk.CheckButton chk_notify_major;
 	private Gtk.CheckButton chk_notify_minor;
 	private Gtk.CheckButton chk_notify_bubble;
-	private Gtk.CheckButton chk_notify_dialog;
 	private Gtk.CheckButton chk_hide_unstable;
 
 	public SettingsDialog.with_parent(Window parent) {

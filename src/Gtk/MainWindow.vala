@@ -263,11 +263,11 @@ public class MainWindow : Gtk.Window{
 		Gdk.Pixbuf pix_mainline_rc = null;
 
 		try {
-			pix_ubuntu = new Gdk.Pixbuf.from_file ("/usr/share/" + BRANDING_SHORTNAME + "/images/ubuntu-logo.png");
+			pix_ubuntu = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
 
-			pix_mainline = new Gdk.Pixbuf.from_file ("/usr/share/" + BRANDING_SHORTNAME + "/images/tux.png");
+			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
 
-			pix_mainline_rc = new Gdk.Pixbuf.from_file ("/usr/share/" + BRANDING_SHORTNAME + "/images/tux-red.png");
+			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -644,11 +644,6 @@ public class MainWindow : Gtk.Window{
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		//hbox.margin = 6;
 		scrolled.add(hbox);
-
-		var img_status = new Gtk.Image();
-		img_status.pixbuf = get_shared_icon_pixbuf("", "tux.svg", 64);
-		img_status.margin = 6;
-		hbox.add(img_status);
 
 		lbl_info = new Gtk.Label("");
 		lbl_info.margin = 6;
