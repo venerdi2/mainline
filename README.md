@@ -46,6 +46,7 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Better desktop notification behavior
 
 ### Development Plans / TODO
+* 20200506 The new "Show" button to launch mainline-gtk right from the desktop notification isn't fully working yet. The button ony works for the first few seconds after the notification appears.
 * More efficient downloading & caching of info about available kernels  
 * Better (more automatic) initial sizes for the window and the columns in the kernel list display so you don't have to manually expand them  
 ...or at least, remember the sizes the user last set.
