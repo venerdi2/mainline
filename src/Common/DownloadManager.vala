@@ -94,7 +94,12 @@ public class DownloadTask : AsyncTask{
 			list += "  out=%s\n".printf(item.file_name);
 		}
 		file_write(list_file, list);
-		log_debug("saved download list: %s".printf(list_file));
+
+		//log_debug("LinuxKernel.CURRENT_USER="+LinuxKernel.CURRENT_USER);
+		//log_debug("App.user_login="+App.user_login);
+		//log_debug("saved download list: %s".printf(list_file));
+
+		chown(list_file,App.user_login,App.user_login);
 
 		string cmd = "aria2c";
 		cmd += " --no-netrc true";
@@ -200,20 +205,18 @@ public class DownloadTask : AsyncTask{
 	}
 
 	protected override void finish_task(){
-
-		verify();
-
+		mv_partials_to_finals();
 		dir_delete(working_dir);
 	}
 
-	private void verify() {
+	private void mv_partials_to_finals() {
 
-		log_debug("verify()");
+		//log_debug("mv_partials_to_finals()");
 
 		foreach(var item in downloads){
 
 			if (!file_exists(item.file_path_partial)){
-				log_debug("verify: file_path_partial not found: %s".printf(item.file_path_partial));
+				log_debug("file_path_partial not found: %s".printf(item.file_path_partial));
 				continue;
 			}
 

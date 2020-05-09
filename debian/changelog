@@ -1,18 +1,10 @@
 mainline (1.0.9) unstable; urgency=medium
 
   * Improve desktop notifications
-    Remove the redundant --notify option from the gui app
-    Replace the use of "notify_send" with "notify_send.sh"
-    Make the desktop notification have the apps name & icon instead of "notify_send"
-    Make the desktop notification directly clickable to launch the app to install the new kernel
-    Localize the notification text
-
-  * Improve temp directories
-    Stop making a top level "mainline" & "mainline-gtk" subdir under /tmp or ~/.temp,
-    with random dirs under that, which just creates permissions problems.
-    Now always generate <tmp>/mainline_<random>
-    
-  * un-hardcode "/usr" in various install paths
+  * Improve temp directories & file permissions, somewhat
+  * Removed a bunch more un-used TeeJee util functions
+  * un-hardcode "/usr" in various paths to installed files
+  * Added some quasi-hidden extra functionality to --debug
 
  -- Brian K. White <b.kenyon.w@gmail.com>  Thu, 07 May 2020 00:01:27 -0400
 

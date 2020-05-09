@@ -106,9 +106,6 @@ public class AppGtk : GLib.Object {
 
 	public static bool parse_arguments(string[] args) {
 
-		log_msg(_("Cache") + ": %s".printf(LinuxKernel.CACHE_DIR));
-		log_msg(_("Temp") + ": %s".printf(TEMP_DIR));
-
 		App.command = "list";
 		
 		//parse options

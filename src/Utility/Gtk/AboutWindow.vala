@@ -312,49 +312,49 @@ public class AboutWindow : Dialog {
 		if (authors.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Authors")));
 			foreach(string name in authors){
-				add_line("%s\n".printf(name));
+				add_line("%s".printf(name));
 			}
-			add_line("\n");
+			add_line("");
 		}
 
 		if (contributors.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Contributions")));
 			foreach(string name in contributors){
-				add_line("%s\n".printf(name));
+				add_line("%s".printf(name));
 			}
-			add_line("\n");
-		}
-		
-		if (third_party.length > 0){
-			add_header("<b>%s</b>\n".printf(_("Third Party Tools")));
-			foreach(string name in third_party){
-				add_line("%s\n".printf(name));
-			}
-			add_line("\n");
+			add_line("");
 		}
 
 		if (artists.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Artists")));
 			foreach(string name in artists){
-				add_line("%s\n".printf(name));
+				add_line("%s".printf(name));
 			}
-			add_line("\n");
+			add_line("");
 		}
 
 		if (translators.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Translators")));
 			foreach(string name in translators){
-				add_line("%s\n".printf(name),true,false);
+				add_line("%s".printf(name),true,false);
 			}
-			add_line("\n");
+			add_line("");
 		}
 
 		if (documenters.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Documenters")));
 			foreach(string name in documenters){
-				add_line("%s\n".printf(name));
+				add_line("%s".printf(name));
 			}
-			add_line("\n");
+			add_line("");
+		}
+
+		if (third_party.length > 0){
+			add_header("<b>%s</b>\n".printf(_("Third Party Inclusions")));
+			foreach(string name in third_party){
+				add_line("%s".printf(name));
+			}
+			add_line("");
 		}
 
 		if (vbox_lines.get_children().length() == 0){
@@ -364,7 +364,7 @@ public class AboutWindow : Dialog {
 
 	public void add_line(string text, bool escape_html_chars = true, bool parse = true){
 		
-		if (text.split(":").length >= 2 && parse == true){
+		if (text.split(":").length >= 2 && parse){
 			var link = new LinkButton(escape_html(text.split(":")[0]));
 			vbox_lines.add(link);
 
@@ -390,9 +390,7 @@ public class AboutWindow : Dialog {
 		}
 		else{
 			var txt = text;
-			if (escape_html_chars){
-				txt = escape_html(text);
-			}
+			if (escape_html_chars) txt = escape_html(text);
 
 			var lbl = new Label(txt);
 			lbl.set_use_markup(true);

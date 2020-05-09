@@ -90,7 +90,7 @@ public class MainWindow : Gtk.Window{
 
 			LinuxKernel kern_requested = null;
 			foreach(var kern in LinuxKernel.kernel_list){
-				if (kern.name == App.requested_version){
+				if (kern.version_main == App.requested_version){
 					kern_requested = kern;
 					break;
 				}
@@ -108,10 +108,6 @@ public class MainWindow : Gtk.Window{
 
 			break;
 
-//		case "notify":
-//
-//			notify_user();
-//			break;
 		}
 
 		return false;
@@ -149,7 +145,7 @@ public class MainWindow : Gtk.Window{
 		var col = new TreeViewColumn();
 		col.title = _("Kernel");
 		col.resizable = true;
-		col.min_width = 150;
+		col.min_width = 200;
 		tv.append_column(col);
 
 		// cell icon
@@ -161,7 +157,6 @@ public class MainWindow : Gtk.Window{
 			Gdk.Pixbuf pix;
 			model.get (iter, 1, out pix, -1);
 			(cell as Gtk.CellRendererPixbuf).pixbuf = pix;
-			//(cell as Gtk.CellRendererPixbuf).visible = !(App.hide_unstable);
 		});
 
 		//cell text
@@ -171,31 +166,14 @@ public class MainWindow : Gtk.Window{
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
-			(cell as Gtk.CellRendererText).text = "Linux " + kern.version_main;
-		});
-
-		//column
-		col = new TreeViewColumn();
-		col.title = _("Version");
-		col.resizable = true;
-		col.min_width = 150;
-		tv.append_column(col);
-
-		//cell text
-		cellText = new CellRendererText();
-		cellText.ellipsize = Pango.EllipsizeMode.END;
-		col.pack_start (cellText, false);
-		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
-			LinuxKernel kern;
-			model.get (iter, 0, out kern, -1);
-			(cell as Gtk.CellRendererText).text = kern.name;
+			(cell as Gtk.CellRendererText).text = kern.version_main;
 		});
 
 		//column
 		col = new TreeViewColumn();
 		col.title = _("Status");
 		col.resizable = true;
-		col.min_width = 100;
+		col.min_width = 200;
 		tv.append_column(col);
 
 		//cell text
@@ -396,16 +374,12 @@ public class MainWindow : Gtk.Window{
 				string sh = "";
 				sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
 				sh += BRANDING_SHORTNAME+" --user %s".printf(App.user_login);
-				if (LOG_DEBUG){
-					sh += " --debug";
-				}
+				if (LOG_DEBUG) sh += " --debug";
 
 				string names = "";
 				foreach(var kern in selected_kernels){
-					if (names.length > 0){
-						names += ",";
-					}
-					names += "%s".printf(kern.name);
+					if (names.length > 0) names += ",";
+					names += "%s".printf(kern.version_main);
 				}
 
 				sh += " --remove %s\n".printf(names);
@@ -440,10 +414,7 @@ public class MainWindow : Gtk.Window{
 			string sh = "";
 			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY http_proxy=$http_proxy https_proxy=$https_proxy HTTP_PROXY=$HTTP_PROXY HTTPS_PROXY=$HTTPS_PROXY ";
 			sh += BRANDING_SHORTNAME+" --user "+App.user_login;
-			if (LOG_DEBUG){
-				sh += " --debug";
-			}
-
+			if (LOG_DEBUG) sh += " --debug";
 			sh += " --purge-old-kernels\n";
 
 			log_debug(sh);
@@ -504,11 +475,6 @@ public class MainWindow : Gtk.Window{
 			BRANDING_AUTHORNAME+" <"+BRANDING_AUTHOREMAIL+">"
 		};
 
-		dialog.third_party = {
-			"Elementary project (various icons):github.com/elementary/icons",
-			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project",
-			"notify-send.sh:github.com/vlevit/notify-send.sh"
-		};
 		// FIXME - generate this list from the .po files
 		/*
 		dialog.translators = {
@@ -537,13 +503,19 @@ public class MainWindow : Gtk.Window{
 
 		dialog.program_name = BRANDING_LONGNAME;
 		dialog.comments = _("Kernel upgrade utility for Ubuntu-based distributions");
-		dialog.copyright = "Original: \"ukuu\" © 2015-18 Tony George\nForked: \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME+" ("+BRANDING_AUTHOREMAIL+")";
+		dialog.copyright = _("Original:")+" \"ukuu\" © 2015-18 Tony George\n"+_("Forked:")+" \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME+" ("+BRANDING_AUTHOREMAIL+")";
 		dialog.version = BRANDING_VERSION;
 		dialog.logo = get_app_icon(128);
 
 		dialog.license = "This program is free for personal and commercial use and comes with absolutely no warranty. You use this program entirely at your own risk. The author will not be liable for any damages arising from the use of this program.";
 		dialog.website = BRANDING_WEBSITE;
 		dialog.website_label = BRANDING_WEBSITE;
+
+		dialog.third_party = {
+			"Elementary project (various icons):github.com/elementary/icons",
+			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project",
+			"notify-send.sh:github.com/vlevit/notify-send.sh"
+		};
 
 		dialog.initialize();
 		dialog.show_all();
@@ -655,7 +627,7 @@ public class MainWindow : Gtk.Window{
 
 		if (LinuxKernel.kernel_active != null){
 
-			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.kernel_active.version_main);
+			lbl_info.label = "Running <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
 
 			if (LinuxKernel.kernel_active.is_mainline){
 				lbl_info.label += " (mainline)";
@@ -665,12 +637,12 @@ public class MainWindow : Gtk.Window{
 			}
 
 			if (LinuxKernel.kernel_latest_stable.compare_to(LinuxKernel.kernel_active) > 0){
-				lbl_info.label += " ~ " + "<b>Linux %s</b> available".printf(
+				lbl_info.label += " ~ " + "<b>%s</b> available".printf(
 					LinuxKernel.kernel_latest_stable.version_main);
 			}
 		}
 		else{
-			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.RUNNING_KERNEL);
+			lbl_info.label = "Running <b>%s</b>".printf(LinuxKernel.RUNNING_KERNEL);
 		}
 	}
 
@@ -708,14 +680,15 @@ public class MainWindow : Gtk.Window{
 		});
 
 		string sh = "";
+		sh += BRANDING_SHORTNAME;
+		if (LOG_DEBUG) sh += " --debug";
+		sh += " --download %s".printf(kern.version_main);
+		sh += " && ";
 		sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ";
 		sh += BRANDING_SHORTNAME+" --user "+App.user_login;
-		if (LOG_DEBUG){
-			sh += " --debug";
-		}
-		sh += " --install %s\n".printf(kern.name);
-
-		sh += "echo ''\n";
+		if (LOG_DEBUG) sh += " --debug";
+		sh += " --install %s\n".printf(kern.version_main);
+		sh += "echo \n";
 		sh += "echo 'Close window to exit...'\n";
 
 		term.execute_script(save_bash_script_temp(sh));

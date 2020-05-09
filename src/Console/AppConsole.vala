@@ -32,6 +32,7 @@ using TeeJee.Misc;
 
 
 public Main App;
+
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
@@ -45,7 +46,7 @@ public class AppConsole : GLib.Object {
 		
 		set_locale();
 
-		log_msg("%s v%s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
+		log_msg("%s %s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
 		init_tmp();
 		
@@ -75,40 +76,40 @@ public class AppConsole : GLib.Object {
 
 	private static string help_message() {
 		
-		string msg = "\n" + BRANDING_SHORTNAME + " v" + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n";
-		msg += "\n";
-		msg += _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n";
-		msg += "\n";
-		msg += _("Commands") + ":\n";
-		msg += "\n";
-		msg += "  --check             " + _("Check for kernel updates") + "\n";
-		msg += "  --notify            " + _("Check for kernel updates and notify current user") + "\n";
-		msg += "  --list              " + _("List all available mainline kernels") + "\n";
-		msg += "  --list-installed    " + _("List installed kernels") + "\n";
-		msg += "  --install-latest    " + _("Install latest mainline kernel") + "\n";
-		msg += "  --install-point     " + _("Install latest point update for current series") + "\n";
-		msg += "  --install <name>    " + _("Install specified mainline kernel") + "\n";
-		msg += "  --remove <name>     " + _("Remove specified kernel") + "\n";
-		msg += "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n";
-		msg += "  --download <name>   " + _("Download packages for specified kernel") + "\n";
-		msg += "  --clean-cache       " + _("Remove files from application cache") + "\n";
-		msg += "  --show-unstable     " + _("Show unstable and RC releases") + "\n";
-		msg += "\n";
-		msg += _("Options") + ":\n";
-		msg += "\n";
-		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
-		msg += "  --debug           " + _("Enable verbose debugging output") + "\n";
-		msg += "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n";
-		msg += "  --user            " + _("Override user") + "\n";
-		msg += "\n";
-		msg += "Notes:\n";
-		msg += "1. Comma separated list of version strings can be specified for --remove and --download\n";
+		string msg = "\n" + BRANDING_SHORTNAME + " v" + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
+		+ "\n"
+		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
+		+ "\n"
+		+ _("Commands") + ":\n"
+		+ "\n"
+		+ "  --check             " + _("Check for kernel updates") + "\n"
+		+ "  --notify            " + _("Check for kernel updates and notify current user") + "\n"
+		+ "  --list              " + _("List all available mainline kernels") + "\n"
+		+ "  --list-installed    " + _("List installed kernels") + "\n"
+		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
+		+ "  --install-point     " + _("Install latest point update for current series") + "\n"
+		+ "  --install <name>    " + _("Install specified mainline kernel") + "\n"
+		+ "  --remove <name>     " + _("Remove specified kernel") + "\n"
+		+ "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n"
+		+ "  --download <name>   " + _("Download packages for specified kernel") + "\n"
+		+ "  --clean-cache       " + _("Remove files from application cache") + "\n"
+		+ "  --show-unstable     " + _("Show unstable and RC releases") + "\n"
+		+ "\n"
+		+ _("Options") + ":\n"
+		+ "\n"
+		+ "  --clean-cache     " + _("Remove files from application cache") + "\n"
+		+ "  --debug           " + _("Enable verbose debugging output") + "\n"
+		+ "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
+		+ "  --user            " + _("Override user") + "\n"
+		+ "\n"
+		+ "Notes:\n"
+		+ "1. Comma separated list of version strings can be specified for --remove and --download\n";
 		return msg;
 	}
 
 	private static void check_if_admin(){
 		
-		if (get_user_id_effective() != 0) {
+		if (!user_is_admin()) {
 
 			log_msg(string.nfill(70,'-'));
 			
@@ -128,10 +129,11 @@ public class AppConsole : GLib.Object {
 		for (int k = 1; k < args.length; k++) {
 			txt += "'%s' ".printf(args[k]);
 		}
-		log_debug(txt);
-		
+
+		//log_msg("AppConsole.vala:parse_arguments() txt="+txt);
+
 		// check argument count -----------------
-		
+
 		if (args.length == 1) {
 			//no args given
 			log_msg(help_message());
@@ -202,14 +204,13 @@ public class AppConsole : GLib.Object {
 			}
 		}
 
-		log_msg(_("Cache") + ": %s".printf(LinuxKernel.CACHE_DIR));
-		log_msg(_("Temp") + ": %s".printf(TEMP_DIR));
-
 		// run command --------------------------------------
-		
+
+		//log_msg ("cmd:"+cmd);
+
 		switch (cmd) {
 		case "--list":
-		
+
 			check_if_internet_is_active(false);
 			
 			LinuxKernel.query(true);
@@ -238,7 +239,7 @@ public class AppConsole : GLib.Object {
 
 		case "--install-latest":
 
-			check_if_admin();
+			//check_if_admin();
 
 			check_if_internet_is_active(true);
 
@@ -273,16 +274,13 @@ public class AppConsole : GLib.Object {
 		case "--download":
 		case "--install":
 		case "--remove":
+			if (cmd=="--download") check_if_internet_is_active();
+			if (cmd=="--install" || cmd=="--remove") check_if_admin();
 
-			check_if_admin();
-
-			if ((cmd == "--install") || (cmd == "--download")){
-				check_if_internet_is_active();
-			}
-			
 			LinuxKernel.query(true);
 
-			if (cmd_versions.length == 0){
+			//log_msg("if(cmd_versions.length==0)");
+			if (cmd_versions.length==0){
 				log_error(_("No kernels specified"));
 				exit(1);
 			}
@@ -296,10 +294,13 @@ public class AppConsole : GLib.Object {
 			var list = new Gee.ArrayList<LinuxKernel>();
 
 			foreach(string requested_version in requested_versions){
+				//log_msg("requested_version:"+requested_version);   //###
 				
 				LinuxKernel kern_requested = null;
 				foreach(var kern in LinuxKernel.kernel_list){
-					if (kern.name == requested_version){
+					// match --list output
+					//log_msg("kern.version_main:"+kern.version_main);  //###
+					if (kern.version_main == requested_version){
 						kern_requested = kern;
 						break;
 					}
@@ -326,6 +327,7 @@ public class AppConsole : GLib.Object {
 
 			switch(cmd){
 			case "--download":
+				//log_msg("--download"); //###
 				return LinuxKernel.download_kernels(list);
 	
 			case "--remove":
@@ -388,15 +390,13 @@ public class AppConsole : GLib.Object {
 		
 		if ((kern != null) && App.notify_major){
 
-			var title = _("Linux v%s Available").printf(kern.version_main);
-			var message = _("Major update available for installation");
+			var title = _("Kernel %s Available").printf(kern.version_main);
 
 			if (App.notify_bubble){
-				OSDNotify.notify_send(title,message);
+				OSDNotify.notify_send(title);
 			}
 
 			log_msg(title);
-			log_msg(message);
 
 			return;
 		}
@@ -405,15 +405,13 @@ public class AppConsole : GLib.Object {
 		
 		if ((kern != null) && App.notify_minor){
 			
-			var title = _("Linux v%s Available").printf(kern.version_main);
-			var message = _("Minor update available for installation");
+			var title = _("Kernel %s Available").printf(kern.version_main);
 
 			if (App.notify_bubble){
-				OSDNotify.notify_send(title,message);
+				OSDNotify.notify_send(title);
 			}
 
 			log_msg(title);
-			log_msg(message);
 
 			return;
 		}
@@ -422,7 +420,7 @@ public class AppConsole : GLib.Object {
 	}
 
 	public void check_if_internet_is_active(bool exit_app = true){
-		
+		//log_msg("check_if_internet_is_active()"); //###
 		if (!check_internet_connectivity()){
 			
 			if (exit_app){
@@ -430,5 +428,4 @@ public class AppConsole : GLib.Object {
 			}
 		}
 	}
-
 }

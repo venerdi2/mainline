@@ -71,13 +71,14 @@ public class Main : GLib.Object{
 	// constructors ------------
 	
 	public Main(string[] arg0, bool _gui_mode){
+		//log_msg("Main()");
 
 		GUI_MODE = _gui_mode;
-		
+
 		LOG_TIMESTAMP = false;
 
 		Package.initialize();
-		
+
 		LinuxKernel.initialize();
 
 		init_paths();
@@ -132,6 +133,8 @@ public class Main : GLib.Object{
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
+
+		//log_debug("CACHE_DIR=%s".printf(LinuxKernel.CACHE_DIR));
 	}
 	
 	public void save_app_config(){
@@ -162,7 +165,6 @@ public class Main : GLib.Object{
 
 	    log_debug("Saved config file: %s".printf(APP_CONFIG_FILE));
 
-		// change owner to current user so that ukuu can access in normal mode
 	    chown(APP_CONFIG_FILE, user_login, user_login);
 
 		update_notification_files();
@@ -233,16 +235,23 @@ public class Main : GLib.Object{
 			suffix = "d";
 			count = App.notify_interval_value * 7;
 			break;
+		case 3: // second
+			suffix = "";
+			count = App.notify_interval_value;
+			break;
 		}
 		
 		if (file_exists(STARTUP_SCRIPT_FILE)){
 			file_delete(STARTUP_SCRIPT_FILE);
 		}
 
-		// UGLY - this should be a cron job
-		string txt = "# Notifications are disabled\nexit 0\n";
+		string opts = "";
+		if (LOG_DEBUG) opts = "--debug";
+		string txt = "# Called from " + STARTUP_DESKTOP_FILE + "\n";
 		if (notify_minor || notify_major){
-			txt = "while sleep %d%s".printf(count, suffix)+" ;do " + BRANDING_SHORTNAME + " --notify ;done\n";
+			txt = txt + "while : ;do "+BRANDING_SHORTNAME+" %s --notify ;sleep %d%s".printf(opts,count,suffix)+" ;done\n";
+		} else {
+			txt = txt + "# Notifications are disabled\nexit 0\n";
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,txt);

@@ -5,7 +5,7 @@ using TeeJee.Misc;
 
 public class Package : GLib.Object {
 	public string id = "";
-	public string name = "";
+	public string pname = "";
 	public string description = "";
 	public string server = "";
 	public string repo = "";
@@ -42,7 +42,7 @@ public class Package : GLib.Object {
 	}
 	
 	public Package(string _name){
-		name = _name;
+		pname = _name;
 	}
 
 	public bool is_foreign(){
@@ -83,7 +83,12 @@ public class Package : GLib.Object {
 		string std_out, std_err;
 		exec_sync("aptitude search --disable-columns -F '%p|%v|%M|%d' '?installed'", out std_out, out std_err);
 		file_write(temp_file, std_out);
-
+/*
+linux-headers-5.6.10-050610|5.6.10-050610.202005052153||Header files related to Linux kernel version 5.6.10
+linux-headers-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux kernel headers for version 5.6.10 on 64 bit x86 SMP
+linux-image-unsigned-5.3.0-51-generic|5.3.0-51.44||Linux kernel image for version 5.3.0 on 64 bit x86 SMP
+linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux kernel image for version 5.6.10 on 64 bit x86 SMP
+*/
 		// parse ------------------------
 
 		try {
@@ -97,21 +102,21 @@ public class Package : GLib.Object {
 						continue;
 					}
 
-					string name = arr[0].strip();
-					string arch = (name.contains(":")) ? name.split(":")[1].strip() : "";
-					if (name.contains(":")) { name = name.split(":")[0]; }
+					string pname = arr[0].strip();
+					string arch = (pname.contains(":")) ? pname.split(":")[1].strip() : "";
+					if (pname.contains(":")) { pname = pname.split(":")[0]; }
 					string version = arr[1].strip();
 					string auto = arr[2].strip();
 					string desc = arr[3].strip();
 					
-					string id = Package.get_id(name,arch);
+					string id = Package.get_id(pname,arch);
 
 					Package pkg = null;
 					if (!list.has_key(id)) {
-						pkg = new Package(name);
+						pkg = new Package(pname);
 						pkg.arch = arch;
 						pkg.description = desc;
-						pkg.id = Package.get_id(pkg.name,pkg.arch);
+						pkg.id = Package.get_id(pkg.pname,pkg.arch);
 						list[pkg.id] = pkg;
 					}
 
@@ -129,7 +134,7 @@ public class Package : GLib.Object {
 		catch (Error e) {
 			log_error (e.message);
 		}
-
+		//file_delete(temp_file);
 		return list;
 	}
 
@@ -159,21 +164,21 @@ public class Package : GLib.Object {
 						continue;
 					}
 
-					string name = arr[0].strip();
-					string arch = (name.contains(":")) ? name.split(":")[1].strip() : "";
-					if (name.contains(":")) { name = name.split(":")[0]; }
+					string pname = arr[0].strip();
+					string arch = (pname.contains(":")) ? pname.split(":")[1].strip() : "";
+					if (pname.contains(":")) { pname = pname.split(":")[0]; }
 					string version = arr[1].strip();
 					string auto = arr[2].strip();
 					string desc = arr[3].strip();
 					
-					string id = Package.get_id(name,arch);
+					string id = Package.get_id(pname,arch);
 
 					Package pkg = null;
 					if (!list.has_key(id)) {
-						pkg = new Package(name);
+						pkg = new Package(pname);
 						pkg.arch = arch;
 						pkg.description = desc;
-						pkg.id = Package.get_id(pkg.name,pkg.arch);
+						pkg.id = Package.get_id(pkg.pname,pkg.arch);
 						list[pkg.id] = pkg;
 					}
 
@@ -191,7 +196,7 @@ public class Package : GLib.Object {
 		catch (Error e) {
 			log_error (e.message);
 		}
-
+		//file_delete(temp_file);
 		return list;
 	}
 }

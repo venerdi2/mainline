@@ -41,12 +41,13 @@ namespace TeeJee.ProcessHelper{
 		TEMP_DIR = Environment.get_tmp_dir() + "/" + BRANDING_SHORTNAME + "_" + random_string();
 		dir_create(TEMP_DIR);
 
-		//log_debug("TEMP_DIR=" + TEMP_DIR);
+		log_debug("TEMP_DIR="+TEMP_DIR);
 	}
 
 	public string create_temp_subdir(string base_dir = ""){
 		var temp = "%s/%s".printf((base_dir.length > 0) ? base_dir : TEMP_DIR, random_string());
 		dir_create(temp);
+		
 		return temp;
 	}
 	

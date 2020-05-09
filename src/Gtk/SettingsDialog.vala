@@ -50,7 +50,7 @@ public class SettingsDialog : Gtk.Dialog {
 		icon = get_app_icon(16);
 
 		title = _("Settings");
-		
+
 		// get content area
 		var vbox_main = get_content_area();
 		vbox_main.spacing = 6;
@@ -98,6 +98,13 @@ public class SettingsDialog : Gtk.Dialog {
 			App.notify_bubble = chk_notify_bubble.active;
 		});
 
+		if (LOG_DEBUG) {
+			label = new Label(_("(Allowing intervals in seconds for --debug)"));
+			label.xalign = (float) 0.0;
+			label.margin_bottom = 6;
+			vbox_main.add (label);
+		}
+
 		// notification interval
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
@@ -107,7 +114,9 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_start = 6;
 		hbox.add (label);
 
-		var adjustment = new Gtk.Adjustment(App.notify_interval_value, 1, 52, 1, 1, 0);
+		int max_intervals = 52;
+		if (LOG_DEBUG) max_intervals = 3600; // allow up to 1hr in seconds
+		var adjustment = new Gtk.Adjustment(App.notify_interval_value, 1, max_intervals, 1, 1, 0);
 		var spin = new Gtk.SpinButton (adjustment, 1, 0);
 		spin.xalign = (float) 0.5;
 		hbox.add(spin);
@@ -131,13 +140,17 @@ public class SettingsDialog : Gtk.Dialog {
 
         //populate
         TreeIter iter;
-		var model = new Gtk.ListStore (2, typeof (string), typeof (string));
+        var model = new Gtk.ListStore (2, typeof (string), typeof (string));
 		model.append (out iter);
 		model.set (iter,0,_("Hour(s)"),1,"hour");
 		model.append (out iter);
 		model.set (iter,0,_("Day(s)"),1,"day");
 		model.append (out iter);
 		model.set (iter,0,_("Week(s)"),1,"week");
+		if (LOG_DEBUG) {
+			model.append (out iter);
+			model.set (iter,0,_("Second(s)"),1,"second");
+		}
 		combo.set_model(model);
 		combo.set_active(App.notify_interval_unit);
 		

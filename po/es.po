@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 03:35-0400\n"
+"POT-Creation-Date: 2020-05-09 07:19-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -25,104 +25,104 @@ msgstr "Distribución"
 msgid "Architecture"
 msgstr "Arquitectura del sistema"
 
-#: src/Common/LinuxKernel.vala:257
+#: src/Common/LinuxKernel.vala:231
 msgid "Index is stale"
 msgstr "El índice es obsoleto"
 
-#: src/Common/LinuxKernel.vala:260
+#: src/Common/LinuxKernel.vala:234
 msgid "Index is fresh"
 msgstr "El índice está al día"
 
-#: src/Common/LinuxKernel.vala:365
+#: src/Common/LinuxKernel.vala:339
 msgid "Fetching index..."
 msgstr "Recuperando índice..."
 
-#: src/Common/LinuxKernel.vala:408
+#: src/Common/LinuxKernel.vala:382
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Recuperando índice de kernel.ubuntu.com…"
 
-#: src/Common/LinuxKernel.vala:727
+#: src/Common/LinuxKernel.vala:693
 msgid "Could not find running kernel in list!"
 msgstr "¡No se pudo encontrar el núcleo en ejecución en la lista!"
 
-#: src/Common/LinuxKernel.vala:733
+#: src/Common/LinuxKernel.vala:699
 msgid "Could not find any kernels to remove"
 msgstr "Seleccione los núcleos que se desinstalarán"
 
-#: src/Common/LinuxKernel.vala:742
+#: src/Common/LinuxKernel.vala:708
 msgid "The following kernels will be removed:"
 msgstr "Los siguientes kernels serán eliminados:"
 
-#: src/Common/LinuxKernel.vala:749
+#: src/Common/LinuxKernel.vala:715
 msgid "Continue ?"
 msgstr "¿Continuar?"
 
-#: src/Common/LinuxKernel.vala:777 src/Console/AppConsole.vala:361
+#: src/Common/LinuxKernel.vala:743 src/Console/AppConsole.vala:363
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:788 src/Console/AppConsole.vala:368
+#: src/Common/LinuxKernel.vala:754 src/Console/AppConsole.vala:370
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:796 src/Console/AppConsole.vala:373
-#: src/Console/AppConsole.vala:421
+#: src/Common/LinuxKernel.vala:762 src/Console/AppConsole.vala:375
+#: src/Console/AppConsole.vala:419
 msgid "No updates found"
 msgstr "No se encontró ninguna actualización"
 
-#: src/Common/LinuxKernel.vala:806
+#: src/Common/LinuxKernel.vala:772
 #, c-format
-msgid "Install Linux v%s ? (y/n): "
+msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1072
+#: src/Common/LinuxKernel.vala:1038
 msgid "Packages Available"
 msgstr "Paquetes disponibles"
 
-#: src/Common/LinuxKernel.vala:1080
+#: src/Common/LinuxKernel.vala:1046
 msgid "Packages Installed"
 msgstr "Paquetes instalados"
 
-#: src/Common/LinuxKernel.vala:1164
+#: src/Common/LinuxKernel.vala:1130
 msgid "Available Kernels"
 msgstr "Núcleos disponibles"
 
-#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1147 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Instalado"
 
-#: src/Common/LinuxKernel.vala:1181 src/Gtk/MainWindow.vala:208
+#: src/Common/LinuxKernel.vala:1147 src/Gtk/MainWindow.vala:186
 msgid "Running"
 msgstr "En ejecución"
 
-#: src/Common/LinuxKernel.vala:1210
+#: src/Common/LinuxKernel.vala:1182
 msgid "Downloading"
 msgstr "Descargando"
 
-#: src/Common/LinuxKernel.vala:1229
+#: src/Common/LinuxKernel.vala:1201
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/Common/LinuxKernel.vala:1238
+#: src/Common/LinuxKernel.vala:1207
 msgid "ERROR"
 msgstr "ERROR"
 
-#: src/Common/LinuxKernel.vala:1252 src/Gtk/MainWindow.vala:681
+#: src/Common/LinuxKernel.vala:1221 src/Gtk/MainWindow.vala:653
 msgid "This kernel is already installed."
 msgstr "Este núcleo ya se instaló."
 
-#: src/Common/LinuxKernel.vala:1283
+#: src/Common/LinuxKernel.vala:1252
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalación finalizada. Se necesita reiniciar para utilizar el núcleo nuevo."
 
-#: src/Common/LinuxKernel.vala:1286
+#: src/Common/LinuxKernel.vala:1255
 msgid "Installation completed with errors"
 msgstr "Instalación finalizada con errores"
 
-#: src/Common/LinuxKernel.vala:1302
+#: src/Common/LinuxKernel.vala:1271
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -130,19 +130,19 @@ msgstr ""
 "El núcleo seleccionado está en ejecución y no puede desinstalarse.\n"
 "Instale otro núcleo antes de desinstalar este."
 
-#: src/Common/LinuxKernel.vala:1307
+#: src/Common/LinuxKernel.vala:1276
 msgid "Preparing to remove selected kernels"
 msgstr "Preparándose para desinstalar los núcleos seleccionados"
 
-#: src/Common/LinuxKernel.vala:1339 src/Common/LinuxKernel.vala:1392
+#: src/Common/LinuxKernel.vala:1308 src/Common/LinuxKernel.vala:1361
 msgid "Un-install completed"
 msgstr "Desinstalación finalizada"
 
-#: src/Common/LinuxKernel.vala:1342 src/Common/LinuxKernel.vala:1395
+#: src/Common/LinuxKernel.vala:1311 src/Common/LinuxKernel.vala:1364
 msgid "Un-install completed with errors"
 msgstr "Desinstalación finalizada con errores"
 
-#: src/Common/LinuxKernel.vala:1355
+#: src/Common/LinuxKernel.vala:1324
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -150,231 +150,219 @@ msgstr ""
 "Este núcleo está en ejecución y no se puede desinstalar.\n"
 "Instale otro núcleo antes de desinstalar este."
 
-#: src/Common/Main.vala:106
+#: src/Common/Main.vala:107
 msgid "Commands listed below are not available on this system"
 msgstr ""
 "Las órdenes enumeradas a continuación no están disponibles en este sistema"
 
-#: src/Common/Main.vala:107
+#: src/Common/Main.vala:108
 msgid "Please install required packages and try again"
 msgstr "Instale los paquetes requeridos e inténtelo de nuevo"
 
-#: src/Common/Package.vala:126 src/Common/Package.vala:188
+#: src/Common/Package.vala:131 src/Common/Package.vala:193
 #, c-format
 msgid "File not found: %s"
 msgstr "No se encontró el archivo: %s"
 
-#: src/Console/AppConsole.vala:80 src/Gtk/AppGtk.vala:174
+#: src/Console/AppConsole.vala:81 src/Gtk/AppGtk.vala:171
 msgid "Syntax"
 msgstr "Sintaxis"
 
-#: src/Console/AppConsole.vala:82
+#: src/Console/AppConsole.vala:83
 msgid "Commands"
 msgstr "Comandos"
 
-#: src/Console/AppConsole.vala:84
+#: src/Console/AppConsole.vala:85
 msgid "Check for kernel updates"
 msgstr "Buscar actualizaciones del núcleo"
 
-#: src/Console/AppConsole.vala:85
+#: src/Console/AppConsole.vala:86
 msgid "Check for kernel updates and notify current user"
 msgstr "Compruebe las actualizaciones del kernel y notifique al usuario actual"
 
-#: src/Console/AppConsole.vala:86
+#: src/Console/AppConsole.vala:87
 msgid "List all available mainline kernels"
 msgstr "Mostrar todos los núcleos troncales disponibles"
 
-#: src/Console/AppConsole.vala:87
+#: src/Console/AppConsole.vala:88
 msgid "List installed kernels"
 msgstr "Mostrar kernels disponibles"
 
-#: src/Console/AppConsole.vala:88
+#: src/Console/AppConsole.vala:89
 msgid "Install latest mainline kernel"
 msgstr "Instalar kernel troncal especificado"
 
-#: src/Console/AppConsole.vala:89
+#: src/Console/AppConsole.vala:90
 msgid "Install latest point update for current series"
 msgstr ""
 
-#: src/Console/AppConsole.vala:90
+#: src/Console/AppConsole.vala:91
 msgid "Install specified mainline kernel"
 msgstr "Instalar núcleo troncal especificado"
 
-#: src/Console/AppConsole.vala:91
+#: src/Console/AppConsole.vala:92
 msgid "Remove specified kernel"
 msgstr "Quitar el núcleo troncal especificado"
 
-#: src/Console/AppConsole.vala:92 src/Gtk/MainWindow.vala:422
+#: src/Console/AppConsole.vala:93 src/Gtk/MainWindow.vala:396
 msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
-#: src/Console/AppConsole.vala:93
+#: src/Console/AppConsole.vala:94
 msgid "Download packages for specified kernel"
 msgstr "Descargar paquetes del núcleo especificado"
 
-#: src/Console/AppConsole.vala:94 src/Console/AppConsole.vala:99
+#: src/Console/AppConsole.vala:95 src/Console/AppConsole.vala:100
 msgid "Remove files from application cache"
 msgstr "Quitar archivos de la antememoria de la aplicación"
 
-#: src/Console/AppConsole.vala:95
+#: src/Console/AppConsole.vala:96
 msgid "Show unstable and RC releases"
 msgstr "Ocultar versiones inestables y RC"
 
-#: src/Console/AppConsole.vala:97 src/Gtk/AppGtk.vala:176
+#: src/Console/AppConsole.vala:98 src/Gtk/AppGtk.vala:173
 msgid "Options"
 msgstr "Opciones"
 
-#: src/Console/AppConsole.vala:100
+#: src/Console/AppConsole.vala:101
 msgid "Enable verbose debugging output"
 msgstr ""
 
-#: src/Console/AppConsole.vala:101
+#: src/Console/AppConsole.vala:102
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Asumir Sí para todas las solicitudes (modo no interactivo)"
 
-#: src/Console/AppConsole.vala:102
+#: src/Console/AppConsole.vala:103
 msgid "Override user"
 msgstr ""
 
-#: src/Console/AppConsole.vala:115
+#: src/Console/AppConsole.vala:116
 msgid "Admin access is required for running this application."
 msgstr ""
 "Se necesitan privilegios administrativos para ejecutar esta aplicación."
 
-#: src/Console/AppConsole.vala:118
+#: src/Console/AppConsole.vala:119
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Ejecute la aplicación con permisos administrativos con pkexec o sudo."
 
-#: src/Console/AppConsole.vala:198 src/Gtk/AppGtk.vala:161
+#: src/Console/AppConsole.vala:200 src/Gtk/AppGtk.vala:158
 msgid "Unknown option"
 msgstr "Opción desconocida"
 
-#: src/Console/AppConsole.vala:200 src/Console/AppConsole.vala:314
-#: src/Console/AppConsole.vala:343
+#: src/Console/AppConsole.vala:202 src/Console/AppConsole.vala:315
+#: src/Console/AppConsole.vala:345
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:205 src/Gtk/AppGtk.vala:109
-msgid "Cache"
-msgstr "Cache"
-
-#: src/Console/AppConsole.vala:206 src/Gtk/AppGtk.vala:110
-msgid "Temp"
-msgstr ""
-
-#: src/Console/AppConsole.vala:286 src/Console/AppConsole.vala:323
+#: src/Console/AppConsole.vala:284 src/Console/AppConsole.vala:324
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:292
+#: src/Console/AppConsole.vala:290
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Se seleccionaron varios núcleos para su instalación. Elija solo uno."
 
-#: src/Console/AppConsole.vala:310 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:311 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "No se pudo encontrar la versión solicitada"
 
-#: src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:344
 msgid "Command not specified"
 msgstr "Coomand no especificado"
 
-#: src/Console/AppConsole.vala:391 src/Console/AppConsole.vala:408
-#, c-format
-msgid "Linux v%s Available"
-msgstr ""
+#: src/Console/AppConsole.vala:393 src/Console/AppConsole.vala:408
+#, fuzzy, c-format
+msgid "Kernel %s Available"
+msgstr "Paquetes disponibles"
 
-#: src/Console/AppConsole.vala:392
-msgid "Major update available for installation"
-msgstr ""
-
-#: src/Console/AppConsole.vala:409
-msgid "Minor update available for installation"
-msgstr ""
-
-#: src/Gtk/AppGtk.vala:178
+#: src/Gtk/AppGtk.vala:175
 msgid "Print debug information"
 msgstr "Mostrar información de depuración"
 
-#: src/Gtk/AppGtk.vala:179
+#: src/Gtk/AppGtk.vala:176
 msgid "Show all options"
 msgstr "Mostrar todas las opciones"
 
-#: src/Gtk/MainWindow.vala:150
+#: src/Gtk/MainWindow.vala:146
 msgid "Kernel"
 msgstr "Núcleo"
 
-#: src/Gtk/MainWindow.vala:179
-msgid "Version"
-msgstr "Versión"
-
-#: src/Gtk/MainWindow.vala:196
+#: src/Gtk/MainWindow.vala:174
 msgid "Status"
 msgstr "Estado"
 
-#: src/Gtk/MainWindow.vala:341
+#: src/Gtk/MainWindow.vala:319
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:686 src/Utility/TeeJee.System.vala:281
+#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:527
+#: src/Gtk/MainWindow.vala:658 src/Utility/TeeJee.System.vala:146
 msgid "Internet connection is not active"
 msgstr "La conexión a Internet está inactiva"
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/MainWindow.vala:555
-#: src/Gtk/MainWindow.vala:686
+#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:527
+#: src/Gtk/MainWindow.vala:658
 msgid "No Internet"
 msgstr "No hay Internet"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Instalar"
 
-#: src/Gtk/MainWindow.vala:366
+#: src/Gtk/MainWindow.vala:344
 msgid "Multiple Kernels Selected"
 msgstr "Se seleccionaron varios kernels"
 
-#: src/Gtk/MainWindow.vala:366
+#: src/Gtk/MainWindow.vala:344
 msgid "Select a single kernel to install"
 msgstr "Seleccione un solo núcleo para instalarlo"
 
-#: src/Gtk/MainWindow.vala:369 src/Gtk/MainWindow.vala:380
+#: src/Gtk/MainWindow.vala:347 src/Gtk/MainWindow.vala:358
 msgid "Not Selected"
 msgstr "No seleccionado"
 
-#: src/Gtk/MainWindow.vala:369
+#: src/Gtk/MainWindow.vala:347
 msgid "Select the kernel to install"
 msgstr "Seleccione el núcleo que se instalará"
 
-#: src/Gtk/MainWindow.vala:374
+#: src/Gtk/MainWindow.vala:352
 msgid "Remove"
 msgstr "Quitar"
 
-#: src/Gtk/MainWindow.vala:380
+#: src/Gtk/MainWindow.vala:358
 msgid "Select the kernels to remove"
 msgstr "Seleccione los núcleos que se desinstalarán"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:395
 msgid "Purge"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:458
+#: src/Gtk/MainWindow.vala:429
 msgid "Changes"
 msgstr "Cambios"
 
-#: src/Gtk/MainWindow.vala:469 src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/MainWindow.vala:440 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Configuración"
 
-#: src/Gtk/MainWindow.vala:490
+#: src/Gtk/MainWindow.vala:461
 msgid "About"
 msgstr "Acerca de"
 
-#: src/Gtk/MainWindow.vala:539
+#: src/Gtk/MainWindow.vala:505
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
 
-#: src/Gtk/MainWindow.vala:574
+#: src/Gtk/MainWindow.vala:506
+msgid "Forked:"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:506
+msgid "Original:"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:546
 msgid "Refreshing..."
 msgstr "Actualizando…"
 
@@ -399,48 +387,56 @@ msgstr "Notificar si hay una versión puntual disponible"
 msgid "Show notification bubble on desktop"
 msgstr "Mostrar globo de notificación en el escritorio"
 
-#: src/Gtk/SettingsDialog.vala:105
+#: src/Gtk/SettingsDialog.vala:102
+msgid "(Allowing intervals in seconds for --debug)"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:112
 msgid "Check every"
 msgstr "Comprobar cada"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsDialog.vala:145
 msgid "Hour(s)"
 msgstr "Horas"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsDialog.vala:147
 msgid "Day(s)"
 msgstr "Días"
 
-#: src/Gtk/SettingsDialog.vala:140
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Week(s)"
 msgstr "Semanas"
 
-#: src/Gtk/SettingsDialog.vala:145
+#: src/Gtk/SettingsDialog.vala:152
+msgid "Second(s)"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:158
 msgid "Display"
 msgstr "Mostrar"
 
-#: src/Gtk/SettingsDialog.vala:153
+#: src/Gtk/SettingsDialog.vala:166
 msgid "Hide unstable and RC releases"
 msgstr "Ocultar versiones inestables y RC"
 
-#: src/Gtk/SettingsDialog.vala:167
+#: src/Gtk/SettingsDialog.vala:180
 msgid "Show N previous major versions "
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:182
+#: src/Gtk/SettingsDialog.vala:195
 msgid "Other"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:190
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Skip internet connection check"
 msgstr "La conexión a Internet está inactiva"
 
-#: src/Gtk/SettingsDialog.vala:203
+#: src/Gtk/SettingsDialog.vala:216
 #, fuzzy
 msgid "Internet connection timeout in "
 msgstr "La conexión a Internet está inactiva"
 
-#: src/Gtk/SettingsDialog.vala:217
+#: src/Gtk/SettingsDialog.vala:230
 msgid "seconds"
 msgstr ""
 
@@ -465,20 +461,21 @@ msgid "Contributions"
 msgstr "Contribuciones"
 
 #: src/Utility/Gtk/AboutWindow.vala:329
-msgid "Third Party Tools"
-msgstr "Herramientas de terceros"
-
-#: src/Utility/Gtk/AboutWindow.vala:337
 msgid "Artists"
 msgstr "Artistas"
 
-#: src/Utility/Gtk/AboutWindow.vala:345
+#: src/Utility/Gtk/AboutWindow.vala:337
 msgid "Translators"
 msgstr "Traductores"
 
-#: src/Utility/Gtk/AboutWindow.vala:353
+#: src/Utility/Gtk/AboutWindow.vala:345
 msgid "Documenters"
 msgstr "Documentadores"
+
+#: src/Utility/Gtk/AboutWindow.vala:353
+#, fuzzy
+msgid "Third Party Inclusions"
+msgstr "Herramientas de terceros"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
@@ -496,72 +493,66 @@ msgstr "Error"
 msgid "Missing Icon"
 msgstr "Falta el icono"
 
-#: src/Utility/TeeJee.FileSystem.vala:97 src/Utility/TeeJee.FileSystem.vala:100
+#: src/Utility/TeeJee.FileSystem.vala:73 src/Utility/TeeJee.FileSystem.vala:76
 msgid "File deleted"
 msgstr "Se eliminó el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:106
+#: src/Utility/TeeJee.FileSystem.vala:82
 msgid "Failed to delete file"
 msgstr "Falló la eliminación del archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:162
+#: src/Utility/TeeJee.FileSystem.vala:108
 msgid "Failed to read file"
 msgstr "Falló la lectura del archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:187
-#: src/Utility/TeeJee.FileSystem.vala:190
+#: src/Utility/TeeJee.FileSystem.vala:135
+#: src/Utility/TeeJee.FileSystem.vala:138
 msgid "File saved"
 msgstr "Se guardó el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:197
+#: src/Utility/TeeJee.FileSystem.vala:147
 msgid "Failed to write file"
 msgstr "Falló la escritura del archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:210
-#: src/Utility/TeeJee.FileSystem.vala:213
+#: src/Utility/TeeJee.FileSystem.vala:160
+#: src/Utility/TeeJee.FileSystem.vala:163
 msgid "File copied"
 msgstr "Se copió el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:221
+#: src/Utility/TeeJee.FileSystem.vala:171
 msgid "Failed to copy file"
 msgstr "Falló la copia del archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:231
-#: src/Utility/TeeJee.FileSystem.vala:538
+#: src/Utility/TeeJee.FileSystem.vala:181
 msgid "File not found"
 msgstr "No se encontró el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:245
-#: src/Utility/TeeJee.FileSystem.vala:248
+#: src/Utility/TeeJee.FileSystem.vala:195
+#: src/Utility/TeeJee.FileSystem.vala:198
 msgid "File moved"
 msgstr "Se trasladó el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:253
+#: src/Utility/TeeJee.FileSystem.vala:203
 msgid "Failed to move file"
 msgstr "Falló el traslado del archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:349
-#: src/Utility/TeeJee.FileSystem.vala:352
-#: src/Utility/TeeJee.FileSystem.vala:378
+#: src/Utility/TeeJee.FileSystem.vala:258
+#: src/Utility/TeeJee.FileSystem.vala:261
 msgid "Created directory"
 msgstr "Se creó el directorio"
 
-#: src/Utility/TeeJee.FileSystem.vala:359
+#: src/Utility/TeeJee.FileSystem.vala:268
 msgid "Failed to create dir"
 msgstr "Falló la creación del directorio"
 
-#: src/Utility/TeeJee.FileSystem.vala:375
-msgid "Deleted directory"
-msgstr "Se eliminó el directorio"
+#: src/Utility/TeeJee.FileSystem.vala:283
+#, fuzzy
+msgid "Deleted"
+msgstr "Se eliminó el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:509
-msgid "Dir not found"
-msgstr "No se encontró el directorio"
-
-#: src/Utility/TeeJee.FileSystem.vala:662
-#: src/Utility/TeeJee.FileSystem.vala:711
-msgid "File is missing"
-msgstr "Falta el archivo"
+#: src/Utility/TeeJee.FileSystem.vala:284
+msgid "FAILED deleting"
+msgstr ""
 
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "E"
@@ -571,6 +562,6 @@ msgstr "E"
 msgid "W"
 msgstr "W"
 
-#: src/Utility/TeeJee.Process.vala:506
+#: src/Utility/TeeJee.Process.vala:507
 msgid "Stopped"
 msgstr "Detenido"
