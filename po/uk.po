@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-09 07:19-0400\n"
+"POT-Creation-Date: 2020-05-10 05:43-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -269,6 +269,10 @@ msgstr "Команда не вказана"
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Доступні пакети"
+
+#: src/Console/OSDNotify.vala:63
+msgid "Show"
+msgstr ""
 
 #: src/Gtk/AppGtk.vala:175
 msgid "Print debug information"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-09 07:19-0400\n"
+"POT-Creation-Date: 2020-05-10 05:43-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -274,6 +274,10 @@ msgstr "Coomand no especificado"
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Paquetes disponibles"
+
+#: src/Console/OSDNotify.vala:63
+msgid "Show"
+msgstr ""
 
 #: src/Gtk/AppGtk.vala:175
 msgid "Print debug information"

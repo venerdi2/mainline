@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-09 07:19-0400\n"
+"POT-Creation-Date: 2020-05-10 05:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,6 +266,10 @@ msgstr ""
 #: src/Console/AppConsole.vala:393 src/Console/AppConsole.vala:408
 #, c-format
 msgid "Kernel %s Available"
+msgstr ""
+
+#: src/Console/OSDNotify.vala:63
+msgid "Show"
 msgstr ""
 
 #: src/Gtk/AppGtk.vala:175

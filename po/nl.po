@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-09 07:19-0400\n"
+"POT-Creation-Date: 2020-05-10 05:43-0400\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
@@ -287,6 +287,10 @@ msgstr ""
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Beschikbare pakketten"
+
+#: src/Console/OSDNotify.vala:63
+msgid "Show"
+msgstr ""
 
 #: src/Gtk/AppGtk.vala:175
 msgid "Print debug information"
