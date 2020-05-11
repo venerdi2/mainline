@@ -291,7 +291,7 @@ public class DownloadItem : GLib.Object
 		
 		file_name = _file_name;
 		download_dir = _download_dir;
-		partial_dir = create_tmp_dir("DownloadItem()");
+		partial_dir = create_tmp_dir();
 		source_uri = _source_uri;
 	}
 

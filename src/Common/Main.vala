@@ -51,7 +51,6 @@ public class Main : GLib.Object{
 	// constants ----------
 
 	public string TMP_PREFIX = "";
-	public string TMP_DIR = "";
 	public string APP_CONF_DIR = "";
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";

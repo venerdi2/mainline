@@ -113,12 +113,9 @@ public class AppConsole : GLib.Object {
 			txt += "'%s' ".printf(args[k]);
 		}
 
-		//log_msg("AppConsole.vala:parse_arguments() txt="+txt);
-
 		// check argument count -----------------
 
 		if (args.length == 1) {
-			//no args given
 			log_msg(help_message());
 			return false;
 		}
@@ -128,7 +125,7 @@ public class AppConsole : GLib.Object {
 			
 		// parse options first --------------
 		
-		for (int k = 1; k < args.length; k++) // Oth arg is app path
+		for (int k = 1; k < args.length; k++)
 		{
 			switch (args[k].down()) {
 			case "--debug":
@@ -188,8 +185,6 @@ public class AppConsole : GLib.Object {
 		}
 
 		// run command --------------------------------------
-
-		//log_msg ("cmd:"+cmd);
 
 		switch (cmd) {
 		case "--list":
@@ -262,7 +257,6 @@ public class AppConsole : GLib.Object {
 
 			LinuxKernel.query(true);
 
-			//log_msg("if(cmd_versions.length==0)");
 			if (cmd_versions.length==0){
 				log_error(_("No kernels specified"));
 				exit(1);
@@ -277,12 +271,9 @@ public class AppConsole : GLib.Object {
 			var list = new Gee.ArrayList<LinuxKernel>();
 
 			foreach(string requested_version in requested_versions){
-				//log_msg("requested_version:"+requested_version);   //###
-				
 				LinuxKernel kern_requested = null;
 				foreach(var kern in LinuxKernel.kernel_list){
 					// match --list output
-					//log_msg("kern.version_main:"+kern.version_main);  //###
 					if (kern.version_main == requested_version){
 						kern_requested = kern;
 						break;
@@ -310,7 +301,6 @@ public class AppConsole : GLib.Object {
 
 			switch(cmd){
 			case "--download":
-				//log_msg("--download"); //###
 				return LinuxKernel.download_kernels(list);
 	
 			case "--remove":
@@ -381,7 +371,7 @@ public class AppConsole : GLib.Object {
 
 			if (App.notify_bubble){
 				string extra_action = _("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main;
-				OSDNotify.notify_send(title,"major",extra_action);
+				OSDNotify.notify_send(title,"",extra_action);
 			}
 
 			log_msg(title);
@@ -397,7 +387,7 @@ public class AppConsole : GLib.Object {
 
 			if (App.notify_bubble){
 				string extra_action = _("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main;
-				OSDNotify.notify_send(title,"minor",extra_action);
+				OSDNotify.notify_send(title,"",extra_action);
 			}
 
 			log_msg(title);
@@ -409,9 +399,7 @@ public class AppConsole : GLib.Object {
 	}
 
 	public void check_if_internet_is_active(bool exit_app = true){
-		//log_msg("check_if_internet_is_active()"); //###
 		if (!check_internet_connectivity()){
-			
 			if (exit_app){
 				exit(1);
 			}

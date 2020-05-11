@@ -126,7 +126,6 @@ namespace TeeJee.System{
 
 	// internet helpers ----------------------
 	public bool check_internet_connectivity(){
-		//log_msg("check_internet_connectivity()");
 
 	    if (App.skip_connection_check) {
 	        return true;

@@ -78,7 +78,7 @@ public class Package : GLib.Object {
 
 		var list = new Gee.HashMap<string,Package>();
 
-		string t_dir = create_tmp_dir("query_installed_packages()");
+		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir);
 		
 		// get installed packages from aptitude --------------
@@ -146,7 +146,7 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 
 		var list = new Gee.HashMap<string,Package>();
 
-		string t_dir = create_tmp_dir("query_available_packages()");
+		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir);
 		
 		// get installed packages from aptitude --------------

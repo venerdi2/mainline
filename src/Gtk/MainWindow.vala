@@ -360,7 +360,7 @@ public class MainWindow : Gtk.Window{
 			else if (selected_kernels.size > 0){
 				
 				var term = new TerminalWindow.with_parent(this, false, true);
-				string t_dir = create_tmp_dir("button Remove");
+				string t_dir = create_tmp_dir();
 				string t_file = get_temp_file_path(t_dir)+".sh";
 
 				term.script_complete.connect(()=>{
@@ -405,7 +405,7 @@ public class MainWindow : Gtk.Window{
 		button.clicked.connect(() => {
 
 			var term = new TerminalWindow.with_parent(this, false, true);
-			string t_dir = create_tmp_dir("button Purge");
+			string t_dir = create_tmp_dir();
 			string t_file = get_temp_file_path(t_dir)+".sh";
 
 			term.script_complete.connect(()=>{
@@ -670,7 +670,7 @@ public class MainWindow : Gtk.Window{
 		}
 
 		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir("install()");
+		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
 
 		term.script_complete.connect(()=>{

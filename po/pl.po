@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 21:20-0400\n"
+"POT-Creation-Date: 2020-05-11 06:42-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: Waldemar Konik <valdi74@github>\n"
 "Language-Team: Polish\n"
@@ -59,16 +59,16 @@ msgstr ""
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:346
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:336
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:353
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:343
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:358
-#: src/Console/AppConsole.vala:408
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:398
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
@@ -153,19 +153,19 @@ msgstr ""
 "To jądro aktualnie działa i nie może zostać usunięte.\n"
 " Zainstaluj inne jądro przed usunięciem tego."
 
-#: src/Common/Main.vala:123
+#: src/Common/Main.vala:122
 msgid "Commands listed below are not available on this system"
 msgstr "Poniższe polecenia nie są dostępne na tym systemie"
 
-#: src/Common/Main.vala:124
+#: src/Common/Main.vala:123
 msgid "Please install required packages and try again"
 msgstr "Zainstaluj wymagane pakiety i spróbuj ponownie"
 
-#: src/Common/Main.vala:270
+#: src/Common/Main.vala:269
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:282
+#: src/Common/Main.vala:281
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Powiadomienia"
@@ -271,37 +271,37 @@ msgstr "Aby uruchomić tę aplikację niezbędne są prawa administratora."
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Uruchom aplikację jako root albo użyj gksu/sudo."
 
-#: src/Console/AppConsole.vala:183 src/Gtk/AppGtk.vala:145
+#: src/Console/AppConsole.vala:180 src/Gtk/AppGtk.vala:145
 msgid "Unknown option"
 msgstr "Nieznana opcja"
 
-#: src/Console/AppConsole.vala:185 src/Console/AppConsole.vala:298
-#: src/Console/AppConsole.vala:328
+#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:318
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:267 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:267
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Wybrano kilka jąder do instalacji. Wybierz tylko jedno."
 
-#: src/Console/AppConsole.vala:294 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Nie można odnaleźć żądanej wersji"
 
-#: src/Console/AppConsole.vala:327
+#: src/Console/AppConsole.vala:317
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:380 src/Console/AppConsole.vala:396
+#: src/Console/AppConsole.vala:370 src/Console/AppConsole.vala:386
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Dostępne pakiety"
 
-#: src/Console/AppConsole.vala:383 src/Console/AppConsole.vala:399
+#: src/Console/AppConsole.vala:373 src/Console/AppConsole.vala:389
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Zainstaluj"
@@ -331,7 +331,7 @@ msgid "Refresh"
 msgstr "Odśwież"
 
 #: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:146
+#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:145
 msgid "Internet connection is not active"
 msgstr "Brak połączenia z internetem"
 

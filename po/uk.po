@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 21:20-0400\n"
+"POT-Creation-Date: 2020-05-11 06:42-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -53,16 +53,16 @@ msgstr "Наступні ядра будуть видалені:"
 msgid "Continue ?"
 msgstr "Продовжувати ?"
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:346
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:336
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:353
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:343
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:358
-#: src/Console/AppConsole.vala:408
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:398
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -147,19 +147,19 @@ msgstr ""
 "Это ядро в настоящий момент работает и не может быть удалено.\n"
 " Установите другое ядро, прежде чем удалять его."
 
-#: src/Common/Main.vala:123
+#: src/Common/Main.vala:122
 msgid "Commands listed below are not available on this system"
 msgstr "Команди перераховані нижче недоступні на цій системі"
 
-#: src/Common/Main.vala:124
+#: src/Common/Main.vala:123
 msgid "Please install required packages and try again"
 msgstr "Встановити необхідні пакети і спробуйте знову"
 
-#: src/Common/Main.vala:270
+#: src/Common/Main.vala:269
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:282
+#: src/Common/Main.vala:281
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Повідомлення"
@@ -260,37 +260,37 @@ msgstr "Для запуску програми потрібно мати пра�
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Запустіть додаток як адміністратор за допомогою pkexec або sudo."
 
-#: src/Console/AppConsole.vala:183 src/Gtk/AppGtk.vala:145
+#: src/Console/AppConsole.vala:180 src/Gtk/AppGtk.vala:145
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
-#: src/Console/AppConsole.vala:185 src/Console/AppConsole.vala:298
-#: src/Console/AppConsole.vala:328
+#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:318
 msgid "Run '"
 msgstr "Запуск"
 
-#: src/Console/AppConsole.vala:267 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:267
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Для встановлення вибрано кілька ядер. Виберіть лише одну."
 
-#: src/Console/AppConsole.vala:294 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Не вдалося знайти запитувану версію"
 
-#: src/Console/AppConsole.vala:327
+#: src/Console/AppConsole.vala:317
 msgid "Command not specified"
 msgstr "Команда не вказана"
 
-#: src/Console/AppConsole.vala:380 src/Console/AppConsole.vala:396
+#: src/Console/AppConsole.vala:370 src/Console/AppConsole.vala:386
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Доступні пакети"
 
-#: src/Console/AppConsole.vala:383 src/Console/AppConsole.vala:399
+#: src/Console/AppConsole.vala:373 src/Console/AppConsole.vala:389
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Встановити"
@@ -320,7 +320,7 @@ msgid "Refresh"
 msgstr "Оновити"
 
 #: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:146
+#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:145
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 

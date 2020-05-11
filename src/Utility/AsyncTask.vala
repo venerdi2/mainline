@@ -29,7 +29,7 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public abstract class AsyncTask : GLib.Object{
-	
+
 	private string err_line = "";
 	private string out_line = "";
 	private DataOutputStream dos_in;
@@ -40,7 +40,7 @@ public abstract class AsyncTask : GLib.Object{
 
 	private bool stdout_is_open = false;
 	private bool stderr_is_open = false;
-	
+
 	protected Pid child_pid;
 	private int input_fd;
 	private int output_fd;
@@ -52,7 +52,7 @@ public abstract class AsyncTask : GLib.Object{
 	protected string log_file = "";
 
 	public bool background_mode = false;
-	
+
 	// public
 	public AppStatus status;
 	public string status_line = "";
@@ -65,20 +65,20 @@ public abstract class AsyncTask : GLib.Object{
 	public int64 prg_count_total = 0;
 	public string eta = "";
 	//public bool is_running = false;
-	
+
 	// signals
 	public signal void stdout_line_read(string line);
 	public signal void stderr_line_read(string line);
 	public signal void task_complete();
 
 	protected AsyncTask(){
-		working_dir = create_tmp_dir("AsyncTask");
+		working_dir = create_tmp_dir();
 		script_file = working_dir+"/script.sh";
 		log_file = working_dir+"/task.log";
 
 		//regex = new Gee.HashMap<string,Regex>(); // needs to be initialized again in instance constructor
 	}
-	
+
 	public bool begin(){
 
 		status = AppStatus.RUNNING;
@@ -100,7 +100,7 @@ public abstract class AsyncTask : GLib.Object{
 			timer = new GLib.Timer();
 			timer.start();
 
-			log_debug("AsyncTask:begin():try{");
+			log_debug("AsyncTask:begin():try");
 			log_debug("working_dir="+working_dir);
 
 			// execute script file
@@ -255,9 +255,7 @@ public abstract class AsyncTask : GLib.Object{
 		// finish() gets called by 2 threads but should be executed only once
 		if (finish_called) { return; }
 		finish_called = true;
-		
-		log_debug("AsyncTask:finish():");
-		
+
 		// dispose stdin
 		try{
 			if ((dos_in != null) && !dos_in.is_closed() && !dos_in.is_closing()){

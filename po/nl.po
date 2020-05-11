@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 21:20-0400\n"
+"POT-Creation-Date: 2020-05-11 06:42-0400\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
@@ -61,16 +61,16 @@ msgstr ""
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:346
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:336
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:353
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:343
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:358
-#: src/Console/AppConsole.vala:408
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:398
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
@@ -156,19 +156,19 @@ msgstr ""
 "Deze kernel is momenteel in gebruik en kan daarom niet worden verwijderd.\n"
 " Installeer een andere kernel voordat u deze verwijdert."
 
-#: src/Common/Main.vala:123
+#: src/Common/Main.vala:122
 msgid "Commands listed below are not available on this system"
 msgstr "De onderstaande opdrachten zijn niet beschikbaar op dit systeem"
 
-#: src/Common/Main.vala:124
+#: src/Common/Main.vala:123
 msgid "Please install required packages and try again"
 msgstr "Installeer de vereiste pakketten en probeer het opnieuw"
 
-#: src/Common/Main.vala:270
+#: src/Common/Main.vala:269
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:282
+#: src/Common/Main.vala:281
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Melding"
@@ -275,39 +275,39 @@ msgstr ""
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Draai de applicatie als root of m.b.v. gksu/sudo."
 
-#: src/Console/AppConsole.vala:183 src/Gtk/AppGtk.vala:145
+#: src/Console/AppConsole.vala:180 src/Gtk/AppGtk.vala:145
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
-#: src/Console/AppConsole.vala:185 src/Console/AppConsole.vala:298
-#: src/Console/AppConsole.vala:328
+#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:318
 msgid "Run '"
 msgstr ""
 
-#: src/Console/AppConsole.vala:267 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:267
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Er zijn meerdere te installeren kernels geselecteerd. Selecteer er slechts "
 "één."
 
-#: src/Console/AppConsole.vala:294 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "De vereiste versie kan niet worden gevonden"
 
-#: src/Console/AppConsole.vala:327
+#: src/Console/AppConsole.vala:317
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:380 src/Console/AppConsole.vala:396
+#: src/Console/AppConsole.vala:370 src/Console/AppConsole.vala:386
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Beschikbare pakketten"
 
-#: src/Console/AppConsole.vala:383 src/Console/AppConsole.vala:399
+#: src/Console/AppConsole.vala:373 src/Console/AppConsole.vala:389
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Installeren"
@@ -337,7 +337,7 @@ msgid "Refresh"
 msgstr "Verversen"
 
 #: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:146
+#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:145
 msgid "Internet connection is not active"
 msgstr "U bent niet verbonden met het internet"
 

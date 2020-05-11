@@ -186,7 +186,6 @@ public class TerminalWindow : Gtk.Window {
 
 			is_running = true;
 
-			log_debug("before term.spawn_sync()");
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, //pty_flags
 				d, //working_directory
@@ -209,7 +208,6 @@ public class TerminalWindow : Gtk.Window {
 				}
 			}
 
-			log_debug("end TerminalWindow:execute_script()");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -249,5 +247,3 @@ public class TerminalWindow : Gtk.Window {
 		}
 	}
 }
-
-

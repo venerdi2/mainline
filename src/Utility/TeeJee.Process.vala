@@ -32,9 +32,8 @@ namespace TeeJee.ProcessHelper{
 
 	// execute process ---------------------------------
 
-	public string create_tmp_dir(string p=""){
+	public string create_tmp_dir(){
 		string d = App.TMP_PREFIX+"_%s".printf(random_string());
-		log_debug("create_tmp_dir:"+p+":"+d);
 		dir_create(d);
 		return d;
 	}
@@ -73,7 +72,7 @@ namespace TeeJee.ProcessHelper{
 		 * std_out, std_err can be null. Output will be written to terminal if null.
 		 * */
 
-		string t_dir = create_tmp_dir("exec_script_sync()");
+		string t_dir = create_tmp_dir();
 		string t_f = get_temp_file_path(t_dir);
 		string sh_file = t_f+".sh";
 		save_bash_script_temp(script,sh_file, true, supress_errors);
@@ -159,7 +158,7 @@ namespace TeeJee.ProcessHelper{
 
 		try {
 
-			string t_dir = create_tmp_dir("exec_script_async()");
+			string t_dir = create_tmp_dir();
 			string t_file = get_temp_file_path(t_dir);
 			save_bash_script_temp(s,t_file);
 
@@ -205,8 +204,9 @@ namespace TeeJee.ProcessHelper{
 		script.append ("echo ${exitCode} > ${exitCode}\n");
 		script.append ("echo ${exitCode} > status\n");
 
+		// TODO remove this - don't allow automatically creating a dir that the caller doesn't know how to delete
 		if ((sh_path == null) || (sh_path.length == 0)){
-			string t_dir = create_tmp_dir("**** save_bash_script_temp() ****");
+			string t_dir = create_tmp_dir();
 			sh_path = get_temp_file_path(t_dir) + ".sh";
 		}
 

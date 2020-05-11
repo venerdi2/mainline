@@ -72,8 +72,6 @@ public class OSDNotify : GLib.Object {
 
 			exec_async (s);
 
-			// retVal = exec_sync (s, null, null);
-
 			dt_last_notification = new DateTime.now_local();
 
 		}

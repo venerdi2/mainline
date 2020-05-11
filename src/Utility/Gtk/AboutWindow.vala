@@ -302,7 +302,7 @@ public class AboutWindow : Dialog {
 		title = program_name;
 		img_logo.pixbuf = logo.scale_simple(128,128,Gdk.InterpType.HYPER);
 		lbl_program_name.label = "<span size='larger'>%s</span>".printf(program_name);
-		lbl_version.label = "v%s".printf(version);
+		lbl_version.label = "%s".printf(version);
 		lbl_comments.label = "%s".printf(comments);
 		lbtn_website.uri = website;
 		lbtn_website.label = website_label;

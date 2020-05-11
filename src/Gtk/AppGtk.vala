@@ -96,7 +96,7 @@ public class AppGtk : GLib.Object {
 		App.command = "list";
 		
 		//parse options
-		for (int k = 1; k < args.length; k++) // Oth arg is app path
+		for (int k = 1; k < args.length; k++)
 		{
 			switch (args[k].down()) {
 				
@@ -113,7 +113,7 @@ public class AppGtk : GLib.Object {
 			}
 		}
 
-		for (int k = 1; k < args.length; k++) // Oth arg is app path
+		for (int k = 1; k < args.length; k++)
 		{
 			switch (args[k].down()) {
 
