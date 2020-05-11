@@ -44,3 +44,8 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Remove source cruft
 * Better temp and cache directory behavior
 * Better desktop notification behavior
+
+### TODO
+* notifications - if you've seen a notification for a given kernel and dismissed it, don't display it again, at least not in the same login session.
+* temp files - do something less broken when a user runs ex: "sudo mainline --install-latest"
+* re-implement all those TeeJee utility functions that write shell scripts and spawn a bash to exec them, just to do things like chown()

@@ -275,7 +275,7 @@ namespace TeeJee.FileSystem{
 		string cmd = "rm -rf '%s'".printf(escape_single_quote(dir_path));
 		int status = exec_sync(cmd);
 		string result = _("Deleted");
-		if (status!=0) result = _("FAILED deleting");
+		if (status!=0) result = _("Failed to delete file");
 		result += ": %s".printf(dir_path);
 		if (show_message) log_msg(result); else log_debug("dir_delete():"+result);
 		

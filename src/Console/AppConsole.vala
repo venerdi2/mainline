@@ -93,7 +93,7 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("A version string taken from the output of --list") + "\n"
-		+ "(2) " +_("One or more version strings (comma-seperated) taken from the output of --list") + "\n";
+		+ "(2) " +_("One or more version strings (comma-separated) taken from the output of --list") + "\n";
 		return msg;
 	}
 
@@ -179,7 +179,7 @@ public class AppConsole : GLib.Object {
 				// unknown option
 				log_error(_("Unknown option") + ": %s".printf(args[k]));
 				// FIXME use argv[0] instead of hardcoded app name
-				log_error(_("Run '"+BRANDING_SHORTNAME+" --help' to list all options"));
+				log_error(_("Run")+" '"+BRANDING_SHORTNAME+" --help' "+_("to list all options"));
 				return false;
 			}
 		}

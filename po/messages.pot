@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 06:42-0400\n"
+"POT-Creation-Date: 2020-05-11 09:00-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: src/Console/AppConsole.vala:96
 msgid ""
-"One or more version strings (comma-seperated) taken from the output of --list"
+"One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
 #: src/Console/AppConsole.vala:103
@@ -259,9 +259,12 @@ msgstr ""
 msgid "Unknown option"
 msgstr ""
 
-#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
-#: src/Console/AppConsole.vala:318
-msgid "Run '"
+#: src/Console/AppConsole.vala:182
+msgid "Run"
+msgstr ""
+
+#: src/Console/AppConsole.vala:182
+msgid "to list all options"
 msgstr ""
 
 #: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
@@ -274,6 +277,10 @@ msgstr ""
 
 #: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
+msgstr ""
+
+#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
+msgid "Run '"
 msgstr ""
 
 #: src/Console/AppConsole.vala:317
@@ -369,11 +376,11 @@ msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Forked:"
+msgid "Forked"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Original:"
+msgid "Original"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:556
@@ -509,7 +516,7 @@ msgstr ""
 msgid "File deleted"
 msgstr ""
 
-#: src/Utility/TeeJee.FileSystem.vala:80
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
 msgid "Failed to delete file"
 msgstr ""
 
@@ -559,10 +566,6 @@ msgstr ""
 
 #: src/Utility/TeeJee.FileSystem.vala:277
 msgid "Deleted"
-msgstr ""
-
-#: src/Utility/TeeJee.FileSystem.vala:278
-msgid "FAILED deleting"
 msgstr ""
 
 #: src/Utility/TeeJee.Logging.vala:89

@@ -1,12 +1,8 @@
-# French translation for ukuu
-# This file is distributed under the same license as the ukuu package.
-# Yolateng0 <yolateng0ATyo.nohost.me>, 2017.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: ukuu\n"
+"Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 06:42-0400\n"
+"POT-Creation-Date: 2020-05-11 09:00-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -260,7 +256,7 @@ msgstr ""
 
 #: src/Console/AppConsole.vala:96
 msgid ""
-"One or more version strings (comma-seperated) taken from the output of --list"
+"One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
 #: src/Console/AppConsole.vala:103
@@ -275,10 +271,15 @@ msgstr "Exécutez l'application en tant qu'admin avec pkexec or sudo."
 msgid "Unknown option"
 msgstr "Option inconnue"
 
-#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
-#: src/Console/AppConsole.vala:318
-msgid "Run '"
-msgstr ""
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "Run"
+msgstr "En cours"
+
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "to list all options"
+msgstr "Afficher toutes les options"
 
 #: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
@@ -293,6 +294,10 @@ msgstr ""
 #: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Impossible de trouver la version demandée"
+
+#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
+msgid "Run '"
+msgstr ""
 
 #: src/Console/AppConsole.vala:317
 #, fuzzy
@@ -390,11 +395,11 @@ msgstr ""
 "Ubuntu"
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Forked:"
+msgid "Forked"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Original:"
+msgid "Original"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:556
@@ -533,7 +538,7 @@ msgstr "Icône introuvable"
 msgid "File deleted"
 msgstr "Fichier effacé"
 
-#: src/Utility/TeeJee.FileSystem.vala:80
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
 msgid "Failed to delete file"
 msgstr "Impossible d'effacer le fichier"
 
@@ -585,10 +590,6 @@ msgstr "Impossible de créer le nouveau dossier"
 #, fuzzy
 msgid "Deleted"
 msgstr "Fichier effacé"
-
-#: src/Utility/TeeJee.FileSystem.vala:278
-msgid "FAILED deleting"
-msgstr ""
 
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "E"

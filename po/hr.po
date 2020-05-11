@@ -1,13 +1,8 @@
-# Croatian translation for ukuu
-# Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
-# This file is distributed under the same license as the ukuu package.
-# gogo <trebelnik2@gmail.com>, 2017.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: ukuu\n"
+"Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 06:42-0400\n"
+"POT-Creation-Date: 2020-05-11 09:00-0400\n"
 "PO-Revision-Date: 2017-12-24 00:52+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -261,7 +256,7 @@ msgstr ""
 
 #: src/Console/AppConsole.vala:96
 msgid ""
-"One or more version strings (comma-seperated) taken from the output of --list"
+"One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
 #: src/Console/AppConsole.vala:103
@@ -276,10 +271,15 @@ msgstr "Pokreni aplikaciju kao administrator sa pkexec ili sudo."
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
-#: src/Console/AppConsole.vala:318
-msgid "Run '"
-msgstr ""
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "Run"
+msgstr "Pokrenuto"
+
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "to list all options"
+msgstr "Prikaži sve mogućnosti"
 
 #: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
@@ -292,6 +292,10 @@ msgstr "Više kernela je odabrano za instalaciju. odaberite samo jedan."
 #: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Nemoguće je pronaći zatraženu inačicu"
+
+#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
+msgid "Run '"
+msgstr ""
 
 #: src/Console/AppConsole.vala:317
 msgid "Command not specified"
@@ -386,11 +390,11 @@ msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Forked:"
+msgid "Forked"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Original:"
+msgid "Original"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:556
@@ -529,7 +533,7 @@ msgstr "Ikone koje nedostaju"
 msgid "File deleted"
 msgstr "Datoteka obrisana"
 
-#: src/Utility/TeeJee.FileSystem.vala:80
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
 msgid "Failed to delete file"
 msgstr "Neuspjelo brisanje datoteke"
 
@@ -581,10 +585,6 @@ msgstr "Neuspjelo stvarnje direktorija"
 #, fuzzy
 msgid "Deleted"
 msgstr "Datoteka obrisana"
-
-#: src/Utility/TeeJee.FileSystem.vala:278
-msgid "FAILED deleting"
-msgstr ""
 
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "E"

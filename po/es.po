@@ -1,12 +1,8 @@
-# Spanish translation for ukuu
-# This file is distributed under the same license as the ukuu package.
-# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2018.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: ukuu\n"
+"Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 06:42-0400\n"
+"POT-Creation-Date: 2020-05-11 09:00-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -253,7 +249,7 @@ msgstr ""
 
 #: src/Console/AppConsole.vala:96
 msgid ""
-"One or more version strings (comma-seperated) taken from the output of --list"
+"One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
 #: src/Console/AppConsole.vala:103
@@ -269,10 +265,15 @@ msgstr "Ejecute la aplicación con permisos administrativos con pkexec o sudo."
 msgid "Unknown option"
 msgstr "Opción desconocida"
 
-#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
-#: src/Console/AppConsole.vala:318
-msgid "Run '"
-msgstr ""
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "Run"
+msgstr "En ejecución"
+
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "to list all options"
+msgstr "Mostrar todas las opciones"
 
 #: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
@@ -285,6 +286,10 @@ msgstr "Se seleccionaron varios núcleos para su instalación. Elija solo uno."
 #: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "No se pudo encontrar la versión solicitada"
+
+#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
+msgid "Run '"
+msgstr ""
 
 #: src/Console/AppConsole.vala:317
 msgid "Command not specified"
@@ -380,11 +385,11 @@ msgstr ""
 "Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Forked:"
+msgid "Forked"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Original:"
+msgid "Original"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:556
@@ -522,7 +527,7 @@ msgstr "Falta el icono"
 msgid "File deleted"
 msgstr "Se eliminó el archivo"
 
-#: src/Utility/TeeJee.FileSystem.vala:80
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
 msgid "Failed to delete file"
 msgstr "Falló la eliminación del archivo"
 
@@ -574,10 +579,6 @@ msgstr "Falló la creación del directorio"
 #, fuzzy
 msgid "Deleted"
 msgstr "Se eliminó el archivo"
-
-#: src/Utility/TeeJee.FileSystem.vala:278
-msgid "FAILED deleting"
-msgstr ""
 
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "E"

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ukuu\n"
+"Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 06:42-0400\n"
+"POT-Creation-Date: 2020-05-11 08:54-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -112,8 +112,7 @@ msgstr "Это ядро уже установлено."
 #: src/Common/LinuxKernel.vala:1253
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
-"Установка завершена. Обов'язково виконайте перезавантаження, щоб "
-"використовувати нове ядро."
+"Установка завершена. Для використання нового ядра потрібна перезавантаження."
 
 #: src/Common/LinuxKernel.vala:1256
 msgid "Installation completed with errors"
@@ -157,7 +156,7 @@ msgstr "Встановити необхідні пакети і спробуйт
 
 #: src/Common/Main.vala:269
 msgid "Called from"
-msgstr ""
+msgstr "Викликано з"
 
 #: src/Common/Main.vala:281
 #, fuzzy
@@ -233,7 +232,7 @@ msgstr "Параметри"
 
 #: src/Console/AppConsole.vala:90
 msgid "Enable verbose debugging output"
-msgstr ""
+msgstr "Увімкнути багатослівний вихід налагодження"
 
 #: src/Console/AppConsole.vala:91
 msgid "Assume Yes for all prompts (non-interactive mode)"
@@ -241,16 +240,18 @@ msgstr "Припустимо, так для всіх підказок (неін�
 
 #: src/Console/AppConsole.vala:92
 msgid "Override user"
-msgstr ""
+msgstr "Перевизначення користувача"
 
 #: src/Console/AppConsole.vala:95
 msgid "A version string taken from the output of --list"
-msgstr ""
+msgstr "Рядок версій, взятий з виводу --list"
 
 #: src/Console/AppConsole.vala:96
+#, fuzzy
 msgid ""
-"One or more version strings (comma-seperated) taken from the output of --list"
+"One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
+"Одна або кілька рядків версії (розділені комами), взяті з виводу --list"
 
 #: src/Console/AppConsole.vala:103
 msgid "Admin access is required for running this application."
@@ -264,10 +265,15 @@ msgstr "Запустіть додаток як адміністратор за �
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
-#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:289
-#: src/Console/AppConsole.vala:318
-msgid "Run '"
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "Run"
 msgstr "Запуск"
+
+#: src/Console/AppConsole.vala:182
+#, fuzzy
+msgid "to list all options"
+msgstr "Показати усі параметри"
 
 #: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
 msgid "No kernels specified"
@@ -280,6 +286,10 @@ msgstr "Для встановлення вибрано кілька ядер. В
 #: src/Console/AppConsole.vala:285 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Не вдалося знайти запитувану версію"
+
+#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
+msgid "Run '"
+msgstr "Запуск"
 
 #: src/Console/AppConsole.vala:317
 msgid "Command not specified"
@@ -297,7 +307,7 @@ msgstr "Встановити"
 
 #: src/Console/OSDNotify.vala:66
 msgid "Show"
-msgstr ""
+msgstr "шоу"
 
 #: src/Gtk/AppGtk.vala:162
 msgid "Print debug information"
@@ -374,12 +384,14 @@ msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Forked:"
-msgstr ""
+#, fuzzy
+msgid "Forked"
+msgstr "Роздвоєний"
 
 #: src/Gtk/MainWindow.vala:516
-msgid "Original:"
-msgstr ""
+#, fuzzy
+msgid "Original"
+msgstr "Оригінальний"
 
 #: src/Gtk/MainWindow.vala:556
 msgid "Refreshing..."
@@ -516,7 +528,7 @@ msgstr "Нема значка"
 msgid "File deleted"
 msgstr "Не вдалося видалити файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:80
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
 msgid "Failed to delete file"
 msgstr "Не вдалося видалити файл"
 
@@ -567,11 +579,7 @@ msgstr "Не вдалося створити теку"
 #: src/Utility/TeeJee.FileSystem.vala:277
 #, fuzzy
 msgid "Deleted"
-msgstr "Не вдалося видалити файл"
-
-#: src/Utility/TeeJee.FileSystem.vala:278
-msgid "FAILED deleting"
-msgstr ""
+msgstr "видалено"
 
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "E"
