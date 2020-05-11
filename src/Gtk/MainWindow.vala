@@ -360,9 +360,13 @@ public class MainWindow : Gtk.Window{
 			else if (selected_kernels.size > 0){
 				
 				var term = new TerminalWindow.with_parent(this, false, true);
-				
+				string t_dir = create_tmp_dir("button Remove");
+				string t_file = get_temp_file_path(t_dir)+".sh";
+
 				term.script_complete.connect(()=>{
 					term.allow_window_close();
+					file_delete(t_file);
+					dir_delete(t_dir);
 				});
 
 				term.destroy.connect(()=>{
@@ -387,7 +391,8 @@ public class MainWindow : Gtk.Window{
 				sh += "echo ''\n";
 				sh += "echo 'Close window to exit...'\n";
 
-				term.execute_script(save_bash_script_temp(sh));
+				save_bash_script_temp(sh,t_file);
+				term.execute_script(t_file,t_dir);
 			}
 		});
 
@@ -400,9 +405,13 @@ public class MainWindow : Gtk.Window{
 		button.clicked.connect(() => {
 
 			var term = new TerminalWindow.with_parent(this, false, true);
+			string t_dir = create_tmp_dir("button Purge");
+			string t_file = get_temp_file_path(t_dir)+".sh";
 
 			term.script_complete.connect(()=>{
 				term.allow_window_close();
+				file_delete(t_file);
+				dir_delete(t_dir);
 			});
 
 			term.destroy.connect(()=>{
@@ -422,7 +431,8 @@ public class MainWindow : Gtk.Window{
 			sh += "echo ''\n";
 			sh += "echo 'Close window to exit...'\n";
 
-			term.execute_script(save_bash_script_temp(sh));
+			save_bash_script_temp(sh,t_file);
+			term.execute_script(t_file,t_dir);
 		});
 
 		// changes
@@ -660,9 +670,13 @@ public class MainWindow : Gtk.Window{
 		}
 
 		var term = new TerminalWindow.with_parent(this, false, true);
+		string t_dir = create_tmp_dir("install()");
+		string t_file = get_temp_file_path(t_dir)+".sh";
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
+			file_delete(t_file);
+			dir_delete(t_dir);
 		});
 
 		term.destroy.connect(()=>{
@@ -691,7 +705,8 @@ public class MainWindow : Gtk.Window{
 		sh += "echo \n";
 		sh += "echo 'Close window to exit...'\n";
 
-		term.execute_script(save_bash_script_temp(sh));
+		save_bash_script_temp(sh,t_file);
+		term.execute_script(t_file,t_dir);
 	}
 
 }

@@ -33,15 +33,6 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public Main App;
-[CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
-[CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
-[CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
-[CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
-[CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
-[CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
-[CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
-
-const string LOCALE_DIR = INSTALL_PREFIX+"/share/locale";
 
 public class AppGtk : GLib.Object {
 
@@ -52,10 +43,6 @@ public class AppGtk : GLib.Object {
 		log_msg("%s v%s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
 		Gtk.init(ref args);
-
-		init_tmp();
-		
-		//check_if_admin();
 
 		LOG_TIMESTAMP = false;
 

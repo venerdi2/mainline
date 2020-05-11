@@ -46,11 +46,11 @@ public class TerminalWindow : Gtk.Window {
 
 	public bool cancelled = false;
 	public bool is_running = false;
-	
+
 	public signal void script_complete();
-	
+
 	// init
-	
+
 	public TerminalWindow.with_parent(Gtk.Window? parent, bool fullscreen = false, bool show_cancel_button = false) {
 		if (parent != null){
 			set_transient_for(parent);
@@ -84,20 +84,20 @@ public class TerminalWindow : Gtk.Window {
 	}
 
 	public void init_window () {
-		
+
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
 		resizable = true;
 		deletable = false;
-		
+
 		// vbox_main ---------------
-		
+
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 0);
 		vbox_main.set_size_request (def_width, def_height);
 		add (vbox_main);
 
 		// terminal ----------------------
-		
+
 		term = new Vte.Terminal();
 		term.expand = true;
 
@@ -171,51 +171,25 @@ public class TerminalWindow : Gtk.Window {
 		hbox.pack_start (label, true, true, 0);
 	}
 
-	public void start_shell(){
-		string[] argv = new string[1];
-		argv[0] = "/bin/sh";
-
-		string[] env = Environ.get();
-		
-		try{
-
-			is_running = true;
-
-			term.spawn_sync(
-				Vte.PtyFlags.DEFAULT, //pty_flags
-				TEMP_DIR, //working_directory
-				argv, //argv
-				env, //env
-				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-				null, //child_setup
-				out child_pid,
-				null
-			);
-
-		}
-		catch (Error e) {
-			log_error (e.message);
-		}
-	}
-
 	public void terminate_child(){
 		btn_cancel.sensitive = false;
 		process_quit(child_pid);
 	}
 
-	public void execute_script(string script_path, bool wait = false){
+	public void execute_script(string f, string d, bool wait = false){
 		string[] argv = new string[1];
-		argv[0] = script_path;
-		
+		argv[0] = f;
+
 		string[] env = Environ.get();
 
 		try{
 
 			is_running = true;
 
+			log_debug("before term.spawn_sync()");
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, //pty_flags
-				TEMP_DIR, //working_directory
+				d, //working_directory
 				argv, //argv
 				env, //env
 				GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, //spawn_flags
@@ -234,6 +208,8 @@ public class TerminalWindow : Gtk.Window {
 					gtk_do_events();
 				}
 			}
+
+			log_debug("end TerminalWindow:execute_script()");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -248,6 +224,7 @@ public class TerminalWindow : Gtk.Window {
 		btn_close.visible = true;
 
 		script_complete();
+
 	}
 
 	public void allow_window_close(bool allow = true){

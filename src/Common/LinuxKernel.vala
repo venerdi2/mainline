@@ -459,6 +459,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (!pkg_versions.contains(pkg.version_installed)){
 					
 					pkg_versions.add(pkg.version_installed);
+					
 					log_msg("Found installed" + ": %s".printf(pkg.version_installed));
 
 					string kern_name = "%s".printf(pkg.version_installed);
@@ -916,9 +917,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public void mark_invalid(){
-		string file = "%s/invalid".printf(cache_subdir);
-		if (!file_exists(file)){
-			file_write(file, "1");
+		string f = cache_subdir+"/invalid";
+		if (!file_exists(f)){
+			file_write(f, "1");
 		}
 	}
 

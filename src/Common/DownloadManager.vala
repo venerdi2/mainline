@@ -79,14 +79,16 @@ public class DownloadTask : AsyncTask{
 	}
 
 	public void prepare() {
-		string script_text = build_script();
-		save_bash_script_temp(script_text, script_file);
+		string s = build_script();
+		save_bash_script_temp(s, script_file);
 	}
 
 	private string build_script() {
 
+		log_debug("build_script():");
+		log_debug("working_dir="+working_dir);
 		string list = "";
-		string list_file = path_combine(working_dir, "download.list");
+		string list_file = working_dir+"/download.list";
 		foreach(var item in downloads){
 			list += "%s\n".printf(item.source_uri);
 			list += "  gid=%s\n".printf(item.gid);
@@ -206,14 +208,16 @@ public class DownloadTask : AsyncTask{
 
 	protected override void finish_task(){
 		mv_partials_to_finals();
+		log_debug("DownloadTask():finish_task():dir_delete("+working_dir+"):");
 		dir_delete(working_dir);
 	}
 
 	private void mv_partials_to_finals() {
 
-		//log_debug("mv_partials_to_finals()");
+		log_debug("mv_partials_to_finals()");
 
 		foreach(var item in downloads){
+			string d = file_parent(item.file_path_partial);
 
 			if (!file_exists(item.file_path_partial)){
 				log_debug("file_path_partial not found: %s".printf(item.file_path_partial));
@@ -221,22 +225,23 @@ public class DownloadTask : AsyncTask{
 			}
 
 			//log_msg("status=%s".printf(item.status));
-
 			if (item.status == "OK"){
 				file_move(item.file_path_partial, item.file_path);
 			}
 			else{
 				file_delete(item.file_path_partial);
 			}
+			dir_delete(d);
 		}
 	}
 
 	public int read_status(){
+		log_debug("read_status:working_dir="+working_dir);
 		var status_file = working_dir + "/status";
 		var f = File.new_for_path(status_file);
 		if (f.query_exists()){
-			var txt = file_read(status_file);
-			return int.parse(txt);
+			string s = file_read(status_file);
+			return int.parse(s);
 		}
 		return -1;
 	}
@@ -266,13 +271,13 @@ public class DownloadItem : GLib.Object
 
 	public string file_path{
 		owned get{
-			return path_combine(download_dir, file_name);
+			return download_dir+"/"+file_name;
 		}
 	}
 
 	public string file_path_partial{
 		owned get{
-			return path_combine(partial_dir, file_name);
+			return partial_dir+"/"+file_name;
 		}
 	}
 
@@ -286,7 +291,7 @@ public class DownloadItem : GLib.Object
 		
 		file_name = _file_name;
 		download_dir = _download_dir;
-		partial_dir = create_temp_subdir();
+		partial_dir = create_tmp_dir("DownloadItem()");
 		source_uri = _source_uri;
 	}
 

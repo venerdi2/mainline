@@ -74,15 +74,18 @@ public class Package : GLib.Object {
 
 	public static Gee.HashMap<string,Package> query_installed_packages() {
 
+		log_debug("query_installed_packages()");
+
 		var list = new Gee.HashMap<string,Package>();
 
-		string temp_file = get_temp_file_path();
+		string t_dir = create_tmp_dir("query_installed_packages()");
+		string t_file = get_temp_file_path(t_dir);
 		
 		// get installed packages from aptitude --------------
 		
 		string std_out, std_err;
 		exec_sync("aptitude search --disable-columns -F '%p|%v|%M|%d' '?installed'", out std_out, out std_err);
-		file_write(temp_file, std_out);
+		file_write(t_file, std_out);
 /*
 linux-headers-5.6.10-050610|5.6.10-050610.202005052153||Header files related to Linux kernel version 5.6.10
 linux-headers-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux kernel headers for version 5.6.10 on 64 bit x86 SMP
@@ -93,7 +96,7 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 
 		try {
 			string line;
-			var file = File.new_for_path (temp_file);
+			var file = File.new_for_path (t_file);
 			if (file.query_exists ()) {
 				var dis = new DataInputStream (file.read());
 				while ((line = dis.read_line (null)) != null) {
@@ -128,13 +131,14 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 				}
 			}
 			else {
-				log_error (_("File not found: %s").printf(temp_file));
+				log_error (_("File not found: %s").printf(t_file));
 			}
 		}
 		catch (Error e) {
 			log_error (e.message);
 		}
-		//file_delete(temp_file);
+		file_delete(t_file);
+		dir_delete(t_dir);
 		return list;
 	}
 
@@ -142,20 +146,21 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 
 		var list = new Gee.HashMap<string,Package>();
 
-		string temp_file = get_temp_file_path();
+		string t_dir = create_tmp_dir("query_available_packages()");
+		string t_file = get_temp_file_path(t_dir);
 		
 		// get installed packages from aptitude --------------
 		
 		string std_out, std_err;
 		string cmd = "aptitude search --disable-columns -F '%%p|%%v|%%M|%%d' '!installed ?architecture(native) %s'".printf(search_string);
 		exec_sync(cmd, out std_out, out std_err);
-		file_write(temp_file, std_out);
+		file_write(t_file, std_out);
 
 		// parse ------------------------
 
 		try {
 			string line;
-			var file = File.new_for_path (temp_file);
+			var file = File.new_for_path (t_file);
 			if (file.query_exists ()) {
 				var dis = new DataInputStream (file.read());
 				while ((line = dis.read_line (null)) != null) {
@@ -190,13 +195,14 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 				}
 			}
 			else {
-				log_error (_("File not found: %s").printf(temp_file));
+				log_error (_("File not found: %s").printf(t_file));
 			}
 		}
 		catch (Error e) {
 			log_error (e.message);
 		}
-		//file_delete(temp_file);
+		file_delete(t_file);
+		dir_delete(t_dir);
 		return list;
 	}
 }

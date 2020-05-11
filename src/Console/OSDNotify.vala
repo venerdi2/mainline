@@ -30,8 +30,8 @@ public class OSDNotify : GLib.Object {
 
 	private static DateTime dt_last_notification = null;
 	public const int MIN_NOTIFICATION_INTERVAL = 3;
-	
-	public static int notify_send (string summary = "", string _body = ""){ 
+
+	public static int notify_send (string summary = "", string _body = "", string extra_action = ""){ 
 
 		/* Displays notification bubble on the desktop */
 
@@ -48,24 +48,31 @@ public class OSDNotify : GLib.Object {
 
 			string action = BRANDING_SHORTNAME+"-gtk";
 			string body = _body;
+
 			if (LOG_DEBUG) {
-				action = INSTALL_PREFIX+"/lib/"+BRANDING_SHORTNAME+"/notify-action-debug.sh";
-				body += "\n("+action+")";
+				action = APP_LIB_DIR+"/notify-action-debug.sh";
+				if (body!="") body += "\\n\\n";
+				body += "("+action+")";
 			}
-			
+
 			string s =
-				INSTALL_PREFIX+"/lib/"+BRANDING_SHORTNAME+"/notify_send/notify-send.sh"
+				APP_LIB_DIR+"/notify_send/notify-send.sh"
 				+ " -u low"
 				+ " -c info"
 				+ " -a "+BRANDING_SHORTNAME
 				+ " -i "+BRANDING_SHORTNAME
 				+ " -t 0"
-				+ " -o \""+_("Show")+":"+action+"\""
-				+ " \""+summary+"\""
-				+ " \""+body+"\""
-			;
+				+ " -R "+App.NOTIFICATION_ID_FILE
+				+ " -o \""+_("Show")+":"+action+"\"";
+				if (extra_action!="") s += " -o \""+extra_action+"\"";
+				s += " \""+summary+"\""
+				+ " \""+body+"\"";
 
-			retVal = exec_sync (s, null, null);
+			log_debug(s);
+
+			exec_async (s);
+
+			// retVal = exec_sync (s, null, null);
 
 			dt_last_notification = new DateTime.now_local();
 

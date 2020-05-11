@@ -1,7 +1,7 @@
 mainline (1.0.9) unstable; urgency=medium
 
   * Improve desktop notifications
-  * Improve temp directories & file permissions, somewhat
+  * Improve temp directories & file permissions
   * Removed a bunch more un-used TeeJee util functions
   * un-hardcode "/usr" in various paths to installed files
   * Added some quasi-hidden extra functionality to --debug

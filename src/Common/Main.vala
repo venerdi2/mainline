@@ -32,16 +32,32 @@ using TeeJee.ProcessHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
+[CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
+[CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
+[CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
+[CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
+[CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
+[CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
+[CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
+[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
+
+public const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
+public const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
+
 extern void exit(int exit_code);
 
 public class Main : GLib.Object{
 
 	// constants ----------
-	[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
-	
+
+	public string TMP_PREFIX = "";
+	public string TMP_DIR = "";
+	public string APP_CONF_DIR = "";
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
+	public string NOTIFICATION_ID_FILE = "";
+	public string NOTIFICATION_SEEN_FILE = "";
 
 	public string user_login = "";
 	public string user_home = "";
@@ -125,14 +141,18 @@ public class Main : GLib.Object{
 		
 		user_home = get_user_home(user_login);
 
-		// app config files
-		APP_CONFIG_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + "/config.json";
-		STARTUP_SCRIPT_FILE = user_home + "/.config/" + BRANDING_SHORTNAME + "/" + BRANDING_SHORTNAME + "-notify.sh";
+		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
+		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";
+		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
+		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
+		NOTIFICATION_SEEN_FILE = APP_CONF_DIR + "/seen";
 
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
+
+		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
 
 		//log_debug("CACHE_DIR=%s".printf(LinuxKernel.CACHE_DIR));
 	}
@@ -221,8 +241,8 @@ public class Main : GLib.Object{
 
 	private void update_startup_script(){
 
+		// construct the commandline argument for "sleep"
 		int count = App.notify_interval_value;
-		
 		string suffix = "h";
 		switch (App.notify_interval_unit){
 		case 0: // hour
@@ -245,16 +265,25 @@ public class Main : GLib.Object{
 			file_delete(STARTUP_SCRIPT_FILE);
 		}
 
-		string opts = "";
-		if (LOG_DEBUG) opts = "--debug";
-		string txt = "# Called from " + STARTUP_DESKTOP_FILE + "\n";
+		// see OSDNotify.vala notify-send.sh -R
+		string s =
+			"# " +_("Called from") + " " + STARTUP_DESKTOP_FILE + "\n"
+			+ "rm -f " + NOTIFICATION_ID_FILE + "\n"
+			+ "rm -f " + NOTIFICATION_SEEN_FILE + "\n";
+
 		if (notify_minor || notify_major){
-			txt = txt + "while : ;do "+BRANDING_SHORTNAME+" %s --notify ;sleep %d%s".printf(opts,count,suffix)+" ;done\n";
+			s += "while : ;do\n"
+			+ BRANDING_SHORTNAME+" --notify";
+			if (LOG_DEBUG) s += " --debug";
+			s += "\n"
+			+ "sleep %d%s\n".printf(count,suffix)
+			+ "done\n";
 		} else {
-			txt = txt + "# Notifications are disabled\nexit 0\n";
+			s += "# " + _("Notifications are disabled") + "\n"
+			+ "exit 0\n";
 		}
 
-		file_write(STARTUP_SCRIPT_FILE,txt);
+		file_write(STARTUP_SCRIPT_FILE,s);
 
 		chown(STARTUP_SCRIPT_FILE, user_login, user_login);
 	}

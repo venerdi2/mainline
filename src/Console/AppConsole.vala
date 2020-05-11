@@ -30,15 +30,7 @@ using TeeJee.ProcessHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
-
 public Main App;
-
-[CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
-[CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
-[CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
-[CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
-
-const string LOCALE_DIR = INSTALL_PREFIX+"/share/locale";
 
 public class AppConsole : GLib.Object {
 
@@ -48,8 +40,6 @@ public class AppConsole : GLib.Object {
 
 		log_msg("%s %s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
-		init_tmp();
-		
 		LOG_TIMESTAMP = false;
 
 		//check dependencies
@@ -88,37 +78,30 @@ public class AppConsole : GLib.Object {
 		+ "  --list-installed    " + _("List installed kernels") + "\n"
 		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
 		+ "  --install-point     " + _("Install latest point update for current series") + "\n"
-		+ "  --install <name>    " + _("Install specified mainline kernel") + "\n"
-		+ "  --remove <name>     " + _("Remove specified kernel") + "\n"
+		+ "  --install <name>    " + _("Install specified mainline kernel") + "(1)\n"
+		+ "  --remove <name>     " + _("Uninstall specified kernels") + "(2)\n"
 		+ "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n"
-		+ "  --download <name>   " + _("Download packages for specified kernel") + "\n"
+		+ "  --download <name>   " + _("Download specified kernels") + "(2)\n"
 		+ "  --clean-cache       " + _("Remove files from application cache") + "\n"
 		+ "  --show-unstable     " + _("Show unstable and RC releases") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
-		+ "  --clean-cache     " + _("Remove files from application cache") + "\n"
 		+ "  --debug           " + _("Enable verbose debugging output") + "\n"
 		+ "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
 		+ "  --user            " + _("Override user") + "\n"
 		+ "\n"
 		+ "Notes:\n"
-		+ "1. Comma separated list of version strings can be specified for --remove and --download\n";
+		+ "(1) " +_("A version string taken from the output of --list") + "\n"
+		+ "(2) " +_("One or more version strings (comma-seperated) taken from the output of --list") + "\n";
 		return msg;
 	}
 
 	private static void check_if_admin(){
 		
 		if (!user_is_admin()) {
-
-			log_msg(string.nfill(70,'-'));
-			
-			string msg = _("Admin access is required for running this application.");
-			log_error(msg);
-			
-			msg = _("Run the application as admin with pkexec or sudo.");
-			log_error(msg);
-			
+			log_error(_("Admin access is required for running this application."));
+			log_error(_("Run the application as admin with pkexec or sudo."));
 			exit(1);
 		}
 	}
@@ -386,14 +369,19 @@ public class AppConsole : GLib.Object {
 
 		LinuxKernel.check_updates();
 
+		string seen = "";
+		if (file_exists(App.NOTIFICATION_SEEN_FILE)) seen = file_read(App.NOTIFICATION_SEEN_FILE);
+		log_debug("seen:\""+seen+"\"");
+
 		var kern = LinuxKernel.kernel_update_major;
 		
-		if ((kern != null) && App.notify_major){
+		if (App.notify_major && (kern!=null) && (seen!=kern.version_main)){
 
 			var title = _("Kernel %s Available").printf(kern.version_main);
 
 			if (App.notify_bubble){
-				OSDNotify.notify_send(title);
+				string extra_action = _("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main;
+				OSDNotify.notify_send(title,"major",extra_action);
 			}
 
 			log_msg(title);
@@ -403,12 +391,13 @@ public class AppConsole : GLib.Object {
 
 		kern = LinuxKernel.kernel_update_minor;
 		
-		if ((kern != null) && App.notify_minor){
+		if (App.notify_minor && (kern!=null) && (seen!=kern.version_main)){
 			
 			var title = _("Kernel %s Available").printf(kern.version_main);
 
 			if (App.notify_bubble){
-				OSDNotify.notify_send(title);
+				string extra_action = _("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main;
+				OSDNotify.notify_send(title,"minor",extra_action);
 			}
 
 			log_msg(title);

@@ -41,16 +41,14 @@ namespace TeeJee.FileSystem{
 	
 	// path helpers ----------------------------
 	
-	public string file_parent(string file_path){
-		return File.new_for_path(file_path).get_parent().get_path();
+	public string file_parent(string f){
+		log_debug("file_parent("+f+")");
+		return File.new_for_path(f).get_parent().get_path();
 	}
 
-	public string file_basename(string file_path){
-		return File.new_for_path(file_path).get_basename();
-	}
-
-	public string path_combine(string path1, string path2){
-		return GLib.Path.build_path("/", path1, path2);
+	public string file_basename(string f){
+		log_debug("file_basename("+f+")");
+		return File.new_for_path(f).get_basename();
 	}
 
 	// file helpers -----------------------------
@@ -84,7 +82,7 @@ namespace TeeJee.FileSystem{
 	    }
 	}
 
-	public string? file_read (string file_path, bool show_message = false){
+	public string? file_read (string file_path){
 
 		/* Reads text from file */
 
@@ -93,13 +91,6 @@ namespace TeeJee.FileSystem{
 
 		try{
 			GLib.FileUtils.get_contents (file_path, out txt, out size);
-
-			if (show_message){
-				//log_msg(_("File read") + ": %s".printf(file_path));
-			}
-			else{
-				//log_debug(_("File read") + ": %s".printf(file_path));
-			}
 				
 			return txt;
 		}
@@ -111,17 +102,18 @@ namespace TeeJee.FileSystem{
 	    return null;
 	}
 
-	public bool file_write (string file_path, string contents, bool show_message = false){
+	public bool file_write (string f, string contents, bool show_message = false){
 
 		/* Write text to file */
 
+		log_debug("file_write("+f+")");
+
 		try{
 
-			string pdir = file_parent(file_path);
-			dir_create(pdir);
-			chown(pdir,App.user_login,App.user_login);
-			
-			var file = File.new_for_path (file_path);
+			string d = file_parent(f);
+			dir_create(d);
+
+			var file = File.new_for_path (f);
 			if (file.query_exists ()) {
 				file.delete ();
 			}
@@ -132,19 +124,19 @@ namespace TeeJee.FileSystem{
 			data_stream.close();
 
 			if (show_message){
-				log_msg(_("File saved") + ": %s".printf(file_path));
+				log_msg(_("File saved") + ":" + f);
 			}
 			else{
-				log_debug(_("File saved") + ": %s".printf(file_path));
+				log_debug(_("File saved") + ":" + f);
 			}
 
-			chown(pdir,App.user_login,App.user_login);
+			chown(f,App.user_login,App.user_login);
 
 			return true;
 		}
 		catch (Error e) {
 			log_error (e.message);
-			log_error(_("Failed to write file") + ": %s".printf(file_path));
+			log_error(_("Failed to write file") + ":" + f);
 			return false;
 		}
 	}
@@ -246,26 +238,28 @@ namespace TeeJee.FileSystem{
 		return ( FileUtils.test(dir_path, GLib.FileTest.EXISTS) && FileUtils.test(dir_path, GLib.FileTest.IS_DIR));
 	}
 
-	public bool dir_create (string dir_path, bool show_message = false){
+	public bool dir_create (string d, bool show_message = false){
 
+		log_debug("dir_create("+d+")");
 		/* Creates a directory along with parents */
 
 		try{
-			var dir = File.parse_name (dir_path);
+			var dir = File.parse_name (d);
 			if (dir.query_exists () == false) {
 				dir.make_directory_with_parents (null);
+				chown(d,App.user_login,App.user_login);
 				if (show_message){
-					log_msg(_("Created directory") + ": %s".printf(dir_path));
+					log_msg(_("Created directory") + ": %s".printf(d));
 				}
 				else{
-					log_debug(_("Created directory") + ": %s".printf(dir_path));
+					log_debug(_("Created directory") + ": %s".printf(d));
 				}
 			}
 			return true;
 		}
 		catch (Error e) {
 			log_error (e.message);
-			log_error(_("Failed to create dir") + ": %s".printf(dir_path));
+			log_error(_("Failed to create dir") + ": %s".printf(d));
 			return false;
 		}
 	}
@@ -283,7 +277,7 @@ namespace TeeJee.FileSystem{
 		string result = _("Deleted");
 		if (status!=0) result = _("FAILED deleting");
 		result += ": %s".printf(dir_path);
-		if (show_message) log_msg(result); else log_debug(result);
+		if (show_message) log_msg(result); else log_debug("dir_delete():"+result);
 		
 		return (status == 0);
 	}

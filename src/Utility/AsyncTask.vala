@@ -72,26 +72,24 @@ public abstract class AsyncTask : GLib.Object{
 	public signal void task_complete();
 
 	protected AsyncTask(){
-		working_dir = TEMP_DIR + "/" + timestamp_for_path();
-		script_file = path_combine(working_dir, "script.sh");
-		log_file = path_combine(working_dir, "task.log");
+		working_dir = create_tmp_dir("AsyncTask");
+		script_file = working_dir+"/script.sh";
+		log_file = working_dir+"/task.log";
 
 		//regex = new Gee.HashMap<string,Regex>(); // needs to be initialized again in instance constructor
-		
-		dir_create(working_dir);
 	}
 	
 	public bool begin(){
 
 		status = AppStatus.RUNNING;
-		
+
 		bool has_started = true;
 		is_terminated = false;
 		finish_called = false;
-		
+
 		prg_count = 0;
 		error_msg = "";
-		
+
 		string[] spawn_args = new string[1];
 		spawn_args[0] = script_file;
 		
@@ -101,6 +99,9 @@ public abstract class AsyncTask : GLib.Object{
 			// start timer
 			timer = new GLib.Timer();
 			timer.start();
+
+			log_debug("AsyncTask:begin():try{");
+			log_debug("working_dir="+working_dir);
 
 			// execute script file
 			Process.spawn_async_with_pipes(
@@ -114,8 +115,6 @@ public abstract class AsyncTask : GLib.Object{
 			    out output_fd,
 			    out error_fd);
 
-			log_debug("AsyncTask: child_pid: %d".printf(child_pid));
-			
 			// create stream readers
 			UnixOutputStream uos_in = new UnixOutputStream(input_fd, false);
 			UnixInputStream uis_out = new UnixInputStream(output_fd, false);
@@ -257,7 +256,7 @@ public abstract class AsyncTask : GLib.Object{
 		if (finish_called) { return; }
 		finish_called = true;
 		
-		log_debug("AsyncTask: finish(): enter");
+		log_debug("AsyncTask:finish():");
 		
 		// dispose stdin
 		try{
@@ -294,7 +293,8 @@ public abstract class AsyncTask : GLib.Object{
 		out_line = "";
 
 		timer.stop();
-		
+
+		log_debug("AsyncTask:finish(): before finish_task()");
 		finish_task();
 		//dir_delete(working_dir);
 
@@ -309,12 +309,16 @@ public abstract class AsyncTask : GLib.Object{
 
 	protected int read_exit_code(){
 		exit_code = -1;
-		var path = file_parent(script_file) + "/status";
-		if (file_exists(path)){
-			var txt = file_read(path);
-			exit_code = int.parse(txt);
+		string status_file = file_parent(script_file) + "/status";
+		log_debug("read_exit_code():");
+		log_debug("working_dir="+working_dir);
+		log_debug("script_file="+script_file);
+		log_debug("status_file="+status_file);
+		if (file_exists(status_file)){
+			string s = file_read(status_file);
+			exit_code = int.parse(s);
 		}
-		log_debug("exit_code: %d".printf(exit_code));
+		log_debug("exit_code=%d".printf(exit_code));
 		return exit_code;
 	}
 
