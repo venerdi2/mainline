@@ -323,64 +323,6 @@ public abstract class AsyncTask : GLib.Object{
 	public bool is_running(){
 		return (status == AppStatus.RUNNING);
 	}
-	
-	// public actions --------------
-
-	public void pause() {
-		Pid sub_child_pid;
-		foreach (long pid in get_process_children(child_pid)) {
-			sub_child_pid = (Pid) pid;
-			process_pause(sub_child_pid);
-		}
-
-		status = AppStatus.PAUSED;
-	}
-
-	public void resume() {
-		Pid sub_child_pid;
-		foreach (long pid in get_process_children(child_pid)) {
-			sub_child_pid = (Pid) pid;
-			process_resume(sub_child_pid);
-		}
-
-		status = AppStatus.RUNNING;
-	}
-
-	public void stop(AppStatus status_to_update = AppStatus.CANCELLED) {
-		// we need to un-freeze the processes before we kill them
-		if (status == AppStatus.PAUSED) {
-			resume();
-		}
-
-		status = status_to_update;
-		
-		process_quit(child_pid);
-		
-		log_debug("process_quit: %d".printf(child_pid));
-	}
-
-	public void print_app_status(){
-		switch(status){
-		case AppStatus.NOT_STARTED:
-			log_debug("status=%s".printf("NOT_STARTED"));
-			break;
-		case AppStatus.RUNNING:
-			log_debug("status=%s".printf("RUNNING"));
-			break;
-		case AppStatus.PAUSED:
-			log_debug("status=%s".printf("PAUSED"));
-			break;
-		case AppStatus.FINISHED:
-			log_debug("status=%s".printf("FINISHED"));
-			break;
-		case AppStatus.CANCELLED:
-			log_debug("status=%s".printf("CANCELLED"));
-			break;
-		case AppStatus.PASSWORD_REQUIRED:
-			log_debug("status=%s".printf("PASSWORD_REQUIRED"));
-			break;
-		}
-	}
 }
 
 public enum AppStatus {

@@ -180,11 +180,6 @@ namespace TeeJee.System{
 		return timer;
 	}
 
-	public void timer_restart(GLib.Timer timer){
-		timer.reset();
-		timer.start();
-	}
-
 	public ulong timer_elapsed(GLib.Timer timer, bool stop = true){
 		ulong microseconds;
 		double seconds;
@@ -197,11 +192,5 @@ namespace TeeJee.System{
 
 	public void sleep(int milliseconds){
 		Thread.usleep ((ulong) milliseconds * 1000);
-	}
-
-	public void set_numeric_locale(string type){
-		Intl.setlocale(GLib.LocaleCategory.NUMERIC, type);
-	    Intl.setlocale(GLib.LocaleCategory.COLLATE, type);
-	    Intl.setlocale(GLib.LocaleCategory.TIME, type);
 	}
 }

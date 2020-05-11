@@ -38,7 +38,7 @@ public class AppConsole : GLib.Object {
 		
 		set_locale();
 
-		log_msg("%s %s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
+		log_msg(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 
 		LOG_TIMESTAMP = false;
 
@@ -66,7 +66,7 @@ public class AppConsole : GLib.Object {
 
 	private static string help_message() {
 		
-		string msg = "\n" + BRANDING_SHORTNAME + " v" + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
+		string msg = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
 		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
 		+ "\n"
@@ -100,7 +100,7 @@ public class AppConsole : GLib.Object {
 	private static void check_if_admin(){
 		
 		if (!user_is_admin()) {
-			log_error(_("Admin access is required for running this application."));
+			log_error(_("Admin access is required for this action."));
 			log_error(_("Run the application as admin with pkexec or sudo."));
 			exit(1);
 		}
@@ -285,9 +285,7 @@ public class AppConsole : GLib.Object {
 					var msg = _("Could not find requested version");
 					msg += ": %s".printf(requested_version);
 					log_error(msg);
-					
-					log_error(_("Run '"+BRANDING_SHORTNAME+" --list' and use the version string listed in first column"));
-					
+					log_error(_("Run")+" '"+BRANDING_SHORTNAME+" --list' "+_("and use a version string listed in first column"));
 					exit(1);
 				}
 
@@ -315,7 +313,7 @@ public class AppConsole : GLib.Object {
 		default:
 			// unknown option
 			log_error(_("Command not specified"));
-			log_error(_("Run '"+BRANDING_SHORTNAME+" --help' to list all commands"));
+			log_error(_("Run")+" '"+BRANDING_SHORTNAME+" --help' "+_("to list all commands"));
 			break;
 		}
 

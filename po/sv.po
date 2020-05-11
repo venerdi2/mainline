@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 09:00-0400\n"
+"POT-Creation-Date: 2020-05-11 10:31-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -57,16 +57,16 @@ msgstr ""
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:336
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:334
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:343
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:341
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:348
-#: src/Console/AppConsole.vala:398
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:346
+#: src/Console/AppConsole.vala:396
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
@@ -259,7 +259,8 @@ msgid ""
 msgstr ""
 
 #: src/Console/AppConsole.vala:103
-msgid "Admin access is required for running this application."
+#, fuzzy
+msgid "Admin access is required for this action."
 msgstr "Root-åtkomst krävs för att köra detta program."
 
 #: src/Console/AppConsole.vala:104
@@ -270,7 +271,8 @@ msgstr "Kör programmet som administratör, med pkexec eller sudo."
 msgid "Unknown option"
 msgstr "Okänt alternativ"
 
-#: src/Console/AppConsole.vala:182
+#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:316
 #, fuzzy
 msgid "Run"
 msgstr "Körs"
@@ -280,7 +282,7 @@ msgstr "Körs"
 msgid "to list all options"
 msgstr "Visa alla alternativ"
 
-#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
+#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:296
 msgid "No kernels specified"
 msgstr ""
 
@@ -292,20 +294,25 @@ msgstr "Flera kärnor valda för installation. Välj endast en."
 msgid "Could not find requested version"
 msgstr "Kunde inte hitta efterfrågad version"
 
-#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
-msgid "Run '"
+#: src/Console/AppConsole.vala:288
+msgid "and use a version string listed in first column"
 msgstr ""
 
-#: src/Console/AppConsole.vala:317
+#: src/Console/AppConsole.vala:315
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:370 src/Console/AppConsole.vala:386
+#: src/Console/AppConsole.vala:316
+#, fuzzy
+msgid "to list all commands"
+msgstr "Visa alla alternativ"
+
+#: src/Console/AppConsole.vala:368 src/Console/AppConsole.vala:384
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Tillgängliga paket"
 
-#: src/Console/AppConsole.vala:373 src/Console/AppConsole.vala:389
+#: src/Console/AppConsole.vala:371 src/Console/AppConsole.vala:387
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Installera"
@@ -520,11 +527,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nej"
 
-#: src/Utility/Gtk/GtkHelper.vala:17
-msgid "Error"
-msgstr "Fel"
-
-#: src/Utility/Gtk/GtkHelper.vala:77
+#: src/Utility/Gtk/GtkHelper.vala:67
 msgid "Missing Icon"
 msgstr "Saknad ikon"
 
@@ -592,7 +595,3 @@ msgstr "F"
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "W"
 msgstr "V"
-
-#: src/Utility/TeeJee.Process.vala:511
-msgid "Stopped"
-msgstr "Stoppad"

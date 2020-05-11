@@ -10,18 +10,6 @@ namespace TeeJee.GtkHelper{
 
 	using Gtk;
 
-	// messages ----------------------------------------
-
-	public void show_err_log(Gtk.Window parent, bool disable_log = true){
-		if ((err_log != null) && (err_log.length > 0)){
-			gtk_messagebox(_("Error"), err_log, parent, true);
-		}
-
-		if (disable_log){
-			err_log_disable();
-		}
-	}
-
 	public void gtk_do_events (){
 
 		/* Do pending events */
@@ -29,6 +17,8 @@ namespace TeeJee.GtkHelper{
 		while(Gtk.events_pending ())
 			Gtk.main_iteration ();
 	}
+
+	// messages ----------------------------------------
 
 	public void gtk_messagebox(
 		string title, string message, Gtk.Window? parent_win, bool is_error = false){

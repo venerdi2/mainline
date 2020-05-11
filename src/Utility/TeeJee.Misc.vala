@@ -30,14 +30,6 @@ namespace TeeJee.Misc {
 	using TeeJee.FileSystem;
 	using TeeJee.ProcessHelper;
 
-	// localization --------------------
-
-	public void set_numeric_locale(string type){
-		Intl.setlocale(GLib.LocaleCategory.NUMERIC, type);
-	    Intl.setlocale(GLib.LocaleCategory.COLLATE, type);
-	    Intl.setlocale(GLib.LocaleCategory.TIME, type);
-	}
-	
 	// timestamp ----------------
 	
 	public string timestamp (bool show_millis = false){

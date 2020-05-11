@@ -40,7 +40,7 @@ public class AppGtk : GLib.Object {
 		
 		set_locale();
 
-		log_msg("%s v%s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
+		log_msg("%s %s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
 
 		Gtk.init(ref args);
 
@@ -153,7 +153,7 @@ public class AppGtk : GLib.Object {
 
 	public static string help_message() {
 		
-		string msg = "\n" + BRANDING_SHORTNAME + " v" + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n";
+		string msg = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n";
 		msg += "\n";
 		msg += _("Syntax") + ": " + BRANDING_SHORTNAME + "-gtk [options]\n";
 		msg += "\n";

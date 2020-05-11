@@ -201,10 +201,16 @@ namespace TeeJee.ProcessHelper{
 		script.append ("\n");
 		script.append ("%s\n".printf(commands));
 		script.append ("\n\nexitCode=$?\n");
+		// FIXME bad behavior just assuming you can create files in cwd any time
 		script.append ("echo ${exitCode} > ${exitCode}\n");
 		script.append ("echo ${exitCode} > status\n");
 
-		// TODO remove this - don't allow automatically creating a dir that the caller doesn't know how to delete
+		// TODO - because of unwise things exactly like those echo > filename
+		// commands above, and also just so that the caller always knows
+		// how to clean up properly without risk of deleting something it shouldn't
+		// this should be codified into a promise that if we generate a path,
+		// then the final path element is *always* a new unique temp directory,
+		// as well as the sh file itself. - bkw
 		if ((sh_path == null) || (sh_path.length == 0)){
 			string t_dir = create_tmp_dir();
 			sh_path = get_temp_file_path(t_dir) + ".sh";
@@ -390,28 +396,6 @@ namespace TeeJee.ProcessHelper{
 		return (ret_val == 0);
 	}
 
-	// dep: pgrep TODO: Rewrite using /proc
-	public bool process_is_running_by_name(string proc_name){
-
-		/* Checks if given process is running */
-
-		string cmd = "";
-		string std_out;
-		string std_err;
-		int ret_val;
-
-		try{
-			cmd = "pgrep -f '%s'".printf(proc_name);
-			Process.spawn_command_line_sync(cmd, out std_out, out std_err, out ret_val);
-		}
-		catch (Error e) {
-			log_error (e.message);
-			return false;
-		}
-
-		return (ret_val == 0);
-	}
-	
 	// dep: ps TODO: Rewrite using /proc
 	public int[] get_process_children (Pid parent_pid){
 
@@ -457,25 +441,6 @@ namespace TeeJee.ProcessHelper{
 			}
 		}
 	}
-	
-	public void process_kill(Pid process_pid, bool killChildren = true){
-
-		/* Kills specified process and its children (optional).
-		 * Sends signal SIGKILL to the process to kill it forcefully.
-		 * It is recommended to use the function process_quit() instead.
-		 * */
-		
-		int[] child_pids = get_process_children (process_pid);
-		Posix.kill (process_pid, Posix.Signal.KILL);
-
-		if (killChildren){
-			Pid childPid;
-			foreach (long pid in child_pids){
-				childPid = (Pid) pid;
-				Posix.kill (childPid, Posix.Signal.KILL);
-			}
-		}
-	}
 
 	// dep: kill
 	public int process_pause (Pid procID){
@@ -491,26 +456,6 @@ namespace TeeJee.ProcessHelper{
 		/* Resume/Un-freeze a process*/
 
 		return exec_sync ("kill -CONT %d".printf(procID), null, null);
-	}
-
-	// dep: ps TODO: Rewrite using /proc
-	public void process_quit_by_name(string cmd_name, string cmd_to_match, bool exact_match){
-
-		/* Kills a specific command */
-		
-		string std_out, std_err;
-		exec_sync ("ps w -C '%s'".printf(cmd_name), out std_out, out std_err);
-		//use 'ps ew -C conky' for all users
-
-		string pid = "";
-		foreach(string line in std_out.split("\n")){
-			if ((exact_match && line.has_suffix(" " + cmd_to_match))
-			|| (!exact_match && (line.index_of(cmd_to_match) != -1))){
-				pid = line.strip().split(" ")[0];
-				Posix.kill ((Pid) int.parse(pid), 15);
-				log_debug(_("Stopped") + ": [PID=" + pid + "] ");
-			}
-		}
 	}
 
 }

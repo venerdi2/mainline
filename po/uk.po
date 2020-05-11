@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 08:54-0400\n"
+"POT-Creation-Date: 2020-05-11 10:31-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -53,16 +53,16 @@ msgstr "Наступні ядра будуть видалені:"
 msgid "Continue ?"
 msgstr "Продовжувати ?"
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:336
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:334
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:343
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:341
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:348
-#: src/Console/AppConsole.vala:398
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:346
+#: src/Console/AppConsole.vala:396
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -254,7 +254,8 @@ msgstr ""
 "Одна або кілька рядків версії (розділені комами), взяті з виводу --list"
 
 #: src/Console/AppConsole.vala:103
-msgid "Admin access is required for running this application."
+#, fuzzy
+msgid "Admin access is required for this action."
 msgstr "Для запуску програми потрібно мати права адміністратора."
 
 #: src/Console/AppConsole.vala:104
@@ -265,7 +266,8 @@ msgstr "Запустіть додаток як адміністратор за �
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
-#: src/Console/AppConsole.vala:182
+#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:316
 #, fuzzy
 msgid "Run"
 msgstr "Запуск"
@@ -275,7 +277,7 @@ msgstr "Запуск"
 msgid "to list all options"
 msgstr "Показати усі параметри"
 
-#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
+#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:296
 msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
@@ -287,20 +289,25 @@ msgstr "Для встановлення вибрано кілька ядер. В
 msgid "Could not find requested version"
 msgstr "Не вдалося знайти запитувану версію"
 
-#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
-msgid "Run '"
-msgstr "Запуск"
+#: src/Console/AppConsole.vala:288
+msgid "and use a version string listed in first column"
+msgstr ""
 
-#: src/Console/AppConsole.vala:317
+#: src/Console/AppConsole.vala:315
 msgid "Command not specified"
 msgstr "Команда не вказана"
 
-#: src/Console/AppConsole.vala:370 src/Console/AppConsole.vala:386
+#: src/Console/AppConsole.vala:316
+#, fuzzy
+msgid "to list all commands"
+msgstr "Показати усі параметри"
+
+#: src/Console/AppConsole.vala:368 src/Console/AppConsole.vala:384
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Доступні пакети"
 
-#: src/Console/AppConsole.vala:373 src/Console/AppConsole.vala:389
+#: src/Console/AppConsole.vala:371 src/Console/AppConsole.vala:387
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Встановити"
@@ -516,11 +523,7 @@ msgstr "Так"
 msgid "No"
 msgstr "Ні"
 
-#: src/Utility/Gtk/GtkHelper.vala:17
-msgid "Error"
-msgstr "Помилка"
-
-#: src/Utility/Gtk/GtkHelper.vala:77
+#: src/Utility/Gtk/GtkHelper.vala:67
 msgid "Missing Icon"
 msgstr "Нема значка"
 
@@ -588,7 +591,3 @@ msgstr "E"
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "W"
 msgstr "W"
-
-#: src/Utility/TeeJee.Process.vala:511
-msgid "Stopped"
-msgstr "Зупинено"

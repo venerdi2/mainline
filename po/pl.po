@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 09:00-0400\n"
+"POT-Creation-Date: 2020-05-11 10:31-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: Waldemar Konik <valdi74@github>\n"
 "Language-Team: Polish\n"
@@ -55,16 +55,16 @@ msgstr ""
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:336
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:334
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:343
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:341
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:348
-#: src/Console/AppConsole.vala:398
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:346
+#: src/Console/AppConsole.vala:396
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
@@ -259,7 +259,8 @@ msgid ""
 msgstr ""
 
 #: src/Console/AppConsole.vala:103
-msgid "Admin access is required for running this application."
+#, fuzzy
+msgid "Admin access is required for this action."
 msgstr "Aby uruchomić tę aplikację niezbędne są prawa administratora."
 
 #: src/Console/AppConsole.vala:104
@@ -271,7 +272,8 @@ msgstr "Uruchom aplikację jako root albo użyj gksu/sudo."
 msgid "Unknown option"
 msgstr "Nieznana opcja"
 
-#: src/Console/AppConsole.vala:182
+#: src/Console/AppConsole.vala:182 src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:316
 #, fuzzy
 msgid "Run"
 msgstr "Uruchomiony"
@@ -281,7 +283,7 @@ msgstr "Uruchomiony"
 msgid "to list all options"
 msgstr "Pokaż wszystkie opcje"
 
-#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:298
+#: src/Console/AppConsole.vala:261 src/Console/AppConsole.vala:296
 msgid "No kernels specified"
 msgstr ""
 
@@ -293,20 +295,25 @@ msgstr "Wybrano kilka jąder do instalacji. Wybierz tylko jedno."
 msgid "Could not find requested version"
 msgstr "Nie można odnaleźć żądanej wersji"
 
-#: src/Console/AppConsole.vala:289 src/Console/AppConsole.vala:318
-msgid "Run '"
+#: src/Console/AppConsole.vala:288
+msgid "and use a version string listed in first column"
 msgstr ""
 
-#: src/Console/AppConsole.vala:317
+#: src/Console/AppConsole.vala:315
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:370 src/Console/AppConsole.vala:386
+#: src/Console/AppConsole.vala:316
+#, fuzzy
+msgid "to list all commands"
+msgstr "Pokaż wszystkie opcje"
+
+#: src/Console/AppConsole.vala:368 src/Console/AppConsole.vala:384
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Dostępne pakiety"
 
-#: src/Console/AppConsole.vala:373 src/Console/AppConsole.vala:389
+#: src/Console/AppConsole.vala:371 src/Console/AppConsole.vala:387
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Zainstaluj"
@@ -521,11 +528,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/Utility/Gtk/GtkHelper.vala:17
-msgid "Error"
-msgstr "Błąd"
-
-#: src/Utility/Gtk/GtkHelper.vala:77
+#: src/Utility/Gtk/GtkHelper.vala:67
 msgid "Missing Icon"
 msgstr "Brakująca ikona"
 
@@ -593,7 +596,3 @@ msgstr "E"
 #: src/Utility/TeeJee.Logging.vala:89
 msgid "W"
 msgstr "W"
-
-#: src/Utility/TeeJee.Process.vala:511
-msgid "Stopped"
-msgstr "Zatrzymany"
