@@ -44,37 +44,3 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Remove source cruft
 * Better temp and cache directory behavior
 * Better desktop notification behavior
-
-### Development Plans / TODO
-* 20200506 The new "Show" button to launch mainline-gtk right from the desktop notification isn't fully working yet. The button ony works for the first few seconds after the notification appears.
-* More efficient downloading & caching of info about available kernels  
-* Better (more automatic) initial sizes for the window and the columns in the kernel list display so you don't have to manually expand them  
-...or at least, remember the sizes the user last set.
-* Clean up build warnings
-* Clean up run-time GTK warnings
-* Make http client configurable (curl/wget/other)  
-Currently uses aria2c.  
-Maybe just by moving the aria2c actions into an external script in ~/.config, where the user could do anything they want, rsync, bittorrent, dummy/fake.
-* Reduce dependencies,  
-Do we really need aptitude?  
-libsoup or other library instead of shell commands for downloads?  
-* Customizable appearance, at least colors
-* Option to specify kernel variant (generic, lowlatency, snapdragon, etc...)
-* Improve the annoying pkexec behavior.  
-It would be nicer to run pkexec (or lxqt-sudo, etc) one time for the whole session, and only have to enter a password once, instead of once per action.  
-But currently, if you actually do that, it creates files in the users home directory that are owned by root, so don't do that.  
-This might be addressed by getting the policy kit file working.
-* Write a man page
-* Make all the terminal & child processes more robust.  
-It's always really been pretty 9/10ths-baked.  
-Kernel downloads fail, but work if you just do it again.  
-dpkg installs fail, but work if you just do it again.  
-Populating the main window fails, but works if you just do it again.  
-Determining what is currently installed & running fails, but works if you just do it again  
-...that is really kind of inexcusable crap and could all be a lot better.
-* More careful temp file / temp working dir management.  
-It does avoidable dumb things like creating dirs/files as one user and then can't remove or use them later as another user.  
-Maybe do clean_cache() after every action?  
-https://github.com/joshuadowding/ukuu/commit/ca03723a7a542cd591246a0f6d6a62bad4fac57c
-* Maybe replace the entire thing with a bash script, maybe with zenity for an optional gui?  
-https://github.com/pimlie/ubuntu-mainline-kernel.sh
