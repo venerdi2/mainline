@@ -31,34 +31,15 @@ namespace TeeJee.Logging{
 	public DataOutputStream dos_log;
 	public string err_log;
 	public bool LOG_ENABLE = true;
-	public bool LOG_TIMESTAMP = false;
-	public bool LOG_COLORS = true;
 	public bool LOG_DEBUG = false;
-	public bool LOG_COMMANDS = false;
 
-	public void log_msg (string message, bool highlight = false){
+	public void log_msg (string message){
 
 		if (!LOG_ENABLE) { return; }
 
-		string msg = "";
+		string s = message+"\n";
 
-		if (highlight && LOG_COLORS){
-			msg += "\033[1;38;5;34m";
-		}
-
-		if (LOG_TIMESTAMP){
-			msg += "[" + timestamp(true) +  "] ";
-		}
-
-		msg += message;
-
-		if (highlight && LOG_COLORS){
-			msg += "\033[0m";
-		}
-
-		msg += "\n";
-
-		stdout.printf (msg);
+		stdout.printf(s);
 		stdout.flush();
 
 		try {
@@ -71,43 +52,24 @@ namespace TeeJee.Logging{
 		}
 	}
 
-	public void log_error (string message, bool highlight = false,
-		bool is_warning = false){
+	public void log_error (string message){
 			
 		if (!LOG_ENABLE) { return; }
 
-		string msg = "";
+		string s = _("E") + ": " + message + "\n";
 
-		if (highlight && LOG_COLORS){
-			msg += "\033[1;38;5;160m";
-		}
-
-		if (LOG_TIMESTAMP){
-			msg += "[" + timestamp(true) +  "] ";
-		}
-
-		string prefix = (is_warning) ? _("W") : _("E");
-
-		msg += prefix + ": " + message;
-
-		if (highlight && LOG_COLORS){
-			msg += "\033[0m";
-		}
-
-		msg += "\n";
-
-		stdout.printf (msg);
+		stdout.printf(s);
 		stdout.flush();
 		
 		try {
-			string str = "[%s] %s: %s\n".printf(timestamp(), prefix, message);
+			string str = "[%s] %s\n".printf(timestamp(),message);
 			
 			if (dos_log != null){
 				dos_log.put_string (str);
 			}
 
 			if (err_log != null){
-				err_log += "%s\n".printf(message);
+				err_log += s;
 			}
 		}
 		catch (Error e) {
@@ -119,7 +81,7 @@ namespace TeeJee.Logging{
 		if (!LOG_ENABLE) { return; }
 
 		if (LOG_DEBUG){
-			log_msg ("D: " + message);
+			log_msg (_("D") + ": " + message);
 		}
 
 		try {

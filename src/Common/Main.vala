@@ -90,8 +90,6 @@ public class Main : GLib.Object{
 
 		GUI_MODE = _gui_mode;
 
-		LOG_TIMESTAMP = false;
-
 		Package.initialize();
 
 		LinuxKernel.initialize();

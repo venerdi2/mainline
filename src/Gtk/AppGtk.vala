@@ -44,8 +44,6 @@ public class AppGtk : GLib.Object {
 
 		Gtk.init(ref args);
 
-		LOG_TIMESTAMP = false;
-
 		//check dependencies
 		string message;
 		if (!Main.check_dependencies(out message)) {

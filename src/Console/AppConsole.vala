@@ -40,8 +40,6 @@ public class AppConsole : GLib.Object {
 
 		log_msg(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 
-		LOG_TIMESTAMP = false;
-
 		//check dependencies
 		string message;
 		if (!Main.check_dependencies(out message)) {
