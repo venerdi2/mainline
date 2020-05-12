@@ -265,20 +265,18 @@ namespace TeeJee.FileSystem{
 	}
 
 	public bool dir_delete (string dir_path, bool show_message = false){
-		
+
 		/* Recursively deletes directory along with contents */
 		
-		if (!dir_exists(dir_path)){
-			return true;
-		}
-		
+		if (!dir_exists(dir_path)) return true;
+
 		string cmd = "rm -rf '%s'".printf(escape_single_quote(dir_path));
 		int status = exec_sync(cmd);
 		string result = _("Deleted");
 		if (status!=0) result = _("Failed to delete file");
 		result += ": %s".printf(dir_path);
 		if (show_message) log_msg(result); else log_debug("dir_delete():"+result);
-		
+
 		return (status == 0);
 	}
 
@@ -287,7 +285,7 @@ namespace TeeJee.FileSystem{
 		int status = exec_sync(cmd, null, null);
 		return (status == 0);
 	}
-	
+
 	// misc --------------------
 
 	public string format_file_size (

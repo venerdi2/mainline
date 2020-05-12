@@ -242,9 +242,7 @@ public class MainWindow : Gtk.Window{
 
 		try {
 			pix_ubuntu = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
-
 			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
-
 			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
 		}
 		catch (Error e) {
@@ -375,21 +373,17 @@ public class MainWindow : Gtk.Window{
 					tv_refresh();
 				});
 
-				string sh = "";
-				//sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
-				//sh += BRANDING_SHORTNAME+" --user %s".printf(App.user_login);
-				sh += BRANDING_SHORTNAME;
-				if (LOG_DEBUG) sh += " --debug";
-
 				string names = "";
 				foreach(var kern in selected_kernels){
 					if (names.length > 0) names += ",";
 					names += "%s".printf(kern.version_main);
 				}
 
-				sh += " --remove %s\n".printf(names);
-				sh += "echo \n";
-				sh += "echo '"+_("Close window to exit...")+"'\n";
+				string sh = BRANDING_SHORTNAME;
+				if (LOG_DEBUG) sh += " --debug";
+				sh += " --remove %s\n".printf(names)
+				+ "echo \n"
+				+ "echo '"+_("Close window to exit...")+"'\n";
 
 				save_bash_script_temp(sh,t_file);
 				term.execute_script(t_file,t_dir);

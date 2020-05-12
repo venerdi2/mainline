@@ -161,8 +161,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (ok) log_msg("Removed cached files in '%s'".printf(CACHE_DIR));
 		}
 	}
-	
-	// contructor
+
+	// constructor
 	
 	public LinuxKernel(string _name, bool _is_mainline){
 
@@ -176,7 +176,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// parse version string ---------
 
 		kver = this.kname;
-		
+
 		split_version_string(kver, out version_main, out version_extra);
 
 		// set page URI -----------
@@ -194,13 +194,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		page_uri = "";
 	}
-	
+
 	// static
-	
+
 	public static void query(bool wait){
 
 		check_if_initialized();
-		
+
 		try {
 			task_is_running = true;
 			cancelled = false;
@@ -209,7 +209,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			task_is_running = false;
 			log_error (e.message);
 		}
-		
+
 		if (wait){
 			while (task_is_running){
 				sleep(500); //wait
@@ -356,8 +356,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		check_updates();
 
-		//check_available();
-		
+		//check_available();   // was commented?
+
 		task_is_running = false;
 	}
 
@@ -545,7 +545,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				}
 			}
 		}
-		
+
 		kernel_list.sort((a,b)=>{
 			return a.compare_to(b) * -1;
 		});

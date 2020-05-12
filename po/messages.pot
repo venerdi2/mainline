@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 03:14-0400\n"
+"POT-Creation-Date: 2020-05-12 04:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgid "Installed"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1148 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:634 src/Gtk/MainWindow.vala:648
+#: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr ""
 
@@ -110,7 +110,7 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:656
+#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr ""
 
@@ -207,7 +207,7 @@ msgstr ""
 msgid "Uninstall specified kernels"
 msgstr ""
 
-#: src/Console/AppConsole.vala:81 src/Gtk/MainWindow.vala:401
+#: src/Console/AppConsole.vala:81 src/Gtk/MainWindow.vala:395
 msgid "Remove installed kernels older than running kernel"
 msgstr ""
 
@@ -291,7 +291,7 @@ msgid "Kernel %s Available"
 msgstr ""
 
 #: src/Console/AppConsole.vala:346 src/Console/AppConsole.vala:362
-#: src/Gtk/MainWindow.vala:335
+#: src/Gtk/MainWindow.vala:333
 msgid "Install"
 msgstr ""
 
@@ -315,89 +315,89 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:319
+#: src/Gtk/MainWindow.vala:317
 msgid "Refresh"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:326 src/Utility/TeeJee.System.vala:42
+#: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
 msgid "Internet connection is not active"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:531
-#: src/Gtk/MainWindow.vala:661
+#: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:525
+#: src/Gtk/MainWindow.vala:655
 msgid "No Internet"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:342
 msgid "Multiple Kernels Selected"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:342
 msgid "Select a single kernel to install"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:347 src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:345 src/Gtk/MainWindow.vala:356
 msgid "Not Selected"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:345
 msgid "Select the kernel to install"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:350
 msgid "Remove"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:356
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:392 src/Gtk/MainWindow.vala:426
-#: src/Gtk/MainWindow.vala:693
+#: src/Gtk/MainWindow.vala:386 src/Gtk/MainWindow.vala:420
+#: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:400
+#: src/Gtk/MainWindow.vala:394
 msgid "Purge"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:433
+#: src/Gtk/MainWindow.vala:427
 msgid "Changes"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:444 src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/MainWindow.vala:438 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:465
+#: src/Gtk/MainWindow.vala:459
 msgid "About"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:503
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:510
+#: src/Gtk/MainWindow.vala:504
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:510
+#: src/Gtk/MainWindow.vala:504
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:531 src/Gtk/MainWindow.vala:661
+#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
 msgid "Internet connection is not active."
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:550
+#: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:644
+#: src/Gtk/MainWindow.vala:638
 msgid "available"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:656
+#: src/Gtk/MainWindow.vala:650
 msgid "Already Installed"
 msgstr ""
 
@@ -526,7 +526,7 @@ msgstr ""
 msgid "File deleted"
 msgstr ""
 
-#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:276
 msgid "Failed to delete file"
 msgstr ""
 
@@ -574,7 +574,7 @@ msgstr ""
 msgid "Failed to create dir"
 msgstr ""
 
-#: src/Utility/TeeJee.FileSystem.vala:277
+#: src/Utility/TeeJee.FileSystem.vala:275
 msgid "Deleted"
 msgstr ""
 

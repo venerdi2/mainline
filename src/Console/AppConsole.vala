@@ -327,7 +327,7 @@ public class AppConsole : GLib.Object {
 	private void notify_user(){
 
 		check_if_internet_is_active(false);
-				
+
 		LinuxKernel.query(true);
 
 		LinuxKernel.check_updates();

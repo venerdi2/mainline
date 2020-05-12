@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 03:13-0400\n"
+"POT-Creation-Date: 2020-05-12 04:22-0400\n"
 "PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -88,7 +88,7 @@ msgid "Installed"
 msgstr "Kurulu"
 
 #: src/Common/LinuxKernel.vala:1148 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:634 src/Gtk/MainWindow.vala:648
+#: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "Çalışıyor"
 
@@ -106,7 +106,7 @@ msgstr "TAMAM"
 msgid "ERROR"
 msgstr "HATA"
 
-#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:656
+#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 
@@ -210,7 +210,7 @@ msgstr "Belirtilen mainline çekirdeğini kur"
 msgid "Uninstall specified kernels"
 msgstr "Belirtilen mainline çekirdeğini kur"
 
-#: src/Console/AppConsole.vala:81 src/Gtk/MainWindow.vala:401
+#: src/Console/AppConsole.vala:81 src/Gtk/MainWindow.vala:395
 msgid "Remove installed kernels older than running kernel"
 msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
@@ -298,7 +298,7 @@ msgid "Kernel %s Available"
 msgstr "Mevcut Paketler"
 
 #: src/Console/AppConsole.vala:346 src/Console/AppConsole.vala:362
-#: src/Gtk/MainWindow.vala:335
+#: src/Gtk/MainWindow.vala:333
 msgid "Install"
 msgstr "Kur"
 
@@ -322,91 +322,91 @@ msgstr "Çekirdek"
 msgid "Status"
 msgstr "Durum"
 
-#: src/Gtk/MainWindow.vala:319
+#: src/Gtk/MainWindow.vala:317
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/Gtk/MainWindow.vala:326 src/Utility/TeeJee.System.vala:42
+#: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
 msgid "Internet connection is not active"
 msgstr "İnternet bağlantısı aktif değil"
 
-#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:531
-#: src/Gtk/MainWindow.vala:661
+#: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:525
+#: src/Gtk/MainWindow.vala:655
 msgid "No Internet"
 msgstr "İnternet Yok"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:342
 msgid "Multiple Kernels Selected"
 msgstr "Çoklu Çekirdek Seçildi"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:342
 msgid "Select a single kernel to install"
 msgstr "Kurulum için tek çekirdek seçin"
 
-#: src/Gtk/MainWindow.vala:347 src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:345 src/Gtk/MainWindow.vala:356
 msgid "Not Selected"
 msgstr "Seçilen Yok"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:345
 msgid "Select the kernel to install"
 msgstr "Kurulum için çekirdek seçin"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:350
 msgid "Remove"
 msgstr "Sil"
 
-#: src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:356
 msgid "Select the kernels to remove"
 msgstr "Kaldırma için çekirdek seçin"
 
-#: src/Gtk/MainWindow.vala:392 src/Gtk/MainWindow.vala:426
-#: src/Gtk/MainWindow.vala:693
+#: src/Gtk/MainWindow.vala:386 src/Gtk/MainWindow.vala:420
+#: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:400
+#: src/Gtk/MainWindow.vala:394
 msgid "Purge"
 msgstr "Temizle"
 
-#: src/Gtk/MainWindow.vala:433
+#: src/Gtk/MainWindow.vala:427
 msgid "Changes"
 msgstr "Değişiklikler"
 
-#: src/Gtk/MainWindow.vala:444 src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/MainWindow.vala:438 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/Gtk/MainWindow.vala:465
+#: src/Gtk/MainWindow.vala:459
 msgid "About"
 msgstr "Hakkında"
 
-#: src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:503
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
-#: src/Gtk/MainWindow.vala:510
+#: src/Gtk/MainWindow.vala:504
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:510
+#: src/Gtk/MainWindow.vala:504
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:531 src/Gtk/MainWindow.vala:661
+#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
 #, fuzzy
 msgid "Internet connection is not active."
 msgstr "İnternet bağlantısı aktif değil"
 
-#: src/Gtk/MainWindow.vala:550
+#: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
 msgstr "Yenileniyor..."
 
-#: src/Gtk/MainWindow.vala:644
+#: src/Gtk/MainWindow.vala:638
 #, fuzzy
 msgid "available"
 msgstr "Mevcut Paketler"
 
-#: src/Gtk/MainWindow.vala:656
+#: src/Gtk/MainWindow.vala:650
 #, fuzzy
 msgid "Already Installed"
 msgstr "Kurulu"
@@ -538,7 +538,7 @@ msgstr "Eksik Simge"
 msgid "File deleted"
 msgstr "Dosya silindi"
 
-#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:278
+#: src/Utility/TeeJee.FileSystem.vala:80 src/Utility/TeeJee.FileSystem.vala:276
 msgid "Failed to delete file"
 msgstr "Dosya silme başarısız"
 
@@ -586,7 +586,7 @@ msgstr "Dizin oluşturuldu"
 msgid "Failed to create dir"
 msgstr "Dizin oluşturma başarısız"
 
-#: src/Utility/TeeJee.FileSystem.vala:277
+#: src/Utility/TeeJee.FileSystem.vala:275
 #, fuzzy
 msgid "Deleted"
 msgstr "Dosya silindi"

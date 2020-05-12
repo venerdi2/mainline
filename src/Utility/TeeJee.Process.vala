@@ -22,7 +22,6 @@
  *
  */
 
-// FIXME - Stop creating temp dirs and files just to execute shell commands.
 namespace TeeJee.ProcessHelper{
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
@@ -61,62 +60,32 @@ namespace TeeJee.ProcessHelper{
 		catch (SpawnError e) {log_error (e.message);}
 	}
 
-	public string? save_bash_script_temp (string commands, string? script_path = null,
+	public string? save_bash_script_temp (string cmds, string? file = null,
 		bool force_locale = true, bool supress_errors = false){
 
-		string sh_path = script_path;
+		string f = file;
+		if ((file == null) || (file.length == 0)){
+			string t_dir = create_tmp_dir();
+			f = get_temp_file_path(t_dir) + ".sh";
+		}
 		
 		/* Creates a temporary bash script with given commands
 		 * Returns the script file path */
 
-		var script = new StringBuilder();
-		script.append ("#!/bin/bash\n");
-		script.append ("\n");
-		if (force_locale){
-			script.append ("LANG=C\n");
+		string s = "#!/bin/bash\n\n";
+		if (force_locale) s += "LANG=C\n";
+		s += "\n"
+		+ "%s\n".printf(cmds)
+		+ "exitCode=${?}\n"
+		+ "echo ${exitCode} > ${exitCode}\n"
+		+ "echo ${exitCode} > status\n";
+
+		log_debug("save_bash_script_temp("+file+"):"+f);
+
+		if(file_write(f,s)){
+			chmod (f, "u+x");
+			return f;
 		}
-		script.append ("\n");
-		script.append ("%s\n".printf(commands));
-		script.append ("\n\nexitCode=$?\n");
-		// FIXME bad behavior just assuming you can create files in cwd any time
-		script.append ("echo ${exitCode} > ${exitCode}\n");
-		script.append ("echo ${exitCode} > status\n");
-
-		// TODO - because of unwise things exactly like those echo > filename
-		// commands above, and also just so that the caller always knows
-		// how to clean up properly without risk of deleting something it shouldn't
-		// this should be codified into a promise that if we generate a path,
-		// then the final path element is *always* a new unique temp directory,
-		// as well as the sh file itself. - bkw
-		if ((sh_path == null) || (sh_path.length == 0)){
-			string t_dir = create_tmp_dir();
-			sh_path = get_temp_file_path(t_dir) + ".sh";
-		}
-
-		log_debug("save_bash_script_temp():sh_path:"+sh_path);
-
-		try{
-			//write script file
-			var file = File.new_for_path (sh_path);
-			if (file.query_exists ()) {
-				file.delete ();
-			}
-			var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
-			var data_stream = new DataOutputStream (file_stream);
-			data_stream.put_string (script.str);
-			data_stream.close();
-
-			// set execute permission
-			chmod (sh_path, "u+x");
-
-			return sh_path;
-		}
-		catch (Error e) {
-			if (!supress_errors){
-				log_error (e.message);
-			}
-		}
-
 		return null;
 	}
 
