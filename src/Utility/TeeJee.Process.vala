@@ -46,7 +46,7 @@ namespace TeeJee.ProcessHelper{
 
 		try {
 			int status;
-			Process.spawn_command_line_sync(cmd, out std_out, out std_err, out status);
+			Process.spawn_command_line_sync (cmd, out std_out, out std_err, out status);
 	        return status;
 		}
 		catch (Error e){
@@ -59,129 +59,6 @@ namespace TeeJee.ProcessHelper{
 	public void exec_async (string cmd){
 		try {Process.spawn_command_line_async (cmd);}
 		catch (SpawnError e) {log_error (e.message);}
-	}
-
-	public int exec_script_sync (string script,
-		out string? std_out = null, out string? std_err = null,
-		bool supress_errors = false, bool run_as_admin = false,
-		bool cleanup_tmp = true, bool print_to_terminal = false){
-
-		/* Executes commands synchronously.
-		 * Pipes and multiple commands are fully supported.
-		 * Commands are written to a temporary bash script and executed.
-		 * std_out, std_err can be null. Output will be written to terminal if null.
-		 * */
-
-		string t_dir = create_tmp_dir();
-		string t_f = get_temp_file_path(t_dir);
-		string sh_file = t_f+".sh";
-		save_bash_script_temp(script,sh_file, true, supress_errors);
-		string su_file = t_f+"_su.sh";
-
-		if (run_as_admin){
-			string s = "#!/bin/bash\n"
-				+ "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
-				+ " '%s'".printf(escape_single_quote(sh_file));
-
-			save_bash_script_temp(s, su_file, true, supress_errors);
-		}
-		
-		try {
-			string[] argv = new string[1];
-			if (run_as_admin){
-				argv[0] = su_file;
-			}
-			else{
-				argv[0] = sh_file;
-			}
-
-			string[] env = Environ.get();
-
-			int exit_code;
-
-			if (print_to_terminal){
-				
-				Process.spawn_sync (
-					t_dir, //working dir
-					argv, //argv
-					env, //environment
-					SpawnFlags.SEARCH_PATH,
-					null,   // child_setup
-					null,
-					null,
-					out exit_code
-					);
-			}
-			else{
-		
-				Process.spawn_sync (
-					t_dir, //working dir
-					argv, //argv
-					env, //environment
-					SpawnFlags.SEARCH_PATH,
-					null,   // child_setup
-					out std_out,
-					out std_err,
-					out exit_code
-					);
-			}
-
-			string d = "exec_script_sync():";
-			if (cleanup_tmp){
-				d += "file_delete("+sh_file+")";
-				file_delete(sh_file);
-				if (run_as_admin){
-					d += ":file_delete("+su_file+")";
-					file_delete(su_file);
-				}
-				d += ":dir_delete("+t_dir+")";
-				dir_delete(t_dir);
-			}
-			log_debug(d);
-			return exit_code;
-		}
-		catch (Error e){
-			if (!supress_errors){
-				log_error (e.message);
-			}
-			return -1;
-		}
-	}
-
-	public int exec_script_async (string s){
-
-		/* Executes commands synchronously.
-		 * Pipes and multiple commands are fully supported.
-		 * Commands are written to a temporary bash script and executed.
-		 * Return value indicates if script was started successfully.
-		 *  */
-
-		try {
-
-			string t_dir = create_tmp_dir();
-			string t_file = get_temp_file_path(t_dir);
-			save_bash_script_temp(s,t_file);
-
-			string[] argv = new string[1];
-			argv[0] = t_file;
-
-			string[] env = Environ.get();
-			
-			Pid child_pid;
-			Process.spawn_async_with_pipes(
-			    t_dir, //working dir
-			    argv, //argv
-			    env, //environment
-			    SpawnFlags.SEARCH_PATH,
-			    null,
-			    out child_pid);
-
-			return 0;
-		}
-		catch (Error e){
-	        log_error (e.message);
-	        return 1;
-	    }
 	}
 
 	public string? save_bash_script_temp (string commands, string? script_path = null,
@@ -249,10 +126,6 @@ namespace TeeJee.ProcessHelper{
 
 		return d + "/" + timestamp_numeric() + (new Rand()).next_int().to_string();
 	}
-
-	public void exec_process_new_session(string command){
-		exec_script_async("setsid %s &".printf(command));
-	}
 	
 	// find process -------------------------------
 	
@@ -271,107 +144,6 @@ namespace TeeJee.ProcessHelper{
 	        log_error (e.message);
 	        return "";
 	    }
-	}
-
-	public bool cmd_exists(string cmd_tool){
-		string path = get_cmd_path (cmd_tool);
-		if ((path == null) || (path.length == 0)){
-			return false;
-		}
-		else{
-			return true;
-		}
-	}
-
-	// dep: pidof, TODO: Rewrite using /proc
-	public int get_pid_by_name (string name){
-
-		/* Get the process ID for a process with given name */
-
-		string std_out, std_err;
-		exec_sync("pidof \"%s\"".printf(name), out std_out, out std_err);
-		
-		if (std_out != null){
-			string[] arr = std_out.split ("\n");
-			if (arr.length > 0){
-				return int.parse (arr[0]);
-			}
-		}
-
-		return -1;
-	}
-
-	public int get_pid_by_command(string cmdline){
-
-		/* Searches for process using the command line used to start the process.
-		 * Returns the process id if found.
-		 * */
-		 
-		try {
-			FileEnumerator enumerator;
-			FileInfo info;
-			File file = File.parse_name ("/proc");
-
-			enumerator = file.enumerate_children ("standard::name", 0);
-			while ((info = enumerator.next_file()) != null) {
-				try {
-					string io_stat_file_path = "/proc/%s/cmdline".printf(info.get_name());
-					var io_stat_file = File.new_for_path(io_stat_file_path);
-					if (file.query_exists()){
-						var dis = new DataInputStream (io_stat_file.read());
-
-						string line;
-						string text = "";
-						size_t length;
-						while((line = dis.read_until ("\0", out length)) != null){
-							text += " " + line;
-						}
-
-						if ((text != null) && text.contains(cmdline)){
-							return int.parse(info.get_name());
-						}
-					} //stream closed
-				}
-				catch(Error e){
-					// do not log
-					// some processes cannot be accessed by non-admin user
-				}
-			}
-		}
-		catch(Error e){
-		  log_error (e.message);
-		}
-
-		return -1;
-	}
-
-	public void get_proc_io_stats(int pid, out int64 read_bytes, out int64 write_bytes){
-
-		/* Returns the number of bytes read and written by a process to disk */
-		
-		string io_stat_file_path = "/proc/%d/io".printf(pid);
-		var file = File.new_for_path(io_stat_file_path);
-
-		read_bytes = 0;
-		write_bytes = 0;
-
-		try {
-			if (file.query_exists()){
-				var dis = new DataInputStream (file.read());
-				string line;
-				while ((line = dis.read_line (null)) != null) {
-					if(line.has_prefix("rchar:")){
-						read_bytes = int64.parse(line.replace("rchar:","").strip());
-					}
-					else if(line.has_prefix("wchar:")){
-						write_bytes = int64.parse(line.replace("wchar:","").strip());
-					}
-				}
-			} //stream closed
-		}
-		catch(Error e){
-			log_error (e.message);
-		}
 	}
 
 	// dep: ps TODO: Rewrite using /proc
@@ -440,22 +212,6 @@ namespace TeeJee.ProcessHelper{
 				Posix.kill (childPid, Posix.Signal.TERM);
 			}
 		}
-	}
-
-	// dep: kill
-	public int process_pause (Pid procID){
-
-		/* Pause/Freeze a process */
-
-		return exec_sync ("kill -STOP %d".printf(procID), null, null);
-	}
-
-	// dep: kill
-	public int process_resume (Pid procID){
-
-		/* Resume/Un-freeze a process*/
-
-		return exec_sync ("kill -CONT %d".printf(procID), null, null);
 	}
 
 }

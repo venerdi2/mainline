@@ -727,7 +727,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		
 		foreach(var kern in list){
 
-			kern.remove(true);
+			kern.remove();
 		}
 	}
 
@@ -779,7 +779,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (ch != 'y'){ return; }
 		}
 
-		kern.install(true);
+		kern.install();
 	}
 
 	// helpers
@@ -1215,20 +1215,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
-	public bool install(bool write_to_terminal){
+	public bool install(){
 
 		// check if installed
 		if (is_installed){
 			log_error(_("This kernel is already installed."));
 			return false;
 		}
-					
+
 		bool ok = download_packages();
 		int status = -1;
-		
+
 		if (ok){
 
-			log_msg("Preparing to install '%s'".printf(version_main));  // kname
+			log_msg("Preparing to install '%s'".printf(version_main));
 
 			var flist = "";
 
@@ -1236,17 +1236,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				flist += " '%s'".printf(file_name);
 			}
 
-			var cmd = "cd %s/%s && dpkg -i %s && rm %s".printf(cache_subdir, NATIVE_ARCH, flist, flist);
-	
-			if (write_to_terminal){
-				log_msg("");
-				status = Posix.system(cmd); // execute
-				log_msg("");
-			}
-			else{
-				status = exec_script_sync(cmd); // execute
-			}
+			string d = cache_subdir+"/"+NATIVE_ARCH;
+			string cmd = "pkexec env -C "+d+" DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -i "+flist
+			+ " && cd "+d
+			+ " && rm "+flist;
 
+			status = Posix.system(cmd);
 			ok = (status == 0);
 
 			if (ok){
@@ -1275,8 +1270,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		log_msg(_("Preparing to remove selected kernels"));
-		
-		var cmd = "dpkg -r ";
+
+		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -r";
 
 		foreach(var kern in selected_kernels){
 			
@@ -1285,14 +1280,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					if (!pkg_name.has_prefix("linux-tools")
 						&& !pkg_name.has_prefix("linux-libc")){
 							
-						cmd += "'%s' ".printf(pkg_name);
+						cmd += " '%s'".printf(pkg_name);
 					}
 				}
 			}
 			else if (kern.deb_list.size > 0){
 				// get package names from deb file names
 				foreach(string file_name in kern.deb_list.keys){
-					cmd += "'%s' ".printf(file_name.split("_")[0]);
+					cmd += " '%s'".printf(file_name.split("_")[0]);
 				}
 			}
 			else{
@@ -1301,8 +1296,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		status = Posix.system(cmd); // execute
-
+		status = Posix.system(cmd);
 		ok = (status == 0);
 
 		if (ok){
@@ -1316,7 +1310,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
-	public bool remove(bool write_to_terminal){
+	public bool remove(){
 		bool ok = true;
 		int status = -1;
 
@@ -1325,24 +1319,23 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			log_error(_("This kernel is currently running and cannot be removed.\n Install another kernel before removing this one."));
 			return false;
 		}
-					
-		log_msg("Preparing to remove '%s'".printf(version_main));  // kname
-		
-		var cmd = "dpkg -r ";
+
+		log_msg("Preparing to remove '%s'".printf(version_main));
+
+		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -r";
 
 		if (apt_pkg_list.size > 0){
 			foreach(var pkg_name in apt_pkg_list.values){
 				if (!pkg_name.has_prefix("linux-tools")
 					&& !pkg_name.has_prefix("linux-libc")){
-						
-					cmd += "'%s' ".printf(pkg_name);
+					cmd += " '%s'".printf(pkg_name);
 				}
 			}
 		}
 		else if (deb_list.size > 0){
 			// get package names from deb file names
 			foreach(string file_name in deb_list.keys){
-				cmd += "'%s' ".printf(file_name.split("_")[0]);
+				cmd += " '%s'".printf(file_name.split("_")[0]);
 			}
 		}
 		else{
@@ -1350,12 +1343,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return false;
 		}
 
-		if (write_to_terminal){
-			status = Posix.system(cmd); // execute
-		}
-		else{
-			status = exec_script_sync(cmd); // execute
-		}
+		status = Posix.system(cmd);
 		ok = (status == 0);
 
 		if (ok){

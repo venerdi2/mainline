@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 22:06-0400\n"
+"POT-Creation-Date: 2020-05-12 03:13-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -53,16 +53,16 @@ msgstr "Наступні ядра будуть видалені:"
 msgid "Continue ?"
 msgstr "Продовжувати ?"
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:332
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:309
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:339
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:316
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:344
-#: src/Console/AppConsole.vala:394
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:321
+#: src/Console/AppConsole.vala:371
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -88,6 +88,7 @@ msgid "Installed"
 msgstr "Встановлено"
 
 #: src/Common/LinuxKernel.vala:1148 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:634 src/Gtk/MainWindow.vala:648
 msgid "Running"
 msgstr "Використовується"
 
@@ -105,20 +106,20 @@ msgstr "Добре"
 msgid "ERROR"
 msgstr "ПОМИЛКА"
 
-#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:663
+#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:656
 msgid "This kernel is already installed."
 msgstr "Це ядро вже встановлено."
 
-#: src/Common/LinuxKernel.vala:1253
+#: src/Common/LinuxKernel.vala:1248
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Установка завершена. Для використання нового ядра потрібна перезавантаження."
 
-#: src/Common/LinuxKernel.vala:1256
+#: src/Common/LinuxKernel.vala:1251
 msgid "Installation completed with errors"
 msgstr "Установка завершена з помилками"
 
-#: src/Common/LinuxKernel.vala:1272
+#: src/Common/LinuxKernel.vala:1267
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -126,19 +127,19 @@ msgstr ""
 "Це ядро зараз працює і не може бути видалено. \n"
 "Встановіть інше ядро, перш ніж видаляти його."
 
-#: src/Common/LinuxKernel.vala:1277
+#: src/Common/LinuxKernel.vala:1272
 msgid "Preparing to remove selected kernels"
 msgstr "Підготовка до видалення вибраних ядер"
 
-#: src/Common/LinuxKernel.vala:1309 src/Common/LinuxKernel.vala:1362
+#: src/Common/LinuxKernel.vala:1303 src/Common/LinuxKernel.vala:1350
 msgid "Un-install completed"
 msgstr "Видалення завершено"
 
-#: src/Common/LinuxKernel.vala:1312 src/Common/LinuxKernel.vala:1365
+#: src/Common/LinuxKernel.vala:1306 src/Common/LinuxKernel.vala:1353
 msgid "Un-install completed with errors"
 msgstr "Видалення завершено з помилками"
 
-#: src/Common/LinuxKernel.vala:1325
+#: src/Common/LinuxKernel.vala:1319
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -253,61 +254,52 @@ msgid ""
 msgstr ""
 "Одна або кілька рядків версії (розділені комами), взяті з виводу --list"
 
-#: src/Console/AppConsole.vala:101
-#, fuzzy
-msgid "Admin access is required for this action."
-msgstr "Для запуску програми потрібно мати права адміністратора."
-
-#: src/Console/AppConsole.vala:102
-msgid "Run the application as admin with pkexec or sudo."
-msgstr "Запустіть додаток як адміністратор за допомогою pkexec або sudo."
-
-#: src/Console/AppConsole.vala:178 src/Gtk/AppGtk.vala:143
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:143
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
-#: src/Console/AppConsole.vala:180 src/Console/AppConsole.vala:286
-#: src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:263
+#: src/Console/AppConsole.vala:291
 #, fuzzy
 msgid "Run"
 msgstr "Запуск"
 
-#: src/Console/AppConsole.vala:180
+#: src/Console/AppConsole.vala:171
 #, fuzzy
 msgid "to list all options"
 msgstr "Показати усі параметри"
 
-#: src/Console/AppConsole.vala:259 src/Console/AppConsole.vala:294
+#: src/Console/AppConsole.vala:236 src/Console/AppConsole.vala:271
 msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:242
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Для встановлення вибрано кілька ядер. Виберіть лише одну."
 
-#: src/Console/AppConsole.vala:283 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:260 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Не вдалося знайти запитувану версію"
 
-#: src/Console/AppConsole.vala:286
+#: src/Console/AppConsole.vala:263
 msgid "and use a version string listed in first column"
 msgstr "і використовувати рядок версій, вказаний у першому стовпці"
 
-#: src/Console/AppConsole.vala:313
+#: src/Console/AppConsole.vala:290
 msgid "Command not specified"
 msgstr "Команда не вказана"
 
-#: src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:291
 #, fuzzy
 msgid "to list all commands"
 msgstr "Показати усі параметри"
 
-#: src/Console/AppConsole.vala:366 src/Console/AppConsole.vala:382
+#: src/Console/AppConsole.vala:343 src/Console/AppConsole.vala:359
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Доступні пакети"
 
-#: src/Console/AppConsole.vala:369 src/Console/AppConsole.vala:385
+#: src/Console/AppConsole.vala:346 src/Console/AppConsole.vala:362
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Встановити"
@@ -336,13 +328,12 @@ msgstr "Стан"
 msgid "Refresh"
 msgstr "Оновити"
 
-#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:145
+#: src/Gtk/MainWindow.vala:326 src/Utility/TeeJee.System.vala:42
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 
-#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668
+#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:661
 msgid "No Internet"
 msgstr "Інтернету немає"
 
@@ -370,39 +361,59 @@ msgstr "Видалити"
 msgid "Select the kernels to remove"
 msgstr "Виберіть ядра для видалення"
 
+#: src/Gtk/MainWindow.vala:392 src/Gtk/MainWindow.vala:426
+#: src/Gtk/MainWindow.vala:693
+msgid "Close window to exit..."
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:400
 msgid "Purge"
 msgstr "Чистити"
 
-#: src/Gtk/MainWindow.vala:439
+#: src/Gtk/MainWindow.vala:433
 msgid "Changes"
 msgstr "Зміни"
 
-#: src/Gtk/MainWindow.vala:450 src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/MainWindow.vala:444 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/Gtk/MainWindow.vala:471
+#: src/Gtk/MainWindow.vala:465
 msgid "About"
 msgstr "Про программу"
 
-#: src/Gtk/MainWindow.vala:515
+#: src/Gtk/MainWindow.vala:509
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
-#: src/Gtk/MainWindow.vala:516
+#: src/Gtk/MainWindow.vala:510
 #, fuzzy
 msgid "Forked"
 msgstr "Роздвоєний"
 
-#: src/Gtk/MainWindow.vala:516
+#: src/Gtk/MainWindow.vala:510
 #, fuzzy
 msgid "Original"
 msgstr "Оригінальний"
 
-#: src/Gtk/MainWindow.vala:556
+#: src/Gtk/MainWindow.vala:531 src/Gtk/MainWindow.vala:661
+#, fuzzy
+msgid "Internet connection is not active."
+msgstr "Інтернет з'єднання не активно"
+
+#: src/Gtk/MainWindow.vala:550
 msgid "Refreshing..."
 msgstr "Оновлення..."
+
+#: src/Gtk/MainWindow.vala:644
+#, fuzzy
+msgid "available"
+msgstr "Доступні пакети"
+
+#: src/Gtk/MainWindow.vala:656
+#, fuzzy
+msgid "Already Installed"
+msgstr "Встановлено"
 
 #: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:153

@@ -376,8 +376,9 @@ public class MainWindow : Gtk.Window{
 				});
 
 				string sh = "";
-				sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
-				sh += BRANDING_SHORTNAME+" --user %s".printf(App.user_login);
+				//sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
+				//sh += BRANDING_SHORTNAME+" --user %s".printf(App.user_login);
+				sh += BRANDING_SHORTNAME;
 				if (LOG_DEBUG) sh += " --debug";
 
 				string names = "";
@@ -387,9 +388,8 @@ public class MainWindow : Gtk.Window{
 				}
 
 				sh += " --remove %s\n".printf(names);
-
-				sh += "echo ''\n";
-				sh += "echo 'Close window to exit...'\n";
+				sh += "echo \n";
+				sh += "echo '"+_("Close window to exit...")+"'\n";
 
 				save_bash_script_temp(sh,t_file);
 				term.execute_script(t_file,t_dir);
@@ -420,16 +420,10 @@ public class MainWindow : Gtk.Window{
 				tv_refresh();
 			});
 
-			string sh = "";
-			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY http_proxy=$http_proxy https_proxy=$https_proxy HTTP_PROXY=$HTTP_PROXY HTTPS_PROXY=$HTTPS_PROXY ";
-			sh += BRANDING_SHORTNAME+" --user "+App.user_login;
+			string sh = BRANDING_SHORTNAME+" --purge-old-kernels";
 			if (LOG_DEBUG) sh += " --debug";
-			sh += " --purge-old-kernels\n";
-
-			log_debug(sh);
-
-			sh += "echo ''\n";
-			sh += "echo 'Close window to exit...'\n";
+			sh += "\necho \n"
+			+ "echo '"+_("Close window to exit...")+"'\n";
 
 			save_bash_script_temp(sh,t_file);
 			term.execute_script(t_file,t_dir);
@@ -534,7 +528,7 @@ public class MainWindow : Gtk.Window{
 	private void refresh_cache(bool download_index = true){
 
 		if (!check_internet_connectivity()){
-			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
+			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
 			return;
 		}
 
@@ -637,7 +631,7 @@ public class MainWindow : Gtk.Window{
 
 		if (LinuxKernel.kernel_active != null){
 
-			lbl_info.label = "Running <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
+			lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
 
 			if (LinuxKernel.kernel_active.is_mainline){
 				lbl_info.label += " (mainline)";
@@ -647,12 +641,11 @@ public class MainWindow : Gtk.Window{
 			}
 
 			if (LinuxKernel.kernel_latest_stable.compare_to(LinuxKernel.kernel_active) > 0){
-				lbl_info.label += " ~ " + "<b>%s</b> available".printf(
-					LinuxKernel.kernel_latest_stable.version_main);
+				lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_stable.version_main)+_("available");
 			}
 		}
 		else{
-			lbl_info.label = "Running <b>%s</b>".printf(LinuxKernel.RUNNING_KERNEL);
+			lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.RUNNING_KERNEL);
 		}
 	}
 
@@ -660,12 +653,12 @@ public class MainWindow : Gtk.Window{
 
 		// check if installed
 		if (kern.is_installed){
-			gtk_messagebox("Already Installed", _("This kernel is already installed."), this, true);
+			gtk_messagebox(_("Already Installed"), _("This kernel is already installed."), this, true);
 			return;
 		}
 
 		if (!check_internet_connectivity()){
-			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
+			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
 			return;
 		}
 
@@ -693,17 +686,11 @@ public class MainWindow : Gtk.Window{
 			}
 		});
 
-		string sh = "";
-		sh += BRANDING_SHORTNAME;
+		string sh = BRANDING_SHORTNAME;
 		if (LOG_DEBUG) sh += " --debug";
-		sh += " --download %s".printf(kern.version_main);
-		sh += " && ";
-		sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ";
-		sh += BRANDING_SHORTNAME+" --user "+App.user_login;
-		if (LOG_DEBUG) sh += " --debug";
-		sh += " --install %s\n".printf(kern.version_main);
-		sh += "echo \n";
-		sh += "echo 'Close window to exit...'\n";
+		sh += " --install %s\n".printf(kern.version_main)
+		+ "echo \n"
+		+ "echo '"+_("Close window to exit...")+"'\n";
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);

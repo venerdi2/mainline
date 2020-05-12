@@ -95,15 +95,6 @@ public class AppConsole : GLib.Object {
 		return msg;
 	}
 
-	private static void check_if_admin(){
-		
-		if (!user_is_admin()) {
-			log_error(_("Admin access is required for this action."));
-			log_error(_("Run the application as admin with pkexec or sudo."));
-			exit(1);
-		}
-	}
-
 	public bool parse_arguments(string[] args) {
 
 		string txt = BRANDING_SHORTNAME + " ";
@@ -214,8 +205,7 @@ public class AppConsole : GLib.Object {
 			break;
 
 		case "--install-latest":
-
-			//check_if_admin();
+		case "--install-point":
 
 			check_if_internet_is_active(true);
 
@@ -223,19 +213,7 @@ public class AppConsole : GLib.Object {
 			
 			break;
 
-		case "--install-point":
-
-			check_if_admin();
-
-			check_if_internet_is_active(true);
-
-			LinuxKernel.install_latest(true, App.confirm);
-
-			break;
-
 		case "--purge-old-kernels":
-
-			check_if_admin();
 
 			LinuxKernel.purge_old_kernels(App.confirm);
 
@@ -251,7 +229,6 @@ public class AppConsole : GLib.Object {
 		case "--install":
 		case "--remove":
 			if (cmd=="--download") check_if_internet_is_active();
-			if (cmd=="--install" || cmd=="--remove") check_if_admin();
 
 			LinuxKernel.query(true);
 
@@ -303,7 +280,7 @@ public class AppConsole : GLib.Object {
 				return LinuxKernel.remove_kernels(list);
 				
 			case "--install":
-				return list[0].install(true);
+				return list[0].install();
 			}
 
 			break;

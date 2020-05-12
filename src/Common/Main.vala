@@ -130,13 +130,13 @@ public class Main : GLib.Object{
 	public void init_paths(string custom_user_login = ""){
 
 		// user info
-		user_login = get_username();
+		user_login = GLib.Environment.get_user_name();
 
 		if (custom_user_login.length > 0){
 			user_login = custom_user_login;
 		}
-		
-		user_home = get_user_home(user_login);
+
+		user_home = GLib.Environment.get_home_dir();
 
 		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
 		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";

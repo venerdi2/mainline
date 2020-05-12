@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 22:06-0400\n"
+"POT-Creation-Date: 2020-05-12 03:13-0400\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
@@ -56,16 +56,16 @@ msgstr ""
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:332
+#: src/Common/LinuxKernel.vala:744 src/Console/AppConsole.vala:309
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:339
+#: src/Common/LinuxKernel.vala:755 src/Console/AppConsole.vala:316
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:344
-#: src/Console/AppConsole.vala:394
+#: src/Common/LinuxKernel.vala:763 src/Console/AppConsole.vala:321
+#: src/Console/AppConsole.vala:371
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
@@ -91,6 +91,7 @@ msgid "Installed"
 msgstr "Geïnstalleerd"
 
 #: src/Common/LinuxKernel.vala:1148 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:634 src/Gtk/MainWindow.vala:648
 msgid "Running"
 msgstr "Bezig met draaien"
 
@@ -108,21 +109,21 @@ msgstr "Oké"
 msgid "ERROR"
 msgstr "FOUT"
 
-#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:663
+#: src/Common/LinuxKernel.vala:1222 src/Gtk/MainWindow.vala:656
 msgid "This kernel is already installed."
 msgstr "Deze kernel is al geïnstalleerd."
 
-#: src/Common/LinuxKernel.vala:1253
+#: src/Common/LinuxKernel.vala:1248
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "De installatie is voltooid. Herstart de computer om de nieuwe kernel te "
 "gebruiken."
 
-#: src/Common/LinuxKernel.vala:1256
+#: src/Common/LinuxKernel.vala:1251
 msgid "Installation completed with errors"
 msgstr "De installatie is foutloos voltooid"
 
-#: src/Common/LinuxKernel.vala:1272
+#: src/Common/LinuxKernel.vala:1267
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -131,19 +132,19 @@ msgstr ""
 "verwijderd.\n"
 " Installeer een andere kernel voordat u deze verwijdert."
 
-#: src/Common/LinuxKernel.vala:1277
+#: src/Common/LinuxKernel.vala:1272
 msgid "Preparing to remove selected kernels"
 msgstr "Bezig met voorbereiden van verwijderen van geselecteerde kernels"
 
-#: src/Common/LinuxKernel.vala:1309 src/Common/LinuxKernel.vala:1362
+#: src/Common/LinuxKernel.vala:1303 src/Common/LinuxKernel.vala:1350
 msgid "Un-install completed"
 msgstr "Deïnstalleren voltooid"
 
-#: src/Common/LinuxKernel.vala:1312 src/Common/LinuxKernel.vala:1365
+#: src/Common/LinuxKernel.vala:1306 src/Common/LinuxKernel.vala:1353
 msgid "Un-install completed with errors"
 msgstr "Deïnstalleren voltooid, maar met fouten"
 
-#: src/Common/LinuxKernel.vala:1325
+#: src/Common/LinuxKernel.vala:1319
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -260,65 +261,54 @@ msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
-#: src/Console/AppConsole.vala:101
-#, fuzzy
-msgid "Admin access is required for this action."
-msgstr ""
-"U heeft administrator-rechten nodig om deze applicatie te kunnen draaien."
-
-#: src/Console/AppConsole.vala:102
-#, fuzzy
-msgid "Run the application as admin with pkexec or sudo."
-msgstr "Draai de applicatie als root of m.b.v. gksu/sudo."
-
-#: src/Console/AppConsole.vala:178 src/Gtk/AppGtk.vala:143
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:143
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
-#: src/Console/AppConsole.vala:180 src/Console/AppConsole.vala:286
-#: src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:263
+#: src/Console/AppConsole.vala:291
 #, fuzzy
 msgid "Run"
 msgstr "Bezig met draaien"
 
-#: src/Console/AppConsole.vala:180
+#: src/Console/AppConsole.vala:171
 #, fuzzy
 msgid "to list all options"
 msgstr "Alle opties weergeven"
 
-#: src/Console/AppConsole.vala:259 src/Console/AppConsole.vala:294
+#: src/Console/AppConsole.vala:236 src/Console/AppConsole.vala:271
 msgid "No kernels specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:242
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Er zijn meerdere te installeren kernels geselecteerd. Selecteer er slechts "
 "één."
 
-#: src/Console/AppConsole.vala:283 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:260 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "De vereiste versie kan niet worden gevonden"
 
-#: src/Console/AppConsole.vala:286
+#: src/Console/AppConsole.vala:263
 msgid "and use a version string listed in first column"
 msgstr ""
 
-#: src/Console/AppConsole.vala:313
+#: src/Console/AppConsole.vala:290
 msgid "Command not specified"
 msgstr ""
 
-#: src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:291
 #, fuzzy
 msgid "to list all commands"
 msgstr "Alle opties weergeven"
 
-#: src/Console/AppConsole.vala:366 src/Console/AppConsole.vala:382
+#: src/Console/AppConsole.vala:343 src/Console/AppConsole.vala:359
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Beschikbare pakketten"
 
-#: src/Console/AppConsole.vala:369 src/Console/AppConsole.vala:385
+#: src/Console/AppConsole.vala:346 src/Console/AppConsole.vala:362
 #: src/Gtk/MainWindow.vala:335
 msgid "Install"
 msgstr "Installeren"
@@ -347,13 +337,12 @@ msgstr "Status"
 msgid "Refresh"
 msgstr "Verversen"
 
-#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668 src/Utility/TeeJee.System.vala:145
+#: src/Gtk/MainWindow.vala:326 src/Utility/TeeJee.System.vala:42
 msgid "Internet connection is not active"
 msgstr "U bent niet verbonden met het internet"
 
-#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:537
-#: src/Gtk/MainWindow.vala:668
+#: src/Gtk/MainWindow.vala:326 src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:661
 msgid "No Internet"
 msgstr "Geen internetverbinding"
 
@@ -381,37 +370,57 @@ msgstr "Verwijderen"
 msgid "Select the kernels to remove"
 msgstr "Selecteer de te verwijderen kernels"
 
+#: src/Gtk/MainWindow.vala:392 src/Gtk/MainWindow.vala:426
+#: src/Gtk/MainWindow.vala:693
+msgid "Close window to exit..."
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:400
 msgid "Purge"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:439
+#: src/Gtk/MainWindow.vala:433
 msgid "Changes"
 msgstr "Wijzigingen"
 
-#: src/Gtk/MainWindow.vala:450 src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/MainWindow.vala:444 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Gtk/MainWindow.vala:471
+#: src/Gtk/MainWindow.vala:465
 msgid "About"
 msgstr "Over"
 
-#: src/Gtk/MainWindow.vala:515
+#: src/Gtk/MainWindow.vala:509
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kernel-upgradehulpmiddel voor op Ubuntu-gebaseerde distributies"
 
-#: src/Gtk/MainWindow.vala:516
+#: src/Gtk/MainWindow.vala:510
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:516
+#: src/Gtk/MainWindow.vala:510
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:556
+#: src/Gtk/MainWindow.vala:531 src/Gtk/MainWindow.vala:661
+#, fuzzy
+msgid "Internet connection is not active."
+msgstr "U bent niet verbonden met het internet"
+
+#: src/Gtk/MainWindow.vala:550
 msgid "Refreshing..."
 msgstr "Bezig met verversen..."
+
+#: src/Gtk/MainWindow.vala:644
+#, fuzzy
+msgid "available"
+msgstr "Beschikbare pakketten"
+
+#: src/Gtk/MainWindow.vala:656
+#, fuzzy
+msgid "Already Installed"
+msgstr "Geïnstalleerd"
 
 #: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:153
