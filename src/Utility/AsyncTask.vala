@@ -155,7 +155,6 @@ public abstract class AsyncTask : GLib.Object{
 			log_error ("AsyncTask.begin()");
 			log_error(e.message);
 			has_started = false;
-			//status = AppStatus.FINISHED;
 		}
 
 		return has_started;
@@ -284,8 +283,6 @@ public abstract class AsyncTask : GLib.Object{
 			// there may be pending operations which may throw an error
 		}
 
-		read_exit_code();
-		
 		status_line = "";
 		err_line = "";
 		out_line = "";
@@ -293,8 +290,10 @@ public abstract class AsyncTask : GLib.Object{
 		timer.stop();
 
 		log_debug("AsyncTask:finish(): before finish_task()");
+
 		finish_task();
-		//dir_delete(working_dir);
+
+		dir_delete(working_dir);
 
 		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) {
 			status = AppStatus.FINISHED;
@@ -304,21 +303,6 @@ public abstract class AsyncTask : GLib.Object{
 	}
 
 	protected abstract void finish_task();
-
-	protected int read_exit_code(){
-		exit_code = -1;
-		string status_file = file_parent(script_file) + "/status";
-		log_debug("read_exit_code():");
-		log_debug("working_dir="+working_dir);
-		log_debug("script_file="+script_file);
-		log_debug("status_file="+status_file);
-		if (file_exists(status_file)){
-			string s = file_read(status_file);
-			exit_code = int.parse(s);
-		}
-		log_debug("exit_code=%d".printf(exit_code));
-		return exit_code;
-	}
 
 	public bool is_running(){
 		return (status == AppStatus.RUNNING);

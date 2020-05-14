@@ -60,30 +60,23 @@ namespace TeeJee.ProcessHelper{
 		catch (SpawnError e) {log_error (e.message);}
 	}
 
-	public string? save_bash_script_temp (string cmds, string? file = null,
-		bool force_locale = true, bool supress_errors = false){
+	public string? save_bash_script_temp (string cmds, string? file = null){
+		/* Creates a temporary bash script with given commands
+		 * Returns the script file path */
 
 		string f = file;
 		if ((file == null) || (file.length == 0)){
 			string t_dir = create_tmp_dir();
 			f = get_temp_file_path(t_dir) + ".sh";
 		}
-		
-		/* Creates a temporary bash script with given commands
-		 * Returns the script file path */
 
-		string s = "#!/bin/bash\n\n";
-		if (force_locale) s += "LANG=C\n";
-		s += "\n"
-		+ "%s\n".printf(cmds)
-		+ "exitCode=${?}\n"
-		+ "echo ${exitCode} > ${exitCode}\n"
-		+ "echo ${exitCode} > status\n";
+		string s = "#!/bin/bash\n"
+		+ cmds + "\n";
 
 		log_debug("save_bash_script_temp("+file+"):"+f);
 
 		if(file_write(f,s)){
-			chmod (f, "u+x");
+			GLib.FileUtils.chmod (f, 0755);
 			return f;
 		}
 		return null;
@@ -95,25 +88,8 @@ namespace TeeJee.ProcessHelper{
 
 		return d + "/" + timestamp_numeric() + (new Rand()).next_int().to_string();
 	}
-	
+
 	// find process -------------------------------
-	
-	// dep: which
-	public string get_cmd_path (string cmd_tool){
-
-		/* Returns the full path to a command */
-
-		try {
-			int exitCode;
-			string stdout, stderr;
-			Process.spawn_command_line_sync("which " + cmd_tool, out stdout, out stderr, out exitCode);
-	        return stdout;
-		}
-		catch (Error e){
-	        log_error (e.message);
-	        return "";
-	    }
-	}
 
 	// dep: ps TODO: Rewrite using /proc
 	public bool process_is_running(long pid){

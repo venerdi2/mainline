@@ -90,39 +90,33 @@ public class DownloadTask : AsyncTask{
 		string list = "";
 		string list_file = working_dir+"/download.list";
 		foreach(var item in downloads){
-			list += "%s\n".printf(item.source_uri);
-			list += "  gid=%s\n".printf(item.gid);
-			list += "  dir=%s\n".printf(item.partial_dir);
-			list += "  out=%s\n".printf(item.file_name);
+			list += item.source_uri + "\n"
+			+ "  gid=" + item.gid + "\n"
+			+ "  dir=" + item.partial_dir + "\n"
+			+ "  out=" + item.file_name + "\n";
 		}
 		file_write(list_file, list);
 
-		//log_debug("LinuxKernel.CURRENT_USER="+LinuxKernel.CURRENT_USER);
-		//log_debug("App.user_login="+App.user_login);
-		//log_debug("saved download list: %s".printf(list_file));
-
-		chown(list_file,App.user_login,App.user_login);
-
-		string cmd = "aria2c";
-		cmd += " --no-netrc true";
-		cmd += " -i '%s'".printf(escape_single_quote(list_file));
-		cmd += " --show-console-readout=false";
-		cmd += " --summary-interval=1";
-		cmd += " --auto-save-interval=1";
-		cmd += " --human-readable=false";
-		cmd += " --enable-color=false";
-		cmd += " --allow-overwrite";
-		cmd += " --connect-timeout=%d".printf(connect_timeout_secs);
-		cmd += " --timeout=%d".printf(timeout_secs);
-		cmd += " --max-concurrent-downloads=%d".printf(concurrent_downloads);
-		cmd += " --max-file-not-found=3";
-		cmd += " --retry-wait=2";
+		string cmd = "aria2c"
+		+ " --no-netrc true"
+		+ " -i '%s'".printf(escape_single_quote(list_file))
+		+ " --show-console-readout=false"
+		+ " --summary-interval=1"
+		+ " --auto-save-interval=1"
+		+ " --human-readable=false"
+		+ " --enable-color=false"
+		+ " --allow-overwrite"
+		+ " --connect-timeout=%d".printf(connect_timeout_secs)
+		+ " --timeout=%d".printf(timeout_secs)
+		+ " --max-concurrent-downloads=%d".printf(concurrent_downloads)
+		+ " --max-file-not-found=3"
+		+ " --retry-wait=2";
 
 		log_debug(cmd);
 
 		return cmd;
 	}
-	
+
 	public override void parse_stdout_line(string out_line){
 		if (is_terminated) {
 			return;
@@ -233,17 +227,6 @@ public class DownloadTask : AsyncTask{
 			}
 			dir_delete(d);
 		}
-	}
-
-	public int read_status(){
-		log_debug("read_status:working_dir="+working_dir);
-		var status_file = working_dir + "/status";
-		var f = File.new_for_path(status_file);
-		if (f.query_exists()){
-			string s = file_read(status_file);
-			return int.parse(s);
-		}
-		return -1;
 	}
 }
 

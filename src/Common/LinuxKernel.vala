@@ -444,7 +444,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_debug("check_installed()");
 
 		log_msg(string.nfill(70, '-'));
-		
+
 		foreach(var kern in kernel_list){
 			kern.is_installed = false;
 			kern.is_running = false;
@@ -453,20 +453,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		pkg_list_installed = Package.query_installed_packages();
 
 		var pkg_versions = new Gee.ArrayList<string>();
-		
+
 		foreach(var pkg in pkg_list_installed.values){
 			if (pkg.pname.contains("linux-image")){
 				if (!pkg_versions.contains(pkg.version_installed)){
-					
+
 					pkg_versions.add(pkg.version_installed);
-					
+
 					log_msg("Found installed" + ": %s".printf(pkg.version_installed));
 
 					string kern_name = "%s".printf(pkg.version_installed);
 					var kern = new LinuxKernel(kern_name, false);
 					kern.is_installed = true;
 					kern.set_apt_pkg_list();
-					
+
 					bool found = false;
 					foreach(var kernel in kernel_list){
 						if (kernel.version_main == kern.version_main){
@@ -475,7 +475,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 							break;
 						}
 					}
-					
+
 					if (!found){
 						kernel_list.add(kern);
 					}
@@ -498,11 +498,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// Running: 4.4.0-28-generic
 		// Package: 4.4.0-28.47
-		
+
 		string ver_running = RUNNING_KERNEL.replace("-generic","");
 		var kern_running = new LinuxKernel.from_version(ver_running);
 		kernel_active = null;
-		
+
 		foreach(var kern in kernel_list){
 			if (!kern.is_valid){
 				continue;
@@ -1178,8 +1178,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			dir_create(dl_dir);
-			chown(dl_dir, CURRENT_USER, CURRENT_USER);
-			
+
 			stdout.printf("\n" + _("Downloading") + ": '%s'... \n".printf(file_name));
 			stdout.flush();
 
@@ -1202,7 +1201,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				stdout.printf("\r%-70s\n".printf(_("OK")));
 				stdout.flush();
 
-				chown(file_path, CURRENT_USER, CURRENT_USER);
 			}
 			else{
 				stdout.printf("\r%-70s\n".printf(_("ERROR")));

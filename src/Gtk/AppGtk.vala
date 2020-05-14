@@ -44,13 +44,6 @@ public class AppGtk : GLib.Object {
 
 		Gtk.init(ref args);
 
-		//check dependencies
-		string message;
-		if (!Main.check_dependencies(out message)) {
-			gtk_messagebox("", message, null, true);
-			exit(0);
-		}
-
 		App = new Main(args, true);
 		parse_arguments(args);
 

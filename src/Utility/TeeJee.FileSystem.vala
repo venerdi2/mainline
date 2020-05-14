@@ -60,7 +60,6 @@ namespace TeeJee.FileSystem{
 	}
 
 	public bool file_delete(string file_path, bool show_message = false){
-
 		/* Check and delete file */
 
 		try {
@@ -80,6 +79,7 @@ namespace TeeJee.FileSystem{
 	        log_error(_("Failed to delete file") + ": %s".printf(file_path));
 	        return false;
 	    }
+
 	}
 
 	public string? file_read (string file_path){
@@ -91,15 +91,15 @@ namespace TeeJee.FileSystem{
 
 		try{
 			GLib.FileUtils.get_contents (file_path, out txt, out size);
-				
+
 			return txt;
 		}
 		catch (Error e){
-	        log_error (e.message);
-	        log_error(_("Failed to read file") + ": %s".printf(file_path));
-	    }
+			log_error (e.message);
+			log_error(_("Failed to read file") + ": %s".printf(file_path));
+		}
 
-	    return null;
+		return null;
 	}
 
 	public bool file_write (string f, string contents, bool show_message = false){
@@ -130,8 +130,6 @@ namespace TeeJee.FileSystem{
 				log_debug(_("File saved") + ":" + f);
 			}
 
-			chown(f,App.user_login,App.user_login);
-
 			return true;
 		}
 		catch (Error e) {
@@ -154,7 +152,7 @@ namespace TeeJee.FileSystem{
 				else{
 					log_debug(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
 				}
-				chown(dest_file,App.user_login,App.user_login);
+
 			return true;
 			}
 		}
@@ -191,8 +189,8 @@ namespace TeeJee.FileSystem{
 			}
 		}
 		catch(Error e){
-	        log_error (e.message);
-	        log_error(_("Failed to move file") + ": '%s' → '%s'".printf(src_file, dest_file));
+			log_error (e.message);
+			log_error(_("Failed to move file") + ": '%s' → '%s'".printf(src_file, dest_file));
 		}
 	}
 
@@ -247,7 +245,7 @@ namespace TeeJee.FileSystem{
 			var dir = File.parse_name (d);
 			if (dir.query_exists () == false) {
 				dir.make_directory_with_parents (null);
-				chown(d,App.user_login,App.user_login);
+
 				if (show_message){
 					log_msg(_("Created directory") + ": %s".printf(d));
 				}
@@ -265,9 +263,8 @@ namespace TeeJee.FileSystem{
 	}
 
 	public bool dir_delete (string dir_path, bool show_message = false){
-
 		/* Recursively deletes directory along with contents */
-		
+
 		if (!dir_exists(dir_path)) return true;
 
 		string cmd = "rm -rf '%s'".printf(escape_single_quote(dir_path));
@@ -278,13 +275,14 @@ namespace TeeJee.FileSystem{
 		if (show_message) log_msg(result); else log_debug("dir_delete():"+result);
 
 		return (status == 0);
+
 	}
 
-	public bool chown(string dir_path, string user, string group){
-		string cmd = "chown %s:%s -R '%s'".printf(user, group, escape_single_quote(dir_path));
-		int status = exec_sync(cmd, null, null);
-		return (status == 0);
-	}
+//	public bool chown(string dir_path, string user, string group){
+//		string cmd = "chown %s:%s -R '%s'".printf(user, group, escape_single_quote(dir_path));
+//		int status = exec_sync(cmd, null, null);
+//		return (status == 0);
+//	}
 
 	// misc --------------------
 
@@ -335,14 +333,6 @@ namespace TeeJee.FileSystem{
 
 	public string escape_single_quote(string file_path){
 		return file_path.replace("'","'\\''");
-	}
-
-	// dep: chmod
-	public int chmod (string file, string permission){
-
-		/* Change file permissions */
-		string cmd = "chmod %s '%s'".printf(permission, escape_single_quote(file));
-		return exec_sync (cmd, null, null);
 	}
 
 }

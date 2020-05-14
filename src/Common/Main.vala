@@ -100,32 +100,6 @@ public class Main : GLib.Object{
 	}
 
 	// helpers ------------
-	
-	public static bool check_dependencies(out string msg) {
-		
-		string[] dependencies = { "apt-get", "aptitude", "aria2c", "dpkg", "gpg", "lsb_release", "pgrep", "pkexec", "uname" };
-		// bash bc cat chmod chown cd cp du echo env find gdbus gzip gunzip id kill ln mv pidof ps read realpath rm setsid sh stat tar wc which while xdg-open
-
-		msg = "";
-		
-		string path;
-		foreach(string cmd_tool in dependencies) {
-			path = get_cmd_path (cmd_tool);
-			if ((path == null) || (path.length == 0)) {
-				msg += " * " + cmd_tool + "\n";
-			}
-		}
-
-		if (msg.length > 0) {
-			msg = _("Commands listed below are not available on this system") + ":\n\n" + msg + "\n";
-			msg += _("Please install required packages and try again");
-			log_msg(msg);
-			return false;
-		}
-		else{
-			return true;
-		}
-	}
 
 	public void init_paths(string custom_user_login = ""){
 
@@ -182,8 +156,6 @@ public class Main : GLib.Object{
 
 	    log_debug("Saved config file: %s".printf(APP_CONFIG_FILE));
 
-	    chown(APP_CONFIG_FILE, user_login, user_login);
-
 		update_notification_files();
 	}
 
@@ -235,7 +207,6 @@ public class Main : GLib.Object{
 
 	// begin ------------
 
-
 	private void update_startup_script(){
 
 		// construct the commandline argument for "sleep"
@@ -282,7 +253,6 @@ public class Main : GLib.Object{
 
 		file_write(STARTUP_SCRIPT_FILE,s);
 
-		chown(STARTUP_SCRIPT_FILE, user_login, user_login);
 	}
 
 	private void update_startup_desktop_file(){
@@ -299,7 +269,6 @@ public class Main : GLib.Object{
 
 			file_write(STARTUP_DESKTOP_FILE, txt);
 
-			chown(STARTUP_DESKTOP_FILE, user_login, user_login);
 		}
 		else{
 			file_delete(STARTUP_DESKTOP_FILE);
