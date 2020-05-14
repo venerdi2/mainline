@@ -578,7 +578,7 @@ msgstr "Невдалося перемістити файл"
 #: src/Utility/TeeJee.FileSystem.vala:250
 #: src/Utility/TeeJee.FileSystem.vala:253
 msgid "Created directory"
-msgstr "Використовувана кеш-папка"
+msgstr "Створений каталог"
 
 #: src/Utility/TeeJee.FileSystem.vala:260
 msgid "Failed to create dir"
