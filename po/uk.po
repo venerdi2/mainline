@@ -356,7 +356,7 @@ msgstr "Виберіть ядра для видалення"
 #: src/Gtk/MainWindow.vala:386 src/Gtk/MainWindow.vala:420
 #: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
-msgstr ""
+msgstr "Закрийте вікно, щоб вийти..."
 
 #: src/Gtk/MainWindow.vala:394
 msgid "Purge"
