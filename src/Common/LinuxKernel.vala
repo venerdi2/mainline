@@ -356,8 +356,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		check_updates();
 
-		//check_available();   // was commented?
-
 		task_is_running = false;
 	}
 
@@ -551,45 +549,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		});
 
 		log_msg(string.nfill(70, '-'));
-	}
-
-	public static void check_available(){
-
-		log_debug("check_available()");
-		
-		var list = Package.query_available_packages("^linux-image");
-
-		var pkg_versions = new Gee.ArrayList<string>();
-		
-		foreach(var pkg in list.values){
-			if (pkg.pname.contains("linux-image")){
-				if (!pkg_versions.contains(pkg.version_installed)){
-					
-					pkg_versions.add(pkg.version_installed);
-					log_msg("Found upgrade" + ": %s".printf(pkg.version_installed));
-
-					string kern_name = "%s".printf(pkg.version_installed);
-					var kern = new LinuxKernel(kern_name, false);
-					kern.is_installed = false;
-					
-					bool found = false;
-					foreach(var kernel in kernel_list){
-						if (kernel.version_main == kern.version_main){
-							found = true;
-							break;
-						}
-					}
-					
-					if (!found){
-						kernel_list.add(kern);
-					}
-				}
-			}
-		}
-
-		kernel_list.sort((a,b)=>{
-			return a.compare_to(b) * -1;
-		});
 	}
 
 	public static void check_updates(){
