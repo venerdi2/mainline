@@ -1,3 +1,13 @@
+mainline (1.0.10) unstable; urgency=medium
+
+  * Notifications
+  When any action button pressed, close the notification
+  Once a notification for a given kernel has been sent, don't notify for that kernel again during the same login session
+  * Don't run check_updates() twice for no reason
+  * Expose concurrent_downloads as a configurable setting
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 19 May 2020 17:32:48 -0400
+
 mainline (1.0.9) unstable; urgency=medium
 
   * Slick new desktop notifications with action buttons thanks to https://github.com/vlevit/notify-send.sh

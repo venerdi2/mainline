@@ -46,8 +46,6 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Better desktop notification behavior
 
 ### TODO & WIP
-* notifications - if you've seen a notification for a given kernel and dismissed it, don't display it again, at least not in the same login session.
 * notifications - make the bg process detect when the user logs off and exit itself.
 * notifications - start/restart/stop the bg process when the user changes settings instead of only at logon/logoff
-* notifications - you press one of the buttons, also close the notification
 * temp files - do something less broken when a user runs ex: "sudo mainline --install-latest"
