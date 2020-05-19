@@ -95,6 +95,10 @@ public class AppGtk : GLib.Object {
 				LOG_DEBUG = true;
 				break;
 
+			case "--close-notification":
+				OSDNotify.notify_close();
+				break;
+
 			case "--help":
 			case "--h":
 			case "-h":
@@ -114,13 +118,14 @@ public class AppGtk : GLib.Object {
 				App.command = "install";
 				App.requested_version = args[++k];
 				break;
-				
+
 			// options without argument --------------------------
 			
 			case "--help":
 			case "--h":
 			case "-h":
 			case "--debug":
+			case "--close-notification":
 				// already handled - do nothing
 				break;
 
@@ -156,4 +161,3 @@ public class AppGtk : GLib.Object {
 		return msg;
 	}
 }
-

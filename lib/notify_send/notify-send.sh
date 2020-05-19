@@ -132,7 +132,7 @@ notify() {
     maybe_run_action_handler
 }
 
-notify_close () {
+notify_close() {
     gdbus call "${NOTIFY_ARGS[@]}"  --method org.freedesktop.Notifications.CloseNotification "$1" >/dev/null
 }
 
@@ -285,13 +285,12 @@ while (( $# > 0 )) ; do
             ;;
         -R|--replace-file|--replace-file=*)
             [[ "$1" = --replace-file=* ]] && filename="${1#*=}" || { shift; filename="$1"; }
-            if [[ -s "$filename" ]]; then
-                REPLACE_ID="$(< $filename)"
-            fi
+            [[ -s "$filename" ]] && read REPLACE_ID < $filename
             STORE_ID="$filename"
             ;;
         -s|--close|--close=*)
             [[ "$1" = --close=* ]] && close_id="${1#*=}" || { shift; close_id="$1"; }
+			case "$close_id" in ""|R|replace-file) [[ "${REPLACE_ID}" ]] && close_id=${REPLACE_ID} ;; esac
             notify_close "$close_id"
             exit $?
             ;;

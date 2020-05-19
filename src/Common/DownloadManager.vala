@@ -9,9 +9,9 @@ public class DownloadTask : AsyncTask{
 
 	// settings
 	public bool status_in_kb = false;
-	public int connect_timeout_secs = 60;
 	public int timeout_secs = 60;
-	public int concurrent_downloads = 20;
+	public int connect_timeout = App.connect_timeout_seconds;
+	public int max_concurrent = App.concurrent_downloads;
 
 	// download lists
 	private Gee.ArrayList<DownloadItem> downloads;
@@ -106,9 +106,9 @@ public class DownloadTask : AsyncTask{
 		+ " --human-readable=false"
 		+ " --enable-color=false"
 		+ " --allow-overwrite"
-		+ " --connect-timeout=%d".printf(connect_timeout_secs)
+		+ " --connect-timeout=%d".printf(connect_timeout)
 		+ " --timeout=%d".printf(timeout_secs)
-		+ " --max-concurrent-downloads=%d".printf(concurrent_downloads)
+		+ " --max-concurrent-downloads=%d".printf(max_concurrent)
 		+ " --max-file-not-found=3"
 		+ " --retry-wait=2";
 

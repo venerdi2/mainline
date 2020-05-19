@@ -31,10 +31,9 @@ public class OSDNotify : GLib.Object {
 	private static DateTime dt_last_notification = null;
 	public const int MIN_NOTIFICATION_INTERVAL = 3;
 
-	public static int notify_send (string summary = "", string _body = "", string extra_action = ""){ 
-
-		/* Displays notification bubble on the desktop */
-
+	// send a desktop notification
+	// re-use the notification id for subsequent re-sends/updates
+	public static int notify_send (string summary = "", string body = "", Gee.ArrayList<string> actions = new Gee.ArrayList<string>(), string close_action = ""){ 
 		int retVal = 0;
 
 		long seconds = 9999;
@@ -46,30 +45,23 @@ public class OSDNotify : GLib.Object {
 
 		if (seconds > MIN_NOTIFICATION_INTERVAL){
 
-			string action = BRANDING_SHORTNAME+"-gtk";
-			string body = _body;
-
-			if (LOG_DEBUG) {
-				action = APP_LIB_DIR+"/notify-action-debug.sh";
-				if (body!="") body += "\\n\\n";
-				body += "("+action+")";
-			}
-
 			string s =
 				APP_LIB_DIR+"/notify_send/notify-send.sh"
+				+ " -R "+App.NOTIFICATION_ID_FILE
 				+ " -u low"
 				+ " -c info"
 				+ " -a "+BRANDING_SHORTNAME
 				+ " -i "+BRANDING_SHORTNAME
-				+ " -t 0"
-				+ " -R "+App.NOTIFICATION_ID_FILE
-				+ " -o \""+_("Show")+":"+action+"\"";
-				if (extra_action!="") s += " -o \""+extra_action+"\"";
+				+ " -t 0";
+
+			if (close_action != "") s += " -l \""+close_action+"\"";
+
+			foreach (string a in actions) s += " -o \""+a+"\"";
+
 				s += " \""+summary+"\""
 				+ " \""+body+"\"";
 
-			log_debug(s);
-
+			log_debug (s);
 			exec_async (s);
 
 			dt_last_notification = new DateTime.now_local();
@@ -77,6 +69,18 @@ public class OSDNotify : GLib.Object {
 		}
 
 		return retVal;
+	}
+
+	// closes a previously sent notification
+	// modified version of notify-send.sh
+	// to let -s option get ID from -R file
+	public static void notify_close () { 
+		string s =
+			APP_LIB_DIR+"/notify_send/notify-send.sh"
+			+ " -R "+App.NOTIFICATION_ID_FILE
+			+ " -s";
+			log_debug (s);
+			exec_async (s);
 	}
 
 }

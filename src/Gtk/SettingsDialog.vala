@@ -21,7 +21,6 @@
  *
  */
 
-
 using Gtk;
 using Gee;
 
@@ -218,17 +217,37 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_start = 6;
 		hbox.add (label);
 
-		adjustment = new Gtk.Adjustment(App.connection_timeout_seconds, 1, 20, 1, 1, 0);
+		adjustment = new Gtk.Adjustment(App.connect_timeout_seconds, 1, 60, 1, 1, 0);
 		spin = new Gtk.SpinButton (adjustment, 1, 0);
 		spin.xalign = (float) 0.5;
 		hbox.add(spin);
+		var spin_timeout = spin;
 
 		spin.changed.connect(()=>{
-			App.connection_timeout_seconds = (int) spin.get_value();
+			App.connect_timeout_seconds = (int) spin_timeout.get_value();
 		});
 
 		label = new Label(_("seconds"));
         hbox.add(label);
+
+        // concurrent downloads
+		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		vbox_main.add (hbox);
+
+		label = new Label(_("Max concurrent downloads"));
+		label.xalign = (float) 0.0;
+		label.margin_start = 6;
+		hbox.add (label);
+
+		adjustment = new Gtk.Adjustment(App.concurrent_downloads, 1, 25, 1, 1, 0);
+		spin = new Gtk.SpinButton (adjustment, 1, 0);
+		spin.xalign = (float) 0.5;
+		hbox.add(spin);
+		var spin_concurrent = spin;
+
+		spin.changed.connect(()=>{
+			App.concurrent_downloads = (int) spin_concurrent.get_value();
+		});
 
 		// actions -------------------------
 		

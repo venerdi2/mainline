@@ -79,8 +79,9 @@ public class Main : GLib.Object{
 	public bool notify_bubble = true;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
+	public int connect_timeout_seconds = 15;
+	public int concurrent_downloads = 4;
 	public bool skip_connection_check = false;
-	public int connection_timeout_seconds = 15;
 	public bool confirm = true;
 
 	// constructors ------------
@@ -136,7 +137,8 @@ public class Main : GLib.Object{
 		config.set_string_member("show_prev_majors", LinuxKernel.show_prev_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
-        config.set_string_member("connection_timeout_seconds", connection_timeout_seconds.to_string());
+        config.set_string_member("connect_timeout_seconds", connect_timeout_seconds.to_string());
+        config.set_string_member("concurrent_downloads", concurrent_downloads.to_string());
         config.set_string_member("skip_connection_check", skip_connection_check.to_string());
 
 		var json = new Json.Generator();
@@ -189,7 +191,8 @@ public class Main : GLib.Object{
 		notify_bubble = json_get_bool(config, "notify_bubble", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
-		connection_timeout_seconds = json_get_int(config, "connection_timeout_seconds", 15);
+		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", 15);
+		concurrent_downloads = json_get_int(config, "concurrent_downloads", 4);
 		skip_connection_check = json_get_bool(config, "skip_connection_check", false);
 
 		LinuxKernel.hide_unstable = json_get_bool(config, "hide_unstable", true);
@@ -226,10 +229,8 @@ public class Main : GLib.Object{
 			count = App.notify_interval_value;
 			break;
 		}
-		
-		if (file_exists(STARTUP_SCRIPT_FILE)){
-			file_delete(STARTUP_SCRIPT_FILE);
-		}
+
+		file_delete(STARTUP_SCRIPT_FILE);
 
 		// see OSDNotify.vala notify-send.sh -R
 		string s =

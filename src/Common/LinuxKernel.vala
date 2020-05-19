@@ -320,6 +320,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		check_installed();
 
+		//check_updates("query_thread()");
 		check_updates();
 
 		task_is_running = false;
@@ -501,7 +502,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// scan kernel_list for versions newer than latest installed
+	//public static void check_updates(string from = ""){
 	public static void check_updates(){
+		//log_debug("check_updates("+from+")");
 		log_debug("check_updates()");
 		kernel_update_major = null;
 		kernel_update_minor = null;
@@ -635,7 +638,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		query(true);
 
-		check_updates();
+		// already done in query() -> query_tread() ?
+		//check_updates("install_latest()");
 
 		var kern_major = LinuxKernel.kernel_update_major;
 		
@@ -772,7 +776,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				return (x - y);
 			}
 			else if ((x == 0) && (y == 0)){
-				// this one place where -rc# get compared
+				// BKW - this is one place where "-rc3" gets compared to "-rc4" etc
 				// both are strings
 				//log_debug("strcmp("+arr_a[i]+","+arr_b[i]+")");
 				return strcmp(arr_a[i], arr_b[i]);
