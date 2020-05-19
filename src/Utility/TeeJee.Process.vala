@@ -31,18 +31,8 @@ namespace TeeJee.ProcessHelper{
 
 	// execute process ---------------------------------
 
-	public string create_tmp_dir(){
-		string d = App.TMP_PREFIX+"_%s".printf(random_string());
-		dir_create(d);
-		return d;
-	}
-	
+	// execute command synchronously
 	public int exec_sync (string cmd, out string? std_out = null, out string? std_err = null){
-
-		/* Executes single command synchronously.
-		 * Pipes and multiple commands are not supported.
-		 * std_out, std_err can be null. Output will be written to terminal if null. */
-
 		try {
 			int status;
 			Process.spawn_command_line_sync (cmd, out std_out, out std_err, out status);
@@ -60,9 +50,24 @@ namespace TeeJee.ProcessHelper{
 		catch (SpawnError e) {log_error (e.message);}
 	}
 
+	// temp files -------------------------------------
+
+	// create a unique temp dir rooted at App.TMP_PREFIX
+	// return full path to created dir
+	public string create_tmp_dir(){
+		string d = App.TMP_PREFIX+"_%s".printf(random_string());
+		dir_create(d);
+		return d;
+	}
+
+	// TODO replace with mkstemp
+	public string get_temp_file_path(string d){
+		return d + "/" + timestamp_numeric() + (new Rand()).next_int().to_string();
+	}
+
+	// create a temporary bash script
+	// return the script file path
 	public string? save_bash_script_temp (string cmds, string? file = null){
-		/* Creates a temporary bash script with given commands
-		 * Returns the script file path */
 
 		string f = file;
 		if ((file == null) || (file.length == 0)){
@@ -80,13 +85,6 @@ namespace TeeJee.ProcessHelper{
 			return f;
 		}
 		return null;
-	}
-
-	public string get_temp_file_path(string d){
-
-		/* Generates temporary file path */
-
-		return d + "/" + timestamp_numeric() + (new Rand()).next_int().to_string();
 	}
 
 	// find process -------------------------------

@@ -124,8 +124,6 @@ public class Main : GLib.Object{
 		LinuxKernel.CURRENT_USER_HOME = user_home;
 
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
-
-		//log_debug("CACHE_DIR=%s".printf(LinuxKernel.CACHE_DIR));
 	}
 	
 	public void save_app_config(){

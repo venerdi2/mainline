@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-18 07:56-0400\n"
+"POT-Creation-Date: 2020-05-18 20:12-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -21,105 +21,97 @@ msgstr "Дистрибутив"
 msgid "Architecture"
 msgstr "Системна архитектура"
 
-#: src/Common/LinuxKernel.vala:231
-msgid "Index is stale"
-msgstr "Індекс є застарілим"
-
-#: src/Common/LinuxKernel.vala:234
-msgid "Index is fresh"
-msgstr "Індекс є актуальним"
-
-#: src/Common/LinuxKernel.vala:339
+#: src/Common/LinuxKernel.vala:305
 msgid "Fetching index..."
 msgstr "Отримання індекса ..."
 
-#: src/Common/LinuxKernel.vala:380
+#: src/Common/LinuxKernel.vala:341
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Отримання індекса з kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:653
+#: src/Common/LinuxKernel.vala:598
 msgid "Could not find running kernel in list!"
 msgstr "Не вдалося знайти запущене ядро у списку!"
 
-#: src/Common/LinuxKernel.vala:659
+#: src/Common/LinuxKernel.vala:604
 msgid "Could not find any kernels to remove"
 msgstr "Не вдалося знайти жодне ядро для вилучення"
 
-#: src/Common/LinuxKernel.vala:668
+#: src/Common/LinuxKernel.vala:613
 msgid "The following kernels will be removed:"
 msgstr "Наступні ядра будуть видалені:"
 
-#: src/Common/LinuxKernel.vala:675
+#: src/Common/LinuxKernel.vala:620
 msgid "Continue ?"
 msgstr "Продовжувати ?"
 
-#: src/Common/LinuxKernel.vala:703 src/Console/AppConsole.vala:302
+#: src/Common/LinuxKernel.vala:644 src/Console/AppConsole.vala:302
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Common/LinuxKernel.vala:714 src/Console/AppConsole.vala:309
+#: src/Common/LinuxKernel.vala:655 src/Console/AppConsole.vala:309
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Common/LinuxKernel.vala:722 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:663 src/Console/AppConsole.vala:314
 #: src/Console/AppConsole.vala:364
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
-#: src/Common/LinuxKernel.vala:732
+#: src/Common/LinuxKernel.vala:673
 #, fuzzy, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Встановити Linux v% s? (так/ні): "
 
-#: src/Common/LinuxKernel.vala:998
+#: src/Common/LinuxKernel.vala:935
 msgid "Packages Available"
 msgstr "Доступні пакети"
 
-#: src/Common/LinuxKernel.vala:1006
+#: src/Common/LinuxKernel.vala:943
 msgid "Packages Installed"
 msgstr "Встановлені пакети"
 
-#: src/Common/LinuxKernel.vala:1090
+#: src/Common/LinuxKernel.vala:1026
 msgid "Available Kernels"
 msgstr "Доступні ядра"
 
-#: src/Common/LinuxKernel.vala:1107 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1033 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Встановлено"
 
-#: src/Common/LinuxKernel.vala:1107 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
+#: src/Common/LinuxKernel.vala:1033 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:625 src/Gtk/MainWindow.vala:639
 msgid "Running"
 msgstr "Використовується"
 
-#: src/Common/LinuxKernel.vala:1141
+#: src/Common/LinuxKernel.vala:1070
 msgid "Downloading"
 msgstr "Завантаження"
 
-#: src/Common/LinuxKernel.vala:1160
+#: src/Common/LinuxKernel.vala:1089
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "Добре"
 
-#: src/Common/LinuxKernel.vala:1165
+#: src/Common/LinuxKernel.vala:1094
 msgid "ERROR"
 msgstr "ПОМИЛКА"
 
-#: src/Common/LinuxKernel.vala:1179 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1108 src/Gtk/MainWindow.vala:647
 msgid "This kernel is already installed."
 msgstr "Це ядро вже встановлено."
 
-#: src/Common/LinuxKernel.vala:1205
+#: src/Common/LinuxKernel.vala:1134
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Установка завершена. Для використання нового ядра потрібна перезавантаження."
 
-#: src/Common/LinuxKernel.vala:1208
+#: src/Common/LinuxKernel.vala:1137
 msgid "Installation completed with errors"
 msgstr "Установка завершена з помилками"
 
-#: src/Common/LinuxKernel.vala:1224
+#: src/Common/LinuxKernel.vala:1152
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -127,19 +119,19 @@ msgstr ""
 "Це ядро зараз працює і не може бути видалено. \n"
 "Встановіть інше ядро, перш ніж видаляти його."
 
-#: src/Common/LinuxKernel.vala:1229
+#: src/Common/LinuxKernel.vala:1157
 msgid "Preparing to remove selected kernels"
 msgstr "Підготовка до видалення вибраних ядер"
 
-#: src/Common/LinuxKernel.vala:1260 src/Common/LinuxKernel.vala:1307
+#: src/Common/LinuxKernel.vala:1188 src/Common/LinuxKernel.vala:1235
 msgid "Un-install completed"
 msgstr "Видалення завершено"
 
-#: src/Common/LinuxKernel.vala:1263 src/Common/LinuxKernel.vala:1310
+#: src/Common/LinuxKernel.vala:1191 src/Common/LinuxKernel.vala:1238
 msgid "Un-install completed with errors"
 msgstr "Видалення завершено з помилками"
 
-#: src/Common/LinuxKernel.vala:1276
+#: src/Common/LinuxKernel.vala:1204
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -147,11 +139,11 @@ msgstr ""
 "Це ядро наразі працює і його неможливо видалити.\n"
 " Встановіть інше ядро перед тим, як видалити его."
 
-#: src/Common/Main.vala:238
+#: src/Common/Main.vala:236
 msgid "Called from"
 msgstr "Викликано з"
 
-#: src/Common/Main.vala:250
+#: src/Common/Main.vala:248
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Повідомлення вимкнено"
@@ -202,7 +194,7 @@ msgstr "Встановіть конкретне основне ядро"
 msgid "Uninstall specified kernels"
 msgstr "Видаліть конкретні ядра"
 
-#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:395
+#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
 msgid "Remove installed kernels older than running kernel"
 msgstr "Видаліть встановлені ядра, старші за запущене ядро"
 
@@ -292,7 +284,7 @@ msgid "Kernel %s Available"
 msgstr "Доступні пакети"
 
 #: src/Console/AppConsole.vala:339 src/Console/AppConsole.vala:355
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Встановити"
 
@@ -316,93 +308,93 @@ msgstr "Ядро"
 msgid "Status"
 msgstr "Стан"
 
-#: src/Gtk/MainWindow.vala:317
+#: src/Gtk/MainWindow.vala:314
 msgid "Refresh"
 msgstr "Оновити"
 
-#: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
+#: src/Gtk/MainWindow.vala:321 src/Utility/TeeJee.System.vala:42
 msgid "Internet connection is not active"
 msgstr "Інтернет з'єднання не активно"
 
-#: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:525
-#: src/Gtk/MainWindow.vala:655
+#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:522
+#: src/Gtk/MainWindow.vala:652
 msgid "No Internet"
 msgstr "Інтернету немає"
 
-#: src/Gtk/MainWindow.vala:342
+#: src/Gtk/MainWindow.vala:339
 msgid "Multiple Kernels Selected"
 msgstr "Вибрано кілька ядер"
 
-#: src/Gtk/MainWindow.vala:342
+#: src/Gtk/MainWindow.vala:339
 msgid "Select a single kernel to install"
 msgstr "Виберіть одне ядро для встановлення"
 
-#: src/Gtk/MainWindow.vala:345 src/Gtk/MainWindow.vala:356
+#: src/Gtk/MainWindow.vala:342 src/Gtk/MainWindow.vala:353
 msgid "Not Selected"
 msgstr "Невибрано"
 
-#: src/Gtk/MainWindow.vala:345
+#: src/Gtk/MainWindow.vala:342
 msgid "Select the kernel to install"
 msgstr "Виберіть ядро для встановлення"
 
-#: src/Gtk/MainWindow.vala:350
+#: src/Gtk/MainWindow.vala:347
 msgid "Remove"
 msgstr "Видалити"
 
-#: src/Gtk/MainWindow.vala:356
+#: src/Gtk/MainWindow.vala:353
 msgid "Select the kernels to remove"
 msgstr "Виберіть ядра для видалення"
 
-#: src/Gtk/MainWindow.vala:386 src/Gtk/MainWindow.vala:420
-#: src/Gtk/MainWindow.vala:687
+#: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
+#: src/Gtk/MainWindow.vala:684
 msgid "Close window to exit..."
 msgstr "Закрийте вікно, щоб вийти..."
 
-#: src/Gtk/MainWindow.vala:394
+#: src/Gtk/MainWindow.vala:391
 msgid "Purge"
 msgstr "Чистити"
 
-#: src/Gtk/MainWindow.vala:427
+#: src/Gtk/MainWindow.vala:424
 msgid "Changes"
 msgstr "Зміни"
 
-#: src/Gtk/MainWindow.vala:438 src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/MainWindow.vala:435 src/Gtk/SettingsDialog.vala:52
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/Gtk/MainWindow.vala:459
+#: src/Gtk/MainWindow.vala:456
 msgid "About"
 msgstr "Про программу"
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:500
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
-#: src/Gtk/MainWindow.vala:504
+#: src/Gtk/MainWindow.vala:501
 #, fuzzy
 msgid "Forked"
 msgstr "Роздвоєний"
 
-#: src/Gtk/MainWindow.vala:504
+#: src/Gtk/MainWindow.vala:501
 #, fuzzy
 msgid "Original"
 msgstr "Оригінальний"
 
-#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
+#: src/Gtk/MainWindow.vala:522 src/Gtk/MainWindow.vala:652
 #, fuzzy
 msgid "Internet connection is not active."
 msgstr "Інтернет з'єднання не активно"
 
-#: src/Gtk/MainWindow.vala:544
+#: src/Gtk/MainWindow.vala:541
 msgid "Refreshing..."
 msgstr "Оновлення..."
 
-#: src/Gtk/MainWindow.vala:638
+#: src/Gtk/MainWindow.vala:635
 #, fuzzy
 msgid "available"
 msgstr "Доступні пакети"
 
-#: src/Gtk/MainWindow.vala:650
+#: src/Gtk/MainWindow.vala:647
 #, fuzzy
 msgid "Already Installed"
 msgstr "Встановлено"
@@ -530,61 +522,58 @@ msgstr "Ні"
 msgid "Missing Icon"
 msgstr "Нема значка"
 
-#: src/Utility/TeeJee.FileSystem.vala:70 src/Utility/TeeJee.FileSystem.vala:73
+#: src/Utility/TeeJee.FileSystem.vala:71
 #, fuzzy
 msgid "File deleted"
 msgstr "Файл збережено"
 
-#: src/Utility/TeeJee.FileSystem.vala:79 src/Utility/TeeJee.FileSystem.vala:273
+#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
 #, fuzzy
 msgid "Failed to delete file"
 msgstr "Невдалося записати файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:99
+#: src/Utility/TeeJee.FileSystem.vala:96
 msgid "Failed to read file"
 msgstr "Невдалося прочитати файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:127
-#: src/Utility/TeeJee.FileSystem.vala:130
+#: src/Utility/TeeJee.FileSystem.vala:123
 msgid "File saved"
 msgstr "Файл збережено"
 
-#: src/Utility/TeeJee.FileSystem.vala:137
+#: src/Utility/TeeJee.FileSystem.vala:129
 msgid "Failed to write file"
 msgstr "Невдалося записати файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:150
-#: src/Utility/TeeJee.FileSystem.vala:153
+#: src/Utility/TeeJee.FileSystem.vala:141
 msgid "File copied"
 msgstr "Невдалося скопіювати файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:161
+#: src/Utility/TeeJee.FileSystem.vala:148
 msgid "Failed to copy file"
 msgstr "Невдалося скопіювати файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:171
+#: src/Utility/TeeJee.FileSystem.vala:158
 msgid "File not found"
 msgstr "Файл не знайдено"
 
-#: src/Utility/TeeJee.FileSystem.vala:185
-#: src/Utility/TeeJee.FileSystem.vala:188
+#: src/Utility/TeeJee.FileSystem.vala:171
 msgid "File moved"
 msgstr "Файл переміщено"
 
-#: src/Utility/TeeJee.FileSystem.vala:193
+#: src/Utility/TeeJee.FileSystem.vala:176
 msgid "Failed to move file"
 msgstr "Невдалося перемістити файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:250
-#: src/Utility/TeeJee.FileSystem.vala:253
+#: src/Utility/TeeJee.FileSystem.vala:233
+#: src/Utility/TeeJee.FileSystem.vala:236
 msgid "Created directory"
 msgstr "Створений каталог"
 
-#: src/Utility/TeeJee.FileSystem.vala:260
+#: src/Utility/TeeJee.FileSystem.vala:243
 msgid "Failed to create dir"
 msgstr "Невдалося створити теку"
 
-#: src/Utility/TeeJee.FileSystem.vala:272
+#: src/Utility/TeeJee.FileSystem.vala:255
 msgid "Deleted"
 msgstr ""
 

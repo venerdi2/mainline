@@ -234,6 +234,7 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void tv_refresh(){
+		log_debug("tv_refresh()");
 		var model = new Gtk.ListStore(4, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool), typeof(string));
 
 		Gdk.Pixbuf pix_ubuntu = null;
@@ -252,14 +253,10 @@ public class MainWindow : Gtk.Window{
 		TreeIter iter;
 		bool odd_row = false;
 		foreach(var kern in LinuxKernel.kernel_list) {
-			if (!kern.is_valid){
-				continue;
-			}
-			if (LinuxKernel.hide_unstable && kern.is_unstable){
-				continue;
-			}
-			if (kern.version_maj < LinuxKernel.highest_maj-LinuxKernel.show_prev_majors){
-				continue;
+			if (!kern.is_valid) continue;
+			if (!kern.is_installed) {
+				if (LinuxKernel.hide_unstable && kern.is_unstable) continue;
+				if (kern.version_maj < LinuxKernel.highest_maj-LinuxKernel.show_prev_majors) continue;
 			}
 
 			odd_row = !odd_row;
@@ -634,8 +631,8 @@ public class MainWindow : Gtk.Window{
 				lbl_info.label += " (ubuntu)";
 			}
 
-			if (LinuxKernel.kernel_latest_stable.compare_to(LinuxKernel.kernel_active) > 0){
-				lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_stable.version_main)+_("available");
+			if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0){
+				lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
 			}
 		}
 		else{

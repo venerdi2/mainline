@@ -218,7 +218,6 @@ public class DownloadTask : AsyncTask{
 				continue;
 			}
 
-			//log_msg("status=%s".printf(item.status));
 			if (item.status == "OK"){
 				file_move(item.file_path_partial, item.file_path);
 			}
@@ -229,7 +228,6 @@ public class DownloadTask : AsyncTask{
 		}
 	}
 }
-
 
 public class DownloadItem : GLib.Object
 {

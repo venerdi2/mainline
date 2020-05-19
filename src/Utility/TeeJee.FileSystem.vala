@@ -59,19 +59,16 @@ namespace TeeJee.FileSystem{
 			&& !FileUtils.test(file_path, GLib.FileTest.IS_DIR));
 	}
 
-	public bool file_delete(string file_path, bool show_message = false){
+	public bool file_delete(string file_path){
 		/* Check and delete file */
+
+		if(!file_exists(file_path)) return true;
 
 		try {
 			var file = File.new_for_path (file_path);
 			if (file.query_exists ()) {
 				file.delete ();
-				if (show_message){
-					log_msg(_("File deleted") + ": %s".printf(file_path));
-				}
-				else{
-					log_debug(_("File deleted") + ": %s".printf(file_path));
-				}
+				log_debug(_("File deleted") + ": %s".printf(file_path));
 			}
 			return true;
 		} catch (Error e) {
@@ -102,7 +99,7 @@ namespace TeeJee.FileSystem{
 		return null;
 	}
 
-	public bool file_write (string f, string contents, bool show_message = false){
+	public bool file_write (string f, string contents){
 
 		/* Write text to file */
 
@@ -123,12 +120,7 @@ namespace TeeJee.FileSystem{
 			data_stream.put_string (contents);
 			data_stream.close();
 
-			if (show_message){
-				log_msg(_("File saved") + ":" + f);
-			}
-			else{
-				log_debug(_("File saved") + ":" + f);
-			}
+			log_debug(_("File saved") + ":" + f);
 
 			return true;
 		}
@@ -139,19 +131,14 @@ namespace TeeJee.FileSystem{
 		}
 	}
 
-	public bool file_copy (string src_file, string dest_file, bool show_message = false){
+	public bool file_copy (string src_file, string dest_file){
 		try{
 			var file_src = File.new_for_path (src_file);
 			if (file_src.query_exists()) {
 				var file_dest = File.new_for_path (dest_file);
 				file_src.copy(file_dest,FileCopyFlags.OVERWRITE,null,null);
 
-				if (show_message){
-					log_msg(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
-				}
-				else{
-					log_debug(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
-				}
+				log_debug(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
 
 			return true;
 			}
@@ -164,7 +151,7 @@ namespace TeeJee.FileSystem{
 		return false;
 	}
 
-	public void file_move (string src_file, string dest_file, bool show_message = false){
+	public void file_move (string src_file, string dest_file){
 		try{
 			var file_src = File.new_for_path (src_file);
 			if (!file_src.query_exists()) {
@@ -181,12 +168,8 @@ namespace TeeJee.FileSystem{
 			var file_dest = File.new_for_path (dest_file);
 			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
 
-			if (show_message){
-				log_msg(_("File moved") + ": '%s' → '%s'".printf(src_file, dest_file));
-			}
-			else{
-				log_debug(_("File moved") + ": '%s' → '%s'".printf(src_file, dest_file));
-			}
+			log_debug(_("File moved") + ": '%s' → '%s'".printf(src_file, dest_file));
+
 		}
 		catch(Error e){
 			log_error (e.message);
