@@ -575,7 +575,7 @@ msgstr "Невдалося створити теку"
 
 #: src/Utility/TeeJee.FileSystem.vala:255
 msgid "Deleted"
-msgstr ""
+msgstr "Видалено"
 
 #: src/Utility/TeeJee.Logging.vala:59
 msgid "E"
