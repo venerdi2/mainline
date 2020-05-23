@@ -76,7 +76,6 @@ public class Main : GLib.Object{
 	
 	public bool notify_major = true;
 	public bool notify_minor = true;
-	public bool notify_bubble = true;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
 	public int connect_timeout_seconds = 15;
@@ -118,7 +117,7 @@ public class Main : GLib.Object{
 		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
 		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
-		NOTIFICATION_SEEN_FILE = APP_CONF_DIR + "/seen";
+		NOTIFICATION_SEEN_FILE = APP_CONF_DIR + "/notification_seen";
 
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
@@ -132,7 +131,6 @@ public class Main : GLib.Object{
 		var config = new Json.Object();
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());
-		config.set_string_member("notify_bubble", notify_bubble.to_string());
 		config.set_string_member("hide_unstable", LinuxKernel.hide_unstable.to_string());
 		config.set_string_member("show_prev_majors", LinuxKernel.show_prev_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
@@ -188,7 +186,6 @@ public class Main : GLib.Object{
 
 		notify_major = json_get_bool(config, "notify_major", true);
 		notify_minor = json_get_bool(config, "notify_minor", true);
-		notify_bubble = json_get_bool(config, "notify_bubble", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
 		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", 15);
@@ -202,7 +199,7 @@ public class Main : GLib.Object{
 	}
 
 	public void exit_app(int exit_code){
-		save_app_config();
+		// save_app_config();
 		exit(exit_code);
 	}
 
@@ -232,18 +229,39 @@ public class Main : GLib.Object{
 
 		file_delete(STARTUP_SCRIPT_FILE);
 
-		// see OSDNotify.vala notify-send.sh -R
-		string s =
-			"# " +_("Called from") + " " + STARTUP_DESKTOP_FILE + "\n"
-			+ "rm -f " + NOTIFICATION_ID_FILE + "\n"
-			+ "rm -f " + NOTIFICATION_SEEN_FILE + "\n";
-
+		// TODO, ID file should not assume single DISPLAY
+		//       ID and SEEN should probably be in /var/run ?
+		string s = "#!/bin/bash\n"
+			+ "# " +_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
+			+ "# This file is over-written and executed again whenever settings are saved in "+BRANDING_SHORTNAME+"-gtk\n"
+			+ "[[ \"${1}\" = \"--new-session\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+NOTIFICATION_SEEN_FILE+"\n"
+			+ "F=\"/tmp/"+BRANDING_SHORTNAME+"-notify-loop.${$}.p\"\n"
+			+ "trap \"rm -f ${F}\" 0\n"
+			//+ "trap \"exit\" 1 2 3 4 5 6 7 8 10 11 12 13 14 15\n"
+			+ "echo -n \"${DISPLAY} ${$}\" > ${F}\n"
+			+ "typeset -i p\n"
+			+ "shopt -s extglob\n"
+			+ "\n"
+			+ "# clear previous state (kill previous instance)\n"
+			+ "for f in /tmp/"+BRANDING_SHORTNAME+"-notify-loop.+([0-9]).p ;do\n"
+			+ "\t[[ -s \"${f}\" ]] || continue\n"
+			+ "\t[[ ${f} -ot ${F} ]] || continue\n"
+			+ "\tread d p x < ${f}\n"
+			+ "\t[[ \"${d}\" == \"${DISPLAY}\" ]] || continue\n"
+			+ "\t[[ ${p} -gt 0 ]] || continue\n"
+			+ "\trm -f ${f}\n"
+			+ "\tkill ${p}\n"
+			+ "done\n"
+			+ "unset F f p d x\n"
+			+ "\n"
+			+ "# run current state\n";
 		if (notify_minor || notify_major){
-			s += "while : ;do\n"
-			+ BRANDING_SHORTNAME+" --notify";
+			s += "while gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.GetId 2>&- >&- ;do\n"
+			+ "\t"+BRANDING_SHORTNAME+" --notify";
 			if (LOG_DEBUG) s += " --debug";
 			s += "\n"
-			+ "sleep %d%s\n".printf(count,suffix)
+			+ "\tsleep %d%s &\n".printf(count,suffix)
+			+ "\twait $!\n"	// respond to signals during sleep
 			+ "done\n";
 		} else {
 			s += "# " + _("Notifications are disabled") + "\n"
@@ -251,7 +269,7 @@ public class Main : GLib.Object{
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,s);
-
+		exec_async("bash "+STARTUP_SCRIPT_FILE);
 	}
 
 	private void update_startup_desktop_file(){
@@ -259,12 +277,12 @@ public class Main : GLib.Object{
 			
 			string txt = "[Desktop Entry]\n"
 				+ "Type=Application\n"
-				+ "Exec=sh \"" + STARTUP_SCRIPT_FILE + "\"\n"
+				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --new-session\n"
 				+ "Hidden=false\n"
 				+ "NoDisplay=false\n"
 				+ "X-GNOME-Autostart-enabled=true\n"
-				+ "Name=" + BRANDING_SHORTNAME + " notification\n"
-				+ "Comment=" + BRANDING_SHORTNAME + " notification\n";
+				+ "Name="+BRANDING_SHORTNAME+" notification\n"
+				+ "Comment="+BRANDING_SHORTNAME+" notification\n";
 
 			file_write(STARTUP_DESKTOP_FILE, txt);
 

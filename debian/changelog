@@ -1,3 +1,17 @@
+mainline (1.0.11) unstable; urgency=medium
+
+  * Resolved several issues with notifications bacground processes and temp files
+  * Removed redundant notification setting, since now the desktop notifications are the only kind
+  * The background notification loop is restarted any time settings are saved in the app
+  so the settings now take effect immediately.
+  * When a new notifications is sent which replaces an existing notification,
+  it no longer adds more dbus monitor processes with each new update.
+  * Logging out and back in no longer adds more notify.sh processes. It still doesn't exit when you log out,
+  but at least it kills it's old instance when starting a new instance at logon.
+  * notify-send.sh and notify-action.sh are completely re-written and refactored to be more efficient and more reliable.
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 23 May 2020 00:05:21 -0400
+
 mainline (1.0.10) unstable; urgency=medium
 
   * Notifications

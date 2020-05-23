@@ -1,5 +1,10 @@
 # notify-send.sh
 
+----
+**This copy has been modified for https://github.com/bkw777/mainline**
+
+----
+
 notify-send.sh is a drop-in replacement for notify-send (from
 libnotify) with ability to update and close existing notifications.
 

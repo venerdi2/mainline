@@ -71,16 +71,4 @@ public class OSDNotify : GLib.Object {
 		return retVal;
 	}
 
-	// closes a previously sent notification
-	// modified version of notify-send.sh
-	// to let -s option get ID from -R file
-	public static void notify_close () { 
-		string s =
-			APP_LIB_DIR+"/notify_send/notify-send.sh"
-			+ " -R "+App.NOTIFICATION_ID_FILE
-			+ " -s";
-			log_debug (s);
-			exec_async (s);
-	}
-
 }

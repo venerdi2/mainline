@@ -70,7 +70,7 @@ public class AppGtk : GLib.Object {
 		
 		Gtk.main();
 
-		App.save_app_config();
+		//App.save_app_config();
 
 		return 0;
 	}
@@ -93,10 +93,6 @@ public class AppGtk : GLib.Object {
 				
 			case "--debug":
 				LOG_DEBUG = true;
-				break;
-
-			case "--close-notification":
-				OSDNotify.notify_close();
 				break;
 
 			case "--help":
@@ -125,7 +121,6 @@ public class AppGtk : GLib.Object {
 			case "--h":
 			case "-h":
 			case "--debug":
-			case "--close-notification":
 				// already handled - do nothing
 				break;
 

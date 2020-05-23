@@ -36,7 +36,6 @@ public class SettingsDialog : Gtk.Dialog {
 
 	private Gtk.CheckButton chk_notify_major;
 	private Gtk.CheckButton chk_notify_minor;
-	private Gtk.CheckButton chk_notify_bubble;
 	private Gtk.CheckButton chk_hide_unstable;
 
 	public SettingsDialog.with_parent(Window parent) {
@@ -63,7 +62,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label.xalign = (float) 0.0;
 		label.margin_bottom = 6;
 		vbox_main.add (label);
-		
+
 		// chk_notify_major
 		var chk = new Gtk.CheckButton.with_label(_("Notify if a major release is available"));
 		chk.active = App.notify_major;
@@ -86,17 +85,6 @@ public class SettingsDialog : Gtk.Dialog {
 			App.notify_minor = chk_notify_minor.active;
 		});
 
-		// show bubble
-		chk = new Gtk.CheckButton.with_label(_("Show notification bubble on desktop"));
-		chk.active = App.notify_bubble;
-		chk.margin_start = 6;
-		vbox_main.add(chk);
-		chk_notify_bubble = chk;
-
-		chk.toggled.connect(()=>{
-			App.notify_bubble = chk_notify_bubble.active;
-		});
-
 		if (LOG_DEBUG) {
 			label = new Label(_("(Allowing intervals in seconds for --debug)"));
 			label.xalign = (float) 0.0;
@@ -105,6 +93,19 @@ public class SettingsDialog : Gtk.Dialog {
 		}
 
 		// notification interval
+
+		// replace invalid debug-only values with valid values
+		int max_intervals = 52;
+		if (LOG_DEBUG) {
+			// debug allows seconds, so allow up to 1 hour of seconds
+			max_intervals = 3600;
+		} else {
+			if (App.notify_interval_unit == 3) {
+				App.notify_interval_value = 1;
+				App.notify_interval_unit = 0;
+			}
+		}
+
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
 		
@@ -113,14 +114,12 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_start = 6;
 		hbox.add (label);
 
-		int max_intervals = 52;
-		if (LOG_DEBUG) max_intervals = 3600; // allow up to 1hr in seconds
 		var adjustment = new Gtk.Adjustment(App.notify_interval_value, 1, max_intervals, 1, 1, 0);
 		var spin = new Gtk.SpinButton (adjustment, 1, 0);
 		spin.xalign = (float) 0.5;
 		hbox.add(spin);
 		var spin_notify = spin;
-		
+
 		spin.changed.connect(()=>{
 			App.notify_interval_value = (int) spin_notify.get_value();
 		});

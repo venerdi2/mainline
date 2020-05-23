@@ -638,8 +638,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		query(true);
 
-		// already done in query() -> query_tread() ?
+		// already done in query() -> query_thread() ?
 		//check_updates("install_latest()");
+		//check_updates();
 
 		var kern_major = LinuxKernel.kernel_update_major;
 		

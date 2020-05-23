@@ -118,10 +118,6 @@ public class AppConsole : GLib.Object {
 				App.confirm = false;
 				break;
 
-			case "--close-notification":
-				OSDNotify.notify_close();
-				break;
-
 			case "--user":
 				if (++k < args.length){
 					string custom_user_login = args[k];
@@ -298,8 +294,9 @@ public class AppConsole : GLib.Object {
 				
 		LinuxKernel.query(true);
 
-		// already done in query() -> query_thread()
-		// LinuxKernel.check_updates("print_updates()");
+		// already done in query() -> query_thread() ?
+		//LinuxKernel.check_updates("print_updates()");
+		//LinuxKernel.check_updates();
 
 		var kern_major = LinuxKernel.kernel_update_major;
 		
@@ -328,39 +325,33 @@ public class AppConsole : GLib.Object {
 
 		LinuxKernel.query(true);
 
-		// already done in query() -> query_thread()
+		// already done in query() -> query_thread() ?
 		//LinuxKernel.check_updates("notify_user()");
+		//LinuxKernel.check_updates();
 
 		string seen = "";
 		if (file_exists(App.NOTIFICATION_SEEN_FILE)) seen = file_read(App.NOTIFICATION_SEEN_FILE).strip();
 		log_msg("seen:\""+seen+"\"");
 
 		string debug_action = "";
-		string close_action = "";
+		string close_action = "";  // command to run when user closes notification instead of pressing any action button
 		string body = "";
 		var alist = new Gee.ArrayList<string> (); // notification action buttons:  "buttonlabel:command line to run"
 
-		if (App.notify_bubble) {
+		if (App.notify_major || App.notify_minor) {
 			if (LOG_DEBUG) {
 				debug_action = APP_LIB_DIR+"/notify-action-debug.sh";
 				body = debug_action;
 				debug_action += " ";
 			}
-			alist.add(_("Show")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --close-notification");
+			alist.add(_("Show")+":"+debug_action+BRANDING_SHORTNAME+"-gtk");
 		}
 
 		var kern = LinuxKernel.kernel_update_major;
 		if (App.notify_major && (kern!=null) && (seen!=kern.version_main)){
 			var title = _("Kernel %s Available").printf(kern.version_main);
-			if (App.notify_bubble){
-				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --close-notification --install "+kern.version_main);
-				// close_action is working, as far as it goes. The command is executed when the user closes the notification.
-				// But it doesn't run when the user presses one of the action buttons.
-				// To handle the action buttons, we'd need to pass the kernel version along as a new commandline arg
-				// so that "--close-notification" could write the "seen" file.
-				// All that is unecessarily complicated. It's good enough to just write the seen file right here
-				// when we send the notification in the first place. Then we don't need any close_action.
-				//close_action = "echo "+kern.version_main+" >"+App.NOTIFICATION_SEEN_FILE;  
+			if (App.notify_major || App.notify_minor){
+				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
 				file_write(App.NOTIFICATION_SEEN_FILE,kern.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
 			}
@@ -371,9 +362,8 @@ public class AppConsole : GLib.Object {
 		kern = LinuxKernel.kernel_update_minor;
 		if (App.notify_minor && (kern!=null) && (seen!=kern.version_main)){
 			var title = _("Kernel %s Available").printf(kern.version_main);
-			if (App.notify_bubble) {
-				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --close-notification --install "+kern.version_main);
-				//close_action = "echo "+kern.version_main+" >"+App.NOTIFICATION_SEEN_FILE;
+			if (App.notify_major || App.notify_minor) {
+				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
 				file_write(App.NOTIFICATION_SEEN_FILE,kern.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
 			}
