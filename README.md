@@ -1,11 +1,9 @@
 ### Ubuntu Mainline Kernel Installer
-
 This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions.
 
 ![Main window screenshot](main_window.png)
 
 ### Features
-
 * Fetches list of available kernels from [Ubuntu Mainline PPA](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
 * Optionally watches and displays notifications when a new kernel update is available
 * Downloads and installs packages automatically
@@ -17,7 +15,6 @@ This is a tool for installing the latest mainline Linux kernel on Ubuntu-based d
 mainline is written using Vala and GTK3. Source code and binaries are available from the [GitHub project page](https://github.com/bkw777/mainline).
 
 [cappelikan](https://github.com/cappelikan) maintains a PPA at: <https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa>
-
 	sudo add-apt-repository ppa:cappelikan/ppa
 	sudo apt update
 	sudo apt install mainline
@@ -35,7 +32,6 @@ mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 The original author stopped maintaining the original GPL version of ukuu and switched to a [paid license](https://teejeetech.in/tag/ukuu/) for future versions.
 
 ### Enhancements / Deviations from the original author's final GPL version
-
 * (from [stevenpowerd](https://github.com/stevenpowered/ukuu)) Options controlling the internet connection check
 * (from [cloyce](https://github.com/cloyce/ukuu)) Option to include or hide pre-release kernels
 * Changed name from "ukuu" to "mainline"
