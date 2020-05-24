@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-23 20:06-0400\n"
+"POT-Creation-Date: 2020-05-24 18:05-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -143,11 +143,11 @@ msgstr ""
 "Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
 " Installez un autre noyau avant de retirer celui-ci."
 
-#: src/Common/Main.vala:235
+#: src/Common/Main.vala:237
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:266
+#: src/Common/Main.vala:271
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Notification"

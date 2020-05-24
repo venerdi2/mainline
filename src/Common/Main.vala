@@ -123,7 +123,9 @@ public class Main : GLib.Object{
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
 
+		// todo: consider get_user_runtime_dir() or get_user_cache_dir()
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
+
 	}
 	
 	public void save_app_config(){
@@ -235,32 +237,35 @@ public class Main : GLib.Object{
 			+ "# " +_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
 			+ "# This file is over-written and executed again whenever settings are saved in "+BRANDING_SHORTNAME+"-gtk\n"
 			+ "[[ \"${1}\" = \"--autostart\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+NOTIFICATION_SEEN_FILE+"\n"
-			+ "F=\"/tmp/"+BRANDING_SHORTNAME+"-notify-loop.${$}.p\"\n"
-			+ "trap \"rm -f ${F}\" 0\n"
-			+ "echo -n \"${DISPLAY} ${$}\" > ${F}\n"
+			+ "TMP=${XDG_RUNTIME_DIR:-/tmp}\n"
+			+ "F=\"${TMP}/"+BRANDING_SHORTNAME+"-notify-loop.${$}.p\"\n"
+			+ "trap \"rm -f \\\"${F}\\\"\" 0\n"
+			+ "echo -n \"${DISPLAY} ${$}\" > \"${F}\"\n"
 			+ "typeset -i p\n"
 			+ "shopt -s extglob\n"
 			+ "\n"
 			+ "# clear previous state (kill previous instance)\n"
-			+ "for f in /tmp/"+BRANDING_SHORTNAME+"-notify-loop.+([0-9]).p ;do\n"
-			+ "\t[[ -s \"${f}\" ]] || continue\n"
+			+ "for f in ${TMP}/"+BRANDING_SHORTNAME+"-notify-loop.+([0-9]).p ;do\n"
+			+ "\t[[ -s ${f} ]] || continue\n"
 			+ "\t[[ ${f} -ot ${F} ]] || continue\n"
-			+ "\tread d p x < ${f}\n"
+			+ "\tread d p x < \"${f}\"\n"
 			+ "\t[[ \"${d}\" == \"${DISPLAY}\" ]] || continue\n"
 			+ "\t((${p}>1)) || continue\n"
-			+ "\trm -f ${f}\n"
+			+ "\trm -f \"${f}\"\n"
 			+ "\tkill ${p}\n"
 			+ "done\n"
 			+ "unset F f p d x\n"
 			+ "\n"
 			+ "# run current state\n";
 		if (notify_minor || notify_major){
+			// This gdbus check doesn't do what I'd hoped.
+			// Still succeeds while logged out but sitting at a display manager login screen.
 			s += "while gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.GetId 2>&- >&- ;do\n"
 			+ "\t"+BRANDING_SHORTNAME+" --notify";
 			if (LOG_DEBUG) s += " --debug";
 			s += "\n"
 			+ "\tsleep %d%s &\n".printf(count,suffix)
-			+ "\twait $!\n"	// respond to signals during sleep
+			+ "\twait ${!}\n"	// respond to signals during sleep
 			+ "done\n";
 		} else {
 			s += "# " + _("Notifications are disabled") + "\n"

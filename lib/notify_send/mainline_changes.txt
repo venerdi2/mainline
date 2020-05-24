@@ -8,100 +8,89 @@ Some of the functionality changes would be generically useful, ie to the origina
 Some of the functionality changes are probably not desireable in general, but 
 it's what we need or want for use by "mainline".
 
+--------------------------------------------------------------------------------
+
 Changes to notify-send.sh
 
- * --force option changed to more generally mean "explicit close", whether that's
-   after an expire time or immediately on processing any action. This includes after
-   processing a NotificationClosed event, IE, send a close command even though we
-   just received a message that the notification was closed. Because you can get
-   a Closed message when a notification is merely moved to history, and then get
-   one *again* when it is viewed in history and the closed again. But if you actively
-   close it, that removes it from history too, which you want to do because the
-   action buttons won't work for that notification, because it's listener is gone.
+ * --force-close option changed to more generally mean just "explicitly close"
 
-   The normal functionality when en expire time > 0 is given is still the same.
+   Previously it just meant to start a timer in the background to send a close
+   command after the same amount of time as the --expire-time, IE in case the
+   notification daemon doesn't impliment timeouts, or ignores the requested
+   timeout becauseof user settings, actively send a close command ourselves
+   after the same amount of time.
 
- * Derive sleep time from expire time without "bc" and without $(...)
-   You don't need a child process and "bc" just to insert a decimal point 3 characters from the end of a string.
+   Now it still does that, but it also sends a close command immediately
+   when processing any event, whether ActionInvoked or NotificationClosed,
+   as well as after the requested timeout (if any).
 
- * Refactor to avoid unecessary child shells. More could still be done.
-   There are still some sub-shells that could be replaced with
-   direct operations on global variables.
+   This is most useful in concert with --expire-time=0
+
+ * Refactor to avoid unecessary forks for external tools and subshells,
+   and optimize the code generally, aside from forks.
+   This replaced essentially everything.
+   Although the overall structure is still mostly the the same.
 
  * --close without ID gets ID from --replace-file
    So the app code can specify the ID the same way for both creating and closing
    send:  notify-send.sh -R file ...
    close: notify-send.sh -R file -s
-   Note, this was only briefly used and now we close the notification by a change in
-   notify-action.sh itself instead, but no reason to remove this handy behavior.
 
- * Fix quoting of action pairs so that -d default action, or any -o action with no label,
-   produces a blank button (or no button, depending on the particular behavior
-   of different notification daemons) insted of a button with a '' label
-   that looks like [  ''  ]
+   We only used this option briefly, now we use the new --force-close behavior
+   instead, but it's free and potentially handy so no reason to remove it.
+
+ * Fix quoting of action pairs so that the -d default action,
+   or any other -o action with no label, produces a blank button (or no button,
+   depending on the particular behavior of different notification daemons)
+   insted of a button with a label that looks like [  ''  ]
 
  * Allow empty SUMMARY & BODY, treat missing as empty instead of error.
    We don't use it, but it's valid and there's no reason the script should
    treat it as an error. An empty notification with no title and no body
-   and even no icon, still has an app-name, which can possibly be be all
-   the information needed.
+   and even no icon, still has an app-name, which can possibly be all
+   the information the sender needed to deliver.
 
- * Typeset -i to prevent ID from ever being '',
-   even if given invalid or missing value via -r or -R.
+ * If --app-name is supplied, then export APP_NAME to the notify-action.sh
+   child process. This allows to avoid hard-coding the name "mainline" into
+   either script, and yet the notifications still say "mainline" and the temp
+   files still say "mainline", yet the same scripts still work as a generic
+   tool outside of mainline too.
 
- * Export APP_NAME to notify-action.sh child process.
-   This allows to avoid hard-coding the name "mainline" into either
-   script, and yet the notifications still say "mainline"
-   and the temp files still say "mainline", yet the same scripts still
-   work on their own outside of mainline too.
+ * "setsid" to free ourself from the action handler and explicit close child
+   processes, so that we can exit and leave one less unneccessary background
+   process waiting around the whole time the dbus monitor process is waiting
+   for a ActionInvoked or NotificationClosed event, which may never come.
 
- * "setsid" to free ourself from the action handler process, so that
-   we can exit and leave one less unneccessary background process
-   waiting around the whole time the dbus monitor process is waiting for
-   a button press or notification-closed event which may never come.
+ * Prevent child/bg processes from spamming the terminal except some errors.
+   Clears up the mistaken appearance that the command didn't end and return
+   to the prompt, whne really it was just that a bg process wrote to the tty
+   and clobbered the prompt. Some errors still allowed through.
 
- * Prevent child process from spamming the terminal. This just clears up
-   a harmless cosmetic glitch that made it *look* like the process had hung
-   and never returned to a new shell prompt unless you pressed "enter".
-   Really all it was was the background process wrote a blank line to the terminal,
-   clobbering the currently displayed prompt. But it's just a display thing.
-   The shell was still waiting for input at a prompt, you just couldn't
-   see the prompt. When you press enter after notify-send.sh finises,
-   it's just drawing a new prompt like any other time your press enter.
-
-===
+--------------------------------------------------------------------------------
 
 Changes to notify-action.sh
 
-* When replacing an ID, kill any previous monitor for the same ID first.
+ * When replacing an ID, kill any previous monitor for the same ID first.
+   See lengthy discussion of "kill obsolete monitors" and "kill current monitor"
+   below for why this is needed and how it works.
 
-* Run gdbus in {} instead of (), though this seems to make no
-  functional difference when the {} comes before a pipe, the {}
-  ends up being a child process anyway.
+ * Refactor to avoid unecessary forks for external tools and subshells,
+   and optimize the code generally, aside from forks.
+   This replaced essentially everything.
+   Although the overall structure is still mostly the the same.
 
-* Parse gdbus output without $(sed ...)
+ * "setsid" to free ourself from the invoked action process so we can exit
 
-* Close notifcation after receiving any action.
+ * Prevent child/bg processes from spamming the terminal except some errors.
+   Clears up the mistaken appearance that the command didn't end and return
+   to the prompt, whne really it was just that a bg process wrote to the tty
+   and clobbered the prompt.
 
-* Robust pid file and obsolete monitor cleanup processing
+ * Execute the action command directly instead of 'bash -c "command ..."'
+   You can specify a shell as the command if you need to, and this way you
+   get the shell of your choice with the flags of your choice, instead of "bash -c".
 
-* Robust cleanup on exit
-
-* Refactored to use all bash built-in features
-  and no child processes except gdbus and the invoked action
-  No more sed to parse output or foo=$(command ...) to collect output etc
-  More use of bash features to do the job in fewer steps.
-
-* Use APP_NAME (if present) in place of $0 in pid filename
-
-* "setsid" to free ourself from the invoked action process so we can exit
-
-* Prevent bg processes from spamming the terminal
-  clears up the false impression that the command didn't end and return to a new shell prompt
-
-* Execute the action command directly instead of 'bash -c "command ..."'
-
-There is a lot to explain about the temp file and gdbus child process handling.
+There is a bit to explain about the temp file and gdbus child process handling.
 The two sections, "kill obsolete monitors" and "kill current monitor" 
 must orchestrate with each other, and with other instances of ourself.
 Basically it's normal for our gdbus process to be killed from outside by another
@@ -111,65 +100,67 @@ instances of ourself.
 === kill obsolete monitors ===
 
 This has to orchestrate with the "kill current monitor" section.
-It's not an error to find one or more old pid files, with or without matching
-still-active processes.
+It's not an error to find one or more old pid files,
+with or without matching processes still active.
 
-Notification events are not predictable, so when setting up these monitors,
-you never know how long you'll wait for an event, or if an event will ever come,
-or if a monitor will be killed ungracefully by a shutdown leaving a pid file behind,
-or if a monitor will be left running after the user logs out of the desktop session
-but doesn't reboot, and then logs in again... It's also possible to get 
-a NotificationClosed event *more than once* for the same notification. A lot
-of this depends on the particular quirks of how various notification daemons
-are written.
+Notification events are not predictable, so when setting up a monitor to catch
+an event (button press or notification closed), you never know how long you'll
+wait for the event, or if the event will ever come.
 
-For example in Lubuntu, using LXQT desktop, lxqt-notificationd sends a
-NotificationClosed when it expires a notification to it's history, and then
-it sends the same event a 2nd time when the user views and closes the
-notification from history.
+You may never get a button press, you may never get a notification-closed,
+the notification may never expire.
 
-But it does not send a 2nd Closed message when a notification rolls off the
-end of the history stack without ever being re-opened, or if the user
-hits the clear-all button.
+The converse is also true. The notification may be re-opened from the
+notification daemon's history, and so both action events and on-close
+events can be sent multiple times, and sent after we have exited and are no
+longer around to respond to them.
+Different desktop environments have different notification daemon programs
+which all behave differently from each other in various ways.
 
-Normally our dbus monitor would have exited when it got the first
-NotificationClosed, and so it's no longer around to respond to more button
-presses from the same notification viewed from history. That's annoying 
-bad ux. So this version adds to the --force option, to always send a
-close command after processing any action, even a close, even when
-no expire time given or when expire time is explicitly set to 0, aside from the
-delayed close sent when there is an expire time given. That causes
-the notification to be removed from history in case it was there.
-Then there is never a non-working button. Either a notification is new and
-and has a monitor watching for events from it, or it's gone.
-
-And the -r and -R options for sending a new notification to update/replace an
-existing notification means that often, one or more of these existing monitor processes
-is now "obsolete" because we are replacing it. But they have no way to know that.
+And the --replace-id and --replace-file options for sending a new notification
+to update an existing notification means that often, one or more of these
+existing monitor processes is now "obsolete" because we are replacing it.
+But they have no way to know that their job is done and should exit.
 They will never end gracefully on their own, because they are waiting
 for something that never came, and now never will come (a dbus event matching 
-either a button press or a notification-close for the notification ID they are watching).
-So before starting the new/current monitor, we need to find any obsolete monitors,
-and/or just their left over tmp files, and clean up whatever we find.
+either a button press or a notification-close for the notification ID they are
+watching). So every time we start up, before starting the new/current monitor,
+we need to find any obsolete monitors and close them.
 
 "Obsolete" is defined as matching all of the following criteria:
 
-* Pid file with the same APP_NAME already exists
+ * Pid file with the same APP_NAME as us
 
-* Older than ourself
-  Just use [[ file -ot file ]] to compare relative ages to get a proper
-  comparison even for sub-second differences, without needing to record and compare
-  timestamps and without needing to spwan a child just to run "date" just to
-  get sub-second times which you can't get from bash's built-in printf %()T
+ * Older than ourself
 
-* From the same desktop session
-  DISPLAY from pid file is same as ours
-  This avoids clobbering another session. IE, say you have multiple
-  desktop sessions on multiple virtual consoles, or remote desktop sessions.
-  They will each have different DISPLAY values. So if we record that in the pid file
-  we can safely tell whether it's OK to consider killing the PID.
+   Using [[ file -ot file ]] to compare relative ages of our pid files
+   to get reliable comparison even for sub-second differences, without
+   needing to record and compare timestamps and without needing to spwan
+   a child just to run "date" just to get sub-second times which you can't
+   get from bash's built-in printf %()T
 
-* Watching the same notification ID we are about to watch.
+ * From the same desktop session
+
+   Using $DISPLAY from the pid file to compare with ours.
+
+   This avoids clobbering processes form another session.
+   IE, you can have multiple desktop sessions on multiple virtual consoles,
+   or remote desktop sessions, all for the same user on the same machine at
+   the same time. All concurrent sessions will have different $DISPLAY values.
+   So if we record $DISPLAY in the pid file we can safely tell whether it's OK
+   to consider killing the PID.
+
+   DISPLAY values are like PIDs in that they are only unique at any given moment.
+   They get re-used and are not unique over time. That means it's possible
+   to pick up a pid file with a matching $DISPLAY, but really the pid is from
+   some other past session rather than our current one. That's OK.
+   Any monitor from a logged out session is automatically and by definition
+   obsolete because it's an orphan.
+
+ * Watching the same notification ID we are about to watch.
+
+   The notification ID is recorded in the pid file along with PID and DISPLAY
+
 
 If all of those are true at the same time for a given PID,
 then that's a monitor we should kill because we are it's replacement.
@@ -178,22 +169,28 @@ And when we kill it, remove the pid file *before* killing the PID.
 
 The pid is for a child gdbus process, not it's parent notify-action.sh bash process.
 
-When we kill it, it's parent notify-action.sh breaks out of it's
-"while loop" and proceeds to try to do it's own clean-up.
+When we kill a gdbus process, it's parent notify-action.sh breaks out of it's
+"while loop" and proceeds to try to do it's own clean-up, the same as if it had
+concluded normally by processing an event.
 But we have already killed the PID that it would normally expect to kill.
-So here, remove the pid file before killing, so that the related
-notify-action.sh can't pick up the same PID and try to kill it after it's
-already been freed and might already belong to some other process.
+That PID either no longer exists, or if it exists, it's some other unrelated
+process that we should NOT kill.
+
+So here, remove the pid file before killing, so that it's impossible
+for the related notify-action.sh to pick up an invalid PID and try to kill it.
 
 The first [[ -s file ]] catches the case when the globbing pattern
 didn't match any files and the variable contains the globbing pattern itself.
 
 === kill current monitor ===
 
-This has to orchestrate with the "kill obsolete monitors" section.
-Not an error if the pid file is already missing.
+This is already described above, but just to go over it from *this* parts
+point of view...
 
-IE: While we have been waiting for a dbus event which never came,
+This has to orchestrate with the "kill obsolete monitors" section.
+It's not an error if the pid file we know we wrote is missing.
+
+While we have been waiting for a dbus event which never came,
 another new instance of ourself may have started up, found our
 pid file, and killed our gdbus child process. When that happens,
 the while loop above ends and we fall through to here,

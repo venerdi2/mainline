@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-23 20:06-0400\n"
+"POT-Creation-Date: 2020-05-24 18:05-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -139,11 +139,11 @@ msgstr ""
 "Це ядро наразі працює і його неможливо видалити.\n"
 " Встановіть інше ядро перед тим, як видалити его."
 
-#: src/Common/Main.vala:235
+#: src/Common/Main.vala:237
 msgid "Called from"
 msgstr "Викликано з"
 
-#: src/Common/Main.vala:266
+#: src/Common/Main.vala:271
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Повідомлення вимкнено"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # notify-send.sh - drop-in replacement for notify-send with more features
 # Copyright (C) 2015-2020 notify-send.sh authors (see AUTHORS file)
@@ -25,26 +25,30 @@
 # https://developer.gnome.org/notification-spec/
 
 SELF=${0##*/}
-VERSION="1.1-mainline"
-ACTION_HANDLER=${0%/*}/notify-action.sh
-
+TMP=${XDG_RUNTIME_DIR:-/tmp}
 ${DEBUG_NOTIFY_SEND:=false} && {
-	exec 2>/tmp/.${SELF}.${$}.e
+	exec 2>${TMP}/.${SELF}.${$}.e
 	set -x
+	trap "set >&2" 0
 }
 
+VERSION="1.1-bkw777"
+ACTION_SH=${0%/*}/notify-action.sh
 NOTIFY_ARGS=(--session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications)
-typeset -i i=0 ID=0 EXPIRE_TIME=-1
-URGENCY=1
+
+typeset -i i=0 ID=0 EXPIRE_TIME=-1 URGENCY=1
+unset ID_FILE
+AKEYS=()
+ACMDS=()
 HINTS=()
 APP_NAME=${SELF}
 PRINT_ID=false
 EXPLICIT_CLOSE=false
-unset ID_FILE
+SUMMARY=
+BODY=
 positional=false
-SUMMARY_SET=false
-SUMMARY=""
-BODY=""
+summary_set=false
+_r=
 set +H
 
 help() {
@@ -77,174 +81,147 @@ EOF
 
 abrt () { echo "${SELF}: $@" >&2 ; exit 1 ; }
 
-convert_type () {
-    case "${1}" in
-        int) echo int32 ;;
-        double|string|byte) echo "${1}" ;;
-        *) echo error; return 1 ;;
-    esac
-}
-
 make_hint () {
-    type=$(convert_type "$1")
-    ((${?})) && return 1
-    name=${2}
-    [[ "$type" = string ]] && command="\"$3\"" || command="$3"
-    echo "\"$name\": <$type $command>"
-}
-
-concat_actions () {
-    local s=${1} ;shift
-    while ((${#})) ;do s+=",${1}" ;shift ;done
-    echo "[${s}]"
-}
-
-concat_hints () {
-    local s=${1} ;shift
-    while ((${#})) ;do s+=",${1}" ;shift ;done
-    echo "{${s}}"
+	_r="" ;local t=${1} n=${2} c=${3}
+	[[ ${t} =~ ^(byte|int32|double|string)$ ]] || abrt "Hint types: byte int32 double string"
+	[[ ${t} = string ]] && c="\"${3}\""
+	_r="\"${n}\": <${t} ${c}>"
 }
 
 notify_close () {
-	typeset -i i="${2}"
+	typeset -i i=${2}
 	((${i}>0)) && sleep ${i:0:-3}.${i:$((${#i}-3))}
-    gdbus call ${NOTIFY_ARGS[@]} --method org.freedesktop.Notifications.CloseNotification "${1}" >&-
+	gdbus call ${NOTIFY_ARGS[@]} --method org.freedesktop.Notifications.CloseNotification "${1}" >&-
 }
 
 process_urgency () {
-    case "${1}" in
-        low) URGENCY=0 ;;
-        normal) URGENCY=1 ;;
-        critical) URGENCY=2 ;;
-        *) abrt "Invalid urgency \"${URGENCY}\". Valid values: low normal critical" ;;
-    esac
+	case "${1}" in
+		0|low) URGENCY=0 ;;
+		1|normal) URGENCY=1 ;;
+		2|critical) URGENCY=2 ;;
+		*) abrt "Urgency values: 0 low 1 normal 2 critical" ;;
+	esac
 }
 
 process_category () {
-	local a c
-    IFS=, a=(${1})
-    for c in "${a[@]}"; do
-        HINTS+=("$(make_hint string category "${c}")")
-    done
+	local a c ;IFS=, a=(${1})
+	for c in "${a[@]}"; do
+		make_hint string category "${c}" && HINTS+=(${_r})
+	done
 }
 
 process_hint () {
-	local a t n c h
-    IFS=: a=(${1})
-    t=${a[0]} n=${a[1]} c=${a[2]}
-    [[ "${n}" ]] && [[ "${c}" ]] || abrt "Invalid hint syntax specified. Use TYPE:NAME:VALUE."
-    h="$(make_hint "${t}" "${n}" "${c}")"
-    ((${?})) && abrt "Invalid hint type \"${t}\". Valid types are int, double, string and byte."
-    HINTS+=("${h}")
+	local a ;IFS=: a=(${1})
+	((${#a[@]}==3)) || abrt "Hint syntax: \"TYPE:NAME:VALUE\""
+	make_hint "${a[0]}" "${a[1]}" "${a[2]}" && HINTS+=(${_r})
 }
 
 process_action () {
-	local x n c k
-    IFS=: x=(${1})
-    n=${x[0]} c=${x[1]}
-    [[ "${n}" ]] && [[ "${c}" ]] || abrt "Invalid action syntax specified. Use NAME:COMMAND."
-    k=${APP_NAME}_${n}
-    ACTION_COMMANDS+=("${k}" "${c}")
-    ACTIONS+=("\"${k}\",\"${n}\"")
+	local a k ;IFS=: a=(${1})
+	((${#a[@]}==2)) || abrt "Action syntax: \"NAME:COMMAND\""
+	k=${#AKEYS[@]}
+	AKEYS+=("\"${k}\",\"${a[0]}\"")
+	ACMDS+=("${k}" "${a[1]}")
 }
 
+# key=default: key:command and key:label, with empty label
+# key=close:   key:command, no key:label (no button for the on-close event)
 process_special_action () {
-    local k=${1} c=${2}
-    [[ "${c}" ]] || abrt "Command must not be empty"
-    ACTION_COMMANDS+=("${k}" "${c}")
-    [[ "${k}" != "close" ]] && ACTIONS+=("\"${k}\",\"\"")
+	[[ "${2}" ]] || abrt "Command must not be empty"
+	[[ "${1}" != "close" ]] && AKEYS+=("\"${1}\",\"\"")
+	ACMDS+=("${1}" "${2}")
 }
 
 process_posargs () {
-    [[ "${1}" = -* ]] && ! ${positional} && abrt "Unknown option ${1}"
-    ${SUMMARY_SET} && BODY=${1} || SUMMARY=${1} SUMMARY_SET=true
+	[[ "${1}" = -* ]] && ! ${positional} && abrt "Unknown option ${1}"
+	${summary_set} && BODY=${1} || SUMMARY=${1} summary_set=true
 }
 
 while ((${#})) ; do
 	s= i=0
-    case "${1}" in
-        -\?|--help)
-            help
-            exit 0
-            ;;
-        -v|--version)
-            echo "${SELF} ${VERSION}"
-            exit 0
-            ;;
-        -u|--urgency|--urgency=*)
-            [[ "${1}" = --urgency=* ]] && s=${1#*=} || { shift ;s=${1} ; }
-            process_urgency "${s}"
-            ;;
-        -t|--expire-time|--expire-time=*)
-            [[ "${1}" = --expire-time=* ]] && EXPIRE_TIME=${1#*=} || { shift ;EXPIRE_TIME=${1} ; }
-            ;;
-        -f|--force-expire)
-            export EXPLICIT_CLOSE=true # only export if explicitly set
-            ;;
-        -a|--app-name|--app-name=*)
-            [[ "${1}" = --app-name=* ]] && APP_NAME=${1#*=} || { shift ;APP_NAME=${1} ; }
-            export APP_NAME # only export if explicitly set
-            ;;
-        -i|--icon|--icon=*)
-            [[ "${1}" = --icon=* ]] && ICON=${1#*=} || { shift ;ICON=${1} ; }
-            ;;
-        -c|--category|--category=*)
-            [[ "${1}" = --category=* ]] && s=${1#*=} || { shift ;s=${1} ; }
-            process_category "${s}"
-            ;;
-        -h|--hint|--hint=*)
-            [[ "${1}" = --hint=* ]] && s=${1#*=} || { shift ;s=${1} ; }
-            process_hint "${s}"
-            ;;
-        -o | --action | --action=*)
-            [[ "${1}" == --action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
-            process_action "${s}"
-            ;;
-        -d | --default-action | --default-action=*)
-            [[ "${1}" == --default-action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
-            process_special_action default "${s}"
-            ;;
-        -l | --close-action | --close-action=*)
-            [[ "${1}" == --close-action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
-            process_special_action close "${s}"
-            ;;
-        -p|--print-id)
-            PRINT_ID=true
-            ;;
-        -r|--replace|--replace=*)
-            [[ "${1}" = --replace=* ]] && ID=${1#*=} || { shift ;ID=${1} ; }
-            ;;
-        -R|--replace-file|--replace-file=*)
-            [[ "${1}" = --replace-file=* ]] && ID_FILE=${1#*=} || { shift ;ID_FILE=${1} ; }
-            [[ -s "${ID_FILE}" ]] && read ID < "${ID_FILE}"
-            ;;
-        -s|--close|--close=*)
-            [[ "${1}" = --close=* ]] && i=${1#*=} || { shift ;i=${1} ; }
-            ((${i}<1)) && ((${ID}>0)) && i=${ID}
-            ((${i}>0)) && notify_close ${i} ${EXPIRE_TIME}
-            exit ${?}
-            ;;
-        --)
-            positional=true
-            ;;
-        *)
-            process_posargs "${1}"
-            ;;
-    esac
-    shift
+	case "${1}" in
+		-\?|--help)
+			help
+			exit 0
+			;;
+		-v|--version)
+			echo "${SELF} ${VERSION}"
+			exit 0
+			;;
+		-u|--urgency|--urgency=*)
+			[[ "${1}" = --urgency=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+			process_urgency "${s}"
+			;;
+		-t|--expire-time|--expire-time=*)
+			[[ "${1}" = --expire-time=* ]] && EXPIRE_TIME=${1#*=} || { shift ;EXPIRE_TIME=${1} ; }
+			;;
+		-f|--force-expire)
+			export EXPLICIT_CLOSE=true # only export if explicitly set
+			;;
+		-a|--app-name|--app-name=*)
+			[[ "${1}" = --app-name=* ]] && APP_NAME=${1#*=} || { shift ;APP_NAME=${1} ; }
+			export APP_NAME # only export if explicitly set
+			;;
+		-i|--icon|--icon=*)
+			[[ "${1}" = --icon=* ]] && ICON=${1#*=} || { shift ;ICON=${1} ; }
+			;;
+		-c|--category|--category=*)
+			[[ "${1}" = --category=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+			process_category "${s}"
+			;;
+		-h|--hint|--hint=*)
+			[[ "${1}" = --hint=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+			process_hint "${s}"
+			;;
+		-o|--action|--action=*)
+			[[ "${1}" == --action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+			process_action "${s}"
+			;;
+		-d|--default-action|--default-action=*)
+			[[ "${1}" == --default-action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+			process_special_action default "${s}"
+			;;
+		-l|--close-action|--close-action=*)
+			[[ "${1}" == --close-action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+			process_special_action close "${s}"
+			;;
+		-p|--print-id)
+			PRINT_ID=true
+			;;
+		-r|--replace|--replace=*)
+			[[ "${1}" = --replace=* ]] && ID=${1#*=} || { shift ;ID=${1} ; }
+			;;
+		-R|--replace-file|--replace-file=*)
+			[[ "${1}" = --replace-file=* ]] && ID_FILE=${1#*=} || { shift ;ID_FILE=${1} ; }
+			[[ -s ${ID_FILE} ]] && read ID < "${ID_FILE}"
+			;;
+		-s|--close|--close=*)
+			[[ "${1}" = --close=* ]] && i=${1#*=} || { shift ;i=${1} ; }
+			((${i}<1)) && ((${ID}>0)) && i=${ID}
+			((${i}>0)) && notify_close ${i} ${EXPIRE_TIME}
+			exit ${?}
+			;;
+		--)
+			positional=true
+			;;
+		*)
+			process_posargs "${1}"
+			;;
+	esac
+	shift
 done
 
-# build the special strings
-actions="$(concat_actions "${ACTIONS[@]}")"
-HINTS=("$(make_hint byte urgency "${URGENCY}")" "${HINTS[@]}")
-hints="$(concat_hints "${HINTS[@]}")"
-typeset -i OLD_ID=${ID} NEW_ID=0
+# build the actions & hints strings
+a= ;for s in "${AKEYS[@]}" ;do a+=,${s} ;done ;a=${a:1}
+make_hint byte urgency "${URGENCY}" ;h=${_r}
+for s in "${HINTS[@]}" ;do h+=,${s} ;done
 
 # send the dbus message, collect the notification ID
+typeset -i OLD_ID=${ID} NEW_ID=0
 s=$(gdbus call ${NOTIFY_ARGS[@]} \
 	--method org.freedesktop.Notifications.Notify \
 	"${APP_NAME}" ${ID} "${ICON}" "${SUMMARY}" "${BODY}" \
-	"${actions}" "${hints}" "int32 ${EXPIRE_TIME}")
+	"[${a}]" "{${h}}" "int32 ${EXPIRE_TIME}")
 
 # process the ID
 s=${s%,*} NEW_ID=${s#* }
@@ -253,10 +230,8 @@ s=${s%,*} NEW_ID=${s#* }
 [[ "${ID_FILE}" ]] && ((${OLD_ID}<1)) && echo ${ID} > "${ID_FILE}"
 ${PRINT_ID} && echo ${ID}
 
-# launch the action handler
-((${#ACTION_COMMANDS[@]}>0)) && setsid -f "${ACTION_HANDLER}" ${ID} "${ACTION_COMMANDS[@]}" >&- 2>&- &
+# bg task to monitor dbus and perform the actions
+((${#ACMDS[@]}>0)) && setsid -f "${ACTION_SH}" ${ID} "${ACMDS[@]}" >&- 2>&- &
 
-# bg task to wait and then close notification
-${EXPLICIT_CLOSE} && ((${EXPIRE_TIME}>0)) && setsid -f ${0} -t ${EXPIRE_TIME} -s ${ID} >&- 2>&- <&- &
-
-${DEBUG_NOTIFY_SEND} && set >&2
+# bg task to wait expire time and then actively close notification
+${EXPLICIT_CLOSE} && ((${EXPIRE_TIME}>0)) && setsid -f "${0}" -t ${EXPIRE_TIME} -s ${ID} >&- 2>&- <&- &
