@@ -52,7 +52,8 @@ public class OSDNotify : GLib.Object {
 				+ " -c info"
 				+ " -a "+BRANDING_SHORTNAME
 				+ " -i "+BRANDING_SHORTNAME
-				+ " -t 0";
+				+ " -t 0"
+				+ " -f ";
 
 			if (close_action != "") s += " -l \""+close_action+"\"";
 

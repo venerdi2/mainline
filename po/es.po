@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 23:42-0400\n"
+"POT-Creation-Date: 2020-05-23 20:06-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:267
+#: src/Common/Main.vala:266
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Notificación"

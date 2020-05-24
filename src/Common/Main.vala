@@ -114,7 +114,7 @@ public class Main : GLib.Object{
 
 		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
 		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";
-		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify.sh";
+		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify-loop.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
 		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
 		NOTIFICATION_SEEN_FILE = APP_CONF_DIR + "/notification_seen";
@@ -234,10 +234,9 @@ public class Main : GLib.Object{
 		string s = "#!/bin/bash\n"
 			+ "# " +_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
 			+ "# This file is over-written and executed again whenever settings are saved in "+BRANDING_SHORTNAME+"-gtk\n"
-			+ "[[ \"${1}\" = \"--new-session\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+NOTIFICATION_SEEN_FILE+"\n"
+			+ "[[ \"${1}\" = \"--autostart\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+NOTIFICATION_SEEN_FILE+"\n"
 			+ "F=\"/tmp/"+BRANDING_SHORTNAME+"-notify-loop.${$}.p\"\n"
 			+ "trap \"rm -f ${F}\" 0\n"
-			//+ "trap \"exit\" 1 2 3 4 5 6 7 8 10 11 12 13 14 15\n"
 			+ "echo -n \"${DISPLAY} ${$}\" > ${F}\n"
 			+ "typeset -i p\n"
 			+ "shopt -s extglob\n"
@@ -248,7 +247,7 @@ public class Main : GLib.Object{
 			+ "\t[[ ${f} -ot ${F} ]] || continue\n"
 			+ "\tread d p x < ${f}\n"
 			+ "\t[[ \"${d}\" == \"${DISPLAY}\" ]] || continue\n"
-			+ "\t[[ ${p} -gt 0 ]] || continue\n"
+			+ "\t((${p}>1)) || continue\n"
 			+ "\trm -f ${f}\n"
 			+ "\tkill ${p}\n"
 			+ "done\n"
@@ -277,7 +276,7 @@ public class Main : GLib.Object{
 			
 			string txt = "[Desktop Entry]\n"
 				+ "Type=Application\n"
-				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --new-session\n"
+				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --autostart\n"
 				+ "Hidden=false\n"
 				+ "NoDisplay=false\n"
 				+ "X-GNOME-Autostart-enabled=true\n"

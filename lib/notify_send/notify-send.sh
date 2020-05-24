@@ -3,6 +3,11 @@
 # notify-send.sh - drop-in replacement for notify-send with more features
 # Copyright (C) 2015-2020 notify-send.sh authors (see AUTHORS file)
 
+# 20200520 b.kenyon.w@gmail.com
+# Originally from https://github.com/vlevit/notify-send.sh
+# This copy is significantly re-written for https://github.com/bkw777/mainline
+# See mainline_changes.txt
+
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -19,39 +24,28 @@
 # Desktop Notifications Specification
 # https://developer.gnome.org/notification-spec/
 
-### 20200520 b.kenyon.w@gmail.com
-### This copy is significantly modified for https://github.com/bkw777/mainline
-### The associated notifty-action.sh is completely re-written
-#
-# * If expire time is 0, then ignore --force and don't try to calculate sleep time (divide by 0)
-# * Derive sleep time from expire time without "bc" and without $(...)
-# * Refactor to avoid unecessary child shells (still more could be done)
-# * --close without ID gets ID from --replace-file
-# * Fix quoting of action pairs so that -d default action, or any -o action with no label,
-#   produces a blank button insted of a button with ''
-# * Allow empty SUMMARY & BODY, treat missing as empty instead of error
-# * Typeset -i to prevent ID from ever being '',
-#   even if --replace-file is bad.
-# * Export APP_NAME to notify-action.sh child process
-# * setsid to free ourself from the action handler process
-
 SELF=${0##*/}
 VERSION="1.1-mainline"
 ACTION_HANDLER=${0%/*}/notify-action.sh
 
+${DEBUG_NOTIFY_SEND:=false} && {
+	exec 2>/tmp/.${SELF}.${$}.e
+	set -x
+}
+
 NOTIFY_ARGS=(--session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications)
-typeset -i EXPIRE_TIME=-1
-typeset -i ID=0
+typeset -i i=0 ID=0 EXPIRE_TIME=-1
 URGENCY=1
 HINTS=()
 APP_NAME=${SELF}
 PRINT_ID=false
-FORCE_EXPIRE=false
+EXPLICIT_CLOSE=false
 unset ID_FILE
 positional=false
 SUMMARY_SET=false
 SUMMARY=""
 BODY=""
+set +H
 
 help() {
     cat <<EOF
@@ -64,7 +58,7 @@ Help Options:
 Application Options:
   -u, --urgency=LEVEL               Specifies the urgency level (low, normal, critical).
   -t, --expire-time=TIME            Specifies the timeout in milliseconds at which to expire the notification.
-  -f, --force-expire                Forcefully closes the notification when the notification has expired.
+  -f, --force-expire                Actively close the notification after the expire time, or after processing any action.
   -a, --app-name=APP_NAME           Specifies the app name for the icon.
   -i, --icon=ICON[,ICON...]         Specifies an icon filename or stock icon to display.
   -c, --category=TYPE[,TYPE...]     Specifies the notification category.
@@ -93,25 +87,27 @@ convert_type () {
 
 make_hint () {
     type=$(convert_type "$1")
-    [[ $? = 0 ]] || return 1
+    ((${?})) && return 1
     name=${2}
     [[ "$type" = string ]] && command="\"$3\"" || command="$3"
     echo "\"$name\": <$type $command>"
 }
 
 concat_actions () {
-    local r=${1} ;shift
-    while [[ "${1}" ]] ;do r+=",${1}" ;shift ;done
-    echo "[${r}]"
+    local s=${1} ;shift
+    while ((${#})) ;do s+=",${1}" ;shift ;done
+    echo "[${s}]"
 }
 
 concat_hints () {
-    local r=${1} ;shift
-    while [[ "${1}" ]] ;do r+=",${1}" ;shift ;done
-    echo "{${r}}"
+    local s=${1} ;shift
+    while ((${#})) ;do s+=",${1}" ;shift ;done
+    echo "{${s}}"
 }
 
 notify_close () {
+	typeset -i i="${2}"
+	((${i}>0)) && sleep ${i:0:-3}.${i:$((${#i}-3))}
     gdbus call ${NOTIFY_ARGS[@]} --method org.freedesktop.Notifications.CloseNotification "${1}" >&-
 }
 
@@ -138,7 +134,7 @@ process_hint () {
     t=${a[0]} n=${a[1]} c=${a[2]}
     [[ "${n}" ]] && [[ "${c}" ]] || abrt "Invalid hint syntax specified. Use TYPE:NAME:VALUE."
     h="$(make_hint "${t}" "${n}" "${c}")"
-    [[ $? = 0 ]] || abrt "Invalid hint type \"${t}\". Valid types are int, double, string and byte."
+    ((${?})) && abrt "Invalid hint type \"${t}\". Valid types are int, double, string and byte."
     HINTS+=("${h}")
 }
 
@@ -153,7 +149,7 @@ process_action () {
 }
 
 process_special_action () {
-    local k="${1}" c="${2}"
+    local k=${1} c=${2}
     [[ "${c}" ]] || abrt "Command must not be empty"
     ACTION_COMMANDS+=("${k}" "${c}")
     [[ "${k}" != "close" ]] && ACTIONS+=("\"${k}\",\"\"")
@@ -164,7 +160,8 @@ process_posargs () {
     ${SUMMARY_SET} && BODY=${1} || SUMMARY=${1} SUMMARY_SET=true
 }
 
-while (( ${#} > 0 )) ; do
+while ((${#})) ; do
+	s= i=0
     case "${1}" in
         -\?|--help)
             help
@@ -175,42 +172,41 @@ while (( ${#} > 0 )) ; do
             exit 0
             ;;
         -u|--urgency|--urgency=*)
-            [[ "${1}" = --urgency=* ]] && urgency="${1#*=}" || { shift; urgency="${1}"; }
-            process_urgency "${urgency}"
+            [[ "${1}" = --urgency=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+            process_urgency "${s}"
             ;;
         -t|--expire-time|--expire-time=*)
-            [[ "${1}" = --expire-time=* ]] && EXPIRE_TIME="${1#*=}" || { shift; EXPIRE_TIME="${1}"; }
-            [[ "${EXPIRE_TIME}" =~ ^-?[0-9]+$ ]] || abrt "Invalid expire time: ${EXPIRE_TIME}"
+            [[ "${1}" = --expire-time=* ]] && EXPIRE_TIME=${1#*=} || { shift ;EXPIRE_TIME=${1} ; }
             ;;
         -f|--force-expire)
-            FORCE_EXPIRE=true
+            export EXPLICIT_CLOSE=true # only export if explicitly set
             ;;
         -a|--app-name|--app-name=*)
-            [[ "${1}" = --app-name=* ]] && APP_NAME="${1#*=}" || { shift; APP_NAME="${1}"; }
-            export APP_NAME
+            [[ "${1}" = --app-name=* ]] && APP_NAME=${1#*=} || { shift ;APP_NAME=${1} ; }
+            export APP_NAME # only export if explicitly set
             ;;
         -i|--icon|--icon=*)
-            [[ "${1}" = --icon=* ]] && ICON="${1#*=}" || { shift; ICON="${1}"; }
+            [[ "${1}" = --icon=* ]] && ICON=${1#*=} || { shift ;ICON=${1} ; }
             ;;
         -c|--category|--category=*)
-            [[ "${1}" = --category=* ]] && category="${1#*=}" || { shift; category="${1}"; }
-            process_category "${category}"
+            [[ "${1}" = --category=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+            process_category "${s}"
             ;;
         -h|--hint|--hint=*)
-            [[ "${1}" = --hint=* ]] && hint="${1#*=}" || { shift; hint="${1}"; }
-            process_hint "${hint}"
+            [[ "${1}" = --hint=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+            process_hint "${s}"
             ;;
         -o | --action | --action=*)
-            [[ "${1}" == --action=* ]] && action="${1#*=}" || { shift; action="${1}"; }
-            process_action "${action}"
+            [[ "${1}" == --action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+            process_action "${s}"
             ;;
         -d | --default-action | --default-action=*)
-            [[ "${1}" == --default-action=* ]] && default_action="${1#*=}" || { shift; default_action="${1}"; }
-            process_special_action default "${default_action}"
+            [[ "${1}" == --default-action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+            process_special_action default "${s}"
             ;;
         -l | --close-action | --close-action=*)
-            [[ "${1}" == --close-action=* ]] && close_action="${1#*=}" || { shift; close_action="${1}"; }
-            process_special_action close "${close_action}"
+            [[ "${1}" == --close-action=* ]] && s=${1#*=} || { shift ;s=${1} ; }
+            process_special_action close "${s}"
             ;;
         -p|--print-id)
             PRINT_ID=true
@@ -219,15 +215,14 @@ while (( ${#} > 0 )) ; do
             [[ "${1}" = --replace=* ]] && ID=${1#*=} || { shift ;ID=${1} ; }
             ;;
         -R|--replace-file|--replace-file=*)
-            [[ "${1}" = --replace-file=* ]] && filename="${1#*=}" || { shift; filename="${1}"; }
-            [[ -s "${filename}" ]] && read ID < "${filename}"
-            ID_FILE=${filename}
+            [[ "${1}" = --replace-file=* ]] && ID_FILE=${1#*=} || { shift ;ID_FILE=${1} ; }
+            [[ -s "${ID_FILE}" ]] && read ID < "${ID_FILE}"
             ;;
         -s|--close|--close=*)
-            [[ "${1}" = --close=* ]] && close_id="${1#*=}" || { shift; close_id="${1}"; }
-            case "${close_id}" in ""|R|replace-file) [[ ${ID} -gt 0 ]] && close_id=${ID} ;; esac
-            notify_close "${close_id}"
-            exit $?
+            [[ "${1}" = --close=* ]] && i=${1#*=} || { shift ;i=${1} ; }
+            ((${i}<1)) && ((${ID}>0)) && i=${ID}
+            ((${i}>0)) && notify_close ${i} ${EXPIRE_TIME}
+            exit ${?}
             ;;
         --)
             positional=true
@@ -246,20 +241,22 @@ hints="$(concat_hints "${HINTS[@]}")"
 typeset -i OLD_ID=${ID} NEW_ID=0
 
 # send the dbus message, collect the notification ID
-NEW_ID=$(gdbus call ${NOTIFY_ARGS[@]} \
+s=$(gdbus call ${NOTIFY_ARGS[@]} \
 	--method org.freedesktop.Notifications.Notify \
-	"${APP_NAME}" "${ID}" "${ICON}" "${SUMMARY}" "${BODY}" \
-	"${actions}" "${hints}" "int32 ${EXPIRE_TIME}" \
-	|sed 's/(uint32 \([0-9]\+\),)/\1/g' )
+	"${APP_NAME}" ${ID} "${ICON}" "${SUMMARY}" "${BODY}" \
+	"${actions}" "${hints}" "int32 ${EXPIRE_TIME}")
 
 # process the ID
-[[ ${NEW_ID} -gt 0 ]] || abrt "invalid notification ID from gdbus"
-[[ ${OLD_ID} = 0 ]] && ID=${NEW_ID}
-[[ "${ID_FILE}" ]] && [[ ${OLD_ID} = 0 ]] && echo ${ID} > "${ID_FILE}"
+s=${s%,*} NEW_ID=${s#* }
+((${NEW_ID}>0)) || abrt "invalid notification ID from gdbus"
+((${OLD_ID}>0)) || ID=${NEW_ID}
+[[ "${ID_FILE}" ]] && ((${OLD_ID}<1)) && echo ${ID} > "${ID_FILE}"
 ${PRINT_ID} && echo ${ID}
 
 # launch the action handler
-[[ ${#ACTION_COMMANDS[@]} -gt 0 ]] && setsid -f "${ACTION_HANDLER}" "${ID}" "${ACTION_COMMANDS[@]}" >/dev/null 2>&1 &
+((${#ACTION_COMMANDS[@]}>0)) && setsid -f "${ACTION_HANDLER}" ${ID} "${ACTION_COMMANDS[@]}" >&- 2>&- &
 
 # bg task to wait and then close notification
-${FORCE_EXPIRE} && [[ ${EXPIRE_TIME} -gt 0 ]] && ( sleep ${EXPIRE_TIME:0:-3} ; notify_close ${ID} ) &
+${EXPLICIT_CLOSE} && ((${EXPIRE_TIME}>0)) && setsid -f ${0} -t ${EXPIRE_TIME} -s ${ID} >&- 2>&- <&- &
+
+${DEBUG_NOTIFY_SEND} && set >&2
