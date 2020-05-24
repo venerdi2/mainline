@@ -18,16 +18,16 @@ mainline is written using Vala and GTK3. Source code and binaries are available 
 
 [cappelikan](https://github.com/cappelikan) maintains a PPA at: <https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa>
 
-		sudo add-apt-repository ppa:cappelikan/ppa
-		sudo apt update
-		sudo apt install mainline
+	sudo add-apt-repository ppa:cappelikan/ppa
+	sudo apt update
+	sudo apt install mainline
 
 ### Build
-		sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
-		git clone https://github.com/bkw777/mainline.git
-		cd mainline
-		make
-		sudo make install
+	sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
+	git clone https://github.com/bkw777/mainline.git
+	cd mainline
+	make
+	sudo make install
 
 ### About
 mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
@@ -46,6 +46,6 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 * Better desktop notification behavior
 
 ### TODO & WIP
-* notifications - make the bg process detect when the user logs off and exit itself.
-* notifications - start/restart/stop the bg process when the user changes settings instead of only at logon/logoff
-* temp files - do something less broken when a user runs ex: "sudo mainline --install-latest"
+* Make the notification bg process detect when the user logs off and exit itself.
+* Save & restore window dimensions.
+* Move the notification/dbus code into the app and make an "applet mode"
