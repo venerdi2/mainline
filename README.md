@@ -14,7 +14,7 @@ This is a tool for installing the latest mainline Linux kernel on Ubuntu-based d
 ### Downloads & Source Code
 mainline is written using Vala and GTK3. Source code and binaries are available from the [GitHub project page](https://github.com/bkw777/mainline).
 
-[cappelikan](https://github.com/cappelikan) maintains a PPA at: <https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa>
+[cappelikan](https://github.com/cappelikan) maintains a PPA at: <https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa>  
 	sudo add-apt-repository ppa:cappelikan/ppa
 	sudo apt update
 	sudo apt install mainline
