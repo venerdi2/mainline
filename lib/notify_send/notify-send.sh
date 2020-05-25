@@ -49,10 +49,9 @@ BODY=
 positional=false
 summary_set=false
 _r=
-set +H
 
-help() {
-    cat <<EOF
+help () {
+	cat <<EOF
 Usage:
   notify-send.sh [OPTION...] <SUMMARY> [BODY] - create a notification
 
@@ -73,24 +72,16 @@ Application Options:
   -p, --print-id                    Print the notification ID to the standard output.
   -r, --replace=ID                  Replace existing notification.
   -R, --replace-file=FILE           Store and load notification replace ID to/from this file.
-  -s, --close=ID                    Close notification. With -R, get ID from -R file. 
+  -s, --close=ID                    Close notification. With -R, get ID from -R file.
   -v, --version                     Version of the package.
 
 EOF
 }
 
-abrt () { echo "${SELF}: $@" >&2 ; exit 1 ; }
-
-make_hint () {
-	_r="" ;local t=${1} n=${2} c=${3}
-	[[ ${t} =~ ^(byte|int32|double|string)$ ]] || abrt "Hint types: byte int32 double string"
-	[[ ${t} = string ]] && c="\"${3}\""
-	_r="\"${n}\": <${t} ${c}>"
-}
+abrt () { echo "${SELF}: ${@}" >&2 ; exit 1 ; }
 
 notify_close () {
-	typeset -i i=${2}
-	((${i}>0)) && sleep ${i:0:-3}.${i:$((${#i}-3))}
+	i=${2} ;((${i}>0)) && sleep ${i:0:-3}.${i:$((${#i}-3))}
 	gdbus call ${NOTIFY_ARGS[@]} --method org.freedesktop.Notifications.CloseNotification "${1}" >&-
 }
 
@@ -108,6 +99,13 @@ process_category () {
 	for c in "${a[@]}"; do
 		make_hint string category "${c}" && HINTS+=(${_r})
 	done
+}
+
+make_hint () {
+	_r= ;local t=${1} n=${2} c=${3}
+	[[ ${t} =~ ^(byte|int32|double|string)$ ]] || abrt "Hint types: byte int32 double string"
+	[[ ${t} = string ]] && c="\"${3}\""
+	_r="\"${n}\":<${t} ${c}>"
 }
 
 process_hint () {

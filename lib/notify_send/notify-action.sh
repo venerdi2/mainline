@@ -14,10 +14,10 @@ ${DEBUG_NOTIFY_SEND:=false} && {
 }
 
 SEND_SH=${0%/*}/notify-send.sh
-GDBUS_ARGS=(monitor --session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications)
 GDBUS_PIDF=${TMP}/${APP_NAME:=${SELF}}.${$}.p
+GDBUS_ARGS=(monitor --session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications)
 
-abrt () { echo "${0}: ${@}" >&2 ; exit 1 ; }
+abrt () { echo "${SELF}: ${@}" >&2 ; exit 1 ; }
 
 # consume the command line
 typeset -i ID="${1}" ;shift
@@ -60,7 +60,7 @@ doit () {
 	${EXPLICIT_CLOSE:-false} && "${SEND_SH}" -s ${ID}
 }
 
-# start current monitor
+# start the monitor
 {
 	gdbus ${GDBUS_ARGS[@]} & echo ${!} >> "${GDBUS_PIDF}"
 } |while IFS=" :.(),'" read x x x x e x i x k x ;do
