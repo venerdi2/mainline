@@ -2,8 +2,6 @@
 
 # url to ubuntu mainline kernels
 URI_KERNEL_UBUNTU_MAINLINE := http://kernel.ubuntu.com/~kernel-ppa/mainline/
-# number of previous major kernel version numbers to show by default
-DEFAULT_SHOW_PREV_MAJORS := 0
 
 SHELL := /bin/bash
 CFLAGS := --std=c99
@@ -35,7 +33,6 @@ build_symbols := -X -D'INSTALL_PREFIX="$(prefix)"' \
 	-X -D'BRANDING_AUTHOREMAIL="$(BRANDING_AUTHOREMAIL)"' \
 	-X -D'BRANDING_WEBSITE="$(BRANDING_WEBSITE)"' \
 	-X -D'GETTEXT_PACKAGE="$(BRANDING_SHORTNAME)"' \
-	-X -D'DEFAULT_SHOW_PREV_MAJORS="$(DEFAULT_SHOW_PREV_MAJORS)"' \
 	-X -D'URI_KERNEL_UBUNTU_MAINLINE="$(URI_KERNEL_UBUNTU_MAINLINE)"'
 
 misc_files := README.md \

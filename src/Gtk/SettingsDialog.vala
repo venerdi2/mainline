@@ -92,7 +92,7 @@ public class SettingsDialog : Gtk.Dialog {
 			vbox_main.add (label);
 		}
 
-		// notification interval
+		// notification interval value
 
 		// replace invalid debug-only values with valid values
 		int max_intervals = 52;
@@ -124,7 +124,7 @@ public class SettingsDialog : Gtk.Dialog {
 			App.notify_interval_value = (int) spin_notify.get_value();
 		});
 
-		// combo
+		// notify interval unit
 		var combo = new Gtk.ComboBox();
 		var cell_text = new Gtk.CellRendererText();
         combo.pack_start(cell_text, false);
@@ -136,23 +136,22 @@ public class SettingsDialog : Gtk.Dialog {
 			//log_debug("combo: %lf".printf(combo.active));
 		});
 
-        //populate
         TreeIter iter;
-        var model = new Gtk.ListStore (2, typeof (string), typeof (string));
+        var model = new Gtk.ListStore (1, typeof (string));
 		model.append (out iter);
-		model.set (iter,0,_("Hour(s)"),1,"hour");
+		model.set (iter,0,_("Hour(s)"));
 		model.append (out iter);
-		model.set (iter,0,_("Day(s)"),1,"day");
+		model.set (iter,0,_("Day(s)"));
 		model.append (out iter);
-		model.set (iter,0,_("Week(s)"),1,"week");
+		model.set (iter,0,_("Week(s)"));
 		if (LOG_DEBUG) {
 			model.append (out iter);
-			model.set (iter,0,_("Second(s)"),1,"second");
+			model.set (iter,0,_("Second(s)"));
 		}
 		combo.set_model(model);
 		combo.set_active(App.notify_interval_unit);
 		
-		// display
+		// _Display_
 		label = new Label("<b>" + _("Display") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
@@ -162,13 +161,13 @@ public class SettingsDialog : Gtk.Dialog {
 
 		// chk_hide_unstable
 		chk = new CheckButton.with_label(_("Hide unstable and RC releases"));
-		chk.active = LinuxKernel.hide_unstable;
+		chk.active = App.hide_unstable;
 		chk.margin_start = 6;
 		vbox_main.add(chk);
 		chk_hide_unstable = chk;
 		
 		chk.toggled.connect(()=>{
-			LinuxKernel.hide_unstable = chk_hide_unstable.active;
+			App.hide_unstable = chk_hide_unstable.active;
 		});
 
         // kernel version threshold
@@ -180,15 +179,15 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_start = 6;
 		hbox.add (label);
 
-		var spm_adj = new Gtk.Adjustment(LinuxKernel.show_prev_majors, 0, 99, 1, 1, 0);
+		var spm_adj = new Gtk.Adjustment(App.show_prev_majors, 0, 99, 1, 1, 0);
 		var spm_spin = new Gtk.SpinButton (spm_adj, 1, 0);
 		spm_spin.xalign = (float) 0.5;
 		hbox.add(spm_spin);
 
 		spm_spin.changed.connect(()=>{
-			LinuxKernel.show_prev_majors = (int) spm_spin.get_value();
+			App.show_prev_majors = (int) spm_spin.get_value();
 		});
-		
+
 		// other
 		label = new Label("<b>" + _("Other") + "</b>");
 		label.set_use_markup(true);

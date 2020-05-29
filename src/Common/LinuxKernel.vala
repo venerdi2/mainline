@@ -11,14 +11,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string kver = "";
 	public string version_main = "";
 	public string version_package = "";
-	public string type = "";
 	public string page_uri = "";
 
 	public int version_maj = -1;
 	public int version_min = -1;
 	public int version_point = -1;
 	public int version_rc = -1;
-	
+
 	public Gee.HashMap<string,string> deb_list = new Gee.HashMap<string,string>();
 	public Gee.HashMap<string,string> apt_pkg_list = new Gee.HashMap<string,string>();
 
@@ -44,9 +43,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
-	
-	public static int show_prev_majors;
-	public static bool hide_unstable;
 		
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
@@ -71,7 +67,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int highest_maj;
 
 	// class initialize
-	
+
 	public static void initialize(){
 		new LinuxKernel("", false); // instance must be created before setting static members
 
@@ -84,7 +80,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// dep: lsb_release
 	public static string check_distribution(){
 		string dist = "";
-		
+
 		string std_out, std_err;
 		int status = exec_sync("lsb_release -sd", out std_out, out std_err);
 		if ((status == 0) && (std_out != null)){
@@ -98,7 +94,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// dep: dpkg
 	public static string check_package_architecture(){
 		string arch = "";
-		
+
 		string std_out, std_err;
 		int status = exec_sync("dpkg --print-architecture", out std_out, out std_err);
 		if ((status == 0) && (std_out != null)){
@@ -126,19 +122,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void initialize_regex(){
 		try{
 			//linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_header = new Regex("""linux-headers-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_header = new Regex("""linux-headers-[a-zA-Z0-9.\-_]*-generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
 
 			//linux-headers-3.4.75-030475_3.4.75-030475.201312201255_all.deb
 			rex_header_all = new Regex("""linux-headers-[a-zA-Z0-9.\-_]*_all.deb""");
 
 			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image = new Regex("""linux-image-[a-zA-Z0-9.\-_]*generic_([a-zA-Z0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
+			rex_image = new Regex("""linux-image-[a-zA-Z0-9.\-_]*-generic_([a-zA-Z0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image_extra = new Regex("""linux-image-extra-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_image_extra = new Regex("""linux-image-extra-[a-zA-Z0-9.\-_]*-generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_modules = new Regex("""linux-modules-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_modules = new Regex("""linux-modules-[a-zA-Z0-9.\-_]*-generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -212,8 +208,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	private static void query_thread() {
 
-		log_debug("query: show_prev_majors: %s".printf(show_prev_majors.to_string()));
-		log_debug("query: hide_unstable: %s".printf(hide_unstable.to_string()));
+		log_debug("query_thread() App.show_prev_majors: %d".printf(App.show_prev_majors));
+		log_debug("query_thread() App.hide_unstable: "+App.hide_unstable.to_string());
 
 		//DownloadManager.reset_counter();
 
@@ -249,8 +245,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// determine the size of the job for the percent-done display
 		foreach(var k in kernel_list){
 			if(!k.is_installed){
-				if (k.version_maj < highest_maj-show_prev_majors) continue;
-				if (hide_unstable && k.is_unstable) continue;
+				if (k.version_maj < highest_maj-App.show_prev_majors) continue;
+				if (App.hide_unstable && k.is_unstable) continue;
 			}
 			if (k.is_valid && !k.cached_page_exists) progress_total += 2;
 		}
@@ -273,8 +269,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (!k.is_valid) continue;
 
 			if (!k.is_installed) {
-				if (k.version_maj < highest_maj-show_prev_majors) continue;
-				if (hide_unstable && k.is_unstable) continue;
+				if (k.version_maj < highest_maj-App.show_prev_majors) continue;
+				if (App.hide_unstable && k.is_unstable) continue;
 			}
 
 			// add index.html to download list
@@ -448,9 +444,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// Running: 4.4.0-28-generic
 		// Package: 4.4.0-28.47
 
-		//string ver_running = RUNNING_KERNEL.replace("-generic","");
-		string ver_running = RUNNING_KERNEL;
-		var kern_running = new LinuxKernel.from_version(ver_running);
+		var kern_running = new LinuxKernel.from_version(RUNNING_KERNEL);
 		kernel_active = null;
 
 		// scan mainline kernels
@@ -460,7 +454,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			if (k.version_package.length > 0) {
 				string ver_pkg_short = k.version_package[0 : k.version_package.last_index_of(".")];
-				if (ver_pkg_short == ver_running){
+				if (ver_pkg_short == RUNNING_KERNEL){
 					k.is_running = true;
 					k.is_installed = true;
 					kernel_active = k;
@@ -512,7 +506,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		foreach(var k in LinuxKernel.kernel_list){
 			if (!k.is_valid) continue;
-			if ((hide_unstable && k.is_unstable) && (!k.is_installed)) continue;
+			if ((App.hide_unstable && k.is_unstable) && (!k.is_installed)) continue;
 			if (kernel_latest_available == null) kernel_latest_available = k;
 			if (k.is_installed) continue;
 
@@ -581,8 +575,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		var list = new Gee.ArrayList<LinuxKernel>();
 
-		string ver_running = RUNNING_KERNEL;
-		var kern_running = new LinuxKernel.from_version(ver_running);
+		var kern_running = new LinuxKernel.from_version(RUNNING_KERNEL);
 
 		bool found_running_kernel = false;
 		
@@ -593,7 +586,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				found_running_kernel = true;
 				continue;
 			}
-			if (k.compare_to(kern_running) > 0) continue; // FIXME, compare against highest installed, not current running
+			if (k.compare_to(kern_running) > 0) continue; // FIXME, compare kernel_latest_installed
 			list.add(k);
 		}
 
@@ -777,7 +770,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				return (x - y);
 			}
 			else if ((x == 0) && (y == 0)){
-				// BKW - this is one place where "-rc3" gets compared to "-rc4" etc
+				// BKW - this is one place where "-rc3" gets compared to "-rc4"
 				// both are strings
 				//log_debug("strcmp("+arr_a[i]+","+arr_b[i]+")");
 				return strcmp(arr_a[i], arr_b[i]);
@@ -837,12 +830,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 	
 	// properties
-
-	public bool is_rc{
-		get {
-			return kver.contains("-rc");
-		}
-	}
 
 	public bool is_unstable{
 		get {
@@ -909,26 +896,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public string major_version{
-		owned get {
-			string[] parts = version_main.split(".");
-			if (parts.length >= 2){
-				return "%s.%s".printf(parts[0],parts[1]);
-			}
-			return version_main;
-		}
-	}
-
-	public string minor_version{
-		owned get {
-			string[] parts = version_main.split(".");
-			if (parts.length >= 3){
-				return "%s.%s.%s".printf(parts[0],parts[1],parts[2]);
-			}
-			return version_main;
-		}
-	}
-
 	public string tooltip_text(){
 		string txt = "";
 
@@ -936,6 +903,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		foreach(string deb in deb_list.keys){
 			list += "\n%s".printf(deb);
 		}
+
 		if (list.length > 0){
 			txt += "<b>%s</b>\n%s".printf(_("Packages Available"), list);
 		}
@@ -975,9 +943,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (rex.match(line, 0, out match)){
 					string file_name = match.fetch(2);
 					string file_uri = "%s%s".printf(page_uri, match.fetch(1));
-
 					bool add = false;
-					
+
 					if (rex_header.match(file_name, 0, out match)){
 						deb_header = file_name;
 						add = true;
@@ -990,9 +957,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 					if (rex_image.match(file_name, 0, out match)){
 						deb_image = file_name;
-						add = true;
-						
 						version_package = match.fetch(1);
+						add = true;
 					}
 
 					if (rex_image_extra.match(file_name, 0, out match)){
@@ -1039,8 +1005,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
-				if (hide_unstable && k.is_unstable) continue;
-				if (k.version_maj < highest_maj-show_prev_majors) continue;
+				if (App.hide_unstable && k.is_unstable) continue;
+				if (k.version_maj < highest_maj-App.show_prev_majors) continue;
 			}
 
 			// kern.kname "v5.6.11" -> cache download dir names, needed for --install, --remove

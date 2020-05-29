@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-24 18:05-0400\n"
+"POT-Creation-Date: 2020-05-29 13:05-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: Waldemar Konik <valdi74@github>\n"
 "Language-Team: Polish\n"
@@ -12,109 +12,109 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: src/Common/LinuxKernel.vala:92
+#: src/Common/LinuxKernel.vala:88
 msgid "Distribution"
 msgstr "Dystrybucja"
 
-#: src/Common/LinuxKernel.vala:106
+#: src/Common/LinuxKernel.vala:102
 #, fuzzy
 msgid "Architecture"
 msgstr "Architektura systemu"
 
-#: src/Common/LinuxKernel.vala:305
+#: src/Common/LinuxKernel.vala:301
 msgid "Fetching index..."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:342
+#: src/Common/LinuxKernel.vala:338
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Pobieranie indeksu z kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:601
+#: src/Common/LinuxKernel.vala:594
 #, fuzzy
 msgid "Could not find running kernel in list!"
 msgstr "Nie można odnaleźć żądanej wersji"
 
-#: src/Common/LinuxKernel.vala:607
+#: src/Common/LinuxKernel.vala:600
 #, fuzzy
 msgid "Could not find any kernels to remove"
 msgstr "Wybierz jądro do usunięcia"
 
-#: src/Common/LinuxKernel.vala:616
+#: src/Common/LinuxKernel.vala:609
 msgid "The following kernels will be removed:"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:623
+#: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:649 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:304
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:660 src/Console/AppConsole.vala:311
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:311
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:668 src/Console/AppConsole.vala:316
-#: src/Console/AppConsole.vala:374
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:316
+#: src/Console/AppConsole.vala:377
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
-#: src/Common/LinuxKernel.vala:678
+#: src/Common/LinuxKernel.vala:671
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:940
+#: src/Common/LinuxKernel.vala:908
 msgid "Packages Available"
 msgstr "Dostępne pakiety"
 
-#: src/Common/LinuxKernel.vala:948
+#: src/Common/LinuxKernel.vala:916
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:997
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
-#: src/Common/LinuxKernel.vala:1038 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1004 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Zainstalowany"
 
-#: src/Common/LinuxKernel.vala:1038 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:625 src/Gtk/MainWindow.vala:639
+#: src/Common/LinuxKernel.vala:1004 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:627 src/Gtk/MainWindow.vala:641
 msgid "Running"
 msgstr "Uruchomiony"
 
-#: src/Common/LinuxKernel.vala:1075
+#: src/Common/LinuxKernel.vala:1041
 msgid "Downloading"
 msgstr "Pobieranie"
 
-#: src/Common/LinuxKernel.vala:1094
+#: src/Common/LinuxKernel.vala:1060
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1099
+#: src/Common/LinuxKernel.vala:1065
 msgid "ERROR"
 msgstr "BŁĄD"
 
-#: src/Common/LinuxKernel.vala:1113 src/Gtk/MainWindow.vala:647
+#: src/Common/LinuxKernel.vala:1079 src/Gtk/MainWindow.vala:649
 msgid "This kernel is already installed."
 msgstr "To jądro jest już zainstalowane."
 
-#: src/Common/LinuxKernel.vala:1139
+#: src/Common/LinuxKernel.vala:1105
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalacja zakończona. Aby korzystać z nowego jądra, konieczne jest ponowne "
 "uruchomienie."
 
-#: src/Common/LinuxKernel.vala:1142
+#: src/Common/LinuxKernel.vala:1108
 msgid "Installation completed with errors"
 msgstr "Instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1157
+#: src/Common/LinuxKernel.vala:1123
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -122,19 +122,19 @@ msgstr ""
 "Wybrane jądro aktualnie działa i nie może zostać usunięte.\n"
 " Zainstaluj inne jądro przed usunięciem tego."
 
-#: src/Common/LinuxKernel.vala:1162
+#: src/Common/LinuxKernel.vala:1128
 msgid "Preparing to remove selected kernels"
 msgstr "Przygotowanie do usunięcia wybranych jąder"
 
-#: src/Common/LinuxKernel.vala:1193 src/Common/LinuxKernel.vala:1240
+#: src/Common/LinuxKernel.vala:1159 src/Common/LinuxKernel.vala:1206
 msgid "Un-install completed"
 msgstr "De-instalacja zakończona"
 
-#: src/Common/LinuxKernel.vala:1196 src/Common/LinuxKernel.vala:1243
+#: src/Common/LinuxKernel.vala:1162 src/Common/LinuxKernel.vala:1209
 msgid "Un-install completed with errors"
 msgstr "De-instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1209
+#: src/Common/LinuxKernel.vala:1175
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -142,11 +142,11 @@ msgstr ""
 "To jądro aktualnie działa i nie może zostać usunięte.\n"
 " Zainstaluj inne jądro przed usunięciem tego."
 
-#: src/Common/Main.vala:237
+#: src/Common/Main.vala:241
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:271
+#: src/Common/Main.vala:275
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Powiadomienia"
@@ -283,16 +283,16 @@ msgstr ""
 msgid "to list all commands"
 msgstr "Pokaż wszystkie opcje"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:352 src/Console/AppConsole.vala:364
+#: src/Console/AppConsole.vala:355 src/Console/AppConsole.vala:367
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Dostępne pakiety"
 
-#: src/Console/AppConsole.vala:354 src/Console/AppConsole.vala:366
+#: src/Console/AppConsole.vala:357 src/Console/AppConsole.vala:369
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Zainstaluj"
@@ -321,8 +321,8 @@ msgstr "Odśwież"
 msgid "Internet connection is not active"
 msgstr "Brak połączenia z internetem"
 
-#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:522
-#: src/Gtk/MainWindow.vala:652
+#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:524
+#: src/Gtk/MainWindow.vala:654
 msgid "No Internet"
 msgstr "Brak internetu"
 
@@ -351,7 +351,7 @@ msgid "Select the kernels to remove"
 msgstr "Wybierz jądro do usunięcia"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
-#: src/Gtk/MainWindow.vala:684
+#: src/Gtk/MainWindow.vala:686
 msgid "Close window to exit..."
 msgstr ""
 
@@ -367,37 +367,37 @@ msgstr "Zmiany"
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: src/Gtk/MainWindow.vala:456
+#: src/Gtk/MainWindow.vala:458
 msgid "About"
 msgstr "O programie"
 
-#: src/Gtk/MainWindow.vala:500
+#: src/Gtk/MainWindow.vala:502
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Narzędzie uaktualniania jądra dla dystrybucji z rodziny Ubuntu"
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:503
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:503
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:522 src/Gtk/MainWindow.vala:652
+#: src/Gtk/MainWindow.vala:524 src/Gtk/MainWindow.vala:654
 #, fuzzy
 msgid "Internet connection is not active."
 msgstr "Brak połączenia z internetem"
 
-#: src/Gtk/MainWindow.vala:541
+#: src/Gtk/MainWindow.vala:543
 msgid "Refreshing..."
 msgstr "Odświeżam..."
 
-#: src/Gtk/MainWindow.vala:635
+#: src/Gtk/MainWindow.vala:637
 #, fuzzy
 msgid "available"
 msgstr "Dostępne pakiety"
 
-#: src/Gtk/MainWindow.vala:647
+#: src/Gtk/MainWindow.vala:649
 #, fuzzy
 msgid "Already Installed"
 msgstr "Zainstalowany"
@@ -427,53 +427,53 @@ msgstr ""
 msgid "Check every"
 msgstr "Sprawdzaj co"
 
-#: src/Gtk/SettingsDialog.vala:143
+#: src/Gtk/SettingsDialog.vala:142
 msgid "Hour(s)"
 msgstr "Godzin(y)"
 
-#: src/Gtk/SettingsDialog.vala:145
+#: src/Gtk/SettingsDialog.vala:144
 msgid "Day(s)"
 msgstr "Dni"
 
-#: src/Gtk/SettingsDialog.vala:147
+#: src/Gtk/SettingsDialog.vala:146
 msgid "Week(s)"
 msgstr "Tygodni"
 
-#: src/Gtk/SettingsDialog.vala:150
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Second(s)"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:156
+#: src/Gtk/SettingsDialog.vala:155
 msgid "Display"
 msgstr "Pokaż"
 
-#: src/Gtk/SettingsDialog.vala:164
+#: src/Gtk/SettingsDialog.vala:163
 msgid "Hide unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
 
-#: src/Gtk/SettingsDialog.vala:178
+#: src/Gtk/SettingsDialog.vala:177
 msgid "Show N previous major versions "
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:193
+#: src/Gtk/SettingsDialog.vala:192
 msgid "Other"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:201
+#: src/Gtk/SettingsDialog.vala:200
 #, fuzzy
 msgid "Skip internet connection check"
 msgstr "Brak połączenia z internetem"
 
-#: src/Gtk/SettingsDialog.vala:214
+#: src/Gtk/SettingsDialog.vala:213
 #, fuzzy
 msgid "Internet connection timeout in "
 msgstr "Brak połączenia z internetem"
 
-#: src/Gtk/SettingsDialog.vala:229
+#: src/Gtk/SettingsDialog.vala:228
 msgid "seconds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:236
+#: src/Gtk/SettingsDialog.vala:235
 msgid "Max concurrent downloads"
 msgstr ""
 

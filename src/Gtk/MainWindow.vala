@@ -255,8 +255,8 @@ public class MainWindow : Gtk.Window{
 		foreach(var kern in LinuxKernel.kernel_list) {
 			if (!kern.is_valid) continue;
 			if (!kern.is_installed) {
-				if (LinuxKernel.hide_unstable && kern.is_unstable) continue;
-				if (kern.version_maj < LinuxKernel.highest_maj-LinuxKernel.show_prev_majors) continue;
+				if (App.hide_unstable && kern.is_unstable) continue;
+				if (kern.version_maj < LinuxKernel.highest_maj-App.show_prev_majors) continue;
 			}
 
 			odd_row = !odd_row;
@@ -437,15 +437,17 @@ public class MainWindow : Gtk.Window{
 
 		button.clicked.connect(() => {
 
-			int prev_spm = LinuxKernel.show_prev_majors;
-			bool prev_hide_unstable = LinuxKernel.hide_unstable;
+			int _show_prev_majors = App.show_prev_majors;
+			bool _hide_unstable = App.hide_unstable;
 
 			var dlg = new SettingsDialog.with_parent(this);
 			dlg.run();
 			dlg.destroy();
 
-			if ((prev_spm != LinuxKernel.show_prev_majors)
-				|| (prev_hide_unstable != LinuxKernel.hide_unstable)){
+			if (
+				(_show_prev_majors != App.show_prev_majors)
+				|| (_hide_unstable != App.hide_unstable)
+			   ) {
 				refresh_cache();
 			}
 

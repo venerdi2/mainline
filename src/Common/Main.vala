@@ -39,7 +39,6 @@ using TeeJee.Misc;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
 [CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
-[CCode(cname="DEFAULT_SHOW_PREV_MAJORS")] extern const string DEFAULT_SHOW_PREV_MAJORS;
 
 public const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
 public const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
@@ -56,7 +55,8 @@ public class Main : GLib.Object{
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
 	public string NOTIFICATION_ID_FILE = "";
-	public string NOTIFICATION_SEEN_FILE = "";
+	public string MAJ_SEEN_FILE = "";
+	public string MIN_SEEN_FILE = "";
 
 	public string user_login = "";
 	public string user_home = "";
@@ -76,6 +76,8 @@ public class Main : GLib.Object{
 	
 	public bool notify_major = true;
 	public bool notify_minor = true;
+	public bool hide_unstable = true;
+	public int show_prev_majors = 0;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
 	public int connect_timeout_seconds = 15;
@@ -90,13 +92,14 @@ public class Main : GLib.Object{
 
 		GUI_MODE = _gui_mode;
 
+		init_paths();
+
+		load_app_config();
+
 		Package.initialize();
 
 		LinuxKernel.initialize();
 
-		init_paths();
-
-		load_app_config();
 	}
 
 	// helpers ------------
@@ -117,7 +120,8 @@ public class Main : GLib.Object{
 		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify-loop.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
 		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
-		NOTIFICATION_SEEN_FILE = APP_CONF_DIR + "/notification_seen";
+		MAJ_SEEN_FILE = APP_CONF_DIR + "/notification_seen.major";
+		MIN_SEEN_FILE = APP_CONF_DIR + "/notification_seen.minor";
 
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
@@ -133,8 +137,8 @@ public class Main : GLib.Object{
 		var config = new Json.Object();
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());
-		config.set_string_member("hide_unstable", LinuxKernel.hide_unstable.to_string());
-		config.set_string_member("show_prev_majors", LinuxKernel.show_prev_majors.to_string());
+		config.set_string_member("hide_unstable", hide_unstable.to_string());
+		config.set_string_member("show_prev_majors", show_prev_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
         config.set_string_member("connect_timeout_seconds", connect_timeout_seconds.to_string());
@@ -170,8 +174,8 @@ public class Main : GLib.Object{
 		
 		if (!f.query_exists()) {
 			// initialize static
-			LinuxKernel.hide_unstable = true;
-			LinuxKernel.show_prev_majors = int.parse(DEFAULT_SHOW_PREV_MAJORS);
+			hide_unstable = true;
+			show_prev_majors = 0;
 			return;
 		}
 
@@ -194,8 +198,8 @@ public class Main : GLib.Object{
 		concurrent_downloads = json_get_int(config, "concurrent_downloads", 4);
 		skip_connection_check = json_get_bool(config, "skip_connection_check", false);
 
-		LinuxKernel.hide_unstable = json_get_bool(config, "hide_unstable", true);
-		LinuxKernel.show_prev_majors = json_get_int(config, "show_prev_majors", int.parse(DEFAULT_SHOW_PREV_MAJORS));
+		hide_unstable = json_get_bool(config, "hide_unstable", true);
+		show_prev_majors = json_get_int(config, "show_prev_majors", 0);
 
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}
@@ -236,7 +240,7 @@ public class Main : GLib.Object{
 		string s = "#!/bin/bash\n"
 			+ "# " +_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
 			+ "# This file is over-written and executed again whenever settings are saved in "+BRANDING_SHORTNAME+"-gtk\n"
-			+ "[[ \"${1}\" = \"--autostart\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+NOTIFICATION_SEEN_FILE+"\n"
+			+ "[[ \"${1}\" = \"--autostart\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+MAJ_SEEN_FILE+" "+MIN_SEEN_FILE+"\n"
 			+ "TMP=${XDG_RUNTIME_DIR:-/tmp}\n"
 			+ "F=\"${TMP}/"+BRANDING_SHORTNAME+"-notify-loop.${$}.p\"\n"
 			+ "trap \"rm -f \\\"${F}\\\"\" 0\n"
@@ -278,7 +282,7 @@ public class Main : GLib.Object{
 
 	private void update_startup_desktop_file(){
 		if (notify_minor || notify_major){
-			
+
 			string txt = "[Desktop Entry]\n"
 				+ "Type=Application\n"
 				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --autostart\n"

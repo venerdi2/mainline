@@ -138,7 +138,7 @@ public class AppConsole : GLib.Object {
 				break;
 			
 			case "--show-unstable":
-				LinuxKernel.hide_unstable = false;
+				App.hide_unstable = false;
 				break;
 
 			case "--download":
@@ -329,9 +329,12 @@ public class AppConsole : GLib.Object {
 		//LinuxKernel.check_updates("notify_user()");
 		//LinuxKernel.check_updates();
 
-		string seen = "";
-		if (file_exists(App.NOTIFICATION_SEEN_FILE)) seen = file_read(App.NOTIFICATION_SEEN_FILE).strip();
-		log_msg("seen:\""+seen+"\"");
+		string seen_maj = "";
+		string seen_min = "";
+		if (file_exists(App.MAJ_SEEN_FILE)) seen_maj = file_read(App.MAJ_SEEN_FILE).strip();
+		if (file_exists(App.MIN_SEEN_FILE)) seen_min = file_read(App.MIN_SEEN_FILE).strip();
+		log_msg("seen_maj:\""+seen_maj+"\"");
+		log_msg("seen_min:\""+seen_min+"\"");
 
 		string debug_action = "";
 		string close_action = "";  // command to run when user closes notification instead of pressing any action button
@@ -348,11 +351,11 @@ public class AppConsole : GLib.Object {
 		}
 
 		var kern = LinuxKernel.kernel_update_major;
-		if (App.notify_major && (kern!=null) && (seen!=kern.version_main)){
+		if (App.notify_major && (kern!=null) && (seen_maj!=kern.version_main)){
 			var title = _("Kernel %s Available").printf(kern.version_main);
 			if (App.notify_major || App.notify_minor){
 				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
-				file_write(App.NOTIFICATION_SEEN_FILE,kern.version_main);
+				file_write(App.MAJ_SEEN_FILE,kern.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
 			}
 			log_msg(title);
@@ -360,11 +363,11 @@ public class AppConsole : GLib.Object {
 		}
 
 		kern = LinuxKernel.kernel_update_minor;
-		if (App.notify_minor && (kern!=null) && (seen!=kern.version_main)){
+		if (App.notify_minor && (kern!=null) && (seen_min!=kern.version_main)){
 			var title = _("Kernel %s Available").printf(kern.version_main);
 			if (App.notify_major || App.notify_minor) {
 				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
-				file_write(App.NOTIFICATION_SEEN_FILE,kern.version_main);
+				file_write(App.MIN_SEEN_FILE,kern.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
 			}
 			log_msg(title);
