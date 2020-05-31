@@ -471,7 +471,7 @@ msgstr "секунди"
 
 #: src/Gtk/SettingsDialog.vala:235
 msgid "Max concurrent downloads"
-msgstr ""
+msgstr "Максимальна кількість завантажень"
 
 #: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
