@@ -43,6 +43,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
+	public static int VERSION_INT;
 		
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
@@ -813,7 +814,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public void mark_invalid(){
 		string f = cache_subdir+"/invalid";
 		if (!file_exists(f)){
-			file_write(f, "1");
+			file_write(f, VERSION_INT.to_string());
 		}
 	}
 
@@ -839,7 +840,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public bool is_valid {
 		get {
-			return !file_exists("%s/invalid".printf(cache_subdir));
+			string invalid_file_path = "%s/invalid".printf(cache_subdir);
+			return !file_exists(invalid_file_path);
 		}
 	}
 	
