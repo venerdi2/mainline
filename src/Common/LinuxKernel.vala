@@ -841,7 +841,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public bool is_valid {
 		get {
 			string invalid_file_path = "%s/invalid".printf(cache_subdir);
-			return !file_exists(invalid_file_path);
+			return !file_exists(invalid_file_path) || int.parse(file_read(invalid_file_path)) <= 1;
 		}
 	}
 	
