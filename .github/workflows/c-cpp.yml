@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
-      run: sudo apt install debhelper valac libgtk-3-dev libgee-0.8-dev libjson-glib-dev libvte-2.91-dev lsb-release dh-make devscripts build-essential
+      run: sudo apt-get update && sudo apt-get install debhelper valac libgtk-3-dev libgee-0.8-dev libjson-glib-dev libvte-2.91-dev lsb-release dh-make devscripts build-essential
     - name: automatic debuild
       run: debuild -uc -us
