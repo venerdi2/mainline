@@ -1,7 +1,7 @@
 # Makefile for "mainline"
 
 # url to ubuntu mainline kernels
-URI_KERNEL_UBUNTU_MAINLINE := http://kernel.ubuntu.com/~kernel-ppa/mainline/
+URI_KERNEL_UBUNTU_MAINLINE := https://kernel.ubuntu.com/~kernel-ppa/mainline/
 
 SHELL := /bin/bash
 CFLAGS := --std=c99
