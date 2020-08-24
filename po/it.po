@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the mainline package.
 # ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2020.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.12\n"
@@ -23,7 +22,7 @@ msgstr "Distribuzione"
 
 #: src/Common/LinuxKernel.vala:102
 msgid "Architecture"
-msgstr Architettura""
+msgstr "Architettura"
 
 #: src/Common/LinuxKernel.vala:301
 msgid "Fetching index..."
