@@ -487,12 +487,13 @@ public class MainWindow : Gtk.Window{
 			"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>",
 			"fr: Yolateng0 <yo@yo.nohost.me>",
 			"hr: gogo <trebelnik2@gmail.com>",
+			"it: Albano Battistella <albano_battistella@hotmail.com>",
 			"nl: Heimen Stoffels <vistausss@outlook.com>",
 			"pl: Waldemar Konik <valdi74@github>",
 			"ru: Faust3000 <slavusik1988@gmail.com>",
 			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
 			"tr: Gökhan GÖKKAYA <gokhanlnx@gmail.com>",
-			"uk: Serhii Golovko <cappelikan@gmail.com>"
+			"uk: Serhii Golovko <cappelikan@gmail.com>",
 		};
 
 		dialog.documenters = null;

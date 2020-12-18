@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-29 13:05-0400\n"
+"POT-Creation-Date: 2020-12-18 14:46-0500\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -13,106 +13,106 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: src/Common/LinuxKernel.vala:88
+#: src/Common/LinuxKernel.vala:89
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:103
 msgid "Architecture"
 msgstr "Architecture"
 
-#: src/Common/LinuxKernel.vala:301
+#: src/Common/LinuxKernel.vala:302
 msgid "Fetching index..."
 msgstr "Récupération de l'index..."
 
-#: src/Common/LinuxKernel.vala:338
+#: src/Common/LinuxKernel.vala:339
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Récupération de l'index depuis kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:594
+#: src/Common/LinuxKernel.vala:595
 msgid "Could not find running kernel in list!"
 msgstr "Impossible de trouver la version courante dans la liste!"
 
-#: src/Common/LinuxKernel.vala:600
+#: src/Common/LinuxKernel.vala:601
 msgid "Could not find any kernels to remove"
 msgstr "Impossible de trouver de noyaux à supprimer"
 
-#: src/Common/LinuxKernel.vala:609
+#: src/Common/LinuxKernel.vala:610
 msgid "The following kernels will be removed:"
 msgstr "Les noyaux suivants seront supprimés:"
 
-#: src/Common/LinuxKernel.vala:616
+#: src/Common/LinuxKernel.vala:617
 msgid "Continue ?"
 msgstr "Reprendre ?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:643 src/Console/AppConsole.vala:304
 msgid "Latest update"
 msgstr "Dernière mise à jour"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:311
+#: src/Common/LinuxKernel.vala:654 src/Console/AppConsole.vala:311
 msgid "Latest point update"
 msgstr "Dernière mise à jour mineure"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:316
+#: src/Common/LinuxKernel.vala:662 src/Console/AppConsole.vala:316
 #: src/Console/AppConsole.vala:377
 msgid "No updates found"
 msgstr "Aucune mise à jour disponible"
 
-#: src/Common/LinuxKernel.vala:671
+#: src/Common/LinuxKernel.vala:672
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installer le noyau en version %s ? (y/n): "
 
-#: src/Common/LinuxKernel.vala:908
+#: src/Common/LinuxKernel.vala:910
 msgid "Packages Available"
 msgstr "Paquets Disponibles"
 
-#: src/Common/LinuxKernel.vala:916
+#: src/Common/LinuxKernel.vala:918
 msgid "Packages Installed"
 msgstr "Paquets Installés"
 
-#: src/Common/LinuxKernel.vala:997
+#: src/Common/LinuxKernel.vala:999
 msgid "Available Kernels"
 msgstr "Noyaux Disponibles"
 
-#: src/Common/LinuxKernel.vala:1004 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1006 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Installé"
 
-#: src/Common/LinuxKernel.vala:1004 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:627 src/Gtk/MainWindow.vala:641
+#: src/Common/LinuxKernel.vala:1006 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "Actuel"
 
-#: src/Common/LinuxKernel.vala:1041
+#: src/Common/LinuxKernel.vala:1043
 msgid "Downloading"
 msgstr "Téléchargement"
 
-#: src/Common/LinuxKernel.vala:1060
+#: src/Common/LinuxKernel.vala:1062
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1065
+#: src/Common/LinuxKernel.vala:1067
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: src/Common/LinuxKernel.vala:1079 src/Gtk/MainWindow.vala:649
+#: src/Common/LinuxKernel.vala:1081 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "Ce noyau est déjà installé."
 
-#: src/Common/LinuxKernel.vala:1105
+#: src/Common/LinuxKernel.vala:1107
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Installation complétée. Un redémarrage est nécessaire pour utiliser le "
 "nouveau noyau."
 
-#: src/Common/LinuxKernel.vala:1108
+#: src/Common/LinuxKernel.vala:1110
 msgid "Installation completed with errors"
 msgstr "Installation terminée avec des erreurs"
 
-#: src/Common/LinuxKernel.vala:1123
+#: src/Common/LinuxKernel.vala:1125
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -120,19 +120,19 @@ msgstr ""
 "Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
 " Installez un autre noyau avant de retirer celui-ci."
 
-#: src/Common/LinuxKernel.vala:1128
+#: src/Common/LinuxKernel.vala:1130
 msgid "Preparing to remove selected kernels"
 msgstr "Préparation à la suppression des noyaux sélectionnés"
 
-#: src/Common/LinuxKernel.vala:1159 src/Common/LinuxKernel.vala:1206
+#: src/Common/LinuxKernel.vala:1161 src/Common/LinuxKernel.vala:1208
 msgid "Un-install completed"
 msgstr "Désinstallation complète"
 
-#: src/Common/LinuxKernel.vala:1162 src/Common/LinuxKernel.vala:1209
+#: src/Common/LinuxKernel.vala:1164 src/Common/LinuxKernel.vala:1211
 msgid "Un-install completed with errors"
 msgstr "Désinstallation terminée avec des erreurs"
 
-#: src/Common/LinuxKernel.vala:1175
+#: src/Common/LinuxKernel.vala:1177
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -140,11 +140,11 @@ msgstr ""
 "Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
 " Installez un autre noyau avant de retirer celui-ci."
 
-#: src/Common/Main.vala:241
+#: src/Common/Main.vala:243
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:275
+#: src/Common/Main.vala:277
 msgid "Notifications are disabled"
 msgstr "Les notifications sont désactivées"
 
@@ -233,7 +233,8 @@ msgstr "Une version prise du resultat de --list"
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
-"Une ou plusieurs versions (séparées par des virgules) prises du résultat de --list"
+"Une ou plusieurs versions (séparées par des virgules) prises du résultat de "
+"--list"
 
 #: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
@@ -312,8 +313,8 @@ msgstr "Actualiser"
 msgid "Internet connection is not active"
 msgstr "Connexion internet inexistante"
 
-#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:524
-#: src/Gtk/MainWindow.vala:654
+#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:525
+#: src/Gtk/MainWindow.vala:655
 msgid "No Internet"
 msgstr "Pas d'Internet"
 
@@ -342,7 +343,7 @@ msgid "Select the kernels to remove"
 msgstr "Sélectionnez les noyaux à supprimer"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
-#: src/Gtk/MainWindow.vala:686
+#: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
 msgstr "Fermer la fenêtre pour quitter..."
 
@@ -362,33 +363,33 @@ msgstr "Paramètres"
 msgid "About"
 msgstr "À propos"
 
-#: src/Gtk/MainWindow.vala:502
+#: src/Gtk/MainWindow.vala:503
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Utilitaire de mise à niveau des noyaux pour les distributions basées sur "
 "Ubuntu"
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:504
 msgid "Forked"
 msgstr "Version forkée :"
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:504
 msgid "Original"
 msgstr "Version originale :"
 
-#: src/Gtk/MainWindow.vala:524 src/Gtk/MainWindow.vala:654
+#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
 msgid "Internet connection is not active."
 msgstr "Connexion internet inexistante"
 
-#: src/Gtk/MainWindow.vala:543
+#: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
 msgstr "Actualisation..."
 
-#: src/Gtk/MainWindow.vala:637
+#: src/Gtk/MainWindow.vala:638
 msgid "available"
 msgstr "disponible"
 
-#: src/Gtk/MainWindow.vala:649
+#: src/Gtk/MainWindow.vala:650
 msgid "Already Installed"
 msgstr "Déjà Installé"
 
