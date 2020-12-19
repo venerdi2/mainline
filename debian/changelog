@@ -1,10 +1,10 @@
 mainline (1.0.13) unstable; urgency=medium
 
-* Improve some kernel and/or package version number string handling and comparison logic
-* Improve tracking which update notifications have been seen/acknowledged, track major & minor updates separately
-* https downloads
-* New Italian translation. Updated French, Dutch, Ukranian, Turkish
-* Temporarily disabled the "Changes" button. The ubuntu kernel-ppa site changed the way they provide changelog info.
+  * Improve some kernel and/or package version number string handling and comparison logic
+  * Improve tracking which update notifications have been seen/acknowledged, track major & minor updates separately
+  * https downloads
+  * New Italian translation. Updated French, Dutch, Ukranian, Turkish
+  * Temporarily disabled the "Changes" button. The ubuntu kernel-ppa site changed the way they provide changelog info.
 
  -- Brian K. White <b.kenyon.w@gmail.com>  Fri, 18 Dec 2020 14:54:22 -0500
 
