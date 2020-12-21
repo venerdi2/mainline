@@ -1,3 +1,9 @@
+mainline (1.0.14) UNRELEASED; urgency=medium
+
+  * Remove unnecessary VERSION_INT and build-time dependency for "bc"
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Mon, 21 Dec 2020 05:00:22 -0500
+
 mainline (1.0.13) unstable; urgency=medium
 
   * Improve some kernel and/or package version number string handling and comparison logic

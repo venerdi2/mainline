@@ -35,7 +35,6 @@ using TeeJee.Misc;
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
 [CCode(cname="BRANDING_VERSION")] extern const string BRANDING_VERSION;
-[CCode(cname="BRANDING_VERSION_INT")] extern const string BRANDING_VERSION_INT;
 [CCode(cname="BRANDING_AUTHORNAME")] extern const string BRANDING_AUTHORNAME;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
@@ -127,7 +126,6 @@ public class Main : GLib.Object{
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
-		LinuxKernel.VERSION_INT = int.parse(BRANDING_VERSION_INT);
 
 		// todo: consider get_user_runtime_dir() or get_user_cache_dir()
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
