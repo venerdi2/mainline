@@ -495,7 +495,7 @@ msgstr "Autori dokumentacije"
 
 #: src/Utility/Gtk/AboutWindow.vala:353
 msgid "Third Party Inclusions"
-msgstr "Uklučene treće strane"
+msgstr "Uključene treće strane"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
