@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-21 05:01-0500\n"
-"PO-Revision-Date: 2017-12-24 00:52+0100\n"
+"PO-Revision-Date: 2021-04-07 17:58+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -11,50 +11,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-12-23 23:36+0000\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: src/Common/LinuxKernel.vala:88
 msgid "Distribution"
 msgstr "Distribucija"
 
 #: src/Common/LinuxKernel.vala:102
-#, fuzzy
 msgid "Architecture"
-msgstr "Arhitektura sustava"
+msgstr "Arhitektura"
 
 #: src/Common/LinuxKernel.vala:301
 msgid "Fetching index..."
-msgstr ""
+msgstr "Preuzimanje sadržaja..."
 
 #: src/Common/LinuxKernel.vala:338
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Preuzimanje sadržaja sa kernel.ubuntu.com..."
 
 #: src/Common/LinuxKernel.vala:594
-#, fuzzy
 msgid "Could not find running kernel in list!"
-msgstr "Nemoguće je pronaći zatraženu inačicu"
+msgstr "Nemoguće je pronaći pokrenuti kernel na popisu!"
 
 #: src/Common/LinuxKernel.vala:600
-#, fuzzy
 msgid "Could not find any kernels to remove"
-msgstr "Odaberi kernele za uklanjanje"
+msgstr "Nema pronađenih kernela za uklanjanje"
 
 #: src/Common/LinuxKernel.vala:609
 msgid "The following kernels will be removed:"
-msgstr ""
+msgstr "Sljedeći kerneli će biti uklonjeni:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
-msgstr ""
+msgstr "Nastavi?"
 
 #: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:304
 msgid "Latest update"
-msgstr ""
+msgstr "Najnovija nadopuna"
 
 #: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:311
 msgid "Latest point update"
-msgstr ""
+msgstr "Najnovija ciljana nadopuna"
 
 #: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:316
 #: src/Console/AppConsole.vala:377
@@ -64,7 +61,7 @@ msgstr "Nema pronađenih nadopuna"
 #: src/Common/LinuxKernel.vala:671
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
-msgstr ""
+msgstr "Instaliraj kernel inačice %s ? (d/n): "
 
 #: src/Common/LinuxKernel.vala:909
 msgid "Packages Available"
@@ -145,12 +142,11 @@ msgstr ""
 
 #: src/Common/Main.vala:241
 msgid "Called from"
-msgstr ""
+msgstr "Pozvano od"
 
 #: src/Common/Main.vala:275
-#, fuzzy
 msgid "Notifications are disabled"
-msgstr "Obavijesti"
+msgstr "Obavijesti su onemogućene"
 
 #: src/Common/Package.vala:134 src/Common/Package.vala:198
 #, c-format
@@ -163,61 +159,55 @@ msgstr "Sintaksa"
 
 #: src/Console/AppConsole.vala:64
 msgid "Commands"
-msgstr ""
+msgstr "Naredbe"
 
 #: src/Console/AppConsole.vala:66
 msgid "Check for kernel updates"
 msgstr "Provjeri nadopune kernela"
 
 #: src/Console/AppConsole.vala:67
-#, fuzzy
 msgid "Check for kernel updates and notify current user"
-msgstr "Provjeri nadopune kernela"
+msgstr "Provjeri nadopune kernela i obavijesti trenutnog korisnika"
 
 #: src/Console/AppConsole.vala:68
 msgid "List all available mainline kernels"
 msgstr "Prikaži sve mainline kernele"
 
 #: src/Console/AppConsole.vala:69
-#, fuzzy
 msgid "List installed kernels"
-msgstr "Prikaži sve kernele"
+msgstr "Prikaži instalirane kernele"
 
 #: src/Console/AppConsole.vala:70
-#, fuzzy
 msgid "Install latest mainline kernel"
-msgstr "Instaliraj određeni mainline kernel"
+msgstr "Instaliraj najnoviji mainline kernel"
 
 #: src/Console/AppConsole.vala:71
 msgid "Install latest point update for current series"
-msgstr ""
+msgstr "Instaliraj najnoviju ciljanu nadopunu za trenutnu seriju"
 
 #: src/Console/AppConsole.vala:72
 msgid "Install specified mainline kernel"
 msgstr "Instaliraj određeni mainline kernel"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "Uninstall specified kernels"
-msgstr "Instaliraj određeni mainline kernel"
+msgstr "Ukloni određene kernele"
 
 #: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
 msgid "Remove installed kernels older than running kernel"
-msgstr ""
+msgstr "Ukloni instalirane kernele starije od pokrenutog krenela"
 
 #: src/Console/AppConsole.vala:75
-#, fuzzy
 msgid "Download specified kernels"
-msgstr "Preuzmi pakete za određeni kernel"
+msgstr "Preuzmi određene kernele"
 
 #: src/Console/AppConsole.vala:76
 msgid "Remove files from application cache"
 msgstr "Ukloni datoteke iz predmemorije aplikacije"
 
 #: src/Console/AppConsole.vala:77
-#, fuzzy
 msgid "Show unstable and RC releases"
-msgstr "Sakrij nestabilne kernele i predizdanja"
+msgstr "Prikaži nestabilna izdanja i predizdanja"
 
 #: src/Console/AppConsole.vala:79 src/Gtk/AppGtk.vala:151
 msgid "Options"
@@ -225,24 +215,25 @@ msgstr "Mogućnosti"
 
 #: src/Console/AppConsole.vala:81
 msgid "Enable verbose debugging output"
-msgstr ""
+msgstr "Omogući opširnije zapisivanje"
 
 #: src/Console/AppConsole.vala:82
 msgid "Assume Yes for all prompts (non-interactive mode)"
-msgstr ""
+msgstr "Pretpostavi Da za sve upite (neinteraktivan način rada)"
 
 #: src/Console/AppConsole.vala:83
 msgid "Override user"
-msgstr ""
+msgstr "Zaobiđi korisnika"
 
 #: src/Console/AppConsole.vala:86
 msgid "A version string taken from the output of --list"
-msgstr ""
+msgstr "Izraz inačice uzet iz zapisa --list"
 
 #: src/Console/AppConsole.vala:87
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
+"Jedan ili više izraza inačice (zarezom odvojeni) uzetih iz zapisa --list"
 
 #: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
@@ -250,18 +241,16 @@ msgstr "Nepoznata mogućnost"
 
 #: src/Console/AppConsole.vala:164 src/Console/AppConsole.vala:256
 #: src/Console/AppConsole.vala:284
-#, fuzzy
 msgid "Run"
-msgstr "Pokrenuto"
+msgstr "Pokreni"
 
 #: src/Console/AppConsole.vala:164
-#, fuzzy
 msgid "to list all options"
-msgstr "Prikaži sve mogućnosti"
+msgstr "za prikaz svih mogućnosti"
 
 #: src/Console/AppConsole.vala:229 src/Console/AppConsole.vala:264
 msgid "No kernels specified"
-msgstr ""
+msgstr "Nema određenih kernela"
 
 #: src/Console/AppConsole.vala:235
 msgid "Multiple kernels selected for installation. Select only one."
@@ -273,25 +262,24 @@ msgstr "Nemoguće je pronaći zatraženu inačicu"
 
 #: src/Console/AppConsole.vala:256
 msgid "and use a version string listed in first column"
-msgstr ""
+msgstr "i koristite izraz inačice prikazan u prvom stupcu"
 
 #: src/Console/AppConsole.vala:283
 msgid "Command not specified"
-msgstr ""
+msgstr "Naredba nije navedena"
 
 #: src/Console/AppConsole.vala:284
-#, fuzzy
 msgid "to list all commands"
-msgstr "Prikaži sve mogućnosti"
+msgstr "za prikaz svih mogućnosti"
 
 #: src/Console/AppConsole.vala:350
 msgid "Show"
-msgstr ""
+msgstr "Prikaži"
 
 #: src/Console/AppConsole.vala:355 src/Console/AppConsole.vala:367
-#, fuzzy, c-format
+#, c-format
 msgid "Kernel %s Available"
-msgstr "Dostupni paketi"
+msgstr "Kernel %s je dostupan"
 
 #: src/Console/AppConsole.vala:357 src/Console/AppConsole.vala:369
 #: src/Gtk/MainWindow.vala:330
@@ -354,11 +342,11 @@ msgstr "Odaberi kernele za uklanjanje"
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
-msgstr ""
+msgstr "Zatvori prozor i izađi..."
 
 #: src/Gtk/MainWindow.vala:391
 msgid "Purge"
-msgstr ""
+msgstr "Potpuno ukloni"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
@@ -378,30 +366,27 @@ msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "Forked"
-msgstr ""
+msgstr "Forkano"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "Original"
-msgstr ""
+msgstr "Izvornik"
 
 #: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
-#, fuzzy
 msgid "Internet connection is not active."
-msgstr "Internet povezivanje nije aktivno"
+msgstr "Internet povezivanje nije aktivno."
 
 #: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
 msgstr "Osvježavanje..."
 
 #: src/Gtk/MainWindow.vala:638
-#, fuzzy
 msgid "available"
-msgstr "Dostupni paketi"
+msgstr "dostupno"
 
 #: src/Gtk/MainWindow.vala:650
-#, fuzzy
 msgid "Already Installed"
-msgstr "Instalirano"
+msgstr "Već instalirano"
 
 #: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:153
@@ -422,7 +407,7 @@ msgstr "Obavijesti kada je pojedino izdanje dostupno"
 
 #: src/Gtk/SettingsDialog.vala:89
 msgid "(Allowing intervals in seconds for --debug)"
-msgstr ""
+msgstr "(Dopuštena razdoblja u sekundama za --debug)"
 
 #: src/Gtk/SettingsDialog.vala:112
 msgid "Check every"
@@ -442,7 +427,7 @@ msgstr "Tjedan(a)"
 
 #: src/Gtk/SettingsDialog.vala:149
 msgid "Second(s)"
-msgstr ""
+msgstr "Sekund(e)"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Display"
@@ -454,29 +439,27 @@ msgstr "Sakrij nestabilne kernele i predizdanja"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "Show N previous major versions "
-msgstr ""
+msgstr "Prikaži N prijašnjih glavnih izdanja "
 
 #: src/Gtk/SettingsDialog.vala:192
 msgid "Other"
-msgstr ""
+msgstr "Ostalo"
 
 #: src/Gtk/SettingsDialog.vala:200
-#, fuzzy
 msgid "Skip internet connection check"
-msgstr "Internet povezivanje nije aktivno"
+msgstr "Preskoči provjeru internet povezivosti"
 
 #: src/Gtk/SettingsDialog.vala:213
-#, fuzzy
 msgid "Internet connection timeout in "
-msgstr "Internet povezivanje nije aktivno"
+msgstr "Istek internet povezivanja za "
 
 #: src/Gtk/SettingsDialog.vala:228
 msgid "seconds"
-msgstr ""
+msgstr "sekunde"
 
 #: src/Gtk/SettingsDialog.vala:235
 msgid "Max concurrent downloads"
-msgstr ""
+msgstr "Najviše istodobnih preuzimanja"
 
 #: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
@@ -511,9 +494,8 @@ msgid "Documenters"
 msgstr "Autori dokumentacije"
 
 #: src/Utility/Gtk/AboutWindow.vala:353
-#, fuzzy
 msgid "Third Party Inclusions"
-msgstr "Alati treće strane"
+msgstr "Uključene treće strane"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
@@ -528,14 +510,12 @@ msgid "Missing Icon"
 msgstr "Ikone koje nedostaju"
 
 #: src/Utility/TeeJee.FileSystem.vala:71
-#, fuzzy
 msgid "File deleted"
-msgstr "Datoteka je spremljenja"
+msgstr "Datoteka je obrisana"
 
 #: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
-#, fuzzy
 msgid "Failed to delete file"
-msgstr "Neuspjelo zapisivanje datoteke"
+msgstr "Neuspjelo brisanje datoteke"
 
 #: src/Utility/TeeJee.FileSystem.vala:96
 msgid "Failed to read file"
@@ -580,7 +560,7 @@ msgstr "Neuspjelo stvarnje direktorija"
 
 #: src/Utility/TeeJee.FileSystem.vala:255
 msgid "Deleted"
-msgstr ""
+msgstr "Obrisano"
 
 #: src/Utility/TeeJee.Logging.vala:59
 msgid "E"
@@ -588,4 +568,4 @@ msgstr "G"
 
 #: src/Utility/TeeJee.Logging.vala:84
 msgid "D"
-msgstr ""
+msgstr "D"
