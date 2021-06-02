@@ -335,11 +335,11 @@ msgstr "설치할 커널 선택"
 
 #: src/Gtk/MainWindow.vala:347
 msgid "Remove"
-msgstr "삭제"
+msgstr "제거"
 
 #: src/Gtk/MainWindow.vala:353
 msgid "Select the kernels to remove"
-msgstr "삭제할 커널 선택"
+msgstr "제거할 커널 선택"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -348,7 +348,7 @@ msgstr "창을 닫고 종료..."
 
 #: src/Gtk/MainWindow.vala:391
 msgid "Purge"
-msgstr "제거(Purge)"
+msgstr "오래된 커널 제거"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
