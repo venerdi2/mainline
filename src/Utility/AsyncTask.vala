@@ -90,11 +90,9 @@ public abstract class AsyncTask : GLib.Object{
 		prg_count = 0;
 		error_msg = "";
 
-		string[] spawn_args = new string[1];
-		spawn_args[0] = script_file;
-		
+		string[] spawn_args = {"sh", script_file};
 		string[] spawn_env = Environ.get();
-		
+
 		try {
 			// start timer
 			timer = new GLib.Timer();
