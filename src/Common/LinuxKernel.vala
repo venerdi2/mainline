@@ -485,7 +485,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_msg(string.nfill(70, '-'));
 
 		// find the highest installed version ----------------------
-		kernel_latest_installed = null;
+		kernel_latest_installed = new LinuxKernel.from_version("0");
 		foreach(var k in kernel_list){
 			if (k.is_installed) {
 				kernel_latest_installed = k;
