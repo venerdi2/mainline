@@ -177,8 +177,7 @@ public class TerminalWindow : Gtk.Window {
 	}
 
 	public void execute_script(string f, string d, bool wait = false){
-		string[] argv = new string[1];
-		argv[0] = f;
+		string[] argv = {"sh", f};
 
 		string[] env = Environ.get();
 
