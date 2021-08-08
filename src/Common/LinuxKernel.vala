@@ -1029,8 +1029,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_if_initialized();
 
 		foreach(string file_name in deb_list.keys){
-			
-			string dl_dir = "%s/%s".printf(cache_subdir, NATIVE_ARCH);
+
+			string dl_dir = cache_subdir;
 			string file_path = "%s/%s".printf(dl_dir, file_name);
 
 			if (file_exists(file_path) && !file_exists(file_path + ".aria2c")){
@@ -1043,7 +1043,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			stdout.flush();
 
 			var item = new DownloadItem(deb_list[file_name], file_parent(file_path), file_basename(file_path));
-			
+
 			var mgr = new DownloadTask();
 			mgr.add_to_queue(item);
 			mgr.status_in_kb = true;
@@ -1092,11 +1092,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			foreach(string file_name in deb_list.keys){
 				flist += " '%s'".printf(file_name);
+				log_msg("install() flist += %s".printf(file_name));
 			}
 
-			string d = cache_subdir+"/"+NATIVE_ARCH;
-			string cmd = "pkexec env -C "+d+" DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -i "+flist
-			+ " && cd "+d
+			string cmd = "cd "+cache_subdir
+			+ " && pkexec env -C "+cache_subdir+" DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -i "+flist
 			+ " && rm "+flist;
 
 			status = Posix.system(cmd);

@@ -153,8 +153,7 @@ namespace TeeJee.FileSystem{
 
 	public void file_move (string src_file, string dest_file){
 		try{
-			var file_src = File.new_for_path (src_file);
-			if (!file_src.query_exists()) {
+			if (!file_exists(src_file)) {
 				log_error(_("File not found") + ": '%s'".printf(src_file));
 				return;
 			}
@@ -165,6 +164,7 @@ namespace TeeJee.FileSystem{
 				file_delete(dest_file);
 			}
 
+			var file_src = File.new_for_path (src_file);
 			var file_dest = File.new_for_path (dest_file);
 			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
 

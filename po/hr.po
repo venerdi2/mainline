@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:01-0500\n"
+"POT-Creation-Date: 2021-08-08 04:43-0400\n"
 "PO-Revision-Date: 2021-04-07 17:58+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -537,7 +537,7 @@ msgstr "Datoteka kopirana"
 msgid "Failed to copy file"
 msgstr "Neuspjelo kopiranje datoteke"
 
-#: src/Utility/TeeJee.FileSystem.vala:158
+#: src/Utility/TeeJee.FileSystem.vala:157
 msgid "File not found"
 msgstr "Datoteka nije pronađena"
 

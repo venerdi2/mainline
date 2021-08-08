@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:01-0500\n"
+"POT-Creation-Date: 2021-08-08 04:43-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -556,7 +556,7 @@ msgstr "Kopierade fil"
 msgid "Failed to copy file"
 msgstr "Kunde inte kopiera filen"
 
-#: src/Utility/TeeJee.FileSystem.vala:158
+#: src/Utility/TeeJee.FileSystem.vala:157
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 

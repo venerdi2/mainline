@@ -92,7 +92,7 @@ public class DownloadTask : AsyncTask{
 		foreach(var item in downloads){
 			list += item.source_uri + "\n"
 			+ "  gid=" + item.gid + "\n"
-			+ "  dir=" + item.partial_dir + "\n"
+			+ "  dir=" + item.download_dir + "\n"
 			+ "  out=" + item.file_name + "\n";
 		}
 		file_write(list_file, list);
@@ -201,44 +201,16 @@ public class DownloadTask : AsyncTask{
 	}
 
 	protected override void finish_task(){
-		mv_partials_to_finals();
-		log_debug("DownloadTask():finish_task():dir_delete("+working_dir+"):");
-		dir_delete(working_dir);
-	}
-
-	private void mv_partials_to_finals() {
-
-		log_debug("mv_partials_to_finals()");
-
-		foreach(var item in downloads){
-			string d = file_parent(item.file_path_partial);
-
-			if (!file_exists(item.file_path_partial)){
-				log_debug("file_path_partial not found: %s".printf(item.file_path_partial));
-				continue;
-			}
-
-			if (item.status == "OK"){
-				file_move(item.file_path_partial, item.file_path);
-			}
-			else{
-				file_delete(item.file_path_partial);
-			}
-			dir_delete(d);
-		}
 	}
 }
 
 public class DownloadItem : GLib.Object
 {
-	/* File is downloaded to 'partial_dir' and moved to 'download_dir'
-	 * after successful completion. File will always be saved with
-	 * the specified name 'file_name' instead of the source file name.
-	 * */
+	/* File is saved as 'file_name' not the source file name.
+	 */
 
 	public string file_name = "";
 	public string download_dir = "";
-	public string partial_dir = "";
 	public string source_uri = "";
 
 	public string gid = ""; // ID
@@ -256,12 +228,6 @@ public class DownloadItem : GLib.Object
 		}
 	}
 
-	public string file_path_partial{
-		owned get{
-			return partial_dir+"/"+file_name;
-		}
-	}
-
 	public string gid_key{
 		owned get{
 			return gid.substring(0,6);;
@@ -272,7 +238,6 @@ public class DownloadItem : GLib.Object
 		
 		file_name = _file_name;
 		download_dir = _download_dir;
-		partial_dir = create_tmp_dir();
 		source_uri = _source_uri;
 	}
 

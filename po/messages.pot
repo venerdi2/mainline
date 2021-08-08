@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-07 15:39-0400\n"
+"POT-Creation-Date: 2021-08-08 04:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -534,7 +534,7 @@ msgstr ""
 msgid "Failed to copy file"
 msgstr ""
 
-#: src/Utility/TeeJee.FileSystem.vala:158
+#: src/Utility/TeeJee.FileSystem.vala:157
 msgid "File not found"
 msgstr ""
 
