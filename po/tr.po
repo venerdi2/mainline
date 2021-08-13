@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-08 05:32-0400\n"
+"POT-Creation-Date: 2021-08-12 21:13-0400\n"
 "PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -45,16 +45,16 @@ msgstr "Aşağıdaki çekirdekler silinecek:"
 msgid "Continue ?"
 msgstr "Devam et ?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
 msgid "Latest update"
 msgstr "Son güncelleme"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:311
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:316
 msgid "Latest point update"
 msgstr "Son güncelleme noktası"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:316
-#: src/Console/AppConsole.vala:377
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:321
+#: src/Console/AppConsole.vala:382
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
@@ -207,85 +207,90 @@ msgstr "Belirtilen çekirdek için paketleri indir"
 msgid "Remove files from application cache"
 msgstr "Dosyaları uygulama önbelleğinden sil"
 
-#: src/Console/AppConsole.vala:77
-msgid "Show unstable and RC releases"
-msgstr "Kararsız ve RC sürümleri göster"
-
-#: src/Console/AppConsole.vala:79 src/Gtk/AppGtk.vala:151
+#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:151
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/Console/AppConsole.vala:81
+#: src/Console/AppConsole.vala:80
+#, fuzzy
+msgid "Include unstable and RC releases"
+msgstr "Kararsız ve RC sürümleri gizle"
+
+#: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
+msgid "Hide unstable and RC releases"
+msgstr "Kararsız ve RC sürümleri gizle"
+
+#: src/Console/AppConsole.vala:82
 msgid "Enable verbose debugging output"
 msgstr "Ayrıntılı hata ayıklama çıktısını etkinleştir"
 
-#: src/Console/AppConsole.vala:82
+#: src/Console/AppConsole.vala:83
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Tüm istemler için Evet'i kabul edin (etkileşimsiz kip)"
 
-#: src/Console/AppConsole.vala:83
+#: src/Console/AppConsole.vala:84
 msgid "Override user"
 msgstr "Kullanıcıyı geçersiz kıl"
 
-#: src/Console/AppConsole.vala:86
+#: src/Console/AppConsole.vala:87
 msgid "A version string taken from the output of --list"
 msgstr ""
 
-#: src/Console/AppConsole.vala:87
+#: src/Console/AppConsole.vala:88
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
-#: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:167 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
-#: src/Console/AppConsole.vala:164 src/Console/AppConsole.vala:256
-#: src/Console/AppConsole.vala:284
+#: src/Console/AppConsole.vala:169 src/Console/AppConsole.vala:261
+#: src/Console/AppConsole.vala:289
 #, fuzzy
 msgid "Run"
 msgstr "Çalıştır '"
 
-#: src/Console/AppConsole.vala:164
+#: src/Console/AppConsole.vala:169
 #, fuzzy
 msgid "to list all options"
 msgstr "Tüm seçenekleri göster"
 
-#: src/Console/AppConsole.vala:229 src/Console/AppConsole.vala:264
+#: src/Console/AppConsole.vala:234 src/Console/AppConsole.vala:269
 msgid "No kernels specified"
 msgstr "Belirtilen çekirdek yok"
 
-#: src/Console/AppConsole.vala:235
+#: src/Console/AppConsole.vala:240
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Kurulum için çoklu çekirdek seçildi. Sadece bir tane seçiniz."
 
-#: src/Console/AppConsole.vala:253 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:258 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "İstenen sürüm bulunamadı"
 
-#: src/Console/AppConsole.vala:256
+#: src/Console/AppConsole.vala:261
 msgid "and use a version string listed in first column"
 msgstr ""
 
-#: src/Console/AppConsole.vala:283
+#: src/Console/AppConsole.vala:288
 msgid "Command not specified"
 msgstr "Komut belirtilmedi"
 
-#: src/Console/AppConsole.vala:284
+#: src/Console/AppConsole.vala:289
 #, fuzzy
 msgid "to list all commands"
 msgstr "Tüm seçenekleri göster"
 
-#: src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:355
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:355 src/Console/AppConsole.vala:367
+#: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Mevcut Paketler"
 
-#: src/Console/AppConsole.vala:357 src/Console/AppConsole.vala:369
+#: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Kur"
@@ -440,10 +445,6 @@ msgstr "saniye"
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Display"
 msgstr "Gösterim"
-
-#: src/Gtk/SettingsDialog.vala:163
-msgid "Hide unstable and RC releases"
-msgstr "Kararsız ve RC sürümleri gizle"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "Show N previous major versions "

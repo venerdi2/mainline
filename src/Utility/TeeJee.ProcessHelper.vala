@@ -138,7 +138,7 @@ namespace TeeJee.ProcessHelper{
 	}
 
 	// manage process ---------------------------------
-	
+
 	public void process_quit(Pid process_pid, bool killChildren = true){
 
 		/* Kills specified process and its children (optional).

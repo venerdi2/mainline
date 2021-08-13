@@ -74,10 +74,11 @@ public class AppConsole : GLib.Object {
 		+ "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n"
 		+ "  --download <name>   " + _("Download specified kernels") + "(2)\n"
 		+ "  --clean-cache       " + _("Remove files from application cache") + "\n"
-		+ "  --show-unstable     " + _("Show unstable and RC releases") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
+		+ "  --include-unstable  " + _("Include unstable and RC releases") + "\n"
+		+ "  --hide-unstable     " + _("Hide unstable and RC releases") + "\n"
 		+ "  --debug           " + _("Enable verbose debugging output") + "\n"
 		+ "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
 		+ "  --user            " + _("Override user") + "\n"
@@ -126,6 +127,14 @@ public class AppConsole : GLib.Object {
 				}
 				break;
 
+			case "--show-unstable":		// backwards compatibility
+			case "--include-unstable":
+				App.hide_unstable = false;
+				break;
+			case "--hide-unstable":
+				App.hide_unstable = true;
+				break;
+
 			case "--list":
 			case "--list-installed":
 			case "--check":
@@ -135,10 +144,6 @@ public class AppConsole : GLib.Object {
 			case "--purge-old-kernels":
 			case "--clean-cache":
 				cmd = args[k].down();
-				break;
-			
-			case "--show-unstable":
-				App.hide_unstable = false;
 				break;
 
 			case "--download":

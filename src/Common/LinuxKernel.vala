@@ -411,7 +411,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 					log_msg("Found installed" + ": %s".printf(pkg.version_installed));
 
-					string pkern_name = "%s".printf(pkg.version_installed);
+					string pkern_name = pkg.version_installed;
 					var pkern = new LinuxKernel(pkern_name, false);
 					pkern.is_installed = true;
 					pkern.set_apt_pkg_list();
