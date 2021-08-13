@@ -190,7 +190,7 @@ public class TerminalWindow : Gtk.Window {
 				d, //working_directory
 				argv, //argv
 				env, //env
-				GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, //spawn_flags
+				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
 				null, //child_setup
 				out child_pid,
 				null

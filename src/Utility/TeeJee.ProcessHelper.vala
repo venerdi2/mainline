@@ -146,7 +146,12 @@ namespace TeeJee.ProcessHelper{
 		 * */
 
 		int[] child_pids = get_process_children (process_pid);
+
+#if VALA_0_40
 		Posix.kill (process_pid, Posix.Signal.TERM);
+#else
+		Posix.kill (process_pid, Posix.SIGTERM);
+#endif
 
 		if (killChildren){
 			Pid childPid;
