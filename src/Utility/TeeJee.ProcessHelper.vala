@@ -157,7 +157,11 @@ namespace TeeJee.ProcessHelper{
 			Pid childPid;
 			foreach (long pid in child_pids){
 				childPid = (Pid) pid;
+#if VALA_0_40
 				Posix.kill (childPid, Posix.Signal.TERM);
+#else
+				Posix.kill (childPid, Posix.SIGTERM);
+#endif
 			}
 		}
 	}
