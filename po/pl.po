@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-12 21:13-0400\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
-"Last-Translator: Waldemar Konik <valdi74@github>\n"
+"Last-Translator: Viktor Sokyrko <viksok@github>\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Architektura systemu"
 
 #: src/Common/LinuxKernel.vala:301
 msgid "Fetching index..."
-msgstr ""
+msgstr "Pobieranie indeksu..."
 
 #: src/Common/LinuxKernel.vala:338
 msgid "Fetching index from kernel.ubuntu.com..."
@@ -45,7 +45,7 @@ msgstr ""
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
-msgstr ""
+msgstr "Kontynuowac?"
 
 #: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
 msgid "Latest update"
@@ -63,7 +63,7 @@ msgstr "Nie znaleziono aktualizacji"
 #: src/Common/LinuxKernel.vala:671
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
-msgstr ""
+msgstr "Instaluj wersję jądra %s ? (t/n): "
 
 #: src/Common/LinuxKernel.vala:909
 msgid "Packages Available"
@@ -147,9 +147,8 @@ msgid "Called from"
 msgstr ""
 
 #: src/Common/Main.vala:275
-#, fuzzy
 msgid "Notifications are disabled"
-msgstr "Powiadomienia"
+msgstr "Powiadomienia są wyłączone"
 
 #: src/Common/Package.vala:134 src/Common/Package.vala:198
 #, c-format
@@ -162,7 +161,7 @@ msgstr "Składnia"
 
 #: src/Console/AppConsole.vala:64
 msgid "Commands"
-msgstr ""
+msgstr "Polecenia"
 
 #: src/Console/AppConsole.vala:66
 msgid "Check for kernel updates"
@@ -289,12 +288,12 @@ msgstr "Pokaż wszystkie opcje"
 
 #: src/Console/AppConsole.vala:355
 msgid "Show"
-msgstr ""
+msgstr "Pokaż"
 
 #: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
-#, fuzzy, c-format
+#, c-format
 msgid "Kernel %s Available"
-msgstr "Dostępne pakiety"
+msgstr "Dostępne jądro %s"
 
 #: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
 #: src/Gtk/MainWindow.vala:330
@@ -357,7 +356,7 @@ msgstr "Wybierz jądro do usunięcia"
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
-msgstr ""
+msgstr "Zamknij okno żeby wyjść..."
 
 #: src/Gtk/MainWindow.vala:391
 msgid "Purge"
@@ -445,7 +444,7 @@ msgstr "Tygodni"
 
 #: src/Gtk/SettingsDialog.vala:149
 msgid "Second(s)"
-msgstr ""
+msgstr "Sekund(a)"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Display"
@@ -457,12 +456,11 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:192
 msgid "Other"
-msgstr ""
+msgstr "Inne"
 
 #: src/Gtk/SettingsDialog.vala:200
-#, fuzzy
 msgid "Skip internet connection check"
-msgstr "Brak połączenia z internetem"
+msgstr "Pomiń sprawdzenie połączenia z internetem"
 
 #: src/Gtk/SettingsDialog.vala:213
 #, fuzzy
@@ -471,7 +469,7 @@ msgstr "Brak połączenia z internetem"
 
 #: src/Gtk/SettingsDialog.vala:228
 msgid "seconds"
-msgstr ""
+msgstr "sekund"
 
 #: src/Gtk/SettingsDialog.vala:235
 msgid "Max concurrent downloads"
@@ -516,11 +514,11 @@ msgstr "Narzędzia osób trzecich"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:158
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: src/Utility/Gtk/GtkHelper.vala:67
 msgid "Missing Icon"
@@ -529,12 +527,12 @@ msgstr "Brakująca ikona"
 #: src/Utility/TeeJee.FileSystem.vala:71
 #, fuzzy
 msgid "File deleted"
-msgstr "Plik zapisany"
+msgstr "Plik usunięty"
 
 #: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
 #, fuzzy
 msgid "Failed to delete file"
-msgstr "Nie udało się zapisać pliku"
+msgstr "Nie udało się usunąć pliku"
 
 #: src/Utility/TeeJee.FileSystem.vala:96
 msgid "Failed to read file"
@@ -579,7 +577,7 @@ msgstr "Nie udało się utworzyć katalogu"
 
 #: src/Utility/TeeJee.FileSystem.vala:255
 msgid "Deleted"
-msgstr ""
+msgstr "Usunięto"
 
 #: src/Utility/TeeJee.Logging.vala:59
 msgid "E"
@@ -587,4 +585,4 @@ msgstr "E"
 
 #: src/Utility/TeeJee.Logging.vala:84
 msgid "D"
-msgstr ""
+msgstr "D"
