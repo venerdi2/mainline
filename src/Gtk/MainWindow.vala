@@ -512,7 +512,7 @@ public class MainWindow : Gtk.Window{
 		dialog.third_party = {
 			"Elementary project (various icons):github.com/elementary/icons",
 			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project",
-			"notify-send.sh:github.com/vlevit/notify-send.sh"
+			"notify-send.sh:github.com/bkw777/notify-send.sh"
 		};
 
 		dialog.initialize();
