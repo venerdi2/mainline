@@ -624,7 +624,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		// uninstall --------------------------------
-		foreach(var kern in list) kern.kunin();
+		kunin_list(list);
 	}
 
 	public static void kinst_latest(bool point_update, bool confirm){
@@ -1096,7 +1096,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			string cmd = "cd "+cache_subdir
-			+ " && pkexec env -C "+cache_subdir+" DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -i "+flist
+			+ " && pkexec env -C "+cache_subdir+" DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install "+flist
 			+ " && rm "+flist;
 
 			status = Posix.system(cmd);
@@ -1128,7 +1128,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		log_msg(_("Preparing to uninstall selected kernels"));
 
-		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -r";
+		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --purge";
 
 		foreach(var kern in selected_kernels){
 			
@@ -1179,7 +1179,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		log_msg("Preparing to un-install '%s'".printf(version_main));
 
-		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -r";
+		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --purge";
 
 		if (apt_pkg_list.size > 0){
 			foreach(var pkg_name in apt_pkg_list.values){
