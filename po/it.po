@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-12 21:13-0400\n"
+"POT-Creation-Date: 2021-09-14 13:48-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -37,27 +37,29 @@ msgid "Could not find running kernel in list!"
 msgstr "Impossibile trovare il kernel in esecuzione nell'elenco!"
 
 #: src/Common/LinuxKernel.vala:600
-msgid "Could not find any kernels to remove"
+#, fuzzy
+msgid "Could not find any kernels to uninstall"
 msgstr "Impossibile trovare alcun kernel da rimuovere"
 
 #: src/Common/LinuxKernel.vala:609
-msgid "The following kernels will be removed:"
+#, fuzzy
+msgid "The following kernels will be uninstalled:"
 msgstr "I seguenti kernel verranno rimossi:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
 msgstr "Continuare ?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:316
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del punto"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:321
-#: src/Console/AppConsole.vala:382
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:326
+#: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
@@ -116,15 +118,17 @@ msgid "Installation completed with errors"
 msgstr "Installazione completata con errori"
 
 #: src/Common/LinuxKernel.vala:1124
+#, fuzzy
 msgid ""
-"Selected kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"Selected kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Il kernel selezionato è attualmente in esecuzione e non può essere rimosso.\n"
 "Installa un altro kernel prima di rimuovere questo."
 
 #: src/Common/LinuxKernel.vala:1129
-msgid "Preparing to remove selected kernels"
+#, fuzzy
+msgid "Preparing to uninstall selected kernels"
 msgstr "Preparazione per rimuovere i kernel selezionati"
 
 #: src/Common/LinuxKernel.vala:1160 src/Common/LinuxKernel.vala:1207
@@ -136,9 +140,10 @@ msgid "Un-install completed with errors"
 msgstr "Disinstallazione completata con errori"
 
 #: src/Common/LinuxKernel.vala:1176
+#, fuzzy
 msgid ""
-"This kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"This kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Questo kernel è attualmente in esecuzione e non può essere rimosso.\n"
 "Installa un altro kernel prima di rimuovere questo."
@@ -195,11 +200,13 @@ msgid "Install specified mainline kernel"
 msgstr "Installa kernel mainline specificato"
 
 #: src/Console/AppConsole.vala:73
-msgid "Uninstall specified kernels"
+#, fuzzy
+msgid "Uninstall specified kernel"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
-msgid "Remove installed kernels older than running kernel"
+#: src/Console/AppConsole.vala:74
+#, fuzzy
+msgid "Uninstall kernels older than the running kernel"
 msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
 
 #: src/Console/AppConsole.vala:75
@@ -246,53 +253,53 @@ msgstr ""
 "Una o più stringhe di versione (separate da virgole) prese dall'output di --"
 "list"
 
-#: src/Console/AppConsole.vala:167 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
 
-#: src/Console/AppConsole.vala:169 src/Console/AppConsole.vala:261
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:294
 msgid "Run"
 msgstr "In corso"
 
-#: src/Console/AppConsole.vala:169
+#: src/Console/AppConsole.vala:171
 msgid "to list all options"
 msgstr "Elencare tutte le opzioni"
 
-#: src/Console/AppConsole.vala:234 src/Console/AppConsole.vala:269
+#: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
 msgid "No kernels specified"
 msgstr "Nessun kernel specificato"
 
-#: src/Console/AppConsole.vala:240
+#: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Più kernel selezionati per l'installazione. Selezionare uno solo."
 
-#: src/Console/AppConsole.vala:258 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Impossibile trovare la versione richiesta"
 
-#: src/Console/AppConsole.vala:261
+#: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
 msgstr "e usa una stringa di versione elencata nella prima colonna"
 
-#: src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:293
 msgid "Command not specified"
 msgstr "Comando non specificato"
 
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:294
 msgid "to list all commands"
 msgstr "Elencare tutti i comandi"
 
-#: src/Console/AppConsole.vala:355
+#: src/Console/AppConsole.vala:360
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
+#: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
-#: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
+#: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Installa"
@@ -343,12 +350,14 @@ msgid "Select the kernel to install"
 msgstr "Seleziona il kernel da installare"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Remove"
-msgstr "Rimuovi"
+#, fuzzy
+msgid "Uninstall"
+msgstr "Installa"
 
 #: src/Gtk/MainWindow.vala:353
-msgid "Select the kernels to remove"
-msgstr "Seleziona i kernel da rimuovere"
+#, fuzzy
+msgid "Select the kernels to uninstall"
+msgstr "Seleziona il kernel da installare"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -356,8 +365,14 @@ msgid "Close window to exit..."
 msgstr "Chiudere la finestra per uscire..."
 
 #: src/Gtk/MainWindow.vala:391
-msgid "Purge"
-msgstr "Purge"
+#, fuzzy
+msgid "Uninstall Old"
+msgstr "Disinstallazione completata"
+
+#: src/Gtk/MainWindow.vala:392
+#, fuzzy
+msgid "Uninstall kernels older than running kernel"
+msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"

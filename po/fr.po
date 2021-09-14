@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-12 21:13-0400\n"
+"POT-Creation-Date: 2021-09-14 13:48-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -34,27 +34,29 @@ msgid "Could not find running kernel in list!"
 msgstr "Impossible de trouver la version courante dans la liste!"
 
 #: src/Common/LinuxKernel.vala:600
-msgid "Could not find any kernels to remove"
+#, fuzzy
+msgid "Could not find any kernels to uninstall"
 msgstr "Impossible de trouver de noyaux à supprimer"
 
 #: src/Common/LinuxKernel.vala:609
-msgid "The following kernels will be removed:"
+#, fuzzy
+msgid "The following kernels will be uninstalled:"
 msgstr "Les noyaux suivants seront supprimés:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
 msgstr "Reprendre ?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Dernière mise à jour"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:316
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Dernière mise à jour mineure"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:321
-#: src/Console/AppConsole.vala:382
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:326
+#: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Aucune mise à jour disponible"
 
@@ -113,15 +115,17 @@ msgid "Installation completed with errors"
 msgstr "Installation terminée avec des erreurs"
 
 #: src/Common/LinuxKernel.vala:1124
+#, fuzzy
 msgid ""
-"Selected kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"Selected kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
 " Installez un autre noyau avant de retirer celui-ci."
 
 #: src/Common/LinuxKernel.vala:1129
-msgid "Preparing to remove selected kernels"
+#, fuzzy
+msgid "Preparing to uninstall selected kernels"
 msgstr "Préparation à la suppression des noyaux sélectionnés"
 
 #: src/Common/LinuxKernel.vala:1160 src/Common/LinuxKernel.vala:1207
@@ -133,9 +137,10 @@ msgid "Un-install completed with errors"
 msgstr "Désinstallation terminée avec des erreurs"
 
 #: src/Common/LinuxKernel.vala:1176
+#, fuzzy
 msgid ""
-"This kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"This kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
 " Installez un autre noyau avant de retirer celui-ci."
@@ -190,11 +195,13 @@ msgid "Install specified mainline kernel"
 msgstr "Installer le noyau mainline spécifié"
 
 #: src/Console/AppConsole.vala:73
-msgid "Uninstall specified kernels"
+#, fuzzy
+msgid "Uninstall specified kernel"
 msgstr "Installer les noyaux spécifiés"
 
-#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
-msgid "Remove installed kernels older than running kernel"
+#: src/Console/AppConsole.vala:74
+#, fuzzy
+msgid "Uninstall kernels older than the running kernel"
 msgstr "Désinstalle les noyaux plus anciens que le noyau courant"
 
 #: src/Console/AppConsole.vala:75
@@ -241,55 +248,55 @@ msgstr ""
 "Une ou plusieurs versions (séparées par des virgules) prises du résultat de "
 "--list"
 
-#: src/Console/AppConsole.vala:167 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
 msgstr "Option inconnue"
 
-#: src/Console/AppConsole.vala:169 src/Console/AppConsole.vala:261
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:294
 msgid "Run"
 msgstr "Executez"
 
-#: src/Console/AppConsole.vala:169
+#: src/Console/AppConsole.vala:171
 msgid "to list all options"
 msgstr "pour afficher toutes les options"
 
-#: src/Console/AppConsole.vala:234 src/Console/AppConsole.vala:269
+#: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
 msgid "No kernels specified"
 msgstr "Aucun noyau spécifié"
 
-#: src/Console/AppConsole.vala:240
+#: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Plusieurs noyaux sélectionnés pour être installés. Sélectionnez en seulement "
 "un."
 
-#: src/Console/AppConsole.vala:258 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Impossible de trouver la version demandée"
 
-#: src/Console/AppConsole.vala:261
+#: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
 msgstr ""
 
-#: src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:293
 msgid "Command not specified"
 msgstr "Pas de commande fournie"
 
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:294
 msgid "to list all commands"
 msgstr "pour afficher toutes les commandes"
 
-#: src/Console/AppConsole.vala:355
+#: src/Console/AppConsole.vala:360
 msgid "Show"
 msgstr "Montrer"
 
-#: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
+#: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Paquet %s disponibles"
 
-#: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
+#: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Installer"
@@ -340,12 +347,14 @@ msgid "Select the kernel to install"
 msgstr "Sélectionnez le noyau à installer"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Remove"
-msgstr "Supprimer"
+#, fuzzy
+msgid "Uninstall"
+msgstr "Installer"
 
 #: src/Gtk/MainWindow.vala:353
-msgid "Select the kernels to remove"
-msgstr "Sélectionnez les noyaux à supprimer"
+#, fuzzy
+msgid "Select the kernels to uninstall"
+msgstr "Sélectionnez le noyau à installer"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -353,8 +362,14 @@ msgid "Close window to exit..."
 msgstr "Fermer la fenêtre pour quitter..."
 
 #: src/Gtk/MainWindow.vala:391
-msgid "Purge"
-msgstr "Nettoyer"
+#, fuzzy
+msgid "Uninstall Old"
+msgstr "Désinstallation complète"
+
+#: src/Gtk/MainWindow.vala:392
+#, fuzzy
+msgid "Uninstall kernels older than running kernel"
+msgstr "Désinstalle les noyaux plus anciens que le noyau courant"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-12 21:13-0400\n"
+"POT-Creation-Date: 2021-09-14 13:48-0400\n"
 "PO-Revision-Date: 2021-04-07 17:58+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -34,27 +34,29 @@ msgid "Could not find running kernel in list!"
 msgstr "Nemoguće je pronaći pokrenuti kernel na popisu!"
 
 #: src/Common/LinuxKernel.vala:600
-msgid "Could not find any kernels to remove"
+#, fuzzy
+msgid "Could not find any kernels to uninstall"
 msgstr "Nema pronađenih kernela za uklanjanje"
 
 #: src/Common/LinuxKernel.vala:609
-msgid "The following kernels will be removed:"
+#, fuzzy
+msgid "The following kernels will be uninstalled:"
 msgstr "Sljedeći kerneli će biti uklonjeni:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
 msgstr "Nastavi?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Najnovija nadopuna"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:316
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Najnovija ciljana nadopuna"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:321
-#: src/Console/AppConsole.vala:382
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:326
+#: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
@@ -113,15 +115,17 @@ msgid "Installation completed with errors"
 msgstr "Instalacija je završena s greškama"
 
 #: src/Common/LinuxKernel.vala:1124
+#, fuzzy
 msgid ""
-"Selected kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"Selected kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Odabrani kernel je trenutno pokernut i ne može se ukloniti.\n"
 " Instalirajte drugi kernel prije uklanjanja trenutnog kernela."
 
 #: src/Common/LinuxKernel.vala:1129
-msgid "Preparing to remove selected kernels"
+#, fuzzy
+msgid "Preparing to uninstall selected kernels"
 msgstr "Pripremanje uklanjanja odabranih kernela"
 
 #: src/Common/LinuxKernel.vala:1160 src/Common/LinuxKernel.vala:1207
@@ -133,9 +137,10 @@ msgid "Un-install completed with errors"
 msgstr "Deinstalacija završena s greškama"
 
 #: src/Common/LinuxKernel.vala:1176
+#, fuzzy
 msgid ""
-"This kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"This kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Ovaj kernel je trenutno pokrenut i ne može se ukloniti.\n"
 " Instalirajte drugi kernel prije uklanjanja trenutnog kernela."
@@ -190,11 +195,13 @@ msgid "Install specified mainline kernel"
 msgstr "Instaliraj određeni mainline kernel"
 
 #: src/Console/AppConsole.vala:73
-msgid "Uninstall specified kernels"
+#, fuzzy
+msgid "Uninstall specified kernel"
 msgstr "Ukloni određene kernele"
 
-#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
-msgid "Remove installed kernels older than running kernel"
+#: src/Console/AppConsole.vala:74
+#, fuzzy
+msgid "Uninstall kernels older than the running kernel"
 msgstr "Ukloni instalirane kernele starije od pokrenutog krenela"
 
 #: src/Console/AppConsole.vala:75
@@ -240,53 +247,53 @@ msgid ""
 msgstr ""
 "Jedan ili više izraza inačice (zarezom odvojeni) uzetih iz zapisa --list"
 
-#: src/Console/AppConsole.vala:167 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:169 src/Console/AppConsole.vala:261
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:294
 msgid "Run"
 msgstr "Pokreni"
 
-#: src/Console/AppConsole.vala:169
+#: src/Console/AppConsole.vala:171
 msgid "to list all options"
 msgstr "za prikaz svih mogućnosti"
 
-#: src/Console/AppConsole.vala:234 src/Console/AppConsole.vala:269
+#: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
 msgid "No kernels specified"
 msgstr "Nema određenih kernela"
 
-#: src/Console/AppConsole.vala:240
+#: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Više kernela je odabrano za instalaciju. odaberite samo jedan."
 
-#: src/Console/AppConsole.vala:258 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Nemoguće je pronaći zatraženu inačicu"
 
-#: src/Console/AppConsole.vala:261
+#: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
 msgstr "i koristite izraz inačice prikazan u prvom stupcu"
 
-#: src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:293
 msgid "Command not specified"
 msgstr "Naredba nije navedena"
 
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:294
 msgid "to list all commands"
 msgstr "za prikaz svih mogućnosti"
 
-#: src/Console/AppConsole.vala:355
+#: src/Console/AppConsole.vala:360
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
+#: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
+#: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Instaliraj"
@@ -337,12 +344,14 @@ msgid "Select the kernel to install"
 msgstr "Odaberi kernel za instalaciju"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Remove"
-msgstr "Ukloni"
+#, fuzzy
+msgid "Uninstall"
+msgstr "Instaliraj"
 
 #: src/Gtk/MainWindow.vala:353
-msgid "Select the kernels to remove"
-msgstr "Odaberi kernele za uklanjanje"
+#, fuzzy
+msgid "Select the kernels to uninstall"
+msgstr "Odaberi kernel za instalaciju"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -350,8 +359,14 @@ msgid "Close window to exit..."
 msgstr "Zatvori prozor i izađi..."
 
 #: src/Gtk/MainWindow.vala:391
-msgid "Purge"
-msgstr "Potpuno ukloni"
+#, fuzzy
+msgid "Uninstall Old"
+msgstr "Deinstalacija završena"
+
+#: src/Gtk/MainWindow.vala:392
+#, fuzzy
+msgid "Uninstall kernels older than running kernel"
+msgstr "Ukloni instalirane kernele starije od pokrenutog krenela"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"

@@ -569,7 +569,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public static void purge_old_kernels(bool confirm){
+	public static void kunin_old(bool confirm){
 
 		check_installed();
 
@@ -597,7 +597,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		if (list.size == 0){
-			log_msg(_("Could not find any kernels to remove"));
+			log_msg(_("Could not find any kernels to uninstall"));
 			log_msg(string.nfill(70, '-'));
 			return;
 		}
@@ -606,7 +606,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (confirm){
 			
-			var message = "\n%s:\n".printf(_("The following kernels will be removed:"));
+			var message = "\n%s:\n".printf(_("The following kernels will be uninstalled:"));
 
 			foreach(var kern in list){
 
@@ -623,16 +623,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (ch != 'y'){ return; }
 		}
 
-		// remove --------------------------------
-		foreach(var kern in list) kern.remove();
+		// uninstall --------------------------------
+		foreach(var kern in list) kern.kunin();
 	}
 
-	public static void install_latest(bool point_update, bool confirm){
+	public static void kinst_latest(bool point_update, bool confirm){
 
 		query(true);
 
 		// already done in query() -> query_thread() ?
-		//check_updates("install_latest()");
+		//check_updates("kinst_latest()");
 		//check_updates();
 
 		var kern_major = LinuxKernel.kernel_update_major;
@@ -642,7 +642,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
 			log_msg(message);
 			
-			install_update(kern_major, confirm);
+			kinst_update(kern_major, confirm);
 			return;
 		}
 
@@ -653,7 +653,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
 			log_msg(message);
 
-			install_update(kern_minor, confirm);
+			kinst_update(kern_minor, confirm);
 			return;
 		}
 
@@ -664,7 +664,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_msg(string.nfill(70, '-'));
 	}
 
-	public static void install_update(LinuxKernel kern, bool confirm){
+	public static void kinst_update(LinuxKernel kern, bool confirm){
 
 		if (confirm){
 			
@@ -677,7 +677,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (ch != 'y'){ return; }
 		}
 
-		kern.install();
+		kern.kinst();
 	}
 
 	// helpers
@@ -1073,7 +1073,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
-	public bool install(){
+	public bool kinst(){
 
 		// check if installed
 		if (is_installed){
@@ -1092,7 +1092,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			foreach(string file_name in deb_list.keys){
 				flist += " '%s'".printf(file_name);
-				log_msg("install() flist += %s".printf(file_name));
+				log_msg("kinst() flist += %s".printf(file_name));
 			}
 
 			string cmd = "cd "+cache_subdir
@@ -1114,19 +1114,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
-	public static bool remove_kernels(Gee.ArrayList<LinuxKernel> selected_kernels){
+	public static bool kunin_list(Gee.ArrayList<LinuxKernel> selected_kernels){
 		bool ok = true;
 		int status = -1;
 
 		// check if running
 		foreach(var k in selected_kernels){
 			if (k.is_running){
-				log_error(_("Selected kernel is currently running and cannot be removed.\n Install another kernel before removing this one."));
+				log_error(_("Selected kernel is currently running and cannot be un-installed.\n Install another kernel before un-installing this one."));
 				return false;
 			}
 		}
 
-		log_msg(_("Preparing to remove selected kernels"));
+		log_msg(_("Preparing to uninstall selected kernels"));
 
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -r";
 
@@ -1148,7 +1148,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				}
 			}
 			else{
-				log_error("Could not find the packages to remove!");
+				log_error("Could not find the packages to un-install!");
 				return false;
 			}
 		}
@@ -1167,17 +1167,17 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
-	public bool remove(){
+	public bool kunin(){
 		bool ok = true;
 		int status = -1;
 
 		// check if running
 		if (is_running){
-			log_error(_("This kernel is currently running and cannot be removed.\n Install another kernel before removing this one."));
+			log_error(_("This kernel is currently running and cannot be un-installed.\n Install another kernel before un-installing this one."));
 			return false;
 		}
 
-		log_msg("Preparing to remove '%s'".printf(version_main));
+		log_msg("Preparing to un-install '%s'".printf(version_main));
 
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg -r";
 
@@ -1196,7 +1196,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 		else{
-			log_error("Could not find the packages to remove!");
+			log_error("Could not find the packages to un-install!");
 			return false;
 		}
 

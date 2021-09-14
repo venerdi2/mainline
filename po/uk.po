@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-12 21:13-0400\n"
+"POT-Creation-Date: 2021-09-14 13:48-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -34,27 +34,29 @@ msgid "Could not find running kernel in list!"
 msgstr "Не вдалося знайти запущене ядро у списку!"
 
 #: src/Common/LinuxKernel.vala:600
-msgid "Could not find any kernels to remove"
+#, fuzzy
+msgid "Could not find any kernels to uninstall"
 msgstr "Не вдалося знайти жодне ядро для вилучення"
 
 #: src/Common/LinuxKernel.vala:609
-msgid "The following kernels will be removed:"
+#, fuzzy
+msgid "The following kernels will be uninstalled:"
 msgstr "Наступні ядра будуть видалені:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
 msgstr "Продовжувати ?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:316
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:321
-#: src/Console/AppConsole.vala:382
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:326
+#: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
@@ -112,15 +114,17 @@ msgid "Installation completed with errors"
 msgstr "Установка завершена з помилками"
 
 #: src/Common/LinuxKernel.vala:1124
+#, fuzzy
 msgid ""
-"Selected kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"Selected kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Це ядро зараз працює і не може бути видалено. \n"
 "Встановіть інше ядро, перш ніж видаляти його."
 
 #: src/Common/LinuxKernel.vala:1129
-msgid "Preparing to remove selected kernels"
+#, fuzzy
+msgid "Preparing to uninstall selected kernels"
 msgstr "Підготовка до видалення вибраних ядер"
 
 #: src/Common/LinuxKernel.vala:1160 src/Common/LinuxKernel.vala:1207
@@ -132,9 +136,10 @@ msgid "Un-install completed with errors"
 msgstr "Видалення завершено з помилками"
 
 #: src/Common/LinuxKernel.vala:1176
+#, fuzzy
 msgid ""
-"This kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"This kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Це ядро наразі працює і його неможливо видалити.\n"
 " Встановіть інше ядро перед тим, як видалити его."
@@ -191,11 +196,12 @@ msgstr "Встановіть конкретне основне ядро"
 
 #: src/Console/AppConsole.vala:73
 #, fuzzy
-msgid "Uninstall specified kernels"
+msgid "Uninstall specified kernel"
 msgstr "Видаліть конкретні ядра"
 
-#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
-msgid "Remove installed kernels older than running kernel"
+#: src/Console/AppConsole.vala:74
+#, fuzzy
+msgid "Uninstall kernels older than the running kernel"
 msgstr "Видаліть встановлені ядра, старші за запущене ядро"
 
 #: src/Console/AppConsole.vala:75
@@ -243,56 +249,56 @@ msgid ""
 msgstr ""
 "Одна або кілька рядків версії (розділені комами), взяті з виводу --list"
 
-#: src/Console/AppConsole.vala:167 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
-#: src/Console/AppConsole.vala:169 src/Console/AppConsole.vala:261
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:294
 #, fuzzy
 msgid "Run"
 msgstr "Запуск"
 
-#: src/Console/AppConsole.vala:169
+#: src/Console/AppConsole.vala:171
 #, fuzzy
 msgid "to list all options"
 msgstr "Показати усі параметри"
 
-#: src/Console/AppConsole.vala:234 src/Console/AppConsole.vala:269
+#: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
 msgid "No kernels specified"
 msgstr "Ядра не вказані"
 
-#: src/Console/AppConsole.vala:240
+#: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Для встановлення вибрано кілька ядер. Виберіть лише одну."
 
-#: src/Console/AppConsole.vala:258 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "Не вдалося знайти запитувану версію"
 
-#: src/Console/AppConsole.vala:261
+#: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
 msgstr "і використовувати рядок версій, вказаний у першому стовпці"
 
-#: src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:293
 msgid "Command not specified"
 msgstr "Команда не вказана"
 
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:294
 #, fuzzy
 msgid "to list all commands"
 msgstr "Показати усі параметри"
 
-#: src/Console/AppConsole.vala:355
+#: src/Console/AppConsole.vala:360
 msgid "Show"
 msgstr "Показати"
 
-#: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
+#: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Доступні пакети"
 
-#: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
+#: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Встановити"
@@ -343,12 +349,14 @@ msgid "Select the kernel to install"
 msgstr "Виберіть ядро для встановлення"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Remove"
-msgstr "Видалити"
+#, fuzzy
+msgid "Uninstall"
+msgstr "Встановити"
 
 #: src/Gtk/MainWindow.vala:353
-msgid "Select the kernels to remove"
-msgstr "Виберіть ядра для видалення"
+#, fuzzy
+msgid "Select the kernels to uninstall"
+msgstr "Виберіть ядро для встановлення"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -356,8 +364,14 @@ msgid "Close window to exit..."
 msgstr "Закрийте вікно, щоб вийти..."
 
 #: src/Gtk/MainWindow.vala:391
-msgid "Purge"
-msgstr "Чистити"
+#, fuzzy
+msgid "Uninstall Old"
+msgstr "Видалення завершено"
+
+#: src/Gtk/MainWindow.vala:392
+#, fuzzy
+msgid "Uninstall kernels older than running kernel"
+msgstr "Видаліть встановлені ядра, старші за запущене ядро"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"

@@ -40,8 +40,8 @@ public class MainWindow : Gtk.Window{
 	private Gtk.TreeView tv;
 	private Gtk.Button btn_refresh;
 	private Gtk.Button btn_install;
-	private Gtk.Button btn_remove;
-	private Gtk.Button btn_purge;
+	private Gtk.Button btn_uninstall;
+	private Gtk.Button btn_uninstall_old;
 	private Gtk.Button btn_changes;
 	private Gtk.Label lbl_info;
 
@@ -103,7 +103,7 @@ public class MainWindow : Gtk.Window{
 				exit(1);
 			}
 			else{
-				install(kern_requested);
+				kinst(kern_requested);
 			}
 
 			break;
@@ -293,14 +293,14 @@ public class MainWindow : Gtk.Window{
 	private void set_button_state(){
 		if (selected_kernels.size == 0){
 			btn_install.sensitive = false;
-			btn_remove.sensitive = false;
-			btn_purge.sensitive = true;
+			btn_uninstall.sensitive = false;
+			btn_uninstall_old.sensitive = true;
 			btn_changes.sensitive = false;
 		}
 		else{
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
-			btn_remove.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
-			btn_purge.sensitive = true;
+			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
+			btn_uninstall_old.sensitive = true;
 			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
 		}
 	}
@@ -333,7 +333,7 @@ public class MainWindow : Gtk.Window{
 
 		button.clicked.connect(() => {
 			if (selected_kernels.size == 1){
-				install(selected_kernels[0]);
+				kinst(selected_kernels[0]);
 			}
 			else if (selected_kernels.size > 1){
 				gtk_messagebox(_("Multiple Kernels Selected"),_("Select a single kernel to install"), this, true);
@@ -343,14 +343,14 @@ public class MainWindow : Gtk.Window{
 			}
 		});
 
-		// remove
-		button = new Gtk.Button.with_label (_("Remove"));
+		// uninstall
+		button = new Gtk.Button.with_label (_("Uninstall"));
 		hbox.pack_start (button, true, true, 0);
-		btn_remove = button;
+		btn_uninstall = button;
 
 		button.clicked.connect(() => {
 			if (selected_kernels.size == 0){
-				gtk_messagebox(_("Not Selected"),_("Select the kernels to remove"), this, true);
+				gtk_messagebox(_("Not Selected"),_("Select the kernels to uninstall"), this, true);
 			}
 			else if (selected_kernels.size > 0){
 				
@@ -378,7 +378,7 @@ public class MainWindow : Gtk.Window{
 
 				string sh = BRANDING_SHORTNAME;
 				if (LOG_DEBUG) sh += " --debug";
-				sh += " --remove %s\n".printf(names)
+				sh += " --uninstall %s\n".printf(names)
 				+ "echo \n"
 				+ "echo '"+_("Close window to exit...")+"'\n";
 
@@ -387,11 +387,11 @@ public class MainWindow : Gtk.Window{
 			}
 		});
 
-		// purge
-		button = new Gtk.Button.with_label (_("Purge"));
-		button.set_tooltip_text(_("Remove installed kernels older than running kernel"));
+		// uninstall-old
+		button = new Gtk.Button.with_label (_("Uninstall Old"));
+		button.set_tooltip_text(_("Uninstall kernels older than running kernel"));
 		hbox.pack_start (button, true, true, 0);
-		btn_purge = button;
+		btn_uninstall_old = button;
 
 		button.clicked.connect(() => {
 
@@ -411,7 +411,7 @@ public class MainWindow : Gtk.Window{
 				tv_refresh();
 			});
 
-			string sh = BRANDING_SHORTNAME+" --purge-old-kernels";
+			string sh = BRANDING_SHORTNAME+" --uninstall-old";
 			if (LOG_DEBUG) sh += " --debug";
 			sh += "\necho \n"
 			+ "echo '"+_("Close window to exit...")+"'\n";
@@ -643,7 +643,7 @@ public class MainWindow : Gtk.Window{
 		}
 	}
 
-	public void install(LinuxKernel kern){
+	public void kinst(LinuxKernel kern){
 
 		// check if installed
 		if (kern.is_installed){

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-12 21:13-0400\n"
+"POT-Creation-Date: 2021-09-14 13:48-0400\n"
 "PO-Revision-Date: 2020-03-10 15:59+0300\n"
 "Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -34,27 +34,29 @@ msgid "Could not find running kernel in list!"
 msgstr "İstenen sürüm bulunamadı!"
 
 #: src/Common/LinuxKernel.vala:600
-msgid "Could not find any kernels to remove"
+#, fuzzy
+msgid "Could not find any kernels to uninstall"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
 #: src/Common/LinuxKernel.vala:609
-msgid "The following kernels will be removed:"
+#, fuzzy
+msgid "The following kernels will be uninstalled:"
 msgstr "Aşağıdaki çekirdekler silinecek:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
 msgstr "Devam et ?"
 
-#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:309
+#: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Son güncelleme"
 
-#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:316
+#: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Son güncelleme noktası"
 
-#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:321
-#: src/Console/AppConsole.vala:382
+#: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:326
+#: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
@@ -112,15 +114,17 @@ msgid "Installation completed with errors"
 msgstr "Kurulum hatalarla tamamlandı"
 
 #: src/Common/LinuxKernel.vala:1124
+#, fuzzy
 msgid ""
-"Selected kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"Selected kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Seçilen çekirdek şu anda çalışıyor ve kaldırılamıyor.\n"
 " Bunu kaldırmadan önce başka bir çekirdek yükleyin."
 
 #: src/Common/LinuxKernel.vala:1129
-msgid "Preparing to remove selected kernels"
+#, fuzzy
+msgid "Preparing to uninstall selected kernels"
 msgstr "Seçilen çekirdekleri kaldırmak için hazırlanıyor"
 
 #: src/Common/LinuxKernel.vala:1160 src/Common/LinuxKernel.vala:1207
@@ -132,9 +136,10 @@ msgid "Un-install completed with errors"
 msgstr "Kaldırma hatalarla tamamlandı"
 
 #: src/Common/LinuxKernel.vala:1176
+#, fuzzy
 msgid ""
-"This kernel is currently running and cannot be removed.\n"
-" Install another kernel before removing this one."
+"This kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
 msgstr ""
 "Bu çekirdek şu anda çalışıyor ve bu sebeple kaldırılamaz.\n"
 "Bunu kaldırmadan önce başka bir çekirdek yükleyin."
@@ -191,11 +196,12 @@ msgstr "Belirtilen mainline çekirdeğini kur"
 
 #: src/Console/AppConsole.vala:73
 #, fuzzy
-msgid "Uninstall specified kernels"
+msgid "Uninstall specified kernel"
 msgstr "Belirtilen mainline çekirdeğini kur"
 
-#: src/Console/AppConsole.vala:74 src/Gtk/MainWindow.vala:392
-msgid "Remove installed kernels older than running kernel"
+#: src/Console/AppConsole.vala:74
+#, fuzzy
+msgid "Uninstall kernels older than the running kernel"
 msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
 #: src/Console/AppConsole.vala:75
@@ -241,56 +247,56 @@ msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
 
-#: src/Console/AppConsole.vala:167 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
-#: src/Console/AppConsole.vala:169 src/Console/AppConsole.vala:261
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:294
 #, fuzzy
 msgid "Run"
 msgstr "Çalıştır '"
 
-#: src/Console/AppConsole.vala:169
+#: src/Console/AppConsole.vala:171
 #, fuzzy
 msgid "to list all options"
 msgstr "Tüm seçenekleri göster"
 
-#: src/Console/AppConsole.vala:234 src/Console/AppConsole.vala:269
+#: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
 msgid "No kernels specified"
 msgstr "Belirtilen çekirdek yok"
 
-#: src/Console/AppConsole.vala:240
+#: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Kurulum için çoklu çekirdek seçildi. Sadece bir tane seçiniz."
 
-#: src/Console/AppConsole.vala:258 src/Gtk/MainWindow.vala:100
+#: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
 msgstr "İstenen sürüm bulunamadı"
 
-#: src/Console/AppConsole.vala:261
+#: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
 msgstr ""
 
-#: src/Console/AppConsole.vala:288
+#: src/Console/AppConsole.vala:293
 msgid "Command not specified"
 msgstr "Komut belirtilmedi"
 
-#: src/Console/AppConsole.vala:289
+#: src/Console/AppConsole.vala:294
 #, fuzzy
 msgid "to list all commands"
 msgstr "Tüm seçenekleri göster"
 
-#: src/Console/AppConsole.vala:355
+#: src/Console/AppConsole.vala:360
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:360 src/Console/AppConsole.vala:372
+#: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Mevcut Paketler"
 
-#: src/Console/AppConsole.vala:362 src/Console/AppConsole.vala:374
+#: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
 msgid "Install"
 msgstr "Kur"
@@ -341,12 +347,14 @@ msgid "Select the kernel to install"
 msgstr "Kurulum için çekirdek seçin"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Remove"
-msgstr "Sil"
+#, fuzzy
+msgid "Uninstall"
+msgstr "Kur"
 
 #: src/Gtk/MainWindow.vala:353
-msgid "Select the kernels to remove"
-msgstr "Kaldırma için çekirdek seçin"
+#, fuzzy
+msgid "Select the kernels to uninstall"
+msgstr "Kurulum için çekirdek seçin"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -354,8 +362,14 @@ msgid "Close window to exit..."
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:391
-msgid "Purge"
-msgstr "Temizle"
+#, fuzzy
+msgid "Uninstall Old"
+msgstr "Kaldırma tamamlandı"
+
+#: src/Gtk/MainWindow.vala:392
+#, fuzzy
+msgid "Uninstall kernels older than running kernel"
+msgstr "Çalışan çekirdekten eski olan kurulu çekirdekleri kaldır"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
