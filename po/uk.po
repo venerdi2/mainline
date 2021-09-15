@@ -351,7 +351,7 @@ msgstr "Виберіть ядро для встановлення"
 #: src/Gtk/MainWindow.vala:347
 #, fuzzy
 msgid "Uninstall"
-msgstr "Встановити"
+msgstr "Видалити"
 
 #: src/Gtk/MainWindow.vala:353
 #, fuzzy
@@ -366,12 +366,12 @@ msgstr "Закрийте вікно, щоб вийти..."
 #: src/Gtk/MainWindow.vala:391
 #, fuzzy
 msgid "Uninstall Old"
-msgstr "Видалення завершено"
+msgstr "Видалити встановлені ядра старіши за встановлене"
 
 #: src/Gtk/MainWindow.vala:392
 #, fuzzy
 msgid "Uninstall kernels older than running kernel"
-msgstr "Видаліть встановлені ядра, старші за запущене ядро"
+msgstr "Видалити встановлені ядра, старші за запущене ядро"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
