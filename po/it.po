@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the mainline package.
 # ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2020.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mainline 1.0.12\n"
+"Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 13:48-0400\n"
+"POT-Creation-Date: 2021-09-20 08:48-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -37,12 +38,10 @@ msgid "Could not find running kernel in list!"
 msgstr "Impossibile trovare il kernel in esecuzione nell'elenco!"
 
 #: src/Common/LinuxKernel.vala:600
-#, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "Impossibile trovare alcun kernel da rimuovere"
 
 #: src/Common/LinuxKernel.vala:609
-#, fuzzy
 msgid "The following kernels will be uninstalled:"
 msgstr "I seguenti kernel verranno rimossi:"
 
@@ -109,16 +108,14 @@ msgstr "Questo kernel è già installato"
 
 #: src/Common/LinuxKernel.vala:1106
 msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr ""
-"Installazione completata. È necessario riavviare per utilizzare il nuovo "
-"kernel."
+msgstr "Installazione completata. È necessario riavviare per utilizzare il"
+"nuovo kernel."
 
 #: src/Common/LinuxKernel.vala:1109
 msgid "Installation completed with errors"
 msgstr "Installazione completata con errori"
 
 #: src/Common/LinuxKernel.vala:1124
-#, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -127,7 +124,6 @@ msgstr ""
 "Installa un altro kernel prima di rimuovere questo."
 
 #: src/Common/LinuxKernel.vala:1129
-#, fuzzy
 msgid "Preparing to uninstall selected kernels"
 msgstr "Preparazione per rimuovere i kernel selezionati"
 
@@ -140,13 +136,12 @@ msgid "Un-install completed with errors"
 msgstr "Disinstallazione completata con errori"
 
 #: src/Common/LinuxKernel.vala:1176
-#, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
 msgstr ""
 "Questo kernel è attualmente in esecuzione e non può essere rimosso.\n"
-"Installa un altro kernel prima di rimuovere questo."
+" Installa un altro kernel prima di rimuovere questo."
 
 #: src/Common/Main.vala:241
 msgid "Called from"
@@ -175,9 +170,8 @@ msgstr "Verifica aggiornamenti per il kernel"
 
 #: src/Console/AppConsole.vala:67
 msgid "Check for kernel updates and notify current user"
-msgstr ""
-"Verifica la disponibilità di aggiornamenti del kernel e avvisare l'utente "
-"corrente"
+msgstr "Verifica la disponibilità di aggiornamenti del kernel"
+"ed avvisa l'utente corrente"
 
 #: src/Console/AppConsole.vala:68
 msgid "List all available mainline kernels"
@@ -193,19 +187,17 @@ msgstr "Installa ultimo kernel mainline"
 
 #: src/Console/AppConsole.vala:71
 msgid "Install latest point update for current series"
-msgstr "installa l'ultimo aggiornamento del punto per le serie attuali"
+msgstr "installa l'ultimo rilascio parziale per le serie attuali"
 
 #: src/Console/AppConsole.vala:72
 msgid "Install specified mainline kernel"
 msgstr "Installa kernel mainline specificato"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "Uninstall specified kernel"
 msgstr "Disinstalla i kernel specificati"
 
 #: src/Console/AppConsole.vala:74
-#, fuzzy
 msgid "Uninstall kernels older than the running kernel"
 msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
 
@@ -222,9 +214,8 @@ msgid "Options"
 msgstr "Opzioni"
 
 #: src/Console/AppConsole.vala:80
-#, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "Nascondi versioni instabili e RC"
+msgstr "Includi versioni instabili e RC"
 
 #: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
 msgid "Hide unstable and RC releases"
@@ -236,11 +227,11 @@ msgstr "Abilita l'output di debug dettagliato"
 
 #: src/Console/AppConsole.vala:83
 msgid "Assume Yes for all prompts (non-interactive mode)"
-msgstr "Assicura Sì per tutte le richieste (modalità non interattiva)"
+msgstr "Imposta Sì per tutte le richieste (modalità non interattiva)"
 
 #: src/Console/AppConsole.vala:84
 msgid "Override user"
-msgstr "Sovrascrivi utente"
+msgstr "Ignora utente"
 
 #: src/Console/AppConsole.vala:87
 msgid "A version string taken from the output of --list"
@@ -350,14 +341,12 @@ msgid "Select the kernel to install"
 msgstr "Seleziona il kernel da installare"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
 msgid "Uninstall"
-msgstr "Installa"
+msgstr "Disinstalla"
 
 #: src/Gtk/MainWindow.vala:353
-#, fuzzy
 msgid "Select the kernels to uninstall"
-msgstr "Seleziona il kernel da installare"
+msgstr "Seleziona i kernel da disinstallare"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -365,12 +354,10 @@ msgid "Close window to exit..."
 msgstr "Chiudere la finestra per uscire..."
 
 #: src/Gtk/MainWindow.vala:391
-#, fuzzy
 msgid "Uninstall Old"
-msgstr "Disinstallazione completata"
+msgstr "Disinstalla i vecchi"
 
 #: src/Gtk/MainWindow.vala:392
-#, fuzzy
 msgid "Uninstall kernels older than running kernel"
 msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
 
@@ -509,7 +496,7 @@ msgstr "Artisti"
 
 #: src/Utility/Gtk/AboutWindow.vala:337
 msgid "Translators"
-msgstr "Albano Battistella"
+msgstr "Albano Battistella, Demetrio Mendozzi"
 
 #: src/Utility/Gtk/AboutWindow.vala:345
 msgid "Documenters"
