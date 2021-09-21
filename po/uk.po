@@ -287,7 +287,7 @@ msgstr "Команда не вказана"
 #: src/Console/AppConsole.vala:294
 #, fuzzy
 msgid "to list all commands"
-msgstr "Показати усі параметри"
+msgstr "щоб відобразити всі команди"
 
 #: src/Console/AppConsole.vala:360
 msgid "Show"
@@ -296,7 +296,7 @@ msgstr "Показати"
 #: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
 #, fuzzy, c-format
 msgid "Kernel %s Available"
-msgstr "Доступні пакети"
+msgstr "Доступне ядро %s"
 
 #: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
@@ -325,12 +325,12 @@ msgstr "Оновити"
 
 #: src/Gtk/MainWindow.vala:321 src/Utility/TeeJee.System.vala:42
 msgid "Internet connection is not active"
-msgstr "Інтернет з'єднання не активно"
+msgstr "Інтернет з'єднання не активне"
 
 #: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:525
 #: src/Gtk/MainWindow.vala:655
 msgid "No Internet"
-msgstr "Інтернету немає"
+msgstr "Інтернет з'єднання відсутнє"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Multiple Kernels Selected"
@@ -366,12 +366,12 @@ msgstr "Закрийте вікно, щоб вийти..."
 #: src/Gtk/MainWindow.vala:391
 #, fuzzy
 msgid "Uninstall Old"
-msgstr "Видалити встановлені ядра старіши за встановлене"
+msgstr "Видалити встановлені ядра старіші за встановлене ядро"
 
 #: src/Gtk/MainWindow.vala:392
 #, fuzzy
 msgid "Uninstall kernels older than running kernel"
-msgstr "Видалити встановлені ядра, старші за запущене ядро"
+msgstr "Видалити встановлені ядра, старіші за запущене ядро"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
@@ -411,12 +411,12 @@ msgstr "Оновлення..."
 #: src/Gtk/MainWindow.vala:638
 #, fuzzy
 msgid "available"
-msgstr "Доступні пакети"
+msgstr "доступний"
 
 #: src/Gtk/MainWindow.vala:650
 #, fuzzy
 msgid "Already Installed"
-msgstr "Встановлено"
+msgstr "Вже встановлено"
 
 #: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:153
