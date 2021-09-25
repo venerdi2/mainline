@@ -202,7 +202,7 @@ msgstr "Видаліть конкретні ядра"
 #: src/Console/AppConsole.vala:74
 #, fuzzy
 msgid "Uninstall kernels older than the running kernel"
-msgstr "Видаліть встановлені ядра, старші за запущене ядро"
+msgstr "Видаліть ядра, старші за запущене ядро"
 
 #: src/Console/AppConsole.vala:75
 #, fuzzy
@@ -220,19 +220,19 @@ msgstr "Параметри"
 #: src/Console/AppConsole.vala:80
 #, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "Приховати нестабільні і реліз-кандидат версії"
+msgstr "Включати нестабільні і RC"
 
 #: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
 msgid "Hide unstable and RC releases"
-msgstr "Приховати нестабільні і реліз-кандидат версії"
+msgstr "Приховати нестабільні і RC"
 
 #: src/Console/AppConsole.vala:82
 msgid "Enable verbose debugging output"
-msgstr "Увімкнути багатослівний вихід налагодження"
+msgstr "Увімкнути вивід налагодження"
 
 #: src/Console/AppConsole.vala:83
 msgid "Assume Yes for all prompts (non-interactive mode)"
-msgstr "Припустимо, Так для всіх підказок (неінтерактивний режим)"
+msgstr "Так для всіх підказок (неінтерактивний режим)"
 
 #: src/Console/AppConsole.vala:84
 msgid "Override user"
@@ -247,7 +247,7 @@ msgstr "Рядок версій, взятий з виводу --list"
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
-"Одна або кілька рядків версії (розділені комами), взяті з виводу --list"
+"Одна або кілька рядків версії (розділені комами) з виводу --list"
 
 #: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
@@ -366,12 +366,12 @@ msgstr "Закрийте вікно, щоб вийти..."
 #: src/Gtk/MainWindow.vala:391
 #, fuzzy
 msgid "Uninstall Old"
-msgstr "Видалити встановлені ядра старіші за встановлене ядро"
+msgstr "Видалити старе"
 
 #: src/Gtk/MainWindow.vala:392
 #, fuzzy
 msgid "Uninstall kernels older than running kernel"
-msgstr "Видалити встановлені ядра, старіші за запущене ядро"
+msgstr "Видалити ядра, старіші за запущене ядро"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
@@ -392,17 +392,17 @@ msgstr "Програма оновлення ядра для дистрибути
 #: src/Gtk/MainWindow.vala:504
 #, fuzzy
 msgid "Forked"
-msgstr "Роздвоєний"
+msgstr "Двоєний"
 
 #: src/Gtk/MainWindow.vala:504
 #, fuzzy
 msgid "Original"
-msgstr "Оригінальний"
+msgstr "Оригінал"
 
 #: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
 #, fuzzy
 msgid "Internet connection is not active."
-msgstr "Інтернет з'єднання не активно"
+msgstr "Інтернет з'єднання не активно."
 
 #: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
@@ -523,7 +523,7 @@ msgstr "Документатори"
 #: src/Utility/Gtk/AboutWindow.vala:353
 #, fuzzy
 msgid "Third Party Inclusions"
-msgstr "Інструменти Сторонніх Розробників"
+msgstr "Сторонні Розробники"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
@@ -540,12 +540,12 @@ msgstr "Нема значка"
 #: src/Utility/TeeJee.FileSystem.vala:71
 #, fuzzy
 msgid "File deleted"
-msgstr "Файл збережено"
+msgstr "Файл видалено"
 
 #: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
 #, fuzzy
 msgid "Failed to delete file"
-msgstr "Невдалося записати файл"
+msgstr "Невдалося видалити файл"
 
 #: src/Utility/TeeJee.FileSystem.vala:96
 msgid "Failed to read file"
