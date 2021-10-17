@@ -27,6 +27,13 @@ mainline is written using Vala and GTK3. Source code and binaries are available 
 	make
 	sudo make install
 
+### Usage commandline version
+	mainline
+	mainline --help
+
+### Usage GUI version
+	mainline-gtk
+
 ### About
 mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 
