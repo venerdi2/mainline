@@ -1,38 +1,44 @@
 ### Ubuntu Mainline Kernel Installer
-This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions.
+A tool for installing the latest Linux kernels on Ubuntu-based distributions.
 
 ![Main window screenshot](main_window.png)
 
 ### Features
-* Fetches list of available kernels from [Ubuntu Mainline PPA](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
+* Fetches the list of available kernels from the [Ubuntu Mainline PPA](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
 * Optionally watches and displays notifications when a new kernel update is available
 * Downloads and installs packages automatically
 * Display available and installed kernels conveniently
 * Install/Uninstall kernels from gui
 * For each kernel, the related packages (headers & modules) are installed or uninstalled at the same time
 
-### Downloads & Source Code
-mainline is written using Vala and GTK3. Source code and binaries are available from the [GitHub project page](https://github.com/bkw777/mainline).
+### Install
+Minimal .deb packages are in [releases](../../releases/latest). (Usually just a single deb for any given release).
 
-[cappelikan](https://github.com/cappelikan) maintains a PPA at: <https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa>
-
-	sudo add-apt-repository ppa:cappelikan/ppa
-	sudo apt update
-	sudo apt install mainline
-
+Better: [cappelikan](https://github.com/cappelikan) maintains a [PPA](https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa)
+```
+sudo add-apt-repository ppa:cappelikan/ppa
+sudo apt update
+sudo apt install mainline
+```
 ### Build
-	sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
-	git clone https://github.com/bkw777/mainline.git
-	cd mainline
-	make
-	sudo make install
+```
+sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
+git clone https://github.com/bkw777/mainline.git
+cd mainline
+make
+sudo make install
+```
+### Usage
+CLI
+```
+mainline --help
+mainline
+```
 
-### Usage commandline version
-	mainline
-	mainline --help
-
-### Usage GUI version
-	mainline-gtk
+GUI  
+```
+mainline-gtk
+```
 
 ### About
 mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
