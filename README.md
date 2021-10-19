@@ -20,6 +20,7 @@ sudo add-apt-repository ppa:cappelikan/ppa
 sudo apt update
 sudo apt install mainline
 ```
+
 ### Build
 ```
 sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
@@ -28,21 +29,25 @@ cd mainline
 make
 sudo make install
 ```
+
 ### Usage
+Look for System -> Ubuntu Mainline Kernel Installer in your desktop's Applications/Start menu.
+
+Otherwise:  
 CLI
 ```
 mainline --help
 mainline
 ```
-
-GUI  
+GUI
 ```
 mainline-gtk
 ```
 
 ### About
-mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
+Written using Vala and GTK3.
 
+mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)  
 The original author stopped maintaining the original GPL version of ukuu and switched to a [paid license](https://teejeetech.in/tag/ukuu/) for future versions.
 
 ### Enhancements / Deviations from the original author's final GPL version
