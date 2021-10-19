@@ -27,6 +27,13 @@ BRANDING_SHORTNAME is written using Vala and GTK3. Source code and binaries are 
 	make
 	sudo make install
 
+### Usage commandline version
+	mainline
+	mainline --help
+
+### Usage GUI version
+	mainline-gtk
+
 ### About
 BRANDING_SHORTNAME is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 
