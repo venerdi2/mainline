@@ -3,59 +3,56 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 13:48-0400\n"
-"PO-Revision-Date: 2016-12-13 16:46+0300\n"
-"Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
+"PO-Revision-Date: 2022-02-24 16:05+0300\n"
+"Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
+"<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: src/Common/LinuxKernel.vala:88
 msgid "Distribution"
 msgstr "Дистрибутив"
 
 #: src/Common/LinuxKernel.vala:102
-#, fuzzy
 msgid "Architecture"
-msgstr "Системная архитектура"
+msgstr "Архитектура"
 
 #: src/Common/LinuxKernel.vala:301
 msgid "Fetching index..."
-msgstr ""
+msgstr "Получение сведений..."
 
 #: src/Common/LinuxKernel.vala:338
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Получение сведений с kernel.ubuntu.com..."
 
 #: src/Common/LinuxKernel.vala:594
-#, fuzzy
 msgid "Could not find running kernel in list!"
-msgstr "Не удалось найти запрошенную версию"
+msgstr "Не удалось найти запущенное ядро в списке!"
 
 #: src/Common/LinuxKernel.vala:600
-#, fuzzy
 msgid "Could not find any kernels to uninstall"
-msgstr "Не удалось найти запрошенную версию"
+msgstr "Не удалось найти ядра для деинсталляции"
 
 #: src/Common/LinuxKernel.vala:609
-#, fuzzy
 msgid "The following kernels will be uninstalled:"
-msgstr "Это ядро уже установлено."
+msgstr "Следующие ядра будут деинсталлированы:"
 
 #: src/Common/LinuxKernel.vala:616
 msgid "Continue ?"
-msgstr ""
+msgstr "Продолжить ?"
 
 #: src/Common/LinuxKernel.vala:642 src/Console/AppConsole.vala:314
 msgid "Latest update"
-msgstr ""
+msgstr "Последнее обновление"
 
 #: src/Common/LinuxKernel.vala:653 src/Console/AppConsole.vala:321
 msgid "Latest point update"
-msgstr ""
+msgstr "Последнее обновление пунктов"
 
 #: src/Common/LinuxKernel.vala:661 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
@@ -65,17 +62,15 @@ msgstr "Обновлений не найдено"
 #: src/Common/LinuxKernel.vala:671
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
-msgstr ""
+msgstr "Установить версию ядра %s ? (y/n): "
 
 #: src/Common/LinuxKernel.vala:909
-#, fuzzy
 msgid "Packages Available"
-msgstr "Установлено"
+msgstr "Доступные пакеты"
 
 #: src/Common/LinuxKernel.vala:917
-#, fuzzy
 msgid "Packages Installed"
-msgstr "Установлено"
+msgstr "Установленные пакеты"
 
 #: src/Common/LinuxKernel.vala:998
 msgid "Available Kernels"
@@ -119,7 +114,6 @@ msgid "Installation completed with errors"
 msgstr "Установка завершена с ошибками"
 
 #: src/Common/LinuxKernel.vala:1124
-#, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -128,9 +122,8 @@ msgstr ""
 " Установите другое ядро, прежде чем удалять его."
 
 #: src/Common/LinuxKernel.vala:1129
-#, fuzzy
 msgid "Preparing to uninstall selected kernels"
-msgstr "Установить указанную ветку ядра"
+msgstr "Подготовка к деинсталляции выбранных ядер"
 
 #: src/Common/LinuxKernel.vala:1160 src/Common/LinuxKernel.vala:1207
 msgid "Un-install completed"
@@ -141,7 +134,6 @@ msgid "Un-install completed with errors"
 msgstr "Удаление завершено с ошибками"
 
 #: src/Common/LinuxKernel.vala:1176
-#, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -151,12 +143,11 @@ msgstr ""
 
 #: src/Common/Main.vala:241
 msgid "Called from"
-msgstr ""
+msgstr "Вызван из"
 
 #: src/Common/Main.vala:275
-#, fuzzy
 msgid "Notifications are disabled"
-msgstr "Уведомления"
+msgstr "Уведомления отключены"
 
 #: src/Common/Package.vala:134 src/Common/Package.vala:198
 #, c-format
@@ -169,53 +160,47 @@ msgstr "Синтаксис"
 
 #: src/Console/AppConsole.vala:64
 msgid "Commands"
-msgstr ""
+msgstr "Комманды"
 
 #: src/Console/AppConsole.vala:66
 msgid "Check for kernel updates"
 msgstr "Проверить обновления ядра"
 
 #: src/Console/AppConsole.vala:67
-#, fuzzy
 msgid "Check for kernel updates and notify current user"
-msgstr "Проверить обновления ядра"
+msgstr "Проверить обновления ядра и уведомить текущего пользователя"
 
 #: src/Console/AppConsole.vala:68
 msgid "List all available mainline kernels"
 msgstr "Список всех доступных основных ядер"
 
 #: src/Console/AppConsole.vala:69
-#, fuzzy
 msgid "List installed kernels"
-msgstr "Список всех доступных основных ядер"
+msgstr "Список установленных ядер"
 
 #: src/Console/AppConsole.vala:70
-#, fuzzy
 msgid "Install latest mainline kernel"
-msgstr "Установить указанную ветку ядра"
+msgstr "Установите последнюю версию основного ядра"
 
 #: src/Console/AppConsole.vala:71
 msgid "Install latest point update for current series"
-msgstr ""
+msgstr "Установить последнее обновление точек для текущей серии"
 
 #: src/Console/AppConsole.vala:72
 msgid "Install specified mainline kernel"
-msgstr "Установить указанную ветку ядра"
+msgstr "Установить указанную ветку основного ядра"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "Uninstall specified kernel"
-msgstr "Установить указанную ветку ядра"
+msgstr "Установить указанное ядро"
 
 #: src/Console/AppConsole.vala:74
-#, fuzzy
 msgid "Uninstall kernels older than the running kernel"
-msgstr "Удалить более старшие установленные ядра, чем используемое"
+msgstr "Удалить более старшие установленные ядра, чем используемое ядро"
 
 #: src/Console/AppConsole.vala:75
-#, fuzzy
 msgid "Download specified kernels"
-msgstr "Скачать пакеты для указанного ядра"
+msgstr "Скачать указанные ядра"
 
 #: src/Console/AppConsole.vala:76
 msgid "Remove files from application cache"
@@ -226,9 +211,8 @@ msgid "Options"
 msgstr "Параметры"
 
 #: src/Console/AppConsole.vala:80
-#, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "Скрыть нестабильные и релиз-кандидат версии"
+msgstr "Включать нестабильные и релиз-кандидат-версии"
 
 #: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
 msgid "Hide unstable and RC releases"
@@ -236,24 +220,26 @@ msgstr "Скрыть нестабильные и релиз-кандидат в�
 
 #: src/Console/AppConsole.vala:82
 msgid "Enable verbose debugging output"
-msgstr ""
+msgstr "Включить подробный отладочный вывод"
 
 #: src/Console/AppConsole.vala:83
 msgid "Assume Yes for all prompts (non-interactive mode)"
-msgstr ""
+msgstr "Предполагать \"Да\" для всех запросов (неинтерактивный режим)"
 
 #: src/Console/AppConsole.vala:84
 msgid "Override user"
-msgstr ""
+msgstr "Переопределить пользователя"
 
 #: src/Console/AppConsole.vala:87
 msgid "A version string taken from the output of --list"
-msgstr ""
+msgstr "Строка версии, взятая из вывода --list"
 
 #: src/Console/AppConsole.vala:88
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
+"Одна или несколько строк версий (разделенных запятыми), взятых из вывода --"
+"list"
 
 #: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
@@ -261,22 +247,20 @@ msgstr "Неизвестный параметр"
 
 #: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
 #: src/Console/AppConsole.vala:294
-#, fuzzy
 msgid "Run"
 msgstr "Используется"
 
 #: src/Console/AppConsole.vala:171
-#, fuzzy
 msgid "to list all options"
-msgstr "Показать все параметры"
+msgstr "чтобы перечислить все параметры"
 
 #: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
 msgid "No kernels specified"
-msgstr ""
+msgstr "Ядра не указаны"
 
 #: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
-msgstr ""
+msgstr "Для установки выбрано несколько ядер. Выберите только одно."
 
 #: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
@@ -284,25 +268,24 @@ msgstr "Не удалось найти запрошенную версию"
 
 #: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
-msgstr ""
+msgstr "и использовать строку версии, указанную в первом столбце"
 
 #: src/Console/AppConsole.vala:293
 msgid "Command not specified"
-msgstr ""
+msgstr "Команда не указана"
 
 #: src/Console/AppConsole.vala:294
-#, fuzzy
 msgid "to list all commands"
-msgstr "Показать все параметры"
+msgstr "чтобы перечислить все команды"
 
 #: src/Console/AppConsole.vala:360
 msgid "Show"
-msgstr ""
+msgstr "Показать"
 
 #: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
-#, fuzzy, c-format
+#, c-format
 msgid "Kernel %s Available"
-msgstr "Установлено"
+msgstr "Доступно ядро %s"
 
 #: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
 #: src/Gtk/MainWindow.vala:330
@@ -336,45 +319,42 @@ msgstr "Интернет соединение не активно"
 #: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:525
 #: src/Gtk/MainWindow.vala:655
 msgid "No Internet"
-msgstr ""
+msgstr "Нет интернет соединения"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Multiple Kernels Selected"
-msgstr ""
+msgstr "Выбрано несколько ядер"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Select a single kernel to install"
-msgstr ""
+msgstr "Выберите одно ядро для установки"
 
 #: src/Gtk/MainWindow.vala:342 src/Gtk/MainWindow.vala:353
 msgid "Not Selected"
-msgstr ""
+msgstr "Не выбрано"
 
 #: src/Gtk/MainWindow.vala:342
 msgid "Select the kernel to install"
-msgstr ""
+msgstr "Выберите ядро для установки"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
 msgid "Uninstall"
-msgstr "Установить"
+msgstr "Удалить"
 
 #: src/Gtk/MainWindow.vala:353
 msgid "Select the kernels to uninstall"
-msgstr ""
+msgstr "Выберите ядра для деинсталляции"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
 msgid "Close window to exit..."
-msgstr ""
+msgstr "Закройте окно, чтобы выйти..."
 
 #: src/Gtk/MainWindow.vala:391
-#, fuzzy
 msgid "Uninstall Old"
-msgstr "Удаление завершено"
+msgstr "Удалить старые"
 
 #: src/Gtk/MainWindow.vala:392
-#, fuzzy
 msgid "Uninstall kernels older than running kernel"
 msgstr "Удалить более старшие установленные ядра, чем используемое"
 
@@ -396,30 +376,27 @@ msgstr "Программа обновления ядра для дистрибу
 
 #: src/Gtk/MainWindow.vala:504
 msgid "Forked"
-msgstr ""
+msgstr "Форк"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "Original"
-msgstr ""
+msgstr "Оригинал"
 
 #: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
-#, fuzzy
 msgid "Internet connection is not active."
-msgstr "Интернет соединение не активно"
+msgstr "Интернет соединение не активно."
 
 #: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
 msgstr "Обновление..."
 
 #: src/Gtk/MainWindow.vala:638
-#, fuzzy
 msgid "available"
-msgstr "Установлено"
+msgstr "доступно"
 
 #: src/Gtk/MainWindow.vala:650
-#, fuzzy
 msgid "Already Installed"
-msgstr "Установлено"
+msgstr "Уже установлено"
 
 #: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:153
@@ -440,7 +417,7 @@ msgstr "Уведомлять, если доступно небольшое об�
 
 #: src/Gtk/SettingsDialog.vala:89
 msgid "(Allowing intervals in seconds for --debug)"
-msgstr ""
+msgstr "(Разрешение интервалов в секундах для --debug)"
 
 #: src/Gtk/SettingsDialog.vala:112
 msgid "Check every"
@@ -460,37 +437,35 @@ msgstr "Неделю(ли)"
 
 #: src/Gtk/SettingsDialog.vala:149
 msgid "Second(s)"
-msgstr ""
+msgstr "Секунду(ды)"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Display"
-msgstr "Вид"
+msgstr "Отображение"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "Show N previous major versions "
-msgstr ""
+msgstr "Показать N предыдущих основных версий "
 
 #: src/Gtk/SettingsDialog.vala:192
 msgid "Other"
-msgstr ""
+msgstr "Прочее"
 
 #: src/Gtk/SettingsDialog.vala:200
-#, fuzzy
 msgid "Skip internet connection check"
-msgstr "Интернет соединение не активно"
+msgstr "Пропустить проверку подключения к Интернету"
 
 #: src/Gtk/SettingsDialog.vala:213
-#, fuzzy
 msgid "Internet connection timeout in "
-msgstr "Интернет соединение не активно"
+msgstr "Таймаут подключения к Интернету в "
 
 #: src/Gtk/SettingsDialog.vala:228
 msgid "seconds"
-msgstr ""
+msgstr "секунд"
 
 #: src/Gtk/SettingsDialog.vala:235
 msgid "Max concurrent downloads"
-msgstr ""
+msgstr "Максимальное количество одновременных загрузок"
 
 #: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
@@ -525,49 +500,44 @@ msgid "Documenters"
 msgstr "Составители документации"
 
 #: src/Utility/Gtk/AboutWindow.vala:353
-#, fuzzy
 msgid "Third Party Inclusions"
-msgstr "Сторонние инструменты"
+msgstr "Включая сторонние инструменты"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:158
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/Utility/Gtk/GtkHelper.vala:67
 msgid "Missing Icon"
 msgstr "Значок отсутствует"
 
 #: src/Utility/TeeJee.FileSystem.vala:71
-#, fuzzy
 msgid "File deleted"
-msgstr "Файловая система"
+msgstr "Файл удалён"
 
 #: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
-#, fuzzy
 msgid "Failed to delete file"
-msgstr "Не удалось записать файл"
+msgstr "Не удалось удалить файл"
 
 #: src/Utility/TeeJee.FileSystem.vala:96
 msgid "Failed to read file"
 msgstr "Не удалось прочитать файл"
 
 #: src/Utility/TeeJee.FileSystem.vala:123
-#, fuzzy
 msgid "File saved"
-msgstr "Файловая система"
+msgstr "Файл сохранён"
 
 #: src/Utility/TeeJee.FileSystem.vala:129
 msgid "Failed to write file"
 msgstr "Не удалось записать файл"
 
 #: src/Utility/TeeJee.FileSystem.vala:141
-#, fuzzy
 msgid "File copied"
-msgstr "Не удалось скопировать файл"
+msgstr "Файл скопирован"
 
 #: src/Utility/TeeJee.FileSystem.vala:148
 msgid "Failed to copy file"
@@ -578,9 +548,8 @@ msgid "File not found"
 msgstr "Файл не найден"
 
 #: src/Utility/TeeJee.FileSystem.vala:171
-#, fuzzy
 msgid "File moved"
-msgstr "Удалить"
+msgstr "Файл перемещён"
 
 #: src/Utility/TeeJee.FileSystem.vala:176
 msgid "Failed to move file"
@@ -588,9 +557,8 @@ msgstr "Не удалось переместить файл"
 
 #: src/Utility/TeeJee.FileSystem.vala:233
 #: src/Utility/TeeJee.FileSystem.vala:236
-#, fuzzy
 msgid "Created directory"
-msgstr "Используемая кэш-папка"
+msgstr "Создана директория"
 
 #: src/Utility/TeeJee.FileSystem.vala:243
 msgid "Failed to create dir"
@@ -598,7 +566,7 @@ msgstr "Не удалось создать папку"
 
 #: src/Utility/TeeJee.FileSystem.vala:255
 msgid "Deleted"
-msgstr ""
+msgstr "Удалено"
 
 #: src/Utility/TeeJee.Logging.vala:59
 msgid "E"
@@ -606,4 +574,4 @@ msgstr "E"
 
 #: src/Utility/TeeJee.Logging.vala:84
 msgid "D"
-msgstr ""
+msgstr "D"
