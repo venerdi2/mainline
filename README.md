@@ -44,6 +44,9 @@ GUI
 mainline-gtk
 ```
 
+### Help
+* Kernel versions 5.15.7+ and libssl3 -> [Install libssl3](../../wiki/Install-libssl3)
+
 ### About
 Written using Vala and GTK3.
 
