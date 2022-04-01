@@ -23,7 +23,7 @@ sudo apt install mainline
 
 ### Build
 ```
-sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude
+sudo apt install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac aria2 lsb-release aptitude make gettext dpkg-dev
 git clone https://github.com/bkw777/mainline.git
 cd mainline
 make
