@@ -153,7 +153,8 @@ $(dsc_file): debian/changelog $(misc_files) $(po_files)
 deb: $(deb_file)
 
 # To create the deb build env
-#sudo apt intsall pbuilder-dist
+# `pbuilder-dist` provided by `ubuntu-dev-tools`
+#sudo apt intsall ubuntu-dev-tools
 #pbuilder-dist `lsb_release -sc` create
 # To update the deb build env
 #pbuilder-dist `lsb_release -sc` update
