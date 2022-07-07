@@ -40,8 +40,8 @@ using TeeJee.Misc;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
 [CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
 
-public const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
-public const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
+private const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
+private const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
 
 extern void exit(int exit_code);
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-20 08:48-0400\n"
+"POT-Creation-Date: 2022-07-07 01:48-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -108,8 +108,9 @@ msgstr "Questo kernel è già installato"
 
 #: src/Common/LinuxKernel.vala:1106
 msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr "Installazione completata. È necessario riavviare per utilizzare il"
-"nuovo kernel."
+msgstr ""
+"Installazione completata. È necessario riavviare per utilizzare ilnuovo "
+"kernel."
 
 #: src/Common/LinuxKernel.vala:1109
 msgid "Installation completed with errors"
@@ -170,8 +171,9 @@ msgstr "Verifica aggiornamenti per il kernel"
 
 #: src/Console/AppConsole.vala:67
 msgid "Check for kernel updates and notify current user"
-msgstr "Verifica la disponibilità di aggiornamenti del kernel"
-"ed avvisa l'utente corrente"
+msgstr ""
+"Verifica la disponibilità di aggiornamenti del kerneled avvisa l'utente "
+"corrente"
 
 #: src/Console/AppConsole.vala:68
 msgid "List all available mainline kernels"

@@ -4,7 +4,7 @@
 URI_KERNEL_UBUNTU_MAINLINE := https://kernel.ubuntu.com/~kernel-ppa/mainline/
 
 SHELL := /bin/bash
-CFLAGS := --std=c99
+CFLAGS := -O2
 
 prefix := /usr
 bindir := $(prefix)/bin
@@ -62,12 +62,12 @@ deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
 
 $(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) $(po_files)
-	valac -X -w $(build_symbols) --Xcc="-lm" \
+	valac --enable-deprecated -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) $(po_files)
-	valac -X -w $(build_symbols) --Xcc="-lm" \
+	valac --enable-deprecated -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
 

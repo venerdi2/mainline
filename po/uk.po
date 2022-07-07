@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 13:48-0400\n"
+"POT-Creation-Date: 2022-07-07 01:48-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian <uk@li.org>\n"
@@ -246,8 +246,7 @@ msgstr "Рядок версій, взятий з виводу --list"
 #, fuzzy
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
-msgstr ""
-"Одна або кілька рядків версії (розділені комами) з виводу --list"
+msgstr "Одна або кілька рядків версії (розділені комами) з виводу --list"
 
 #: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
