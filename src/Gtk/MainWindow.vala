@@ -492,7 +492,7 @@ public class MainWindow : Gtk.Window{
 			"pl: Waldemar Konik <valdi74@github>",
 			"ru: Faust3000 <slavusik1988@gmail.com>",
 			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
-			"tr: Gökhan GÖKKAYA <gokhanlnx@gmail.com>",
+			"tr: Gökhan GÖKKAYA <gokhanlnx@gmail.com>, Sabri Ünal <libreajans@gmail.com>",
 			"uk: Serhii Golovko <cappelikan@gmail.com>",
 		};
 
