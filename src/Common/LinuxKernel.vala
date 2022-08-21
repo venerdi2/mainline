@@ -229,6 +229,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		highest_maj = 0;
 		foreach(var k in kernel_list){
 			//log_debug("k.version_maj = %d".printf(k.version_maj));
+			if (!k.is_valid) continue;
+			if (App.hide_unstable && k.is_unstable) continue;
+
 			if (k.version_maj > highest_maj){
 				highest_maj = k.version_maj;
 				log_debug("highest_maj = %d".printf(highest_maj));
