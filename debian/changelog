@@ -1,3 +1,9 @@
+mainline (1.0.16) unstable; urgency=medium
+
+  * Don't consider a new major kernel version to exist yet if there are no successful builds in it yet.
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 23 Aug 2022 18:07:53 -0400
+
 mainline (1.0.15) unstable; urgency=medium
 
   * Rename "Purge" to "Uninstall Old"

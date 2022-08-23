@@ -225,25 +225,25 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// TODO: Implement locking for multiple download threads
 
-		// find highest major
-		highest_maj = 0;
-		foreach(var k in kernel_list){
-			//log_debug("k.version_maj = %d".printf(k.version_maj));
-			if (!k.is_valid) continue;
-			if (App.hide_unstable && k.is_unstable) continue;
-
-			if (k.version_maj > highest_maj){
-				highest_maj = k.version_maj;
-				log_debug("highest_maj = %d".printf(highest_maj));
-			}
-		}
-
 		// download per-kernel index.html and CHANGES
 
 		// init the progress display
 		status_line = "";
 		progress_total = 0;
 		progress_count = 0;
+
+		// scan for highest major
+		// this is only preliminary because we have to re-scan after the downloads to account for failed builds
+		highest_maj = 0;
+		foreach(var k in kernel_list){
+			//log_debug("k.version_maj = %d".printf(k.version_maj));
+			if (!k.is_valid) continue; // we don't actually know this for sure at this point, but go ahead and check it because it might be cached
+			if (App.hide_unstable && k.is_unstable) continue;
+			if (k.version_maj > highest_maj){
+				highest_maj = k.version_maj;
+				log_debug("highest_maj = %d".printf(highest_maj));
+			}
+		}
 
 		// determine the size of the job for the percent-done display
 		foreach(var k in kernel_list){
@@ -315,6 +315,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// load the index.html files we just added to cache
 			foreach(var k in kernels_to_update) k.load_cached_page();
+		}
+
+		// Rescan for highest major after fetching the per-kernel index.htmls, because k.is_valid was unknown until now. (might or might not have been cached)
+		// "show previous N majors = 0" combined with a new major that has only failed builds yet, results in an empty list.
+		// This re-scan detects that condition and results in displaying the previous major instead of an empty list.
+		highest_maj = 0;
+		foreach(var k in kernel_list){
+			//log_debug("k.version_maj = %d".printf(k.version_maj));
+			if (!k.is_valid) continue;
+			if (App.hide_unstable && k.is_unstable) continue;
+			if (k.version_maj > highest_maj){
+				highest_maj = k.version_maj;
+				log_debug("highest_maj = %d".printf(highest_maj));
+			}
 		}
 
 		check_installed();
