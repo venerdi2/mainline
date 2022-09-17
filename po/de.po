@@ -372,8 +372,7 @@ msgstr "Über"
 
 #: src/Gtk/MainWindow.vala:503
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "Kernel-Upgrade-Dienstprogramm für Ubuntu-basierte Distributionen
-"
+msgstr "Kernel-Upgrade-Dienstprogramm für Ubuntu-basierte Distributionen"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "Forked"
