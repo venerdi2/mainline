@@ -995,9 +995,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				}
 			}
 
-			if ((deb_header.length == 0) || (deb_header_all.length == 0) || (deb_image.length == 0)){
-				mark_invalid();
-			}
+			// if ((deb_header.length == 0) || (deb_header_all.length == 0) || (deb_image.length == 0))
+			if (deb_image.length == 0) mark_invalid();
 		}
 		catch (Error e) {
 			log_error (e.message);

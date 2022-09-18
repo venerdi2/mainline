@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-23 18:06-0400\n"
+"POT-Creation-Date: 2022-09-08 04:23-0400\n"
 "PO-Revision-Date: 2021-09-17 10:29+0200\n"
 "Last-Translator: Viktor Sokyrko <victor_sokyrko@windowslive.com>\n"
 "Language-Team: Polish\n"
@@ -71,48 +71,48 @@ msgstr "Dostępne pakiety"
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: src/Common/LinuxKernel.vala:1015
+#: src/Common/LinuxKernel.vala:1014
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
-#: src/Common/LinuxKernel.vala:1022 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1021 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Zainstalowany"
 
-#: src/Common/LinuxKernel.vala:1022 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1021 src/Gtk/MainWindow.vala:186
 #: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "Uruchomiony"
 
-#: src/Common/LinuxKernel.vala:1059
+#: src/Common/LinuxKernel.vala:1058
 msgid "Downloading"
 msgstr "Pobieranie"
 
-#: src/Common/LinuxKernel.vala:1078
+#: src/Common/LinuxKernel.vala:1077
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1083
+#: src/Common/LinuxKernel.vala:1082
 msgid "ERROR"
 msgstr "BŁĄD"
 
-#: src/Common/LinuxKernel.vala:1097 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1096 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "To jądro jest już zainstalowane."
 
-#: src/Common/LinuxKernel.vala:1123
+#: src/Common/LinuxKernel.vala:1122
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalacja zakończona. Aby korzystać z nowego jądra, konieczne jest ponowne "
 "uruchomienie."
 
-#: src/Common/LinuxKernel.vala:1126
+#: src/Common/LinuxKernel.vala:1125
 msgid "Installation completed with errors"
 msgstr "Instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1141
+#: src/Common/LinuxKernel.vala:1140
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -120,19 +120,19 @@ msgstr ""
 "Wybrane jądro aktualnie działa i nie może zostać odinstalowane.\n"
 " Zainstaluj inne jądro przed odinstalowaniem tego."
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1145
 msgid "Preparing to uninstall selected kernels"
 msgstr "Przygotowanie do odinstalowania wybranych jąder"
 
-#: src/Common/LinuxKernel.vala:1177 src/Common/LinuxKernel.vala:1224
+#: src/Common/LinuxKernel.vala:1176 src/Common/LinuxKernel.vala:1223
 msgid "Un-install completed"
 msgstr "Deinstalacja zakończona"
 
-#: src/Common/LinuxKernel.vala:1180 src/Common/LinuxKernel.vala:1227
+#: src/Common/LinuxKernel.vala:1179 src/Common/LinuxKernel.vala:1226
 msgid "Un-install completed with errors"
 msgstr "De-instalacja zakończona z błędami"
 
-#: src/Common/LinuxKernel.vala:1193
+#: src/Common/LinuxKernel.vala:1192
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
