@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-08 04:23-0400\n"
-"PO-Revision-Date: 2022-09-22 12:07+0200\n"
+"PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -337,11 +337,11 @@ msgstr "Odaberi kernel za instalaciju"
 
 #: src/Gtk/MainWindow.vala:347
 msgid "Uninstall"
-msgstr "Ukloni"
+msgstr "Deinstaliraj"
 
 #: src/Gtk/MainWindow.vala:353
 msgid "Select the kernels to uninstall"
-msgstr "Odaberi kernel za uklanjanje"
+msgstr "Odaberi kernel za deinstalaciju"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -350,7 +350,7 @@ msgstr "Zatvori prozor i izađi..."
 
 #: src/Gtk/MainWindow.vala:391
 msgid "Uninstall Old"
-msgstr "Deinstaliraj stare"
+msgstr "Deinstaliraj staro"
 
 #: src/Gtk/MainWindow.vala:392
 msgid "Uninstall kernels older than running kernel"
