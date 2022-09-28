@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-08 04:23-0400\n"
-"PO-Revision-Date: 2021-06-01 14:57+0900\n"
+"PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: src/Common/LinuxKernel.vala:88
 msgid "Distribution"
@@ -32,19 +32,17 @@ msgstr "목록 가져오기..."
 
 #: src/Common/LinuxKernel.vala:355
 msgid "Fetching index from kernel.ubuntu.com..."
-msgstr "kernel.ubuntu.com 에서 목록을 가져오는 중입니다..."
+msgstr "최신 커널 목록을 가져오는 중입니다..."
 
 #: src/Common/LinuxKernel.vala:611
 msgid "Could not find running kernel in list!"
 msgstr "목록에서 사용중인 커널을 찾을 수 없습니다!"
 
 #: src/Common/LinuxKernel.vala:617
-#, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "삭제할 커널을 찾을 수 없습니다"
 
 #: src/Common/LinuxKernel.vala:626
-#, fuzzy
 msgid "The following kernels will be uninstalled:"
 msgstr "아래 커널이 삭제됩니다:"
 
@@ -66,7 +64,6 @@ msgid "No updates found"
 msgstr "업데이트를 찾을 수 없습니다"
 
 #: src/Common/LinuxKernel.vala:688
-#, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
@@ -118,7 +115,6 @@ msgid "Installation completed with errors"
 msgstr "오류가 있으나 설치가 완료되었습니다"
 
 #: src/Common/LinuxKernel.vala:1140
-#, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -127,7 +123,6 @@ msgstr ""
 " 이 커널을 삭제하려면 다른 커널을 먼저 설치하세요."
 
 #: src/Common/LinuxKernel.vala:1145
-#, fuzzy
 msgid "Preparing to uninstall selected kernels"
 msgstr "선택한 커널을 삭제하기 위해 준비중입니다"
 
@@ -140,7 +135,6 @@ msgid "Un-install completed with errors"
 msgstr "오류가 있으나 삭제가 완료되었습니다"
 
 #: src/Common/LinuxKernel.vala:1192
-#, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -157,7 +151,6 @@ msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
 #: src/Common/Package.vala:134 src/Common/Package.vala:198
-#, c-format
 msgid "File not found: %s"
 msgstr "%s 파일을 찾을 수 없습니다"
 
@@ -198,12 +191,10 @@ msgid "Install specified mainline kernel"
 msgstr "지정한 메인라인 커널 설치"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "Uninstall specified kernel"
 msgstr "지정한 커널 삭제"
 
 #: src/Console/AppConsole.vala:74
-#, fuzzy
 msgid "Uninstall kernels older than the running kernel"
 msgstr "현재 사용중인 커널보다 이전 버전의 설치된 커널을 제거"
 
@@ -220,13 +211,12 @@ msgid "Options"
 msgstr "옵션"
 
 #: src/Console/AppConsole.vala:80
-#, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "unstable, RC 릴리즈 숨김"
+msgstr "목록에서 unstable, RC 버전 포함"
 
 #: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
 msgid "Hide unstable and RC releases"
-msgstr "unstable, RC 릴리즈 숨김"
+msgstr "목록에서 unstable, RC 버전 포함"
 
 #: src/Console/AppConsole.vala:82
 msgid "Enable verbose debugging output"
@@ -245,8 +235,7 @@ msgid "A version string taken from the output of --list"
 msgstr "--list 의 출력에서 가져온 버전 문자열"
 
 #: src/Console/AppConsole.vala:88
-msgid ""
-"One or more version strings (comma-separated) taken from the output of --list"
+msgid "One or more version strings (comma-separated) taken from the output of --list"
 msgstr "--list 의 출력에서 가져온 하나 이상의 버전 문자열 (쉼표로 구분)"
 
 #: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
@@ -291,7 +280,6 @@ msgid "Show"
 msgstr "보이기"
 
 #: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
-#, c-format
 msgid "Kernel %s Available"
 msgstr "커널 %s 사용 가능"
 
@@ -346,14 +334,12 @@ msgid "Select the kernel to install"
 msgstr "설치할 커널 선택"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
 msgid "Uninstall"
-msgstr "설치"
+msgstr "삭제"
 
 #: src/Gtk/MainWindow.vala:353
-#, fuzzy
 msgid "Select the kernels to uninstall"
-msgstr "설치할 커널 선택"
+msgstr "삭제할 커널 선택"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -361,14 +347,12 @@ msgid "Close window to exit..."
 msgstr "창을 닫고 종료..."
 
 #: src/Gtk/MainWindow.vala:391
-#, fuzzy
 msgid "Uninstall Old"
-msgstr "삭제가 완료되었습니다"
+msgstr "오래된 커널 제거"
 
 #: src/Gtk/MainWindow.vala:392
-#, fuzzy
 msgid "Uninstall kernels older than running kernel"
-msgstr "현재 사용중인 커널보다 이전 버전의 설치된 커널을 제거"
+msgstr "현재 사용 중인 커널보다 이전 버전의 커널을 제거"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
@@ -396,7 +380,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
 msgid "Internet connection is not active."
-msgstr "인터넷 연결을 확인하세요"
+msgstr "인터넷 연결을 확인하세요."
 
 #: src/Gtk/MainWindow.vala:544
 msgid "Refreshing..."
@@ -457,7 +441,7 @@ msgstr "보이기"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "Show N previous major versions "
-msgstr "보여질 이전 메이저 버전 수"
+msgstr "보여 질 이전 메이저 버전 수 "
 
 #: src/Gtk/SettingsDialog.vala:192
 msgid "Other"
@@ -485,7 +469,7 @@ msgstr "닫기"
 
 #: src/Utility/Gtk/AboutWindow.vala:271 src/Utility/Gtk/AboutWindow.vala:288
 msgid "Credits"
-msgstr ""
+msgstr "제작자"
 
 #: src/Utility/Gtk/AboutWindow.vala:284
 msgid "Back"
@@ -513,7 +497,7 @@ msgstr "문서작성"
 
 #: src/Utility/Gtk/AboutWindow.vala:353
 msgid "Third Party Inclusions"
-msgstr ""
+msgstr "서드파티 포함"
 
 #: src/Utility/Gtk/CustomMessageDialog.vala:157
 msgid "Yes"
