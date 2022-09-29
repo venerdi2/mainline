@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-08 04:23-0400\n"
-"PO-Revision-Date: 2021-04-07 17:58+0200\n"
+"PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-12-23 23:36+0000\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: src/Common/LinuxKernel.vala:88
 msgid "Distribution"
@@ -34,14 +34,12 @@ msgid "Could not find running kernel in list!"
 msgstr "Nemoguće je pronaći pokrenuti kernel na popisu!"
 
 #: src/Common/LinuxKernel.vala:617
-#, fuzzy
 msgid "Could not find any kernels to uninstall"
-msgstr "Nema pronađenih kernela za uklanjanje"
+msgstr "Nema pronađenih kernela za deinstaliranje"
 
 #: src/Common/LinuxKernel.vala:626
-#, fuzzy
 msgid "The following kernels will be uninstalled:"
-msgstr "Sljedeći kerneli će biti uklonjeni:"
+msgstr "Sljedeći kerneli će biti deinstalirani:"
 
 #: src/Common/LinuxKernel.vala:633
 msgid "Continue ?"
@@ -115,18 +113,16 @@ msgid "Installation completed with errors"
 msgstr "Instalacija je završena s greškama"
 
 #: src/Common/LinuxKernel.vala:1140
-#, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
 msgstr ""
-"Odabrani kernel je trenutno pokernut i ne može se ukloniti.\n"
+"Odabrani kernel je trenutno pokernut i ne može se deinstalirati.\n"
 " Instalirajte drugi kernel prije uklanjanja trenutnog kernela."
 
 #: src/Common/LinuxKernel.vala:1145
-#, fuzzy
 msgid "Preparing to uninstall selected kernels"
-msgstr "Pripremanje uklanjanja odabranih kernela"
+msgstr "Pripremanje deinstalacije odabranih kernela"
 
 #: src/Common/LinuxKernel.vala:1176 src/Common/LinuxKernel.vala:1223
 msgid "Un-install completed"
@@ -137,12 +133,11 @@ msgid "Un-install completed with errors"
 msgstr "Deinstalacija završena s greškama"
 
 #: src/Common/LinuxKernel.vala:1192
-#, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
 msgstr ""
-"Ovaj kernel je trenutno pokrenut i ne može se ukloniti.\n"
+"Ovaj kernel je trenutno pokrenut i ne može se deinstalirati.\n"
 " Instalirajte drugi kernel prije uklanjanja trenutnog kernela."
 
 #: src/Common/Main.vala:241
@@ -195,14 +190,12 @@ msgid "Install specified mainline kernel"
 msgstr "Instaliraj određeni mainline kernel"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "Uninstall specified kernel"
-msgstr "Ukloni određene kernele"
+msgstr "Deinstaliraj određene kernele"
 
 #: src/Console/AppConsole.vala:74
-#, fuzzy
 msgid "Uninstall kernels older than the running kernel"
-msgstr "Ukloni instalirane kernele starije od pokrenutog krenela"
+msgstr "Deinstaliraj starije kernele od trenutno pokrenutog krenela"
 
 #: src/Console/AppConsole.vala:75
 msgid "Download specified kernels"
@@ -217,9 +210,8 @@ msgid "Options"
 msgstr "Mogućnosti"
 
 #: src/Console/AppConsole.vala:80
-#, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "Sakrij nestabilne kernele i predizdanja"
+msgstr "Uključi predizdanja i nestabilne kernele"
 
 #: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
 msgid "Hide unstable and RC releases"
@@ -344,14 +336,12 @@ msgid "Select the kernel to install"
 msgstr "Odaberi kernel za instalaciju"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
 msgid "Uninstall"
-msgstr "Instaliraj"
+msgstr "Deinstaliraj"
 
 #: src/Gtk/MainWindow.vala:353
-#, fuzzy
 msgid "Select the kernels to uninstall"
-msgstr "Odaberi kernel za instalaciju"
+msgstr "Odaberi kernel za deinstalaciju"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
 #: src/Gtk/MainWindow.vala:687
@@ -359,14 +349,12 @@ msgid "Close window to exit..."
 msgstr "Zatvori prozor i izađi..."
 
 #: src/Gtk/MainWindow.vala:391
-#, fuzzy
 msgid "Uninstall Old"
-msgstr "Deinstalacija završena"
+msgstr "Deinstaliraj staro"
 
 #: src/Gtk/MainWindow.vala:392
-#, fuzzy
 msgid "Uninstall kernels older than running kernel"
-msgstr "Ukloni instalirane kernele starije od pokrenutog krenela"
+msgstr "Deinstaliraj kernele starije od pokrenutog krenela"
 
 #: src/Gtk/MainWindow.vala:424
 msgid "Changes"
