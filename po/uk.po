@@ -465,7 +465,7 @@ msgstr "Показ"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "Show N previous major versions "
-msgstr "Показати N попередніх основних версій"
+msgstr "Показати N попередніх основних версій "
 
 #: src/Gtk/SettingsDialog.vala:192
 msgid "Other"
