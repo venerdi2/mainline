@@ -232,18 +232,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		progress_total = 0;
 		progress_count = 0;
 
-		// scan for highest major
-		// this is only preliminary because we have to re-scan after the downloads to account for failed builds
-		highest_maj = 0;
-		foreach(var k in kernel_list){
-			//log_debug("k.version_maj = %d".printf(k.version_maj));
-			if (!k.is_valid) continue; // we don't actually know this for sure at this point, but go ahead and check it because it might be cached
-			if (App.hide_unstable && k.is_unstable) continue;
-			if (k.version_maj > highest_maj){
-				highest_maj = k.version_maj;
-				log_debug("highest_maj = %d".printf(highest_maj));
-			}
-		}
+		// By default, display all kernels belonging to the oldest major version installed and up
+		highest_maj = find_lowest_major_version_installed();
 
 		// determine the size of the job for the percent-done display
 		foreach(var k in kernel_list){
@@ -315,20 +305,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// load the index.html files we just added to cache
 			foreach(var k in kernels_to_update) k.load_cached_page();
-		}
-
-		// Rescan for highest major after fetching the per-kernel index.htmls, because k.is_valid was unknown until now. (might or might not have been cached)
-		// "show previous N majors = 0" combined with a new major that has only failed builds yet, results in an empty list.
-		// This re-scan detects that condition and results in displaying the previous major instead of an empty list.
-		highest_maj = 0;
-		foreach(var k in kernel_list){
-			//log_debug("k.version_maj = %d".printf(k.version_maj));
-			if (!k.is_valid) continue;
-			if (App.hide_unstable && k.is_unstable) continue;
-			if (k.version_maj > highest_maj){
-				highest_maj = k.version_maj;
-				log_debug("highest_maj = %d".printf(highest_maj));
-			}
 		}
 
 		check_installed();
@@ -416,7 +392,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 //			k.is_running = false;
 //		}
 
-		pkg_list_installed = Package.query_installed_packages();
+		fetch_pkg_list_installed();
 
 		var pkg_versions = new Gee.ArrayList<string>();
 
@@ -698,7 +674,37 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// helpers
+
+	public static void fetch_pkg_list_installed(){
+		if (pkg_list_installed == null){
+			pkg_list_installed = Package.query_installed_packages();
+		}
+	}
+
 	
+	public static int find_lowest_major_version_installed(){
+		fetch_pkg_list_installed();
+
+		int? major_version = null;
+		foreach(var pkg in pkg_list_installed.values){
+			if (!pkg.pname.contains("linux-image") || !pkg.is_installed){
+				continue;
+			}
+
+			bool is_mainline = false;  // Not important here, just set whatever
+			var candidate = new LinuxKernel(pkg.version_installed, is_mainline);
+			if (major_version == null || candidate.version_maj < major_version){
+				major_version = candidate.version_maj;
+			}
+		}
+
+		if (major_version == null){
+			major_version = new LinuxKernel.from_version(RUNNING_KERNEL).version_maj;
+		}
+
+		return major_version;
+	}
+
 	public void split_version_string(string _version_string, out string ver_main){
 		ver_main = "";
 		version_maj = 0;
