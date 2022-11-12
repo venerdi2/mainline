@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-23 18:06-0400\n"
+"POT-Creation-Date: 2022-11-11 18:43-0500\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
-"Last-Translator: Tobias w <Tobiasw763@gmail.com\n"
+"Last-Translator: Tobias W <Tobiasw763@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -21,116 +21,119 @@ msgstr "Distribution"
 msgid "Architecture"
 msgstr "Architektur"
 
-#: src/Common/LinuxKernel.vala:304
+#: src/Common/LinuxKernel.vala:294
 msgid "Fetching index..."
 msgstr "Index abrufen..."
 
-#: src/Common/LinuxKernel.vala:355
+#: src/Common/LinuxKernel.vala:331
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Holt den Index von kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:611
+#: src/Common/LinuxKernel.vala:587
 msgid "Could not find running kernel in list!"
 msgstr "Konnte keinen laufenden Kernel in der Liste finden!"
 
-#: src/Common/LinuxKernel.vala:617
+#: src/Common/LinuxKernel.vala:593
 msgid "Could not find any kernels to uninstall"
 msgstr "Es konnten keine Kernel zum Deinstallieren gefunden werden"
 
-#: src/Common/LinuxKernel.vala:626
+#: src/Common/LinuxKernel.vala:602
 msgid "The following kernels will be uninstalled:"
 msgstr "Die folgenden Kernel werden deinstalliert:"
 
-#: src/Common/LinuxKernel.vala:633
+#: src/Common/LinuxKernel.vala:609
 msgid "Continue ?"
 msgstr "Weiter ?"
 
-#: src/Common/LinuxKernel.vala:659 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:635 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Neustes Update"
 
-#: src/Common/LinuxKernel.vala:670 src/Console/AppConsole.vala:321
+#: src/Common/LinuxKernel.vala:646 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Letzte Punktaktualisierung"
 
-#: src/Common/LinuxKernel.vala:678 src/Console/AppConsole.vala:326
+#: src/Common/LinuxKernel.vala:654 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Keine Updates gefunden"
 
-#: src/Common/LinuxKernel.vala:688
+#: src/Common/LinuxKernel.vala:664
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Kernel-Version %s installieren? (j/n):"
 
-#: src/Common/LinuxKernel.vala:926
+#: src/Common/LinuxKernel.vala:932
 msgid "Packages Available"
 msgstr "Verfügbare Pakete"
 
-#: src/Common/LinuxKernel.vala:934
+#: src/Common/LinuxKernel.vala:940
 msgid "Packages Installed"
 msgstr "Installierte Packete"
 
-#: src/Common/LinuxKernel.vala:1015
+#: src/Common/LinuxKernel.vala:1020
 msgid "Available Kernels"
 msgstr "Verfügbare Kernels"
 
-#: src/Common/LinuxKernel.vala:1022 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Installiert"
 
-#: src/Common/LinuxKernel.vala:1022 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
 #: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "Läuft"
 
-#: src/Common/LinuxKernel.vala:1059
+#: src/Common/LinuxKernel.vala:1064
 msgid "Downloading"
 msgstr "Downloaded"
 
-#: src/Common/LinuxKernel.vala:1078
+#: src/Common/LinuxKernel.vala:1083
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1083
+#: src/Common/LinuxKernel.vala:1088
 msgid "ERROR"
 msgstr "Fehler"
 
-#: src/Common/LinuxKernel.vala:1097 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1102 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "Dieser Kernel ist bereits installiert."
 
-#: src/Common/LinuxKernel.vala:1123
+#: src/Common/LinuxKernel.vala:1128
 msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr "Die Installation ist abgeschlossen. Ein Neustart ist erforderlich, um den neuen Kernel zu verwenden."
+msgstr ""
+"Die Installation ist abgeschlossen. Ein Neustart ist erforderlich, um den "
+"neuen Kernel zu verwenden."
 
-#: src/Common/LinuxKernel.vala:1126
+#: src/Common/LinuxKernel.vala:1131
 msgid "Installation completed with errors"
 msgstr "Installation mit Fehlern abgeschlossen"
 
-#: src/Common/LinuxKernel.vala:1141
+#: src/Common/LinuxKernel.vala:1146
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
 msgstr ""
-"Ausgewählter Kernel wird derzeit ausgeführt und kann nicht deinstalliert werden.\n"
+"Ausgewählter Kernel wird derzeit ausgeführt und kann nicht deinstalliert "
+"werden.\n"
 " Installieren Sie einen anderen Kernel, bevor Sie diesen deinstallieren."
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1151
 msgid "Preparing to uninstall selected kernels"
 msgstr "Vorbereiten der Deinstallation ausgewählter Kernel"
 
-#: src/Common/LinuxKernel.vala:1177 src/Common/LinuxKernel.vala:1224
+#: src/Common/LinuxKernel.vala:1182 src/Common/LinuxKernel.vala:1229
 msgid "Un-install completed"
 msgstr "Deinstallation abgeschlossen"
 
-#: src/Common/LinuxKernel.vala:1180 src/Common/LinuxKernel.vala:1227
+#: src/Common/LinuxKernel.vala:1185 src/Common/LinuxKernel.vala:1232
 msgid "Un-install completed with errors"
 msgstr "Deinstallation mit Fehlern abgeschlossen"
 
-#: src/Common/LinuxKernel.vala:1193
+#: src/Common/LinuxKernel.vala:1198
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -165,7 +168,8 @@ msgstr "Nach Kernel-Updates suchen"
 
 #: src/Console/AppConsole.vala:67
 msgid "Check for kernel updates and notify current user"
-msgstr "Prüfung auf Kernel-Updates und Benachrichtigung des aktuellen Benutzers"
+msgstr ""
+"Prüfung auf Kernel-Updates und Benachrichtigung des aktuellen Benutzers"
 
 #: src/Console/AppConsole.vala:68
 msgid "List all available mainline kernels"
@@ -235,7 +239,8 @@ msgstr "Eine Versionszeichenfolge aus der Ausgabe von --list"
 msgid ""
 "One or more version strings (comma-separated) taken from the output of --list"
 msgstr ""
-"Eine oder mehrere (durch Komma getrennte) Versionszeichenfolgen aus der Ausgabe von --list"
+"Eine oder mehrere (durch Komma getrennte) Versionszeichenfolgen aus der "
+"Ausgabe von --list"
 
 #: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
 msgid "Unknown option"
@@ -256,7 +261,8 @@ msgstr "Keine Kernel angegeben"
 
 #: src/Console/AppConsole.vala:244
 msgid "Multiple kernels selected for installation. Select only one."
-msgstr "Mehrere Kernel für die Installation ausgewählt. Wählen Sie nur einen aus."
+msgstr ""
+"Mehrere Kernel für die Installation ausgewählt. Wählen Sie nur einen aus."
 
 #: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
 msgid "Could not find requested version"
@@ -264,7 +270,8 @@ msgstr "Die gewünschte Version konnte nicht gefunden werden"
 
 #: src/Console/AppConsole.vala:265
 msgid "and use a version string listed in first column"
-msgstr "und verwenden Sie eine in der ersten Spalte aufgeführte Versionszeichenfolge"
+msgstr ""
+"und verwenden Sie eine in der ersten Spalte aufgeführte Versionszeichenfolge"
 
 #: src/Console/AppConsole.vala:293
 msgid "Command not specified"

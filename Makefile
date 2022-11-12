@@ -61,12 +61,12 @@ deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_
 .PHONY: all
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
 
-$(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) $(po_files)
+$(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) translations
 	valac --enable-deprecated -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
-$(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) $(po_files)
+$(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) translations
 	valac --enable-deprecated -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
@@ -98,6 +98,9 @@ $(po_files): %: $(pot_file)
 
 TRANSLATORS: $(po_files)
 	grep '^"Last-Translator: ' $(po_files) |while IFS='/.:' read x l x x n ;do echo "$${l}:$${n%\n*}" ;done >$(@)
+
+.PHONY: translations
+translations: TRANSLATORS
 
 .PHONY: clean
 clean:
