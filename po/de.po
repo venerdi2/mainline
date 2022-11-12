@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 18:43-0500\n"
+"POT-Creation-Date: 2022-11-11 23:03-0500\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Tobias W <Tobiasw763@gmail.com>\n"
 "Language-Team: German\n"
@@ -63,56 +63,56 @@ msgstr "Keine Updates gefunden"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Kernel-Version %s installieren? (j/n):"
 
-#: src/Common/LinuxKernel.vala:932
+#: src/Common/LinuxKernel.vala:925
 msgid "Packages Available"
 msgstr "Verfügbare Pakete"
 
-#: src/Common/LinuxKernel.vala:940
+#: src/Common/LinuxKernel.vala:933
 msgid "Packages Installed"
 msgstr "Installierte Packete"
 
-#: src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1013
 msgid "Available Kernels"
 msgstr "Verfügbare Kernels"
 
-#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Installiert"
 
-#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
 #: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "Läuft"
 
-#: src/Common/LinuxKernel.vala:1064
+#: src/Common/LinuxKernel.vala:1057
 msgid "Downloading"
 msgstr "Downloaded"
 
-#: src/Common/LinuxKernel.vala:1083
+#: src/Common/LinuxKernel.vala:1076
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1088
+#: src/Common/LinuxKernel.vala:1081
 msgid "ERROR"
 msgstr "Fehler"
 
-#: src/Common/LinuxKernel.vala:1102 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1095 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "Dieser Kernel ist bereits installiert."
 
-#: src/Common/LinuxKernel.vala:1128
+#: src/Common/LinuxKernel.vala:1121
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Die Installation ist abgeschlossen. Ein Neustart ist erforderlich, um den "
 "neuen Kernel zu verwenden."
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1124
 msgid "Installation completed with errors"
 msgstr "Installation mit Fehlern abgeschlossen"
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1139
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -121,19 +121,19 @@ msgstr ""
 "werden.\n"
 " Installieren Sie einen anderen Kernel, bevor Sie diesen deinstallieren."
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1144
 msgid "Preparing to uninstall selected kernels"
 msgstr "Vorbereiten der Deinstallation ausgewählter Kernel"
 
-#: src/Common/LinuxKernel.vala:1182 src/Common/LinuxKernel.vala:1229
+#: src/Common/LinuxKernel.vala:1175 src/Common/LinuxKernel.vala:1222
 msgid "Un-install completed"
 msgstr "Deinstallation abgeschlossen"
 
-#: src/Common/LinuxKernel.vala:1185 src/Common/LinuxKernel.vala:1232
+#: src/Common/LinuxKernel.vala:1178 src/Common/LinuxKernel.vala:1225
 msgid "Un-install completed with errors"
 msgstr "Deinstallation mit Fehlern abgeschlossen"
 
-#: src/Common/LinuxKernel.vala:1198
+#: src/Common/LinuxKernel.vala:1191
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."

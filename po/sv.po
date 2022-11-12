@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 18:43-0500\n"
+"POT-Creation-Date: 2022-11-11 23:03-0500\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -68,54 +68,54 @@ msgstr "Inga uppdateringar hittades"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:932
+#: src/Common/LinuxKernel.vala:925
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:940
+#: src/Common/LinuxKernel.vala:933
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1013
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
 #: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:1064
+#: src/Common/LinuxKernel.vala:1057
 msgid "Downloading"
 msgstr "Laddar ner"
 
-#: src/Common/LinuxKernel.vala:1083
+#: src/Common/LinuxKernel.vala:1076
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1088
+#: src/Common/LinuxKernel.vala:1081
 msgid "ERROR"
 msgstr "FEL"
 
-#: src/Common/LinuxKernel.vala:1102 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1095 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "Denna kärna är redan installerad"
 
-#: src/Common/LinuxKernel.vala:1128
+#: src/Common/LinuxKernel.vala:1121
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr "Installation slutförd. Omstart krävs för att tillämpa den nya kärnan."
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1124
 msgid "Installation completed with errors"
 msgstr "Installation slutförd med fel"
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1139
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
@@ -124,20 +124,20 @@ msgstr ""
 "Denna kärna används för tillfället och kan inte tas bort.\n"
 "Installera en annan kärna innan du tar bort den här."
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1144
 #, fuzzy
 msgid "Preparing to uninstall selected kernels"
 msgstr "Förbereder borttagning av markerade kärnor"
 
-#: src/Common/LinuxKernel.vala:1182 src/Common/LinuxKernel.vala:1229
+#: src/Common/LinuxKernel.vala:1175 src/Common/LinuxKernel.vala:1222
 msgid "Un-install completed"
 msgstr "Avinstallation slutförd"
 
-#: src/Common/LinuxKernel.vala:1185 src/Common/LinuxKernel.vala:1232
+#: src/Common/LinuxKernel.vala:1178 src/Common/LinuxKernel.vala:1225
 msgid "Un-install completed with errors"
 msgstr "Avinstallation slutförd med fel"
 
-#: src/Common/LinuxKernel.vala:1198
+#: src/Common/LinuxKernel.vala:1191
 #, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"

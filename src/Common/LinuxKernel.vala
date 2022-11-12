@@ -392,7 +392,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 //			k.is_running = false;
 //		}
 
-		fetch_pkg_list_installed();
+		pkg_list_installed = Package.query_installed_packages();
 
 		var pkg_versions = new Gee.ArrayList<string>();
 
@@ -675,15 +675,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// helpers
 
-	public static void fetch_pkg_list_installed(){
-		if (pkg_list_installed == null){
-			pkg_list_installed = Package.query_installed_packages();
-		}
-	}
-
-	
 	public static int find_lowest_major_version_installed(){
-		fetch_pkg_list_installed();
+		pkg_list_installed = Package.query_installed_packages();
 
 		int? major_version = null;
 		foreach(var pkg in pkg_list_installed.values){

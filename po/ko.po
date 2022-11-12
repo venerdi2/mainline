@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 18:43-0500\n"
+"POT-Creation-Date: 2022-11-11 23:03-0500\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -63,54 +63,54 @@ msgstr "업데이트를 찾을 수 없습니다"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/LinuxKernel.vala:932
+#: src/Common/LinuxKernel.vala:925
 msgid "Packages Available"
 msgstr "설치 가능한 패키지"
 
-#: src/Common/LinuxKernel.vala:940
+#: src/Common/LinuxKernel.vala:933
 msgid "Packages Installed"
 msgstr "설치된 패키지"
 
-#: src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1013
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
 
-#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "설치 됨"
 
-#: src/Common/LinuxKernel.vala:1027 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
 #: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
 msgid "Running"
 msgstr "구동 중"
 
-#: src/Common/LinuxKernel.vala:1064
+#: src/Common/LinuxKernel.vala:1057
 msgid "Downloading"
 msgstr "다운로드 중"
 
-#: src/Common/LinuxKernel.vala:1083
+#: src/Common/LinuxKernel.vala:1076
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "확인"
 
-#: src/Common/LinuxKernel.vala:1088
+#: src/Common/LinuxKernel.vala:1081
 msgid "ERROR"
 msgstr "오류"
 
-#: src/Common/LinuxKernel.vala:1102 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1095 src/Gtk/MainWindow.vala:650
 msgid "This kernel is already installed."
 msgstr "이 커널은 이미 설치되었습니다."
 
-#: src/Common/LinuxKernel.vala:1128
+#: src/Common/LinuxKernel.vala:1121
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr "설치가 완료되었습닌다. 새 커널을 사용하려면 시스템을 재시작 하세요."
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1124
 msgid "Installation completed with errors"
 msgstr "오류가 있으나 설치가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1139
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -118,19 +118,19 @@ msgstr ""
 "선택된 커널은 현재 사용 중이므로 삭제할 수 없습니다.\n"
 " 이 커널을 삭제하려면 다른 커널을 먼저 설치하세요."
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1144
 msgid "Preparing to uninstall selected kernels"
 msgstr "선택한 커널을 삭제하기 위해 준비중입니다"
 
-#: src/Common/LinuxKernel.vala:1182 src/Common/LinuxKernel.vala:1229
+#: src/Common/LinuxKernel.vala:1175 src/Common/LinuxKernel.vala:1222
 msgid "Un-install completed"
 msgstr "삭제가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1185 src/Common/LinuxKernel.vala:1232
+#: src/Common/LinuxKernel.vala:1178 src/Common/LinuxKernel.vala:1225
 msgid "Un-install completed with errors"
 msgstr "오류가 있으나 삭제가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1198
+#: src/Common/LinuxKernel.vala:1191
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
