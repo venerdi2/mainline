@@ -43,6 +43,10 @@ GUI
 ```
 mainline-gtk
 ```
+### Help
+* Secure Boot -> Possibly useful, I have not tried: https://github.com/M-P-P-C/Signing-a-Linux-Kernel-for-Secure-Boot
+
+* Kernel versions 5.15.7+ and libssl3 -> [Install libssl3](../../wiki/Install-libssl3)
 
 ### About
 Written using Vala and GTK3.
