@@ -1,0 +1,574 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mainline\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-10 23:03-0500\n"
+"PO-Revision-Date: 2023-01-10 02:03-0600\n"
+"Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#: src/Common/LinuxKernel.vala:88
+msgid "Distribution"
+msgstr "Διανομή"
+
+#: src/Common/LinuxKernel.vala:102
+msgid "Architecture"
+msgstr "Αρχιτεκτονική"
+
+#: src/Common/LinuxKernel.vala:294
+msgid "Fetching index..."
+msgstr "Ανάκτηση ευρετηρίου..."
+
+#: src/Common/LinuxKernel.vala:331
+msgid "Fetching index from kernel.ubuntu.com..."
+msgstr "Ανάκτηση ευρετηρίου από το kernel.ubuntu.com..."
+
+#: src/Common/LinuxKernel.vala:587
+msgid "Could not find running kernel in list!"
+msgstr "Δεν ήταν δυνατή η εύρεση του τρέχοντος πυρήνα στη λίστα!"
+
+#: src/Common/LinuxKernel.vala:593
+msgid "Could not find any kernels to uninstall"
+msgstr "Δεν βρέθηκε κανένας πυρήνας για απεγκατάσταση"
+
+#: src/Common/LinuxKernel.vala:602
+msgid "Οι ακόλουθοι πυρήνες θα απεγκατασταθούν:"
+msgstr "Die folgenden Kernel werden deinstalliert:"
+
+#: src/Common/LinuxKernel.vala:609
+msgid "Continue ?"
+msgstr "Συνέχεια;"
+
+#: src/Common/LinuxKernel.vala:635 src/Console/AppConsole.vala:314
+msgid "Latest update"
+msgstr "Τελευταία αναβάθμιση"
+
+#: src/Common/LinuxKernel.vala:646 src/Console/AppConsole.vala:321
+msgid "Latest point update"
+msgstr "Τελευταία ενημέρωση συντήρησης"
+
+#: src/Common/LinuxKernel.vala:654 src/Console/AppConsole.vala:326
+#: src/Console/AppConsole.vala:387
+msgid "No updates found"
+msgstr "Δεν βρέθηκαν ενημερώσεις"
+
+#: src/Common/LinuxKernel.vala:664
+#, c-format
+msgid "Install Kernel Version %s ? (y/n): "
+msgstr "Εγκατάσταση του πυρήνα έκδοσης %s ; (ν/ό):"
+
+#: src/Common/LinuxKernel.vala:925
+msgid "Packages Available"
+msgstr "Διαθέσιμα πακέτα"
+
+#: src/Common/LinuxKernel.vala:933
+msgid "Packages Installed"
+msgstr "Εγκατεστημένα πακέτα"
+
+#: src/Common/LinuxKernel.vala:1013
+msgid "Available Kernels"
+msgstr "Διαθέσιμοι πυρήνες"
+
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
+msgid "Installed"
+msgstr "Εγκατεστημένος"
+
+#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
+msgid "Running"
+msgstr "Ενεργός"
+
+#: src/Common/LinuxKernel.vala:1057
+msgid "Downloading"
+msgstr "Λήψη"
+
+#: src/Common/LinuxKernel.vala:1076
+#: src/Utility/Gtk/CustomMessageDialog.vala:148
+#: src/Utility/Gtk/CustomMessageDialog.vala:152
+msgid "OK"
+msgstr "ΟΚ"
+
+#: src/Common/LinuxKernel.vala:1081
+msgid "ERROR"
+msgstr "ΣΦΑΛΜΑ"
+
+#: src/Common/LinuxKernel.vala:1095 src/Gtk/MainWindow.vala:650
+msgid "This kernel is already installed."
+msgstr "Αυτός ο πυρήνας είναι ήδη εγκατεστημένος."
+
+#: src/Common/LinuxKernel.vala:1121
+msgid "Installation completed. A reboot is required to use the new kernel."
+msgstr "Η εγκατάσταση ολοκληρώθηκε. Απαιτείται επανεκκίνηση για τη χρήση του νέου πυρήνα."
+
+#: src/Common/LinuxKernel.vala:1124
+msgid "Installation completed with errors"
+msgstr "Η εγκατάσταση ολοκληρώθηκε με σφάλματα"
+
+#: src/Common/LinuxKernel.vala:1139
+msgid ""
+"Selected kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
+msgstr ""
+"Ο επιλεγμένος πυρήνας εκτελείται αυτήν τη στιγμή και δεν μπορεί να απεγκατασταθεί.\n"
+" Εγκαταστήστε έναν άλλο πυρήνα πριν απεγκαταστήσετε αυτόν."
+
+#: src/Common/LinuxKernel.vala:1144
+msgid "Preparing to uninstall selected kernels"
+msgstr "Προετοιμασία για απεγκατάσταση επιλεγμένων πυρήνων"
+
+#: src/Common/LinuxKernel.vala:1175 src/Common/LinuxKernel.vala:1222
+msgid "Un-install completed"
+msgstr "Η απεγκατάσταση ολοκληρώθηκε"
+
+#: src/Common/LinuxKernel.vala:1178 src/Common/LinuxKernel.vala:1225
+msgid "Un-install completed with errors"
+msgstr "Η απεγκατάσταση ολοκληρώθηκε με σφάλματα"
+
+#: src/Common/LinuxKernel.vala:1191
+msgid ""
+"This kernel is currently running and cannot be un-installed.\n"
+" Install another kernel before un-installing this one."
+msgstr ""
+"Αυτός ο πυρήνας εκτελείται αυτήν τη στιγμή και δεν μπορεί να απεγκατασταθεί.\n"
+" Εγκαταστήστε έναν άλλο πυρήνα πριν απεγκαταστήσετε αυτόν."
+
+#: src/Common/Main.vala:241
+msgid "Called from"
+msgstr "Κλήθηκε από"
+
+#: src/Common/Main.vala:275
+msgid "Notifications are disabled"
+msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες"
+
+#: src/Common/Package.vala:134 src/Common/Package.vala:198
+#, c-format
+msgid "File not found: %s"
+msgstr "Το αρχείο δεν βρέθηκε: %s"
+
+#: src/Console/AppConsole.vala:62 src/Gtk/AppGtk.vala:149
+msgid "Syntax"
+msgstr "Σύνταξη"
+
+#: src/Console/AppConsole.vala:64
+msgid "Commands"
+msgstr "Εντολές"
+
+#: src/Console/AppConsole.vala:66
+msgid "Check for kernel updates"
+msgstr "Έλεγχος για ενημερώσεις πυρήνα"
+
+#: src/Console/AppConsole.vala:67
+msgid "Check for kernel updates and notify current user"
+msgstr "Έλεγχος για ενημερώσεις πυρήνα και ειδοποίηση τρέχοντα χρήστη"
+
+#: src/Console/AppConsole.vala:68
+msgid "List all available mainline kernels"
+msgstr "Εμφάνιση όλων των διαθέσιμων πυρήνων mainline"
+
+#: src/Console/AppConsole.vala:69
+msgid "List installed kernels"
+msgstr "Εμφάνιση εγκατεστημένων πυρήνων"
+
+#: src/Console/AppConsole.vala:70
+msgid "Install latest mainline kernel"
+msgstr "Εγκατάσταση του πιο πρόσφατου πυρήνα mainline"
+
+#: src/Console/AppConsole.vala:71
+msgid "Install latest point update for current series"
+msgstr "Εγκαταστήστε την τελευταία ενημέρωση συντήρησης για την τρέχουσα σειρά"
+
+#: src/Console/AppConsole.vala:72
+msgid "Install specified mainline kernel"
+msgstr "Εγκατάσταση του καθορισμένου mainline πυρήνα"
+
+#: src/Console/AppConsole.vala:73
+msgid "Uninstall specified kernel"
+msgstr "Απεγκατάσταση του καθορισμένου πυρήνα"
+
+#: src/Console/AppConsole.vala:74
+msgid "Uninstall kernels older than the running kernel"
+msgstr "Απεγκατάσταση πυρήνων παλαιότερων από τον ενεργό"
+
+#: src/Console/AppConsole.vala:75
+msgid "Download specified kernels"
+msgstr "Λήψη των καθορισμένων πυρήνων"
+
+#: src/Console/AppConsole.vala:76
+msgid "Remove files from application cache"
+msgstr "Αφαίρεση αρχείων από την προσωρινή μνήμη της εφαρμογής"
+
+#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:151
+msgid "Options"
+msgstr "Επιλογές"
+
+#: src/Console/AppConsole.vala:80
+msgid "Include unstable and RC releases"
+msgstr "Συμπεριλάβετε ασταθείς και RC εκδόσεις"
+
+#: src/Console/AppConsole.vala:81 src/Gtk/SettingsDialog.vala:163
+msgid "Hide unstable and RC releases"
+msgstr "Απόκρυψη ασταθών και RC εκδόσεων"
+
+#: src/Console/AppConsole.vala:82
+msgid "Enable verbose debugging output"
+msgstr "Ενεργοποίηση αναλυτικής εξόδου εντοπισμού σφαλμάτων"
+
+#: src/Console/AppConsole.vala:83
+msgid "Assume Yes for all prompts (non-interactive mode)"
+msgstr "Υποθέστε Ναι για όλα τα μηνύματα (μη διαδραστική λειτουργία)"
+
+#: src/Console/AppConsole.vala:84
+msgid "Override user"
+msgstr "Παράκαμψη χρήστη"
+
+#: src/Console/AppConsole.vala:87
+msgid "A version string taken from the output of --list"
+msgstr "Μια συμβολοσειρά έκδοσης που λαμβάνεται από την έξοδο του --list"
+
+#: src/Console/AppConsole.vala:88
+msgid ""
+"One or more version strings (comma-separated) taken from the output of --list"
+msgstr ""
+"Μία ή περισσότερες συμβολοσειρές έκδοσης (χωρισμένες με κόμμα) που λαμβάνονται "
+"από την έξοδο του --list"
+
+#: src/Console/AppConsole.vala:169 src/Gtk/AppGtk.vala:136
+msgid "Unknown option"
+msgstr "Άγνωστη επιλογή"
+
+#: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:294
+msgid "Run"
+msgstr "Τρέξτε"
+
+#: src/Console/AppConsole.vala:171
+msgid "to list all options"
+msgstr "για να παραθέσετε όλες τις επιλογές"
+
+#: src/Console/AppConsole.vala:238 src/Console/AppConsole.vala:273
+msgid "No kernels specified"
+msgstr "Δεν έχουν καθοριστεί πυρήνες"
+
+#: src/Console/AppConsole.vala:244
+msgid "Multiple kernels selected for installation. Select only one."
+msgstr "Επιλέχθηκαν πολλαπλοί πυρήνες για εγκατάσταση. Επιλέξτε μόνο ένα."
+
+#: src/Console/AppConsole.vala:262 src/Gtk/MainWindow.vala:100
+msgid "Could not find requested version"
+msgstr "Δε βρέθηκε η ζητούμενη έκδοση"
+
+#: src/Console/AppConsole.vala:265
+msgid "and use a version string listed in first column"
+msgstr "και χρησιμοποιήστε μια συμβολοσειρά έκδοσης που αναφέρεται στην πρώτη στήλη"
+
+#: src/Console/AppConsole.vala:293
+msgid "Command not specified"
+msgstr "Η εντολή δεν προσδιορίστηκε"
+
+#: src/Console/AppConsole.vala:294
+msgid "to list all commands"
+msgstr "για να παραθέσετε όλες τις εντολές"
+
+#: src/Console/AppConsole.vala:360
+msgid "Show"
+msgstr "Προβολή"
+
+#: src/Console/AppConsole.vala:365 src/Console/AppConsole.vala:377
+#, c-format
+msgid "Kernel %s Available"
+msgstr "Πυρήνας %s διαθέσιμος"
+
+#: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
+#: src/Gtk/MainWindow.vala:330
+msgid "Install"
+msgstr "Εγκατάσταση"
+
+#: src/Gtk/AppGtk.vala:153
+msgid "Print debug information"
+msgstr "Εκτύπωση πληροφοριών εντοπισμού σφαλμάτων"
+
+#: src/Gtk/AppGtk.vala:154
+msgid "Show all options"
+msgstr "Εμφάνιση όλων των επιλογών"
+
+#: src/Gtk/MainWindow.vala:146
+msgid "Kernel"
+msgstr "Πυρήνας"
+
+#: src/Gtk/MainWindow.vala:174
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: src/Gtk/MainWindow.vala:314
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+#: src/Gtk/MainWindow.vala:321 src/Utility/TeeJee.System.vala:42
+msgid "Internet connection is not active"
+msgstr "Η σύνδεση στο διαδίκτυο δεν είναι ενεργή"
+
+#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:525
+#: src/Gtk/MainWindow.vala:655
+msgid "No Internet"
+msgstr "Χωρίς διαδίκτυο"
+
+#: src/Gtk/MainWindow.vala:339
+msgid "Multiple Kernels Selected"
+msgstr "Επιλέχθηκαν πολλαπλοί πυρήνες"
+
+#: src/Gtk/MainWindow.vala:339
+msgid "Select a single kernel to install"
+msgstr "Επιλέξτε έναν μόνο πυρήνα για εγκατάσταση"
+
+#: src/Gtk/MainWindow.vala:342 src/Gtk/MainWindow.vala:353
+msgid "Not Selected"
+msgstr "Δεν επιλέχθηκε"
+
+#: src/Gtk/MainWindow.vala:342
+msgid "Select the kernel to install"
+msgstr "Επιλέξτε πυρήνα για εγκατάσταση"
+
+#: src/Gtk/MainWindow.vala:347
+msgid "Uninstall"
+msgstr "Απεγκατάσταση"
+
+#: src/Gtk/MainWindow.vala:353
+msgid "Select the kernels to uninstall"
+msgstr "Επιλέξτε πυρήνες για απεγκατάσταση"
+
+#: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
+#: src/Gtk/MainWindow.vala:687
+msgid "Close window to exit..."
+msgstr "Κλείστε το παράθυρο για έξοδο..."
+
+#: src/Gtk/MainWindow.vala:391
+msgid "Uninstall Old"
+msgstr "Απεγκατάσταση παλαιών"
+
+#: src/Gtk/MainWindow.vala:392
+msgid "Uninstall kernels older than running kernel"
+msgstr "Απεγκαταστήστε πυρήνες παλαιότερους από τον ενεργό"
+
+#: src/Gtk/MainWindow.vala:424
+msgid "Changes"
+msgstr "Αλλαγές"
+
+#: src/Gtk/MainWindow.vala:435 src/Gtk/SettingsDialog.vala:50
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: src/Gtk/MainWindow.vala:458
+msgid "About"
+msgstr "Σχετικά"
+
+#: src/Gtk/MainWindow.vala:503
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr "Πρόγραμμα αναβάθμισης πυρήνα για διανομές που βασίζονται στο Ubuntu"
+
+#: src/Gtk/MainWindow.vala:504
+msgid "Forked"
+msgstr "Forked"
+
+#: src/Gtk/MainWindow.vala:504
+msgid "Original"
+msgstr "Πρωτότυπο"
+
+#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
+msgid "Internet connection is not active."
+msgstr "Η σύνδεση στο διαδίκτυο δεν είναι ενεργή."
+
+#: src/Gtk/MainWindow.vala:544
+msgid "Refreshing..."
+msgstr "Ανανέωση..."
+
+#: src/Gtk/MainWindow.vala:638
+msgid "available"
+msgstr "διαθέσιμος"
+
+#: src/Gtk/MainWindow.vala:650
+msgid "Already Installed"
+msgstr "Ήδη εγκατεστημένος"
+
+#: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
+#: src/Utility/Gtk/CustomMessageDialog.vala:153
+msgid "Cancel"
+msgstr "Άκυρο"
+
+#: src/Gtk/SettingsDialog.vala:60
+msgid "Notification"
+msgstr "Ειδοποίηση"
+
+#: src/Gtk/SettingsDialog.vala:67
+msgid "Notify if a major release is available"
+msgstr "Ειδοποίηση αν είναι διαθέσιμη κύρια έκδοση"
+
+#: src/Gtk/SettingsDialog.vala:78
+msgid "Notify if a point release is available"
+msgstr "Ειδοποίηση αν είναι διαθέσιμη έκδοση συντήρησης"
+
+#: src/Gtk/SettingsDialog.vala:89
+msgid "(Allowing intervals in seconds for --debug)"
+msgstr "(Επιτρέποντας διαστήματα σε δευτερόλεπτα για --debug)"
+
+#: src/Gtk/SettingsDialog.vala:112
+msgid "Check every"
+msgstr "Έλεγχος κάθε"
+
+#: src/Gtk/SettingsDialog.vala:142
+msgid "Hour(s)"
+msgstr "Ώρες"
+
+#: src/Gtk/SettingsDialog.vala:144
+msgid "Day(s)"
+msgstr "Ημέρες"
+
+#: src/Gtk/SettingsDialog.vala:146
+msgid "Week(s)"
+msgstr "Εβδομάδες"
+
+#: src/Gtk/SettingsDialog.vala:149
+msgid "Second(s)"
+msgstr "Δευτερόλεπτα"
+
+#: src/Gtk/SettingsDialog.vala:155
+msgid "Display"
+msgstr "Απεικόνιση"
+
+#: src/Gtk/SettingsDialog.vala:177
+msgid "Show N previous major versions "
+msgstr "Εμφάνιση N προηγούμενων κύριων εκδόσεων "
+
+#: src/Gtk/SettingsDialog.vala:192
+msgid "Other"
+msgstr "Άλλες"
+
+#: src/Gtk/SettingsDialog.vala:200
+msgid "Skip internet connection check"
+msgstr "Παράβλεψη ελέγχου σύνδεσης στο διαδίκτυο"
+
+#: src/Gtk/SettingsDialog.vala:213
+msgid "Internet connection timeout in "
+msgstr "Λήξη χρονικού ορίου σύνδεσης στο διαδίκτυο "
+
+#: src/Gtk/SettingsDialog.vala:228
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+#: src/Gtk/SettingsDialog.vala:235
+msgid "Max concurrent downloads"
+msgstr "Μέγιστες ταυτόχρονες λήψεις"
+
+#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: src/Utility/Gtk/AboutWindow.vala:271 src/Utility/Gtk/AboutWindow.vala:288
+msgid "Credits"
+msgstr "Μνεία"
+
+#: src/Utility/Gtk/AboutWindow.vala:284
+msgid "Back"
+msgstr "Πίσω"
+
+#: src/Utility/Gtk/AboutWindow.vala:313
+msgid "Authors"
+msgstr "Συγγραφείς"
+
+#: src/Utility/Gtk/AboutWindow.vala:321
+msgid "Contributions"
+msgstr "Συνεισφορές"
+
+#: src/Utility/Gtk/AboutWindow.vala:329
+msgid "Artists"
+msgstr "Καλλιτέχνες"
+
+#: src/Utility/Gtk/AboutWindow.vala:337
+msgid "Translators"
+msgstr "Μεταφραστές"
+
+#: src/Utility/Gtk/AboutWindow.vala:345
+msgid "Documenters"
+msgstr "Τεκμηριωτές"
+
+#: src/Utility/Gtk/AboutWindow.vala:353
+msgid "Third Party Inclusions"
+msgstr "Συμπεριλήψεις τρίτων"
+
+#: src/Utility/Gtk/CustomMessageDialog.vala:157
+msgid "Yes"
+msgstr "Ναι"
+
+#: src/Utility/Gtk/CustomMessageDialog.vala:158
+msgid "No"
+msgstr "Όχι"
+
+#: src/Utility/Gtk/GtkHelper.vala:67
+msgid "Missing Icon"
+msgstr "Ελλείπον εικονίδιο"
+
+#: src/Utility/TeeJee.FileSystem.vala:71
+msgid "File deleted"
+msgstr "Το αρχείο διαγράφηκε"
+
+#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
+msgid "Failed to delete file"
+msgstr "Αποτυχία διαγραφής του αρχείου"
+
+#: src/Utility/TeeJee.FileSystem.vala:96
+msgid "Failed to read file"
+msgstr "Αποτυχία ανάγνωσης του αρχείου"
+
+#: src/Utility/TeeJee.FileSystem.vala:123
+msgid "File saved"
+msgstr "Το αρχείο αποθηκεύτηκε"
+
+#: src/Utility/TeeJee.FileSystem.vala:129
+msgid "Failed to write file"
+msgstr "Αποτυχία εγγραφής αρχείου"
+
+#: src/Utility/TeeJee.FileSystem.vala:141
+msgid "File copied"
+msgstr "Το αρχείο αντιγράφηκε"
+
+#: src/Utility/TeeJee.FileSystem.vala:148
+msgid "Failed to copy file"
+msgstr "Αποτυχία αντιγραφής αρχείου"
+
+#: src/Utility/TeeJee.FileSystem.vala:157
+msgid "File not found"
+msgstr "Το αρχείο δε βρέθηκε"
+
+#: src/Utility/TeeJee.FileSystem.vala:171
+msgid "File moved"
+msgstr "Το αρχείο μετακινήθηκε"
+
+#: src/Utility/TeeJee.FileSystem.vala:176
+msgid "Failed to move file"
+msgstr "Αποτυχία μετακίνησης αρχείου"
+
+#: src/Utility/TeeJee.FileSystem.vala:233
+#: src/Utility/TeeJee.FileSystem.vala:236
+msgid "Created directory"
+msgstr "Δημιουργήθηκε κατάλογος"
+
+#: src/Utility/TeeJee.FileSystem.vala:243
+msgid "Failed to create dir"
+msgstr "Αποτυχία δημιουργίας καταλόγου"
+
+#: src/Utility/TeeJee.FileSystem.vala:255
+msgid "Deleted"
+msgstr "Διαγράφηκε"
+
+#: src/Utility/TeeJee.Logging.vala:59
+msgid "E"
+msgstr "E"
+
+#: src/Utility/TeeJee.Logging.vala:84
+msgid "D"
+msgstr "D"
