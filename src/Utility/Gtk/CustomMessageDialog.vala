@@ -97,6 +97,7 @@ public class CustomMessageDialog : Gtk.Dialog {
 		string icon_name = "dialog-info";
 
 		switch(msg_type){
+		default:
 		case Gtk.MessageType.INFO:
 			icon_name = "dialog-info";
 			break;
