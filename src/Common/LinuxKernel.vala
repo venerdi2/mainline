@@ -193,16 +193,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		try {
 			task_is_running = true;
 			cancelled = false;
-			Thread.create<void> (query_thread, true);
-		} catch (ThreadError e) {
+			var worker = new Thread<void>.try(null, query_thread);
+		
+			if (wait)
+				worker.join();
+		} catch (Error e) {
 			task_is_running = false;
 			log_error (e.message);
-		}
-
-		if (wait){
-			while (task_is_running){
-				sleep(500); //wait
-			}
 		}
 	}
 
