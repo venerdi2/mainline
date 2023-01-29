@@ -10,14 +10,6 @@ namespace TeeJee.GtkHelper{
 
 	using Gtk;
 
-	public void gtk_do_events (){
-
-		/* Do pending events */
-
-		while(Gtk.events_pending ())
-			Gtk.main_iteration ();
-	}
-
 	// messages ----------------------------------------
 
 	public void gtk_messagebox(
