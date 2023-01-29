@@ -519,7 +519,7 @@ public class MainWindow : Gtk.Window{
 		dialog.show_all();
 	}
 
-	private void refresh_cache(bool download_index = true){
+	private void refresh_cache(){
 
 		if (!check_internet_connectivity()){
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
