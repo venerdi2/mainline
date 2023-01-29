@@ -176,7 +176,7 @@ public class TerminalWindow : Gtk.Window {
 		process_quit(child_pid);
 	}
 
-	public void execute_script(string f, string d, bool wait = false){
+	public void execute_script(string f, string d){
 		string[] argv = {"sh", f};
 
 		string[] env = Environ.get();
@@ -199,14 +199,6 @@ public class TerminalWindow : Gtk.Window {
 			term.watch_child(child_pid);
 	
 			term.child_exited.connect(script_exit);
-
-			if (wait){
-				while (is_running){
-					sleep(200);
-					gtk_do_events();
-				}
-			}
-
 		}
 		catch (Error e) {
 			log_error (e.message);
