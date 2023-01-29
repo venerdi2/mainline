@@ -193,22 +193,6 @@ public class ProgressWindow : Gtk.Window {
 	}
 */
 
-	public void finish(string message = "") {
-
-		btn_cancel.sensitive = false;
-
-		//pulse_stop();
-		//progressbar.fraction = 1.0;
-
-		lbl_msg.label = message;
-		lbl_status.label = "";
-
-		spinner.visible = false;
-
-		gtk_do_events();
-		auto_close_window();
-	}
-
 	private void auto_close_window() {
 
 		tmr_close = Timeout.add(2000, ()=>{
