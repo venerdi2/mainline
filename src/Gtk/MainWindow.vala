@@ -530,7 +530,7 @@ public class MainWindow : Gtk.Window{
 
 			// refresh without GUI and return -----------------
 
-			LinuxKernel.query(false, () => gtk_do_events());
+			LinuxKernel.query(false);
 
 			return;
 		}
@@ -538,15 +538,12 @@ public class MainWindow : Gtk.Window{
 		string message = _("Refreshing...");
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
-		gtk_do_events();
 
 		// TODO: Check if kernel.ubuntu.com is down
 
 		LinuxKernel.query(false, (timer, ref count, last) => {
 			update_progress_window(progress_window, message, timer, ref count, last);
 		});
-
-		gtk_do_events();
 	}
 
 
@@ -558,8 +555,6 @@ public class MainWindow : Gtk.Window{
 				return false;
 			});
 			timer_elapsed(timer, true);
-			
-			gtk_do_events();
 		}
 
 		if (App.cancelled){
@@ -589,8 +584,6 @@ public class MainWindow : Gtk.Window{
 
 		// FIXME - GTK error messages, and progressbar is always 100%
 		//progress_window.update_progressbar();
-
-		gtk_do_events();
 
 		count++;
 	}

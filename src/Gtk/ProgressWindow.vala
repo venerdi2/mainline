@@ -174,7 +174,6 @@ public class ProgressWindow : Gtk.Window {
 		}
 
 		//title = "Threads: %d".printf(DownloadManager.download_count);
-		//gtk_do_events();
 	}
 
 /*
@@ -187,7 +186,6 @@ public class ProgressWindow : Gtk.Window {
 		}
 
 		progressbar.fraction = f;
-		gtk_do_events();
 	}
 */
 }
