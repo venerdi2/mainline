@@ -222,10 +222,4 @@ public class ProgressWindow : Gtk.Window {
 			return false;
 		});
 	}
-
-	public void sleep(int ms){
-
-		Thread.usleep ((ulong) ms * 1000);
-		gtk_do_events();
-	}
 }

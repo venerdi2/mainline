@@ -63,7 +63,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int64 progress_total;
 	public static int64 progress_count;
 	public static bool cancelled;
-	public static bool task_is_running;
 	public static int highest_maj;
 
 	// class initialize
@@ -186,24 +185,29 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// static
 
-	public static void query(bool wait){
+	public delegate void Notifier(GLib.Timer timer, ref long count, bool last = false);
+
+	public static void query(bool wait, owned Notifier? notifier = null){
 
 		check_if_initialized();
 
 		try {
-			task_is_running = true;
 			cancelled = false;
-			var worker = new Thread<void>.try(null, query_thread);
+			var worker = new Thread<void>.try(null, () => query_thread(notifier));
 		
 			if (wait)
 				worker.join();
 		} catch (Error e) {
-			task_is_running = false;
 			log_error (e.message);
 		}
 	}
 
-	private static void query_thread() {
+	private static void query_thread(owned Notifier? notifier) {
+		App.progress_total = 1;
+		App.progress_count = 0;
+
+		var timer = timer_start();
+		long count = 0;
 
 		log_debug("query_thread() App.show_prev_majors: %d".printf(App.show_prev_majors));
 		log_debug("query_thread() App.hide_unstable: "+App.hide_unstable.to_string());
@@ -239,6 +243,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (App.hide_unstable && k.is_unstable) continue;
 			}
 			if (k.is_valid && !k.cached_page_exists) progress_total += 2;
+			if (notifier != null) notifier(timer, ref count);
 		}
 
 		// list of kernels - 1 LinuxKernel object per kernel to update
@@ -273,6 +278,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// add kernel to kernel list
 			kernels_to_update.add(k);
+			if (notifier != null) notifier(timer, ref count);
 		}
 
 		// process the download list
@@ -302,6 +308,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// load the index.html files we just added to cache
 			foreach(var k in kernels_to_update) k.load_cached_page();
+			if (notifier != null) notifier(timer, ref count);
 		}
 
 		check_installed();
@@ -309,7 +316,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		//check_updates("query_thread()");
 		check_updates();
 
-		task_is_running = false;
+		timer_elapsed(timer, true);
+		if (notifier != null) notifier(timer, ref count, true);
 	}
 
 	// download the main index.html listing all mainline kernels
