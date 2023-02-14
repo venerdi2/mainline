@@ -3,6 +3,7 @@ Tony George		"ukuu" original author
 shg8@github		net connection check
 cloyce@github		rc kernels option
 sylt@github		better lowest displayed version scheme
+LucasChollet@github	better thread & child process handling
 
 Inclusions:
 	notify-send.sh https://github.com/bkw777/notify-send.sh
