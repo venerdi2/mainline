@@ -63,7 +63,7 @@ all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
 
 $(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) translations
 	valac --enable-deprecated -X -w $(build_symbols) --Xcc="-lm" \
-		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) \
+		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) --pkg x11 \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) translations

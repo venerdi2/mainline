@@ -519,7 +519,7 @@ public class MainWindow : Gtk.Window{
 		dialog.show_all();
 	}
 
-	private void refresh_cache(bool download_index = true){
+	private void refresh_cache(){
 
 		if (!check_internet_connectivity()){
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
@@ -532,72 +532,61 @@ public class MainWindow : Gtk.Window{
 
 			LinuxKernel.query(false);
 
-			while (LinuxKernel.task_is_running) {
-
-				sleep(200);
-				gtk_do_events();
-			}
-
 			return;
 		}
 
 		string message = _("Refreshing...");
-		var dlg = new ProgressWindow.with_parent(this, message, true);
-		dlg.show_all();
-		gtk_do_events();
+		var progress_window = new ProgressWindow.with_parent(this, message, true);
+		progress_window.show_all();
 
 		// TODO: Check if kernel.ubuntu.com is down
 
-		LinuxKernel.query(false);
-
-		var timer = timer_start();
-
-		App.progress_total = 1;
-		App.progress_count = 0;
-
-		string msg_remaining = "";
-		long count = 0;
-
-		while (LinuxKernel.task_is_running) {
-
-			if (App.cancelled){
-				App.exit_app(1);
-			}
-
-			App.status_line = LinuxKernel.status_line;
-			App.progress_total = LinuxKernel.progress_total;
-			App.progress_count = LinuxKernel.progress_count;
-
-			ulong ms_elapsed = timer_elapsed(timer, false);
-			int64 remaining_count = App.progress_total - App.progress_count;
-			int64 ms_remaining = (int64)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
-
-			if ((count % 5) == 0){
-				msg_remaining = format_time_left(ms_remaining);
-			}
-
-			if (App.progress_total > 0){
-				dlg.update_message("%s %s/%s (%s)".printf(message, App.progress_count.to_string(), App.progress_total.to_string(), msg_remaining));
-			}
-
-			dlg.update_status_line();
-
-			// FIXME - GTK error messages, and progressbar is always 100%
-			//dlg.update_progressbar();
-
-			gtk_do_events();
-
-			dlg.sleep(200);
-
-			count++;
-		}
-
-		timer_elapsed(timer, true);
-
-		dlg.destroy();
-		gtk_do_events();
+		LinuxKernel.query(false, (timer, ref count, last) => {
+			update_progress_window(progress_window, message, timer, ref count, last);
+		});
 	}
 
+
+	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref long count, bool last = false) {
+		if (last) {
+			progress_window.destroy();
+			Gdk.threads_add_idle_full(0, () => {
+				tv_refresh();
+				return false;
+			});
+			timer_elapsed(timer, true);
+		}
+
+		if (App.cancelled){
+			App.exit_app(1);
+		}
+
+		App.status_line = LinuxKernel.status_line;
+		App.progress_total = LinuxKernel.progress_total;
+		App.progress_count = LinuxKernel.progress_count;
+
+		ulong ms_elapsed = timer_elapsed(timer, false);
+		int64 remaining_count = App.progress_total - App.progress_count;
+		int64 ms_remaining = (int64)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
+
+		string time_remaining = "";
+		if ((count % 5) == 0){
+			time_remaining = format_time_left(ms_remaining);
+		}
+
+		Gdk.threads_add_idle_full(0, () => {
+			if (App.progress_total > 0)
+				progress_window.update_message("%s %s/%s (%s)".printf(message, App.progress_count.to_string(), App.progress_total.to_string(), time_remaining));
+
+			progress_window.update_status_line(); 
+			return false;
+		});
+
+		// FIXME - GTK error messages, and progressbar is always 100%
+		//progress_window.update_progressbar();
+
+		count++;
+	}
 
 	private void init_infobar(){
 

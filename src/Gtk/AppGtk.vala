@@ -23,6 +23,7 @@ using GLib;
 using Gtk;
 using Gee;
 using Json;
+using X;
 
 using TeeJee.Logging;
 using TeeJee.FileSystem;
@@ -41,6 +42,8 @@ public class AppGtk : GLib.Object {
 		set_locale();
 
 		log_msg("%s %s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
+
+		X.init_threads();
 
 		Gtk.init(ref args);
 

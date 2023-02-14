@@ -42,8 +42,6 @@ public class ProgressWindow : Gtk.Window {
 	//private ProgressBar progressbar;
 	private Gtk.Button btn_cancel;
 
-	private uint tmr_init = 0;
-	private uint tmr_close = 0;
 	private int def_width = 400;
 	private int def_height = 50;
 
@@ -176,7 +174,6 @@ public class ProgressWindow : Gtk.Window {
 		}
 
 		//title = "Threads: %d".printf(DownloadManager.download_count);
-		//gtk_do_events();
 	}
 
 /*
@@ -189,43 +186,6 @@ public class ProgressWindow : Gtk.Window {
 		}
 
 		progressbar.fraction = f;
-		gtk_do_events();
 	}
 */
-
-	public void finish(string message = "") {
-
-		btn_cancel.sensitive = false;
-
-		//pulse_stop();
-		//progressbar.fraction = 1.0;
-
-		lbl_msg.label = message;
-		lbl_status.label = "";
-
-		spinner.visible = false;
-
-		gtk_do_events();
-		auto_close_window();
-	}
-
-	private void auto_close_window() {
-
-		tmr_close = Timeout.add(2000, ()=>{
-			if (tmr_init > 0) {
-				Source.remove(tmr_init);
-				tmr_init = 0;
-			}
-
-			allow_close = true;
-			this.close();
-			return false;
-		});
-	}
-
-	public void sleep(int ms){
-
-		Thread.usleep ((ulong) ms * 1000);
-		gtk_do_events();
-	}
 }
