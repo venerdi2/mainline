@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 23:03-0500\n"
+"POT-Creation-Date: 2023-02-02 18:20-0500\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -13,107 +13,107 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
 "X-Generator: Poedit 2.0.5\n"
 
-#: src/Common/LinuxKernel.vala:88
+#: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
 msgstr "Distribución"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:101
 msgid "Architecture"
 msgstr "Arquitectura del sistema"
 
-#: src/Common/LinuxKernel.vala:294
+#: src/Common/LinuxKernel.vala:297
 msgid "Fetching index..."
 msgstr "Recuperando índice..."
 
-#: src/Common/LinuxKernel.vala:331
+#: src/Common/LinuxKernel.vala:336
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Recuperando índice de kernel.ubuntu.com…"
 
-#: src/Common/LinuxKernel.vala:587
+#: src/Common/LinuxKernel.vala:592
 msgid "Could not find running kernel in list!"
 msgstr "¡No se pudo encontrar el núcleo en ejecución en la lista!"
 
-#: src/Common/LinuxKernel.vala:593
+#: src/Common/LinuxKernel.vala:598
 #, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "Seleccione los núcleos que se desinstalarán"
 
-#: src/Common/LinuxKernel.vala:602
+#: src/Common/LinuxKernel.vala:607
 #, fuzzy
 msgid "The following kernels will be uninstalled:"
 msgstr "Los siguientes kernels serán eliminados:"
 
-#: src/Common/LinuxKernel.vala:609
+#: src/Common/LinuxKernel.vala:614
 msgid "Continue ?"
 msgstr "¿Continuar?"
 
-#: src/Common/LinuxKernel.vala:635 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:640 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:646 src/Console/AppConsole.vala:321
+#: src/Common/LinuxKernel.vala:651 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:654 src/Console/AppConsole.vala:326
+#: src/Common/LinuxKernel.vala:659 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "No se encontró ninguna actualización"
 
-#: src/Common/LinuxKernel.vala:664
+#: src/Common/LinuxKernel.vala:669
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:925
+#: src/Common/LinuxKernel.vala:930
 msgid "Packages Available"
 msgstr "Paquetes disponibles"
 
-#: src/Common/LinuxKernel.vala:933
+#: src/Common/LinuxKernel.vala:938
 msgid "Packages Installed"
 msgstr "Paquetes instalados"
 
-#: src/Common/LinuxKernel.vala:1013
+#: src/Common/LinuxKernel.vala:1018
 msgid "Available Kernels"
 msgstr "Núcleos disponibles"
 
-#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1025 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Instalado"
 
-#: src/Common/LinuxKernel.vala:1020 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:628 src/Gtk/MainWindow.vala:642
+#: src/Common/LinuxKernel.vala:1025 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:617 src/Gtk/MainWindow.vala:631
 msgid "Running"
 msgstr "En ejecución"
 
-#: src/Common/LinuxKernel.vala:1057
+#: src/Common/LinuxKernel.vala:1062
 msgid "Downloading"
 msgstr "Descargando"
 
-#: src/Common/LinuxKernel.vala:1076
+#: src/Common/LinuxKernel.vala:1081
 #: src/Utility/Gtk/CustomMessageDialog.vala:148
 #: src/Utility/Gtk/CustomMessageDialog.vala:152
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/Common/LinuxKernel.vala:1081
+#: src/Common/LinuxKernel.vala:1086
 msgid "ERROR"
 msgstr "ERROR"
 
-#: src/Common/LinuxKernel.vala:1095 src/Gtk/MainWindow.vala:650
+#: src/Common/LinuxKernel.vala:1100 src/Gtk/MainWindow.vala:639
 msgid "This kernel is already installed."
 msgstr "Este núcleo ya se instaló."
 
-#: src/Common/LinuxKernel.vala:1121
+#: src/Common/LinuxKernel.vala:1126
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalación finalizada. Se necesita reiniciar para utilizar el núcleo nuevo."
 
-#: src/Common/LinuxKernel.vala:1124
+#: src/Common/LinuxKernel.vala:1129
 msgid "Installation completed with errors"
 msgstr "Instalación finalizada con errores"
 
-#: src/Common/LinuxKernel.vala:1139
+#: src/Common/LinuxKernel.vala:1144
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
@@ -122,20 +122,20 @@ msgstr ""
 "El núcleo seleccionado está en ejecución y no puede desinstalarse.\n"
 "Instale otro núcleo antes de desinstalar este."
 
-#: src/Common/LinuxKernel.vala:1144
+#: src/Common/LinuxKernel.vala:1149
 #, fuzzy
 msgid "Preparing to uninstall selected kernels"
 msgstr "Preparándose para desinstalar los núcleos seleccionados"
 
-#: src/Common/LinuxKernel.vala:1175 src/Common/LinuxKernel.vala:1222
+#: src/Common/LinuxKernel.vala:1180 src/Common/LinuxKernel.vala:1227
 msgid "Un-install completed"
 msgstr "Desinstalación finalizada"
 
-#: src/Common/LinuxKernel.vala:1178 src/Common/LinuxKernel.vala:1225
+#: src/Common/LinuxKernel.vala:1183 src/Common/LinuxKernel.vala:1230
 msgid "Un-install completed with errors"
 msgstr "Desinstalación finalizada con errores"
 
-#: src/Common/LinuxKernel.vala:1191
+#: src/Common/LinuxKernel.vala:1196
 #, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
@@ -325,7 +325,7 @@ msgid "Internet connection is not active"
 msgstr "La conexión a Internet está inactiva"
 
 #: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:525
-#: src/Gtk/MainWindow.vala:655
+#: src/Gtk/MainWindow.vala:644
 msgid "No Internet"
 msgstr "No hay Internet"
 
@@ -356,7 +356,7 @@ msgid "Select the kernels to uninstall"
 msgstr "Seleccione el núcleo que se instalará"
 
 #: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
-#: src/Gtk/MainWindow.vala:687
+#: src/Gtk/MainWindow.vala:676
 msgid "Close window to exit..."
 msgstr ""
 
@@ -394,26 +394,26 @@ msgstr ""
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:655
+#: src/Gtk/MainWindow.vala:525 src/Gtk/MainWindow.vala:644
 #, fuzzy
 msgid "Internet connection is not active."
 msgstr "La conexión a Internet está inactiva"
 
-#: src/Gtk/MainWindow.vala:544
+#: src/Gtk/MainWindow.vala:538
 msgid "Refreshing..."
 msgstr "Actualizando…"
 
-#: src/Gtk/MainWindow.vala:638
+#: src/Gtk/MainWindow.vala:627
 #, fuzzy
 msgid "available"
 msgstr "Paquetes disponibles"
 
-#: src/Gtk/MainWindow.vala:650
+#: src/Gtk/MainWindow.vala:639
 #, fuzzy
 msgid "Already Installed"
 msgstr "Instalado"
 
-#: src/Gtk/ProgressWindow.vala:144 src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/ProgressWindow.vala:142 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:153
 msgid "Cancel"
 msgstr "Cancelar"
@@ -528,7 +528,7 @@ msgstr "Sí"
 msgid "No"
 msgstr "No"
 
-#: src/Utility/Gtk/GtkHelper.vala:67
+#: src/Utility/Gtk/GtkHelper.vala:59
 msgid "Missing Icon"
 msgstr "Falta el icono"
 
