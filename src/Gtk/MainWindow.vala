@@ -301,7 +301,7 @@ public class MainWindow : Gtk.Window{
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
 			btn_uninstall_old.sensitive = true;
-			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
+			btn_changes.sensitive = (selected_kernels.size == 1);
 		}
 	}
 
@@ -426,9 +426,21 @@ public class MainWindow : Gtk.Window{
 		btn_changes = button;
 
 		button.clicked.connect(() => {
-			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
-				xdg_open(selected_kernels[0].changes_file);
+			if (selected_kernels.size != 1)
+				return;
+
+			if (! file_exists(selected_kernels[0].changes_file)) {
+				try {
+					FileDownloader.synchronous(selected_kernels[0].changes_file_uri, 
+									   		   selected_kernels[0].changes_file);
+				} catch (Error e) {
+					Gtk.MessageDialog msg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, _("Error while downloading the changelog:\n") + e.message);
+					msg.response.connect ((response_id) => msg.destroy());
+					msg.show ();
+				}
 			}
+
+			xdg_open(selected_kernels[0].changes_file);
 		});
 
 		// settings

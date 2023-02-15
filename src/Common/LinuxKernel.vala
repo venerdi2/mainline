@@ -248,7 +248,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.version_maj < highest_maj-App.show_prev_majors) continue;
 				if (App.hide_unstable && k.is_unstable) continue;
 			}
-			if (k.is_valid && !k.cached_page_exists) progress_total += 2;
+			if (k.is_valid && !k.cached_page_exists) progress_total += 1;
 			if (notifier != null) notifier(timer, ref count);
 		}
 
@@ -276,10 +276,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// add index.html to download list
 			var item = new DownloadItem(k.cached_page_uri, file_parent(k.cached_page), file_basename(k.cached_page));
-			downloads.add(item);
-
-			// add CHANGES to download list
-			item = new DownloadItem(k.changes_file_uri, file_parent(k.changes_file), file_basename(k.changes_file));
 			downloads.add(item);
 
 			// add kernel to kernel list
