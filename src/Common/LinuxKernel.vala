@@ -323,7 +323,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// download the main index.html listing all mainline kernels
-	private static bool download_index() throws Error {
+	private static void download_index() throws Error {
 		check_if_initialized();
 
 		dir_create(file_parent(index_page));
@@ -333,15 +333,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		status_line = msg.strip();
 
 		FileDownloader.synchronous(URI_KERNEL_UBUNTU_MAINLINE, CACHE_DIR + "/index.html");
-
-		if (file_exists(index_page)){
-			log_msg("OK");
-			return true;
-		}
-		else{
-			log_error("ERR");
-			return false;
-		}
 	}
 
 	// read the main index.html listing all kernels
