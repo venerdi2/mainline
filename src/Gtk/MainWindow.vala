@@ -430,14 +430,39 @@ public class MainWindow : Gtk.Window{
 				return;
 
 			if (! file_exists(selected_kernels[0].changes_file)) {
+				bool failed_or_cancelled = false;
+
+				FileDownloader.OnFailure handle_failure = (error) => {
+					// If it's already set by the "cancelled" signal, no need to display a dialog
+					if (failed_or_cancelled)
+						return;
+					failed_or_cancelled = true;
+					Gtk.MessageDialog msg = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, _("Error while downloading the changelog:\n") + error.message);
+					msg.response.connect((response_id) => msg.destroy());
+					msg.show();
+				};	
+
+				var cancellable = new Cancellable();
+				cancellable.cancelled.connect (() => {
+					failed_or_cancelled = true;
+				});
+
+				var progress_window = new ProgressWindow.with_parent(this, _("Downloading the changelog"), cancellable);
+
 				try {
-					FileDownloader.synchronous(selected_kernels[0].changes_file_uri, 
-									   		   selected_kernels[0].changes_file);
+					var changelog = new FileDownloader.asynchronous(selected_kernels[0].changes_file_uri, selected_kernels[0].changes_file, cancellable);
+					changelog.on_failure = handle_failure;
+					changelog.on_finished = () => progress_window.destroy();
+					changelog.start();
+
+					progress_window.show_all();
+					changelog.wait_until_finished();
 				} catch (Error e) {
-					Gtk.MessageDialog msg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, _("Error while downloading the changelog:\n") + e.message);
-					msg.response.connect ((response_id) => msg.destroy());
-					msg.show ();
+					handle_failure(e);
 				}
+				
+				if (failed_or_cancelled)
+					return;
 			}
 
 			xdg_open(selected_kernels[0].changes_file);
