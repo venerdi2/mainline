@@ -330,15 +330,9 @@ public class MainWindow : Gtk.Window{
 		btn_install = button;
 
 		button.clicked.connect(() => {
-			if (selected_kernels.size == 1){
-				kinst(selected_kernels[0]);
-			}
-			else if (selected_kernels.size > 1){
-				gtk_messagebox(_("Multiple Kernels Selected"),_("Select a single kernel to install"), this, true);
-			}
-			else{
-				gtk_messagebox(_("Not Selected"),_("Select the kernel to install"), this, true);
-			}
+			return_if_fail(selected_kernels.size == 1);
+			
+			kinst(selected_kernels[0]);
 		});
 
 		// uninstall
@@ -347,42 +341,38 @@ public class MainWindow : Gtk.Window{
 		btn_uninstall = button;
 
 		button.clicked.connect(() => {
-			if (selected_kernels.size == 0){
-				gtk_messagebox(_("Not Selected"),_("Select the kernels to uninstall"), this, true);
+			return_if_fail(selected_kernels.size > 0);
+							
+			var term = new TerminalWindow.with_parent(this, false, true);
+			string t_dir = create_tmp_dir();
+			string t_file = get_temp_file_path(t_dir)+".sh";
+
+			term.script_complete.connect(()=>{
+				term.allow_window_close();
+				file_delete(t_file);
+				dir_delete(t_dir);
+			});
+
+			term.destroy.connect(()=>{
+				this.present();
+				refresh_cache();
+				tv_refresh();
+			});
+
+			string names = "";
+			foreach(var kern in selected_kernels){
+				if (names.length > 0) names += ",";
+				names += "%s".printf(kern.version_main);
 			}
-			else if (selected_kernels.size > 0){
-				
-				var term = new TerminalWindow.with_parent(this, false, true);
-				string t_dir = create_tmp_dir();
-				string t_file = get_temp_file_path(t_dir)+".sh";
 
-				term.script_complete.connect(()=>{
-					term.allow_window_close();
-					file_delete(t_file);
-					dir_delete(t_dir);
-				});
+			string sh = BRANDING_SHORTNAME;
+			if (LOG_DEBUG) sh += " --debug";
+			sh += " --uninstall %s\n".printf(names)
+			+ "echo \n"
+			+ "echo '"+_("Close window to exit...")+"'\n";
 
-				term.destroy.connect(()=>{
-					this.present();
-					refresh_cache();
-					tv_refresh();
-				});
-
-				string names = "";
-				foreach(var kern in selected_kernels){
-					if (names.length > 0) names += ",";
-					names += "%s".printf(kern.version_main);
-				}
-
-				string sh = BRANDING_SHORTNAME;
-				if (LOG_DEBUG) sh += " --debug";
-				sh += " --uninstall %s\n".printf(names)
-				+ "echo \n"
-				+ "echo '"+_("Close window to exit...")+"'\n";
-
-				save_bash_script_temp(sh,t_file);
-				term.execute_script(t_file,t_dir);
-			}
+			save_bash_script_temp(sh,t_file);
+			term.execute_script(t_file,t_dir);
 		});
 
 		// uninstall-old
@@ -630,10 +620,7 @@ public class MainWindow : Gtk.Window{
 
 	public void kinst(LinuxKernel kern){
 		// check if installed
-		if (kern.is_installed){
-			gtk_messagebox(_("Already Installed"), _("This kernel is already installed."), this, true);
-			return;
-		}
+		return_if_fail(! kern.is_installed);
 
 		if (!can_reach_mainline_ppa())
 			return;
