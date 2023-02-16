@@ -47,7 +47,6 @@ public class ProgressWindow : Gtk.Window {
 
 	private string status_message;
 	private bool allow_cancel = false;
-	private bool allow_close = false;
 
 	// init
 
@@ -72,20 +71,7 @@ public class ProgressWindow : Gtk.Window {
 
 		App.cancelled = false;
 
-		this.delete_event.connect(close_window);
-
 		init_window();
-	}
-
-	private bool close_window(){
-		if (allow_close){
-			// allow window to close 
-			return false;
-		}
-		else{
-			// do not allow window to close 
-			return true;
-		}
 	}
 
 	public void init_window () {
