@@ -35,7 +35,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// static
 	
-	[CCode(cname="URI_KERNEL_UBUNTU_MAINLINE")] extern const string URI_KERNEL_UBUNTU_MAINLINE;
+	[CCode(cname="URI_KERNEL_UBUNTU_MAINLINE")]
+	public extern const string URI_KERNEL_UBUNTU_MAINLINE;
 
 	public static string CACHE_DIR;
 	public static string NATIVE_ARCH;
@@ -218,7 +219,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		bool refresh = false;
 		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
 		if (last_refreshed_date.compare(one_hour_before) < 0) refresh = true;
-		bool is_connected = check_internet_connectivity();
+		bool is_connected = Main.can_reach_mainline_ppa();
 		if (refresh) download_index();
 
 		// read main index.html

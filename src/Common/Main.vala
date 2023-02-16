@@ -299,4 +299,20 @@ public class Main : GLib.Object{
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
 	}
+
+	public static bool can_reach_mainline_ppa() {
+		if (App.skip_connection_check)
+			return true;
+
+		bool has_internet = true;
+		try {
+			var file = File.new_for_uri(LinuxKernel.URI_KERNEL_UBUNTU_MAINLINE);
+			file.query_info("*", FileQueryInfoFlags.NONE);
+		} catch (Error e) {
+			has_internet = false;
+		}
+
+		return has_internet;
+	}
+
 }

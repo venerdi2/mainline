@@ -388,7 +388,7 @@ public class AppConsole : GLib.Object {
 	}
 
 	public void check_if_internet_is_active(bool exit_app = true){
-		if (!check_internet_connectivity()){
+		if (!Main.can_reach_mainline_ppa()){
 			if (exit_app){
 				exit(1);
 			}

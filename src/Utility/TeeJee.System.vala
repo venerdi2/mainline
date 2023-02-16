@@ -28,22 +28,6 @@ namespace TeeJee.System{
 	using TeeJee.Misc;
 	using TeeJee.FileSystem;
 
-	// internet helpers ----------------------
-	public bool check_internet_connectivity(){
-
-		if (App.skip_connection_check) return true;
-
-		string std_err, std_out;
-		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+App.connect_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet 'https://kernel.ubuntu.com'";
-
-		int status = exec_sync(cmd, out std_out, out std_err);
-
-		if (std_err.length > 0) log_error(std_err);
-		if (status != 0) log_error(_("Internet connection is not active"));
-
-		return (status == 0);
-	}
-
 	// open -----------------------------
 
 	public void xdg_open (string file){

@@ -317,7 +317,7 @@ public class MainWindow : Gtk.Window{
 
 		button.clicked.connect(() => {
 
-			if (!check_internet_connectivity()){
+			if (!Main.can_reach_mainline_ppa()){
 				gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 				return;
 			}
@@ -521,7 +521,7 @@ public class MainWindow : Gtk.Window{
 
 	private void refresh_cache(){
 
-		if (!check_internet_connectivity()){
+		if (!Main.can_reach_mainline_ppa()){
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
 			return;
 		}
@@ -633,14 +633,13 @@ public class MainWindow : Gtk.Window{
 	}
 
 	public void kinst(LinuxKernel kern){
-
 		// check if installed
 		if (kern.is_installed){
 			gtk_messagebox(_("Already Installed"), _("This kernel is already installed."), this, true);
 			return;
 		}
 
-		if (!check_internet_connectivity()){
+		if (!Main.can_reach_mainline_ppa()){
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
 			return;
 		}
