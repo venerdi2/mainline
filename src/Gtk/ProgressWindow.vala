@@ -46,12 +46,12 @@ public class ProgressWindow : Gtk.Window {
 	private int def_height = 50;
 
 	private string status_message;
-	private bool allow_cancel = false;
+
+	private Cancellable? cancellable;
 
 	// init
 
-	public ProgressWindow.with_parent(Window parent, string message, bool allow_cancel = false) {
-
+	public ProgressWindow.with_parent(Window parent, string message, Cancellable? cancellable = null) {
 		set_transient_for(parent);
 		set_modal(true);
 		set_decorated(false);
@@ -67,9 +67,8 @@ public class ProgressWindow : Gtk.Window {
 		App.progress_total = 0;
 
 		this.status_message = message;
-		this.allow_cancel = allow_cancel;
 
-		App.cancelled = false;
+		this.cancellable = cancellable;
 
 		init_window();
 	}
@@ -130,15 +129,12 @@ public class ProgressWindow : Gtk.Window {
 		box.pack_start (button, false, false, 0);
 		btn_cancel = button;
 
-		button.clicked.connect(()=>{
-			App.cancelled = true;
+		button.clicked.connect(() => {
+			cancellable.cancel();
 			btn_cancel.sensitive = false;
 		});
 
 		show_all();
-
-		//btn_cancel.visible = allow_cancel;
-		btn_cancel.sensitive = allow_cancel;
 	}
 
 	// common

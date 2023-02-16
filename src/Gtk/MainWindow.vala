@@ -546,9 +546,14 @@ public class MainWindow : Gtk.Window{
 
 			return;
 		}
+		
+		var cancellable = new Cancellable();
+		cancellable.cancelled.connect (() => {
+			App.exit_app(1);
+		});
 
 		string message = _("Refreshing...");
-		var progress_window = new ProgressWindow.with_parent(this, message, true);
+		var progress_window = new ProgressWindow.with_parent(this, message, cancellable);
 		progress_window.show_all();
 
 		// TODO: Check if kernel.ubuntu.com is down
@@ -567,10 +572,6 @@ public class MainWindow : Gtk.Window{
 				return false;
 			});
 			timer_elapsed(timer, true);
-		}
-
-		if (App.cancelled){
-			App.exit_app(1);
 		}
 
 		App.status_line = LinuxKernel.status_line;
