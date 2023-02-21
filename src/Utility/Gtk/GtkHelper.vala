@@ -10,26 +10,6 @@ namespace TeeJee.GtkHelper{
 
 	using Gtk;
 
-	// messages ----------------------------------------
-
-	public void gtk_messagebox(
-		string title, string message, Gtk.Window? parent_win, bool is_error = false){
-
-		/* Shows a simple message box */
-
-		var type = Gtk.MessageType.INFO;
-		if (is_error){
-			type = Gtk.MessageType.ERROR;
-		}
-		else{
-			type = Gtk.MessageType.INFO;
-		}
-
-		var dlg = new CustomMessageDialog(title,message,type,parent_win, Gtk.ButtonsType.OK);
-		dlg.run();
-		dlg.destroy();
-	}
-
 	// icon ----------------------------------------------
 
 	public Gdk.Pixbuf? get_app_icon(int icon_size){
