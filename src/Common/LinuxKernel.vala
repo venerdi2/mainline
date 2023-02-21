@@ -193,7 +193,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		try {
 			cancelled = false;
-			var worker = new Thread<void>.try(null, () => query_thread(notifier));
+			var worker = new Thread<void>.try(null, () => {
+				try {
+					query_thread(notifier);
+				} catch (Error e) {
+					log_error (e.message);
+				}
+			});
 		
 			if (wait)
 				worker.join();
@@ -202,7 +208,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	private static void query_thread(owned Notifier? notifier) {
+	private static void query_thread(owned Notifier? notifier) throws Error {
 		App.progress_total = 1;
 		App.progress_count = 0;
 
@@ -242,7 +248,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.version_maj < highest_maj-App.show_prev_majors) continue;
 				if (App.hide_unstable && k.is_unstable) continue;
 			}
-			if (k.is_valid && !k.cached_page_exists) progress_total += 2;
+			if (k.is_valid && !k.cached_page_exists) progress_total += 1;
 			if (notifier != null) notifier(timer, ref count);
 		}
 
@@ -270,10 +276,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// add index.html to download list
 			var item = new DownloadItem(k.cached_page_uri, file_parent(k.cached_page), file_basename(k.cached_page));
-			downloads.add(item);
-
-			// add CHANGES to download list
-			item = new DownloadItem(k.changes_file_uri, file_parent(k.changes_file), file_basename(k.changes_file));
 			downloads.add(item);
 
 			// add kernel to kernel list
@@ -321,32 +323,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// download the main index.html listing all mainline kernels
-	private static bool download_index(){
+	private static void download_index() throws Error {
 		check_if_initialized();
 
 		dir_create(file_parent(index_page));
-		file_delete(index_page);
 
-		var item = new DownloadItem(URI_KERNEL_UBUNTU_MAINLINE, CACHE_DIR, "index.html");
-		var mgr = new DownloadTask();
-		mgr.add_to_queue(item);
-		mgr.status_in_kb = true;
-		mgr.execute();
-			
 		var msg = _("Fetching index from kernel.ubuntu.com...");
 		log_msg(msg);
 		status_line = msg.strip();
 
-		while (mgr.is_running()) sleep(500);
-
-		if (file_exists(index_page)){
-			log_msg("OK");
-			return true;
-		}
-		else{
-			log_error("ERR");
-			return false;
-		}
+		FileDownloader.synchronous(URI_KERNEL_UBUNTU_MAINLINE, CACHE_DIR + "/index.html");
 	}
 
 	// read the main index.html listing all kernels

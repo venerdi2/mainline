@@ -66,7 +66,6 @@ public class Main : GLib.Object{
 	public string status_line = "";
 	public int64 progress_total = 0;
 	public int64 progress_count = 0;
-	public bool cancelled = false;
 
 	// state flags ----------
 	
