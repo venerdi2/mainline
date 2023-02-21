@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 10:04-0500\n"
+"POT-Creation-Date: 2023-02-21 10:29-0500\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -13,106 +13,104 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: src/Common/LinuxKernel.vala:87
+#: src/Common/LinuxKernel.vala:88
 msgid "Distribution"
 msgstr "Dağıtım"
 
-#: src/Common/LinuxKernel.vala:101
+#: src/Common/LinuxKernel.vala:102
 msgid "Architecture"
 msgstr "Sistem mimarisi"
 
-#: src/Common/LinuxKernel.vala:299
+#: src/Common/LinuxKernel.vala:300
 msgid "Fetching index..."
 msgstr "İçerik dizini alınıyor..."
 
-#: src/Common/LinuxKernel.vala:331
+#: src/Common/LinuxKernel.vala:332
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "İçerik dizini kernel.ubuntu.com alanından alınıyor..."
 
-#: src/Common/LinuxKernel.vala:578
+#: src/Common/LinuxKernel.vala:579
 msgid "Could not find running kernel in list!"
 msgstr "Çalışan sürüm listede bulunamadı!"
 
-#: src/Common/LinuxKernel.vala:584
+#: src/Common/LinuxKernel.vala:585
 msgid "Could not find any kernels to uninstall"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
-#: src/Common/LinuxKernel.vala:593
+#: src/Common/LinuxKernel.vala:594
 msgid "The following kernels will be uninstalled:"
 msgstr "Aşağıdaki çekirdekler kaldırılacak:"
 
-#: src/Common/LinuxKernel.vala:600
+#: src/Common/LinuxKernel.vala:601
 msgid "Continue ?"
 msgstr "Devam edilsin mi?"
 
-#: src/Common/LinuxKernel.vala:626 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:627 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Son güncelleme"
 
 # Point burada point release anlamında kullanılıyor. Örneğin 5.10.x sayısının en sonundaki x rakamı point release/nokta sürüm oluyor.
-#: src/Common/LinuxKernel.vala:637 src/Console/AppConsole.vala:321
+#: src/Common/LinuxKernel.vala:638 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Son nokta güncellemesi"
 
-#: src/Common/LinuxKernel.vala:645 src/Console/AppConsole.vala:326
+#: src/Common/LinuxKernel.vala:646 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
-#: src/Common/LinuxKernel.vala:655
+#: src/Common/LinuxKernel.vala:656
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
 
-#: src/Common/LinuxKernel.vala:916
+#: src/Common/LinuxKernel.vala:917
 msgid "Packages Available"
 msgstr "Mevcut Paketler"
 
-#: src/Common/LinuxKernel.vala:924
+#: src/Common/LinuxKernel.vala:925
 msgid "Packages Installed"
 msgstr "Kurulu Paketler"
 
-#: src/Common/LinuxKernel.vala:1004
+#: src/Common/LinuxKernel.vala:1005
 msgid "Available Kernels"
 msgstr "Mevcut Çekirdekler"
 
-#: src/Common/LinuxKernel.vala:1011 src/Gtk/MainWindow.vala:186
+#: src/Common/LinuxKernel.vala:1012 src/Gtk/MainWindow.vala:186
 msgid "Installed"
 msgstr "Kurulu"
 
-#: src/Common/LinuxKernel.vala:1011 src/Gtk/MainWindow.vala:186
-#: src/Gtk/MainWindow.vala:655 src/Gtk/MainWindow.vala:669
+#: src/Common/LinuxKernel.vala:1012 src/Gtk/MainWindow.vala:186
+#: src/Gtk/MainWindow.vala:641 src/Gtk/MainWindow.vala:655
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/Common/LinuxKernel.vala:1048
+#: src/Common/LinuxKernel.vala:1049
 msgid "Downloading"
 msgstr "İndiriliyor"
 
-#: src/Common/LinuxKernel.vala:1067
-#: src/Utility/Gtk/CustomMessageDialog.vala:149
-#: src/Utility/Gtk/CustomMessageDialog.vala:153
+#: src/Common/LinuxKernel.vala:1068
 msgid "OK"
 msgstr "Tamam"
 
-#: src/Common/LinuxKernel.vala:1072
+#: src/Common/LinuxKernel.vala:1073
 msgid "ERROR"
 msgstr "HATA"
 
-#: src/Common/LinuxKernel.vala:1086 src/Gtk/MainWindow.vala:677
+#: src/Common/LinuxKernel.vala:1087
 msgid "This kernel is already installed."
 msgstr "Bu çekirdek zaten kurulu."
 
-#: src/Common/LinuxKernel.vala:1112
+#: src/Common/LinuxKernel.vala:1113
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Kurulum tamamlandı. Yeni çekirdeği kullanmak için yeniden başlatma gerekiyor."
 
-#: src/Common/LinuxKernel.vala:1115
+#: src/Common/LinuxKernel.vala:1116
 msgid "Installation completed with errors"
 msgstr "Kurulum hatalarla tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1130
+#: src/Common/LinuxKernel.vala:1131
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -120,19 +118,19 @@ msgstr ""
 "Seçilen çekirdek şu anda çalışıyor ve kaldırılamaz.\n"
 " Bunu kaldırmadan önce başka bir çekirdek yükleyin."
 
-#: src/Common/LinuxKernel.vala:1135
+#: src/Common/LinuxKernel.vala:1136
 msgid "Preparing to uninstall selected kernels"
 msgstr "Seçilen çekirdekleri kaldırmaya hazırlanıyor"
 
-#: src/Common/LinuxKernel.vala:1166 src/Common/LinuxKernel.vala:1213
+#: src/Common/LinuxKernel.vala:1167 src/Common/LinuxKernel.vala:1214
 msgid "Un-install completed"
 msgstr "Kaldırma tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1169 src/Common/LinuxKernel.vala:1216
+#: src/Common/LinuxKernel.vala:1170 src/Common/LinuxKernel.vala:1217
 msgid "Un-install completed with errors"
 msgstr "Kaldırma hatalarla tamamlandı"
 
-#: src/Common/LinuxKernel.vala:1182
+#: src/Common/LinuxKernel.vala:1183
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -287,7 +285,7 @@ msgid "Kernel %s Available"
 msgstr "Çekirdek %s Kullanılabilir"
 
 #: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
-#: src/Gtk/MainWindow.vala:330
+#: src/Gtk/MainWindow.vala:328
 msgid "Install"
 msgstr "Kur"
 
@@ -311,103 +309,73 @@ msgstr "Durum"
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/Gtk/MainWindow.vala:321 src/Utility/TeeJee.System.vala:42
-msgid "Internet connection is not active"
-msgstr "İnternet bağlantısı aktif değil"
-
-#: src/Gtk/MainWindow.vala:321 src/Gtk/MainWindow.vala:562
-#: src/Gtk/MainWindow.vala:682
-msgid "No Internet"
-msgstr "İnternet Yok"
-
 #: src/Gtk/MainWindow.vala:339
-msgid "Multiple Kernels Selected"
-msgstr "Birden Fazla Çekirdek Seçildi"
-
-#: src/Gtk/MainWindow.vala:339
-msgid "Select a single kernel to install"
-msgstr "Kurulum için tek çekirdek seçin"
-
-#: src/Gtk/MainWindow.vala:342 src/Gtk/MainWindow.vala:353
-msgid "Not Selected"
-msgstr "Seçilmedi"
-
-#: src/Gtk/MainWindow.vala:342
-msgid "Select the kernel to install"
-msgstr "Kurulum için çekirdek seçin"
-
-#: src/Gtk/MainWindow.vala:347
 msgid "Uninstall"
 msgstr "Kaldır"
 
-#: src/Gtk/MainWindow.vala:353
-msgid "Select the kernels to uninstall"
-msgstr "Kaldırmak için çekirdek seçin"
-
-#: src/Gtk/MainWindow.vala:383 src/Gtk/MainWindow.vala:417
-#: src/Gtk/MainWindow.vala:714
+#: src/Gtk/MainWindow.vala:372 src/Gtk/MainWindow.vala:405
+#: src/Gtk/MainWindow.vala:694
 msgid "Close window to exit..."
 msgstr "Çıkış için pencereyi kapat..."
 
-#: src/Gtk/MainWindow.vala:391
+#: src/Gtk/MainWindow.vala:379
 msgid "Uninstall Old"
 msgstr "Eskileri Kaldır"
 
-#: src/Gtk/MainWindow.vala:392
+#: src/Gtk/MainWindow.vala:380
 msgid "Uninstall kernels older than running kernel"
 msgstr "Çalışan çekirdekten daha eski çekirdekleri kaldır"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:412
 msgid "Changes"
 msgstr "Değişiklikler"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:428
 msgid "Error while downloading the changelog:\n"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:450
+#: src/Gtk/MainWindow.vala:438
 #, fuzzy
 msgid "Downloading the changelog"
 msgstr "İndiriliyor"
 
-#: src/Gtk/MainWindow.vala:472 src/Gtk/SettingsDialog.vala:50
+#: src/Gtk/MainWindow.vala:460 src/Gtk/SettingsDialog.vala:50
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/Gtk/MainWindow.vala:495
+#: src/Gtk/MainWindow.vala:483
 msgid "About"
 msgstr "Hakkında"
 
-#: src/Gtk/MainWindow.vala:540
+#: src/Gtk/MainWindow.vala:528
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
-#: src/Gtk/MainWindow.vala:541
+#: src/Gtk/MainWindow.vala:529
 msgid "Forked"
 msgstr "Çatallandı"
 
-#: src/Gtk/MainWindow.vala:541
+#: src/Gtk/MainWindow.vala:529
 msgid "Original"
 msgstr "Özgün"
 
-#: src/Gtk/MainWindow.vala:562 src/Gtk/MainWindow.vala:682
-msgid "Internet connection is not active."
-msgstr "İnternet bağlantısı aktif değil."
-
-#: src/Gtk/MainWindow.vala:580
+#: src/Gtk/MainWindow.vala:566
 msgid "Refreshing..."
 msgstr "Yenileniyor..."
 
-#: src/Gtk/MainWindow.vala:665
+#: src/Gtk/MainWindow.vala:651
 msgid "available"
 msgstr "mevcut"
 
-#: src/Gtk/MainWindow.vala:677
-msgid "Already Installed"
-msgstr "Zaten Kurulu"
+#: src/Gtk/MainWindow.vala:709
+msgid "No Internet"
+msgstr "İnternet Yok"
+
+#: src/Gtk/MainWindow.vala:710
+msgid "Internet connection is not active."
+msgstr "İnternet bağlantısı aktif değil."
 
 #: src/Gtk/ProgressWindow.vala:127 src/Gtk/TerminalWindow.vala:149
-#: src/Utility/Gtk/CustomMessageDialog.vala:154
 msgid "Cancel"
 msgstr "İptal Et"
 
@@ -511,15 +479,7 @@ msgstr "Belgelendirenler"
 msgid "Third Party Inclusions"
 msgstr "Üçüncü Taraf Eklemeler"
 
-#: src/Utility/Gtk/CustomMessageDialog.vala:158
-msgid "Yes"
-msgstr "Evet"
-
-#: src/Utility/Gtk/CustomMessageDialog.vala:159
-msgid "No"
-msgstr "Hayır"
-
-#: src/Utility/Gtk/GtkHelper.vala:59
+#: src/Utility/Gtk/GtkHelper.vala:39
 msgid "Missing Icon"
 msgstr "Eksik Simge"
 
