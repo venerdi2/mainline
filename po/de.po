@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 10:04-0500\n"
-"PO-Revision-Date: 2018-01-03 02:03-0600\n"
-"Last-Translator: Tobias W <Tobiasw763@gmail.com>\n"
+"POT-Creation-Date: 2023-02-02 18:20-0500\n"
+"PO-Revision-Date: 2023-02-20 18:40+0100\n"
+"Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
@@ -27,7 +27,7 @@ msgstr "Index abrufen..."
 
 #: src/Common/LinuxKernel.vala:331
 msgid "Fetching index from kernel.ubuntu.com..."
-msgstr "Holt den Index von kernel.ubuntu.com..."
+msgstr "Hole Index von kernel.ubuntu.com..."
 
 #: src/Common/LinuxKernel.vala:578
 msgid "Could not find running kernel in list!"
@@ -69,11 +69,11 @@ msgstr "Verfügbare Pakete"
 
 #: src/Common/LinuxKernel.vala:924
 msgid "Packages Installed"
-msgstr "Installierte Packete"
+msgstr "Installierte Pakete"
 
 #: src/Common/LinuxKernel.vala:1004
 msgid "Available Kernels"
-msgstr "Verfügbare Kernels"
+msgstr "Verfügbare Kernel"
 
 #: src/Common/LinuxKernel.vala:1011 src/Gtk/MainWindow.vala:186
 msgid "Installed"
@@ -86,7 +86,7 @@ msgstr "Läuft"
 
 #: src/Common/LinuxKernel.vala:1048
 msgid "Downloading"
-msgstr "Downloaded"
+msgstr "Herunterladen"
 
 #: src/Common/LinuxKernel.vala:1067
 #: src/Utility/Gtk/CustomMessageDialog.vala:149
@@ -249,7 +249,7 @@ msgstr "Unbekannte Option"
 #: src/Console/AppConsole.vala:171 src/Console/AppConsole.vala:265
 #: src/Console/AppConsole.vala:294
 msgid "Run"
-msgstr "Laufen"
+msgstr "Ausführen"
 
 #: src/Console/AppConsole.vala:171
 msgid "to list all options"
@@ -326,7 +326,7 @@ msgstr "Kein Internet"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Multiple Kernels Selected"
-msgstr "Mehrere Kernels Ausgewählt"
+msgstr "Mehrere Kernel ausgewählt"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Select a single kernel to install"
@@ -334,7 +334,7 @@ msgstr "Wählen Sie einen einzelnen Kernel zur Installation aus"
 
 #: src/Gtk/MainWindow.vala:342 src/Gtk/MainWindow.vala:353
 msgid "Not Selected"
-msgstr "Nichts Ausgwewählt"
+msgstr "Nichts ausgewählt"
 
 #: src/Gtk/MainWindow.vala:342
 msgid "Select the kernel to install"
@@ -342,7 +342,7 @@ msgstr "Wählen Sie den zu installierenden Kernel"
 
 #: src/Gtk/MainWindow.vala:347
 msgid "Uninstall"
-msgstr "Deinstallieren Sie"
+msgstr "Deinstallieren"
 
 #: src/Gtk/MainWindow.vala:353
 msgid "Select the kernels to uninstall"
@@ -355,7 +355,7 @@ msgstr "Fenster schließen zum Verlassen..."
 
 #: src/Gtk/MainWindow.vala:391
 msgid "Uninstall Old"
-msgstr "Alt deinstallieren"
+msgstr "Alte deinstallieren"
 
 #: src/Gtk/MainWindow.vala:392
 msgid "Uninstall kernels older than running kernel"
@@ -388,11 +388,11 @@ msgstr "Kernel-Upgrade-Dienstprogramm für Ubuntu-basierte Distributionen"
 
 #: src/Gtk/MainWindow.vala:541
 msgid "Forked"
-msgstr "Gegabelte"
+msgstr "Forked"
 
 #: src/Gtk/MainWindow.vala:541
 msgid "Original"
-msgstr "Orginal"
+msgstr "Original"
 
 #: src/Gtk/MainWindow.vala:562 src/Gtk/MainWindow.vala:682
 msgid "Internet connection is not active."
@@ -400,7 +400,7 @@ msgstr "Die Internetverbindung ist nicht aktiv."
 
 #: src/Gtk/MainWindow.vala:580
 msgid "Refreshing..."
-msgstr "Auffrischen"
+msgstr "Auffrischen..."
 
 #: src/Gtk/MainWindow.vala:665
 msgid "available"
@@ -408,7 +408,7 @@ msgstr "Verfügbar"
 
 #: src/Gtk/MainWindow.vala:677
 msgid "Already Installed"
-msgstr "Bereits Installiert"
+msgstr "Bereits installiert"
 
 #: src/Gtk/ProgressWindow.vala:127 src/Gtk/TerminalWindow.vala:149
 #: src/Utility/Gtk/CustomMessageDialog.vala:154
@@ -437,19 +437,19 @@ msgstr "Prüfen Sie jede"
 
 #: src/Gtk/SettingsDialog.vala:142
 msgid "Hour(s)"
-msgstr "Stunden"
+msgstr "Stunde(n)"
 
 #: src/Gtk/SettingsDialog.vala:144
 msgid "Day(s)"
-msgstr "Tage"
+msgstr "Tag(e)"
 
 #: src/Gtk/SettingsDialog.vala:146
 msgid "Week(s)"
-msgstr "Wochen"
+msgstr "Woche(n)"
 
 #: src/Gtk/SettingsDialog.vala:149
 msgid "Second(s)"
-msgstr "Sekunden"
+msgstr "Sekunde(n)"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Display"
@@ -537,7 +537,7 @@ msgstr "Fehler beim Löschen der Datei"
 
 #: src/Utility/TeeJee.FileSystem.vala:96
 msgid "Failed to read file"
-msgstr "Fehlere bei lesesen der Datei"
+msgstr "Fehler beim lesen der Datei"
 
 #: src/Utility/TeeJee.FileSystem.vala:123
 msgid "File saved"
@@ -582,8 +582,8 @@ msgstr "Gelöscht"
 
 #: src/Utility/TeeJee.Logging.vala:59
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/Utility/TeeJee.Logging.vala:84
 msgid "D"
-msgstr ""
+msgstr "D"
