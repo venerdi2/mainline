@@ -1097,24 +1097,30 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			var flist = "";
 
+			// full paths instead of env -C
+			// https://github.com/bkw777/mainline/issues/128
 			foreach(string file_name in deb_list.keys){
-				flist += " '%s'".printf(file_name);
-				log_msg("kinst() flist += %s".printf(file_name));
+				flist += " '%s/%s'".printf(cache_subdir,file_name);
+				log_msg("kinst() flist += %s/%s".printf(cache_subdir,file_name));
 			}
 
-			string cmd = "cd "+cache_subdir
-			+ " && pkexec env -C "+cache_subdir+" DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install "+flist
-			+ " && rm "+flist;
+			string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install "+flist;
 
 			status = Posix.system(cmd);
 			ok = (status == 0);
 
-			if (ok){
+			if (ok) {
 				log_msg(_("Installation completed. A reboot is required to use the new kernel."));
 			}
-			else{
+			else {
 				log_error(_("Installation completed with errors"));
 			}
+
+			foreach(string file_name in deb_list.keys){
+				flist = "%s/%s".printf(cache_subdir,file_name);
+				file_delete(flist);
+			}
+
 		}
 
 		return ok;

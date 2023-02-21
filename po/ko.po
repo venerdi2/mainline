@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 10:29-0500\n"
+"POT-Creation-Date: 2023-02-21 12:35-0500\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -108,7 +108,7 @@ msgstr "설치가 완료되었습닌다. 새 커널을 사용하려면 시스템
 msgid "Installation completed with errors"
 msgstr "오류가 있으나 설치가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1137
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -116,19 +116,19 @@ msgstr ""
 "선택된 커널은 현재 사용 중이므로 삭제할 수 없습니다.\n"
 " 이 커널을 삭제하려면 다른 커널을 먼저 설치하세요."
 
-#: src/Common/LinuxKernel.vala:1136
+#: src/Common/LinuxKernel.vala:1142
 msgid "Preparing to uninstall selected kernels"
 msgstr "선택한 커널을 삭제하기 위해 준비중입니다"
 
-#: src/Common/LinuxKernel.vala:1167 src/Common/LinuxKernel.vala:1214
+#: src/Common/LinuxKernel.vala:1173 src/Common/LinuxKernel.vala:1220
 msgid "Un-install completed"
 msgstr "삭제가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1170 src/Common/LinuxKernel.vala:1217
+#: src/Common/LinuxKernel.vala:1176 src/Common/LinuxKernel.vala:1223
 msgid "Un-install completed with errors"
 msgstr "오류가 있으나 삭제가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1183
+#: src/Common/LinuxKernel.vala:1189
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."

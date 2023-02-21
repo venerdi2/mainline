@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 10:29-0500\n"
+"POT-Creation-Date: 2023-02-21 12:35-0500\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Installation completed with errors"
 msgstr "Installation terminée avec des erreurs"
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1137
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
@@ -121,20 +121,20 @@ msgstr ""
 "Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
 " Installez un autre noyau avant de retirer celui-ci."
 
-#: src/Common/LinuxKernel.vala:1136
+#: src/Common/LinuxKernel.vala:1142
 #, fuzzy
 msgid "Preparing to uninstall selected kernels"
 msgstr "Préparation à la suppression des noyaux sélectionnés"
 
-#: src/Common/LinuxKernel.vala:1167 src/Common/LinuxKernel.vala:1214
+#: src/Common/LinuxKernel.vala:1173 src/Common/LinuxKernel.vala:1220
 msgid "Un-install completed"
 msgstr "Désinstallation complète"
 
-#: src/Common/LinuxKernel.vala:1170 src/Common/LinuxKernel.vala:1217
+#: src/Common/LinuxKernel.vala:1176 src/Common/LinuxKernel.vala:1223
 msgid "Un-install completed with errors"
 msgstr "Désinstallation terminée avec des erreurs"
 
-#: src/Common/LinuxKernel.vala:1183
+#: src/Common/LinuxKernel.vala:1189
 #, fuzzy
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"

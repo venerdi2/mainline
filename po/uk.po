@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 10:29-0500\n"
+"POT-Creation-Date: 2023-02-21 12:35-0500\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Installation completed with errors"
 msgstr "Установка завершена з помилками"
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1137
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -117,19 +117,19 @@ msgstr ""
 "Це ядро зараз працює і не може бути видалено. \n"
 "Встановіть інше ядро, перш ніж видаляти його."
 
-#: src/Common/LinuxKernel.vala:1136
+#: src/Common/LinuxKernel.vala:1142
 msgid "Preparing to uninstall selected kernels"
 msgstr "Підготовка до видалення вибраних ядер"
 
-#: src/Common/LinuxKernel.vala:1167 src/Common/LinuxKernel.vala:1214
+#: src/Common/LinuxKernel.vala:1173 src/Common/LinuxKernel.vala:1220
 msgid "Un-install completed"
 msgstr "Видалення завершено"
 
-#: src/Common/LinuxKernel.vala:1170 src/Common/LinuxKernel.vala:1217
+#: src/Common/LinuxKernel.vala:1176 src/Common/LinuxKernel.vala:1223
 msgid "Un-install completed with errors"
 msgstr "Видалення завершено з помилками"
 
-#: src/Common/LinuxKernel.vala:1183
+#: src/Common/LinuxKernel.vala:1189
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
