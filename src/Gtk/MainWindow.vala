@@ -136,7 +136,7 @@ public class MainWindow : Gtk.Window{
 
 		tv.get_selection().changed.connect(tv_selection_changed);
 
-		var scrollwin = new ScrolledWindow(tv.get_hadjustment(), tv.get_vadjustment());
+		var scrollwin = new ScrolledWindow(((Gtk.Scrollable) tv).get_hadjustment(), ((Gtk.Scrollable) tv).get_vadjustment());
 		scrollwin.set_shadow_type (ShadowType.ETCHED_IN);
 		scrollwin.add (tv);
 		hbox_list.add(scrollwin);
