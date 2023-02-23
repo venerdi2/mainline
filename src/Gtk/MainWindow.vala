@@ -323,6 +323,7 @@ public class MainWindow : Gtk.Window{
 			if (!check_internet_connectivity()){
 				gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 				return;
+			}
 
 			refresh_cache();
 			tv_refresh();
@@ -516,6 +517,7 @@ public class MainWindow : Gtk.Window{
 		if (!check_internet_connectivity()){
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
 			return;
+		}
 
 		if (App.command != "list"){
 
@@ -631,6 +633,7 @@ public class MainWindow : Gtk.Window{
 		if (!check_internet_connectivity()){
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
 			return;
+		}
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
@@ -664,25 +667,6 @@ public class MainWindow : Gtk.Window{
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-	}
-
-	private bool can_reach_mainline_ppa() {
-		bool result = Main.can_reach_mainline_ppa();
-		
-		if (! Main.can_reach_mainline_ppa()) {
-			Gtk.MessageDialog msg = new Gtk.MessageDialog(this,
-														  Gtk.DialogFlags.MODAL,
-														  Gtk.MessageType.ERROR,
-														  Gtk.ButtonsType.OK,
-														  "%s\n\n%s".printf(
-															_("No Internet"),
-															_("Internet connection is not active.")
-														  ));
-			msg.response.connect((response_id) => msg.destroy());
-			msg.show();
-		}
-
-		return result;
 	}
 
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 15:16-0500\n"
+"POT-Creation-Date: 2023-02-23 17:56-0500\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
@@ -11,104 +11,105 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Common/LinuxKernel.vala:88
+#: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
 msgstr "Distribuzione"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:101
 msgid "Architecture"
 msgstr "Architettura"
 
-#: src/Common/LinuxKernel.vala:298
+#: src/Common/LinuxKernel.vala:290
 msgid "Fetching index..."
 msgstr "Recupero indice in corso..."
 
-#: src/Common/LinuxKernel.vala:337
+#: src/Common/LinuxKernel.vala:329
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Recupero dell'indice da kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:593
+#: src/Common/LinuxKernel.vala:585
 msgid "Could not find running kernel in list!"
 msgstr "Impossibile trovare il kernel in esecuzione nell'elenco!"
 
-#: src/Common/LinuxKernel.vala:599
+#: src/Common/LinuxKernel.vala:591
 msgid "Could not find any kernels to uninstall"
 msgstr "Impossibile trovare alcun kernel da rimuovere"
 
-#: src/Common/LinuxKernel.vala:608
+#: src/Common/LinuxKernel.vala:600
 msgid "The following kernels will be uninstalled:"
 msgstr "I seguenti kernel verranno rimossi:"
 
-#: src/Common/LinuxKernel.vala:615
+#: src/Common/LinuxKernel.vala:607
 msgid "Continue ?"
 msgstr "Continuare ?"
 
-#: src/Common/LinuxKernel.vala:641 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:633 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Common/LinuxKernel.vala:652 src/Console/AppConsole.vala:321
+#: src/Common/LinuxKernel.vala:644 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del punto"
 
-#: src/Common/LinuxKernel.vala:660 src/Console/AppConsole.vala:326
+#: src/Common/LinuxKernel.vala:652 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
-#: src/Common/LinuxKernel.vala:670
+#: src/Common/LinuxKernel.vala:662
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
 
-#: src/Common/LinuxKernel.vala:931
+#: src/Common/LinuxKernel.vala:912
 msgid "Packages Available"
 msgstr "Pacchetti disponibili"
 
-#: src/Common/LinuxKernel.vala:939
+#: src/Common/LinuxKernel.vala:920
 msgid "Packages Installed"
 msgstr "Pacchetti installati"
 
-#: src/Common/LinuxKernel.vala:1019
+#: src/Common/LinuxKernel.vala:1000
 msgid "Available Kernels"
 msgstr "Kernel disponibili"
 
-#: src/Common/LinuxKernel.vala:1026 src/Gtk/MainWindow.vala:189
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:189
 msgid "Installed"
 msgstr "Installato"
 
-#: src/Common/LinuxKernel.vala:1026 src/Gtk/MainWindow.vala:189
-#: src/Gtk/MainWindow.vala:606 src/Gtk/MainWindow.vala:620
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:189
+#: src/Gtk/MainWindow.vala:610 src/Gtk/MainWindow.vala:624
 msgid "Running"
 msgstr "In esecuzione"
 
-#: src/Common/LinuxKernel.vala:1063
+#: src/Common/LinuxKernel.vala:1044
 msgid "Downloading"
 msgstr "Download in corso"
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1063 src/Gtk/CustomMessageDialog.vala:150
+#: src/Gtk/CustomMessageDialog.vala:154
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1068
 msgid "ERROR"
 msgstr "ERRORE"
 
-#: src/Common/LinuxKernel.vala:1101
+#: src/Common/LinuxKernel.vala:1082
 msgid "This kernel is already installed."
 msgstr "Questo kernel è già installato"
 
-#: src/Common/LinuxKernel.vala:1127
+#: src/Common/LinuxKernel.vala:1108
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Installazione completata. È necessario riavviare per utilizzare ilnuovo "
 "kernel."
 
-#: src/Common/LinuxKernel.vala:1130
+#: src/Common/LinuxKernel.vala:1111
 msgid "Installation completed with errors"
 msgstr "Installazione completata con errori"
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1132
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -116,19 +117,19 @@ msgstr ""
 "Il kernel selezionato è attualmente in esecuzione e non può essere rimosso.\n"
 "Installa un altro kernel prima di rimuovere questo."
 
-#: src/Common/LinuxKernel.vala:1156
+#: src/Common/LinuxKernel.vala:1137
 msgid "Preparing to uninstall selected kernels"
 msgstr "Preparazione per rimuovere i kernel selezionati"
 
-#: src/Common/LinuxKernel.vala:1187 src/Common/LinuxKernel.vala:1234
+#: src/Common/LinuxKernel.vala:1168 src/Common/LinuxKernel.vala:1215
 msgid "Un-install completed"
 msgstr "Disinstallazione completata"
 
-#: src/Common/LinuxKernel.vala:1190 src/Common/LinuxKernel.vala:1237
+#: src/Common/LinuxKernel.vala:1171 src/Common/LinuxKernel.vala:1218
 msgid "Un-install completed with errors"
 msgstr "Disinstallazione completata con errori"
 
-#: src/Common/LinuxKernel.vala:1203
+#: src/Common/LinuxKernel.vala:1184
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -285,7 +286,7 @@ msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
 #: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Install"
 msgstr "Installa"
 
@@ -296,6 +297,19 @@ msgstr "Stampa le informazioni di debug"
 #: src/Gtk/AppGtk.vala:157
 msgid "Show all options"
 msgstr "Mostra tutte le opzioni"
+
+#: src/Gtk/CustomMessageDialog.vala:155 src/Gtk/ProgressWindow.vala:142
+#: src/Gtk/TerminalWindow.vala:148
+msgid "Cancel"
+msgstr "Cancella"
+
+#: src/Gtk/CustomMessageDialog.vala:159
+msgid "Yes"
+msgstr ""
+
+#: src/Gtk/CustomMessageDialog.vala:160
+msgid "No"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:146
 msgid "Kernel"
@@ -309,66 +323,68 @@ msgstr "Stato"
 msgid "Refresh"
 msgstr "Aggiorna"
 
-#: src/Gtk/MainWindow.vala:342
-msgid "Uninstall"
-msgstr "Disinstalla"
+#: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
+#, fuzzy
+msgid "Internet connection is not active"
+msgstr "La connessione Internet non è attiva."
 
-#: src/Gtk/MainWindow.vala:375 src/Gtk/MainWindow.vala:408
-#: src/Gtk/MainWindow.vala:659
-msgid "Close window to exit..."
-msgstr "Chiudere la finestra per uscire..."
-
-#: src/Gtk/MainWindow.vala:382
-msgid "Uninstall Old"
-msgstr "Disinstalla i vecchi"
-
-#: src/Gtk/MainWindow.vala:383
-msgid "Uninstall kernels older than running kernel"
-msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
-
-#: src/Gtk/MainWindow.vala:415
-msgid "Changes"
-msgstr "Modifiche"
-
-#: src/Gtk/MainWindow.vala:426 src/Gtk/SettingsDialog.vala:50
-msgid "Settings"
-msgstr "Impostazioni"
-
-#: src/Gtk/MainWindow.vala:449
-msgid "About"
-msgstr "Informazioni"
-
-#: src/Gtk/MainWindow.vala:494
-msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "Utilità di aggiornamento del kernel per distribuzioni basate su Ubuntu"
-
-#: src/Gtk/MainWindow.vala:495
-msgid "Forked"
-msgstr "Forked"
-
-#: src/Gtk/MainWindow.vala:495
-msgid "Original"
-msgstr "Originale"
-
-#: src/Gtk/MainWindow.vala:527
-msgid "Refreshing..."
-msgstr "Aggiornamento..."
-
-#: src/Gtk/MainWindow.vala:616
-msgid "available"
-msgstr "disponibile"
-
-#: src/Gtk/MainWindow.vala:674
+#: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:518
+#: src/Gtk/MainWindow.vala:634
 msgid "No Internet"
 msgstr "Nessuna connessione internet"
 
-#: src/Gtk/MainWindow.vala:675
+#: src/Gtk/MainWindow.vala:344
+msgid "Uninstall"
+msgstr "Disinstalla"
+
+#: src/Gtk/MainWindow.vala:377 src/Gtk/MainWindow.vala:410
+#: src/Gtk/MainWindow.vala:666
+msgid "Close window to exit..."
+msgstr "Chiudere la finestra per uscire..."
+
+#: src/Gtk/MainWindow.vala:384
+msgid "Uninstall Old"
+msgstr "Disinstalla i vecchi"
+
+#: src/Gtk/MainWindow.vala:385
+msgid "Uninstall kernels older than running kernel"
+msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
+
+#: src/Gtk/MainWindow.vala:417
+msgid "Changes"
+msgstr "Modifiche"
+
+#: src/Gtk/MainWindow.vala:428 src/Gtk/SettingsDialog.vala:50
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: src/Gtk/MainWindow.vala:451
+msgid "About"
+msgstr "Informazioni"
+
+#: src/Gtk/MainWindow.vala:496
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr "Utilità di aggiornamento del kernel per distribuzioni basate su Ubuntu"
+
+#: src/Gtk/MainWindow.vala:497
+msgid "Forked"
+msgstr "Forked"
+
+#: src/Gtk/MainWindow.vala:497
+msgid "Original"
+msgstr "Originale"
+
+#: src/Gtk/MainWindow.vala:518 src/Gtk/MainWindow.vala:634
 msgid "Internet connection is not active."
 msgstr "La connessione Internet non è attiva."
 
-#: src/Gtk/ProgressWindow.vala:142 src/Gtk/TerminalWindow.vala:149
-msgid "Cancel"
-msgstr "Cancella"
+#: src/Gtk/MainWindow.vala:531
+msgid "Refreshing..."
+msgstr "Aggiornamento..."
+
+#: src/Gtk/MainWindow.vala:620
+msgid "available"
+msgstr "disponibile"
 
 #: src/Gtk/SettingsDialog.vala:60
 msgid "Notification"
@@ -434,7 +450,7 @@ msgstr "secondi"
 msgid "Max concurrent downloads"
 msgstr "Numero massimo di download simultanei"
 
-#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
+#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
 msgstr "Chiudi"
 
@@ -470,7 +486,7 @@ msgstr "Documentatori"
 msgid "Third Party Inclusions"
 msgstr "Inclusioni di terze parti"
 
-#: src/Utility/Gtk/GtkHelper.vala:39
+#: src/Utility/Gtk/GtkHelper.vala:59
 msgid "Missing Icon"
 msgstr "Icona mancante"
 
@@ -478,7 +494,7 @@ msgstr "Icona mancante"
 msgid "File deleted"
 msgstr "File eliminato"
 
-#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
+#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:240
 msgid "Failed to delete file"
 msgstr "Impossibile eliminare il file"
 
@@ -514,16 +530,16 @@ msgstr "File spostato"
 msgid "Failed to move file"
 msgstr "Impossibile spostare il file"
 
-#: src/Utility/TeeJee.FileSystem.vala:233
-#: src/Utility/TeeJee.FileSystem.vala:236
+#: src/Utility/TeeJee.FileSystem.vala:217
+#: src/Utility/TeeJee.FileSystem.vala:220
 msgid "Created directory"
 msgstr "Directory creata"
 
-#: src/Utility/TeeJee.FileSystem.vala:243
+#: src/Utility/TeeJee.FileSystem.vala:227
 msgid "Failed to create dir"
 msgstr "Impossibile creare la directory"
 
-#: src/Utility/TeeJee.FileSystem.vala:255
+#: src/Utility/TeeJee.FileSystem.vala:239
 msgid "Deleted"
 msgstr "Cancellato"
 

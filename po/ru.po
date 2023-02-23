@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 15:16-0500\n"
+"POT-Creation-Date: 2023-02-23 17:56-0500\n"
 "PO-Revision-Date: 2022-02-24 16:05+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -13,104 +13,105 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
 "X-Generator: Poedit 2.3\n"
 
-#: src/Common/LinuxKernel.vala:88
+#: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
 msgstr "Дистрибутив"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:101
 msgid "Architecture"
 msgstr "Архитектура"
 
-#: src/Common/LinuxKernel.vala:298
+#: src/Common/LinuxKernel.vala:290
 msgid "Fetching index..."
 msgstr "Получение сведений..."
 
-#: src/Common/LinuxKernel.vala:337
+#: src/Common/LinuxKernel.vala:329
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Получение сведений с kernel.ubuntu.com..."
 
-#: src/Common/LinuxKernel.vala:593
+#: src/Common/LinuxKernel.vala:585
 msgid "Could not find running kernel in list!"
 msgstr "Не удалось найти запущенное ядро в списке!"
 
-#: src/Common/LinuxKernel.vala:599
+#: src/Common/LinuxKernel.vala:591
 msgid "Could not find any kernels to uninstall"
 msgstr "Не удалось найти ядра для деинсталляции"
 
-#: src/Common/LinuxKernel.vala:608
+#: src/Common/LinuxKernel.vala:600
 msgid "The following kernels will be uninstalled:"
 msgstr "Следующие ядра будут деинсталлированы:"
 
-#: src/Common/LinuxKernel.vala:615
+#: src/Common/LinuxKernel.vala:607
 msgid "Continue ?"
 msgstr "Продолжить ?"
 
-#: src/Common/LinuxKernel.vala:641 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:633 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "Последнее обновление"
 
-#: src/Common/LinuxKernel.vala:652 src/Console/AppConsole.vala:321
+#: src/Common/LinuxKernel.vala:644 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "Последнее обновление пунктов"
 
-#: src/Common/LinuxKernel.vala:660 src/Console/AppConsole.vala:326
+#: src/Common/LinuxKernel.vala:652 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "Обновлений не найдено"
 
-#: src/Common/LinuxKernel.vala:670
+#: src/Common/LinuxKernel.vala:662
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Установить версию ядра %s ? (y/n): "
 
-#: src/Common/LinuxKernel.vala:931
+#: src/Common/LinuxKernel.vala:912
 msgid "Packages Available"
 msgstr "Доступные пакеты"
 
-#: src/Common/LinuxKernel.vala:939
+#: src/Common/LinuxKernel.vala:920
 msgid "Packages Installed"
 msgstr "Установленные пакеты"
 
-#: src/Common/LinuxKernel.vala:1019
+#: src/Common/LinuxKernel.vala:1000
 msgid "Available Kernels"
 msgstr "Доступные ядра"
 
-#: src/Common/LinuxKernel.vala:1026 src/Gtk/MainWindow.vala:189
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:189
 msgid "Installed"
 msgstr "Установлено"
 
-#: src/Common/LinuxKernel.vala:1026 src/Gtk/MainWindow.vala:189
-#: src/Gtk/MainWindow.vala:606 src/Gtk/MainWindow.vala:620
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:189
+#: src/Gtk/MainWindow.vala:610 src/Gtk/MainWindow.vala:624
 msgid "Running"
 msgstr "Используется"
 
-#: src/Common/LinuxKernel.vala:1063
+#: src/Common/LinuxKernel.vala:1044
 msgid "Downloading"
 msgstr "Загрузка"
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1063 src/Gtk/CustomMessageDialog.vala:150
+#: src/Gtk/CustomMessageDialog.vala:154
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1068
 msgid "ERROR"
 msgstr "ОШИБКА"
 
-#: src/Common/LinuxKernel.vala:1101
+#: src/Common/LinuxKernel.vala:1082
 msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
-#: src/Common/LinuxKernel.vala:1127
+#: src/Common/LinuxKernel.vala:1108
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Установка завершена. Обязательно выполните перезагрузку, чтобы использовать "
 "новое ядро."
 
-#: src/Common/LinuxKernel.vala:1130
+#: src/Common/LinuxKernel.vala:1111
 msgid "Installation completed with errors"
 msgstr "Установка завершена с ошибками"
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1132
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -118,19 +119,19 @@ msgstr ""
 "Это ядро в настоящий момент работает и не может быть удалено.\n"
 " Установите другое ядро, прежде чем удалять его."
 
-#: src/Common/LinuxKernel.vala:1156
+#: src/Common/LinuxKernel.vala:1137
 msgid "Preparing to uninstall selected kernels"
 msgstr "Подготовка к деинсталляции выбранных ядер"
 
-#: src/Common/LinuxKernel.vala:1187 src/Common/LinuxKernel.vala:1234
+#: src/Common/LinuxKernel.vala:1168 src/Common/LinuxKernel.vala:1215
 msgid "Un-install completed"
 msgstr "Удаление завершено"
 
-#: src/Common/LinuxKernel.vala:1190 src/Common/LinuxKernel.vala:1237
+#: src/Common/LinuxKernel.vala:1171 src/Common/LinuxKernel.vala:1218
 msgid "Un-install completed with errors"
 msgstr "Удаление завершено с ошибками"
 
-#: src/Common/LinuxKernel.vala:1203
+#: src/Common/LinuxKernel.vala:1184
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -285,7 +286,7 @@ msgid "Kernel %s Available"
 msgstr "Доступно ядро %s"
 
 #: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Install"
 msgstr "Установить"
 
@@ -296,6 +297,19 @@ msgstr "Распечатать отладочную информацию"
 #: src/Gtk/AppGtk.vala:157
 msgid "Show all options"
 msgstr "Показать все параметры"
+
+#: src/Gtk/CustomMessageDialog.vala:155 src/Gtk/ProgressWindow.vala:142
+#: src/Gtk/TerminalWindow.vala:148
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/Gtk/CustomMessageDialog.vala:159
+msgid "Yes"
+msgstr ""
+
+#: src/Gtk/CustomMessageDialog.vala:160
+msgid "No"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:146
 msgid "Kernel"
@@ -309,66 +323,68 @@ msgstr "Состояние"
 msgid "Refresh"
 msgstr "Обновить"
 
-#: src/Gtk/MainWindow.vala:342
-msgid "Uninstall"
-msgstr "Удалить"
+#: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
+#, fuzzy
+msgid "Internet connection is not active"
+msgstr "Интернет соединение не активно."
 
-#: src/Gtk/MainWindow.vala:375 src/Gtk/MainWindow.vala:408
-#: src/Gtk/MainWindow.vala:659
-msgid "Close window to exit..."
-msgstr "Закройте окно, чтобы выйти..."
-
-#: src/Gtk/MainWindow.vala:382
-msgid "Uninstall Old"
-msgstr "Удалить старые"
-
-#: src/Gtk/MainWindow.vala:383
-msgid "Uninstall kernels older than running kernel"
-msgstr "Удалить более старшие установленные ядра, чем используемое"
-
-#: src/Gtk/MainWindow.vala:415
-msgid "Changes"
-msgstr "Изменения"
-
-#: src/Gtk/MainWindow.vala:426 src/Gtk/SettingsDialog.vala:50
-msgid "Settings"
-msgstr "Настройки"
-
-#: src/Gtk/MainWindow.vala:449
-msgid "About"
-msgstr "О программе"
-
-#: src/Gtk/MainWindow.vala:494
-msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "Программа обновления ядра для дистрибутивов на базе Ubuntu"
-
-#: src/Gtk/MainWindow.vala:495
-msgid "Forked"
-msgstr "Форк"
-
-#: src/Gtk/MainWindow.vala:495
-msgid "Original"
-msgstr "Оригинал"
-
-#: src/Gtk/MainWindow.vala:527
-msgid "Refreshing..."
-msgstr "Обновление..."
-
-#: src/Gtk/MainWindow.vala:616
-msgid "available"
-msgstr "доступно"
-
-#: src/Gtk/MainWindow.vala:674
+#: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:518
+#: src/Gtk/MainWindow.vala:634
 msgid "No Internet"
 msgstr "Нет интернет соединения"
 
-#: src/Gtk/MainWindow.vala:675
+#: src/Gtk/MainWindow.vala:344
+msgid "Uninstall"
+msgstr "Удалить"
+
+#: src/Gtk/MainWindow.vala:377 src/Gtk/MainWindow.vala:410
+#: src/Gtk/MainWindow.vala:666
+msgid "Close window to exit..."
+msgstr "Закройте окно, чтобы выйти..."
+
+#: src/Gtk/MainWindow.vala:384
+msgid "Uninstall Old"
+msgstr "Удалить старые"
+
+#: src/Gtk/MainWindow.vala:385
+msgid "Uninstall kernels older than running kernel"
+msgstr "Удалить более старшие установленные ядра, чем используемое"
+
+#: src/Gtk/MainWindow.vala:417
+msgid "Changes"
+msgstr "Изменения"
+
+#: src/Gtk/MainWindow.vala:428 src/Gtk/SettingsDialog.vala:50
+msgid "Settings"
+msgstr "Настройки"
+
+#: src/Gtk/MainWindow.vala:451
+msgid "About"
+msgstr "О программе"
+
+#: src/Gtk/MainWindow.vala:496
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr "Программа обновления ядра для дистрибутивов на базе Ubuntu"
+
+#: src/Gtk/MainWindow.vala:497
+msgid "Forked"
+msgstr "Форк"
+
+#: src/Gtk/MainWindow.vala:497
+msgid "Original"
+msgstr "Оригинал"
+
+#: src/Gtk/MainWindow.vala:518 src/Gtk/MainWindow.vala:634
 msgid "Internet connection is not active."
 msgstr "Интернет соединение не активно."
 
-#: src/Gtk/ProgressWindow.vala:142 src/Gtk/TerminalWindow.vala:149
-msgid "Cancel"
-msgstr "Отмена"
+#: src/Gtk/MainWindow.vala:531
+msgid "Refreshing..."
+msgstr "Обновление..."
+
+#: src/Gtk/MainWindow.vala:620
+msgid "available"
+msgstr "доступно"
 
 #: src/Gtk/SettingsDialog.vala:60
 msgid "Notification"
@@ -434,7 +450,7 @@ msgstr "секунд"
 msgid "Max concurrent downloads"
 msgstr "Максимальное количество одновременных загрузок"
 
-#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
+#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
 msgstr "Закрыть"
 
@@ -470,7 +486,7 @@ msgstr "Составители документации"
 msgid "Third Party Inclusions"
 msgstr "Включая сторонние инструменты"
 
-#: src/Utility/Gtk/GtkHelper.vala:39
+#: src/Utility/Gtk/GtkHelper.vala:59
 msgid "Missing Icon"
 msgstr "Значок отсутствует"
 
@@ -478,7 +494,7 @@ msgstr "Значок отсутствует"
 msgid "File deleted"
 msgstr "Файл удалён"
 
-#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
+#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:240
 msgid "Failed to delete file"
 msgstr "Не удалось удалить файл"
 
@@ -514,16 +530,16 @@ msgstr "Файл перемещён"
 msgid "Failed to move file"
 msgstr "Не удалось переместить файл"
 
-#: src/Utility/TeeJee.FileSystem.vala:233
-#: src/Utility/TeeJee.FileSystem.vala:236
+#: src/Utility/TeeJee.FileSystem.vala:217
+#: src/Utility/TeeJee.FileSystem.vala:220
 msgid "Created directory"
 msgstr "Создана директория"
 
-#: src/Utility/TeeJee.FileSystem.vala:243
+#: src/Utility/TeeJee.FileSystem.vala:227
 msgid "Failed to create dir"
 msgstr "Не удалось создать папку"
 
-#: src/Utility/TeeJee.FileSystem.vala:255
+#: src/Utility/TeeJee.FileSystem.vala:239
 msgid "Deleted"
 msgstr "Удалено"
 

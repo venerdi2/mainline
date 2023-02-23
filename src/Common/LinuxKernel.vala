@@ -212,7 +212,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_debug("query_thread() App.show_prev_majors: %d".printf(App.show_prev_majors));
 		log_debug("query_thread() App.hide_unstable: "+App.hide_unstable.to_string());
 
-		bool is_connected = Main.can_reach_mainline_ppa();
+		bool is_connected = check_internet_connectivity();
 
 		download_index();
 		load_index();

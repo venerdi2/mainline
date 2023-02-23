@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 15:16-0500\n"
+"POT-Creation-Date: 2023-02-23 17:56-0500\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -13,102 +13,103 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: src/Common/LinuxKernel.vala:88
+#: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
 msgstr "배포판"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:101
 msgid "Architecture"
 msgstr "아키텍처"
 
-#: src/Common/LinuxKernel.vala:298
+#: src/Common/LinuxKernel.vala:290
 msgid "Fetching index..."
 msgstr "목록 가져오기..."
 
-#: src/Common/LinuxKernel.vala:337
+#: src/Common/LinuxKernel.vala:329
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "최신 커널 목록을 가져오는 중입니다..."
 
-#: src/Common/LinuxKernel.vala:593
+#: src/Common/LinuxKernel.vala:585
 msgid "Could not find running kernel in list!"
 msgstr "목록에서 사용중인 커널을 찾을 수 없습니다!"
 
-#: src/Common/LinuxKernel.vala:599
+#: src/Common/LinuxKernel.vala:591
 msgid "Could not find any kernels to uninstall"
 msgstr "삭제할 커널을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:608
+#: src/Common/LinuxKernel.vala:600
 msgid "The following kernels will be uninstalled:"
 msgstr "아래 커널이 삭제됩니다:"
 
-#: src/Common/LinuxKernel.vala:615
+#: src/Common/LinuxKernel.vala:607
 msgid "Continue ?"
 msgstr "계속하시겠습니까?"
 
-#: src/Common/LinuxKernel.vala:641 src/Console/AppConsole.vala:314
+#: src/Common/LinuxKernel.vala:633 src/Console/AppConsole.vala:314
 msgid "Latest update"
 msgstr "최신 업데이트"
 
-#: src/Common/LinuxKernel.vala:652 src/Console/AppConsole.vala:321
+#: src/Common/LinuxKernel.vala:644 src/Console/AppConsole.vala:321
 msgid "Latest point update"
 msgstr "최신 포인트 업데이트"
 
-#: src/Common/LinuxKernel.vala:660 src/Console/AppConsole.vala:326
+#: src/Common/LinuxKernel.vala:652 src/Console/AppConsole.vala:326
 #: src/Console/AppConsole.vala:387
 msgid "No updates found"
 msgstr "업데이트를 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:670
+#: src/Common/LinuxKernel.vala:662
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/LinuxKernel.vala:931
+#: src/Common/LinuxKernel.vala:912
 msgid "Packages Available"
 msgstr "설치 가능한 패키지"
 
-#: src/Common/LinuxKernel.vala:939
+#: src/Common/LinuxKernel.vala:920
 msgid "Packages Installed"
 msgstr "설치된 패키지"
 
-#: src/Common/LinuxKernel.vala:1019
+#: src/Common/LinuxKernel.vala:1000
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
 
-#: src/Common/LinuxKernel.vala:1026 src/Gtk/MainWindow.vala:189
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:189
 msgid "Installed"
 msgstr "설치 됨"
 
-#: src/Common/LinuxKernel.vala:1026 src/Gtk/MainWindow.vala:189
-#: src/Gtk/MainWindow.vala:606 src/Gtk/MainWindow.vala:620
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:189
+#: src/Gtk/MainWindow.vala:610 src/Gtk/MainWindow.vala:624
 msgid "Running"
 msgstr "구동 중"
 
-#: src/Common/LinuxKernel.vala:1063
+#: src/Common/LinuxKernel.vala:1044
 msgid "Downloading"
 msgstr "다운로드 중"
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1063 src/Gtk/CustomMessageDialog.vala:150
+#: src/Gtk/CustomMessageDialog.vala:154
 msgid "OK"
 msgstr "확인"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1068
 msgid "ERROR"
 msgstr "오류"
 
-#: src/Common/LinuxKernel.vala:1101
+#: src/Common/LinuxKernel.vala:1082
 msgid "This kernel is already installed."
 msgstr "이 커널은 이미 설치되었습니다."
 
-#: src/Common/LinuxKernel.vala:1127
+#: src/Common/LinuxKernel.vala:1108
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr "설치가 완료되었습닌다. 새 커널을 사용하려면 시스템을 재시작 하세요."
 
-#: src/Common/LinuxKernel.vala:1130
+#: src/Common/LinuxKernel.vala:1111
 msgid "Installation completed with errors"
 msgstr "오류가 있으나 설치가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1132
 msgid ""
 "Selected kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -116,19 +117,19 @@ msgstr ""
 "선택된 커널은 현재 사용 중이므로 삭제할 수 없습니다.\n"
 " 이 커널을 삭제하려면 다른 커널을 먼저 설치하세요."
 
-#: src/Common/LinuxKernel.vala:1156
+#: src/Common/LinuxKernel.vala:1137
 msgid "Preparing to uninstall selected kernels"
 msgstr "선택한 커널을 삭제하기 위해 준비중입니다"
 
-#: src/Common/LinuxKernel.vala:1187 src/Common/LinuxKernel.vala:1234
+#: src/Common/LinuxKernel.vala:1168 src/Common/LinuxKernel.vala:1215
 msgid "Un-install completed"
 msgstr "삭제가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1190 src/Common/LinuxKernel.vala:1237
+#: src/Common/LinuxKernel.vala:1171 src/Common/LinuxKernel.vala:1218
 msgid "Un-install completed with errors"
 msgstr "오류가 있으나 삭제가 완료되었습니다"
 
-#: src/Common/LinuxKernel.vala:1203
+#: src/Common/LinuxKernel.vala:1184
 msgid ""
 "This kernel is currently running and cannot be un-installed.\n"
 " Install another kernel before un-installing this one."
@@ -281,7 +282,7 @@ msgid "Kernel %s Available"
 msgstr "커널 %s 사용 가능"
 
 #: src/Console/AppConsole.vala:367 src/Console/AppConsole.vala:379
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Install"
 msgstr "설치"
 
@@ -292,6 +293,19 @@ msgstr "디버그 정보 출력"
 #: src/Gtk/AppGtk.vala:157
 msgid "Show all options"
 msgstr "모든 옵션 보기"
+
+#: src/Gtk/CustomMessageDialog.vala:155 src/Gtk/ProgressWindow.vala:142
+#: src/Gtk/TerminalWindow.vala:148
+msgid "Cancel"
+msgstr "취소"
+
+#: src/Gtk/CustomMessageDialog.vala:159
+msgid "Yes"
+msgstr ""
+
+#: src/Gtk/CustomMessageDialog.vala:160
+msgid "No"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:146
 msgid "Kernel"
@@ -305,66 +319,68 @@ msgstr "상태"
 msgid "Refresh"
 msgstr "새로고침"
 
-#: src/Gtk/MainWindow.vala:342
-msgid "Uninstall"
-msgstr "삭제"
+#: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
+#, fuzzy
+msgid "Internet connection is not active"
+msgstr "인터넷 연결을 확인하세요."
 
-#: src/Gtk/MainWindow.vala:375 src/Gtk/MainWindow.vala:408
-#: src/Gtk/MainWindow.vala:659
-msgid "Close window to exit..."
-msgstr "창을 닫고 종료..."
-
-#: src/Gtk/MainWindow.vala:382
-msgid "Uninstall Old"
-msgstr "오래된 커널 제거"
-
-#: src/Gtk/MainWindow.vala:383
-msgid "Uninstall kernels older than running kernel"
-msgstr "현재 사용 중인 커널보다 이전 버전의 커널을 제거"
-
-#: src/Gtk/MainWindow.vala:415
-msgid "Changes"
-msgstr "변경사항"
-
-#: src/Gtk/MainWindow.vala:426 src/Gtk/SettingsDialog.vala:50
-msgid "Settings"
-msgstr "설정"
-
-#: src/Gtk/MainWindow.vala:449
-msgid "About"
-msgstr "정보"
-
-#: src/Gtk/MainWindow.vala:494
-msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
-
-#: src/Gtk/MainWindow.vala:495
-msgid "Forked"
-msgstr ""
-
-#: src/Gtk/MainWindow.vala:495
-msgid "Original"
-msgstr ""
-
-#: src/Gtk/MainWindow.vala:527
-msgid "Refreshing..."
-msgstr "새로 고침..."
-
-#: src/Gtk/MainWindow.vala:616
-msgid "available"
-msgstr "사용가능"
-
-#: src/Gtk/MainWindow.vala:674
+#: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:518
+#: src/Gtk/MainWindow.vala:634
 msgid "No Internet"
 msgstr "인터넷이 연결되지 않았습니다"
 
-#: src/Gtk/MainWindow.vala:675
+#: src/Gtk/MainWindow.vala:344
+msgid "Uninstall"
+msgstr "삭제"
+
+#: src/Gtk/MainWindow.vala:377 src/Gtk/MainWindow.vala:410
+#: src/Gtk/MainWindow.vala:666
+msgid "Close window to exit..."
+msgstr "창을 닫고 종료..."
+
+#: src/Gtk/MainWindow.vala:384
+msgid "Uninstall Old"
+msgstr "오래된 커널 제거"
+
+#: src/Gtk/MainWindow.vala:385
+msgid "Uninstall kernels older than running kernel"
+msgstr "현재 사용 중인 커널보다 이전 버전의 커널을 제거"
+
+#: src/Gtk/MainWindow.vala:417
+msgid "Changes"
+msgstr "변경사항"
+
+#: src/Gtk/MainWindow.vala:428 src/Gtk/SettingsDialog.vala:50
+msgid "Settings"
+msgstr "설정"
+
+#: src/Gtk/MainWindow.vala:451
+msgid "About"
+msgstr "정보"
+
+#: src/Gtk/MainWindow.vala:496
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
+
+#: src/Gtk/MainWindow.vala:497
+msgid "Forked"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:497
+msgid "Original"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:518 src/Gtk/MainWindow.vala:634
 msgid "Internet connection is not active."
 msgstr "인터넷 연결을 확인하세요."
 
-#: src/Gtk/ProgressWindow.vala:142 src/Gtk/TerminalWindow.vala:149
-msgid "Cancel"
-msgstr "취소"
+#: src/Gtk/MainWindow.vala:531
+msgid "Refreshing..."
+msgstr "새로 고침..."
+
+#: src/Gtk/MainWindow.vala:620
+msgid "available"
+msgstr "사용가능"
 
 #: src/Gtk/SettingsDialog.vala:60
 msgid "Notification"
@@ -430,7 +446,7 @@ msgstr "초"
 msgid "Max concurrent downloads"
 msgstr "동시 다운로드 최대 수"
 
-#: src/Gtk/TerminalWindow.vala:159 src/Utility/Gtk/AboutWindow.vala:294
+#: src/Gtk/TerminalWindow.vala:158 src/Utility/Gtk/AboutWindow.vala:294
 msgid "Close"
 msgstr "닫기"
 
@@ -466,7 +482,7 @@ msgstr "문서작성"
 msgid "Third Party Inclusions"
 msgstr "서드파티 포함"
 
-#: src/Utility/Gtk/GtkHelper.vala:39
+#: src/Utility/Gtk/GtkHelper.vala:59
 msgid "Missing Icon"
 msgstr "아이콘을 찾을 수 없습니다"
 
@@ -474,7 +490,7 @@ msgstr "아이콘을 찾을 수 없습니다"
 msgid "File deleted"
 msgstr "파일이 삭제되었습니다"
 
-#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:256
+#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:240
 msgid "Failed to delete file"
 msgstr "파일 삭제를 실패했습니다"
 
@@ -510,16 +526,16 @@ msgstr "파일이 이동되었습니다"
 msgid "Failed to move file"
 msgstr "파일 이동을 실패했습니다"
 
-#: src/Utility/TeeJee.FileSystem.vala:233
-#: src/Utility/TeeJee.FileSystem.vala:236
+#: src/Utility/TeeJee.FileSystem.vala:217
+#: src/Utility/TeeJee.FileSystem.vala:220
 msgid "Created directory"
 msgstr "폴더를 생성했습니다"
 
-#: src/Utility/TeeJee.FileSystem.vala:243
+#: src/Utility/TeeJee.FileSystem.vala:227
 msgid "Failed to create dir"
 msgstr "폴더 생성을 실패했습니다"
 
-#: src/Utility/TeeJee.FileSystem.vala:255
+#: src/Utility/TeeJee.FileSystem.vala:239
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
