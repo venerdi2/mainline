@@ -156,7 +156,8 @@ public class MainWindow : Gtk.Window{
 		col.set_cell_data_func (cell_pix, (cell_layout, cell, model, iter)=>{
 			Gdk.Pixbuf pix;
 			model.get (iter, 1, out pix, -1);
-			(cell as Gtk.CellRendererPixbuf).pixbuf = pix;
+			return_if_fail(cell as Gtk.CellRendererPixbuf != null);
+			((Gtk.CellRendererPixbuf) cell).pixbuf = pix;
 		});
 
 		//cell text
@@ -166,7 +167,8 @@ public class MainWindow : Gtk.Window{
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
-			(cell as Gtk.CellRendererText).text = kern.version_main;
+			return_if_fail(cell as Gtk.CellRendererText != null);
+			((Gtk.CellRendererText) cell).text = kern.version_main;
 		});
 
 		//column
@@ -183,7 +185,8 @@ public class MainWindow : Gtk.Window{
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
-			(cell as Gtk.CellRendererText).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
+			return_if_fail(cell as Gtk.CellRendererText != null);
+			((Gtk.CellRendererText) cell).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
 		});
 
 		//column
