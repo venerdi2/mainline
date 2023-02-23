@@ -35,8 +35,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// static
 	
-	[CCode(cname="URI_KERNEL_UBUNTU_MAINLINE")]
-	public extern const string URI_KERNEL_UBUNTU_MAINLINE;
+	[CCode(cname="URI_KERNEL_UBUNTU_MAINLINE")] extern const string URI_KERNEL_UBUNTU_MAINLINE;
 
 	public static string CACHE_DIR;
 	public static string NATIVE_ARCH;
