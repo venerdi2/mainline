@@ -301,7 +301,7 @@ public class MainWindow : Gtk.Window{
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
 			btn_uninstall_old.sensitive = true;
-			btn_changes.sensitive = (selected_kernels.size == 1);
+			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
 		}
 	}
 
@@ -414,46 +414,9 @@ public class MainWindow : Gtk.Window{
 		btn_changes = button;
 
 		button.clicked.connect(() => {
-			if (selected_kernels.size != 1)
-				return;
-
-			if (! file_exists(selected_kernels[0].changes_file)) {
-				bool failed_or_cancelled = false;
-
-				FileDownloader.OnFailure handle_failure = (error) => {
-					// If it's already set by the "cancelled" signal, no need to display a dialog
-					if (failed_or_cancelled)
-						return;
-					failed_or_cancelled = true;
-					Gtk.MessageDialog msg = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, _("Error while downloading the changelog:\n") + error.message);
-					msg.response.connect((response_id) => msg.destroy());
-					msg.show();
-				};	
-
-				var cancellable = new Cancellable();
-				cancellable.cancelled.connect (() => {
-					failed_or_cancelled = true;
-				});
-
-				var progress_window = new ProgressWindow.with_parent(this, _("Downloading the changelog"), cancellable);
-
-				try {
-					var changelog = new FileDownloader.asynchronous(selected_kernels[0].changes_file_uri, selected_kernels[0].changes_file, cancellable);
-					changelog.on_failure = handle_failure;
-					changelog.on_finished = () => progress_window.destroy();
-					changelog.start();
-
-					progress_window.show_all();
-					changelog.wait_until_finished();
-				} catch (Error e) {
-					handle_failure(e);
-				}
-				
-				if (failed_or_cancelled)
-					return;
+			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
+				xdg_open(selected_kernels[0].changes_file);
 			}
-
-			xdg_open(selected_kernels[0].changes_file);
 		});
 
 		// settings
@@ -557,14 +520,9 @@ public class MainWindow : Gtk.Window{
 
 			return;
 		}
-		
-		var cancellable = new Cancellable();
-		cancellable.cancelled.connect (() => {
-			App.exit_app(1);
-		});
 
 		string message = _("Refreshing...");
-		var progress_window = new ProgressWindow.with_parent(this, message, cancellable);
+		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
 
 		// TODO: Check if kernel.ubuntu.com is down
@@ -583,6 +541,10 @@ public class MainWindow : Gtk.Window{
 				return false;
 			});
 			timer_elapsed(timer, true);
+		}
+
+		if (App.cancelled){
+			App.exit_app(1);
 		}
 
 		App.status_line = LinuxKernel.status_line;
