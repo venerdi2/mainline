@@ -213,16 +213,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_debug("query_thread() App.show_prev_majors: %d".printf(App.show_prev_majors));
 		log_debug("query_thread() App.hide_unstable: "+App.hide_unstable.to_string());
 
-		//DownloadManager.reset_counter();
-
-		// download main index.html if stale
-		bool refresh = false;
-		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
-		if (last_refreshed_date.compare(one_hour_before) < 0) refresh = true;
 		bool is_connected = Main.can_reach_mainline_ppa();
-		if (refresh) download_index();
 
-		// read main index.html
+		download_index();
 		load_index();
 
 		// TODO: Implement locking for multiple download threads
@@ -869,17 +862,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string index_page{
 		owned get {
 			return "%s/index.html".printf(CACHE_DIR);
-		}
-	}
-
-	public static DateTime last_refreshed_date{
-		owned get{
-			if (file_get_size(index_page) < 300000){
-				return (new DateTime.now_local()).add_years(-1);
-			}
-			else{
-				return file_get_modified_date(index_page);
-			}
 		}
 	}
 
