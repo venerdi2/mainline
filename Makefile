@@ -5,7 +5,7 @@ URI_KERNEL_UBUNTU_MAINLINE := https://kernel.ubuntu.com/~kernel-ppa/mainline/
 
 SHELL := /bin/bash
 CFLAGS := -O2
-VALACFLAGS := --enable-deprecated
+VALACFLAGS := #--enable-deprecated
 
 prefix := /usr
 bindir := $(prefix)/bin
