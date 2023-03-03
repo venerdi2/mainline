@@ -302,11 +302,11 @@ msgstr "Відміна"
 
 #: src/Gtk/CustomMessageDialog.vala:159
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 #: src/Gtk/CustomMessageDialog.vala:160
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 #: src/Gtk/MainWindow.vala:146
 msgid "Kernel"
