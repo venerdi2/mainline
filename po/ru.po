@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 17:56-0500\n"
-"PO-Revision-Date: 2022-02-24 16:05+0300\n"
-"Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
+"PO-Revision-Date: 2023-03-01 20:22+0300\n"
+"Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
+"<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
@@ -305,11 +306,11 @@ msgstr "Отмена"
 
 #: src/Gtk/CustomMessageDialog.vala:159
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/Gtk/CustomMessageDialog.vala:160
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/Gtk/MainWindow.vala:146
 msgid "Kernel"
@@ -324,9 +325,8 @@ msgid "Refresh"
 msgstr "Обновить"
 
 #: src/Gtk/MainWindow.vala:324 src/Utility/TeeJee.System.vala:42
-#, fuzzy
 msgid "Internet connection is not active"
-msgstr "Интернет соединение не активно."
+msgstr "Интернет соединение не активно"
 
 #: src/Gtk/MainWindow.vala:324 src/Gtk/MainWindow.vala:518
 #: src/Gtk/MainWindow.vala:634
