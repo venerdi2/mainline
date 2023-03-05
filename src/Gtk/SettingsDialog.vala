@@ -196,16 +196,6 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_bottom = 6;
 		vbox_main.add (label);
 
-        // skip internet connection check
-		chk = new CheckButton.with_label(_("Skip internet connection check"));
-		chk.active = App.skip_connection_check;
-		chk.margin_start = 6;
-		vbox_main.add(chk);
-
-		chk.toggled.connect(()=>{
-			App.skip_connection_check = chk.active;
-		});
-
         // timeout value
 		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
@@ -260,7 +250,7 @@ public class SettingsDialog : Gtk.Dialog {
         show_all();
 	}
 
-	private void btn_ok_click(){
+	private void btn_ok_click() {
 		App.save_app_config();
 	}
 }

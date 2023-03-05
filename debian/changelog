@@ -1,3 +1,52 @@
+mainline (1.1.0) UNRELEASED; urgency=medium
+
+  * removed --user
+    it was always broken as all it did was change the path to the cache & config files without actually doing any sudo or pkexec etc
+
+  * improve net connection checks
+    - removed skip_internet_connection_check setting
+    - test connection on actual main index uri
+    - remember the result for the rest of the session and only bother the user once (except reload)
+
+  * improved cache handling
+    - don't delete or re-download the cache indexes any more than necessary
+    - download the main index only once on startup
+    - download the individual kernel indexes only when one doesn't exist
+    - internal-use commandline option --index-is-fresh
+      when the console app is being run by the gtk app, the gtk app adds this, which
+      tells the console app not to update the cache on startup, since the gtk app has
+      has done that already.
+    - more thourough tracking of when to clear and redraw the list so that it always reflects the current state
+    - preserve old indexes if automatic download at startup fails
+      but do erase it if either --delet-cache or reload button
+
+  * replaced the refresh button with reload
+    reload button does a full delete_cache() when pressed, same as --clean-cache flag
+    reload button clears the state flags: index_is_fresh, connection_checked, neterr_shown
+
+  * renamed a few cmdline flags, old names still accepted for backwards compatibility
+    --clean-cache -> --delete-cache  - also, you should rarely need this now, because the reload button does it
+    --show-unstable -> --include-unstable
+    --hide-unstable -> --exclude-unstable
+
+  * replaced gtk_messagbox() based on CustomMessageDialog.vala with errbox() based on simpler Gtk.MessageDialog
+    deleted entire CustomMessageDialog.vala
+
+  * resolved several compiler warnings, some from deleting gtk_messagbox(), some from updating Thread<T> creation method.
+
+  * added "exit" button to main gui
+
+  * moved the mainlin-ppa uri into the config file so the user can edit
+    not exposed in the settings dialog, but you can edit config.json
+
+  * save & restore the window size & position
+
+  * added several debug messages
+
+  * removed more un-used code, refactored some more away too.
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 04 Mar 2023 17:08:21 -0500
+
 mainline (1.0.22) unstable; urgency=medium
 
   * revert missed gvfs dep in internet connection check

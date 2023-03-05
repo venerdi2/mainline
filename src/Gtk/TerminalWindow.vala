@@ -52,7 +52,7 @@ public class TerminalWindow : Gtk.Window {
 	// init
 
 	public TerminalWindow.with_parent(Gtk.Window? parent, bool fullscreen = false, bool show_cancel_button = false) {
-		if (parent != null){
+		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
 		}
@@ -60,7 +60,7 @@ public class TerminalWindow : Gtk.Window {
 		set_modal(true);
 		window_position = WindowPosition.CENTER;
 
-		if (fullscreen){
+		if (fullscreen) {
 			this.fullscreen();
 		}
 
@@ -101,7 +101,7 @@ public class TerminalWindow : Gtk.Window {
 		term = new Vte.Terminal();
 		term.expand = true;
 
-		//sw_ppa
+		// sw_ppa
 		scroll_win = new Gtk.ScrolledWindow(null, null);
 		scroll_win.set_shadow_type (ShadowType.ETCHED_IN);
 		scroll_win.add (term);
@@ -170,7 +170,7 @@ public class TerminalWindow : Gtk.Window {
 		hbox.pack_start (label, true, true, 0);
 	}
 
-	public void terminate_child(){
+	public void terminate_child() {
 		btn_cancel.sensitive = false;
 		process_quit(child_pid);
 	}
@@ -180,11 +180,11 @@ public class TerminalWindow : Gtk.Window {
 
 		string[] env = Environ.get();
 
-		try{
+		try {
 
 			is_running = true;
 
-			term.spawn_sync(
+			term.spawn_sync (
 				Vte.PtyFlags.DEFAULT, //pty_flags
 				d, //working_directory
 				argv, //argv
@@ -196,7 +196,7 @@ public class TerminalWindow : Gtk.Window {
 			);
 
 			term.watch_child(child_pid);
-	
+
 			term.child_exited.connect(script_exit);
 		}
 		catch (Error e) {
@@ -215,23 +215,21 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
-	public void allow_window_close(bool allow = true){
-		if (allow){
+	public void allow_window_close(bool allow = true) {
+		if (allow) {
 			this.delete_event.disconnect(cancel_window_close);
 			this.deletable = true;
-		}
-		else{
+		} else {
 			this.delete_event.connect(cancel_window_close);
 			this.deletable = false;
 		}
 	}
 
-	public void allow_cancel(bool allow = true){
-		if (allow){
+	public void allow_cancel(bool allow = true) {
+		if (allow) {
 			btn_cancel.visible = true;
 			vbox_main.margin = 3;
-		}
-		else{
+		} else {
 			btn_cancel.sensitive = false;
 			vbox_main.margin = 3;
 		}

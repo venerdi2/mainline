@@ -39,7 +39,6 @@ public class ProgressWindow : Gtk.Window {
 	private Gtk.Spinner spinner;
 	private Gtk.Label lbl_msg;
 	private Gtk.Label lbl_status;
-	//private ProgressBar progressbar;
 	private Gtk.Button btn_cancel;
 
 	private int def_width = 400;
@@ -77,15 +76,9 @@ public class ProgressWindow : Gtk.Window {
 		init_window();
 	}
 
-	private bool close_window(){
-		if (allow_close){
-			// allow window to close 
-			return false;
-		}
-		else{
-			// do not allow window to close 
-			return true;
-		}
+	private bool close_window() {
+		if (allow_close) return false;
+		else return true;
 	}
 
 	public void init_window () {
@@ -117,15 +110,6 @@ public class ProgressWindow : Gtk.Window {
 		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add(hbox);
 
-		//progressbar
-		/*
-		progressbar = new Gtk.ProgressBar();
-		progressbar.set_size_request(300, -1);
-		progressbar.hexpand = true;
-		//progressbar.pulse_step = 0.1;
-		hbox.add(progressbar);
-		*/
-
 		//lbl_status
 		lbl_status = new Gtk.Label ("");
 		lbl_status.halign = Align.START;
@@ -151,8 +135,8 @@ public class ProgressWindow : Gtk.Window {
 
 		show_all();
 
-		//btn_cancel.visible = allow_cancel;
-		btn_cancel.sensitive = allow_cancel;
+		btn_cancel.visible = allow_cancel;
+		//btn_cancel.sensitive = allow_cancel;
 	}
 
 	// common
@@ -176,16 +160,4 @@ public class ProgressWindow : Gtk.Window {
 		//title = "Threads: %d".printf(DownloadManager.download_count);
 	}
 
-/*
-	public void update_progressbar(){
-
-		double f = App.progress_count / (App.progress_total * 1.0);
-
-		if (f > 1.0){
-			f = 1.0;
-		}
-
-		progressbar.fraction = f;
-	}
-*/
 }

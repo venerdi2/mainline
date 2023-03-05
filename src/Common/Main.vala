@@ -39,6 +39,7 @@ using TeeJee.Misc;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
 [CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
+[CCode(cname="DEFAULT_PPA_URI")] extern const string DEFAULT_PPA_URI;
 
 private const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
 private const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
@@ -69,11 +70,24 @@ public class Main : GLib.Object{
 	public bool cancelled = false;
 
 	// state flags ----------
-	
+
 	public bool GUI_MODE = false;
 	public string command = "list";
 	public string requested_version = "";
-	
+	public bool connection_checked = false;
+	public bool connection_status = true;
+	public bool neterr_shown = false;
+	public bool index_is_fresh = false;
+	public int window_width = 800;
+	public int window_height = 600;
+	public int _window_width = 800;
+	public int _window_height = 600;
+	public int window_x = -1;
+	public int window_y = -1;
+	public int _window_x = -1;
+	public int _window_y = -1;
+
+	public string ppa_uri = DEFAULT_PPA_URI;
 	public bool notify_major = true;
 	public bool notify_minor = true;
 	public bool hide_unstable = true;
@@ -82,11 +96,10 @@ public class Main : GLib.Object{
 	public int notify_interval_value = 2;
 	public int connect_timeout_seconds = 15;
 	public int concurrent_downloads = 4;
-	public bool skip_connection_check = false;
 	public bool confirm = true;
 
 	// constructors ------------
-	
+
 	public Main(string[] arg0, bool _gui_mode){
 		//log_msg("Main()");
 
@@ -104,14 +117,10 @@ public class Main : GLib.Object{
 
 	// helpers ------------
 
-	public void init_paths(string custom_user_login = ""){
+	public void init_paths() {
 
 		// user info
 		user_login = GLib.Environment.get_user_name();
-
-		if (custom_user_login.length > 0){
-			user_login = custom_user_login;
-		}
 
 		user_home = GLib.Environment.get_home_dir();
 
@@ -126,24 +135,34 @@ public class Main : GLib.Object{
 		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
+		LinuxKernel.PPA_URI = ppa_uri;
 
 		// todo: consider get_user_runtime_dir() or get_user_cache_dir()
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
+
+		// possible future option - delete cache on every startup and exit
+		// do not do this without rigging up a way to suppress it when the gui app runs the console app
+		// like --index-is-fresh but maybe --keep-index or --batch
+		//LinuxKernel.delete_cache();
 
 	}
 	
 	public void save_app_config(){
 		
 		var config = new Json.Object();
+		config.set_string_member("ppa_uri", ppa_uri);
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());
 		config.set_string_member("hide_unstable", hide_unstable.to_string());
 		config.set_string_member("show_prev_majors", show_prev_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
-        config.set_string_member("connect_timeout_seconds", connect_timeout_seconds.to_string());
-        config.set_string_member("concurrent_downloads", concurrent_downloads.to_string());
-        config.set_string_member("skip_connection_check", skip_connection_check.to_string());
+		config.set_string_member("connect_timeout_seconds", connect_timeout_seconds.to_string());
+		config.set_string_member("concurrent_downloads", concurrent_downloads.to_string());
+		config.set_string_member("window_width", window_width.to_string());
+		config.set_string_member("window_height", window_height.to_string());
+		config.set_string_member("window_x", window_x.to_string());
+		config.set_string_member("window_y", window_y.to_string());
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -169,9 +188,9 @@ public class Main : GLib.Object{
 	}
 
 	public void load_app_config(){
-	
+
 		var f = File.new_for_path(APP_CONFIG_FILE);
-		
+
 		if (!f.query_exists()) {
 			// initialize static
 			hide_unstable = true;
@@ -180,38 +199,38 @@ public class Main : GLib.Object{
 		}
 
 		var parser = new Json.Parser();
-		
-        try{
+
+		try {
 			parser.load_from_file(APP_CONFIG_FILE);
 		} catch (Error e) {
-	        log_error (e.message);
-	    }
-	    
-        var node = parser.get_root();
-        var config = node.get_object();
+			log_error (e.message);
+		}
 
+		var node = parser.get_root();
+		var config = node.get_object();
+
+		ppa_uri = json_get_string(config, "ppa_uri", DEFAULT_PPA_URI); LinuxKernel.PPA_URI = ppa_uri;
 		notify_major = json_get_bool(config, "notify_major", true);
 		notify_minor = json_get_bool(config, "notify_minor", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
 		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", 15);
 		concurrent_downloads = json_get_int(config, "concurrent_downloads", 4);
-		skip_connection_check = json_get_bool(config, "skip_connection_check", false);
 
 		hide_unstable = json_get_bool(config, "hide_unstable", true);
 		show_prev_majors = json_get_int(config, "show_prev_majors", 0);
 
-		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
-	}
+		window_width = json_get_int(config, "window_width", window_width);
+		window_height = json_get_int(config, "window_height", window_height);
+		window_x = json_get_int(config, "window_x", window_x);
+		window_y = json_get_int(config, "window_y", window_y);
 
-	public void exit_app(int exit_code){
-		// save_app_config();
-		exit(exit_code);
+		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}
 
 	// begin ------------
 
-	private void update_startup_script(){
+	private void update_startup_script() {
 
 		// construct the commandline argument for "sleep"
 		int count = App.notify_interval_value;
@@ -261,7 +280,7 @@ public class Main : GLib.Object{
 			+ "unset F f p d x\n"
 			+ "\n"
 			+ "# run current state\n";
-		if (notify_minor || notify_major){
+		if (notify_minor || notify_major) {
 			// This gdbus check doesn't do what I'd hoped.
 			// Still succeeds while logged out but sitting at a display manager login screen.
 			s += "while gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.GetId 2>&- >&- ;do\n"
@@ -280,7 +299,7 @@ public class Main : GLib.Object{
 		exec_async("bash "+STARTUP_SCRIPT_FILE);
 	}
 
-	private void update_startup_desktop_file(){
+	private void update_startup_desktop_file() {
 		if (notify_minor || notify_major){
 
 			string txt = "[Desktop Entry]\n"
@@ -299,4 +318,23 @@ public class Main : GLib.Object{
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
 	}
+
+	public bool check_internet_connectivity() {
+
+		if (connection_checked) return connection_status;
+
+		string std_err, std_out;
+		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+connect_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet '"+ppa_uri+"'";
+
+		int status = exec_sync(cmd, out std_out, out std_err);
+
+		if (std_err.length > 0) log_error(std_err);
+
+		if (status == 0) connection_status = true;
+		else connection_status = false;
+
+		connection_checked = true;
+		return connection_status;
+	}
+
 }

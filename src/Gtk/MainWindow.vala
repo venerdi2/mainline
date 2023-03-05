@@ -32,24 +32,18 @@ using TeeJee.GtkHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
-public class MainWindow : Gtk.Window{
+public class MainWindow : Gtk.Window {
 
 	private Gtk.Box vbox_main;
 	private Gtk.Box hbox_list;
 
 	private Gtk.TreeView tv;
-	private Gtk.Button btn_refresh;
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_uninstall;
-	private Gtk.Button btn_uninstall_old;
 	private Gtk.Button btn_changes;
 	private Gtk.Label lbl_info;
 
 	// helper members
-
-	private int window_width = 800;
-	private int window_height = 600;
-	private uint tmr_init = -1;
 
 	private Gee.ArrayList<LinuxKernel> selected_kernels;
 
@@ -62,64 +56,32 @@ public class MainWindow : Gtk.Window{
 		// vbox_main
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
-		vbox_main.set_size_request(window_width, window_height);
+
+		vbox_main.set_size_request(App._window_width,App._window_height);
+		App._window_width = App.window_width;
+		App._window_height = App.window_height;
+
 		add (vbox_main);
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
 
 		init_ui();
 
-		tmr_init = Timeout.add(100, init_delayed);
-	}
-
-	private bool init_delayed() {
-
-		/* any actions that need to run after window has been displayed */
-
-		if (tmr_init > 0) {
-			Source.remove(tmr_init);
-			tmr_init = 0;
-		}
-
 		refresh_cache();
-
-		tv_refresh();
-
-		switch (App.command){
-		case "install":
-
-			LinuxKernel kern_requested = null;
-			foreach(var kern in LinuxKernel.kernel_list){
-				if (kern.version_main == App.requested_version){
-					kern_requested = kern;
-					break;
-				}
-			}
-
-			if (kern_requested == null){
-				var msg = _("Could not find requested version");
-				msg += ": %s".printf(App.requested_version);
-				log_error(msg);
-				exit(1);
-			}
-			else{
-				kinst(kern_requested);
-			}
-
-			break;
-
-		}
-
-		return false;
 	}
 
 	private void init_ui(){
 		init_treeview();
 		init_actions();
 		init_infobar();
+
+		this.resize(App.window_width,App.window_height);
+		if (App.window_x >=0 && App.window_y >= 0) this.move(App.window_x,App.window_y);
+		App._window_x = App.window_x;
+		App._window_y = App.window_y;
 	}
 
-	private void init_treeview(){
+	private void init_treeview() {
 
 		// hbox
 		hbox_list = new Gtk.Box(Orientation.HORIZONTAL, 6);
@@ -238,6 +200,7 @@ public class MainWindow : Gtk.Window{
 
 	private void tv_refresh(){
 		log_debug("tv_refresh()");
+
 		var model = new Gtk.ListStore(4, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool), typeof(string));
 
 		Gdk.Pixbuf pix_ubuntu = null;
@@ -293,50 +256,35 @@ public class MainWindow : Gtk.Window{
 		set_infobar();
 	}
 
-	private void set_button_state(){
-		if (selected_kernels.size == 0){
+	private void set_button_state() {
+		if (selected_kernels.size == 0) {
 			btn_install.sensitive = false;
 			btn_uninstall.sensitive = false;
-			btn_uninstall_old.sensitive = true;
 			btn_changes.sensitive = false;
-		}
-		else{
+		} else {
+			// only allow selecting a single kernel for install/uninstall, examine the installed state
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
-			btn_uninstall_old.sensitive = true;
+			// allow selecting multiple kernels for install/uninstall, but IF only a single selected, examine the installed state
+			// (the rest of the app does not have loops to process a list yet)
+			//btn_install.sensitive = selected_kernels.size == 1 ? !selected_kernels[0].is_installed : true;
+			//btn_uninstall.sensitive = selected_kernels.size == 1 ? selected_kernels[0].is_installed && !selected_kernels[0].is_running : true;
 			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
 		}
 	}
 
 	private void init_actions(){
 
-		var hbox = new Gtk.Box(Orientation.VERTICAL, 6);
+		var hbox = new Gtk.Box(Orientation.VERTICAL, 7);
 		hbox_list.add (hbox);
 
-		// refresh
-		var button = new Gtk.Button.with_label (_("Refresh"));
-		hbox.pack_start (button, true, true, 0);
-		btn_refresh = button;
-
-		button.clicked.connect(() => {
-
-			if (!check_internet_connectivity()){
-				gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
-				return;
-			}
-
-			refresh_cache();
-			tv_refresh();
-		});
-
 		// install
-		button = new Gtk.Button.with_label (_("Install"));
+		var button = new Gtk.Button.with_label (_("Install"));
 		hbox.pack_start (button, true, true, 0);
 		btn_install = button;
 
 		button.clicked.connect(() => {
 			return_if_fail(selected_kernels.size == 1);
-			
 			kinst(selected_kernels[0]);
 		});
 
@@ -361,7 +309,6 @@ public class MainWindow : Gtk.Window{
 			term.destroy.connect(()=>{
 				this.present();
 				refresh_cache();
-				tv_refresh();
 			});
 
 			string names = "";
@@ -371,20 +318,32 @@ public class MainWindow : Gtk.Window{
 			}
 
 			string sh = BRANDING_SHORTNAME;
+			if (App.index_is_fresh) sh += " --index-is-fresh";
 			if (LOG_DEBUG) sh += " --debug";
 			sh += " --uninstall %s\n".printf(names)
 			+ "echo \n"
-			+ "echo '"+_("Close window to exit...")+"'\n";
+			+ "echo '"+_("DONE")+"'\n"
+			;
 
 			save_bash_script_temp(sh,t_file);
 			term.execute_script(t_file,t_dir);
+		});
+
+		// changes
+		button = new Gtk.Button.with_label (_("Changes"));
+		hbox.pack_start (button, true, true, 0);
+		btn_changes = button;
+
+		button.clicked.connect(() => {
+			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
+				xdg_open(selected_kernels[0].changes_file);
+			}
 		});
 
 		// uninstall-old
 		button = new Gtk.Button.with_label (_("Uninstall Old"));
 		button.set_tooltip_text(_("Uninstall kernels older than running kernel"));
 		hbox.pack_start (button, true, true, 0);
-		btn_uninstall_old = button;
 
 		button.clicked.connect(() => {
 
@@ -401,27 +360,31 @@ public class MainWindow : Gtk.Window{
 			term.destroy.connect(()=>{
 				this.present();
 				refresh_cache();
-				tv_refresh();
 			});
 
 			string sh = BRANDING_SHORTNAME+" --uninstall-old";
+			if (App.index_is_fresh) sh += " --index-is-fresh";
 			if (LOG_DEBUG) sh += " --debug";
-			sh += "\necho \n"
-			+ "echo '"+_("Close window to exit...")+"'\n";
+			sh += "\n"
+			+ "echo \n"
+			+ "echo '"+_("DONE")+"'\n"
+			;
 
 			save_bash_script_temp(sh,t_file);
 			term.execute_script(t_file,t_dir);
 		});
 
-		// changes
-		button = new Gtk.Button.with_label (_("Changes"));
+		// reload
+		button = new Gtk.Button.with_label (_("Reload"));
 		hbox.pack_start (button, true, true, 0);
-		btn_changes = button;
+		//btn_refresh = button;
 
 		button.clicked.connect(() => {
-			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
-				xdg_open(selected_kernels[0].changes_file);
-			}
+			// when the user interactively presses reload, clear all state and try everything fresh
+			LinuxKernel.delete_cache();
+			App.connection_checked=false;
+			App.neterr_shown=false;
+			refresh_cache();
 		});
 
 		// settings
@@ -444,14 +407,22 @@ public class MainWindow : Gtk.Window{
 				refresh_cache();
 			}
 
-			tv_refresh();
 		});
 
 		// about
 		button = new Gtk.Button.with_label (_("About"));
 		hbox.pack_start (button, true, true, 0);
-
 		button.clicked.connect(btn_about_clicked);
+
+		// exit
+		button = new Gtk.Button.with_label (_("Exit"));
+		hbox.pack_start (button, true, true, 0);
+		button.clicked.connect(btn_exit_clicked);
+
+	}
+
+	private void btn_exit_clicked () {
+		Gtk.main_quit();
 	}
 
 	private void btn_about_clicked () {
@@ -477,15 +448,18 @@ public class MainWindow : Gtk.Window{
 		// then cut & paste from generated TRANSLATORS file
 		// and add the quotes & commas
 		dialog.translators = {
+			"de: Marvin Meysel <marvin@meysel.net>",
+			"el: Vasilis Kosmidis <skyhirules@gmail.com>",
 			"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>",
 			"fr: Yolateng0 <yo@yo.nohost.me>",
 			"hr: gogo <trebelnik2@gmail.com>",
 			"it: Albano Battistella <albano_battistella@hotmail.com>",
+			"ko: Kevin Kim <root@hamonikr.org>",
 			"nl: Heimen Stoffels <vistausss@outlook.com>",
-			"pl: Waldemar Konik <valdi74@github>",
-			"ru: Faust3000 <slavusik1988@gmail.com>",
+			"pl: Viktor Sokyrko <victor_sokyrko@windowslive.com>",
+			"ru: Danik2343 <krutalevex@mail.ru>",
 			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
-			"tr: Gökhan GÖKKAYA <gokhanlnx@gmail.com>, Sabri Ünal <libreajans@gmail.com>",
+			"tr: Sabri Ünal <libreajans@gmail.com>",
 			"uk: Serhii Golovko <cappelikan@gmail.com>",
 		};
 
@@ -512,19 +486,14 @@ public class MainWindow : Gtk.Window{
 		dialog.show_all();
 	}
 
-	private void refresh_cache(){
+	private void refresh_cache() {
+		log_debug("refresh_cache()");
 
-		if (!check_internet_connectivity()){
-			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
-			return;
-		}
+		test_net();
 
-		if (App.command != "list"){
-
-			// refresh without GUI and return -----------------
-
+		if (!App.GUI_MODE) {
+			// refresh without GUI
 			LinuxKernel.query(false);
-
 			return;
 		}
 
@@ -532,11 +501,11 @@ public class MainWindow : Gtk.Window{
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
 
-		// TODO: Check if kernel.ubuntu.com is down
-
 		LinuxKernel.query(false, (timer, ref count, last) => {
 			update_progress_window(progress_window, message, timer, ref count, last);
 		});
+
+		tv_refresh();
 	}
 
 
@@ -548,10 +517,6 @@ public class MainWindow : Gtk.Window{
 				return false;
 			});
 			timer_elapsed(timer, true);
-		}
-
-		if (App.cancelled){
-			App.exit_app(1);
 		}
 
 		App.status_line = LinuxKernel.status_line;
@@ -574,9 +539,6 @@ public class MainWindow : Gtk.Window{
 			progress_window.update_status_line(); 
 			return false;
 		});
-
-		// FIXME - GTK error messages, and progressbar is always 100%
-		//progress_window.update_progressbar();
 
 		count++;
 	}
@@ -625,15 +587,11 @@ public class MainWindow : Gtk.Window{
 		}
 	}
 
-	public void kinst(LinuxKernel kern){
+	public void kinst(LinuxKernel kern) {
 
-		// check if installed
-		return_if_fail(! kern.is_installed);
+		return_if_fail(!kern.is_installed);
 
-		if (!check_internet_connectivity()){
-			gtk_messagebox(_("No Internet"), _("Internet connection is not active."), this, true);
-			return;
-		}
+		test_net ();
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
@@ -646,27 +604,29 @@ public class MainWindow : Gtk.Window{
 		});
 
 		term.destroy.connect(()=>{
-
-			if (App.command == "list"){
-				this.present();
-				refresh_cache();
-				tv_refresh();
-			}
-			else{
-				this.destroy();
-				Gtk.main_quit();
-				App.exit_app(0);
-			}
+			this.present();
+			refresh_cache();
 		});
 
 		string sh = BRANDING_SHORTNAME;
+		if (App.index_is_fresh) sh += " --index-is-fresh";
 		if (LOG_DEBUG) sh += " --debug";
 		sh += " --install %s\n".printf(kern.version_main)
 		+ "echo \n"
-		+ "echo '"+_("Close window to exit...")+"'\n";
+		+ "echo '"+_("DONE")+"'\n"
+		;
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
+	}
+
+	public void test_net() {
+		if (!App.check_internet_connectivity()) {
+			string failmsg = _("Can not reach")+" "+App.ppa_uri;
+			log_error(failmsg);
+			if (App.GUI_MODE && !App.neterr_shown) errbox(this,failmsg);
+			App.neterr_shown=true;
+		}
 	}
 
 }

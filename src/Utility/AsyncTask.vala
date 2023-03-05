@@ -134,16 +134,14 @@ public abstract class AsyncTask : GLib.Object{
 			}
 
 			try {
-				//start thread for reading output stream
-				Thread.create<void> (read_stdout, true);
+				new Thread<void>.try (null,read_stdout);
 			} catch (Error e) {
 				log_error ("AsyncTask.begin():create_thread:read_stdout()");
 				log_error (e.message);
 			}
 
 			try {
-				//start thread for reading error stream
-				Thread.create<void> (read_stderr, true);
+				new Thread<void>.try (null,read_stderr);
 			} catch (Error e) {
 				log_error ("AsyncTask.begin():create_thread:read_stderr()");
 				log_error (e.message);
@@ -302,7 +300,7 @@ public abstract class AsyncTask : GLib.Object{
 
 	protected abstract void finish_task();
 
-	public bool is_running(){
+	public bool is_running() {
 		return (status == AppStatus.RUNNING);
 	}
 }

@@ -21,32 +21,16 @@
  *
  */
 
-namespace TeeJee.System{
+namespace TeeJee.System {
 
 	using TeeJee.ProcessHelper;
 	using TeeJee.Logging;
 	using TeeJee.Misc;
 	using TeeJee.FileSystem;
 
-	// internet helpers ----------------------
-	public bool check_internet_connectivity(){
-
-		if (App.skip_connection_check) return true;
-
-		string std_err, std_out;
-		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+App.connect_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet 'https://kernel.ubuntu.com'";
-
-		int status = exec_sync(cmd, out std_out, out std_err);
-
-		if (std_err.length > 0) log_error(std_err);
-		if (status != 0) log_error(_("Internet connection is not active"));
-
-		return (status == 0);
-	}
-
 	// open -----------------------------
 
-	public void xdg_open (string file){
+	public void xdg_open (string file) {
 		string cmd = "xdg-open '%s'".printf(escape_single_quote(file));
 		log_debug(cmd);
 		exec_async(cmd);
@@ -54,13 +38,13 @@ namespace TeeJee.System{
 
 	// timers --------------------------------------------------
 
-	public GLib.Timer timer_start(){
+	public GLib.Timer timer_start() {
 		var timer = new GLib.Timer();
 		timer.start();
 		return timer;
 	}
 
-	public ulong timer_elapsed(GLib.Timer timer, bool stop = true){
+	public ulong timer_elapsed(GLib.Timer timer, bool stop = true) {
 		ulong microseconds;
 		double seconds;
 		seconds = timer.elapsed (out microseconds);
@@ -70,7 +54,7 @@ namespace TeeJee.System{
 		return (ulong)((seconds * 1000 ) + (microseconds / 1000));
 	}
 
-	public void sleep(int milliseconds){
+	public void sleep(int milliseconds) {
 		Thread.usleep ((ulong) milliseconds * 1000);
 	}
 }

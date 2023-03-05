@@ -6,31 +6,21 @@ using TeeJee.ProcessHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
-namespace TeeJee.GtkHelper{
+namespace TeeJee.GtkHelper {
 
 	using Gtk;
 
-	// messages ----------------------------------------
-
-	public void gtk_messagebox(
-		string title, string message, Gtk.Window? parent_win, bool is_error = false){
-
-		/* Shows a simple message box */
-
-		var type = Gtk.MessageType.INFO;
-		if (is_error){
-			type = Gtk.MessageType.ERROR;
-		}
-		else{
-			type = Gtk.MessageType.INFO;
-		}
-
-		var dlg = new CustomMessageDialog(title,message,type,parent_win, Gtk.ButtonsType.OK);
-		dlg.run();
-		dlg.destroy();
+	public void errbox (Window parent, string message) {
+		Gtk.MessageDialog msg = new Gtk.MessageDialog (
+			parent,
+			Gtk.DialogFlags.MODAL,
+			Gtk.MessageType.ERROR,
+			Gtk.ButtonsType.OK,
+			message
+		);
+		msg.response.connect((response_id) => msg.destroy());
+		msg.show();
 	}
-
-	// icon ----------------------------------------------
 
 	public Gdk.Pixbuf? get_app_icon(int icon_size){
 		var img_icon = get_shared_icon(BRANDING_SHORTNAME ,icon_size);

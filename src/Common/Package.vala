@@ -16,12 +16,12 @@ public class Package : GLib.Object {
 	public string version_installed = "";
 	public string version_available = "";
 	public string depends = "";
-	
+
 	public string deb_file_name = "";
 	public string deb_uri = "";
 	public int64 deb_size = 0;
 	public string deb_md5hash = "";
-	
+
 	public bool is_selected = false;
 	public bool is_available = false;
 	public bool is_installed = false;
@@ -29,8 +29,8 @@ public class Package : GLib.Object {
 	public bool is_automatic = false;
 	public bool is_manual = false;
 	public bool is_deb = false;
-	
-	//convenience members
+
+	// convenience members
 	public bool is_visible = false;
 	public bool in_backup_list = false;
 
@@ -40,7 +40,7 @@ public class Package : GLib.Object {
 		string std_out, std_err;
 		exec_sync("dpkg --print-architecture", out std_out, out std_err);
 	}
-	
+
 	public Package(string _name){
 		pname = _name;
 	}
@@ -58,11 +58,11 @@ public class Package : GLib.Object {
 		string str = "";
 		str = "%s".printf(_name);
 		if (check_if_foreign(_arch)){
-			str = str + ":%s".printf(_arch); //make it unique
+			str = str + ":%s".printf(_arch); // make it unique
 		}
 		return str;
 	}
-	
+
 	public static bool check_if_foreign(string architecture){
 		if ((architecture.length > 0) && (architecture != NATIVE_ARCH) && (architecture != "all") && (architecture != "any")){
 			return true;
@@ -80,9 +80,9 @@ public class Package : GLib.Object {
 
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir);
-		
+
 		// get installed packages from aptitude --------------
-		
+
 		string std_out, std_err;
 		exec_sync("aptitude search --disable-columns -F '%p|%v|%M|%d' '?installed'", out std_out, out std_err);
 		file_write(t_file, std_out);
@@ -148,9 +148,9 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir);
-		
+
 		// get installed packages from aptitude --------------
-		
+
 		string std_out, std_err;
 		string cmd = "aptitude search --disable-columns -F '%%p|%%v|%%M|%%d' '!installed ?architecture(native) %s'".printf(search_string);
 		exec_sync(cmd, out std_out, out std_err);
@@ -175,7 +175,7 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 					string version = arr[1].strip();
 					string auto = arr[2].strip();
 					string desc = arr[3].strip();
-					
+
 					string id = Package.get_id(pname,arch);
 
 					Package pkg = null;

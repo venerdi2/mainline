@@ -1,7 +1,7 @@
 # Makefile for "mainline"
 
 # url to ubuntu mainline kernels
-URI_KERNEL_UBUNTU_MAINLINE := https://kernel.ubuntu.com/~kernel-ppa/mainline/
+DEFAULT_PPA_URI := https://kernel.ubuntu.com/~kernel-ppa/mainline/
 
 SHELL := /bin/bash
 CFLAGS := -O2
@@ -34,7 +34,7 @@ build_symbols := -X -D'INSTALL_PREFIX="$(prefix)"' \
 	-X -D'BRANDING_AUTHOREMAIL="$(BRANDING_AUTHOREMAIL)"' \
 	-X -D'BRANDING_WEBSITE="$(BRANDING_WEBSITE)"' \
 	-X -D'GETTEXT_PACKAGE="$(BRANDING_SHORTNAME)"' \
-	-X -D'URI_KERNEL_UBUNTU_MAINLINE="$(URI_KERNEL_UBUNTU_MAINLINE)"'
+	-X -D'DEFAULT_PPA_URI="$(DEFAULT_PPA_URI)"'
 
 misc_files := README.md \
 	INSTALL \

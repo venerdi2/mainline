@@ -48,33 +48,53 @@ public class AppGtk : GLib.Object {
 		Gtk.init(ref args);
 
 		App = new Main(args, true);
+
 		parse_arguments(args);
 
 		// create main window --------------------------------------
 
 		var window = new MainWindow ();
-		
-		window.destroy.connect(()=>{
+
+		window.configure_event.connect ((event) => {
+			log_debug("resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
+			App.window_width = event.width;
+			App.window_height = event.height;
+			App.window_x = event.x;
+			App.window_y = event.y;
+			return false;
+		});
+
+		window.destroy.connect(() => {
 			log_debug("MainWindow destroyed");
 			Gtk.main_quit();
 		});
-		
-		window.delete_event.connect((event)=>{
+
+		window.delete_event.connect((event) => {
 			log_debug("MainWindow closed");
 			Gtk.main_quit();
 			return true;
 		});
 
-		if (App.command == "list"){
-			window.show_all();
-		}
+		window.show_all();
 
-		//start event loop -------------------------------------
-		
+		// start event loop -------------------------------------
+
 		Gtk.main();
 
-		//App.save_app_config();
+		// save the window size if it changed
+		if (
+				App.window_width != App._window_width ||
+				App.window_height != App._window_height ||
+				App.window_x != App._window_x ||
+				App.window_y != App._window_y
+			) App.save_app_config();
 
+		// possible future option - delete cache on every startup and exit
+		// do not do this without rigging up a way to suppress it when the gui app runs the console app
+		// like --index-is-fresh but maybe --keep-index or --batch
+		//LinuxKernel.delete_cache();
+
+		//log_debug("END AppGtk main()");
 		return 0;
 	}
 
@@ -87,13 +107,11 @@ public class AppGtk : GLib.Object {
 
 	public static bool parse_arguments(string[] args) {
 
-		App.command = "list";
-		
-		//parse options
+		// parse options
 		for (int k = 1; k < args.length; k++)
 		{
 			switch (args[k].down()) {
-				
+
 			case "--debug":
 				LOG_DEBUG = true;
 				break;
@@ -103,42 +121,14 @@ public class AppGtk : GLib.Object {
 			case "-h":
 				log_msg(help_message());
 				exit(0);
-				return true;
-			}
-		}
-
-		for (int k = 1; k < args.length; k++)
-		{
-			switch (args[k].down()) {
-
-			// commands ------------------------------------
-
-			case "--install":
-				App.command = "install";
-				App.requested_version = args[++k];
-				break;
-
-			// options without argument --------------------------
-			
-			case "--help":
-			case "--h":
-			case "-h":
-			case "--debug":
-				// already handled - do nothing
-				break;
-
-			// options with argument --------------------------
-
-			case "--user":
-				k += 1;
-				// already handled - do nothing
 				break;
 
 			default:
-				//unknown option - show help and exit
 				log_error(_("Unknown option") + ": %s".printf(args[k]));
 				log_msg(help_message());
-				return false;
+				exit(1);
+				break;
+
 			}
 		}
 
@@ -146,10 +136,9 @@ public class AppGtk : GLib.Object {
 	}
 
 	public static string help_message() {
-		
 		string msg = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n";
 		msg += "\n";
-		msg += _("Syntax") + ": " + BRANDING_SHORTNAME + "-gtk [options]\n";
+		msg += _("Syntax") + ": " + BRANDING_SHORTNAME + "-gtk ["+_("options")+"]\n";
 		msg += "\n";
 		msg += _("Options") + ":\n";
 		msg += "\n";

@@ -35,16 +35,22 @@ public Main App;
 public class AppConsole : GLib.Object {
 
 	public static int main (string[] args) {
-		
+
 		set_locale();
 
 		log_msg(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 
 		App = new Main(args, false);
-		
 		var console =  new AppConsole();
+
 		bool is_success = console.parse_arguments(args);
 
+		// possible future option - delete cache on every startup and exit
+		// do not do this without rigging up a way to suppress it when the gui app runs the console app
+		// like --index-is-fresh but maybe --keep-index or --batch
+		//LinuxKernel.delete_cache();
+
+		//log_debug("END AppConsole main()");
 		return (is_success) ? 0 : 1;
 	}
 
@@ -56,7 +62,7 @@ public class AppConsole : GLib.Object {
 	}
 
 	private static string help_message() {
-		
+
 		string msg = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
 		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
@@ -73,15 +79,14 @@ public class AppConsole : GLib.Object {
 		+ "  --uninstall <name>  " + _("Uninstall specified kernel") + "(2)\n"
 		+ "  --uninstall-old     " + _("Uninstall kernels older than the running kernel") + "\n"
 		+ "  --download <name>   " + _("Download specified kernels") + "(2)\n"
-		+ "  --clean-cache       " + _("Remove files from application cache") + "\n"
+		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
 		+ "  --include-unstable  " + _("Include unstable and RC releases") + "\n"
-		+ "  --hide-unstable     " + _("Hide unstable and RC releases") + "\n"
-		+ "  --debug           " + _("Enable verbose debugging output") + "\n"
-		+ "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
-		+ "  --user            " + _("Override user") + "\n"
+		+ "  --exclude-unstable  " + _("Exclude unstable and RC releases") + "\n"
+		+ "  --debug             " + _("Enable verbose debugging output") + "\n"
+		+ "  --yes               " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("A version string taken from the output of --list") + "\n"
@@ -105,9 +110,9 @@ public class AppConsole : GLib.Object {
 
 		string cmd = "";
 		string cmd_versions = "";
-			
+
 		// parse options first --------------
-		
+
 		for (int k = 1; k < args.length; k++)
 		{
 			switch (args[k].down()) {
@@ -119,19 +124,17 @@ public class AppConsole : GLib.Object {
 				App.confirm = false;
 				break;
 
-			case "--user":
-				if (++k < args.length){
-					string custom_user_login = args[k];
-					App.init_paths(custom_user_login);
-					App.load_app_config();
-				}
+			// used by gui front-end
+			case "--index-is-fresh":
+				App.index_is_fresh = true;
 				break;
 
 			case "--show-unstable":		// back compat
 			case "--include-unstable":
 				App.hide_unstable = false;
 				break;
-			case "--hide-unstable":
+			case "--hide-unstable":		// back compat
+			case "--exclude-unstable":
 				App.hide_unstable = true;
 				break;
 
@@ -143,7 +146,8 @@ public class AppConsole : GLib.Object {
 			case "--install-point":
 			case "--purge-old-kernels":	// back compat
 			case "--uninstall-old":
-			case "--clean-cache":
+			case "--clean-cache":	// back compat
+			case "--delete-cache":
 				cmd = args[k].down();
 				break;
 
@@ -152,7 +156,7 @@ public class AppConsole : GLib.Object {
 			case "--remove":	// back compat
 			case "--uninstall":
 				cmd = args[k].down();
-				
+
 				if (++k < args.length){
 					cmd_versions = args[k];
 				}
@@ -163,7 +167,7 @@ public class AppConsole : GLib.Object {
 			case "-h":
 				log_msg(help_message());
 				return true;
-				
+
 			default:
 				// unknown option
 				log_error(_("Unknown option") + ": %s".printf(args[k]));
@@ -178,61 +182,46 @@ public class AppConsole : GLib.Object {
 		switch (cmd) {
 		case "--list":
 
-			check_if_internet_is_active(false);
-			
 			LinuxKernel.query(true);
-			
 			LinuxKernel.print_list();
-
 			break;
 
 		case "--list-installed":
-		
+
 			LinuxKernel.check_installed();
-			
 			break;
 
 		case "--check":
 
 			print_updates();
-
 			break;
 
 		case "--notify":
 
 			notify_user();
-			
 			break;
 
 		case "--install-latest":
 		case "--install-point":
 
-			check_if_internet_is_active(true);
-
 			LinuxKernel.kinst_latest(false, App.confirm);
-			
 			break;
 
 		case "--purge-old-kernels":	// back compat
 		case "--uninstall-old":
 
 			LinuxKernel.kunin_old(App.confirm);
-
 			break;
-			
-		case "--clean-cache":
 
-			LinuxKernel.clean_cache();
-			
+		case "--clean-cache": // back compat
+		case "--delete-cache":
+			LinuxKernel.delete_cache();
 			break;
 
 		case "--download":
 		case "--install":
 		case "--remove":	// back compat
 		case "--uninstall":
-			if (cmd=="--download") check_if_internet_is_active();
-
-			LinuxKernel.query(true);
 
 			if (cmd_versions.length==0){
 				log_error(_("No kernels specified"));
@@ -240,25 +229,26 @@ public class AppConsole : GLib.Object {
 			}
 
 			string[] requested_versions = cmd_versions.split(",");
-			if ((requested_versions.length > 1) && (cmd == "--install")){
+			if ((requested_versions.length > 1) && (cmd == "--install")) {
 				log_error(_("Multiple kernels selected for installation. Select only one."));
 				exit(1);
 			}
 
+			LinuxKernel.query(true);
+
 			var list = new Gee.ArrayList<LinuxKernel>();
 
-			foreach(string requested_version in requested_versions){
+			foreach(string requested_version in requested_versions) {
 				LinuxKernel kern_requested = null;
-				foreach(var kern in LinuxKernel.kernel_list){
+				foreach(var kern in LinuxKernel.kernel_list) {
 					// match --list output
-					if (kern.version_main == requested_version){
+					if (kern.version_main == requested_version) {
 						kern_requested = kern;
 						break;
 					}
 				}
 
-				if (kern_requested == null){
-					
+				if (kern_requested == null) {
 					var msg = _("Could not find requested version");
 					msg += ": %s".printf(requested_version);
 					log_error(msg);
@@ -300,29 +290,23 @@ public class AppConsole : GLib.Object {
 
 	private void print_updates(){
 
-		check_if_internet_is_active(false);
-				
 		LinuxKernel.query(true);
-
-		// already done in query() -> query_thread() ?
-		//LinuxKernel.check_updates("print_updates()");
-		//LinuxKernel.check_updates();
 
 		var kern_major = LinuxKernel.kernel_update_major;
 		
-		if (kern_major != null){
+		if (kern_major != null) {
 			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
 			log_msg(message);
 		}
 
 		var kern_minor = LinuxKernel.kernel_update_minor;
 
-		if (kern_minor != null){
+		if (kern_minor != null) {
 			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
 			log_msg(message);
 		}
 
-		if ((kern_major == null) && (kern_minor == null)){
+		if ((kern_major == null) && (kern_minor == null)) {
 			log_msg(_("No updates found"));
 		}
 
@@ -331,13 +315,7 @@ public class AppConsole : GLib.Object {
 
 	private void notify_user(){
 
-		check_if_internet_is_active(false);
-
 		LinuxKernel.query(true);
-
-		// already done in query() -> query_thread() ?
-		//LinuxKernel.check_updates("notify_user()");
-		//LinuxKernel.check_updates();
 
 		string seen_maj = "";
 		string seen_min = "";
@@ -361,9 +339,9 @@ public class AppConsole : GLib.Object {
 		}
 
 		var kern = LinuxKernel.kernel_update_major;
-		if (App.notify_major && (kern!=null) && (seen_maj!=kern.version_main)){
+		if (App.notify_major && (kern!=null) && (seen_maj!=kern.version_main)) {
 			var title = _("Kernel %s Available").printf(kern.version_main);
-			if (App.notify_major || App.notify_minor){
+			if (App.notify_major || App.notify_minor) {
 				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
 				file_write(App.MAJ_SEEN_FILE,kern.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
@@ -373,7 +351,7 @@ public class AppConsole : GLib.Object {
 		}
 
 		kern = LinuxKernel.kernel_update_minor;
-		if (App.notify_minor && (kern!=null) && (seen_min!=kern.version_main)){
+		if (App.notify_minor && (kern!=null) && (seen_min!=kern.version_main)) {
 			var title = _("Kernel %s Available").printf(kern.version_main);
 			if (App.notify_major || App.notify_minor) {
 				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
@@ -387,11 +365,4 @@ public class AppConsole : GLib.Object {
 		log_msg(_("No updates found"));
 	}
 
-	public void check_if_internet_is_active(bool exit_app = true){
-		if (!check_internet_connectivity()){
-			if (exit_app){
-				exit(1);
-			}
-		}
-	}
 }

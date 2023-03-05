@@ -245,12 +245,6 @@ namespace TeeJee.FileSystem{
 
 	}
 
-//	public bool chown(string dir_path, string user, string group){
-//		string cmd = "chown %s:%s -R '%s'".printf(user, group, escape_single_quote(dir_path));
-//		int status = exec_sync(cmd, null, null);
-//		return (status == 0);
-//	}
-
 	// misc --------------------
 
 	public string format_file_size (
