@@ -22,14 +22,12 @@ msgid "Architecture"
 msgstr "Системна архитектура"
 
 #: src/Common/LinuxKernel.vala:295
-#, fuzzy
 msgid "Fetching individual kernel indexes..."
-msgstr "Отримання індекса ..."
+msgstr "Отримання окремих індексів ядра..."
 
 #: src/Common/LinuxKernel.vala:339
-#, fuzzy
 msgid "Fetching main index from"
-msgstr "Отримання індекса ..."
+msgstr "Отримання основного індексу з"
 
 #: src/Common/LinuxKernel.vala:593
 msgid "Could not find running kernel in list!"
@@ -107,21 +105,20 @@ msgid "This kernel is already installed."
 msgstr "Це ядро вже встановлено."
 
 #: src/Common/LinuxKernel.vala:1102
-#, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Видаліть конкретні ядра"
 
 #: src/Common/LinuxKernel.vala:1108
 msgid "requested"
-msgstr ""
+msgstr "запитуваний"
 
 #: src/Common/LinuxKernel.vala:1111
 msgid "skipping the currently booted kernel"
-msgstr ""
+msgstr "пропускаючи поточне завантажене ядро"
 
 #: src/Common/LinuxKernel.vala:1127
 msgid "found"
-msgstr ""
+msgstr "знайдено"
 
 #: src/Common/LinuxKernel.vala:1130
 #, fuzzy
@@ -138,7 +135,7 @@ msgstr "Повідомлення вимкнено"
 
 #: src/Common/Main.vala:332 src/Gtk/MainWindow.vala:638
 msgid "Can not reach"
-msgstr ""
+msgstr "Не може дістатися"
 
 #: src/Common/Package.vala:131 src/Common/Package.vala:196
 #, c-format
@@ -317,7 +314,7 @@ msgstr "Видалити ядра, старіші за запущене ядро
 
 #: src/Gtk/MainWindow.vala:329
 msgid "Reload"
-msgstr ""
+msgstr "Перезавантажити"
 
 #: src/Gtk/MainWindow.vala:334 src/Gtk/SettingsDialog.vala:50
 msgid "Settings"
@@ -329,7 +326,7 @@ msgstr "Про программу"
 
 #: src/Gtk/MainWindow.vala:344
 msgid "Exit"
-msgstr ""
+msgstr "Вихід"
 
 #: src/Gtk/MainWindow.vala:412
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
@@ -345,7 +342,7 @@ msgstr "Оригінал"
 
 #: src/Gtk/MainWindow.vala:451
 msgid "Updating cached indexes"
-msgstr ""
+msgstr "Оновлення кешованих індексів"
 
 #: src/Gtk/MainWindow.vala:533
 msgid "available"
@@ -354,7 +351,7 @@ msgstr "доступний"
 #: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:601
 #: src/Gtk/MainWindow.vala:629
 msgid "DONE"
-msgstr ""
+msgstr "ГОТОВО"
 
 #: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:148
 msgid "Cancel"
