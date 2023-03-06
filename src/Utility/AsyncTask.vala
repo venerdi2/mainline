@@ -133,19 +133,10 @@ public abstract class AsyncTask : GLib.Object{
 				dos_log = new DataOutputStream (file_stream);
 			}
 
-			try {
-				new Thread<void>.try (null,read_stdout);
-			} catch (Error e) {
-				log_error("AsyncTask.begin():create_thread:read_stdout()");
-				log_error(e.message);
-			}
+			// read stdout & stderr
+			new Thread<void> (null,read_stdout);
+			new Thread<void> (null,read_stderr);
 
-			try {
-				new Thread<void>.try (null,read_stderr);
-			} catch (Error e) {
-				log_error("AsyncTask.begin():create_thread:read_stderr()");
-				log_error(e.message);
-			}
 		}
 		catch (Error e) {
 			log_error("AsyncTask.begin()");
