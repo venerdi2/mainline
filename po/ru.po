@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-06 02:18-0500\n"
-"PO-Revision-Date: 2023-03-01 20:22+0300\n"
+"PO-Revision-Date: 2023-03-06 22:07+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -23,14 +23,12 @@ msgid "Architecture"
 msgstr "Архитектура"
 
 #: src/Common/LinuxKernel.vala:295
-#, fuzzy
 msgid "Fetching individual kernel indexes..."
-msgstr "Получение сведений..."
+msgstr "Получение отдельных индексов ядер..."
 
 #: src/Common/LinuxKernel.vala:339
-#, fuzzy
 msgid "Fetching main index from"
-msgstr "Получение сведений..."
+msgstr "Получение основного индекса из"
 
 #: src/Common/LinuxKernel.vala:593
 msgid "Could not find running kernel in list!"
@@ -108,26 +106,24 @@ msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
 #: src/Common/LinuxKernel.vala:1102
-#, fuzzy
 msgid "Uninstalling selected kernels"
-msgstr "Установить указанное ядро"
+msgstr "Удаление выбранных ядер"
 
 #: src/Common/LinuxKernel.vala:1108
 msgid "requested"
-msgstr ""
+msgstr "requested"
 
 #: src/Common/LinuxKernel.vala:1111
 msgid "skipping the currently booted kernel"
-msgstr ""
+msgstr "пропуск текущего загруженного ядра"
 
 #: src/Common/LinuxKernel.vala:1127
 msgid "found"
-msgstr ""
+msgstr "найдено"
 
 #: src/Common/LinuxKernel.vala:1130
-#, fuzzy
 msgid "No packages to un-install!"
-msgstr "Установленные пакеты"
+msgstr "Нет пакетов для деинсталляции!"
 
 #: src/Common/Main.vala:259
 msgid "Called from"
@@ -139,7 +135,7 @@ msgstr "Уведомления отключены"
 
 #: src/Common/Main.vala:332 src/Gtk/MainWindow.vala:638
 msgid "Can not reach"
-msgstr ""
+msgstr "Не удается получить"
 
 #: src/Common/Package.vala:131 src/Common/Package.vala:196
 #, c-format
@@ -196,7 +192,7 @@ msgstr "Скачать указанные ядра"
 
 #: src/Console/AppConsole.vala:82
 msgid "Delete cached info about available kernels"
-msgstr ""
+msgstr "Удаление кэшированной информации о доступных ядрах"
 
 #: src/Console/AppConsole.vala:84 src/Gtk/AppGtk.vala:143
 msgid "Options"
@@ -204,12 +200,11 @@ msgstr "Параметры"
 
 #: src/Console/AppConsole.vala:86
 msgid "Include unstable and RC releases"
-msgstr "Включать нестабильные и релиз-кандидат-версии"
+msgstr "Включать нестабильные и релиз-кандидат релизы"
 
 #: src/Console/AppConsole.vala:87
-#, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "Включать нестабильные и релиз-кандидат-версии"
+msgstr "Исключить нестабильные и релиз-кандидат релизы"
 
 #: src/Console/AppConsole.vala:88
 msgid "Enable verbose debugging output"
@@ -282,9 +277,8 @@ msgid "Install"
 msgstr "Установить"
 
 #: src/Gtk/AppGtk.vala:141
-#, fuzzy
 msgid "options"
-msgstr "Параметры"
+msgstr "параметры"
 
 #: src/Gtk/AppGtk.vala:145
 msgid "Print debug information"
@@ -320,7 +314,7 @@ msgstr "Удалить более старшие установленные яд
 
 #: src/Gtk/MainWindow.vala:329
 msgid "Reload"
-msgstr ""
+msgstr "Перезагрузить"
 
 #: src/Gtk/MainWindow.vala:334 src/Gtk/SettingsDialog.vala:50
 msgid "Settings"
@@ -332,7 +326,7 @@ msgstr "О программе"
 
 #: src/Gtk/MainWindow.vala:344
 msgid "Exit"
-msgstr ""
+msgstr "Выход"
 
 #: src/Gtk/MainWindow.vala:412
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
@@ -348,7 +342,7 @@ msgstr "Оригинал"
 
 #: src/Gtk/MainWindow.vala:451
 msgid "Updating cached indexes"
-msgstr ""
+msgstr "Обновление кэшированных индексов"
 
 #: src/Gtk/MainWindow.vala:533
 msgid "available"
@@ -357,7 +351,7 @@ msgstr "доступно"
 #: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:601
 #: src/Gtk/MainWindow.vala:629
 msgid "DONE"
-msgstr ""
+msgstr "ГОТОВО"
 
 #: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:148
 msgid "Cancel"
