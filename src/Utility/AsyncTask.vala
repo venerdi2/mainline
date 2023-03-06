@@ -134,8 +134,8 @@ public abstract class AsyncTask : GLib.Object{
 			}
 
 			// read stdout & stderr
-			new Thread<void> (null,read_stdout);
-			new Thread<void> (null,read_stderr);
+			new Thread<bool> (null,read_stdout);
+			new Thread<bool> (null,read_stderr);
 
 		}
 		catch (Error e) {
@@ -147,7 +147,7 @@ public abstract class AsyncTask : GLib.Object{
 		return has_started;
 	}
 
-	private void read_stdout() {
+	private bool read_stdout() {
 		try {
 			stdout_is_open = true;
 			
@@ -179,16 +179,18 @@ public abstract class AsyncTask : GLib.Object{
 		catch (Error e) {
 			log_error("AsyncTask.read_stdout()");
 			log_error(e.message);
+			return false;
 		}
+		return true;
 	}
 	
-	private void read_stderr() {
+	private bool read_stderr() {
 		try {
 			stderr_is_open = true;
 			
 			err_line = dis_err.read_line (null);
 			while (err_line != null) {
-				if (!is_terminated && (err_line.length > 0)){
+				if (!is_terminated && (err_line.length > 0)) {
 					error_msg += "%s\n".printf(err_line);
 					
 					parse_stderr_line(err_line);
@@ -215,10 +217,13 @@ public abstract class AsyncTask : GLib.Object{
 		catch (Error e) {
 			log_error("AsyncTask.read_stderr()");
 			log_error(e.message);
+			return false;
 		}
+		return true;
 	}
 
-	public void write_stdin(string line){
+/*
+	public void write_stdin(string line) {
 		try {
 			if (status == AppStatus.RUNNING){
 				dos_in.put_string(line + "\n");
@@ -232,14 +237,15 @@ public abstract class AsyncTask : GLib.Object{
 			log_error(e.message);
 		}
 	}
-	
+*/
+
 	protected abstract void parse_stdout_line(string out_line);
 	
 	protected abstract void parse_stderr_line(string err_line);
 	
-	private void finish(){
+	private void finish() {
 		// finish() gets called by 2 threads but should be executed only once
-		if (finish_called) { return; }
+		if (finish_called) return;
 		finish_called = true;
 
 		// dispose stdin

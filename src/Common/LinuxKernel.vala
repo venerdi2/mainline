@@ -200,7 +200,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		try {
 			cancelled = false;
-			var worker = new Thread<void>.try(null, () => query_thread((owned) notifier));
+			var worker = new Thread<bool>.try(null, () => query_thread((owned) notifier) );
 
 			if (wait)
 				worker.join();
@@ -209,7 +209,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	private static void query_thread(owned Notifier? notifier) {
+	private static bool query_thread(owned Notifier? notifier) {
 		log_debug("query_thread()");
 		App.progress_total = 1;
 		App.progress_count = 0;
@@ -311,12 +311,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		check_installed();
-
-		//check_updates("query_thread()");
 		check_updates();
 
 		timer_elapsed(timer, true);
 		if (notifier != null) notifier(timer, ref count, true);
+
+		return true;
 	}
 
 	// download the main index.html listing all mainline kernels
