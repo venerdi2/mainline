@@ -3,7 +3,7 @@ mainline (1.1.1) unstable; urgency=medium
   * replaced deprecated Gtk.show_uri() and xdg_open() with new uri_open()
   * added PPA button to load the selected kernel's page from the mainline-ppa site
 
- -- Brian K. White <b.kenyon.w@gmail.com>  Mon, 06 Mar 2023 00:19:04 -0500
+ -- Brian K. White <b.kenyon.w@gmail.com>  Mon, 06 Mar 2023 02:43:44 -0500
 
 mainline (1.1.0) unstable; urgency=medium
 
