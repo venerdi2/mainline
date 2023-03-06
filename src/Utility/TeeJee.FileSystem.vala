@@ -38,16 +38,16 @@ namespace TeeJee.FileSystem{
 	public const int64 MiB = 1024 * KiB;
 	public const int64 GiB = 1024 * MiB;
 	public const int64 TiB = 1024 * GiB;
-	
+
 	// path helpers ----------------------------
-	
-	public string file_parent(string f){
-		log_debug("file_parent("+f+")");
+
+	public string file_parent(string f) {
+		//log_debug("file_parent("+f+")");
 		return File.new_for_path(f).get_parent().get_path();
 	}
 
-	public string file_basename(string f){
-		log_debug("file_basename("+f+")");
+	public string file_basename(string f) {
+		//log_debug("file_basename("+f+")");
 		return File.new_for_path(f).get_basename();
 	}
 
@@ -66,8 +66,8 @@ namespace TeeJee.FileSystem{
 
 		try {
 			var file = File.new_for_path (file_path);
-			if (file.query_exists ()) {
-				file.delete ();
+			if (file.query_exists()) {
+				file.delete();
 				log_debug(_("File deleted") + ": %s".printf(file_path));
 			}
 			return true;

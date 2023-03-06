@@ -30,10 +30,16 @@ namespace TeeJee.System {
 
 	// open -----------------------------
 
-	public void xdg_open (string file) {
-		string cmd = "xdg-open '%s'".printf(escape_single_quote(file));
-		log_debug(cmd);
-		exec_async(cmd);
+	public void uri_open (string uri) {
+		try {
+			AppInfo.launch_default_for_uri (uri,null);
+		} catch (Error e) {
+			warning ("Unable to launch %s", uri);
+		}
+
+		// if/when above breaks, this works fine
+		//string cmd = "xdg-open '%s'".printf(escape_single_quote(uri));
+		//exec_async(cmd);
 	}
 
 	// timers --------------------------------------------------

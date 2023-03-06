@@ -1,12 +1,15 @@
-mainline (1.1.0) UNRELEASED; urgency=medium
+mainline (1.1.1) unstable; urgency=medium
 
-  * removed --user
-    it was always broken as all it did was change the path to the cache & config files without actually doing any sudo or pkexec etc
+  * replaced deprecated Gtk.show_uri() and xdg_open() with new uri_open()
+  * added PPA button to load the selected kernel's page from the mainline-ppa site
 
-  * improve net connection checks
-    - removed skip_internet_connection_check setting
-    - test connection on actual main index uri
-    - remember the result for the rest of the session and only bother the user once (except reload)
+ -- Brian K. White <b.kenyon.w@gmail.com>  Mon, 06 Mar 2023 00:19:04 -0500
+
+mainline (1.1.0) unstable; urgency=medium
+
+  * replaced the refresh button with reload
+    reload button does a full delete_cache() when pressed, same as --clean-cache flag
+    reload button clears the state flags: index_is_fresh, connection_checked, neterr_shown
 
   * improved cache handling
     - don't delete or re-download the cache indexes any more than necessary
@@ -20,9 +23,10 @@ mainline (1.1.0) UNRELEASED; urgency=medium
     - preserve old indexes if automatic download at startup fails
       but do erase it if either --delet-cache or reload button
 
-  * replaced the refresh button with reload
-    reload button does a full delete_cache() when pressed, same as --clean-cache flag
-    reload button clears the state flags: index_is_fresh, connection_checked, neterr_shown
+  * improve net connection checks
+    - removed skip_internet_connection_check setting
+    - test connection on actual main index uri
+    - remember the result for the rest of the session and only bother the user once (except reload)
 
   * renamed a few cmdline flags, old names still accepted for backwards compatibility
     --clean-cache -> --delete-cache  - also, you should rarely need this now, because the reload button does it
@@ -32,7 +36,7 @@ mainline (1.1.0) UNRELEASED; urgency=medium
   * replaced gtk_messagbox() based on CustomMessageDialog.vala with errbox() based on simpler Gtk.MessageDialog
     deleted entire CustomMessageDialog.vala
 
-  * resolved several compiler warnings, some from deleting gtk_messagbox(), some from updating Thread<T> creation method.
+  * resolved several compiler warnings, some from deleting gtk_messagbox(), some from updating Thread<T> creation method
 
   * added "exit" button to main gui
 
@@ -40,6 +44,9 @@ mainline (1.1.0) UNRELEASED; urgency=medium
     not exposed in the settings dialog, but you can edit config.json
 
   * save & restore the window size & position
+
+  * removed --user
+    it was always broken as all it did was change the path to the cache & config files without actually changing euid etc
 
   * added several debug messages
 

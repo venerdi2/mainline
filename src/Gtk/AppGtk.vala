@@ -56,7 +56,7 @@ public class AppGtk : GLib.Object {
 		var window = new MainWindow ();
 
 		window.configure_event.connect ((event) => {
-			log_debug("resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
+			//log_debug("resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
 			App.window_width = event.width;
 			App.window_height = event.height;
 			App.window_x = event.x;

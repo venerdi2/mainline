@@ -76,7 +76,6 @@ public class Main : GLib.Object{
 	public string requested_version = "";
 	public bool connection_checked = false;
 	public bool connection_status = true;
-	public bool neterr_shown = false;
 	public bool index_is_fresh = false;
 	public int window_width = 800;
 	public int window_height = 600;
@@ -320,18 +319,17 @@ public class Main : GLib.Object{
 	}
 
 	public bool check_internet_connectivity() {
-
 		if (connection_checked) return connection_status;
 
 		string std_err, std_out;
 		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+connect_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet '"+ppa_uri+"'";
 
 		int status = exec_sync(cmd, out std_out, out std_err);
-
 		if (std_err.length > 0) log_error(std_err);
 
+		connection_status = false;
 		if (status == 0) connection_status = true;
-		else connection_status = false;
+		else log_error(_("Can not reach")+" "+ppa_uri);
 
 		connection_checked = true;
 		return connection_status;

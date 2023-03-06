@@ -235,14 +235,7 @@ public class AboutWindow : Dialog {
 		lbtn_website.margin_top = 5;
 		vbox_logo.add(lbtn_website);
 
-		lbtn_website.activate_link.connect(()=>{
-			try{
-				return Gtk.show_uri(null, lbtn_website.uri, Gdk.CURRENT_TIME);
-			}
-			catch(Error e){
-				return false;
-			}
-		});
+		lbtn_website.activate_link.connect(()=>{ uri_open(lbtn_website.uri); return true; });
 
 		//copyright
 		lbl_copyright = new Label("");
@@ -379,14 +372,7 @@ public class AboutWindow : Dialog {
 				link.uri = "http://" + val;
 			}
 
-			link.activate_link.connect(()=>{
-				try{
-					return Gtk.show_uri(null, link.uri, Gdk.CURRENT_TIME);
-				}
-				catch(Error e){
-					return false;
-				}
-			});
+			link.activate_link.connect(() => { uri_open(link.uri); return true; });
 		}
 		else{
 			var txt = text;

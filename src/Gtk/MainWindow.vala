@@ -67,7 +67,7 @@ public class MainWindow : Gtk.Window {
 
 		init_ui();
 
-		refresh_cache();
+		update_cache();
 	}
 
 	private void init_ui(){
@@ -170,7 +170,7 @@ public class MainWindow : Gtk.Window {
 		tv.set_tooltip_column(3);
 	}
 
-	private void tv_row_activated(TreePath path, TreeViewColumn column){
+	private void tv_row_activated(TreePath path, TreeViewColumn column) {
 		TreeIter iter;
 		tv.model.get_iter_from_string(out iter, path.to_string());
 		LinuxKernel kern;
@@ -187,7 +187,7 @@ public class MainWindow : Gtk.Window {
 		var paths = sel.get_selected_rows (out model);
 
 		selected_kernels.clear();
-		foreach(var path in paths){
+		foreach (var path in paths) {
 			LinuxKernel kern;
 			model.get_iter(out iter, path);
 			model.get (iter, 0, out kern, -1);
@@ -218,7 +218,7 @@ public class MainWindow : Gtk.Window {
 
 		TreeIter iter;
 		bool odd_row = false;
-		foreach(var kern in LinuxKernel.kernel_list) {
+		foreach (var kern in LinuxKernel.kernel_list) {
 			if (!kern.is_valid) continue;
 			if (!kern.is_installed) {
 				if (App.hide_unstable && kern.is_unstable) continue;
@@ -275,7 +275,7 @@ public class MainWindow : Gtk.Window {
 
 	private void init_actions(){
 
-		var hbox = new Gtk.Box(Orientation.VERTICAL, 7);
+		var hbox = new Gtk.Box(Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
 
 		// install
@@ -285,7 +285,7 @@ public class MainWindow : Gtk.Window {
 
 		button.clicked.connect(() => {
 			return_if_fail(selected_kernels.size == 1);
-			kinst(selected_kernels[0]);
+			do_install(selected_kernels[0]);
 		});
 
 		// uninstall
@@ -295,38 +295,7 @@ public class MainWindow : Gtk.Window {
 
 		button.clicked.connect(() => {
 			return_if_fail(selected_kernels.size > 0);
-							
-			var term = new TerminalWindow.with_parent(this, false, true);
-			string t_dir = create_tmp_dir();
-			string t_file = get_temp_file_path(t_dir)+".sh";
-
-			term.script_complete.connect(()=>{
-				term.allow_window_close();
-				file_delete(t_file);
-				dir_delete(t_dir);
-			});
-
-			term.destroy.connect(()=>{
-				this.present();
-				refresh_cache();
-			});
-
-			string names = "";
-			foreach(var kern in selected_kernels){
-				if (names.length > 0) names += ",";
-				names += "%s".printf(kern.version_main);
-			}
-
-			string sh = BRANDING_SHORTNAME;
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			if (LOG_DEBUG) sh += " --debug";
-			sh += " --uninstall %s\n".printf(names)
-			+ "echo \n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
-
-			save_bash_script_temp(sh,t_file);
-			term.execute_script(t_file,t_dir);
+			do_uninstall(selected_kernels);
 		});
 
 		// changes
@@ -335,64 +304,50 @@ public class MainWindow : Gtk.Window {
 		btn_changes = button;
 
 		button.clicked.connect(() => {
-			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
-				xdg_open(selected_kernels[0].changes_file);
+			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)) {
+				uri_open("file://"+selected_kernels[0].changes_file);
 			}
+		});
+
+		// ppa
+		button = new Gtk.Button.with_label ("PPA");
+		hbox.pack_start (button, true, true, 0);
+
+		button.clicked.connect(() => {
+			string uri = App.ppa_uri;
+			if (selected_kernels.size == 1) uri += selected_kernels[0].kname;
+			uri_open(uri);
 		});
 
 		// uninstall-old
 		button = new Gtk.Button.with_label (_("Uninstall Old"));
 		button.set_tooltip_text(_("Uninstall kernels older than running kernel"));
 		hbox.pack_start (button, true, true, 0);
-
-		button.clicked.connect(() => {
-
-			var term = new TerminalWindow.with_parent(this, false, true);
-			string t_dir = create_tmp_dir();
-			string t_file = get_temp_file_path(t_dir)+".sh";
-
-			term.script_complete.connect(()=>{
-				term.allow_window_close();
-				file_delete(t_file);
-				dir_delete(t_dir);
-			});
-
-			term.destroy.connect(()=>{
-				this.present();
-				refresh_cache();
-			});
-
-			string sh = BRANDING_SHORTNAME+" --uninstall-old";
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			if (LOG_DEBUG) sh += " --debug";
-			sh += "\n"
-			+ "echo \n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
-
-			save_bash_script_temp(sh,t_file);
-			term.execute_script(t_file,t_dir);
-		});
+		button.clicked.connect(do_purge);
 
 		// reload
 		button = new Gtk.Button.with_label (_("Reload"));
 		hbox.pack_start (button, true, true, 0);
-		//btn_refresh = button;
-
-		button.clicked.connect(() => {
-			// when the user interactively presses reload, clear all state and try everything fresh
-			LinuxKernel.delete_cache();
-			App.connection_checked=false;
-			App.neterr_shown=false;
-			refresh_cache();
-		});
+		button.clicked.connect(reload_cache);
 
 		// settings
 		button = new Gtk.Button.with_label (_("Settings"));
 		hbox.pack_start (button, true, true, 0);
+		button.clicked.connect(do_settings);
 
-		button.clicked.connect(() => {
+		// about
+		button = new Gtk.Button.with_label (_("About"));
+		hbox.pack_start (button, true, true, 0);
+		button.clicked.connect(do_about);
 
+		// exit
+		button = new Gtk.Button.with_label (_("Exit"));
+		hbox.pack_start (button, true, true, 0);
+		button.clicked.connect(do_exit);
+
+	}
+
+	private void do_settings () {
 			int _show_prev_majors = App.show_prev_majors;
 			bool _hide_unstable = App.hide_unstable;
 
@@ -401,31 +356,18 @@ public class MainWindow : Gtk.Window {
 			dlg.destroy();
 
 			if (
-				(_show_prev_majors != App.show_prev_majors)
-				|| (_hide_unstable != App.hide_unstable)
-			   ) {
-				refresh_cache();
+					(_show_prev_majors != App.show_prev_majors) ||
+					(_hide_unstable != App.hide_unstable)
+				) {
+				reload_cache();
 			}
-
-		});
-
-		// about
-		button = new Gtk.Button.with_label (_("About"));
-		hbox.pack_start (button, true, true, 0);
-		button.clicked.connect(btn_about_clicked);
-
-		// exit
-		button = new Gtk.Button.with_label (_("Exit"));
-		hbox.pack_start (button, true, true, 0);
-		button.clicked.connect(btn_exit_clicked);
-
 	}
 
-	private void btn_exit_clicked () {
+	private void do_exit () {
 		Gtk.main_quit();
 	}
 
-	private void btn_about_clicked () {
+	private void do_about () {
 
 		var dialog = new AboutWindow();
 		dialog.set_transient_for (this);
@@ -486,8 +428,17 @@ public class MainWindow : Gtk.Window {
 		dialog.show_all();
 	}
 
-	private void refresh_cache() {
-		log_debug("refresh_cache()");
+	// Full re-load. Delete cache and clear session state and start over.
+	private void reload_cache() {
+		log_debug("reload_cache()");
+		LinuxKernel.delete_cache();
+		App.connection_checked=false;
+		update_cache();
+	}
+
+	// Update the cache as optimally as possible.
+	private void update_cache() {
+		log_debug("update_cache()");
 
 		test_net();
 
@@ -497,7 +448,7 @@ public class MainWindow : Gtk.Window {
 			return;
 		}
 
-		string message = _("Refreshing...");
+		string message = _("Updating cached indexes")+"...";
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
 
@@ -587,11 +538,11 @@ public class MainWindow : Gtk.Window {
 		}
 	}
 
-	public void kinst(LinuxKernel kern) {
-
+	public void do_install(LinuxKernel kern) {
 		return_if_fail(!kern.is_installed);
-
-		test_net ();
+		// let it try even if we think the net is down
+		// just so the button responds instead of looking broken
+		//if (!test_net()) return;
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
@@ -605,7 +556,7 @@ public class MainWindow : Gtk.Window {
 
 		term.destroy.connect(()=>{
 			this.present();
-			refresh_cache();
+			update_cache();
 		});
 
 		string sh = BRANDING_SHORTNAME;
@@ -620,13 +571,72 @@ public class MainWindow : Gtk.Window {
 		term.execute_script(t_file,t_dir);
 	}
 
-	public void test_net() {
-		if (!App.check_internet_connectivity()) {
-			string failmsg = _("Can not reach")+" "+App.ppa_uri;
-			log_error(failmsg);
-			if (App.GUI_MODE && !App.neterr_shown) errbox(this,failmsg);
-			App.neterr_shown=true;
+	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
+		var term = new TerminalWindow.with_parent(this, false, true);
+		string t_dir = create_tmp_dir();
+		string t_file = get_temp_file_path(t_dir)+".sh";
+
+		term.script_complete.connect(()=>{
+			term.allow_window_close();
+			file_delete(t_file);
+			dir_delete(t_dir);
+		});
+
+		term.destroy.connect(()=>{
+			this.present();
+			update_cache();
+		});
+
+		string names = "";
+		foreach(var k in klist){
+			if (names.length > 0) names += ",";
+			names += "%s".printf(k.version_main);
 		}
+
+		string sh = BRANDING_SHORTNAME;
+		if (App.index_is_fresh) sh += " --index-is-fresh";
+		if (LOG_DEBUG) sh += " --debug";
+			sh += " --uninstall %s\n".printf(names)
+			+ "echo \n"
+			+ "echo '"+_("DONE")+"'\n"
+			;
+
+		save_bash_script_temp(sh,t_file);
+		term.execute_script(t_file,t_dir);
+	}
+
+	public void do_purge () {
+		var term = new TerminalWindow.with_parent(this, false, true);
+		string t_dir = create_tmp_dir();
+		string t_file = get_temp_file_path(t_dir)+".sh";
+
+		term.script_complete.connect(()=>{
+			term.allow_window_close();
+			file_delete(t_file);
+			dir_delete(t_dir);
+		});
+
+		term.destroy.connect(()=>{
+			this.present();
+			update_cache();
+		});
+
+		string sh = BRANDING_SHORTNAME+" --uninstall-old";
+		if (App.index_is_fresh) sh += " --index-is-fresh";
+		if (LOG_DEBUG) sh += " --debug";
+			sh += "\n"
+			+ "echo \n"
+			+ "echo '"+_("DONE")+"'\n"
+			;
+
+		save_bash_script_temp(sh,t_file);
+		term.execute_script(t_file,t_dir);
+	}
+
+	public bool test_net() {
+		if (App.connection_checked) return App.connection_status;
+		if (!App.check_internet_connectivity()) errbox(this,_("Can not reach")+" "+App.ppa_uri);
+		return App.connection_status;
 	}
 
 }

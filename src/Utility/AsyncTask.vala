@@ -71,7 +71,7 @@ public abstract class AsyncTask : GLib.Object{
 	public signal void stderr_line_read(string line);
 	public signal void task_complete();
 
-	protected AsyncTask(){
+	protected AsyncTask() {
 		working_dir = create_tmp_dir();
 		script_file = working_dir+"/script.sh";
 		log_file = working_dir+"/task.log";
@@ -79,7 +79,7 @@ public abstract class AsyncTask : GLib.Object{
 		//regex = new Gee.HashMap<string,Regex>(); // needs to be initialized again in instance constructor
 	}
 
-	public bool begin(){
+	public bool begin() {
 
 		status = AppStatus.RUNNING;
 
@@ -93,13 +93,13 @@ public abstract class AsyncTask : GLib.Object{
 		string[] spawn_args = {"sh", script_file};
 		string[] spawn_env = Environ.get();
 
+		log_debug("AsyncTask:begin()");
+		log_debug("working_dir="+working_dir);
+
 		try {
 			// start timer
 			timer = new GLib.Timer();
 			timer.start();
-
-			log_debug("AsyncTask:begin():try");
-			log_debug("working_dir="+working_dir);
 
 			// execute script file
 			Process.spawn_async_with_pipes(
@@ -136,19 +136,19 @@ public abstract class AsyncTask : GLib.Object{
 			try {
 				new Thread<void>.try (null,read_stdout);
 			} catch (Error e) {
-				log_error ("AsyncTask.begin():create_thread:read_stdout()");
-				log_error (e.message);
+				log_error("AsyncTask.begin():create_thread:read_stdout()");
+				log_error(e.message);
 			}
 
 			try {
 				new Thread<void>.try (null,read_stderr);
 			} catch (Error e) {
-				log_error ("AsyncTask.begin():create_thread:read_stderr()");
-				log_error (e.message);
+				log_error("AsyncTask.begin():create_thread:read_stderr()");
+				log_error(e.message);
 			}
 		}
 		catch (Error e) {
-			log_error ("AsyncTask.begin()");
+			log_error("AsyncTask.begin()");
 			log_error(e.message);
 			has_started = false;
 		}
@@ -186,8 +186,8 @@ public abstract class AsyncTask : GLib.Object{
 			}
 		}
 		catch (Error e) {
-			log_error ("AsyncTask.read_stdout()");
-			log_error (e.message);
+			log_error("AsyncTask.read_stdout()");
+			log_error(e.message);
 		}
 	}
 	
@@ -222,23 +222,23 @@ public abstract class AsyncTask : GLib.Object{
 			}
 		}
 		catch (Error e) {
-			log_error ("AsyncTask.read_stderr()");
-			log_error (e.message);
+			log_error("AsyncTask.read_stderr()");
+			log_error(e.message);
 		}
 	}
 
 	public void write_stdin(string line){
-		try{
+		try {
 			if (status == AppStatus.RUNNING){
 				dos_in.put_string(line + "\n");
 			}
-			else{
-				log_error ("AsyncTask.write_stdin(): NOT RUNNING");
+			else {
+				log_error("AsyncTask.write_stdin(): NOT RUNNING");
 			}
 		}
-		catch(Error e){
-			log_error ("AsyncTask.write_stdin(): %s".printf(line));
-			log_error (e.message);
+		catch (Error e){
+			log_error("AsyncTask.write_stdin(): %s".printf(line));
+			log_error(e.message);
 		}
 	}
 	
@@ -252,21 +252,21 @@ public abstract class AsyncTask : GLib.Object{
 		finish_called = true;
 
 		// dispose stdin
-		try{
+		try {
 			if ((dos_in != null) && !dos_in.is_closed() && !dos_in.is_closing()){
 				dos_in.close();
 			}
 		}
-		catch(Error e){
+		catch (Error e){
 			// ignore
-			//log_error ("AsyncTask.finish(): dos_in.close()");
-			//log_error (e.message);
+			//log_error("AsyncTask.finish(): dos_in.close()");
+			//log_error(e.message);
 		}
 		
 		dos_in = null;
 		GLib.FileUtils.close(input_fd);
 
-		try{
+		try {
 			// dispose log
 			if ((dos_log != null) && !dos_log.is_closed() && !dos_log.is_closing()){
 				dos_log.close();
@@ -284,8 +284,6 @@ public abstract class AsyncTask : GLib.Object{
 		out_line = "";
 
 		timer.stop();
-
-		log_debug("AsyncTask:finish(): before finish_task()");
 
 		finish_task();
 

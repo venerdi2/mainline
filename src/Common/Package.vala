@@ -36,17 +36,15 @@ public class Package : GLib.Object {
 
 	public static string NATIVE_ARCH = "";
 
-	public static void initialize(){
-		string std_out, std_err;
-		exec_sync("dpkg --print-architecture", out std_out, out std_err);
+	public static void initialize() {
 	}
 
-	public Package(string _name){
+	public Package(string _name) {
 		pname = _name;
 	}
 
-	public bool is_foreign(){
-		if (check_if_foreign(arch)){
+	public bool is_foreign() {
+		if (check_if_foreign(arch)) {
 			return true;
 		}
 		else{
@@ -54,7 +52,7 @@ public class Package : GLib.Object {
 		}
 	}
 
-	public static string get_id(string _name, string _arch){
+	public static string get_id(string _name, string _arch) {
 		string str = "";
 		str = "%s".printf(_name);
 		if (check_if_foreign(_arch)){
@@ -63,7 +61,7 @@ public class Package : GLib.Object {
 		return str;
 	}
 
-	public static bool check_if_foreign(string architecture){
+	public static bool check_if_foreign(string architecture) {
 		if ((architecture.length > 0) && (architecture != NATIVE_ARCH) && (architecture != "all") && (architecture != "any")){
 			return true;
 		}
@@ -73,7 +71,6 @@ public class Package : GLib.Object {
 	}
 
 	public static Gee.HashMap<string,Package> query_installed_packages() {
-
 		log_debug("query_installed_packages()");
 
 		var list = new Gee.HashMap<string,Package>();
@@ -143,6 +140,7 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 	}
 
 	public static Gee.HashMap<string,Package> query_available_packages(string search_string) {
+		//log_debug("query_available_packages()");
 
 		var list = new Gee.HashMap<string,Package>();
 

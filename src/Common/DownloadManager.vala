@@ -5,7 +5,7 @@ using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 
 
-public class DownloadTask : AsyncTask{
+public class DownloadTask : AsyncTask {
 
 	// settings
 	public bool status_in_kb = false;
@@ -19,7 +19,7 @@ public class DownloadTask : AsyncTask{
 
 	private Gee.HashMap<string,Regex> regex = null;
 
-	public DownloadTask(){
+	public DownloadTask() {
 
 		base();
 		
@@ -47,23 +47,22 @@ public class DownloadTask : AsyncTask{
 
 	// execution ----------------------------
 
-	public void add_to_queue(DownloadItem item){
+	public void add_to_queue(DownloadItem item) {
 
 		item.task = this;
-		
+
 		downloads.add(item);
 
 		// set gid - 16 character hex string in lowercase
-		
-		do{
+		do {
 			item.gid = random_string(16,"0123456789abcdef").down();
 		}
 		while (map.has_key(item.gid_key));
-		
+
 		map[item.gid_key] = item;
 	}
 
-	public void clear_queue(){
+	public void clear_queue() {
 		downloads.clear();
 		map.clear();
 	}
@@ -74,7 +73,7 @@ public class DownloadTask : AsyncTask{
 
 		begin();
 
-		if (status == AppStatus.RUNNING){
+		if (status == AppStatus.RUNNING) {
 		}
 	}
 
@@ -89,7 +88,7 @@ public class DownloadTask : AsyncTask{
 		log_debug("working_dir="+working_dir);
 		string list = "";
 		string list_file = working_dir+"/download.list";
-		foreach(var item in downloads){
+		foreach (var item in downloads) {
 			list += item.source_uri + "\n"
 			+ "  gid=" + item.gid + "\n"
 			+ "  dir=" + item.download_dir + "\n"
@@ -100,24 +99,25 @@ public class DownloadTask : AsyncTask{
 		string cmd = "aria2c"
 		+ " --no-netrc true"
 		+ " -i '%s'".printf(escape_single_quote(list_file))
-		+ " --show-console-readout=false"
 		+ " --summary-interval=1"
 		+ " --auto-save-interval=1"
-		+ " --human-readable=false"
 		+ " --enable-color=false"
 		+ " --allow-overwrite"
 		+ " --connect-timeout=%d".printf(connect_timeout)
 		+ " --timeout=%d".printf(timeout_secs)
 		+ " --max-concurrent-downloads=%d".printf(max_concurrent)
 		+ " --max-file-not-found=3"
-		+ " --retry-wait=2";
+		+ " --retry-wait=2"
+		+ " --show-console-readout=false"
+		+ " --human-readable=false"
+		;
 
 		log_debug(cmd);
 
 		return cmd;
 	}
 
-	public override void parse_stdout_line(string out_line){
+	public override void parse_stdout_line(string out_line) {
 		if (is_terminated) {
 			return;
 		}
@@ -125,7 +125,7 @@ public class DownloadTask : AsyncTask{
 		update_progress_parse_console_output(out_line);
 	}
 
-	public override void parse_stderr_line(string err_line){
+	public override void parse_stderr_line(string err_line) {
 		if (is_terminated) {
 			return;
 		}
@@ -160,7 +160,7 @@ public class DownloadTask : AsyncTask{
 			int64 rate = int64.parse(match.fetch(3).strip());
 			//string file = match.fetch(4).strip();
 
-			if (map.has_key(gid_key)){
+			if (map.has_key(gid_key)) {
 				map[gid_key].rate = rate;
 				map[gid_key].status = status;
 			}
@@ -178,10 +178,10 @@ public class DownloadTask : AsyncTask{
 			var rate = int64.parse(match.fetch(5).strip());
 			var eta = match.fetch(6).strip();
 
-			if (map.has_key(gid_key)){
+			if (map.has_key(gid_key)) {
 				var item = map[gid_key];
 				item.bytes_received = received;
-				if (item.bytes_total == 0){
+				if (item.bytes_total == 0) {
 					item.bytes_total = total;
 				}
 				item.rate = rate;
@@ -191,7 +191,7 @@ public class DownloadTask : AsyncTask{
 				status_line = item.status_line();
 			}
 
-			//log_debug(status_line);
+			log_debug(status_line);
 		}
 		else {
 			//log_debug("unmatched: '%s'".printf(line));
@@ -200,7 +200,7 @@ public class DownloadTask : AsyncTask{
 		return true;
 	}
 
-	protected override void finish_task(){
+	protected override void finish_task() {
 	}
 }
 
@@ -223,34 +223,33 @@ public class DownloadItem : GLib.Object
 	public DownloadTask task = null;
 
 	public string file_path{
-		owned get{
+		owned get {
 			return download_dir+"/"+file_name;
 		}
 	}
 
 	public string gid_key{
-		owned get{
+		owned get {
 			return gid.substring(0,6);;
 		}
 	}
 
-	public DownloadItem(string _source_uri, string _download_dir, string _file_name){
-		
+	public DownloadItem(string _source_uri, string _download_dir, string _file_name) {
+
 		file_name = _file_name;
 		download_dir = _download_dir;
 		source_uri = _source_uri;
 	}
 
-	public string status_line(){
+	public string status_line() {
 
-		if (task.status_in_kb){
+		if (task.status_in_kb) {
 			return "%s / %s, %s/s (%s)".printf(
 				format_file_size(bytes_received, false, "", true, 1),
 				format_file_size(bytes_total, false, "", true, 1),
 				format_file_size(rate, false, "", true, 1),
 				eta).replace("\n","");
-		}
-		else{
+		} else {
 			return "%s / %s, %s/s (%s)".printf(
 				format_file_size(bytes_received),
 				format_file_size(bytes_total),
