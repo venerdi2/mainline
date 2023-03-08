@@ -191,7 +191,7 @@ public class DownloadTask : AsyncTask {
 				status_line = item.status_line();
 			}
 
-			log_debug(status_line);
+			//log_debug(status_line);
 		}
 		else {
 			//log_debug("unmatched: '%s'".printf(line));

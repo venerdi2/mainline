@@ -98,9 +98,7 @@ linux-image-unsigned-5.6.10-050610-generic|5.6.10-050610.202005052153||Linux ker
 				var dis = new DataInputStream (file.read());
 				while ((line = dis.read_line (null)) != null) {
 					string[] arr = line.split("|");
-					if (arr.length != 4) {
-						continue;
-					}
+					if (arr.length != 4) continue;
 
 					string pname = arr[0].strip();
 					string arch = (pname.contains(":")) ? pname.split(":")[1].strip() : "";

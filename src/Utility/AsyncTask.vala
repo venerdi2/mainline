@@ -64,7 +64,6 @@ public abstract class AsyncTask : GLib.Object{
 	public int64 prg_count = 0;
 	public int64 prg_count_total = 0;
 	public string eta = "";
-	//public bool is_running = false;
 
 	// signals
 	public signal void stdout_line_read(string line);
@@ -124,9 +123,9 @@ public abstract class AsyncTask : GLib.Object{
 			dis_err.newline_type = DataStreamNewlineType.ANY;
 
 			// create log file
-			if (log_file.length > 0){
+			if (log_file.length > 0) {
 				var file = File.new_for_path(log_file);
-				if (file.query_exists()){
+				if (file.query_exists()) {
 					file.delete();
 				}
 				var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
@@ -150,29 +149,28 @@ public abstract class AsyncTask : GLib.Object{
 	private bool read_stdout() {
 		try {
 			stdout_is_open = true;
-			
 			out_line = dis_out.read_line (null);
 			while (out_line != null) {
 				//log_msg("O: " + out_line);
-				if (!is_terminated && (out_line.length > 0)){
+				if (!is_terminated && (out_line.length > 0)) {
 					parse_stdout_line(out_line);
-					stdout_line_read(out_line); //signal
+					stdout_line_read(out_line); // signal
 				}
-				out_line = dis_out.read_line (null); //read next
+				out_line = dis_out.read_line(null); // read next
 			}
 
 			stdout_is_open = false;
 
 			// dispose stdout
-			if ((dis_out != null) && !dis_out.is_closed()){
+			if ((dis_out != null) && !dis_out.is_closed()) {
 				dis_out.close();
 			}
-			//dis_out.close();
+			// dis_out.close();
 			dis_out = null;
 			GLib.FileUtils.close(output_fd);
 
 			// check if complete
-			if (!stdout_is_open && !stderr_is_open){
+			if (!stdout_is_open && !stderr_is_open) {
 				finish();
 			}
 		}
@@ -187,12 +185,10 @@ public abstract class AsyncTask : GLib.Object{
 	private bool read_stderr() {
 		try {
 			stderr_is_open = true;
-			
 			err_line = dis_err.read_line (null);
 			while (err_line != null) {
 				if (!is_terminated && (err_line.length > 0)) {
-					error_msg += "%s\n".printf(err_line);
-					
+				//	error_msg += "%s\n".printf(err_line);
 					parse_stderr_line(err_line);
 					stderr_line_read(err_line); //signal
 				}
@@ -202,15 +198,15 @@ public abstract class AsyncTask : GLib.Object{
 			stderr_is_open = false;
 
 			// dispose stderr
-			if ((dis_err != null) && !dis_err.is_closed()){
+			if ((dis_err != null) && !dis_err.is_closed()) {
 				dis_err.close(); 
 			}
-			//dis_err.close();
+			// dis_err.close();
 			dis_err = null;
 			GLib.FileUtils.close(error_fd);
 
 			// check if complete
-			if (!stdout_is_open && !stderr_is_open){
+			if (!stdout_is_open && !stderr_is_open) {
 				finish();
 			}
 		}
@@ -240,9 +236,9 @@ public abstract class AsyncTask : GLib.Object{
 */
 
 	protected abstract void parse_stdout_line(string out_line);
-	
+
 	protected abstract void parse_stderr_line(string err_line);
-	
+
 	private void finish() {
 		// finish() gets called by 2 threads but should be executed only once
 		if (finish_called) return;
@@ -286,9 +282,7 @@ public abstract class AsyncTask : GLib.Object{
 
 		dir_delete(working_dir);
 
-		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) {
-			status = AppStatus.FINISHED;
-		}
+		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) status = AppStatus.FINISHED;
 
 		task_complete(); //signal
 	}

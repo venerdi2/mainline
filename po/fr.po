@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 02:18-0500\n"
+"POT-Creation-Date: 2023-03-08 01:01-0500\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -13,119 +13,119 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: src/Common/LinuxKernel.vala:88
+#: src/Common/LinuxKernel.vala:89
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/Common/LinuxKernel.vala:103
+#: src/Common/LinuxKernel.vala:104
 msgid "Architecture"
 msgstr "Architecture"
 
-#: src/Common/LinuxKernel.vala:295
+#: src/Common/LinuxKernel.vala:283
 #, fuzzy
 msgid "Fetching individual kernel indexes..."
 msgstr "Récupération de l'index..."
 
-#: src/Common/LinuxKernel.vala:339
+#: src/Common/LinuxKernel.vala:327
 #, fuzzy
 msgid "Fetching main index from"
 msgstr "Récupération de l'index..."
 
-#: src/Common/LinuxKernel.vala:593
+#: src/Common/LinuxKernel.vala:544
 msgid "Could not find running kernel in list!"
 msgstr "Impossible de trouver la version courante dans la liste!"
 
-#: src/Common/LinuxKernel.vala:599
+#: src/Common/LinuxKernel.vala:550
 #, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "Impossible de trouver de noyaux à supprimer"
 
-#: src/Common/LinuxKernel.vala:608
+#: src/Common/LinuxKernel.vala:559
 #, fuzzy
 msgid "The following kernels will be uninstalled:"
 msgstr "Les noyaux suivants seront supprimés:"
 
-#: src/Common/LinuxKernel.vala:612
+#: src/Common/LinuxKernel.vala:563
 msgid "Continue ?"
 msgstr "Reprendre ?"
 
-#: src/Common/LinuxKernel.vala:635 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:586 src/Console/AppConsole.vala:298
 msgid "Latest update"
 msgstr "Dernière mise à jour"
 
-#: src/Common/LinuxKernel.vala:646 src/Console/AppConsole.vala:305
+#: src/Common/LinuxKernel.vala:597 src/Console/AppConsole.vala:305
 msgid "Latest point update"
 msgstr "Dernière mise à jour mineure"
 
-#: src/Common/LinuxKernel.vala:654 src/Console/AppConsole.vala:310
+#: src/Common/LinuxKernel.vala:605 src/Console/AppConsole.vala:310
 #: src/Console/AppConsole.vala:365
 msgid "No updates found"
 msgstr "Aucune mise à jour disponible"
 
-#: src/Common/LinuxKernel.vala:664
+#: src/Common/LinuxKernel.vala:615
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installer le noyau en version %s ? (y/n): "
 
-#: src/Common/LinuxKernel.vala:896
+#: src/Common/LinuxKernel.vala:838
 msgid "Packages Available"
 msgstr "Paquets Disponibles"
 
-#: src/Common/LinuxKernel.vala:904
+#: src/Common/LinuxKernel.vala:843
 msgid "Packages Installed"
 msgstr "Paquets Installés"
 
-#: src/Common/LinuxKernel.vala:918 src/Utility/TeeJee.FileSystem.vala:157
+#: src/Common/LinuxKernel.vala:856 src/Utility/TeeJee.FileSystem.vala:136
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
-#: src/Common/LinuxKernel.vala:984
+#: src/Common/LinuxKernel.vala:920
 msgid "Available Kernels"
 msgstr "Noyaux Disponibles"
 
-#: src/Common/LinuxKernel.vala:991 src/Gtk/MainWindow.vala:151
+#: src/Common/LinuxKernel.vala:927 src/Gtk/MainWindow.vala:151
 msgid "Installed"
 msgstr "Installé"
 
-#: src/Common/LinuxKernel.vala:991 src/Gtk/MainWindow.vala:151
+#: src/Common/LinuxKernel.vala:927 src/Gtk/MainWindow.vala:151
 #: src/Gtk/MainWindow.vala:523 src/Gtk/MainWindow.vala:537
 msgid "Running"
 msgstr "Actuel"
 
-#: src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:964
 msgid "Downloading"
 msgstr "Téléchargement"
 
-#: src/Common/LinuxKernel.vala:1047
+#: src/Common/LinuxKernel.vala:983
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:1050
+#: src/Common/LinuxKernel.vala:986
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: src/Common/LinuxKernel.vala:1064
+#: src/Common/LinuxKernel.vala:1000
 msgid "This kernel is already installed."
 msgstr "Ce noyau est déjà installé."
 
-#: src/Common/LinuxKernel.vala:1102
+#: src/Common/LinuxKernel.vala:1038
 #, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Installer les noyaux spécifiés"
 
-#: src/Common/LinuxKernel.vala:1108
+#: src/Common/LinuxKernel.vala:1044
 msgid "requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1111
+#: src/Common/LinuxKernel.vala:1047
 msgid "skipping the currently booted kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1127
+#: src/Common/LinuxKernel.vala:1063
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1130
+#: src/Common/LinuxKernel.vala:1066
 #, fuzzy
 msgid "No packages to un-install!"
 msgstr "Paquets Installés"
@@ -143,7 +143,7 @@ msgstr "Les notifications sont désactivées"
 msgid "Can not reach"
 msgstr "Impossible de lire le fichier"
 
-#: src/Common/Package.vala:131 src/Common/Package.vala:196
+#: src/Common/Package.vala:129 src/Common/Package.vala:194
 #, c-format
 msgid "File not found: %s"
 msgstr "Fichier non trouvé: %s"
@@ -478,55 +478,6 @@ msgstr "Dépendances Tierces"
 #: src/Utility/Gtk/GtkHelper.vala:49
 msgid "Missing Icon"
 msgstr "Icône introuvable"
-
-#: src/Utility/TeeJee.FileSystem.vala:71
-msgid "File deleted"
-msgstr "Fichier supprimé"
-
-#: src/Utility/TeeJee.FileSystem.vala:76 src/Utility/TeeJee.FileSystem.vala:240
-msgid "Failed to delete file"
-msgstr "Impossible d'écrire le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:96
-msgid "Failed to read file"
-msgstr "Impossible de lire le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:123
-msgid "File saved"
-msgstr "Fichier sauvegardé"
-
-#: src/Utility/TeeJee.FileSystem.vala:129
-msgid "Failed to write file"
-msgstr "Impossible d'écrire le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:141
-msgid "File copied"
-msgstr "Fichier copié"
-
-#: src/Utility/TeeJee.FileSystem.vala:148
-msgid "Failed to copy file"
-msgstr "Impossible de copier le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:171
-msgid "File moved"
-msgstr "Fichier déplacé"
-
-#: src/Utility/TeeJee.FileSystem.vala:176
-msgid "Failed to move file"
-msgstr "Impossible de déplacer le fichier"
-
-#: src/Utility/TeeJee.FileSystem.vala:217
-#: src/Utility/TeeJee.FileSystem.vala:220
-msgid "Created directory"
-msgstr "Dossier créé"
-
-#: src/Utility/TeeJee.FileSystem.vala:227
-msgid "Failed to create dir"
-msgstr "Impossible de créer le nouveau dossier"
-
-#: src/Utility/TeeJee.FileSystem.vala:239
-msgid "Deleted"
-msgstr "Supprimé"
 
 #: src/Utility/TeeJee.Logging.vala:59
 msgid "E"

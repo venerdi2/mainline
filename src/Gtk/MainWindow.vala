@@ -221,13 +221,13 @@ public class MainWindow : Gtk.Window {
 		foreach (var kern in LinuxKernel.kernel_list) {
 			if (!kern.is_valid) continue;
 			if (!kern.is_installed) {
-				if (App.hide_unstable && kern.is_unstable) continue;
-				if (kern.version_maj < LinuxKernel.highest_maj-App.show_prev_majors) continue;
+				if (kern.is_unstable && App.hide_unstable) continue;
+				if (kern.version_maj < LinuxKernel.threshold_major) continue;
 			}
 
 			odd_row = !odd_row;
 
-			//add row
+			// add row
 			model.append(out iter);
 			model.set (iter, 0, kern);
 
@@ -459,7 +459,7 @@ public class MainWindow : Gtk.Window {
 		tv_refresh();
 	}
 
-
+// FIXME - not working
 	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref long count, bool last = false) {
 		if (last) {
 			progress_window.destroy();
