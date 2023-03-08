@@ -49,14 +49,10 @@ mainline-gtk
 * Kernel versions 5.15.7+ and libssl3 -> [Install libssl3](../../wiki/Install-libssl3)
 
 ### About
-Written using Vala and GTK3.
-
 mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)  
 The original author stopped maintaining the original GPL version of ukuu and switched to a [paid license](https://teejeetech.in/tag/ukuu/) for future versions.
 
 ### Enhancements / Deviations from the original author's final GPL version
-* (from [stevenpowerd](https://github.com/stevenpowered/ukuu)) Options controlling the internet connection check
-* (from [cloyce](https://github.com/cloyce/ukuu)) Option to include or hide pre-release kernels
 * Changed name from "ukuu" to "mainline"
 * Removed all GRUB options
 * Removed all donate buttons, links, dialogs
@@ -66,5 +62,4 @@ The original author stopped maintaining the original GPL version of ukuu and swi
 
 ### TODO & WIP
 * Make the notification bg process detect when the user logs off and exit itself.
-* Save & restore window dimensions.
 * Move the notification/dbus code into the app and make an "applet mode"
