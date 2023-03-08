@@ -29,7 +29,7 @@ So today, that means you have a 6.2.2 installed and the list shows all of the 6.
 
 Then 7.0.0 comes out.  
 
-All else being equal, latest=7 and N=0 and 7-0=0 means on that day the list will only show 7.0.0 and nothing else except whatever ones you actually have installed.  
+All else being equal, latest=7 and N=0 and 7-0=7 means on that day the list will only show 7.0.0 and nothing else except whatever ones you actually have installed.  
 
 But there is also 6.3.0 available you might have wanted to use, but you never got a chance to see it, and never will get a chace to see 6.3.1 etc.  
 So the above rule just adds another element to also consider whatever is the oldest mainline kernel you have installed, and set the threshold to that major version, or to latest-N, whichever is lower.  
