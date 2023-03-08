@@ -29,7 +29,7 @@ So today, that means you have a 6.2.2 installed and the list shows all of the 6.
 
 Then 7.0.0 comes out.  
 
-All else being equal, latest=7 and N=0 and 7-0=7 means on that day the list will only show 7.0.0 and nothing else except whatever ones you actually have installed.  
+All else being equal, latest=7 and N=0 and 7-0=7 means on that day the list would only show 7.0.0 and nothing else except whatever individual ones you actually have installed.  
 
 But there is also 6.3.0 available you might have wanted to use, but you never got a chance to see it, and never will get a chace to see 6.3.1 etc.  
 So the above rule just adds another element to also consider whatever is the oldest mainline kernel you have installed, and set the threshold to that major version, or to latest-N, whichever is lower.  
@@ -37,6 +37,9 @@ So the above rule just adds another element to also consider whatever is the old
 So for a while, as long as you have any 6.x installed, the list will include all of the 6.x.x and all of the 7.x.x. The list will still be not too slow for a while when there are not many 7.x.x yet, and later when you uninstall your last 6.x naturally, all the 6.x.x will go away then automatically, and you'll have only 7.x.x.  
 
 On the other hand, if you explicitly *want* to see a bigger list including older kerneles, even if you don't have any of those installed, you can set N to 1 or greater, and you can get all the 6.x, all the 5.x, or more.  
+
+Distro kernels are not factored.  
+If the latest mainline available are 7.x and 6.x, and you also have a 5.x installed from ubuntu, the threshold is not set to 5.x. The purpose of setting the floor at your oldest installed kernel is so that you can see any *mainline* point releases available that might exist after your installed versions, so that you could still update to the latest 6.x even after 7.x becomes available, without having to deal with loading two full generations all the time if you don't actually need the previous generation. The distro provided kernels are unrelated. They are only even displayed in the list for completeness and for the convenience of un-installing.
 
 ## Other
 **Internet connection timeout in \[##\] seconds**  
