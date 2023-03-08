@@ -1,19 +1,18 @@
 # Settings
 
 ## Notification
-\[ \] Notify if a major release is available  
-\[ \] Notify if a point release is available  
-Check every \[#\] \[units\]  
-
+**\[ \] Notify if a major release is available**  
+**\[ \] Notify if a point release is available**  
+**Check every \[#\] \[units\]**  
 Starts a background process that peridodically checks for new kernels and sends a desktop notification if a kernel is available that you don't have installed yet.  
 The monitor is installed in your desktop autostart folder such that it is started in the background any time you log in.  
 It is removed by unselecting both checkboxes.  
 
 ## Display
-\[ \] Hide unstable and RC releases  
+**\[ \] Hide unstable and RC releases**  
 Excludes less stable more bleeding edge -rc kernels from the list.
 
-Show N previous major versions \[#\]  
+**Show N previous major versions \[#\]**  
 Defines a threshold value for the oldest major version to include in the display, as an offset from the whatever the current latest version is.  
 
 The algorithm is essentially this (pseudocode):  
@@ -37,8 +36,7 @@ So the above rule just adds another element to also consider whatever is the old
 
 On the other hand, if you explicitly *want* to see a bigger list including older kerneles, even if you don't have any of those installed, you can set N to 1 or greater, and you can get all the 6.x, all the 5.x, or more.  
 
-**Other**  
-Internet connection timeout in \[##\] seconds
-Max concurrent downloads \[#\]
-
+## Other
+**Internet connection timeout in \[##\] seconds**  
+**Max concurrent downloads \[#\]**  
 These correspond to options for aria2c used to download index.html and deb package files in the background.
