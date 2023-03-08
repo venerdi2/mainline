@@ -34,6 +34,8 @@ All else being equal, latest=7 and N=0 and 7-0=7 means on that day the list will
 But there is also 6.3.0 available you might have wanted to use, but you never got a chance to see it, and never will get a chace to see 6.3.1 etc.  
 So the above rule just adds another element to also consider whatever is the oldest mainline kernel you have installed, and set the threshold to that major version, or to latest-N, whichever is lower.  
 
+So for a while, as long as you have any 6.x installed, the list will include all of the 6.x.x and all of the 7.x.x. The list will still be not too slow for a while when there are not many 7.x.x yet, and later when you uninstall your last 6.x naturally, all the 6.x.x will go away then automatically, and you'll have only 7.x.x.  
+
 On the other hand, if you explicitly *want* to see a bigger list including older kerneles, even if you don't have any of those installed, you can set N to 1 or greater, and you can get all the 6.x, all the 5.x, or more.  
 
 ## Other
