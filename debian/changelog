@@ -1,3 +1,15 @@
+mainline (1.1.2) unstable; urgency=medium
+
+  * dir_delete() replace system("rm -rf ...") with native code
+  * uninstall-old look at latest installed version instead of currently running version
+  * change the logic for determining the oldest version to display.
+    threshold_major = whechever is lower: latest_available-show_prev_majors or oldest_installed
+    
+    So you can keep show_previous_N_majors set at 0 to show only the most recent kernels by default,
+    yet still have access to all the kernels from your oldest installed kernel and up.
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Wed, 08 Mar 2023 03:51:23 -0500
+
 mainline (1.1.1) unstable; urgency=medium
 
   * replaced deprecated Gtk.show_uri() and xdg_open() with new uri_open()
