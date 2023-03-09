@@ -389,14 +389,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var pkg_versions = new Gee.ArrayList<string>();
 
 		foreach (var pkg in pkg_list_installed.values) {
-			if (pkg.pname.contains("linux-image")) {
-				if (!pkg_versions.contains(pkg.version_installed)) {
+					pkg_versions.add(pkg.version);
+					if (pkg.pname.contains("linux-image-")) log_msg("Found installed : "+pkg.version);
 
-					pkg_versions.add(pkg.version_installed);
-
-					log_msg("Found installed" + ": %s".printf(pkg.version_installed));
-
-					string pkern_name = pkg.version_installed;
+					string pkern_name = pkg.version;
 					var pkern = new LinuxKernel(pkern_name, false);
 					pkern.is_installed = true;
 					pkern.set_apt_pkg_list();
@@ -411,12 +407,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					}
 
 					if (!found) kernel_list.add(pkern);
-				}
-			}
 		}
 
 		foreach (string pkg_version in pkg_versions) {
 			foreach (var k in kernel_list) {
+				// FIXME doesn't always match
 				if (k.version_package == pkg_version) k.is_installed = true;
 			}
 		}
@@ -634,8 +629,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_oldest_installed = new LinuxKernel.from_version(RUNNING_KERNEL);
 
 		foreach (var pkg in pkg_list_installed.values) {
-			if (!pkg.pname.contains("linux-image") || !pkg.is_installed) continue;
-			var candidate = new LinuxKernel(pkg.version_installed, false);
+			var candidate = new LinuxKernel(pkg.version, false);
 			if (candidate.version_maj < kernel_oldest_installed.version_maj) kernel_oldest_installed = candidate;
 		}
 
@@ -764,7 +758,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public void set_apt_pkg_list() {
 		foreach(var pkg in pkg_list_installed.values) {
 			if (!pkg.pname.has_prefix("linux-")) continue;
-			if (pkg.version_installed == kver) {
+			if (pkg.version == kver) {
 				apt_pkg_list[pkg.pname] = pkg.pname;
 				log_debug("Package: %s".printf(pkg.pname));
 			}
@@ -868,7 +862,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			foreach(string line in txt.split("\n")) {
 				if (rex.match(line, 0, out match)) {
-					string file_name = match.fetch(2);
+
+					string file_name = Path.get_basename (match.fetch(2));
 					string file_uri = "%s%s".printf(page_uri, match.fetch(1));
 					bool add = false;
 
@@ -940,7 +935,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public static bool download_kernels(Gee.ArrayList<LinuxKernel> selected_kernels) {
-		foreach(var kern in selected_kernels) kern.download_packages();
+		foreach (var kern in selected_kernels) kern.download_packages();
 		return true;
 	}
 
@@ -955,9 +950,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			string dl_dir = cache_subdir;
 			string file_path = "%s/%s".printf(dl_dir, file_name);
 
-			if (file_exists(file_path) && !file_exists(file_path + ".aria2c")) {
-				continue;
-			}
+			if (file_exists(file_path) && !file_exists(file_path + ".aria2c")) continue;
 
 			dir_create(dl_dir);
 
@@ -1012,18 +1005,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// full paths instead of env -C
 			// https://github.com/bkw777/mainline/issues/128
-			foreach(string file_name in deb_list.keys) {
-				flist += " '%s/%s'".printf(cache_subdir,file_name);
-				log_debug("kinst() flist += %s/%s".printf(cache_subdir,file_name));
-			}
-
+			foreach (string file_name in deb_list.keys) flist += " '"+cache_subdir+"/"+file_name+"'";
 			string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install "+flist;
-
 			status = Posix.system(cmd);
 			ok = (status == 0);
-
-			// TODO blergh, get the arch subdir seperated out of file_name
-			dir_delete(cache_subdir+"/"+NATIVE_ARCH);
+			foreach (string file_name in deb_list.keys) file_delete(cache_subdir+"/"+file_name);
 
 		}
 

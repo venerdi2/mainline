@@ -151,23 +151,8 @@ public class MainWindow : Gtk.Window {
 			((Gtk.CellRendererText) cell).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
 		});
 
-		//column
-		col = new TreeViewColumn();
-		col.title = "";
-		tv.append_column(col);
-
-		//cell text
-		cellText = new CellRendererText();
-		cellText.width = 10;
-		cellText.ellipsize = Pango.EllipsizeMode.END;
-		col.pack_start (cellText, false);
-
-		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
-			bool odd_row;
-			model.get (iter, 2, out odd_row, -1);
-		});
-
 		tv.set_tooltip_column(3);
+
 	}
 
 	private void tv_row_activated(TreePath path, TreeViewColumn column) {
@@ -231,17 +216,11 @@ public class MainWindow : Gtk.Window {
 			model.append(out iter);
 			model.set (iter, 0, kern);
 
-			if (kern.is_mainline){
-				if (kern.is_unstable){
-					model.set (iter, 1, pix_mainline_rc);
-				}
-				else{
-					model.set (iter, 1, pix_mainline);
-				}
+			if (kern.is_mainline) {
+				if (kern.is_unstable) model.set (iter, 1, pix_mainline_rc);
+				else model.set (iter, 1, pix_mainline);
 			}
-			else{
-				model.set (iter, 1, pix_ubuntu);
-			}
+			else model.set (iter, 1, pix_ubuntu);
 
 			model.set (iter, 2, odd_row);
 			model.set (iter, 3, kern.tooltip_text());

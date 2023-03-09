@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-08 23:46-0500\n"
+"POT-Creation-Date: 2023-03-09 05:17-0500\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -31,99 +31,99 @@ msgstr "목록 가져오기..."
 msgid "Fetching main index from"
 msgstr "목록 가져오기..."
 
-#: src/Common/LinuxKernel.vala:544
+#: src/Common/LinuxKernel.vala:539
 msgid "Could not find running kernel in list!"
 msgstr "목록에서 사용중인 커널을 찾을 수 없습니다!"
 
-#: src/Common/LinuxKernel.vala:550
+#: src/Common/LinuxKernel.vala:545
 msgid "Could not find any kernels to uninstall"
 msgstr "삭제할 커널을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:559
+#: src/Common/LinuxKernel.vala:554
 msgid "The following kernels will be uninstalled:"
 msgstr "아래 커널이 삭제됩니다:"
 
-#: src/Common/LinuxKernel.vala:563
+#: src/Common/LinuxKernel.vala:558
 msgid "Continue ?"
 msgstr "계속하시겠습니까?"
 
-#: src/Common/LinuxKernel.vala:586 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:581 src/Console/AppConsole.vala:298
 msgid "Latest update"
 msgstr "최신 업데이트"
 
-#: src/Common/LinuxKernel.vala:597 src/Console/AppConsole.vala:305
+#: src/Common/LinuxKernel.vala:592 src/Console/AppConsole.vala:305
 msgid "Latest point update"
 msgstr "최신 포인트 업데이트"
 
-#: src/Common/LinuxKernel.vala:605 src/Console/AppConsole.vala:310
+#: src/Common/LinuxKernel.vala:600 src/Console/AppConsole.vala:310
 #: src/Console/AppConsole.vala:365
 msgid "No updates found"
 msgstr "업데이트를 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:615
+#: src/Common/LinuxKernel.vala:610
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/LinuxKernel.vala:838
+#: src/Common/LinuxKernel.vala:832
 msgid "Packages Available"
 msgstr "설치 가능한 패키지"
 
-#: src/Common/LinuxKernel.vala:843
+#: src/Common/LinuxKernel.vala:837
 msgid "Packages Installed"
 msgstr "설치된 패키지"
 
-#: src/Common/LinuxKernel.vala:856 src/Utility/TeeJee.FileSystem.vala:136
+#: src/Common/LinuxKernel.vala:850 src/Utility/TeeJee.FileSystem.vala:136
 msgid "File not found"
 msgstr "파일을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:920
+#: src/Common/LinuxKernel.vala:915
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
 
-#: src/Common/LinuxKernel.vala:927 src/Gtk/MainWindow.vala:151
+#: src/Common/LinuxKernel.vala:922 src/Gtk/MainWindow.vala:151
 msgid "Installed"
 msgstr "설치 됨"
 
-#: src/Common/LinuxKernel.vala:927 src/Gtk/MainWindow.vala:151
-#: src/Gtk/MainWindow.vala:523 src/Gtk/MainWindow.vala:537
+#: src/Common/LinuxKernel.vala:922 src/Gtk/MainWindow.vala:151
+#: src/Gtk/MainWindow.vala:502 src/Gtk/MainWindow.vala:516
 msgid "Running"
 msgstr "구동 중"
 
-#: src/Common/LinuxKernel.vala:964
+#: src/Common/LinuxKernel.vala:957
 msgid "Downloading"
 msgstr "다운로드 중"
 
-#: src/Common/LinuxKernel.vala:983
+#: src/Common/LinuxKernel.vala:976
 msgid "OK"
 msgstr "확인"
 
-#: src/Common/LinuxKernel.vala:986
+#: src/Common/LinuxKernel.vala:979
 msgid "ERROR"
 msgstr "오류"
 
-#: src/Common/LinuxKernel.vala:1000
+#: src/Common/LinuxKernel.vala:993
 msgid "This kernel is already installed."
 msgstr "이 커널은 이미 설치되었습니다."
 
-#: src/Common/LinuxKernel.vala:1038
+#: src/Common/LinuxKernel.vala:1024
 #, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "지정한 커널 삭제"
 
-#: src/Common/LinuxKernel.vala:1044
+#: src/Common/LinuxKernel.vala:1030
 msgid "requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1047
+#: src/Common/LinuxKernel.vala:1033
 msgid "skipping the currently booted kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1063
+#: src/Common/LinuxKernel.vala:1049
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1066
+#: src/Common/LinuxKernel.vala:1052
 #, fuzzy
 msgid "No packages to un-install!"
 msgstr "설치된 패키지"
@@ -136,15 +136,15 @@ msgstr "에서 호출"
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
-#: src/Common/Main.vala:332 src/Gtk/MainWindow.vala:638
+#: src/Common/Main.vala:332 src/Gtk/MainWindow.vala:617
 #, fuzzy
 msgid "Can not reach"
 msgstr "파일 읽기를 실패했습니다"
 
-#: src/Common/Package.vala:95
-#, c-format
+#: src/Common/Package.vala:60
+#, fuzzy, c-format
 msgid "File not found: %s"
-msgstr "%s 파일을 찾을 수 없습니다"
+msgstr "파일을 찾을 수 없습니다"
 
 #: src/Console/AppConsole.vala:68 src/Gtk/AppGtk.vala:141
 msgid "Syntax"
@@ -275,7 +275,7 @@ msgid "Kernel %s Available"
 msgstr "커널 %s 사용 가능"
 
 #: src/Console/AppConsole.vala:345 src/Console/AppConsole.vala:357
-#: src/Gtk/MainWindow.vala:282
+#: src/Gtk/MainWindow.vala:261
 msgid "Install"
 msgstr "설치"
 
@@ -300,60 +300,60 @@ msgstr "커널"
 msgid "Status"
 msgstr "상태"
 
-#: src/Gtk/MainWindow.vala:292
+#: src/Gtk/MainWindow.vala:271
 msgid "Uninstall"
 msgstr "삭제"
 
-#: src/Gtk/MainWindow.vala:302
+#: src/Gtk/MainWindow.vala:281
 msgid "Changes"
 msgstr "변경사항"
 
-#: src/Gtk/MainWindow.vala:323
+#: src/Gtk/MainWindow.vala:302
 msgid "Uninstall Old"
 msgstr "오래된 커널 제거"
 
-#: src/Gtk/MainWindow.vala:324
+#: src/Gtk/MainWindow.vala:303
 msgid "Uninstall kernels older than running kernel"
 msgstr "현재 사용 중인 커널보다 이전 버전의 커널을 제거"
 
-#: src/Gtk/MainWindow.vala:329
+#: src/Gtk/MainWindow.vala:308
 msgid "Reload"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:334 src/Gtk/SettingsDialog.vala:50
+#: src/Gtk/MainWindow.vala:313 src/Gtk/SettingsDialog.vala:50
 msgid "Settings"
 msgstr "설정"
 
-#: src/Gtk/MainWindow.vala:339
+#: src/Gtk/MainWindow.vala:318
 msgid "About"
 msgstr "정보"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:323
 msgid "Exit"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:412
+#: src/Gtk/MainWindow.vala:391
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
 
-#: src/Gtk/MainWindow.vala:413
+#: src/Gtk/MainWindow.vala:392
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:413
+#: src/Gtk/MainWindow.vala:392
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:451
+#: src/Gtk/MainWindow.vala:430
 msgid "Updating cached indexes"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:533
+#: src/Gtk/MainWindow.vala:512
 msgid "available"
 msgstr "사용가능"
 
-#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:601
-#: src/Gtk/MainWindow.vala:629
+#: src/Gtk/MainWindow.vala:546 src/Gtk/MainWindow.vala:580
+#: src/Gtk/MainWindow.vala:608
 msgid "DONE"
 msgstr ""
 

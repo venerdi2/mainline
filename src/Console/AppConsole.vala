@@ -267,7 +267,7 @@ public class AppConsole : GLib.Object {
 			switch(cmd){
 			case "--download":
 				return LinuxKernel.download_kernels(list);
-	
+
 			case "--remove":	// back compat
 			case "--uninstall":
 				return LinuxKernel.kunin_list(list);
@@ -277,7 +277,7 @@ public class AppConsole : GLib.Object {
 			}
 
 			break;
-			
+
 		default:
 			// unknown option
 			log_error(_("Command not specified"));

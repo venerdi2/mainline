@@ -4,7 +4,7 @@
 **\[ \] Notify if a major release is available**  
 **\[ \] Notify if a point release is available**  
 **Check every \[#\] \[units\]**  
-Starts a background process that peridodically checks for new kernels and sends a desktop notification if a kernel is available that you don't have installed yet.  
+Starts a background process that periodically checks for new kernels and sends a desktop notification if a kernel is available that you don't have installed yet.  
 The monitor is installed in your desktop autostart folder such that it is started in the background any time you log in.  
 It is removed by unselecting both checkboxes.  
 

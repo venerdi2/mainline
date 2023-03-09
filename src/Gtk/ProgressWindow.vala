@@ -141,19 +141,16 @@ public class ProgressWindow : Gtk.Window {
 
 	// common
 
-	public void update_message(string msg){
-
-		if (msg.length > 0){
-			lbl_msg.label = msg;
-		}
+	public void update_message(string msg) {
+		if (msg.length > 0) lbl_msg.label = msg;
 	}
 
-	public void update_status_line(bool clear = false){
+	public void update_status_line(bool clear = false) {
 
-		if (clear){
+		if (clear) {
 			lbl_status.label = "";
 		}
-		else{
+		else {
 			lbl_status.label = App.status_line;
 		}
 

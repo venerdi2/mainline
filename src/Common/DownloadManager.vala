@@ -222,13 +222,13 @@ public class DownloadItem : GLib.Object
 
 	public DownloadTask task = null;
 
-	public string file_path{
+	public string file_path {
 		owned get {
 			return download_dir+"/"+file_name;
 		}
 	}
 
-	public string gid_key{
+	public string gid_key {
 		owned get {
 			return gid.substring(0,6);;
 		}
