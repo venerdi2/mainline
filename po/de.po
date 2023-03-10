@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 09:00-0500\n"
+"POT-Creation-Date: 2023-03-10 15:11-0500\n"
 "PO-Revision-Date: 2023-02-20 18:40+0100\n"
 "Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
@@ -110,16 +110,16 @@ msgstr "Die folgenden Kernel werden deinstalliert:"
 msgid "Continue ?"
 msgstr "Weiter ?"
 
-#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:291
+#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:295
 msgid "Latest update"
 msgstr "Neustes Update"
 
-#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:302
 msgid "Latest point update"
 msgstr "Letzte Punktaktualisierung"
 
-#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:303
-#: src/Console/AppConsole.vala:358
+#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:362
 msgid "No updates found"
 msgstr "Keine Updates gefunden"
 
@@ -235,8 +235,8 @@ msgstr ""
 msgid "Unknown option"
 msgstr "Unbekannte Option"
 
-#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:249
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:253
+#: src/Console/AppConsole.vala:281
 msgid "Run"
 msgstr "Ausführen"
 
@@ -244,42 +244,42 @@ msgstr "Ausführen"
 msgid "to list all options"
 msgstr "um alle Optionen aufzulisten"
 
-#: src/Console/AppConsole.vala:217 src/Console/AppConsole.vala:257
+#: src/Console/AppConsole.vala:221 src/Console/AppConsole.vala:261
 msgid "No kernels specified"
 msgstr "Keine Kernel angegeben"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:227
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Mehrere Kernel für die Installation ausgewählt. Wählen Sie nur einen aus."
 
-#: src/Console/AppConsole.vala:246
+#: src/Console/AppConsole.vala:250
 msgid "Could not find requested version"
 msgstr "Die gewünschte Version konnte nicht gefunden werden"
 
-#: src/Console/AppConsole.vala:249
+#: src/Console/AppConsole.vala:253
 msgid "and use a version string listed in first column"
 msgstr ""
 "und verwenden Sie eine in der ersten Spalte aufgeführte Versionszeichenfolge"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:280
 msgid "Command not specified"
 msgstr "Befehl nicht angegeben"
 
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:281
 msgid "to list all commands"
 msgstr "um alle Befehle aufzulisten"
 
-#: src/Console/AppConsole.vala:331 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:335 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Zeigen"
 
-#: src/Console/AppConsole.vala:336 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:340 src/Console/AppConsole.vala:352
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s verfügbar"
 
-#: src/Console/AppConsole.vala:338 src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:342 src/Console/AppConsole.vala:354
 #: src/Gtk/MainWindow.vala:270
 msgid "Install"
 msgstr "Installieren"

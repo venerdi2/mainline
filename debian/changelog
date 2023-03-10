@@ -1,3 +1,9 @@
+mainline (1.1.5) unstable; urgency=medium
+
+  * Jonas Gorski <jonas.gorski@gmail.com> fix "--install-point" broken by d7943e5
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Fri, 10 Mar 2023 15:14:55 -0500
+
 mainline (1.1.4) unstable; urgency=medium
 
   * fix name/version matching for installed non-mainline packages

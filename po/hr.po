@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 09:00-0500\n"
+"POT-Creation-Date: 2023-03-10 15:11-0500\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -110,16 +110,16 @@ msgstr "Sljedeći kerneli će biti deinstalirani:"
 msgid "Continue ?"
 msgstr "Nastavi?"
 
-#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:291
+#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:295
 msgid "Latest update"
 msgstr "Najnovija nadopuna"
 
-#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:302
 msgid "Latest point update"
 msgstr "Najnovija ciljana nadopuna"
 
-#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:303
-#: src/Console/AppConsole.vala:358
+#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:362
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
@@ -233,8 +233,8 @@ msgstr ""
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:249
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:253
+#: src/Console/AppConsole.vala:281
 msgid "Run"
 msgstr "Pokreni"
 
@@ -242,40 +242,40 @@ msgstr "Pokreni"
 msgid "to list all options"
 msgstr "za prikaz svih mogućnosti"
 
-#: src/Console/AppConsole.vala:217 src/Console/AppConsole.vala:257
+#: src/Console/AppConsole.vala:221 src/Console/AppConsole.vala:261
 msgid "No kernels specified"
 msgstr "Nema određenih kernela"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:227
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Više kernela je odabrano za instalaciju. odaberite samo jedan."
 
-#: src/Console/AppConsole.vala:246
+#: src/Console/AppConsole.vala:250
 msgid "Could not find requested version"
 msgstr "Nemoguće je pronaći zatraženu inačicu"
 
-#: src/Console/AppConsole.vala:249
+#: src/Console/AppConsole.vala:253
 msgid "and use a version string listed in first column"
 msgstr "i koristite izraz inačice prikazan u prvom stupcu"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:280
 msgid "Command not specified"
 msgstr "Naredba nije navedena"
 
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:281
 msgid "to list all commands"
 msgstr "za prikaz svih mogućnosti"
 
-#: src/Console/AppConsole.vala:331 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:335 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:336 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:340 src/Console/AppConsole.vala:352
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:338 src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:342 src/Console/AppConsole.vala:354
 #: src/Gtk/MainWindow.vala:270
 msgid "Install"
 msgstr "Instaliraj"

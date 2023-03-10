@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 09:00-0500\n"
+"POT-Creation-Date: 2023-03-10 15:11-0500\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -110,16 +110,16 @@ msgstr "아래 커널이 삭제됩니다:"
 msgid "Continue ?"
 msgstr "계속하시겠습니까?"
 
-#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:291
+#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:295
 msgid "Latest update"
 msgstr "최신 업데이트"
 
-#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:302
 msgid "Latest point update"
 msgstr "최신 포인트 업데이트"
 
-#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:303
-#: src/Console/AppConsole.vala:358
+#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:362
 msgid "No updates found"
 msgstr "업데이트를 찾을 수 없습니다"
 
@@ -232,8 +232,8 @@ msgstr "--list 의 출력에서 가져온 하나 이상의 버전 문자열 (쉼
 msgid "Unknown option"
 msgstr "알 수 없는 옵션"
 
-#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:249
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:253
+#: src/Console/AppConsole.vala:281
 msgid "Run"
 msgstr "실행"
 
@@ -241,40 +241,40 @@ msgstr "실행"
 msgid "to list all options"
 msgstr "모든 옵션을 나열"
 
-#: src/Console/AppConsole.vala:217 src/Console/AppConsole.vala:257
+#: src/Console/AppConsole.vala:221 src/Console/AppConsole.vala:261
 msgid "No kernels specified"
 msgstr "지정한 커널이 없습니다"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:227
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "설치할 커널이 여러개 선택되었습니다. 하나의 커널만 선택하세요."
 
-#: src/Console/AppConsole.vala:246
+#: src/Console/AppConsole.vala:250
 msgid "Could not find requested version"
 msgstr "요청한 버전을 찾을 수 없습니다"
 
-#: src/Console/AppConsole.vala:249
+#: src/Console/AppConsole.vala:253
 msgid "and use a version string listed in first column"
 msgstr "첫 번째 열에 나열된 버전 문자열을 사용"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:280
 msgid "Command not specified"
 msgstr "지정한 명령어가 없습니다"
 
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:281
 msgid "to list all commands"
 msgstr "모든 명령어 나열"
 
-#: src/Console/AppConsole.vala:331 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:335 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "보이기"
 
-#: src/Console/AppConsole.vala:336 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:340 src/Console/AppConsole.vala:352
 #, c-format
 msgid "Kernel %s Available"
 msgstr "커널 %s 사용 가능"
 
-#: src/Console/AppConsole.vala:338 src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:342 src/Console/AppConsole.vala:354
 #: src/Gtk/MainWindow.vala:270
 msgid "Install"
 msgstr "설치"

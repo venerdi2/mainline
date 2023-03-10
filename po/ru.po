@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 02:18-0500\n"
+"POT-Creation-Date: 2023-03-10 15:11-0500\n"
 "PO-Revision-Date: 2023-03-06 22:07+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
@@ -111,16 +111,16 @@ msgstr "Следующие ядра будут деинсталлированы:
 msgid "Continue ?"
 msgstr "Продолжить ?"
 
-#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:291
+#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:295
 msgid "Latest update"
 msgstr "Последнее обновление"
 
-#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:302
 msgid "Latest point update"
 msgstr "Последнее обновление пунктов"
 
-#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:303
-#: src/Console/AppConsole.vala:358
+#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:362
 msgid "No updates found"
 msgstr "Обновлений не найдено"
 
@@ -234,8 +234,8 @@ msgstr ""
 msgid "Unknown option"
 msgstr "Неизвестный параметр"
 
-#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:249
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:253
+#: src/Console/AppConsole.vala:281
 msgid "Run"
 msgstr "Используется"
 
@@ -243,40 +243,40 @@ msgstr "Используется"
 msgid "to list all options"
 msgstr "чтобы перечислить все параметры"
 
-#: src/Console/AppConsole.vala:217 src/Console/AppConsole.vala:257
+#: src/Console/AppConsole.vala:221 src/Console/AppConsole.vala:261
 msgid "No kernels specified"
 msgstr "Ядра не указаны"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:227
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Для установки выбрано несколько ядер. Выберите только одно."
 
-#: src/Console/AppConsole.vala:246
+#: src/Console/AppConsole.vala:250
 msgid "Could not find requested version"
 msgstr "Не удалось найти запрошенную версию"
 
-#: src/Console/AppConsole.vala:249
+#: src/Console/AppConsole.vala:253
 msgid "and use a version string listed in first column"
 msgstr "и использовать строку версии, указанную в первом столбце"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:280
 msgid "Command not specified"
 msgstr "Команда не указана"
 
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:281
 msgid "to list all commands"
 msgstr "чтобы перечислить все команды"
 
-#: src/Console/AppConsole.vala:331 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:335 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Показать"
 
-#: src/Console/AppConsole.vala:336 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:340 src/Console/AppConsole.vala:352
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Доступно ядро %s"
 
-#: src/Console/AppConsole.vala:338 src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:342 src/Console/AppConsole.vala:354
 #: src/Gtk/MainWindow.vala:270
 msgid "Install"
 msgstr "Установить"

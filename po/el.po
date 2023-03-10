@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 09:00-0500\n"
+"POT-Creation-Date: 2023-03-10 15:11-0500\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -111,16 +111,16 @@ msgstr "Αυτός ο πυρήνας είναι ήδη εγκατεστημέν�
 msgid "Continue ?"
 msgstr "Συνέχεια;"
 
-#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:291
+#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:295
 msgid "Latest update"
 msgstr "Τελευταία αναβάθμιση"
 
-#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:298
+#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:302
 msgid "Latest point update"
 msgstr "Τελευταία ενημέρωση συντήρησης"
 
-#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:303
-#: src/Console/AppConsole.vala:358
+#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:307
+#: src/Console/AppConsole.vala:362
 msgid "No updates found"
 msgstr "Δεν βρέθηκαν ενημερώσεις"
 
@@ -235,8 +235,8 @@ msgstr ""
 msgid "Unknown option"
 msgstr "Άγνωστη επιλογή"
 
-#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:249
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:165 src/Console/AppConsole.vala:253
+#: src/Console/AppConsole.vala:281
 msgid "Run"
 msgstr "Τρέξτε"
 
@@ -244,41 +244,41 @@ msgstr "Τρέξτε"
 msgid "to list all options"
 msgstr "για να παραθέσετε όλες τις επιλογές"
 
-#: src/Console/AppConsole.vala:217 src/Console/AppConsole.vala:257
+#: src/Console/AppConsole.vala:221 src/Console/AppConsole.vala:261
 msgid "No kernels specified"
 msgstr "Δεν έχουν καθοριστεί πυρήνες"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:227
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Επιλέχθηκαν πολλαπλοί πυρήνες για εγκατάσταση. Επιλέξτε μόνο ένα."
 
-#: src/Console/AppConsole.vala:246
+#: src/Console/AppConsole.vala:250
 msgid "Could not find requested version"
 msgstr "Δε βρέθηκε η ζητούμενη έκδοση"
 
-#: src/Console/AppConsole.vala:249
+#: src/Console/AppConsole.vala:253
 msgid "and use a version string listed in first column"
 msgstr ""
 "και χρησιμοποιήστε μια συμβολοσειρά έκδοσης που αναφέρεται στην πρώτη στήλη"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:280
 msgid "Command not specified"
 msgstr "Η εντολή δεν προσδιορίστηκε"
 
-#: src/Console/AppConsole.vala:277
+#: src/Console/AppConsole.vala:281
 msgid "to list all commands"
 msgstr "για να παραθέσετε όλες τις εντολές"
 
-#: src/Console/AppConsole.vala:331 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:335 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Προβολή"
 
-#: src/Console/AppConsole.vala:336 src/Console/AppConsole.vala:348
+#: src/Console/AppConsole.vala:340 src/Console/AppConsole.vala:352
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Πυρήνας %s διαθέσιμος"
 
-#: src/Console/AppConsole.vala:338 src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:342 src/Console/AppConsole.vala:354
 #: src/Gtk/MainWindow.vala:270
 msgid "Install"
 msgstr "Εγκατάσταση"
