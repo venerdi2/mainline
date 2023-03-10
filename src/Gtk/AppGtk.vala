@@ -89,12 +89,6 @@ public class AppGtk : GLib.Object {
 				App.window_y != App._window_y
 			) App.save_app_config();
 
-		// possible future option - delete cache on every startup and exit
-		// do not do this without rigging up a way to suppress it when the gui app runs the console app
-		// like --index-is-fresh but maybe --keep-index or --batch
-		//LinuxKernel.delete_cache();
-
-		//log_debug("END AppGtk main()");
 		return 0;
 	}
 
@@ -108,12 +102,20 @@ public class AppGtk : GLib.Object {
 	public static bool parse_arguments(string[] args) {
 
 		// parse options
-		for (int k = 1; k < args.length; k++)
+		for (int o = 1; o < args.length; o++)
 		{
-			switch (args[k].down()) {
+			switch (args[o].down()) {
 
 			case "--debug":
 				LOG_DEBUG = true;
+				break;
+
+			// this is used by the notifications
+			case "--install":
+				if (++o < args.length) {
+					App.command = "install";
+					App.requested_version = args[o].down();
+				}
 				break;
 
 			case "--help":
@@ -124,7 +126,7 @@ public class AppGtk : GLib.Object {
 				break;
 
 			default:
-				log_error(_("Unknown option") + ": %s".printf(args[k]));
+				log_error(_("Unknown option") + ": %s".printf(args[o]));
 				log_msg(help_message());
 				exit(1);
 				break;

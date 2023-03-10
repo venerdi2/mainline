@@ -158,11 +158,11 @@ public class AboutWindow : Dialog {
 	}
 
 	private string _version = "";
-	public string version{
-		get{
+	public string version {
+		get {
 			return _version;
 		}
-		set{
+		set {
 			_version = value;
 		}
 	}

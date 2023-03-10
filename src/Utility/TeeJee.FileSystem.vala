@@ -22,7 +22,7 @@
  *
  */
 
-namespace TeeJee.FileSystem{
+namespace TeeJee.FileSystem {
 
 	/* Convenience functions for handling files and directories */
 
@@ -53,106 +53,85 @@ namespace TeeJee.FileSystem{
 
 	// file helpers -----------------------------
 
-	public bool file_exists (string file_path){
-		/* Check if file exists */
+	public bool file_exists(string file_path) {
+		//log_debug("file_exists("+file_path+")");
 		return (FileUtils.test(file_path, GLib.FileTest.EXISTS)
 			&& !FileUtils.test(file_path, GLib.FileTest.IS_DIR));
 	}
 
-	public bool file_delete(string file_path){
-		/* Check and delete file */
+	public bool file_delete(string file_path) {
+		//log_debug("file_delete("+file_path+")");
 
 		if(!file_exists(file_path)) return true;
 
 		try {
 			var file = File.new_for_path (file_path);
-			if (file.query_exists()) {
-				file.delete();
-				log_debug(_("File deleted") + ": %s".printf(file_path));
-			}
+			if (file.query_exists()) file.delete();
 			return true;
 		} catch (Error e) {
-	        log_error (e.message);
-	        log_error(_("Failed to delete file") + ": %s".printf(file_path));
-	        return false;
-	    }
-
+			log_error (e.message);
+			return false;
+		}
 	}
 
-	public string? file_read (string file_path){
-
-		/* Reads text from file */
+	public string? file_read (string file_path) {
+		//log_debug("file_read("+file_path+")");
 
 		string txt;
 		size_t size;
 
-		try{
+		try {
 			GLib.FileUtils.get_contents (file_path, out txt, out size);
-
 			return txt;
 		}
-		catch (Error e){
-			log_error (e.message);
-			log_error(_("Failed to read file") + ": %s".printf(file_path));
-		}
+		catch (Error e) { log_error (e.message); }
 
 		return null;
 	}
 
-	public bool file_write (string f, string contents){
+	public bool file_write (string f, string contents) {
+		//log_debug("file_write("+f+")");
 
-		/* Write text to file */
-
-		log_debug("file_write("+f+")");
-
-		try{
+		try {
 
 			string d = file_parent(f);
 			dir_create(d);
 
 			var file = File.new_for_path (f);
-			if (file.query_exists ()) {
-				file.delete ();
-			}
-			
+			if (file.query_exists ()) file.delete ();
+
 			var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
 			var data_stream = new DataOutputStream (file_stream);
 			data_stream.put_string (contents);
 			data_stream.close();
 
-			log_debug(_("File saved") + ":" + f);
-
 			return true;
 		}
 		catch (Error e) {
 			log_error (e.message);
-			log_error(_("Failed to write file") + ":" + f);
 			return false;
 		}
 	}
 
-	public bool file_copy (string src_file, string dest_file){
-		try{
+	public bool file_copy (string src_file, string dest_file) {
+		//log_debug("file_copy('"+src_file+"','"+dest_file+"')");
+
+		try {
 			var file_src = File.new_for_path (src_file);
 			if (file_src.query_exists()) {
 				var file_dest = File.new_for_path (dest_file);
 				file_src.copy(file_dest,FileCopyFlags.OVERWRITE,null,null);
-
-				log_debug(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
-
-			return true;
+				return true;
 			}
 		}
-		catch(Error e){
-	        log_error (e.message);
-	        log_error(_("Failed to copy file") + ": '%s', '%s'".printf(src_file, dest_file));
-		}
+		catch (Error e) { log_error (e.message); }
 
 		return false;
 	}
 
-	public void file_move (string src_file, string dest_file){
-		try{
+	public void file_move (string src_file, string dest_file) {
+		//log_debug("file_move('"+src_file+"','"+dest_file+"')");
+		try {
 			if (!file_exists(src_file)) {
 				log_error(_("File not found") + ": '%s'".printf(src_file));
 				return;
@@ -160,36 +139,29 @@ namespace TeeJee.FileSystem{
 
 			dir_create(file_parent(dest_file));
 
-			if (file_exists(dest_file)){
-				file_delete(dest_file);
-			}
+			if (file_exists(dest_file)) file_delete(dest_file);
 
 			var file_src = File.new_for_path (src_file);
 			var file_dest = File.new_for_path (dest_file);
 			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
 
-			log_debug(_("File moved") + ": '%s' → '%s'".printf(src_file, dest_file));
-
 		}
-		catch(Error e){
-			log_error (e.message);
-			log_error(_("Failed to move file") + ": '%s' → '%s'".printf(src_file, dest_file));
-		}
+		catch(Error e) { log_error (e.message); }
 	}
 
 	// file info -----------------
 
-	public int64 file_get_size(string file_path){
-		try{
+	public int64 file_get_size(string file_path) {
+		try {
 			File file = File.parse_name (file_path);
-			if (FileUtils.test(file_path, GLib.FileTest.EXISTS)){
+			if (FileUtils.test(file_path, GLib.FileTest.EXISTS)) {
 				if (FileUtils.test(file_path, GLib.FileTest.IS_REGULAR)
-					&& !FileUtils.test(file_path, GLib.FileTest.IS_SYMLINK)){
+					&& !FileUtils.test(file_path, GLib.FileTest.IS_SYMLINK)) {
 					return file.query_info("standard::size",0).get_size();
 				}
 			}
 		}
-		catch(Error e){
+		catch(Error e) {
 			log_error (e.message);
 		}
 
@@ -197,102 +169,81 @@ namespace TeeJee.FileSystem{
 	}
 
 	// directory helpers ----------------------
-	
-	public bool dir_exists (string dir_path){
-		/* Check if directory exists */
+
+	public bool dir_exists (string dir_path) {
 		return ( FileUtils.test(dir_path, GLib.FileTest.EXISTS) && FileUtils.test(dir_path, GLib.FileTest.IS_DIR));
 	}
 
-	public bool dir_create (string d, bool show_message = false){
-
+	public bool dir_create (string d) {
 		log_debug("dir_create("+d+")");
-		/* Creates a directory along with parents */
 
 		try{
-			var dir = File.parse_name (d);
-			if (dir.query_exists () == false) {
-				dir.make_directory_with_parents (null);
-
-				if (show_message){
-					log_msg(_("Created directory") + ": %s".printf(d));
-				}
-				else{
-					log_debug(_("Created directory") + ": %s".printf(d));
-				}
-			}
+			var dir = File.parse_name(d);
+			if (!dir.query_exists()) dir.make_directory_with_parents();
 			return true;
 		}
 		catch (Error e) {
 			log_error (e.message);
-			log_error(_("Failed to create dir") + ": %s".printf(d));
 			return false;
 		}
 	}
 
-	public bool dir_delete (string dir_path, bool show_message = false){
-		/* Recursively deletes directory along with contents */
-
+	public bool dir_delete (string dir_path) {
+		log_debug("dir_delete("+dir_path+")");
 		if (!dir_exists(dir_path)) return true;
+		File d = File.new_for_path(dir_path);
+		try { _dir_delete(d); }
+		catch (Error e) { print ("Error: %s\n", e.message); }
+		return !dir_exists(dir_path);
+	}
 
-		string cmd = "rm -rf '%s'".printf(escape_single_quote(dir_path));
-		int status = exec_sync(cmd);
-		string result = _("Deleted");
-		if (status!=0) result = _("Failed to delete file");
-		result += ": %s".printf(dir_path);
-		if (show_message) log_msg(result); else log_debug("dir_delete():"+result);
-
-		return (status == 0);
-
+	private void _dir_delete (File p) throws Error {
+		//log_debug("_dir_delete("+p.get_path()+")");
+		FileEnumerator en = p.enumerate_children ("standard::*",FileQueryInfoFlags.NOFOLLOW_SYMLINKS,null);
+		FileInfo i = null;
+		while (((i = en.next_file (null)) != null)) {
+			//log_debug(i.get_name());
+			File n = p.resolve_relative_path (i.get_name());
+			if (i.get_file_type() == FileType.DIRECTORY) _dir_delete(n);
+			else n.delete();
+		}
+		p.delete();
 	}
 
 	// misc --------------------
 
 	public string format_file_size (
 		uint64 size, bool binary_units = false,
-		string unit = "", bool show_units = true, int decimals = 1){
-			
+		string unit = "", bool show_units = true, int decimals = 1) {
+
 		int64 unit_k = binary_units ? 1024 : 1000;
 		int64 unit_m = binary_units ? 1024 * unit_k : 1000 * unit_k;
 		int64 unit_g = binary_units ? 1024 * unit_m : 1000 * unit_m;
 		int64 unit_t = binary_units ? 1024 * unit_g : 1000 * unit_g;
 
 		string txt = "";
-		
-		if ((size > unit_t) && ((unit.length == 0) || (unit == "t"))){
+
+		if ((size > unit_t) && ((unit.length == 0) || (unit == "t"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_t));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Ti" : "T");
-			}
-		}
-		else if ((size > unit_g) && ((unit.length == 0) || (unit == "g"))){
+			if (show_units) txt += " %sB".printf(binary_units ? "Ti" : "T");
+		} else if ((size > unit_g) && ((unit.length == 0) || (unit == "g"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_g));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Gi" : "G");
-			}
-		}
-		else if ((size > unit_m) && ((unit.length == 0) || (unit == "m"))){
+			if (show_units) txt += " %sB".printf(binary_units ? "Gi" : "G");
+		} else if ((size > unit_m) && ((unit.length == 0) || (unit == "m"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_m));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Mi" : "M");
-			}
-		}
-		else if ((size > unit_k) && ((unit.length == 0) || (unit == "k"))){
+			if (show_units) txt += " %sB".printf(binary_units ? "Mi" : "M");
+		} else if ((size > unit_k) && ((unit.length == 0) || (unit == "k"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_k));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Ki" : "K");
-			}
-		}
-		else{
+			if (show_units) txt += " %sB".printf(binary_units ? "Ki" : "K");
+		} else {
 			txt += "%'0lu".printf(size);
-			if (show_units){
-				txt += " B";
-			}
+			if (show_units) txt += " B";
 		}
 
 		return txt;
 	}
 
-	public string escape_single_quote(string file_path){
+	public string escape_single_quote(string file_path) {
 		return file_path.replace("'","'\\''");
 	}
 

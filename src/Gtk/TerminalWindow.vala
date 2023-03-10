@@ -58,28 +58,24 @@ public class TerminalWindow : Gtk.Window {
 		}
 
 		set_modal(true);
-		window_position = WindowPosition.CENTER;
-
-		if (fullscreen) {
-			this.fullscreen();
-		}
+		//window_position = WindowPosition.CENTER;
+		window_position = WindowPosition.CENTER_ON_PARENT;
+		if (fullscreen) this.fullscreen();
 
 		this.delete_event.connect(cancel_window_close);
-		
+
 		init_window();
 
 		show_all();
 
 		btn_cancel.visible = false;
 		btn_close.visible = false;
-		
-		if (show_cancel_button){
-			allow_cancel();
-		}
+
+		if (show_cancel_button) allow_cancel();
 	}
 
-	public bool cancel_window_close(){
-		// do not allow window to close 
+	public bool cancel_window_close() {
+		// do not allow window to close
 		return true;
 	}
 
@@ -175,7 +171,7 @@ public class TerminalWindow : Gtk.Window {
 		process_quit(child_pid);
 	}
 
-	public void execute_script(string f, string d){
+	public void execute_script(string f, string d) {
 		string[] argv = {"sh", f};
 
 		string[] env = Environ.get();
@@ -204,15 +200,11 @@ public class TerminalWindow : Gtk.Window {
 		}
 	}
 
-	public void script_exit(int status){
-
+	public void script_exit(int status) {
 		is_running = false;
-
 		btn_cancel.visible = false;
 		btn_close.visible = true;
-
 		script_complete();
-
 	}
 
 	public void allow_window_close(bool allow = true) {
