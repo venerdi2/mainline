@@ -22,7 +22,7 @@
  *
  */
 
-namespace TeeJee.FileSystem{
+namespace TeeJee.FileSystem {
 
 	/* Convenience functions for handling files and directories */
 
@@ -113,7 +113,7 @@ namespace TeeJee.FileSystem{
 		}
 	}
 
-	public bool file_copy (string src_file, string dest_file){
+	public bool file_copy (string src_file, string dest_file) {
 		//log_debug("file_copy('"+src_file+"','"+dest_file+"')");
 
 		try {
@@ -129,7 +129,7 @@ namespace TeeJee.FileSystem{
 		return false;
 	}
 
-	public void file_move (string src_file, string dest_file){
+	public void file_move (string src_file, string dest_file) {
 		//log_debug("file_move('"+src_file+"','"+dest_file+"')");
 		try {
 			if (!file_exists(src_file)) {
@@ -151,17 +151,17 @@ namespace TeeJee.FileSystem{
 
 	// file info -----------------
 
-	public int64 file_get_size(string file_path){
-		try{
+	public int64 file_get_size(string file_path) {
+		try {
 			File file = File.parse_name (file_path);
-			if (FileUtils.test(file_path, GLib.FileTest.EXISTS)){
+			if (FileUtils.test(file_path, GLib.FileTest.EXISTS)) {
 				if (FileUtils.test(file_path, GLib.FileTest.IS_REGULAR)
-					&& !FileUtils.test(file_path, GLib.FileTest.IS_SYMLINK)){
+					&& !FileUtils.test(file_path, GLib.FileTest.IS_SYMLINK)) {
 					return file.query_info("standard::size",0).get_size();
 				}
 			}
 		}
-		catch(Error e){
+		catch(Error e) {
 			log_error (e.message);
 		}
 
@@ -169,8 +169,8 @@ namespace TeeJee.FileSystem{
 	}
 
 	// directory helpers ----------------------
-	
-	public bool dir_exists (string dir_path){
+
+	public bool dir_exists (string dir_path) {
 		return ( FileUtils.test(dir_path, GLib.FileTest.EXISTS) && FileUtils.test(dir_path, GLib.FileTest.IS_DIR));
 	}
 
@@ -178,10 +178,8 @@ namespace TeeJee.FileSystem{
 		log_debug("dir_create("+d+")");
 
 		try{
-			var dir = File.parse_name (d);
-			if (dir.query_exists () == false) {
-				dir.make_directory_with_parents (null);
-			}
+			var dir = File.parse_name(d);
+			if (!dir.query_exists()) dir.make_directory_with_parents();
 			return true;
 		}
 		catch (Error e) {
@@ -216,50 +214,36 @@ namespace TeeJee.FileSystem{
 
 	public string format_file_size (
 		uint64 size, bool binary_units = false,
-		string unit = "", bool show_units = true, int decimals = 1){
-			
+		string unit = "", bool show_units = true, int decimals = 1) {
+
 		int64 unit_k = binary_units ? 1024 : 1000;
 		int64 unit_m = binary_units ? 1024 * unit_k : 1000 * unit_k;
 		int64 unit_g = binary_units ? 1024 * unit_m : 1000 * unit_m;
 		int64 unit_t = binary_units ? 1024 * unit_g : 1000 * unit_g;
 
 		string txt = "";
-		
-		if ((size > unit_t) && ((unit.length == 0) || (unit == "t"))){
+
+		if ((size > unit_t) && ((unit.length == 0) || (unit == "t"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_t));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Ti" : "T");
-			}
-		}
-		else if ((size > unit_g) && ((unit.length == 0) || (unit == "g"))){
+			if (show_units) txt += " %sB".printf(binary_units ? "Ti" : "T");
+		} else if ((size > unit_g) && ((unit.length == 0) || (unit == "g"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_g));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Gi" : "G");
-			}
-		}
-		else if ((size > unit_m) && ((unit.length == 0) || (unit == "m"))){
+			if (show_units) txt += " %sB".printf(binary_units ? "Gi" : "G");
+		} else if ((size > unit_m) && ((unit.length == 0) || (unit == "m"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_m));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Mi" : "M");
-			}
-		}
-		else if ((size > unit_k) && ((unit.length == 0) || (unit == "k"))){
+			if (show_units) txt += " %sB".printf(binary_units ? "Mi" : "M");
+		} else if ((size > unit_k) && ((unit.length == 0) || (unit == "k"))) {
 			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_k));
-			if (show_units){
-				txt += " %sB".printf(binary_units ? "Ki" : "K");
-			}
-		}
-		else{
+			if (show_units) txt += " %sB".printf(binary_units ? "Ki" : "K");
+		} else {
 			txt += "%'0lu".printf(size);
-			if (show_units){
-				txt += " B";
-			}
+			if (show_units) txt += " B";
 		}
 
 		return txt;
 	}
 
-	public string escape_single_quote(string file_path){
+	public string escape_single_quote(string file_path) {
 		return file_path.replace("'","'\\''");
 	}
 

@@ -7,19 +7,19 @@ public class Package : GLib.Object {
 	public string pname = "";
 	public string arch = "";
 	public string version = "";
-
 	public bool is_installed = false;
+	public static Gee.ArrayList<Package> dpkg_list = new Gee.ArrayList<Package>();
 
 	public static void initialize() {
+		new Package("");
 	}
 
 	public Package(string _name) {
 		pname = _name;
 	}
 
-	public static Gee.HashMap<string,Package> query_installed_packages() {
-		log_debug("query_installed_packages()");
-
+	public static void update_dpkg_list() {
+		log_debug("update_dpkg_list()");
 		// get installed packages from dpkg --------------
 
 		string t_dir = create_tmp_dir();
@@ -30,12 +30,12 @@ public class Package : GLib.Object {
 
 		// parse ------------------------
 
-		var list = new Gee.HashMap<string,Package>();
 		try {
 			string line;
 			var file = File.new_for_path (t_file);
 			if (file.query_exists ()) {
 				var dis = new DataInputStream (file.read());
+				dpkg_list.clear();
 				while ((line = dis.read_line (null)) != null) {
 					string[] arr = line.split("|");
 					if (arr.length != 4) continue;
@@ -50,13 +50,10 @@ public class Package : GLib.Object {
 					var pkg = new Package(name);
 					pkg.version = vers;
 					pkg.arch = arch;
-					list[name] = pkg;
-
-					//log_debug("pkg: "+pkg.pname+"|"+pkg.version+"|"+pkg.arch);
-
+					dpkg_list.add(pkg);
+					log_debug("dpkg_list.add("+pkg.pname+")  version:"+pkg.version+"  arch:"+pkg.arch);
 				}
-			}
-			else {
+			} else {
 				log_error (_("File not found: %s").printf(t_file));
 			}
 		}
@@ -64,6 +61,5 @@ public class Package : GLib.Object {
 			log_error (e.message);
 		}
 		dir_delete(t_dir);
-		return list;
 	}
 }

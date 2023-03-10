@@ -45,12 +45,6 @@ public class AppConsole : GLib.Object {
 
 		bool is_success = console.parse_arguments(args);
 
-		// possible future option - delete cache on every startup and exit
-		// do not do this without rigging up a way to suppress it when the gui app runs the console app
-		// like --index-is-fresh but maybe --keep-index or --batch
-		//LinuxKernel.delete_cache();
-
-		//log_debug("END AppConsole main()");
 		return (is_success) ? 0 : 1;
 	}
 
@@ -97,9 +91,7 @@ public class AppConsole : GLib.Object {
 	public bool parse_arguments(string[] args) {
 
 		string txt = BRANDING_SHORTNAME + " ";
-		for (int k = 1; k < args.length; k++) {
-			txt += "'%s' ".printf(args[k]);
-		}
+		for (int k = 1; k < args.length; k++) txt += "'%s' ".printf(args[k]);
 
 		// check argument count -----------------
 
@@ -151,15 +143,14 @@ public class AppConsole : GLib.Object {
 				cmd = args[k].down();
 				break;
 
-			case "--download":
-			case "--install":
 			case "--remove":	// back compat
 			case "--uninstall":
+			case "--download":
+			case "--install":
+				// FUGLY
 				cmd = args[k].down();
-
-				if (++k < args.length){
-					cmd_versions = args[k];
-				}
+				if (++k < args.length) cmd_versions = args[k];
+				if (cmd == "--remove") cmd="--uninstall"; // re-write so we don't have to check all synonyms later blergh crap
 				break;
 
 			case "--help":
@@ -171,8 +162,7 @@ public class AppConsole : GLib.Object {
 			default:
 				// unknown option
 				log_error(_("Unknown option") + ": %s".printf(args[k]));
-				// FIXME use argv[0] instead of hardcoded app name
-				log_error(_("Run")+" '"+BRANDING_SHORTNAME+" --help' "+_("to list all options"));
+				log_error(_("Run")+" '"+args[0]+" --help' "+_("to list all options"));
 				return false;
 			}
 		}
@@ -188,6 +178,7 @@ public class AppConsole : GLib.Object {
 
 		case "--list-installed":
 
+			Package.update_dpkg_list();
 			LinuxKernel.check_installed();
 			break;
 
@@ -220,10 +211,9 @@ public class AppConsole : GLib.Object {
 
 		case "--download":
 		case "--install":
-		case "--remove":	// back compat
 		case "--uninstall":
 
-			if (cmd_versions.length==0){
+			if (cmd_versions.length==0) {
 				log_error(_("No kernels specified"));
 				exit(1);
 			}
@@ -240,38 +230,41 @@ public class AppConsole : GLib.Object {
 
 			foreach(string requested_version in requested_versions) {
 				LinuxKernel kern_requested = null;
-				foreach(var kern in LinuxKernel.kernel_list) {
+				foreach(var k in LinuxKernel.kernel_list) {
 					// match --list output
-					if (kern.version_main == requested_version) {
-						kern_requested = kern;
+					// FIXME version_main can dupe with mainline & distro pkgs of the same version
+					// if cmd is uninstall, must also match k.is_installed
+					// but if cmd is download or install, must IGNORE k.is_installed
+					// extra FUGLY because this whole cmdline parser is redundant junk
+					if (k.version_main == requested_version && (cmd != "--uninstall" || k.is_installed)) {
+						kern_requested = k;
 						break;
 					}
 				}
 
 				if (kern_requested == null) {
 					var msg = _("Could not find requested version");
-					msg += ": %s".printf(requested_version);
+					msg += ": "+requested_version;
 					log_error(msg);
-					log_error(_("Run")+" '"+BRANDING_SHORTNAME+" --list' "+_("and use a version string listed in first column"));
+					log_error(_("Run")+" '"+args[0]+" --list' "+_("and use a version string listed in first column"));
 					exit(1);
 				}
 
 				list.add(kern_requested);
 			}
 
-			if (list.size == 0){
+			if (list.size == 0) {
 				log_error(_("No kernels specified"));
 				exit(1);
 			}
 
-			switch(cmd){
+			switch (cmd) {
 			case "--download":
 				return LinuxKernel.download_kernels(list);
 
-			case "--remove":	// back compat
 			case "--uninstall":
 				return LinuxKernel.kunin_list(list);
-				
+
 			case "--install":
 				return list[0].kinst();
 			}
@@ -281,14 +274,14 @@ public class AppConsole : GLib.Object {
 		default:
 			// unknown option
 			log_error(_("Command not specified"));
-			log_error(_("Run")+" '"+BRANDING_SHORTNAME+" --help' "+_("to list all commands"));
+			log_error(_("Run")+" '"+args[0]+" --help' "+_("to list all commands"));
 			break;
 		}
 
 		return true;
 	}
 
-	private void print_updates(){
+	private void print_updates() {
 
 		LinuxKernel.query(true);
 
@@ -313,7 +306,7 @@ public class AppConsole : GLib.Object {
 		log_msg(string.nfill(70, '-'));
 	}
 
-	private void notify_user(){
+	private void notify_user() {
 
 		LinuxKernel.query(true);
 

@@ -37,15 +37,14 @@ namespace TeeJee.Misc {
 		DateTime now = new GLib.DateTime.now_local();
 
 		if (show_millis) {
-			var msec = now.get_microsecond () / 1000;
+			var msec = now.get_microsecond() / 1000;
 			return "%s.%03d".printf(now.format("%H:%M:%S"), msec);
-		}
-		else {
+		} else {
 			return now.format ("%H:%M:%S");
 		}
 	}
 
-	public string timestamp_numeric () {
+	public string timestamp_numeric() {
 		return "%ld".printf((long) time_t ());
 	}
 
@@ -67,8 +66,7 @@ namespace TeeJee.Misc {
 			txt = txt
 				.replace("\\u00", "")
 				.replace("\\x"  , ""); 
-		}
-		else {
+		} else {
 			txt = txt
 				.replace(" ", "&nbsp;");  // pango markup throws an error with &nbsp;
 		}
@@ -114,14 +112,12 @@ namespace TeeJee.Misc {
 		MatchInfo match;
 		if (regex.match(line, 0, out match)) {
 			return match;
-		}
-		else{
+		} else {
 			return null;
 		}
 	}
 
 	private static void print_progress_bar_start(string message) {
-
 		log_msg("\n%s\n".printf(message));
 	}
 
@@ -154,7 +150,6 @@ namespace TeeJee.Misc {
 	}
 
 	private static void print_progress_bar_finish() {
-
 		print_progress_bar(1.0);
 		stdout.printf("\n\n");
 		stdout.flush();

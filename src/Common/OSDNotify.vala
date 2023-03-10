@@ -33,17 +33,17 @@ public class OSDNotify : GLib.Object {
 
 	// send a desktop notification
 	// re-use the notification id for subsequent re-sends/updates
-	public static int notify_send (string summary = "", string body = "", Gee.ArrayList<string> actions = new Gee.ArrayList<string>(), string close_action = ""){ 
+	public static int notify_send (string summary = "", string body = "", Gee.ArrayList<string> actions = new Gee.ArrayList<string>(), string close_action = "") {
 		int retVal = 0;
 
 		long seconds = 9999;
-		if (dt_last_notification != null){
+		if (dt_last_notification != null) {
 			DateTime dt_end = new DateTime.now_local();
 			TimeSpan elapsed = dt_end.difference(dt_last_notification);
 			seconds = (long)(elapsed * 1.0 / TimeSpan.SECOND);
 		}
 
-		if (seconds > MIN_NOTIFICATION_INTERVAL){
+		if (seconds > MIN_NOTIFICATION_INTERVAL) {
 
 			string s =
 				APP_LIB_DIR+"/notify_send/notify-send.sh"
@@ -53,14 +53,16 @@ public class OSDNotify : GLib.Object {
 				+ " -a "+BRANDING_SHORTNAME
 				+ " -i "+BRANDING_SHORTNAME
 				+ " -t 0"
-				+ " -f ";
+				+ " -f "
+				;
 
 			if (close_action != "") s += " -l \""+close_action+"\"";
 
 			foreach (string a in actions) s += " -o \""+a+"\"";
 
 				s += " \""+summary+"\""
-				+ " \""+body+"\"";
+				+ " \""+body+"\""
+				;
 
 			log_debug (s);
 			exec_async (s);

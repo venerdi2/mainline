@@ -56,7 +56,8 @@ public class ProgressWindow : Gtk.Window {
 		set_modal(true);
 		set_decorated(false);
 		set_type_hint(Gdk.WindowTypeHint.DIALOG);
-		window_position = WindowPosition.CENTER;
+		//window_position = WindowPosition.CENTER;
+		window_position = WindowPosition.CENTER_ON_PARENT;
 
 		set_default_size(def_width, def_height);
 
@@ -149,8 +150,7 @@ public class ProgressWindow : Gtk.Window {
 
 		if (clear) {
 			lbl_status.label = "";
-		}
-		else {
+		} else {
 			lbl_status.label = App.status_line;
 		}
 

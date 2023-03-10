@@ -22,7 +22,7 @@
  *
  */
  
-namespace TeeJee.Logging{
+namespace TeeJee.Logging {
 
 	/* Functions for logging messages to console and log files */
 
@@ -33,87 +33,66 @@ namespace TeeJee.Logging{
 	public bool LOG_ENABLE = true;
 	public bool LOG_DEBUG = false;
 
-	public void log_msg (string message){
-
-		if (!LOG_ENABLE) { return; }
-
+	public void log_msg (string message) {
+		if (!LOG_ENABLE) return;
 		string s = message+"\n";
-
 		stdout.printf(s);
 		stdout.flush();
 
 		try {
-			if (dos_log != null){
-				dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
-			}
+			if (dos_log != null) dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
 		}
 		catch (Error e) {
 			stdout.printf (e.message);
 		}
 	}
 
-	public void log_error (string message){
-			
-		if (!LOG_ENABLE) { return; }
-
+	public void log_error (string message) {
+		if (!LOG_ENABLE) return;
 		string s = _("E") + ": " + message + "\n";
-
 		stdout.printf(s);
 		stdout.flush();
-		
+
 		try {
 			string str = "[%s] %s\n".printf(timestamp(),message);
-			
-			if (dos_log != null){
-				dos_log.put_string (str);
-			}
-
-			if (err_log != null){
-				err_log += s;
-			}
+			if (dos_log != null) dos_log.put_string (str);
+			if (err_log != null) err_log += s;
 		}
 		catch (Error e) {
 			stdout.printf (e.message);
 		}
 	}
 
-	public void log_debug (string message){
-		if (!LOG_ENABLE) { return; }
-
-		if (LOG_DEBUG){
-			log_msg (_("D") + ": " + message);
-		}
+	public void log_debug (string message) {
+		if (!LOG_ENABLE) return;
+		if (LOG_DEBUG) log_msg (_("D") + ": " + message);
 
 		try {
-			if (dos_log != null){
-				dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
-			}
+			if (dos_log != null) dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
 		}
 		catch (Error e) {
 			stdout.printf (e.message);
 		}
 	}
 
-	public void log_to_file (string message, bool highlight = false){
+	public void log_to_file (string message, bool highlight = false) {
 		try {
-			if (dos_log != null){
-				dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
-			}
+			if (dos_log != null) dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
 		}
 		catch (Error e) {
 			stdout.printf (e.message);
 		}
 	}
 
-	public void log_draw_line(){
+	public void log_draw_line() {
 		log_msg(string.nfill(70,'='));
 	}
 
-	public void err_log_clear(){
+	public void err_log_clear() {
 		err_log = "";
 	}
 
-	public void err_log_disable(){
+	public void err_log_disable() {
 		err_log = null;
 	}
 }

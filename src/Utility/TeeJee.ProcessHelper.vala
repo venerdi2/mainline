@@ -22,12 +22,10 @@
  *
  */
 
-namespace TeeJee.ProcessHelper{
+namespace TeeJee.ProcessHelper {
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
 	using TeeJee.Misc;
-
-	/* Convenience functions for executing commands and managing processes */
 
 	// execute process ---------------------------------
 

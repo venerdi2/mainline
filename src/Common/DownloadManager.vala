@@ -118,25 +118,17 @@ public class DownloadTask : AsyncTask {
 	}
 
 	public override void parse_stdout_line(string out_line) {
-		if (is_terminated) {
-			return;
-		}
-
+		if (is_terminated) return;
 		update_progress_parse_console_output(out_line);
 	}
 
 	public override void parse_stderr_line(string err_line) {
-		if (is_terminated) {
-			return;
-		}
-
+		if (is_terminated) return;
 		update_progress_parse_console_output(err_line);
 	}
 
 	public bool update_progress_parse_console_output (string line) {
-		if ((line == null) || (line.length == 0)) {
-			return true;
-		}
+		if ((line == null) || (line.length == 0)) return true;
 
 		//log_debug(line);
 
@@ -181,13 +173,10 @@ public class DownloadTask : AsyncTask {
 			if (map.has_key(gid_key)) {
 				var item = map[gid_key];
 				item.bytes_received = received;
-				if (item.bytes_total == 0) {
-					item.bytes_total = total;
-				}
+				if (item.bytes_total == 0) item.bytes_total = total;
 				item.rate = rate;
 				item.eta = eta;
 				item.status = "RUNNING";
-
 				status_line = item.status_line();
 			}
 
@@ -206,8 +195,7 @@ public class DownloadTask : AsyncTask {
 
 public class DownloadItem : GLib.Object
 {
-	/* File is saved as 'file_name' not the source file name.
-	 */
+	// File is saved as 'file_name' not the source file name.
 
 	public string file_name = "";
 	public string download_dir = "";
@@ -235,14 +223,12 @@ public class DownloadItem : GLib.Object
 	}
 
 	public DownloadItem(string _source_uri, string _download_dir, string _file_name) {
-
 		file_name = _file_name;
 		download_dir = _download_dir;
 		source_uri = _source_uri;
 	}
 
 	public string status_line() {
-
 		if (task.status_in_kb) {
 			return "%s / %s, %s/s (%s)".printf(
 				format_file_size(bytes_received, false, "", true, 1),
