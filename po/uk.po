@@ -88,12 +88,10 @@ msgid "found"
 msgstr "знайдено"
 
 #: src/Common/LinuxKernel.vala:955
-#, fuzzy
 msgid "No packages to un-install!"
-msgstr "Встановлені пакети"
+msgstr "Немає пакетів для видалення!"
 
 #: src/Common/LinuxKernel.vala:994
-#, fuzzy
 msgid "Could not find running kernel in list"
 msgstr "Не вдалося знайти запущене ядро у списку!"
 
@@ -194,7 +192,7 @@ msgstr "Завантажте конкретні ядра"
 
 #: src/Console/AppConsole.vala:76
 msgid "Delete cached info about available kernels"
-msgstr ""
+msgstr "Видалити кешовану інформацію про доступні ядра"
 
 #: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:145
 msgid "Options"
@@ -205,9 +203,8 @@ msgid "Include unstable and RC releases"
 msgstr "Включати нестабільні і RC"
 
 #: src/Console/AppConsole.vala:81
-#, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "Включати нестабільні і RC"
+msgstr "Виключити нестабільні та RC випуски"
 
 #: src/Console/AppConsole.vala:82
 msgid "Enable verbose debugging output"
@@ -278,9 +275,8 @@ msgid "Install"
 msgstr "Встановити"
 
 #: src/Gtk/AppGtk.vala:143
-#, fuzzy
 msgid "options"
-msgstr "Параметри"
+msgstr "параметри"
 
 #: src/Gtk/AppGtk.vala:147
 msgid "Print debug information"
