@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 09:00-0500\n"
-"PO-Revision-Date: 2023-03-08 23:39+0100\n"
+"POT-Creation-Date: 2023-03-10 09:32-0500\n"
+"PO-Revision-Date: 2023-03-10 16:07+0100\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -21,13 +21,12 @@ msgid "Architecture"
 msgstr "Architektura"
 
 #: src/Common/LinuxKernel.vala:282
-#, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "Pobieranie indywidualnych indeksów jądra..."
+msgstr "Pobieranie indywidualnych indeksów jąder"
 
 #: src/Common/LinuxKernel.vala:327
 msgid "Updating from"
-msgstr ""
+msgstr "Aktualizowanie z"
 
 #: src/Common/LinuxKernel.vala:736
 msgid "Packages Available"
@@ -91,9 +90,8 @@ msgid "No packages to un-install!"
 msgstr "Brak pakietów do odinstalowania!"
 
 #: src/Common/LinuxKernel.vala:994
-#, fuzzy
 msgid "Could not find running kernel in list"
-msgstr "Nie można znaleźć uruchomionego jądra na liście!"
+msgstr "Nie można znaleźć uruchomionego jądra na liście"
 
 #: src/Common/LinuxKernel.vala:1000
 msgid "Could not find any kernels to uninstall"
@@ -138,9 +136,9 @@ msgid "Can not reach"
 msgstr "Nie można dotrzeć"
 
 #: src/Common/Package.vala:57
-#, fuzzy, c-format
+#, c-format
 msgid "File not found: %s"
-msgstr "Nie odnaleziono pliku"
+msgstr "Nie znaleziono pliku: %s"
 
 #: src/Console/AppConsole.vala:62 src/Gtk/AppGtk.vala:143
 msgid "Syntax"
@@ -342,7 +340,7 @@ msgstr "Oryginalne"
 
 #: src/Gtk/MainWindow.vala:440
 msgid "Updating kernels"
-msgstr ""
+msgstr "Aktualizowanie jąder"
 
 #: src/Gtk/MainWindow.vala:513
 msgid "available"
@@ -402,9 +400,8 @@ msgid "Hide unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
 
 #: src/Gtk/SettingsDialog.vala:178
-#, fuzzy
 msgid "previous major versions "
-msgstr "Pokaż N poprzednich głównych wersji "
+msgstr "poprzednie główne wersje "
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Other"
