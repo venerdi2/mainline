@@ -36,10 +36,6 @@ namespace TeeJee.System {
 		} catch (Error e) {
 			warning ("Unable to launch %s", uri);
 		}
-
-		// if/when above breaks, this works fine
-		//string cmd = "xdg-open '%s'".printf(escape_single_quote(uri));
-		//exec_async(cmd);
 	}
 
 	// timers --------------------------------------------------
@@ -54,9 +50,8 @@ namespace TeeJee.System {
 		ulong microseconds;
 		double seconds;
 		seconds = timer.elapsed (out microseconds);
-		if (stop){
-			timer.stop();
-		}
+		if (stop) timer.stop();
+
 		return (ulong)((seconds * 1000 ) + (microseconds / 1000));
 	}
 

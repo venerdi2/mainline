@@ -46,7 +46,7 @@ private const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME
 
 extern void exit(int exit_code);
 
-public class Main : GLib.Object{
+public class Main : GLib.Object {
 
 	// constants ----------
 
@@ -99,7 +99,7 @@ public class Main : GLib.Object{
 
 	// constructors ------------
 
-	public Main(string[] arg0, bool _gui_mode){
+	public Main(string[] arg0, bool _gui_mode) {
 		//log_msg("Main()");
 
 		GUI_MODE = _gui_mode;
@@ -138,16 +138,10 @@ public class Main : GLib.Object{
 
 		// todo: consider get_user_runtime_dir() or get_user_cache_dir()
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
-
-		// possible future option - delete cache on every startup and exit
-		// do not do this without rigging up a way to suppress it when the gui app runs the console app
-		// like --index-is-fresh but maybe --keep-index or --batch
-		//LinuxKernel.delete_cache();
-
 	}
-	
-	public void save_app_config(){
-		
+
+	public void save_app_config() {
+
 		var config = new Json.Object();
 		config.set_string_member("ppa_uri", ppa_uri);
 		config.set_string_member("notify_major", notify_major.to_string());
@@ -173,20 +167,20 @@ public class Main : GLib.Object{
 		try{
 			json.to_file(APP_CONFIG_FILE);
 		} catch (Error e) {
-	        log_error (e.message);
-	    }
+			log_error (e.message);
+		}
 
-	    log_debug("Saved config file: %s".printf(APP_CONFIG_FILE));
+		log_debug("Saved config file: %s".printf(APP_CONFIG_FILE));
 
 		update_notification_files();
 	}
 
-	public void update_notification_files(){
+	public void update_notification_files() {
 		update_startup_script();
-	    update_startup_desktop_file();
+		update_startup_desktop_file();
 	}
 
-	public void load_app_config(){
+	public void load_app_config() {
 
 		var f = File.new_for_path(APP_CONFIG_FILE);
 
@@ -234,7 +228,7 @@ public class Main : GLib.Object{
 		// construct the commandline argument for "sleep"
 		int count = App.notify_interval_value;
 		string suffix = "h";
-		switch (App.notify_interval_unit){
+		switch (App.notify_interval_unit) {
 		case 0: // hour
 			suffix = "h";
 			break;
@@ -299,7 +293,7 @@ public class Main : GLib.Object{
 	}
 
 	private void update_startup_desktop_file() {
-		if (notify_minor || notify_major){
+		if (notify_minor || notify_major) {
 
 			string txt = "[Desktop Entry]\n"
 				+ "Type=Application\n"
@@ -312,8 +306,7 @@ public class Main : GLib.Object{
 
 			file_write(STARTUP_DESKTOP_FILE, txt);
 
-		}
-		else{
+		} else {
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
 	}

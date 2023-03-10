@@ -22,65 +22,63 @@
  *
  */
 
-namespace TeeJee.ProcessHelper{
+namespace TeeJee.ProcessHelper {
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
 	using TeeJee.Misc;
 
-	/* Convenience functions for executing commands and managing processes */
-
 	// execute process ---------------------------------
 
 	// execute command synchronously
-	public int exec_sync (string cmd, out string? std_out = null, out string? std_err = null){
+	public int exec_sync (string cmd, out string? std_out = null, out string? std_err = null) {
 		try {
 			int status;
 			Process.spawn_command_line_sync (cmd, out std_out, out std_err, out status);
 	        return status;
 		}
-		catch (Error e){
+		catch (Error e) {
 	        log_error (e.message);
 	        return -1;
 	    }
 	}
 
 	// 20200510 bkw - execute command without waiting
-	public void exec_async (string cmd){
-		try {Process.spawn_command_line_async (cmd);}
-		catch (SpawnError e) {log_error (e.message);}
+	public void exec_async (string cmd) {
+		try { Process.spawn_command_line_async (cmd); }
+		catch (SpawnError e) { log_error (e.message); }
 	}
 
 	// temp files -------------------------------------
 
 	// create a unique temp dir rooted at App.TMP_PREFIX
 	// return full path to created dir
-	public string create_tmp_dir(){
+	public string create_tmp_dir() {
 		string d = App.TMP_PREFIX+"_%s".printf(random_string());
 		dir_create(d);
 		return d;
 	}
 
 	// TODO replace with mkstemp
-	public string get_temp_file_path(string d){
+	public string get_temp_file_path(string d) {
 		return d + "/" + timestamp_numeric() + (new Rand()).next_int().to_string();
 	}
 
 	// create a temporary bash script
 	// return the script file path
-	public string? save_bash_script_temp (string cmds, string? file = null){
+	public string? save_bash_script_temp (string cmds, string? file = null) {
 
 		string f = file;
-		if ((file == null) || (file.length == 0)){
+		if ((file == null) || (file.length == 0)) {
 			string t_dir = create_tmp_dir();
 			f = get_temp_file_path(t_dir) + ".sh";
 		}
 
+		log_debug("save_bash_script_temp("+file+"):"+f);
+
 		string s = "#!/bin/bash\n"
 		+ cmds + "\n";
 
-		log_debug("save_bash_script_temp("+file+"):"+f);
-
-		if(file_write(f,s)){
+		if (file_write(f,s)) {
 			GLib.FileUtils.chmod (f, 0755);
 			return f;
 		}
@@ -90,7 +88,7 @@ namespace TeeJee.ProcessHelper{
 	// find process -------------------------------
 
 	// dep: ps TODO: Rewrite using /proc
-	public bool process_is_running(long pid){
+	public bool process_is_running(long pid) {
 
 		/* Checks if given process is running */
 
@@ -112,7 +110,7 @@ namespace TeeJee.ProcessHelper{
 	}
 
 	// dep: ps TODO: Rewrite using /proc
-	public int[] get_process_children (Pid parent_pid){
+	public int[] get_process_children (Pid parent_pid) {
 
 		/* Returns the list of child processes spawned by given process */
 
@@ -123,7 +121,7 @@ namespace TeeJee.ProcessHelper{
 		int[] procList = {};
 		string[] arr;
 
-		foreach (string line in std_out.split ("\n")){
+		foreach (string line in std_out.split ("\n")) {
 			arr = line.strip().split (" ");
 			if (arr.length < 1) { continue; }
 
@@ -139,7 +137,7 @@ namespace TeeJee.ProcessHelper{
 
 	// manage process ---------------------------------
 
-	public void process_quit(Pid process_pid, bool killChildren = true){
+	public void process_quit(Pid process_pid, bool killChildren = true) {
 
 		/* Kills specified process and its children (optional).
 		 * Sends signal SIGTERM to the process to allow it to quit gracefully.
@@ -153,9 +151,9 @@ namespace TeeJee.ProcessHelper{
 		Posix.kill (process_pid, Posix.SIGTERM);
 #endif
 
-		if (killChildren){
+		if (killChildren) {
 			Pid childPid;
-			foreach (long pid in child_pids){
+			foreach (long pid in child_pids) {
 				childPid = (Pid) pid;
 #if VALA_0_40
 				Posix.kill (childPid, Posix.Signal.TERM);

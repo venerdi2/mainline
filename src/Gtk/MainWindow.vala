@@ -41,6 +41,7 @@ public class MainWindow : Gtk.Window {
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_uninstall;
 	private Gtk.Button btn_changes;
+	private Gtk.Button btn_ppa;
 	private Gtk.Label lbl_info;
 
 	// helper members
@@ -68,9 +69,15 @@ public class MainWindow : Gtk.Window {
 		init_ui();
 
 		update_cache();
+
+		if (App.command == "install") {
+			var k = new LinuxKernel.from_version(App.requested_version);
+			do_install(k);
+		}
+
 	}
 
-	private void init_ui(){
+	private void init_ui() {
 		init_treeview();
 		init_actions();
 		init_infobar();
@@ -151,23 +158,8 @@ public class MainWindow : Gtk.Window {
 			((Gtk.CellRendererText) cell).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
 		});
 
-		//column
-		col = new TreeViewColumn();
-		col.title = "";
-		tv.append_column(col);
-
-		//cell text
-		cellText = new CellRendererText();
-		cellText.width = 10;
-		cellText.ellipsize = Pango.EllipsizeMode.END;
-		col.pack_start (cellText, false);
-
-		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
-			bool odd_row;
-			model.get (iter, 2, out odd_row, -1);
-		});
-
 		tv.set_tooltip_column(3);
+
 	}
 
 	private void tv_row_activated(TreePath path, TreeViewColumn column) {
@@ -179,7 +171,7 @@ public class MainWindow : Gtk.Window {
 		set_button_state();
 	}
 
-	private void tv_selection_changed(){
+	private void tv_selection_changed() {
 		var sel = tv.get_selection();
 
 		TreeModel model;
@@ -198,7 +190,7 @@ public class MainWindow : Gtk.Window {
 		set_button_state();
 	}
 
-	private void tv_refresh(){
+	private void tv_refresh() {
 		log_debug("tv_refresh()");
 
 		var model = new Gtk.ListStore(4, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool), typeof(string));
@@ -221,27 +213,21 @@ public class MainWindow : Gtk.Window {
 		foreach (var kern in LinuxKernel.kernel_list) {
 			if (!kern.is_valid) continue;
 			if (!kern.is_installed) {
-				if (App.hide_unstable && kern.is_unstable) continue;
-				if (kern.version_maj < LinuxKernel.highest_maj-App.show_prev_majors) continue;
+				if (kern.is_unstable && App.hide_unstable) continue;
+				if (kern.version_maj < LinuxKernel.threshold_major) continue;
 			}
 
 			odd_row = !odd_row;
 
-			//add row
+			// add row
 			model.append(out iter);
 			model.set (iter, 0, kern);
 
-			if (kern.is_mainline){
-				if (kern.is_unstable){
-					model.set (iter, 1, pix_mainline_rc);
-				}
-				else{
-					model.set (iter, 1, pix_mainline);
-				}
+			if (kern.is_mainline) {
+				if (kern.is_unstable) model.set (iter, 1, pix_mainline_rc);
+				else model.set (iter, 1, pix_mainline);
 			}
-			else{
-				model.set (iter, 1, pix_ubuntu);
-			}
+			else model.set (iter, 1, pix_ubuntu);
 
 			model.set (iter, 2, odd_row);
 			model.set (iter, 3, kern.tooltip_text());
@@ -261,19 +247,21 @@ public class MainWindow : Gtk.Window {
 			btn_install.sensitive = false;
 			btn_uninstall.sensitive = false;
 			btn_changes.sensitive = false;
+			btn_ppa.sensitive = true;
 		} else {
 			// only allow selecting a single kernel for install/uninstall, examine the installed state
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
+			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
+			btn_ppa.sensitive = (selected_kernels.size == 1) && selected_kernels[0].is_mainline;
 			// allow selecting multiple kernels for install/uninstall, but IF only a single selected, examine the installed state
 			// (the rest of the app does not have loops to process a list yet)
 			//btn_install.sensitive = selected_kernels.size == 1 ? !selected_kernels[0].is_installed : true;
 			//btn_uninstall.sensitive = selected_kernels.size == 1 ? selected_kernels[0].is_installed && !selected_kernels[0].is_running : true;
-			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
 		}
 	}
 
-	private void init_actions(){
+	private void init_actions() {
 
 		var hbox = new Gtk.Box(Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
@@ -312,6 +300,7 @@ public class MainWindow : Gtk.Window {
 		// ppa
 		button = new Gtk.Button.with_label ("PPA");
 		hbox.pack_start (button, true, true, 0);
+		btn_ppa = button;
 
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
@@ -448,7 +437,7 @@ public class MainWindow : Gtk.Window {
 			return;
 		}
 
-		string message = _("Updating cached indexes")+"...";
+		string message = _("Updating kernels");
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
 
@@ -458,7 +447,6 @@ public class MainWindow : Gtk.Window {
 
 		tv_refresh();
 	}
-
 
 	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref long count, bool last = false) {
 		if (last) {
@@ -474,18 +462,11 @@ public class MainWindow : Gtk.Window {
 		App.progress_total = LinuxKernel.progress_total;
 		App.progress_count = LinuxKernel.progress_count;
 
-		ulong ms_elapsed = timer_elapsed(timer, false);
 		int64 remaining_count = App.progress_total - App.progress_count;
-		int64 ms_remaining = (int64)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
-
-		string time_remaining = "";
-		if ((count % 5) == 0){
-			time_remaining = format_time_left(ms_remaining);
-		}
 
 		Gdk.threads_add_idle_full(0, () => {
 			if (App.progress_total > 0)
-				progress_window.update_message("%s %s/%s (%s)".printf(message, App.progress_count.to_string(), App.progress_total.to_string(), time_remaining));
+				progress_window.update_message("%s %s/%s".printf(message, App.progress_count.to_string(), App.progress_total.to_string()));
 
 			progress_window.update_status_line(); 
 			return false;
@@ -494,7 +475,7 @@ public class MainWindow : Gtk.Window {
 		count++;
 	}
 
-	private void init_infobar(){
+	private void init_infobar() {
 
 		// scrolled
 		var scrolled = new ScrolledWindow(null, null);
@@ -516,20 +497,19 @@ public class MainWindow : Gtk.Window {
 		hbox.add(lbl_info);
 	}
 
-	private void set_infobar(){
+	private void set_infobar() {
 
-		if (LinuxKernel.kernel_active != null){
+		if (LinuxKernel.kernel_active != null) {
 
 			lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
 
-			if (LinuxKernel.kernel_active.is_mainline){
+			if (LinuxKernel.kernel_active.is_mainline) {
 				lbl_info.label += " (mainline)";
-			}
-			else{
+			} else {
 				lbl_info.label += " (ubuntu)";
 			}
 
-			if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0){
+			if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0) {
 				lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
 			}
 		}
@@ -550,7 +530,6 @@ public class MainWindow : Gtk.Window {
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
-			file_delete(t_file);
 			dir_delete(t_dir);
 		});
 
@@ -578,7 +557,6 @@ public class MainWindow : Gtk.Window {
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
-			file_delete(t_file);
 			dir_delete(t_dir);
 		});
 
@@ -588,7 +566,7 @@ public class MainWindow : Gtk.Window {
 		});
 
 		string names = "";
-		foreach(var k in klist){
+		foreach(var k in klist) {
 			if (names.length > 0) names += ",";
 			names += "%s".printf(k.version_main);
 		}
@@ -612,7 +590,6 @@ public class MainWindow : Gtk.Window {
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
-			file_delete(t_file);
 			dir_delete(t_dir);
 		});
 
