@@ -193,9 +193,13 @@ public class AppConsole : GLib.Object {
 			break;
 
 		case "--install-latest":
-		case "--install-point":
 
 			LinuxKernel.kinst_latest(false, App.confirm);
+			break;
+
+		case "--install-point":
+
+			LinuxKernel.kinst_latest(true, App.confirm);
 			break;
 
 		case "--purge-old-kernels":	// back compat
