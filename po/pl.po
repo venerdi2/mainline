@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 05:01-0500\n"
-"PO-Revision-Date: 2023-03-10 16:07+0100\n"
+"POT-Creation-Date: 2023-03-11 05:31-0500\n"
+"PO-Revision-Date: 2023-03-11 12:47+0100\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -348,7 +348,7 @@ msgstr "Odinstaluj jądra starsze niż działające jądro"
 
 #: src/Gtk/MainWindow.vala:317
 msgid "Reload"
-msgstr "Załaduj ponownie"
+msgstr "Wczytaj ponownie"
 
 #: src/Gtk/MainWindow.vala:322 src/Gtk/SettingsDialog.vala:50
 msgid "Settings"
@@ -429,25 +429,23 @@ msgstr "sekundy"
 
 #: src/Gtk/SettingsDialog.vala:148
 msgid "Filters"
-msgstr ""
+msgstr "Filtry"
 
 #: src/Gtk/SettingsDialog.vala:156
 msgid "Hide unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
 
 #: src/Gtk/SettingsDialog.vala:178
-#, fuzzy
 msgid "previous major versions"
-msgstr "poprzednie główne wersje "
+msgstr "poprzednie główne wersje"
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Network"
-msgstr ""
+msgstr "Sieć"
 
 #: src/Gtk/SettingsDialog.vala:193
-#, fuzzy
 msgid "Internet connection timeout in"
-msgstr "Limit czasu połączenia internetowego w "
+msgstr "Limit czasu połączenia internetowego po"
 
 #: src/Gtk/SettingsDialog.vala:205
 msgid "seconds"
@@ -459,7 +457,7 @@ msgstr "Maksymalna liczba jednoczesnych pobrań"
 
 #: src/Gtk/SettingsDialog.vala:226
 msgid "Proxy"
-msgstr ""
+msgstr "Serwer pośredniczący"
 
 #: src/Gtk/l.gtk.vala:44
 msgid "Missing Icon"
