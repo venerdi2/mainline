@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 15:11-0500\n"
+"POT-Creation-Date: 2023-03-11 05:01-0500\n"
 "PO-Revision-Date: 2023-02-20 18:40+0100\n"
 "Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
@@ -13,11 +13,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: src/Common/LinuxKernel.vala:89
+#: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/Common/LinuxKernel.vala:104
+#: src/Common/LinuxKernel.vala:102
 msgid "Architecture"
 msgstr "Architektur"
 
@@ -30,113 +30,113 @@ msgstr "Index abrufen..."
 msgid "Updating from"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:736
+#: src/Common/LinuxKernel.vala:738
 msgid "Packages Available"
 msgstr "Verfügbare Pakete"
 
-#: src/Common/LinuxKernel.vala:741
+#: src/Common/LinuxKernel.vala:743
 msgid "Packages Installed"
 msgstr "Installierte Pakete"
 
-#: src/Common/LinuxKernel.vala:754 src/Utility/TeeJee.FileSystem.vala:136
+#: src/Common/LinuxKernel.vala:756 src/lib/TeeJee.FileSystem.vala:121
 msgid "File not found"
 msgstr "Datei nicht gefunden "
 
-#: src/Common/LinuxKernel.vala:819
+#: src/Common/LinuxKernel.vala:821
 msgid "Available Kernels"
 msgstr "Verfügbare Kernel"
 
-#: src/Common/LinuxKernel.vala:826 src/Gtk/MainWindow.vala:158
+#: src/Common/LinuxKernel.vala:828 src/Gtk/MainWindow.vala:158
 msgid "Installed"
 msgstr "Installiert"
 
-#: src/Common/LinuxKernel.vala:826 src/Gtk/MainWindow.vala:158
-#: src/Gtk/MainWindow.vala:504 src/Gtk/MainWindow.vala:517
+#: src/Common/LinuxKernel.vala:828 src/Gtk/MainWindow.vala:158
+#: src/Gtk/MainWindow.vala:503 src/Gtk/MainWindow.vala:516
 msgid "Running"
 msgstr "Läuft"
 
-#: src/Common/LinuxKernel.vala:861
+#: src/Common/LinuxKernel.vala:863
 msgid "Downloading"
 msgstr "Herunterladen"
 
-#: src/Common/LinuxKernel.vala:880
+#: src/Common/LinuxKernel.vala:882
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:883
+#: src/Common/LinuxKernel.vala:885
 msgid "ERROR"
 msgstr "Fehler"
 
-#: src/Common/LinuxKernel.vala:897
+#: src/Common/LinuxKernel.vala:899
 msgid "This kernel is already installed."
 msgstr "Dieser Kernel ist bereits installiert."
 
-#: src/Common/LinuxKernel.vala:927
+#: src/Common/LinuxKernel.vala:929
 #, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Deinstallation des angegebenen Kernels"
 
-#: src/Common/LinuxKernel.vala:933
+#: src/Common/LinuxKernel.vala:935
 msgid "requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:936
+#: src/Common/LinuxKernel.vala:938
 msgid "skipping the currently booted kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:952
+#: src/Common/LinuxKernel.vala:954
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:955
+#: src/Common/LinuxKernel.vala:957
 #, fuzzy
 msgid "No packages to un-install!"
 msgstr "Installierte Pakete"
 
-#: src/Common/LinuxKernel.vala:994
+#: src/Common/LinuxKernel.vala:996
 #, fuzzy
 msgid "Could not find running kernel in list"
 msgstr "Konnte keinen laufenden Kernel in der Liste finden!"
 
-#: src/Common/LinuxKernel.vala:1000
+#: src/Common/LinuxKernel.vala:1002
 msgid "Could not find any kernels to uninstall"
 msgstr "Es konnten keine Kernel zum Deinstallieren gefunden werden"
 
-#: src/Common/LinuxKernel.vala:1009
+#: src/Common/LinuxKernel.vala:1011
 msgid "The following kernels will be uninstalled:"
 msgstr "Die folgenden Kernel werden deinstalliert:"
 
-#: src/Common/LinuxKernel.vala:1013
+#: src/Common/LinuxKernel.vala:1015
 msgid "Continue ?"
 msgstr "Weiter ?"
 
-#: src/Common/LinuxKernel.vala:1036 src/Console/AppConsole.vala:295
+#: src/Common/LinuxKernel.vala:1038 src/Console/AppConsole.vala:295
 msgid "Latest update"
 msgstr "Neustes Update"
 
-#: src/Common/LinuxKernel.vala:1047 src/Console/AppConsole.vala:302
+#: src/Common/LinuxKernel.vala:1049 src/Console/AppConsole.vala:302
 msgid "Latest point update"
 msgstr "Letzte Punktaktualisierung"
 
-#: src/Common/LinuxKernel.vala:1055 src/Console/AppConsole.vala:307
+#: src/Common/LinuxKernel.vala:1057 src/Console/AppConsole.vala:307
 #: src/Console/AppConsole.vala:362
 msgid "No updates found"
 msgstr "Keine Updates gefunden"
 
-#: src/Common/LinuxKernel.vala:1064
+#: src/Common/LinuxKernel.vala:1066
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Kernel-Version %s installieren? (j/n):"
 
-#: src/Common/Main.vala:253
+#: src/Common/Main.vala:240
 msgid "Called from"
 msgstr "Angerufen von"
 
-#: src/Common/Main.vala:287
+#: src/Common/Main.vala:274
 msgid "Notifications are disabled"
 msgstr "Benachrichtigungen sind deaktiviert"
 
-#: src/Common/Main.vala:325 src/Gtk/MainWindow.vala:615
+#: src/Common/Main.vala:312 src/Gtk/MainWindow.vala:614
 #, fuzzy
 msgid "Can not reach"
 msgstr "Fehler beim lesen der Datei"
@@ -146,7 +146,7 @@ msgstr "Fehler beim lesen der Datei"
 msgid "File not found: %s"
 msgstr "Datei nicht gefunden "
 
-#: src/Console/AppConsole.vala:62 src/Gtk/AppGtk.vala:143
+#: src/Console/AppConsole.vala:62 src/Gtk/AppGtk.vala:135
 msgid "Syntax"
 msgstr "Syntax"
 
@@ -199,7 +199,7 @@ msgstr "Herunterladen bestimmter Kernel"
 msgid "Delete cached info about available kernels"
 msgstr ""
 
-#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:145
+#: src/Console/AppConsole.vala:78 src/Gtk/AppGtk.vala:137
 msgid "Options"
 msgstr "Optionen"
 
@@ -231,7 +231,7 @@ msgstr ""
 "Eine oder mehrere (durch Komma getrennte) Versionszeichenfolgen aus der "
 "Ausgabe von --list"
 
-#: src/Console/AppConsole.vala:164 src/Gtk/AppGtk.vala:129
+#: src/Console/AppConsole.vala:164 src/Gtk/AppGtk.vala:121
 msgid "Unknown option"
 msgstr "Unbekannte Option"
 
@@ -280,20 +280,56 @@ msgid "Kernel %s Available"
 msgstr "Kernel %s verfügbar"
 
 #: src/Console/AppConsole.vala:342 src/Console/AppConsole.vala:354
-#: src/Gtk/MainWindow.vala:270
+#: src/Gtk/MainWindow.vala:269
 msgid "Install"
 msgstr "Installieren"
 
-#: src/Gtk/AppGtk.vala:143
+#: src/Gtk/AboutWindow.vala:264 src/Gtk/AboutWindow.vala:281
+msgid "Credits"
+msgstr "Credits"
+
+#: src/Gtk/AboutWindow.vala:277
+msgid "Back"
+msgstr "Zurück"
+
+#: src/Gtk/AboutWindow.vala:287 src/Gtk/TerminalWindow.vala:154
+msgid "Close"
+msgstr "Schließen"
+
+#: src/Gtk/AboutWindow.vala:306
+msgid "Authors"
+msgstr "Autoren"
+
+#: src/Gtk/AboutWindow.vala:314
+msgid "Contributions"
+msgstr "Beiträge"
+
+#: src/Gtk/AboutWindow.vala:322
+msgid "Artists"
+msgstr "Künstler"
+
+#: src/Gtk/AboutWindow.vala:330
+msgid "Translators"
+msgstr "Übersetzer"
+
+#: src/Gtk/AboutWindow.vala:338
+msgid "Documenters"
+msgstr "Dokumentierer"
+
+#: src/Gtk/AboutWindow.vala:346
+msgid "Third Party Inclusions"
+msgstr "Einschlüsse von Drittparteien"
+
+#: src/Gtk/AppGtk.vala:135
 #, fuzzy
 msgid "options"
 msgstr "Optionen"
 
-#: src/Gtk/AppGtk.vala:147
+#: src/Gtk/AppGtk.vala:139
 msgid "Print debug information"
 msgstr "Zeige Debug Informationen"
 
-#: src/Gtk/AppGtk.vala:148
+#: src/Gtk/AppGtk.vala:140
 msgid "Show all options"
 msgstr "Alle Optionen anzeigen"
 
@@ -305,60 +341,60 @@ msgstr "Kernel"
 msgid "Status"
 msgstr "Status"
 
-#: src/Gtk/MainWindow.vala:280
+#: src/Gtk/MainWindow.vala:279
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
-#: src/Gtk/MainWindow.vala:290
+#: src/Gtk/MainWindow.vala:289
 msgid "Changes"
 msgstr "Änderungen"
 
-#: src/Gtk/MainWindow.vala:312
+#: src/Gtk/MainWindow.vala:311
 msgid "Uninstall Old"
 msgstr "Alte deinstallieren"
 
-#: src/Gtk/MainWindow.vala:313
+#: src/Gtk/MainWindow.vala:312
 msgid "Uninstall kernels older than running kernel"
 msgstr "Deinstallation von Kerneln, die älter sind als der aktuelle Kernel"
 
-#: src/Gtk/MainWindow.vala:318
+#: src/Gtk/MainWindow.vala:317
 msgid "Reload"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:323 src/Gtk/SettingsDialog.vala:50
+#: src/Gtk/MainWindow.vala:322 src/Gtk/SettingsDialog.vala:50
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/Gtk/MainWindow.vala:328
+#: src/Gtk/MainWindow.vala:327
 msgid "About"
 msgstr "Über"
 
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:332
 msgid "Exit"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:401
+#: src/Gtk/MainWindow.vala:400
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kernel-Upgrade-Dienstprogramm für Ubuntu-basierte Distributionen"
 
-#: src/Gtk/MainWindow.vala:402
+#: src/Gtk/MainWindow.vala:401
 msgid "Forked"
 msgstr "Forked"
 
-#: src/Gtk/MainWindow.vala:402
+#: src/Gtk/MainWindow.vala:401
 msgid "Original"
 msgstr "Original"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:439
 msgid "Updating kernels"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:513
+#: src/Gtk/MainWindow.vala:512
 msgid "available"
 msgstr "Verfügbar"
 
-#: src/Gtk/MainWindow.vala:546 src/Gtk/MainWindow.vala:579
-#: src/Gtk/MainWindow.vala:606
+#: src/Gtk/MainWindow.vala:545 src/Gtk/MainWindow.vala:578
+#: src/Gtk/MainWindow.vala:605
 msgid "DONE"
 msgstr ""
 
@@ -403,8 +439,8 @@ msgid "Second(s)"
 msgstr "Sekunde(n)"
 
 #: src/Gtk/SettingsDialog.vala:148
-msgid "Display"
-msgstr "Anzeige"
+msgid "Filters"
+msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:156
 msgid "Hide unstable and RC releases"
@@ -412,15 +448,16 @@ msgstr "Unstable- und RC-Versionen ausblenden"
 
 #: src/Gtk/SettingsDialog.vala:178
 #, fuzzy
-msgid "previous major versions "
+msgid "previous major versions"
 msgstr "N frühere Hauptversionen anzeigen"
 
 #: src/Gtk/SettingsDialog.vala:182
-msgid "Other"
-msgstr "Anderes"
+msgid "Network"
+msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:193
-msgid "Internet connection timeout in "
+#, fuzzy
+msgid "Internet connection timeout in"
 msgstr "Zeitüberschreitung der Internetverbindung in"
 
 #: src/Gtk/SettingsDialog.vala:205
@@ -431,50 +468,18 @@ msgstr "Sekunden"
 msgid "Max concurrent downloads"
 msgstr "Maximale Anzahl gleichzeitiger Downloads"
 
-#: src/Gtk/TerminalWindow.vala:154 src/Utility/Gtk/AboutWindow.vala:287
-msgid "Close"
-msgstr "Schließen"
+#: src/Gtk/SettingsDialog.vala:226
+msgid "Proxy"
+msgstr ""
 
-#: src/Utility/Gtk/AboutWindow.vala:264 src/Utility/Gtk/AboutWindow.vala:281
-msgid "Credits"
-msgstr "Credits"
-
-#: src/Utility/Gtk/AboutWindow.vala:277
-msgid "Back"
-msgstr "Zurück"
-
-#: src/Utility/Gtk/AboutWindow.vala:306
-msgid "Authors"
-msgstr "Autoren"
-
-#: src/Utility/Gtk/AboutWindow.vala:314
-msgid "Contributions"
-msgstr "Beiträge"
-
-#: src/Utility/Gtk/AboutWindow.vala:322
-msgid "Artists"
-msgstr "Künstler"
-
-#: src/Utility/Gtk/AboutWindow.vala:330
-msgid "Translators"
-msgstr "Übersetzer"
-
-#: src/Utility/Gtk/AboutWindow.vala:338
-msgid "Documenters"
-msgstr "Dokumentierer"
-
-#: src/Utility/Gtk/AboutWindow.vala:346
-msgid "Third Party Inclusions"
-msgstr "Einschlüsse von Drittparteien"
-
-#: src/Utility/Gtk/GtkHelper.vala:49
+#: src/Gtk/l.gtk.vala:44
 msgid "Missing Icon"
 msgstr "Fehlendes Symbol"
 
-#: src/Utility/TeeJee.Logging.vala:52
+#: src/lib/TeeJee.Logging.vala:43
 msgid "E"
 msgstr "E"
 
-#: src/Utility/TeeJee.Logging.vala:68
+#: src/lib/TeeJee.Logging.vala:50
 msgid "D"
 msgstr "D"

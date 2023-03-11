@@ -8,7 +8,7 @@ Starts a background process that periodically checks for new kernels and sends a
 The monitor is installed in your desktop autostart folder such that it is started in the background any time you log in.  
 It is removed by unselecting both checkboxes.  
 
-## Display
+## Filters
 **\[ \] Hide unstable and RC releases**  
 Excludes less stable more bleeding edge -rc kernels from the list.
 
@@ -41,7 +41,8 @@ On the other hand, if you explicitly *want* to see a bigger list including older
 Distro kernels are not factored.  
 If the latest mainline available are 7.x and 6.x, and you also have a 5.x installed from ubuntu, the threshold is not set to 5.x. The purpose of setting the floor at your oldest installed kernel is so that you can see any *mainline* point releases available that might exist after your installed versions, so that you could still update to the latest 6.x even after 7.x becomes available, without having to deal with loading two full generations all the time if you don't actually need the previous generation. The distro provided kernels are unrelated. They are only even displayed in the list for completeness and for the convenience of un-installing.
 
-## Other
+## Network
 **Internet connection timeout in \[##\] seconds**  
 **Max concurrent downloads \[#\]**  
+**Proxy \[                               \]**  
 These correspond to options for aria2c used to download index.html and deb package files in the background.

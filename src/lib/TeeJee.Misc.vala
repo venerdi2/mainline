@@ -24,40 +24,9 @@
  
 namespace TeeJee.Misc {
 
-	/* Various utility functions */
-
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
 	using TeeJee.ProcessHelper;
-
-	// timestamp ----------------
-
-	public string timestamp (bool show_millis = false) {
-
-		DateTime now = new GLib.DateTime.now_local();
-
-		if (show_millis) {
-			var msec = now.get_microsecond() / 1000;
-			return "%s.%03d".printf(now.format("%H:%M:%S"), msec);
-		} else {
-			return now.format ("%H:%M:%S");
-		}
-	}
-
-	public string timestamp_numeric() {
-		return "%ld".printf((long) time_t ());
-	}
-
-	// string formatting -------------------------------------------------
-
-	public string format_time_left(int64 millis) {
-		double mins = (millis * 1.0) / 60000;
-		double secs = ((millis * 1.0) % 60000) / 1000;
-		string txt = "";
-		if (mins >= 1) txt += "%.0fm ".printf(mins);
-		txt += "%.0fs".printf(secs);
-		return txt;
-	}
 
 	public string escape_html(string html, bool pango_markup = true) {
 		string txt = html;

@@ -24,22 +24,9 @@
 
 namespace TeeJee.FileSystem {
 
-	/* Convenience functions for handling files and directories */
-
 	using TeeJee.Logging;
 	using TeeJee.ProcessHelper;
 	using TeeJee.Misc;
-
-	public const int64 KB = 1000;
-	public const int64 MB = 1000 * KB;
-	public const int64 GB = 1000 * MB;
-	public const int64 TB = 1000 * GB;
-	public const int64 KiB = 1024;
-	public const int64 MiB = 1024 * KiB;
-	public const int64 GiB = 1024 * MiB;
-	public const int64 TiB = 1024 * GiB;
-
-	// path helpers ----------------------------
 
 	public string file_parent(string f) {
 		//log_debug("file_parent("+f+")");
@@ -50,8 +37,6 @@ namespace TeeJee.FileSystem {
 		//log_debug("file_basename("+f+")");
 		return File.new_for_path(f).get_basename();
 	}
-
-	// file helpers -----------------------------
 
 	public bool file_exists(string file_path) {
 		//log_debug("file_exists("+file_path+")");
@@ -149,8 +134,6 @@ namespace TeeJee.FileSystem {
 		catch(Error e) { log_error (e.message); }
 	}
 
-	// file info -----------------
-
 	public int64 file_get_size(string file_path) {
 		try {
 			File file = File.parse_name (file_path);
@@ -167,8 +150,6 @@ namespace TeeJee.FileSystem {
 
 		return -1;
 	}
-
-	// directory helpers ----------------------
 
 	public bool dir_exists (string dir_path) {
 		return ( FileUtils.test(dir_path, GLib.FileTest.EXISTS) && FileUtils.test(dir_path, GLib.FileTest.IS_DIR));
@@ -208,43 +189,6 @@ namespace TeeJee.FileSystem {
 			else n.delete();
 		}
 		p.delete();
-	}
-
-	// misc --------------------
-
-	public string format_file_size (
-		uint64 size, bool binary_units = false,
-		string unit = "", bool show_units = true, int decimals = 1) {
-
-		int64 unit_k = binary_units ? 1024 : 1000;
-		int64 unit_m = binary_units ? 1024 * unit_k : 1000 * unit_k;
-		int64 unit_g = binary_units ? 1024 * unit_m : 1000 * unit_m;
-		int64 unit_t = binary_units ? 1024 * unit_g : 1000 * unit_g;
-
-		string txt = "";
-
-		if ((size > unit_t) && ((unit.length == 0) || (unit == "t"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_t));
-			if (show_units) txt += " %sB".printf(binary_units ? "Ti" : "T");
-		} else if ((size > unit_g) && ((unit.length == 0) || (unit == "g"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_g));
-			if (show_units) txt += " %sB".printf(binary_units ? "Gi" : "G");
-		} else if ((size > unit_m) && ((unit.length == 0) || (unit == "m"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_m));
-			if (show_units) txt += " %sB".printf(binary_units ? "Mi" : "M");
-		} else if ((size > unit_k) && ((unit.length == 0) || (unit == "k"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_k));
-			if (show_units) txt += " %sB".printf(binary_units ? "Ki" : "K");
-		} else {
-			txt += "%'0lu".printf(size);
-			if (show_units) txt += " B";
-		}
-
-		return txt;
-	}
-
-	public string escape_single_quote(string file_path) {
-		return file_path.replace("'","'\\''");
 	}
 
 }

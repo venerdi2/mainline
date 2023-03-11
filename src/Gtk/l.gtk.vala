@@ -3,10 +3,10 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.System;
 using TeeJee.Misc;
+using l.time;
 
-namespace TeeJee.GtkHelper {
+namespace l.gtk {
 
 	using Gtk;
 
@@ -22,17 +22,13 @@ namespace TeeJee.GtkHelper {
 		msg.show();
 	}
 
-	public Gdk.Pixbuf? get_app_icon(int icon_size){
+	public Gdk.Pixbuf? get_app_icon(int icon_size) {
 		var img_icon = get_shared_icon(BRANDING_SHORTNAME ,icon_size);
-		if (img_icon != null){
-			return img_icon.pixbuf;
-		}
-		else{
-			return null;
-		}
+		if (img_icon != null) return img_icon.pixbuf;
+		else return null;
 	}
 
-	public Gtk.Image? get_shared_icon(string icon_name, int icon_size){
+	public Gtk.Image? get_shared_icon(string icon_name, int icon_size) {
 
 		Gdk.Pixbuf pix_icon = null;
 		Gtk.Image img_icon = null;
@@ -45,21 +41,10 @@ namespace TeeJee.GtkHelper {
 			//log_error (e.message);
 		}
 
-		if (pix_icon == null){
-			log_error (_("Missing Icon") + ": '%s'".printf(icon_name));
-		}
-		else{
-			img_icon = new Gtk.Image.from_pixbuf(pix_icon);
-		}
+		if (pix_icon == null) log_error (_("Missing Icon") + ": '%s'".printf(icon_name));
+		else img_icon = new Gtk.Image.from_pixbuf(pix_icon);
 
 		return img_icon;
-	}
-
-	public Gdk.Pixbuf? get_shared_icon_pixbuf(string icon_name, int icon_size){
-
-		var img = get_shared_icon(icon_name, icon_size);
-		var pixbuf = (img == null) ? null : img.pixbuf;
-		return pixbuf;
 	}
 
 }

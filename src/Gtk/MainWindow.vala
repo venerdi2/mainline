@@ -28,9 +28,9 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.GtkHelper;
-using TeeJee.System;
+using l.gtk;
 using TeeJee.Misc;
+using l.time;
 
 public class MainWindow : Gtk.Window {
 
@@ -159,7 +159,6 @@ public class MainWindow : Gtk.Window {
 		});
 
 		tv.set_tooltip_column(3);
-
 	}
 
 	private void tv_row_activated(TreePath path, TreeViewColumn column) {
@@ -210,27 +209,27 @@ public class MainWindow : Gtk.Window {
 
 		TreeIter iter;
 		bool odd_row = false;
-		foreach (var kern in LinuxKernel.kernel_list) {
-			if (!kern.is_valid) continue;
-			if (!kern.is_installed) {
-				if (kern.is_unstable && App.hide_unstable) continue;
-				if (kern.version_maj < LinuxKernel.threshold_major) continue;
+		foreach (var k in LinuxKernel.kernel_list) {
+			if (!k.is_valid) continue;
+			if (!k.is_installed) {
+				if (k.is_unstable && App.hide_unstable) continue;
+				if (k.version_maj < LinuxKernel.threshold_major) continue;
 			}
 
 			odd_row = !odd_row;
 
 			// add row
 			model.append(out iter);
-			model.set (iter, 0, kern);
+			model.set(iter, 0, k);
 
-			if (kern.is_mainline) {
-				if (kern.is_unstable) model.set (iter, 1, pix_mainline_rc);
+			if (k.is_mainline) {
+				if (k.is_unstable) model.set(iter, 1, pix_mainline_rc);
 				else model.set (iter, 1, pix_mainline);
 			}
-			else model.set (iter, 1, pix_ubuntu);
+			else model.set(iter, 1, pix_ubuntu);
 
-			model.set (iter, 2, odd_row);
-			model.set (iter, 3, kern.tooltip_text());
+			model.set(iter, 2, odd_row);
+			model.set(iter, 3, k.tooltip_text());
 		}
 
 		tv.set_model(model);
@@ -293,7 +292,7 @@ public class MainWindow : Gtk.Window {
 
 		button.clicked.connect(() => {
 			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)) {
-				uri_open("file://"+selected_kernels[0].changes_file);
+				App.uri_open("file://"+selected_kernels[0].changes_file);
 			}
 		});
 
@@ -305,7 +304,7 @@ public class MainWindow : Gtk.Window {
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
 			if (selected_kernels.size == 1) uri += selected_kernels[0].kname;
-			uri_open(uri);
+			App.uri_open(uri);
 		});
 
 		// uninstall-old
@@ -337,7 +336,7 @@ public class MainWindow : Gtk.Window {
 	}
 
 	private void do_settings () {
-			int _show_prev_majors = App.show_prev_majors;
+			int _previous_majors = App.previous_majors;
 			bool _hide_unstable = App.hide_unstable;
 
 			var dlg = new SettingsDialog.with_parent(this);
@@ -345,7 +344,7 @@ public class MainWindow : Gtk.Window {
 			dlg.destroy();
 
 			if (
-					(_show_prev_majors != App.show_prev_majors) ||
+					(_previous_majors != App.previous_majors) ||
 					(_hide_unstable != App.hide_unstable)
 				) {
 				reload_cache();

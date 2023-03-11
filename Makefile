@@ -5,7 +5,7 @@ DEFAULT_PPA_URI := https://kernel.ubuntu.com/~kernel-ppa/mainline/
 
 SHELL := /bin/bash
 CFLAGS := -O2
-VALACFLAGS := #--enable-deprecated
+VALACFLAGS := 
 
 prefix := /usr
 bindir := $(prefix)/bin
@@ -43,9 +43,9 @@ misc_files := README.md \
 	debian/copyright \
 #	share/polkit-1/actions/$(BRANDING_SHORTNAME).policy
 
-common_vala_files := src/Common/*.vala src/Utility/*.vala
+common_vala_files := src/Common/*.vala src/lib/*.vala
 tui_vala_files := src/Console/*.vala
-gui_vala_files := src/Gtk/*.vala src/Utility/Gtk/*.vala
+gui_vala_files := src/Gtk/*.vala
 
 po_files := po/*.po
 pot_file := po/messages.pot

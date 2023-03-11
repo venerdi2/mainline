@@ -29,8 +29,8 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.System;
 using TeeJee.Misc;
+using l.time;
 
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
@@ -61,9 +61,10 @@ public class Main : GLib.Object {
 
 	public string user_login = "";
 	public string user_home = "";
+	public string CACHE_DIR = "~/.cache/"+BRANDING_SHORTNAME ; // non-empty for safety
 
 	// global progress ----------------
-	
+
 	public string status_line = "";
 	public int64 progress_total = 0;
 	public int64 progress_count = 0;
@@ -87,10 +88,11 @@ public class Main : GLib.Object {
 	public int _window_y = -1;
 
 	public string ppa_uri = DEFAULT_PPA_URI;
+	public string all_proxy = "";
 	public bool notify_major = true;
 	public bool notify_minor = true;
 	public bool hide_unstable = true;
-	public int show_prev_majors = 0;
+	public int previous_majors = 0;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
 	public int connect_timeout_seconds = 15;
@@ -100,18 +102,11 @@ public class Main : GLib.Object {
 	// constructors ------------
 
 	public Main(string[] arg0, bool _gui_mode) {
-		//log_msg("Main()");
-
 		GUI_MODE = _gui_mode;
-
 		init_paths();
-
 		load_app_config();
-
 		Package.initialize();
-
 		LinuxKernel.initialize();
-
 	}
 
 	// helpers ------------
@@ -120,7 +115,6 @@ public class Main : GLib.Object {
 
 		// user info
 		user_login = GLib.Environment.get_user_name();
-
 		user_home = GLib.Environment.get_home_dir();
 
 		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
@@ -130,24 +124,22 @@ public class Main : GLib.Object {
 		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
 		MAJ_SEEN_FILE = APP_CONF_DIR + "/notification_seen.major";
 		MIN_SEEN_FILE = APP_CONF_DIR + "/notification_seen.minor";
-
-		LinuxKernel.CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
-		LinuxKernel.CURRENT_USER = user_login;
-		LinuxKernel.CURRENT_USER_HOME = user_home;
-		LinuxKernel.PPA_URI = ppa_uri;
-
-		// todo: consider get_user_runtime_dir() or get_user_cache_dir()
+		CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
+
+		LinuxKernel.CACHE_DIR = CACHE_DIR;
+
 	}
 
 	public void save_app_config() {
 
 		var config = new Json.Object();
 		config.set_string_member("ppa_uri", ppa_uri);
+		config.set_string_member("all_proxy", all_proxy);
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());
 		config.set_string_member("hide_unstable", hide_unstable.to_string());
-		config.set_string_member("show_prev_majors", show_prev_majors.to_string());
+		config.set_string_member("previous_majors", previous_majors.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
 		config.set_string_member("connect_timeout_seconds", connect_timeout_seconds.to_string());
@@ -170,7 +162,7 @@ public class Main : GLib.Object {
 			log_error (e.message);
 		}
 
-		log_debug("Saved config file: %s".printf(APP_CONFIG_FILE));
+		log_debug("Wrote config file: %s".printf(APP_CONFIG_FILE));
 
 		update_notification_files();
 	}
@@ -181,15 +173,7 @@ public class Main : GLib.Object {
 	}
 
 	public void load_app_config() {
-
-		var f = File.new_for_path(APP_CONFIG_FILE);
-
-		if (!f.query_exists()) {
-			// initialize static
-			hide_unstable = true;
-			show_prev_majors = 0;
-			return;
-		}
+		//log_msg("load_app_config()");
 
 		var parser = new Json.Parser();
 
@@ -202,23 +186,26 @@ public class Main : GLib.Object {
 		var node = parser.get_root();
 		var config = node.get_object();
 
-		ppa_uri = json_get_string(config, "ppa_uri", DEFAULT_PPA_URI); LinuxKernel.PPA_URI = ppa_uri;
+		ppa_uri = json_get_string(config, "ppa_uri", DEFAULT_PPA_URI);
+		all_proxy = json_get_string(config, "all_proxy", "");
 		notify_major = json_get_bool(config, "notify_major", true);
 		notify_minor = json_get_bool(config, "notify_minor", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
 		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", 15);
 		concurrent_downloads = json_get_int(config, "concurrent_downloads", 4);
-
 		hide_unstable = json_get_bool(config, "hide_unstable", true);
-		show_prev_majors = json_get_int(config, "show_prev_majors", 0);
-
+		previous_majors = json_get_int(config, "previous_majors", 0);
 		window_width = json_get_int(config, "window_width", window_width);
 		window_height = json_get_int(config, "window_height", window_height);
 		window_x = json_get_int(config, "window_x", window_x);
 		window_y = json_get_int(config, "window_y", window_y);
 
-		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
+		// fixups
+		if (!ppa_uri.has_suffix("/")) ppa_uri += "/";
+		LinuxKernel.PPA_URI = ppa_uri;
+
+		log_msg("Loaded config file: "+APP_CONFIG_FILE);
 	}
 
 	// begin ------------
@@ -328,4 +315,11 @@ public class Main : GLib.Object {
 		return connection_status;
 	}
 
+	public void uri_open(string uri) {
+		try {
+			AppInfo.launch_default_for_uri(uri,null);
+		} catch (Error e) {
+			warning("Unable to launch %s", uri);
+		}
+	}
 }

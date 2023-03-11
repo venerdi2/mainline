@@ -24,8 +24,6 @@
  
 namespace TeeJee.Logging {
 
-	/* Functions for logging messages to console and log files */
-
 	using TeeJee.Misc;
 
 	public DataOutputStream dos_log;
@@ -38,13 +36,6 @@ namespace TeeJee.Logging {
 		string s = message+"\n";
 		stdout.printf(s);
 		stdout.flush();
-
-		try {
-			if (dos_log != null) dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
-		}
-		catch (Error e) {
-			stdout.printf (e.message);
-		}
 	}
 
 	public void log_error (string message) {
@@ -52,36 +43,11 @@ namespace TeeJee.Logging {
 		string s = _("E") + ": " + message + "\n";
 		stdout.printf(s);
 		stdout.flush();
-
-		try {
-			string str = "[%s] %s\n".printf(timestamp(),message);
-			if (dos_log != null) dos_log.put_string (str);
-			if (err_log != null) err_log += s;
-		}
-		catch (Error e) {
-			stdout.printf (e.message);
-		}
 	}
 
 	public void log_debug (string message) {
 		if (!LOG_ENABLE) return;
 		if (LOG_DEBUG) log_msg (_("D") + ": " + message);
-
-		try {
-			if (dos_log != null) dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
-		}
-		catch (Error e) {
-			stdout.printf (e.message);
-		}
-	}
-
-	public void log_to_file (string message, bool highlight = false) {
-		try {
-			if (dos_log != null) dos_log.put_string ("[%s] %s\n".printf(timestamp(), message));
-		}
-		catch (Error e) {
-			stdout.printf (e.message);
-		}
 	}
 
 	public void log_draw_line() {

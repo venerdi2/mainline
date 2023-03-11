@@ -2,8 +2,8 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.System;
 using TeeJee.Misc;
+using l.time;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
@@ -18,8 +18,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public int version_point = -1;
 	public int version_rc = -1;
 
-	public Gee.HashMap<string,string> deb_list = new Gee.HashMap<string,string>();
-	public Gee.HashMap<string,string> pkg_list = new Gee.HashMap<string,string>();
+	public Gee.HashMap<string,string> deb_list = new Gee.HashMap<string,string>(); // assosciated .deb file names
+	public Gee.HashMap<string,string> pkg_list = new Gee.HashMap<string,string>(); // assosciated dpkg package names
 
 	public static Gee.HashMap<string,Package> pkg_list_installed;
 
@@ -33,17 +33,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string deb_image_extra = "";
 	public string deb_modules = "";
 
-
 	// static
-
-	public static string PPA_URI;
-	public static string CACHE_DIR;
 	public static string NATIVE_ARCH;
 	public static string LINUX_DISTRO;
 	public static string RUNNING_KERNEL;
-	public static string CURRENT_USER;
-	public static string CURRENT_USER_HOME;
-	
+	public static string PPA_URI;
+	public static string CACHE_DIR;
+
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
 	public static LinuxKernel kernel_update_minor;
@@ -67,7 +63,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int threshold_major = 0;
 
 	// class initialize
-
 	public static void initialize() {
 		new LinuxKernel("", false); // instance must be created before setting static members
 
@@ -75,6 +70,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		NATIVE_ARCH = check_package_architecture();
 		RUNNING_KERNEL = check_running_kernel().replace("-generic","");
 		initialize_regex();
+		kernel_latest_installed = new LinuxKernel.from_version(RUNNING_KERNEL);
+		kernel_oldest_installed = kernel_latest_installed;
+		kernel_latest_available = kernel_latest_installed;
 	}
 
 	// dep: lsb_release
@@ -174,7 +172,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		split_version_string(kver, out version_main);
 
 		// build url
-		page_uri = "%s%s".printf(PPA_URI, _name);
+		page_uri = PPA_URI + _name;
 
 		// override is_mainline from split_version_string()
 		is_mainline = _is_mainline;
@@ -224,7 +222,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// find the oldest major version to include
 		Package.update_dpkg_list();
-		find_threshold_major_version();
+		update_threshold_major();
 
 		// ===== download the per-kernel index.html and CHANGES =====
 
@@ -247,9 +245,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			if (!k.is_valid) continue;
 
-			if (k.version_maj < threshold_major) continue;
-
-			if (App.hide_unstable && k.is_unstable) continue;
+			if (!k.is_installed) {
+				if (k.version_maj < threshold_major) continue;
+				if (App.hide_unstable && k.is_unstable) continue;
+			}
 
 			//log_debug(k.version_main+" "+_("GET"));
 
@@ -261,8 +260,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			item = new DownloadItem(k.changes_file_uri, file_parent(k.changes_file), file_basename(k.changes_file));
 			downloads.add(item);
 
-			// add kernel to kernel list
+			// add kernel to update list
 			kernels_to_update.add(k);
+
 			if (notifier != null) notifier(timer, ref count);
 		}
 
@@ -389,8 +389,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// temp kernel object for current pkg
 			string pkern_name = pkg.version;
 			var pkern = new LinuxKernel(pkern_name, false);
-			pkern.is_installed = true;
-			pkern.set_pkg_list();
+			pkern.is_installed = true; // dpkg_list[] only contains installed packages
+			pkern.set_pkg_list(); // find assosciated packages and fill pkern.pkg_list[]
 
 			// search the mainline list for matching package name
 			// fill k.pkg_list list of assosciated pkgs
@@ -437,14 +437,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var kern_running = new LinuxKernel.from_version(RUNNING_KERNEL);
 		kernel_active = null;
 
+		// https://github.com/bkw777/mainline/issues/91
+
 		// scan mainline kernels
 		foreach (var k in kernel_list) {
 			if (!k.is_valid) continue;
 			if (!k.is_mainline) continue;
 			if (k.version_package.length > 0) {
-				string ver_pkg_short = k.version_package[0 : k.version_package.last_index_of(".")];
-				//log_debug(ver_pkg_short+" "+RUNNING_KERNEL);
-				if (ver_pkg_short == RUNNING_KERNEL) {
+				// (k.version_main.contains(kern_running.version_main) || kern_running.version_main.contains(k.version_main))
+				if (k.version_package[0 : k.version_package.last_index_of(".")] == RUNNING_KERNEL) {
 					k.is_running = true;
 					k.is_installed = true;
 					kernel_active = k;
@@ -458,7 +459,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (var k in kernel_list) {
 				if (!k.is_valid) continue;
 				if (k.is_mainline) continue;
-				if (kern_running.version_main == k.version_main) {
+				//if (kern_running.version_main == k.version_main) {  // strict
+				//if (k.version_main.contains(kern_running.version_main) || kern_running.version_main.contains(k.version_main)) { // forgiving
+				if (k.version_main.has_prefix(kern_running.version_main) || kern_running.version_main.has_prefix(k.version_main)) { // forgiving
 					k.is_running = true;
 					k.is_installed = true;
 					kernel_active = k;
@@ -473,7 +476,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// find the highest & lowest installed versions ----------------------
 		kernel_latest_installed = new LinuxKernel.from_version("0");
-		kernel_oldest_installed = new LinuxKernel.from_version("0");
+		kernel_oldest_installed = kernel_latest_installed;
 		foreach(var k in kernel_list) {
 			if (k.is_installed) {
 				if (kernel_latest_installed.version_maj==0) kernel_latest_installed = k;
@@ -522,8 +525,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// helpers
 
-	public static void find_threshold_major_version() {
-		log_debug("find_threshold_major_version()");
+	public static void update_threshold_major() {
+		log_debug("update_threshold_major()");
 
 		//Package.update_dpkg_list();
 
@@ -536,7 +539,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (candidate.version_maj < kernel_oldest_installed.version_maj) kernel_oldest_installed = candidate;
 		}
 
-		threshold_major = kernel_latest_available.version_maj - App.show_prev_majors;
+		threshold_major = kernel_latest_available.version_maj - App.previous_majors;
 		if (kernel_oldest_installed.version_maj < threshold_major) threshold_major = kernel_oldest_installed.version_maj;
 		log_debug("threshold_major %d".printf(threshold_major));
 	}
@@ -679,26 +682,25 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public bool is_valid {
 		get {
-			string invalid_file_path = "%s/invalid".printf(cache_subdir);
-			return !file_exists(invalid_file_path);
+			return !file_exists(cache_subdir+"/invalid");
 		}
 	}
 
 	public static string index_page {
 		owned get {
-			return "%s/index.html".printf(CACHE_DIR);
+			return CACHE_DIR+"/index.html";
 		}
 	}
 
 	public string cache_subdir {
 		owned get {
-			return "%s/%s".printf(CACHE_DIR,version_main);
+			return CACHE_DIR+"/"+version_main;
 		}
 	}
 
 	public string cached_page {
 		owned get {
-			return "%s/index.html".printf(cache_subdir);
+			return cache_subdir+"/index.html";
 		}
 	}
 
@@ -710,13 +712,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public string changes_file {
 		owned get {
-			return "%s/CHANGES".printf(cache_subdir);
+			return cache_subdir+"/CHANGES";
 		}
 	}
 
 	public string changes_file_uri {
 		owned get {
-			return "%s%s".printf(page_uri, "CHANGES");
+			return page_uri+"CHANGES";
 		}
 
 	}
@@ -970,7 +972,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		download_index();
 		load_index();
 		Package.update_dpkg_list();
-		find_threshold_major_version();
+		update_threshold_major();
 		check_installed();
 
 		var list = new Gee.ArrayList<LinuxKernel>();

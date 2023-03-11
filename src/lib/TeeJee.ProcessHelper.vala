@@ -53,14 +53,14 @@ namespace TeeJee.ProcessHelper {
 	// create a unique temp dir rooted at App.TMP_PREFIX
 	// return full path to created dir
 	public string create_tmp_dir() {
-		string d = App.TMP_PREFIX+"_%s".printf(random_string());
+		string d = App.TMP_PREFIX+"."+random_string();
 		dir_create(d);
 		return d;
 	}
 
 	// TODO replace with mkstemp
 	public string get_temp_file_path(string d) {
-		return d + "/" + timestamp_numeric() + (new Rand()).next_int().to_string();
+		return d + "/" + "%ld".printf((long) time_t()) + (new Rand()).next_int().to_string();
 	}
 
 	// create a temporary bash script

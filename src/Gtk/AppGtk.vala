@@ -29,32 +29,24 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.GtkHelper;
-using TeeJee.System;
+using l.gtk;
 using TeeJee.Misc;
+using l.time;
 
 public Main App;
 
 public class AppGtk : GLib.Object {
 
 	public static int main (string[] args) {
-		
 		set_locale();
-
-		log_msg("%s %s".printf(BRANDING_SHORTNAME, BRANDING_VERSION));
-
+		log_msg(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 		X.init_threads();
-
 		Gtk.init(ref args);
-
 		App = new Main(args, true);
-
 		parse_arguments(args);
 
 		// create main window --------------------------------------
-
 		var window = new MainWindow ();
-
 		window.configure_event.connect ((event) => {
 			//log_debug("resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
 			App.window_width = event.width;

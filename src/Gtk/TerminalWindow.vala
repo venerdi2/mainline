@@ -26,9 +26,9 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.GtkHelper;
-using TeeJee.System;
+using l.gtk;
 using TeeJee.Misc;
+using l.time;
 
 public class TerminalWindow : Gtk.Window {
 	

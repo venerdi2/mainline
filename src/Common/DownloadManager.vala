@@ -22,10 +22,10 @@ public class DownloadTask : AsyncTask {
 	public DownloadTask() {
 
 		base();
-		
+
 		downloads = new Gee.ArrayList<DownloadItem>();
 		map = new Gee.HashMap<string, DownloadItem>();
-		
+
 		regex = new Gee.HashMap<string,Regex>();
 		
 		try {
@@ -98,7 +98,7 @@ public class DownloadTask : AsyncTask {
 
 		string cmd = "aria2c"
 		+ " --no-netrc true"
-		+ " -i '%s'".printf(escape_single_quote(list_file))
+		+ " -i '"+list_file.replace("'","'\\''")+"'"
 		+ " --summary-interval=1"
 		+ " --auto-save-interval=1"
 		+ " --enable-color=false"
@@ -111,6 +111,8 @@ public class DownloadTask : AsyncTask {
 		+ " --show-console-readout=false"
 		+ " --human-readable=false"
 		;
+
+		if (App.all_proxy!="") cmd += " --all-proxy='"+App.all_proxy+"'";
 
 		log_debug(cmd);
 
@@ -229,18 +231,6 @@ public class DownloadItem : GLib.Object
 	}
 
 	public string status_line() {
-		if (task.status_in_kb) {
-			return "%s / %s, %s/s (%s)".printf(
-				format_file_size(bytes_received, false, "", true, 1),
-				format_file_size(bytes_total, false, "", true, 1),
-				format_file_size(rate, false, "", true, 1),
-				eta).replace("\n","");
-		} else {
-			return "%s / %s, %s/s (%s)".printf(
-				format_file_size(bytes_received),
-				format_file_size(bytes_total),
-				format_file_size(rate),
-				eta).replace("\n","");
-		}
+			return "%ll / %ll".printf(bytes_received,bytes_total);
 	}
 }

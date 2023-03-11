@@ -28,9 +28,9 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.GtkHelper;
-using TeeJee.System;
+using l.gtk;
 using TeeJee.Misc;
+using l.time;
 
 public class SettingsDialog : Gtk.Dialog {
 
@@ -144,8 +144,8 @@ public class SettingsDialog : Gtk.Dialog {
 		combo.set_model(model);
 		combo.set_active(App.notify_interval_unit);
 
-		// _Display_
-		label = new Label("<b>" + _("Display") + "</b>");
+		// filters
+		label = new Label("<b>" + _("Filters") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
 		label.margin_top = 12;
@@ -169,17 +169,17 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_start = 6;
 		hbox.add (label);
 
-		var spm_adj = new Gtk.Adjustment(App.show_prev_majors, 0, 99, 1, 1, 0);
+		var spm_adj = new Gtk.Adjustment(App.previous_majors, 0, 99, 1, 1, 0);
 		var spm_spin = new Gtk.SpinButton (spm_adj, 1, 0);
 		spm_spin.xalign = (float) 0.5;
 		hbox.add(spm_spin);
-		spm_spin.changed.connect(()=>{ App.show_prev_majors = (int) spm_spin.get_value(); });
+		spm_spin.changed.connect(()=>{ App.previous_majors = (int) spm_spin.get_value(); });
 
-		label = new Label(_("previous major versions "));
+		label = new Label(_("previous major versions"));
 		hbox.add(label);
 
 		// other
-		label = new Label("<b>" + _("Other") + "</b>");
+		label = new Label("<b>" + _("Network") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
 		label.margin_top = 12;
@@ -190,7 +190,7 @@ public class SettingsDialog : Gtk.Dialog {
 		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
 
-		label = new Label(_("Internet connection timeout in "));
+		label = new Label(_("Internet connection timeout in"));
 		label.xalign = (float) 0.0;
 		label.margin_start = 6;
 		hbox.add (label);
@@ -222,7 +222,18 @@ public class SettingsDialog : Gtk.Dialog {
 
 		spin.changed.connect(()=>{ App.concurrent_downloads = (int) spin_concurrent.get_value(); });
 
-		// actions -------------------------
+		// proxy
+		label = new Label("<b>" + _("Proxy") + "</b>");
+		label.set_use_markup(true);
+		label.xalign = (float) 0.0;
+		label.margin_bottom = 6;
+		vbox_main.add (label);
+
+		var proxy = new Entry ();
+		proxy.set_placeholder_text("[http://][USER:PASSWORD@]HOST[:PORT]");
+		proxy.set_text(App.all_proxy);
+		proxy.activate.connect(()=>{ App.all_proxy = proxy.get_text() ; });
+		vbox_main.add(proxy);
 
 		// ok
 		var button = (Button) add_button ("gtk-ok", Gtk.ResponseType.ACCEPT);
