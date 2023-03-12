@@ -151,11 +151,11 @@ public class DownloadTask : AsyncTask {
 
 			string gid_key = match.fetch(1).strip();
 			string status = match.fetch(2).strip();
-			int64 rate = int64.parse(match.fetch(3).strip());
+			//int64 rate = int64.parse(match.fetch(3).strip());
 			//string file = match.fetch(4).strip();
 
 			if (map.has_key(gid_key)) {
-				map[gid_key].rate = rate;
+				//map[gid_key].rate = rate;
 				map[gid_key].status = status;
 			}
 		}
@@ -169,15 +169,13 @@ public class DownloadTask : AsyncTask {
 			var received = int64.parse(match.fetch(2).strip());
 			var total = int64.parse(match.fetch(3).strip());
 			//var percent = double.parse(match.fetch(4).strip());
-			var rate = int64.parse(match.fetch(5).strip());
-			var eta = match.fetch(6).strip();
+			//var rate = int64.parse(match.fetch(5).strip());
+			//var eta = match.fetch(6).strip();
 
 			if (map.has_key(gid_key)) {
 				var item = map[gid_key];
 				item.bytes_received = received;
 				if (item.bytes_total == 0) item.bytes_total = total;
-				item.rate = rate;
-				item.eta = eta;
 				item.status = "RUNNING";
 				status_line = item.status_line();
 			}
@@ -206,8 +204,6 @@ public class DownloadItem : GLib.Object
 	public string gid = ""; // ID
 	public int64 bytes_total = 0;
 	public int64 bytes_received = 0;
-	public int64 rate = 0;
-	public string eta = "";
 	public string status = "";
 
 	public DownloadTask task = null;
@@ -231,6 +227,19 @@ public class DownloadItem : GLib.Object
 	}
 
 	public string status_line() {
-			return "%ll / %ll".printf(bytes_received,bytes_total);
+		//return bytes_received.to_string()+"/"+bytes_total.to_string();
+
+		if (task.status_in_kb) {
+			return "%s / %s".printf(
+				format_file_size(bytes_received, false, "", true, 1),
+				format_file_size(bytes_total, false, "", true, 1)
+				).replace("\n","");
+		} else {
+			return "%s / %s".printf(
+				format_file_size(bytes_received),
+				format_file_size(bytes_total)
+				).replace("\n","");
+		}
+
 	}
 }

@@ -36,7 +36,7 @@ namespace TeeJee.ProcessHelper {
 			Process.spawn_command_line_sync (cmd, out std_out, out std_err, out status);
 	        return status;
 		}
-		catch (Error e) {
+		catch (SpawnError e) {
 	        log_error (e.message);
 	        return -1;
 	    }

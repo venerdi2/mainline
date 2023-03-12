@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 05:01-0500\n"
+"POT-Creation-Date: 2023-03-12 04:45-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -51,7 +51,7 @@ msgid "Installed"
 msgstr "Instalado"
 
 #: src/Common/LinuxKernel.vala:828 src/Gtk/MainWindow.vala:158
-#: src/Gtk/MainWindow.vala:503 src/Gtk/MainWindow.vala:516
+#: src/Gtk/MainWindow.vala:501 src/Gtk/MainWindow.vala:514
 msgid "Running"
 msgstr "En ejecución"
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Notifications are disabled"
 msgstr "Notificación"
 
-#: src/Common/Main.vala:312 src/Gtk/MainWindow.vala:614
+#: src/Common/Main.vala:312 src/Gtk/MainWindow.vala:612
 #, fuzzy
 msgid "Can not reach"
 msgstr "Falló la lectura del archivo"
@@ -397,13 +397,13 @@ msgstr ""
 msgid "Updating kernels"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:512
+#: src/Gtk/MainWindow.vala:510
 #, fuzzy
 msgid "available"
 msgstr "Paquetes disponibles"
 
-#: src/Gtk/MainWindow.vala:545 src/Gtk/MainWindow.vala:578
-#: src/Gtk/MainWindow.vala:605
+#: src/Gtk/MainWindow.vala:543 src/Gtk/MainWindow.vala:576
+#: src/Gtk/MainWindow.vala:603
 msgid "DONE"
 msgstr ""
 

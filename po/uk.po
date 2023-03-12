@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 05:01-0500\n"
+"POT-Creation-Date: 2023-03-12 04:45-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -51,7 +51,7 @@ msgid "Installed"
 msgstr "Встановлено"
 
 #: src/Common/LinuxKernel.vala:828 src/Gtk/MainWindow.vala:158
-#: src/Gtk/MainWindow.vala:503 src/Gtk/MainWindow.vala:516
+#: src/Gtk/MainWindow.vala:501 src/Gtk/MainWindow.vala:514
 msgid "Running"
 msgstr "Використовується"
 
@@ -133,7 +133,7 @@ msgstr "Викликано з"
 msgid "Notifications are disabled"
 msgstr "Повідомлення вимкнено"
 
-#: src/Common/Main.vala:312 src/Gtk/MainWindow.vala:614
+#: src/Common/Main.vala:312 src/Gtk/MainWindow.vala:612
 msgid "Can not reach"
 msgstr "Не може дістатися"
 
@@ -378,12 +378,12 @@ msgstr "Оригінал"
 msgid "Updating kernels"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:512
+#: src/Gtk/MainWindow.vala:510
 msgid "available"
 msgstr "доступний"
 
-#: src/Gtk/MainWindow.vala:545 src/Gtk/MainWindow.vala:578
-#: src/Gtk/MainWindow.vala:605
+#: src/Gtk/MainWindow.vala:543 src/Gtk/MainWindow.vala:576
+#: src/Gtk/MainWindow.vala:603
 msgid "DONE"
 msgstr "ГОТОВО"
 

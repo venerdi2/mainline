@@ -461,8 +461,6 @@ public class MainWindow : Gtk.Window {
 		App.progress_total = LinuxKernel.progress_total;
 		App.progress_count = LinuxKernel.progress_count;
 
-		int64 remaining_count = App.progress_total - App.progress_count;
-
 		Gdk.threads_add_idle_full(0, () => {
 			if (App.progress_total > 0)
 				progress_window.update_message("%s %s/%s".printf(message, App.progress_count.to_string(), App.progress_total.to_string()));
