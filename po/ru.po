@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-12 04:45-0400\n"
-"PO-Revision-Date: 2023-03-06 22:07+0300\n"
+"POT-Creation-Date: 2023-03-12 05:17-0400\n"
+"PO-Revision-Date: 2023-03-12 18:24+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: src/Common/LinuxKernel.vala:87
 msgid "Distribution"
@@ -23,13 +23,12 @@ msgid "Architecture"
 msgstr "Архитектура"
 
 #: src/Common/LinuxKernel.vala:282
-#, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "Получение сведений..."
+msgstr "Получение индивидуальных индексов ядра"
 
 #: src/Common/LinuxKernel.vala:327
 msgid "Updating from"
-msgstr ""
+msgstr "Обновление из"
 
 #: src/Common/LinuxKernel.vala:738
 msgid "Packages Available"
@@ -73,13 +72,12 @@ msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
 #: src/Common/LinuxKernel.vala:929
-#, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Удаление выбранных ядер"
 
 #: src/Common/LinuxKernel.vala:935
 msgid "requested"
-msgstr "requested"
+msgstr "запрошено"
 
 #: src/Common/LinuxKernel.vala:938
 msgid "skipping the currently booted kernel"
@@ -90,14 +88,12 @@ msgid "found"
 msgstr "найдено"
 
 #: src/Common/LinuxKernel.vala:957
-#, fuzzy
 msgid "No packages to un-install!"
-msgstr "Нет пакетов для деинсталляции!"
+msgstr "Нет пакетов для удаления!"
 
 #: src/Common/LinuxKernel.vala:996
-#, fuzzy
 msgid "Could not find running kernel in list"
-msgstr "Не удалось найти запущенное ядро в списке!"
+msgstr "Could not find running kernel in list"
 
 #: src/Common/LinuxKernel.vala:1002
 msgid "Could not find any kernels to uninstall"
@@ -142,9 +138,9 @@ msgid "Can not reach"
 msgstr "Не удается получить"
 
 #: src/Common/Package.vala:57
-#, fuzzy, c-format
+#, c-format
 msgid "File not found: %s"
-msgstr "Файл не найден"
+msgstr "Файл не найден: %s"
 
 #: src/Console/AppConsole.vala:62 src/Gtk/AppGtk.vala:135
 msgid "Syntax"
@@ -207,7 +203,6 @@ msgid "Include unstable and RC releases"
 msgstr "Включать нестабильные и релиз-кандидат релизы"
 
 #: src/Console/AppConsole.vala:81
-#, fuzzy
 msgid "Exclude unstable and RC releases"
 msgstr "Исключить нестабильные и релиз-кандидат релизы"
 
@@ -318,7 +313,6 @@ msgid "Third Party Inclusions"
 msgstr "Включая сторонние инструменты"
 
 #: src/Gtk/AppGtk.vala:135
-#, fuzzy
 msgid "options"
 msgstr "параметры"
 
@@ -384,7 +378,7 @@ msgstr "Оригинал"
 
 #: src/Gtk/MainWindow.vala:439
 msgid "Updating kernels"
-msgstr ""
+msgstr "Обновление ядер"
 
 #: src/Gtk/MainWindow.vala:510
 msgid "available"
@@ -437,25 +431,23 @@ msgstr "Секунду(ды)"
 
 #: src/Gtk/SettingsDialog.vala:148
 msgid "Filters"
-msgstr ""
+msgstr "Фильтры"
 
 #: src/Gtk/SettingsDialog.vala:156
 msgid "Hide unstable and RC releases"
 msgstr "Скрыть нестабильные и релиз-кандидат версии"
 
 #: src/Gtk/SettingsDialog.vala:178
-#, fuzzy
 msgid "previous major versions"
-msgstr "Показать N предыдущих основных версий "
+msgstr "предыдущие основные версии"
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Network"
-msgstr ""
+msgstr "Сеть"
 
 #: src/Gtk/SettingsDialog.vala:193
-#, fuzzy
 msgid "Internet connection timeout in"
-msgstr "Таймаут подключения к Интернету в "
+msgstr "Таймаут подключения к Интернету в"
 
 #: src/Gtk/SettingsDialog.vala:205
 msgid "seconds"
@@ -467,7 +459,7 @@ msgstr "Максимальное количество одновременных
 
 #: src/Gtk/SettingsDialog.vala:226
 msgid "Proxy"
-msgstr ""
+msgstr "Прокси"
 
 #: src/Gtk/l.gtk.vala:44
 msgid "Missing Icon"
