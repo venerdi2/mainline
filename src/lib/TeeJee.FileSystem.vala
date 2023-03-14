@@ -24,9 +24,9 @@
 
 namespace TeeJee.FileSystem {
 
-	using TeeJee.Logging;
 	using TeeJee.ProcessHelper;
 	using TeeJee.Misc;
+	using l.misc;
 
 	public string file_parent(string f) {
 		//log_debug("file_parent("+f+")");
@@ -45,7 +45,7 @@ namespace TeeJee.FileSystem {
 	}
 
 	public bool file_delete(string file_path) {
-		//log_debug("file_delete("+file_path+")");
+		vprint("file_delete("+file_path+")",3);
 
 		if(!file_exists(file_path)) return true;
 
@@ -54,13 +54,13 @@ namespace TeeJee.FileSystem {
 			if (file.query_exists()) file.delete();
 			return true;
 		} catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 			return false;
 		}
 	}
 
 	public string? file_read (string file_path) {
-		//log_debug("file_read("+file_path+")");
+		vprint("file_read("+file_path+")",3);
 
 		string txt;
 		size_t size;
@@ -69,13 +69,13 @@ namespace TeeJee.FileSystem {
 			GLib.FileUtils.get_contents (file_path, out txt, out size);
 			return txt;
 		}
-		catch (Error e) { log_error (e.message); }
+		catch (Error e) { vprint(e.message,1,stderr); }
 
 		return null;
 	}
 
 	public bool file_write (string f, string contents) {
-		//log_debug("file_write("+f+")");
+		vprint("file_write("+f+")",3);
 
 		try {
 
@@ -93,13 +93,13 @@ namespace TeeJee.FileSystem {
 			return true;
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 			return false;
 		}
 	}
 
 	public bool file_copy (string src_file, string dest_file) {
-		//log_debug("file_copy('"+src_file+"','"+dest_file+"')");
+		vprint("file_copy('"+src_file+"','"+dest_file+"')",3);
 
 		try {
 			var file_src = File.new_for_path (src_file);
@@ -109,16 +109,16 @@ namespace TeeJee.FileSystem {
 				return true;
 			}
 		}
-		catch (Error e) { log_error (e.message); }
+		catch (Error e) { vprint(e.message,1,stderr); }
 
 		return false;
 	}
 
 	public void file_move (string src_file, string dest_file) {
-		//log_debug("file_move('"+src_file+"','"+dest_file+"')");
+		vprint("file_move('"+src_file+"','"+dest_file+"')",3);
 		try {
 			if (!file_exists(src_file)) {
-				log_error(_("File not found") + ": '%s'".printf(src_file));
+				vprint(_("File not found") + ": '%s'".printf(src_file),1,stderr);
 				return;
 			}
 
@@ -131,7 +131,7 @@ namespace TeeJee.FileSystem {
 			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
 
 		}
-		catch(Error e) { log_error (e.message); }
+		catch(Error e) { vprint(e.message,1,stderr); }
 	}
 
 	public int64 file_get_size(string file_path) {
@@ -145,7 +145,7 @@ namespace TeeJee.FileSystem {
 			}
 		}
 		catch(Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 		}
 
 		return -1;
@@ -156,7 +156,7 @@ namespace TeeJee.FileSystem {
 	}
 
 	public bool dir_create (string d) {
-		log_debug("dir_create("+d+")");
+		vprint("dir_create("+d+")",3);
 
 		try{
 			var dir = File.parse_name(d);
@@ -164,13 +164,14 @@ namespace TeeJee.FileSystem {
 			return true;
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 			return false;
 		}
 	}
 
+	// TODO no longer TG's so move out of TeeJee
 	public bool dir_delete (string dir_path) {
-		log_debug("dir_delete("+dir_path+")");
+		vprint("dir_delete("+dir_path+")",3);
 		if (!dir_exists(dir_path)) return true;
 		File d = File.new_for_path(dir_path);
 		try { _dir_delete(d); }
@@ -179,11 +180,11 @@ namespace TeeJee.FileSystem {
 	}
 
 	private void _dir_delete (File p) throws Error {
-		//log_debug("_dir_delete("+p.get_path()+")");
+		vprint("_dir_delete("+p.get_path()+")",4);
 		FileEnumerator en = p.enumerate_children ("standard::*",FileQueryInfoFlags.NOFOLLOW_SYMLINKS,null);
 		FileInfo i = null;
 		while (((i = en.next_file (null)) != null)) {
-			//log_debug(i.get_name());
+			vprint(i.get_name(),5);
 			File n = p.resolve_relative_path (i.get_name());
 			if (i.get_file_type() == FileType.DIRECTORY) _dir_delete(n);
 			else n.delete();

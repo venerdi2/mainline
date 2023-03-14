@@ -1,7 +1,8 @@
-using TeeJee.Logging;
+
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
+using l.misc;
 
 public class Package : GLib.Object {
 	public string pname = "";
@@ -19,7 +20,7 @@ public class Package : GLib.Object {
 	}
 
 	public static void update_dpkg_list() {
-		log_debug("update_dpkg_list()");
+		vprint("update_dpkg_list()",2);
 		// get installed packages from dpkg --------------
 
 		string t_dir = create_tmp_dir();
@@ -51,14 +52,14 @@ public class Package : GLib.Object {
 					pkg.version = vers;
 					pkg.arch = arch;
 					dpkg_list.add(pkg);
-					log_debug("dpkg_list.add("+pkg.pname+")  version:"+pkg.version+"  arch:"+pkg.arch);
+					vprint("dpkg_list.add("+pkg.pname+")  version:"+pkg.version+"  arch:"+pkg.arch,3);
 				}
 			} else {
-				log_error (_("File not found: %s").printf(t_file));
+				vprint(_("File not found: %s").printf(t_file),1,stderr);
 			}
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 		}
 		dir_delete(t_dir);
 	}

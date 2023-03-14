@@ -22,24 +22,24 @@
 using Gtk;
 using Gee;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public class TerminalWindow : Gtk.Window {
-	
+
 	private Gtk.Box vbox_main;
 	private Vte.Terminal term;
 	private Gtk.Button btn_cancel;
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
 
-	private int def_width = 1100;
-	private int def_height = 600;
+	//private int def_width = 1100;
+	//private int def_height = 600;
 
 	private Pid child_pid;
 	private Gtk.Window parent_win = null;
@@ -60,6 +60,7 @@ public class TerminalWindow : Gtk.Window {
 		set_modal(true);
 		//window_position = WindowPosition.CENTER;
 		window_position = WindowPosition.CENTER_ON_PARENT;
+		//window_position = WindowPosition.NONE;
 		if (fullscreen) this.fullscreen();
 
 		this.delete_event.connect(cancel_window_close);
@@ -67,6 +68,11 @@ public class TerminalWindow : Gtk.Window {
 		init_window();
 
 		show_all();
+
+		this.resize(App.term_width,App.term_height);
+//		if (App.term_x >=0 && App.term_y >= 0) this.move(App.window_x,App.window_y);
+//		App._window_x = App.window_x;
+//		App._window_y = App.window_y;
 
 		btn_cancel.visible = false;
 		btn_close.visible = false;
@@ -89,7 +95,10 @@ public class TerminalWindow : Gtk.Window {
 		// vbox_main ---------------
 
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 0);
-		vbox_main.set_size_request (def_width, def_height);
+		//vbox_main.set_size_request(def_width,def_height);
+		App._term_width = App.term_width;
+		App._term_height = App.term_height;
+
 		add (vbox_main);
 
 		// terminal ----------------------
@@ -196,7 +205,7 @@ public class TerminalWindow : Gtk.Window {
 			term.child_exited.connect(script_exit);
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 		}
 	}
 

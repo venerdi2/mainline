@@ -25,13 +25,13 @@
 using Gtk;
 using Gee;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public class ProgressWindow : Gtk.Window {
 
@@ -58,6 +58,7 @@ public class ProgressWindow : Gtk.Window {
 		set_type_hint(Gdk.WindowTypeHint.DIALOG);
 		//window_position = WindowPosition.CENTER;
 		window_position = WindowPosition.CENTER_ON_PARENT;
+		//window_position = WindowPosition.NONE;
 
 		set_default_size(def_width, def_height);
 
