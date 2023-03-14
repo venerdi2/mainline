@@ -120,38 +120,25 @@ public class DownloadTask : AsyncTask {
 	public bool update_progress_parse_console_output (string line) {
 		if ((line == null) || (line.length == 0)) return true;
 
-		//log_debug(line);
+		//vprint(line,2);
 
 		MatchInfo match;
 
 		if (regex["file-complete"].match(line, 0, out match)) {
-			//log_debug("match: file-complete: " + line);
+			//vprint("match: file-complete: " + line,2);
 			prg_count++;
-		}
-		else if (regex["file-status"].match(line, 0, out match)) {
+		} else if (regex["file-status"].match(line, 0, out match)) {
 
 			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
-
-			//log_debug("match: file-status: " + line);
-
-			// always display
-			//log_debug(line);
 
 			string gid_key = match.fetch(1).strip();
 			string status = match.fetch(2).strip();
 			//int64 rate = int64.parse(match.fetch(3).strip());
 			//string file = match.fetch(4).strip();
 
-			if (map.has_key(gid_key)) {
-				//map[gid_key].rate = rate;
-				map[gid_key].status = status;
-			}
-		}
-		else if (regex["file-progress"].match(line, 0, out match)) {
+			if (map.has_key(gid_key)) map[gid_key].status = status;
 
-			//log_debug("match: file-progress: " + line);
-			
-			// Note: HTML files don't have content length, so bytes_total will be 0
+		} else if (regex["file-progress"].match(line, 0, out match)) {
 
 			var gid_key = match.fetch(1).strip();
 			var received = int64.parse(match.fetch(2).strip());
@@ -165,12 +152,10 @@ public class DownloadTask : AsyncTask {
 				item.bytes_received = received;
 				if (item.bytes_total == 0) item.bytes_total = total;
 				item.status = "RUNNING";
-				//status_line = item.status_line();
 			}
 
-		}
-		else {
-			//log_debug("unmatched: '%s'".printf(line));
+		} else {
+			//vprint("unmatched: '%s'".printf(line),2);
 		}
 
 		return true;
@@ -212,8 +197,4 @@ public class DownloadItem : GLib.Object
 		download_dir = _download_dir;
 		source_uri = _source_uri;
 	}
-
-	//public string status_line() {
-	//	return b2h(bytes_received) + " / " + b2h(bytes_total);
-	//}
 }
