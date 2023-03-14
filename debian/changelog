@@ -1,3 +1,10 @@
+mainline (1.1.7) unstable; urgency=medium
+
+  * fix detect notification settings change on exit missed notify_minor
+  * apply proxy setting to net connection test
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 14 Mar 2023 10:41:24 -0400
+
 mainline (1.1.6) unstable; urgency=medium
 
   * fix save_app_config() broken in 1.1.5
