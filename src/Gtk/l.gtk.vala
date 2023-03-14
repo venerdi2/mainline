@@ -1,10 +1,10 @@
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 namespace l.gtk {
 
@@ -38,10 +38,10 @@ namespace l.gtk {
 			pix_icon = icon_theme.load_icon_for_scale (
 				icon_name, Gtk.IconSize.MENU, icon_size, Gtk.IconLookupFlags.FORCE_SIZE);
 		} catch (Error e) {
-			//log_error (e.message);
+			//vprint(e.message,1,stderr);
 		}
 
-		if (pix_icon == null) log_error (_("Missing Icon") + ": '%s'".printf(icon_name));
+		if (pix_icon == null) vprint(_("Missing Icon") + ": '%s'".printf(icon_name),1,stderr);
 		else img_icon = new Gtk.Image.from_pixbuf(pix_icon);
 
 		return img_icon;

@@ -23,36 +23,23 @@ using GLib;
 using Gee;
 using Json;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public Main App;
 
 public class AppConsole : GLib.Object {
 
 	public static int main (string[] args) {
-
 		set_locale();
-
-		log_msg(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
-
 		App = new Main(args, false);
 		var console =  new AppConsole();
-
 		bool is_success = console.parse_arguments(args);
-
 		return (is_success) ? 0 : 1;
-	}
-
-	private static void set_locale() {
-		Intl.setlocale(GLib.LocaleCategory.MESSAGES, "%s".printf(BRANDING_SHORTNAME));
-		Intl.textdomain(BRANDING_SHORTNAME);
-		Intl.bind_textdomain_codeset(BRANDING_SHORTNAME, "utf-8");
-		Intl.bindtextdomain(BRANDING_SHORTNAME, LOCALE_DIR);
 	}
 
 	private static string help_message() {
@@ -69,9 +56,9 @@ public class AppConsole : GLib.Object {
 		+ "  --list-installed    " + _("List installed kernels") + "\n"
 		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
 		+ "  --install-point     " + _("Install latest point update for current series") + "\n"
-		+ "  --install <name>    " + _("Install specified mainline kernel") + "(1)\n"
-		+ "  --uninstall <name>  " + _("Uninstall specified kernel") + "(2)\n"
-		+ "  --uninstall-old     " + _("Uninstall kernels older than the running kernel") + "\n"
+		+ "  --install <name>    " + _("Install specified mainline kernel") + "(1)(3)\n"
+		+ "  --uninstall <name>  " + _("Uninstall specified kernel") + "(1)(2)(3)\n"
+		+ "  --uninstall-old     " + _("Uninstall kernels older than the latest installed") + "(3)\n"
 		+ "  --download <name>   " + _("Download specified kernels") + "(2)\n"
 		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
 		+ "\n"
@@ -84,19 +71,21 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("A version string taken from the output of --list") + "\n"
-		+ "(2) " +_("One or more version strings (comma-separated) taken from the output of --list") + "\n";
+		+ "(2) " +_("One or more, comma-seperated") + "\n"
+		+ "(3) " +_("The currently running kernel will always be ignored") + "\n"
+		;
 		return msg;
 	}
 
 	public bool parse_arguments(string[] args) {
 
 		string txt = BRANDING_SHORTNAME + " ";
-		for (int k = 1; k < args.length; k++) txt += "'%s' ".printf(args[k]);
+		for (int i = 1; i < args.length; i++) txt += "'%s' ".printf(args[i]);
 
 		// check argument count -----------------
 
 		if (args.length == 1) {
-			log_msg(help_message());
+			vprint(help_message(),0);
 			return false;
 		}
 
@@ -105,11 +94,11 @@ public class AppConsole : GLib.Object {
 
 		// parse options first --------------
 
-		for (int k = 1; k < args.length; k++)
+		for (int i = 1; i < args.length; i++)
 		{
-			switch (args[k].down()) {
+			switch (args[i].down()) {
 			case "--debug":
-				LOG_DEBUG = true;
+				App.VERBOSE = 2;
 				break;
 
 			case "--yes":
@@ -140,7 +129,7 @@ public class AppConsole : GLib.Object {
 			case "--uninstall-old":
 			case "--clean-cache":	// back compat
 			case "--delete-cache":
-				cmd = args[k].down();
+				cmd = args[i].down();
 				break;
 
 			case "--remove":	// back compat
@@ -148,21 +137,21 @@ public class AppConsole : GLib.Object {
 			case "--download":
 			case "--install":
 				// FUGLY
-				cmd = args[k].down();
-				if (++k < args.length) cmd_versions = args[k];
+				cmd = args[i].down();
+				if (++i < args.length) cmd_versions = args[i];
 				if (cmd == "--remove") cmd="--uninstall"; // re-write so we don't have to check all synonyms later blergh crap
 				break;
 
 			case "--help":
 			case "--h":
 			case "-h":
-				log_msg(help_message());
+				vprint(help_message(),0);
 				return true;
 
 			default:
 				// unknown option
-				log_error(_("Unknown option") + ": %s".printf(args[k]));
-				log_error(_("Run")+" '"+args[0]+" --help' "+_("to list all options"));
+				vprint(_("Unknown option") + ": %s".printf(args[i]),1,stderr);
+				vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all options"),1,stderr);
 				return false;
 			}
 		}
@@ -188,7 +177,9 @@ public class AppConsole : GLib.Object {
 			break;
 
 		case "--notify":
-
+			// silence VERBOSE only if it's 1
+			if (App.VERBOSE==1) App.VERBOSE=0;
+			l.misc.VERBOSE = App.VERBOSE;
 			notify_user();
 			break;
 
@@ -218,13 +209,13 @@ public class AppConsole : GLib.Object {
 		case "--uninstall":
 
 			if (cmd_versions.length==0) {
-				log_error(_("No kernels specified"));
+				vprint(_("No kernels specified"),1,stderr);
 				exit(1);
 			}
 
 			string[] requested_versions = cmd_versions.split(",");
 			if ((requested_versions.length > 1) && (cmd == "--install")) {
-				log_error(_("Multiple kernels selected for installation. Select only one."));
+				vprint(_("Multiple kernels selected for installation. Select only one."),1,stderr);
 				exit(1);
 			}
 
@@ -249,8 +240,8 @@ public class AppConsole : GLib.Object {
 				if (kern_requested == null) {
 					var msg = _("Could not find requested version");
 					msg += ": "+requested_version;
-					log_error(msg);
-					log_error(_("Run")+" '"+args[0]+" --list' "+_("and use a version string listed in first column"));
+					vprint(msg,1,stderr);
+					vprint(_("Run")+" '"+args[0]+" --list' "+_("and use a version string listed in first column"),1,stderr);
 					exit(1);
 				}
 
@@ -258,7 +249,7 @@ public class AppConsole : GLib.Object {
 			}
 
 			if (list.size == 0) {
-				log_error(_("No kernels specified"));
+				vprint(_("No kernels specified"),1,stderr);
 				exit(1);
 			}
 
@@ -277,8 +268,8 @@ public class AppConsole : GLib.Object {
 
 		default:
 			// unknown option
-			log_error(_("Command not specified"));
-			log_error(_("Run")+" '"+args[0]+" --help' "+_("to list all commands"));
+			vprint(_("Command not specified"),1,stderr);
+			vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all commands"),1,stderr);
 			break;
 		}
 
@@ -293,21 +284,21 @@ public class AppConsole : GLib.Object {
 		
 		if (kern_major != null) {
 			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
-			log_msg(message);
+			vprint(message);
 		}
 
 		var kern_minor = LinuxKernel.kernel_update_minor;
 
 		if (kern_minor != null) {
 			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
-			log_msg(message);
+			vprint(message);
 		}
 
 		if ((kern_major == null) && (kern_minor == null)) {
-			log_msg(_("No updates found"));
+			vprint(_("No updates found"));
 		}
 
-		log_msg(string.nfill(70, '-'));
+		vprint(string.nfill(70, '-'));
 	}
 
 	private void notify_user() {
@@ -318,8 +309,8 @@ public class AppConsole : GLib.Object {
 		string seen_min = "";
 		if (file_exists(App.MAJ_SEEN_FILE)) seen_maj = file_read(App.MAJ_SEEN_FILE).strip();
 		if (file_exists(App.MIN_SEEN_FILE)) seen_min = file_read(App.MIN_SEEN_FILE).strip();
-		log_msg("seen_maj:\""+seen_maj+"\"");
-		log_msg("seen_min:\""+seen_min+"\"");
+		vprint("seen_maj:\""+seen_maj+"\"",2);
+		vprint("seen_min:\""+seen_min+"\"",2);
 
 		string debug_action = "";
 		string close_action = "";  // command to run when user closes notification instead of pressing any action button
@@ -327,7 +318,7 @@ public class AppConsole : GLib.Object {
 		var alist = new Gee.ArrayList<string> (); // notification action buttons:  "buttonlabel:command line to run"
 
 		if (App.notify_major || App.notify_minor) {
-			if (LOG_DEBUG) {
+			if (App.VERBOSE>1) {
 				debug_action = APP_LIB_DIR+"/notify-action-debug.sh";
 				body = debug_action;
 				debug_action += " ";
@@ -335,31 +326,31 @@ public class AppConsole : GLib.Object {
 			alist.add(_("Show")+":"+debug_action+BRANDING_SHORTNAME+"-gtk");
 		}
 
-		var kern = LinuxKernel.kernel_update_major;
-		if (App.notify_major && (kern!=null) && (seen_maj!=kern.version_main)) {
-			var title = _("Kernel %s Available").printf(kern.version_main);
+		var k = LinuxKernel.kernel_update_major;
+		if (App.notify_major && (k!=null) && (seen_maj!=k.version_main)) {
+			var title = _("Kernel %s Available").printf(k.version_main);
 			if (App.notify_major || App.notify_minor) {
-				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
-				file_write(App.MAJ_SEEN_FILE,kern.version_main);
+				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
+				file_write(App.MAJ_SEEN_FILE,k.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
 			}
-			log_msg(title);
+			vprint(title);
 			return;
 		}
 
-		kern = LinuxKernel.kernel_update_minor;
-		if (App.notify_minor && (kern!=null) && (seen_min!=kern.version_main)) {
-			var title = _("Kernel %s Available").printf(kern.version_main);
+		k = LinuxKernel.kernel_update_minor;
+		if (App.notify_minor && (k!=null) && (seen_min!=k.version_main)) {
+			var title = _("Kernel %s Available").printf(k.version_main);
 			if (App.notify_major || App.notify_minor) {
-				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+kern.version_main);
-				file_write(App.MIN_SEEN_FILE,kern.version_main);
+				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
+				file_write(App.MIN_SEEN_FILE,k.version_main);
 				OSDNotify.notify_send(title,body,alist,close_action);
 			}
-			log_msg(title);
+			vprint(title);
 			return;
 		}
 
-		log_msg(_("No updates found"));
+		vprint(_("No updates found"));
 	}
 
 }

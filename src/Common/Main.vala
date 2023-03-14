@@ -25,12 +25,12 @@ using GLib;
 using Gee;
 using Json;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
@@ -66,18 +66,20 @@ public class Main : GLib.Object {
 	// global progress ----------------
 
 	public string status_line = "";
-	public int64 progress_total = 0;
-	public int64 progress_count = 0;
+	public int progress_total = 0;
+	public int progress_count = 0;
 	public bool cancelled = false;
 
 	// state flags ----------
 
+	public int VERBOSE = 1;
 	public bool GUI_MODE = false;
 	public string command = "list";
 	public string requested_version = "";
 	public bool connection_checked = false;
 	public bool connection_status = true;
 	public bool index_is_fresh = false;
+
 	public int window_width = 800;
 	public int window_height = 600;
 	public int _window_width = 800;
@@ -87,22 +89,34 @@ public class Main : GLib.Object {
 	public int _window_x = -1;
 	public int _window_y = -1;
 
+	public int term_width = 1100;
+	public int term_height = 600;
+	public int _term_width = 1100;
+	public int _term_height = 600;
+/*
+	public int term_x = -1;
+	public int term_y = -1;
+	public int _term_x = -1;
+	public int _term_y = -1;
+*/
 	public string ppa_uri = DEFAULT_PPA_URI;
 	public string all_proxy = "";
-	public bool notify_major = true;
-	public bool notify_minor = true;
+	public bool notify_major = false;
+	public bool notify_minor = false;
 	public bool hide_unstable = true;
 	public int previous_majors = 0;
 	public int notify_interval_unit = 0;
-	public int notify_interval_value = 2;
+	public int notify_interval_value = 4;
 	public int connect_timeout_seconds = 15;
-	public int concurrent_downloads = 4;
+	public int concurrent_downloads = 1;
 	public bool confirm = true;
 
 	// constructors ------------
 
 	public Main(string[] arg0, bool _gui_mode) {
 		GUI_MODE = _gui_mode;
+		get_env();
+		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 		init_paths();
 		load_app_config();
 		Package.initialize();
@@ -111,11 +125,21 @@ public class Main : GLib.Object {
 
 	// helpers ------------
 
+	public void get_env() {
+		if (Environment.get_variable("VERBOSE")!=null) {
+			string s = Environment.get_variable("VERBOSE").down();
+			if (s=="false") s = "0";
+			if (s=="true") s = "1";
+			VERBOSE = int.parse(s);
+			l.misc.VERBOSE = VERBOSE;
+		}
+	}
+
 	public void init_paths() {
 
 		// user info
-		user_login = GLib.Environment.get_user_name();
-		user_home = GLib.Environment.get_home_dir();
+		user_login = Environment.get_user_name();
+		user_home = Environment.get_home_dir();
 
 		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
 		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";
@@ -132,6 +156,7 @@ public class Main : GLib.Object {
 	}
 
 	public void save_app_config() {
+		vprint("save_app_config()",2);
 
 		var config = new Json.Object();
 		config.set_string_member("ppa_uri", ppa_uri);
@@ -148,6 +173,10 @@ public class Main : GLib.Object {
 		config.set_string_member("window_height", window_height.to_string());
 		config.set_string_member("window_x", window_x.to_string());
 		config.set_string_member("window_y", window_y.to_string());
+		config.set_string_member("term_width", term_width.to_string());
+		config.set_string_member("term_height", term_height.to_string());
+//		config.set_string_member("term_x", term_x.to_string());
+//		config.set_string_member("term_y", term_y.to_string());
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -156,13 +185,11 @@ public class Main : GLib.Object {
 		node.set_object(config);
 		json.set_root(node);
 
-		try{
-			json.to_file(APP_CONFIG_FILE);
-		} catch (Error e) {
-			log_error (e.message);
-		}
+		dir_create(APP_CONF_DIR);
+		try { json.to_file(APP_CONFIG_FILE); }
+		catch (Error e) { vprint(e.message,1,stderr); }
 
-		log_debug("Wrote config file: %s".printf(APP_CONFIG_FILE));
+		vprint("Wrote config file: %s".printf(APP_CONFIG_FILE),2);
 
 		update_notification_files();
 	}
@@ -173,49 +200,53 @@ public class Main : GLib.Object {
 	}
 
 	public void load_app_config() {
-		//log_msg("load_app_config()");
+		vprint("load_app_config()",2);
 
 		var parser = new Json.Parser();
 
-		try {
-			parser.load_from_file(APP_CONFIG_FILE);
-		} catch (Error e) {
-			log_error (e.message);
-		}
+		if (!file_exists(APP_CONFIG_FILE)) save_app_config();
+
+		try { parser.load_from_file(APP_CONFIG_FILE); }
+		catch (Error e) { vprint(e.message,1,stderr); }
 
 		var node = parser.get_root();
 		var config = node.get_object();
 
 		ppa_uri = json_get_string(config, "ppa_uri", DEFAULT_PPA_URI);
-		all_proxy = json_get_string(config, "all_proxy", "");
-		notify_major = json_get_bool(config, "notify_major", true);
-		notify_minor = json_get_bool(config, "notify_minor", true);
-		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
-		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
-		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", 15);
-		concurrent_downloads = json_get_int(config, "concurrent_downloads", 4);
-		hide_unstable = json_get_bool(config, "hide_unstable", true);
-		previous_majors = json_get_int(config, "previous_majors", 0);
+		all_proxy = json_get_string(config, "all_proxy", all_proxy);
+		notify_major = json_get_bool(config, "notify_major", notify_major);
+		notify_minor = json_get_bool(config, "notify_minor", notify_minor);
+		notify_interval_unit = json_get_int(config, "notify_interval_unit", notify_interval_unit);
+		notify_interval_value = json_get_int(config, "notify_interval_value", notify_interval_value);
+		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", connect_timeout_seconds);
+		concurrent_downloads = json_get_int(config, "concurrent_downloads", concurrent_downloads);
+		hide_unstable = json_get_bool(config, "hide_unstable", hide_unstable);
+		previous_majors = json_get_int(config, "previous_majors", previous_majors);
 		window_width = json_get_int(config, "window_width", window_width);
 		window_height = json_get_int(config, "window_height", window_height);
 		window_x = json_get_int(config, "window_x", window_x);
 		window_y = json_get_int(config, "window_y", window_y);
+		term_width = json_get_int(config, "term_width", term_width);
+		term_height = json_get_int(config, "term_height", term_height);
+//		term_x = json_get_int(config, "term_x", term_x);
+//		term_y = json_get_int(config, "term_y", term_y);
 
 		// fixups
+		//if (ppa_uri.length==0) ppa_uri = DEFAULT_PPA_URI;
 		if (!ppa_uri.has_suffix("/")) ppa_uri += "/";
 		LinuxKernel.PPA_URI = ppa_uri;
 
-		log_msg("Loaded config file: "+APP_CONFIG_FILE);
+		vprint("Loaded config file: "+APP_CONFIG_FILE,2);
 	}
 
 	// begin ------------
-
 	private void update_startup_script() {
+		vprint("update_startup_script()",2);
 
 		// construct the commandline argument for "sleep"
-		int count = App.notify_interval_value;
+		int count = notify_interval_value;
 		string suffix = "h";
-		switch (App.notify_interval_unit) {
+		switch (notify_interval_unit) {
 		case 0: // hour
 			suffix = "h";
 			break;
@@ -224,11 +255,11 @@ public class Main : GLib.Object {
 			break;
 		case 2: // week
 			suffix = "d";
-			count = App.notify_interval_value * 7;
+			count = notify_interval_value * 7;
 			break;
 		case 3: // second
 			suffix = "";
-			count = App.notify_interval_value;
+			count = notify_interval_value;
 			break;
 		}
 
@@ -263,9 +294,11 @@ public class Main : GLib.Object {
 		if (notify_minor || notify_major) {
 			// This gdbus check doesn't do what I'd hoped.
 			// Still succeeds while logged out but sitting at a display manager login screen.
-			s += "while gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.GetId 2>&- >&- ;do\n"
-			+ "\t"+BRANDING_SHORTNAME+" --notify";
-			if (LOG_DEBUG) s += " --debug";
+			s += ""
+			//+ "export VERBOSE=0\n"
+			+ "while gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.GetId 2>&- >&- ;do\n"
+			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&-";
+			//if (LOG_DEBUG) s += " --debug";
 			s += "\n"
 			+ "\tsleep %d%s &\n".printf(count,suffix)
 			+ "\twait ${!}\n"	// respond to signals during sleep
@@ -276,12 +309,21 @@ public class Main : GLib.Object {
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,s);
-		exec_async("bash "+STARTUP_SCRIPT_FILE);
+		// settings get saved on startup if missing
+		// so we don't always want to launch the bg process
+		// on every save, because when notifications are enabled,
+		// the bg process runs another instance of ourself while we are still starting up ourselves,
+		// and the two instances' cache operations step all over each other.
+		// slightly better:
+		// if notifications are now off, then run immediately so it clears out the existing bg possibly already running
+		// if notifications are now on, then run on exit.
+		if (!notify_major && !notify_major) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&-");
 	}
 
 	private void update_startup_desktop_file() {
-		if (notify_minor || notify_major) {
+		vprint("update_startup_desktop_file()",2);
 
+		if (notify_minor || notify_major) {
 			string txt = "[Desktop Entry]\n"
 				+ "Type=Application\n"
 				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --autostart\n"
@@ -290,9 +332,7 @@ public class Main : GLib.Object {
 				+ "X-GNOME-Autostart-enabled=true\n"
 				+ "Name="+BRANDING_SHORTNAME+" notification\n"
 				+ "Comment="+BRANDING_SHORTNAME+" notification\n";
-
 			file_write(STARTUP_DESKTOP_FILE, txt);
-
 		} else {
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
@@ -305,21 +345,14 @@ public class Main : GLib.Object {
 		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+connect_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet '"+ppa_uri+"'";
 
 		int status = exec_sync(cmd, out std_out, out std_err);
-		if (std_err.length > 0) log_error(std_err);
+		if (std_err.length > 0) vprint(std_err,1,stderr);
 
 		connection_status = false;
 		if (status == 0) connection_status = true;
-		else log_error(_("Can not reach")+" "+ppa_uri);
+		else vprint(_("Can not reach site")+": '"+ppa_uri+"'",1,stderr);
 
 		connection_checked = true;
 		return connection_status;
 	}
 
-	public void uri_open(string uri) {
-		try {
-			AppInfo.launch_default_for_uri(uri,null);
-		} catch (Error e) {
-			warning("Unable to launch %s", uri);
-		}
-	}
 }

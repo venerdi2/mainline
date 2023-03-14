@@ -24,13 +24,13 @@
 using Gtk;
 using Gee;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public class MainWindow : Gtk.Window {
 
@@ -51,7 +51,8 @@ public class MainWindow : Gtk.Window {
 	public MainWindow() {
 
 		title = BRANDING_LONGNAME;
-		window_position = WindowPosition.CENTER;
+		//window_position = WindowPosition.CENTER;
+		window_position = WindowPosition.NONE;
 		icon = get_app_icon(16);
 
 		// vbox_main
@@ -68,12 +69,9 @@ public class MainWindow : Gtk.Window {
 
 		init_ui();
 
-		update_cache();
+		if (App.command == "install") do_install(new LinuxKernel.from_version(App.requested_version));
 
-		if (App.command == "install") {
-			var k = new LinuxKernel.from_version(App.requested_version);
-			do_install(k);
-		}
+		update_cache();
 
 	}
 
@@ -190,7 +188,7 @@ public class MainWindow : Gtk.Window {
 	}
 
 	private void tv_refresh() {
-		log_debug("tv_refresh()");
+		vprint("tv_refresh()",2);
 
 		var model = new Gtk.ListStore(4, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool), typeof(string));
 
@@ -204,7 +202,7 @@ public class MainWindow : Gtk.Window {
 			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 		}
 
 		TreeIter iter;
@@ -292,7 +290,7 @@ public class MainWindow : Gtk.Window {
 
 		button.clicked.connect(() => {
 			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)) {
-				App.uri_open("file://"+selected_kernels[0].changes_file);
+				uri_open("file://"+selected_kernels[0].changes_file);
 			}
 		});
 
@@ -304,7 +302,7 @@ public class MainWindow : Gtk.Window {
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
 			if (selected_kernels.size == 1) uri += selected_kernels[0].kname;
-			App.uri_open(uri);
+			uri_open(uri);
 		});
 
 		// uninstall-old
@@ -418,7 +416,7 @@ public class MainWindow : Gtk.Window {
 
 	// Full re-load. Delete cache and clear session state and start over.
 	private void reload_cache() {
-		log_debug("reload_cache()");
+		vprint("reload_cache()",2);
 		LinuxKernel.delete_cache();
 		App.connection_checked=false;
 		update_cache();
@@ -426,7 +424,7 @@ public class MainWindow : Gtk.Window {
 
 	// Update the cache as optimally as possible.
 	private void update_cache() {
-		log_debug("update_cache()");
+		vprint("update_cache()",2);
 
 		test_net();
 
@@ -515,8 +513,9 @@ public class MainWindow : Gtk.Window {
 		}
 	}
 
-	public void do_install(LinuxKernel kern) {
-		return_if_fail(!kern.is_installed);
+	public void do_install(LinuxKernel k) {
+		if (App.command == "install") App.command = "list";
+		return_if_fail(!k.is_installed);
 		// let it try even if we think the net is down
 		// just so the button responds instead of looking broken
 		//if (!test_net()) return;
@@ -524,6 +523,15 @@ public class MainWindow : Gtk.Window {
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
+
+		term.configure_event.connect ((event) => {
+			//log_debug("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
+			App.term_width = event.width;
+			App.term_height = event.height;
+//			App.term_x = event.x;
+//			App.term_y = event.y;
+			return false;
+		});
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
@@ -537,8 +545,8 @@ public class MainWindow : Gtk.Window {
 
 		string sh = BRANDING_SHORTNAME;
 		if (App.index_is_fresh) sh += " --index-is-fresh";
-		if (LOG_DEBUG) sh += " --debug";
-		sh += " --install %s\n".printf(kern.version_main)
+		if (App.VERBOSE>1) sh += " --debug";
+		sh += " --install %s\n".printf(k.version_main)
 		+ "echo \n"
 		+ "echo '"+_("DONE")+"'\n"
 		;
@@ -551,6 +559,13 @@ public class MainWindow : Gtk.Window {
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
+
+		term.configure_event.connect ((event) => {
+			App.term_width = event.width;
+			App.term_height = event.height;
+			return false;
+		});
+
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
@@ -570,7 +585,7 @@ public class MainWindow : Gtk.Window {
 
 		string sh = BRANDING_SHORTNAME;
 		if (App.index_is_fresh) sh += " --index-is-fresh";
-		if (LOG_DEBUG) sh += " --debug";
+		if (App.VERBOSE>1) sh += " --debug";
 			sh += " --uninstall %s\n".printf(names)
 			+ "echo \n"
 			+ "echo '"+_("DONE")+"'\n"
@@ -585,6 +600,13 @@ public class MainWindow : Gtk.Window {
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
 
+		term.configure_event.connect ((event) => {
+			App.term_width = event.width;
+			App.term_height = event.height;
+			return false;
+		});
+
+
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
 			dir_delete(t_dir);
@@ -597,7 +619,7 @@ public class MainWindow : Gtk.Window {
 
 		string sh = BRANDING_SHORTNAME+" --uninstall-old";
 		if (App.index_is_fresh) sh += " --index-is-fresh";
-		if (LOG_DEBUG) sh += " --debug";
+		if (App.VERBOSE>1) sh += " --debug";
 			sh += "\n"
 			+ "echo \n"
 			+ "echo '"+_("DONE")+"'\n"
@@ -609,7 +631,7 @@ public class MainWindow : Gtk.Window {
 
 	public bool test_net() {
 		if (App.connection_checked) return App.connection_status;
-		if (!App.check_internet_connectivity()) errbox(this,_("Can not reach")+" "+App.ppa_uri);
+		if (!App.check_internet_connectivity()) errbox(this,_("Can not reach site")+": '"+App.ppa_uri+"'");
 		return App.connection_status;
 	}
 

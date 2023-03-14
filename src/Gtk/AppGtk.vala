@@ -25,13 +25,13 @@ using Gee;
 using Json;
 using X;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public Main App;
 
@@ -39,7 +39,6 @@ public class AppGtk : GLib.Object {
 
 	public static int main (string[] args) {
 		set_locale();
-		log_msg(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 		X.init_threads();
 		Gtk.init(ref args);
 		App = new Main(args, true);
@@ -57,12 +56,12 @@ public class AppGtk : GLib.Object {
 		});
 
 		window.destroy.connect(() => {
-			log_debug("MainWindow destroyed");
+			vprint("MainWindow destroyed",4);
 			Gtk.main_quit();
 		});
 
 		window.delete_event.connect((event) => {
-			log_debug("MainWindow closed");
+			vprint("MainWindow closed",4);
 			Gtk.main_quit();
 			return true;
 		});
@@ -75,51 +74,54 @@ public class AppGtk : GLib.Object {
 
 		// save the window size if it changed
 		if (
-				App.window_width != App._window_width ||
-				App.window_height != App._window_height ||
-				App.window_x != App._window_x ||
-				App.window_y != App._window_y
+				App.window_width != App._window_width
+				|| App.window_height != App._window_height
+				|| App.window_x != App._window_x
+				|| App.window_y != App._window_y
+				|| App.term_width != App._term_width
+				|| App.term_height != App._term_height
+				//|| App.term_x != App._term_x
+				//|| App.term_y != App._term_y
 			) App.save_app_config();
 
-		return 0;
-	}
+		// start the notification bg process if notifcations enabled
+		if (App.notify_major || App.notify_major) exec_async("bash "+App.STARTUP_SCRIPT_FILE+" 2>&- >&-");
 
-	private static void set_locale() {
-		Intl.setlocale(GLib.LocaleCategory.MESSAGES, BRANDING_SHORTNAME);
-		Intl.textdomain(BRANDING_SHORTNAME);
-		Intl.bind_textdomain_codeset(BRANDING_SHORTNAME, "utf-8");
-		Intl.bindtextdomain(BRANDING_SHORTNAME, LOCALE_DIR);
+		return 0;
 	}
 
 	public static bool parse_arguments(string[] args) {
 
 		// parse options
-		for (int o = 1; o < args.length; o++)
+		for (int i = 1; i < args.length; i++)
 		{
-			switch (args[o].down()) {
+			switch (args[i].down()) {
 
 			case "--debug":
-				LOG_DEBUG = true;
+				App.VERBOSE = 2;
 				break;
 
 			// this is used by the notifications
 			case "--install":
-				if (++o < args.length) {
+				if (++i < args.length) {
 					App.command = "install";
-					App.requested_version = args[o].down();
+					App.requested_version = args[i].down();
 				}
+				//if (App.VERBOSE<1) App.VERBOSE = 1;
+				//l.misc.VERBOSE = App.VERBOSE;
+				//Environment.set_variable("VERBOSE",App.VERBOSE.to_string(),true);
 				break;
 
 			case "--help":
 			case "--h":
 			case "-h":
-				log_msg(help_message());
+				vprint(help_message(),0);
 				exit(0);
 				break;
 
 			default:
-				log_error(_("Unknown option") + ": %s".printf(args[o]));
-				log_msg(help_message());
+				vprint(_("Unknown option") + ": %s".printf(args[i]),1,stderr);
+				vprint(help_message(),0);
 				exit(1);
 				break;
 

@@ -23,29 +23,29 @@
  */
 
 namespace TeeJee.ProcessHelper {
-	using TeeJee.Logging;
 	using TeeJee.FileSystem;
 	using TeeJee.Misc;
+	using l.misc;
 
 	// execute process ---------------------------------
 
 	// execute command synchronously
-	public int exec_sync (string cmd, out string? std_out = null, out string? std_err = null) {
+	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
 		try {
 			int status;
 			Process.spawn_command_line_sync (cmd, out std_out, out std_err, out status);
-	        return status;
+			return status;
 		}
 		catch (SpawnError e) {
-	        log_error (e.message);
-	        return -1;
+			vprint(e.message,1,stderr);
+			return -1;
 	    }
 	}
 
 	// 20200510 bkw - execute command without waiting
 	public void exec_async (string cmd) {
 		try { Process.spawn_command_line_async (cmd); }
-		catch (SpawnError e) { log_error (e.message); }
+		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}
 
 	// temp files -------------------------------------
@@ -73,7 +73,7 @@ namespace TeeJee.ProcessHelper {
 			f = get_temp_file_path(t_dir) + ".sh";
 		}
 
-		log_debug("save_bash_script_temp("+file+"):"+f);
+		vprint("save_bash_script_temp("+file+"):"+f,3);
 
 		string s = "#!/bin/bash\n"
 		+ cmds + "\n";
@@ -102,7 +102,7 @@ namespace TeeJee.ProcessHelper {
 			Process.spawn_command_line_sync(cmd, out std_out, out std_err, out ret_val);
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 			return false;
 		}
 
@@ -146,9 +146,9 @@ namespace TeeJee.ProcessHelper {
 		int[] child_pids = get_process_children (process_pid);
 
 #if VALA_0_40
-		Posix.kill (process_pid, Posix.Signal.TERM);
+		Posix.kill(process_pid, Posix.Signal.TERM);
 #else
-		Posix.kill (process_pid, Posix.SIGTERM);
+		Posix.kill(process_pid, Posix.SIGTERM);
 #endif
 
 		if (killChildren) {
@@ -156,9 +156,9 @@ namespace TeeJee.ProcessHelper {
 			foreach (long pid in child_pids) {
 				childPid = (Pid) pid;
 #if VALA_0_40
-				Posix.kill (childPid, Posix.Signal.TERM);
+				Posix.kill(childPid, Posix.Signal.TERM);
 #else
-				Posix.kill (childPid, Posix.SIGTERM);
+				Posix.kill(childPid, Posix.SIGTERM);
 #endif
 			}
 		}

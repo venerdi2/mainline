@@ -24,13 +24,13 @@
 using Gtk;
 using Gee;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public class SettingsDialog : Gtk.Dialog {
 
@@ -83,8 +83,8 @@ public class SettingsDialog : Gtk.Dialog {
 			App.notify_minor = chk_notify_minor.active;
 		});
 
-		if (LOG_DEBUG) {
-			label = new Label(_("(Allowing intervals in seconds for --debug)"));
+		if (App.VERBOSE>1) {
+			label = new Label("( VERBOSE > 1 : "+_("Seconds interval enabled for debugging")+" )");
 			label.xalign = (float) 0.0;
 			label.margin_bottom = 6;
 			vbox_main.add (label);
@@ -94,8 +94,8 @@ public class SettingsDialog : Gtk.Dialog {
 
 		// replace invalid debug-only values with valid values
 		int max_intervals = 52;
-		if (LOG_DEBUG) {
-			// debug allows seconds, so allow up to 1 hour of seconds
+		if (App.VERBOSE>1) {
+			// debug allows seconds, allow up to 1 hour of seconds
 			max_intervals = 3600;
 		} else {
 			if (App.notify_interval_unit == 3) {
@@ -137,7 +137,7 @@ public class SettingsDialog : Gtk.Dialog {
 		model.set (iter,0,_("Day(s)"));
 		model.append (out iter);
 		model.set (iter,0,_("Week(s)"));
-		if (LOG_DEBUG) {
+		if (App.VERBOSE>1) {
 			model.append (out iter);
 			model.set (iter,0,_("Second(s)"));
 		}
@@ -232,8 +232,24 @@ public class SettingsDialog : Gtk.Dialog {
 		var proxy = new Entry ();
 		proxy.set_placeholder_text("[http://][USER:PASSWORD@]HOST[:PORT]");
 		proxy.set_text(App.all_proxy);
-		proxy.activate.connect(()=>{ App.all_proxy = proxy.get_text() ; });
+		proxy.activate.connect(()=>{ App.all_proxy = proxy.get_text(); });
 		vbox_main.add(proxy);
+
+// too easily screwed up and "blank to return to default" isn't working
+/*
+		// ppa url
+		label = new Label("<b>" + "PPA" + "</b>");
+		label.set_use_markup(true);
+		label.xalign = (float) 0.0;
+		label.margin_bottom = 6;
+		vbox_main.add (label);
+
+		var ppa = new Entry ();
+		ppa.set_placeholder_text(DEFAULT_PPA_URI);
+		ppa.set_text(App.ppa_uri);
+		ppa.activate.connect(()=>{ App.ppa_uri = ppa.get_text(); });
+		vbox_main.add(ppa);
+*/
 
 		// ok
 		var button = (Button) add_button ("gtk-ok", Gtk.ResponseType.ACCEPT);

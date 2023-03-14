@@ -24,9 +24,9 @@
  
 namespace TeeJee.Misc {
 
-	using TeeJee.Logging;
 	using TeeJee.FileSystem;
 	using TeeJee.ProcessHelper;
+	using l.misc;
 
 	public string escape_html(string html, bool pango_markup = true) {
 		string txt = html;
@@ -74,85 +74,13 @@ namespace TeeJee.Misc {
 			regex = new Regex(expression);
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 			return null;
 		}
 
 		MatchInfo match;
-		if (regex.match(line, 0, out match)) {
-			return match;
-		} else {
-			return null;
-		}
-	}
-
-	private static void print_progress_bar_start(string message) {
-		log_msg("\n%s\n".printf(message));
-	}
-
-	private static void print_progress_bar(double fraction) {
-
-		string txt = "";
-
-		double length = 30.0;
-
-		double length_complete = fraction * length;
-
-		double length_remaining = length - length_complete;
-
-		if (length_complete > 0) {
-			for(int i = 0; i < length_complete; i++) {
-				txt += "▓";
-			}
-		}
-
-		if (length_remaining > 0) {
-			for(int i = 0; i < length_remaining; i++) {
-				txt += "░";
-			}
-		}
-
-		txt += " %0.0f %% ".printf(fraction * 100.0);
-
-		stdout.printf("\r%s".printf(txt));
-		stdout.flush();
-	}
-
-	private static void print_progress_bar_finish() {
-		print_progress_bar(1.0);
-		stdout.printf("\n\n");
-		stdout.flush();
-	}
-
-	public string format_file_size (
-			uint64 size,
-			bool binary_units = false,
-			string unit = "",
-			bool show_units = true,
-			int decimals = 1
-		) {
-		int64 unit_k = binary_units ? 1024 : 1000;
-		int64 unit_m = binary_units ? 1024 * unit_k : 1000 * unit_k;
-		int64 unit_g = binary_units ? 1024 * unit_m : 1000 * unit_m;
-		int64 unit_t = binary_units ? 1024 * unit_g : 1000 * unit_g;
-		string txt = "";
-		if ((size > unit_t) && ((unit.length == 0) || (unit == "t"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_t));
-			if (show_units) txt += " %sB".printf(binary_units ? "Ti" : "T");
-		} else if ((size > unit_g) && ((unit.length == 0) || (unit == "g"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_g));
-			if (show_units) txt += " %sB".printf(binary_units ? "Gi" : "G");
-		} else if ((size > unit_m) && ((unit.length == 0) || (unit == "m"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_m));
-			if (show_units) txt += " %sB".printf(binary_units ? "Mi" : "M");
-		} else if ((size > unit_k) && ((unit.length == 0) || (unit == "k"))) {
-			txt += ("%%'0.%df".printf(decimals)).printf(size / (1.0 * unit_k));
-			if (show_units) txt += " %sB".printf(binary_units ? "Ki" : "K");
-		} else {
-			txt += "%'0lu".printf(size);
-			if (show_units) txt += " B";
-		}
-		return txt;
+		if (regex.match(line, 0, out match)) { return match; }
+		else { return null; }
 	}
 
 }

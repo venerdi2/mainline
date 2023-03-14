@@ -23,13 +23,13 @@
 
 using Gtk;
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public class AboutWindow : Dialog {
 	private Box vbox_main;
@@ -235,7 +235,7 @@ public class AboutWindow : Dialog {
 		lbtn_website.margin_top = 5;
 		vbox_logo.add(lbtn_website);
 
-		lbtn_website.activate_link.connect(()=>{ App.uri_open(lbtn_website.uri); return true; });
+		lbtn_website.activate_link.connect(()=>{ uri_open(lbtn_website.uri); return true; });
 
 		//copyright
 		lbl_copyright = new Label("");
@@ -372,7 +372,7 @@ public class AboutWindow : Dialog {
 				link.uri = "http://" + val;
 			}
 
-			link.activate_link.connect(() => { App.uri_open(link.uri); return true; });
+			link.activate_link.connect(() => { uri_open(link.uri); return true; });
 		}
 		else{
 			var txt = text;

@@ -21,18 +21,18 @@
  *
  */
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.time;
+using l.misc;
 
 public abstract class AsyncTask : GLib.Object {
 
 	private string err_line = "";
 	private string out_line = "";
-	private DataOutputStream dos_in;
+	//private DataOutputStream dos_in;
 	private DataInputStream dis_out;
 	private DataInputStream dis_err;
 	protected DataOutputStream dos_log;
@@ -42,7 +42,7 @@ public abstract class AsyncTask : GLib.Object {
 	private bool stderr_is_open = false;
 
 	protected Pid child_pid;
-	private int input_fd;
+	//private int input_fd;
 	private int output_fd;
 	private int error_fd;
 	private bool finish_called = false;
@@ -61,8 +61,7 @@ public abstract class AsyncTask : GLib.Object {
 	public GLib.Timer timer;
 	public double progress = 0.0;
 	public double percent = 0.0;
-	public int64 prg_count = 0;
-	public int64 prg_count_total = 0;
+	public int prg_count = 0;
 	public string eta = "";
 
 	// signals
@@ -92,8 +91,8 @@ public abstract class AsyncTask : GLib.Object {
 		string[] spawn_args = {"sh", script_file};
 		string[] spawn_env = Environ.get();
 
-		log_debug("AsyncTask:begin()");
-		log_debug("working_dir="+working_dir);
+		vprint("AsyncTask begin()",2);
+		vprint("working_dir: '"+working_dir+"'",2);
 
 		try {
 			// start timer
@@ -106,17 +105,17 @@ public abstract class AsyncTask : GLib.Object {
 				spawn_args,  // argv
 				spawn_env,   // environment
 				SpawnFlags.SEARCH_PATH,
-				null,        // child_setup
+				null,        // child_setup()
 				out child_pid,
-				out input_fd,
+				null,        //out input_fd,
 				out output_fd,
 				out error_fd);
 
 			// create stream readers
-			UnixOutputStream uos_in = new UnixOutputStream(input_fd, false);
+			//UnixOutputStream uos_in = new UnixOutputStream(input_fd, false);
 			UnixInputStream uis_out = new UnixInputStream(output_fd, false);
 			UnixInputStream uis_err = new UnixInputStream(error_fd, false);
-			dos_in = new DataOutputStream(uos_in);
+			//dos_in = new DataOutputStream(uos_in);
 			dis_out = new DataInputStream(uis_out);
 			dis_err = new DataInputStream(uis_err);
 			dis_out.newline_type = DataStreamNewlineType.ANY;
@@ -136,8 +135,8 @@ public abstract class AsyncTask : GLib.Object {
 
 		}
 		catch (Error e) {
-			log_error("AsyncTask.begin()");
-			log_error(e.message);
+			vprint("AsyncTask.begin()",1,stderr);
+			vprint(e.message,1,stderr);
 			has_started = false;
 		}
 
@@ -171,8 +170,8 @@ public abstract class AsyncTask : GLib.Object {
 
 		}
 		catch (Error e) {
-			log_error("AsyncTask.read_stdout()");
-			log_error(e.message);
+			vprint("AsyncTask.read_stdout()",1,stderr);
+			vprint(e.message,1,stderr);
 			return false;
 		}
 		return true;
@@ -205,8 +204,8 @@ public abstract class AsyncTask : GLib.Object {
 
 		}
 		catch (Error e) {
-			log_error("AsyncTask.read_stderr()");
-			log_error(e.message);
+			vprint("AsyncTask.read_stderr()",1,stderr);
+			vprint(e.message,1,stderr);
 			return false;
 		}
 		return true;
@@ -239,17 +238,17 @@ public abstract class AsyncTask : GLib.Object {
 		finish_called = true;
 
 		// dispose stdin
-		try {
-			if ((dos_in != null) && !dos_in.is_closed() && !dos_in.is_closing()) dos_in.close();
-		}
-		catch (Error e){
+		//try {
+		//	if ((dos_in != null) && !dos_in.is_closed() && !dos_in.is_closing()) dos_in.close();
+		//}
+		//catch (Error e){
 			// ignore
 			//log_error("AsyncTask.finish(): dos_in.close()");
 			//log_error(e.message);
-		}
+		//}
 
-		dos_in = null;
-		GLib.FileUtils.close(input_fd);
+		//dos_in = null;
+		//GLib.FileUtils.close(input_fd);
 
 		try {
 			// dispose log

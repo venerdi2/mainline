@@ -22,9 +22,9 @@
  *
  */
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
+using l.misc;
 
 public class OSDNotify : GLib.Object {
 
@@ -64,8 +64,8 @@ public class OSDNotify : GLib.Object {
 				+ " \""+body+"\""
 				;
 
-			log_debug (s);
-			exec_async (s);
+			vprint(s,2);
+			exec_async(s);
 
 			dt_last_notification = new DateTime.now_local();
 

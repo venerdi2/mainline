@@ -1,22 +1,20 @@
 
-using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
-
+using l.misc;
 
 public class DownloadTask : AsyncTask {
 
 	// settings
-	public bool status_in_kb = false;
 	public int timeout_secs = 60;
-	public int connect_timeout = App.connect_timeout_seconds;
-	public int max_concurrent = App.concurrent_downloads;
+	private int connect_timeout = App.connect_timeout_seconds;
+	private int max_concurrent = App.concurrent_downloads;
+	private string all_proxy = App.all_proxy;
 
 	// download lists
 	private Gee.ArrayList<DownloadItem> downloads;
 	private Gee.HashMap<string, DownloadItem> map;
-
 	private Gee.HashMap<string,Regex> regex = null;
 
 	public DownloadTask() {
@@ -25,9 +23,8 @@ public class DownloadTask : AsyncTask {
 
 		downloads = new Gee.ArrayList<DownloadItem>();
 		map = new Gee.HashMap<string, DownloadItem>();
-
 		regex = new Gee.HashMap<string,Regex>();
-		
+
 		try {
 			//Sample:
 			//[#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
@@ -41,22 +38,17 @@ public class DownloadTask : AsyncTask {
 			regex["file-status"] = new Regex("""^([0-9A-Za-z]+)\|(OK|ERR)[ ]*\|[ ]*(n\/a|[0-9.]+[A-Za-z\/]+)\|(.*)""");
 		}
 		catch (Error e) {
-			log_error (e.message);
+			vprint(e.message,1,stderr);
 		}
 	}
 
 	// execution ----------------------------
 
 	public void add_to_queue(DownloadItem item) {
-
 		item.task = this;
-
 		downloads.add(item);
 
-		// set gid - 16 character hex string in lowercase
-		do {
-			item.gid = random_string(16,"0123456789abcdef").down();
-		}
+		do { item.gid = random_string(16,"0123456789abcdef"); }
 		while (map.has_key(item.gid_key));
 
 		map[item.gid_key] = item;
@@ -68,13 +60,9 @@ public class DownloadTask : AsyncTask {
 	}
 
 	public void execute() {
-
 		prepare();
-
 		begin();
-
-		if (status == AppStatus.RUNNING) {
-		}
+		if (status == AppStatus.RUNNING) {}
 	}
 
 	public void prepare() {
@@ -84,8 +72,8 @@ public class DownloadTask : AsyncTask {
 
 	private string build_script() {
 
-		log_debug("build_script():");
-		log_debug("working_dir="+working_dir);
+		vprint("build_script():",2);
+		vprint("working_dir: '"+working_dir+"'",2);
 		string list = "";
 		string list_file = working_dir+"/download.list";
 		foreach (var item in downloads) {
@@ -112,9 +100,9 @@ public class DownloadTask : AsyncTask {
 		+ " --human-readable=false"
 		;
 
-		if (App.all_proxy!="") cmd += " --all-proxy='"+App.all_proxy+"'";
+		if (all_proxy!="") cmd += " --all-proxy='"+all_proxy+"'";
 
-		log_debug(cmd);
+		vprint(cmd,2);
 
 		return cmd;
 	}
@@ -177,10 +165,9 @@ public class DownloadTask : AsyncTask {
 				item.bytes_received = received;
 				if (item.bytes_total == 0) item.bytes_total = total;
 				item.status = "RUNNING";
-				status_line = item.status_line();
+				//status_line = item.status_line();
 			}
 
-			//log_debug(status_line);
 		}
 		else {
 			//log_debug("unmatched: '%s'".printf(line));
@@ -216,7 +203,7 @@ public class DownloadItem : GLib.Object
 
 	public string gid_key {
 		owned get {
-			return gid.substring(0,6);;
+			return gid.substring(0,6);
 		}
 	}
 
@@ -226,20 +213,7 @@ public class DownloadItem : GLib.Object
 		source_uri = _source_uri;
 	}
 
-	public string status_line() {
-		//return bytes_received.to_string()+"/"+bytes_total.to_string();
-
-		if (task.status_in_kb) {
-			return "%s / %s".printf(
-				format_file_size(bytes_received, false, "", true, 1),
-				format_file_size(bytes_total, false, "", true, 1)
-				).replace("\n","");
-		} else {
-			return "%s / %s".printf(
-				format_file_size(bytes_received),
-				format_file_size(bytes_total)
-				).replace("\n","");
-		}
-
-	}
+	//public string status_line() {
+	//	return b2h(bytes_received) + " / " + b2h(bytes_total);
+	//}
 }
