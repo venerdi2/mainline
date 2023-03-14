@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 06:30-0400\n"
+"POT-Creation-Date: 2023-03-14 10:07-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -138,11 +138,6 @@ msgstr "Κλήθηκε από"
 #: src/Common/Main.vala:307
 msgid "Notifications are disabled"
 msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες"
-
-#: src/Common/Main.vala:352 src/Gtk/MainWindow.vala:634
-#, fuzzy
-msgid "Can not reach site"
-msgstr "Αποτυχία ανάγνωσης του αρχείου"
 
 #: src/Common/Package.vala:58
 #, fuzzy, c-format
@@ -480,3 +475,8 @@ msgstr ""
 #: src/Gtk/l.gtk.vala:44
 msgid "Missing Icon"
 msgstr "Ελλείπον εικονίδιο"
+
+#: src/lib/l.misc.vala:67
+#, fuzzy
+msgid "Can not reach site"
+msgstr "Αποτυχία ανάγνωσης του αρχείου"

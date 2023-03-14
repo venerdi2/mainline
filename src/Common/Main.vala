@@ -76,8 +76,8 @@ public class Main : GLib.Object {
 	public bool GUI_MODE = false;
 	public string command = "list";
 	public string requested_version = "";
-	public bool connection_checked = false;
-	public bool connection_status = true;
+	public bool ppa_tried = false;
+	public bool ppa_up = true;
 	public bool index_is_fresh = false;
 
 	public int window_width = 800;
@@ -309,7 +309,7 @@ public class Main : GLib.Object {
 		}
 
 		file_write(STARTUP_SCRIPT_FILE,s);
-		// settings get saved on startup if missing
+		// settings get saved on startup if the file doesn't exist yet,
 		// so we don't always want to launch the bg process
 		// on every save, because when notifications are enabled,
 		// the bg process runs another instance of ourself while we are still starting up ourselves,
@@ -317,7 +317,7 @@ public class Main : GLib.Object {
 		// slightly better:
 		// if notifications are now off, then run immediately so it clears out the existing bg possibly already running
 		// if notifications are now on, then run on exit.
-		if (!notify_major && !notify_major) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&-");
+		if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&-");
 	}
 
 	private void update_startup_desktop_file() {
@@ -336,23 +336,6 @@ public class Main : GLib.Object {
 		} else {
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
-	}
-
-	public bool check_internet_connectivity() {
-		if (connection_checked) return connection_status;
-
-		string std_err, std_out;
-		string cmd = "aria2c --no-netrc --no-conf --connect-timeout="+connect_timeout_seconds.to_string()+" --max-file-not-found=3 --retry-wait=2 --max-tries=3 --dry-run --quiet '"+ppa_uri+"'";
-
-		int status = exec_sync(cmd, out std_out, out std_err);
-		if (std_err.length > 0) vprint(std_err,1,stderr);
-
-		connection_status = false;
-		if (status == 0) connection_status = true;
-		else vprint(_("Can not reach site")+": '"+ppa_uri+"'",1,stderr);
-
-		connection_checked = true;
-		return connection_status;
 	}
 
 }

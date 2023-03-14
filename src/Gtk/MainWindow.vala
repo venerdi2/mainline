@@ -418,7 +418,7 @@ public class MainWindow : Gtk.Window {
 	private void reload_cache() {
 		vprint("reload_cache()",2);
 		LinuxKernel.delete_cache();
-		App.connection_checked=false;
+		App.ppa_tried = false;
 		update_cache();
 	}
 
@@ -426,7 +426,7 @@ public class MainWindow : Gtk.Window {
 	private void update_cache() {
 		vprint("update_cache()",2);
 
-		test_net();
+		if (!try_ppa()) return;
 
 		if (!App.GUI_MODE) {
 			// refresh without GUI
@@ -627,12 +627,6 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-	}
-
-	public bool test_net() {
-		if (App.connection_checked) return App.connection_status;
-		if (!App.check_internet_connectivity()) errbox(this,_("Can not reach site")+": '"+App.ppa_uri+"'");
-		return App.connection_status;
 	}
 
 }

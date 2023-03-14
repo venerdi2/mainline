@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 06:30-0400\n"
+"POT-Creation-Date: 2023-03-14 10:07-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
@@ -136,11 +136,6 @@ msgstr "Chiamata da"
 #: src/Common/Main.vala:307
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
-
-#: src/Common/Main.vala:352 src/Gtk/MainWindow.vala:634
-#, fuzzy
-msgid "Can not reach site"
-msgstr "Impossibile leggere il file"
 
 #: src/Common/Package.vala:58
 #, fuzzy, c-format
@@ -479,3 +474,8 @@ msgstr ""
 #: src/Gtk/l.gtk.vala:44
 msgid "Missing Icon"
 msgstr "Icona mancante"
+
+#: src/lib/l.misc.vala:67
+#, fuzzy
+msgid "Can not reach site"
+msgstr "Impossibile leggere il file"
