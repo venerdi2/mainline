@@ -1,3 +1,20 @@
+mainline (1.1.6) unstable; urgency=medium
+
+  * fix save_app_config() broken in 1.1.5
+    fixes "Can not reach" https://github.com/bkw777/mainline/issues/204 & 206
+  * replace TeeJee.logging.vala, log_*(), & LOG_DEBUG=bool LOG_ENABLE=bool bools with l.misc.vala, vprint(), and VERBOSE=int
+    VERBOSE=int to set various verbosity levels instead of just debug on/off
+    environment variable VERBOSE to effect before commandline is parsed
+  * replace TeeJee print_progress_bar() with l.misc pbar()
+    clean up progress display
+  * stop the background notification instance and the users interactive instance from stepping on each other's cache operations on startup
+    main index download gets unique temp name
+    only launch notify-loop.sh immediately on config save if notifications were turned off
+    if notification on, then only launch the background loop on exit
+  * save & restore the terminal window dimensions (but not yet the position)
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 14 Mar 2023 07:18:37 -0400
+
 mainline (1.1.5) unstable; urgency=medium
 
   * Add proxy setting
