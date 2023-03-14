@@ -27,27 +27,6 @@ namespace TeeJee.ProcessHelper {
 	using TeeJee.Misc;
 	using l.misc;
 
-	// execute process ---------------------------------
-
-	// execute command synchronously
-	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
-		try {
-			int status;
-			Process.spawn_command_line_sync (cmd, out std_out, out std_err, out status);
-			return status;
-		}
-		catch (SpawnError e) {
-			vprint(e.message,1,stderr);
-			return -1;
-	    }
-	}
-
-	// 20200510 bkw - execute command without waiting
-	public void exec_async (string cmd) {
-		try { Process.spawn_command_line_async (cmd); }
-		catch (SpawnError e) { vprint(e.message,1,stderr); }
-	}
-
 	// temp files -------------------------------------
 
 	// create a unique temp dir rooted at App.TMP_PREFIX

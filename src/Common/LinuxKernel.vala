@@ -265,7 +265,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		// process the download list
-		if ((downloads.size > 0) && App.connection_status) {
+		if ((downloads.size > 0) && App.ppa_up) {
 			progress_total = downloads.size;
 			var mgr = new DownloadTask();
 
@@ -309,7 +309,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint("download_index()",2);
 		check_if_initialized();
 
-		if (!App.check_internet_connectivity()) return false;
+		if (!try_ppa()) return false;
 		if (!file_exists(index_page)) App.index_is_fresh=false;
 		if (App.index_is_fresh) return true;
 
@@ -914,7 +914,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return false;
 		}
 
-		if (!App.check_internet_connectivity()) return false;
+		if (!try_ppa()) return false;
 
 		bool ok = download_packages();
 		int status = -1;

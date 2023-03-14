@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 06:30-0400\n"
-"PO-Revision-Date: 2023-03-14 14:06+0100\n"
+"POT-Creation-Date: 2023-03-14 10:07-0400\n"
+"PO-Revision-Date: 2023-03-11 12:47+0100\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -130,10 +130,6 @@ msgstr "Wywołano z"
 #: src/Common/Main.vala:307
 msgid "Notifications are disabled"
 msgstr "Powiadomienia są wyłączone"
-
-#: src/Common/Main.vala:352 src/Gtk/MainWindow.vala:634
-msgid "Can not reach site"
-msgstr "Nie można dotrzeć do witryny"
 
 #: src/Common/Package.vala:58
 #, c-format
@@ -463,3 +459,8 @@ msgstr "Serwer pośredniczący"
 #: src/Gtk/l.gtk.vala:44
 msgid "Missing Icon"
 msgstr "Brakująca ikona"
+
+#: src/lib/l.misc.vala:67
+#, fuzzy
+msgid "Can not reach site"
+msgstr "Nie można dotrzeć"

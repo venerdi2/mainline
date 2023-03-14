@@ -3,8 +3,6 @@
 namespace l.misc {
 
 	public static int VERBOSE = 1;
-	const int64 KB = 1024;
-	const int64 MB = 1024 * KB;
 
 	private static void set_locale() {
 		Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
@@ -31,24 +29,63 @@ namespace l.misc {
 		if (VERBOSE<1) return;
 		if (whole==0) { vprint("\r%79s\r".printf(""),1,stdout,false); return; }
 
-		int i = 0;
-		int64 c = 0;
-		int64 plen = 0;
-		int64 wlen = 40;
-		string b = "";
-		string u = units;
+		int64 c = 0, plen = 0, wlen = 40;
+		string b = "", u = units;
 
 		if (whole>0) { c=(part*100/whole); plen=(part*wlen/whole); }
 		else { c=100; plen=wlen; }
 
-		for (i=0;i<wlen;i++) { if (i<plen) b+="▓"; else b+="░"; }
+		for (int i=0;i<wlen;i++) { if (i<plen) b+="▓"; else b+="░"; }
 		if (u.length>0) u = " "+part.to_string()+"/"+whole.to_string()+" "+u;
 		vprint("\r%79s\r%s %d%% %s ".printf("",b,(int)c,u),1,stdout,false);
 	}
 
-	public string b2h(int64 b) {
-		if (b>MB) return (b/MB).to_string()+"M";
-		else      return (b/KB).to_string()+"K";
+	public bool try_ppa() {
+		vprint("try_ppa()",4);
+		if (App.ppa_tried) return App.ppa_up;
+
+		string std_err, std_out;
+		string cmd = "aria2c"
+		+ " --no-netrc"
+		+ " --no-conf"
+		+ " --connect-timeout="+App.connect_timeout_seconds.to_string()
+		+ " --max-file-not-found=3"
+		+ " --retry-wait=2"
+		+ " --max-tries=3"
+		+ " --dry-run"
+		+ " --quiet";
+		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
+		cmd += " \""+App.ppa_uri+"\"";
+		vprint(cmd,3);
+
+		int status = exec_sync(cmd, out std_out, out std_err);
+		if (std_err.length > 0) vprint(std_err,1,stderr);
+
+		App.ppa_tried = true;
+		App.ppa_up = false;
+		if (status == 0) App.ppa_up = true;
+		else vprint(_("Can not reach site")+": '"+App.ppa_uri+"'",1,stderr);
+
+		App.ppa_up = true;
+		return App.ppa_up;
+	}
+
+	// execute command synchronously
+	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
+		try {
+			int status;
+			Process.spawn_command_line_sync(cmd, out std_out, out std_err, out status);
+			return status;
+		} catch (SpawnError e) {
+			vprint(e.message,1,stderr);
+			return -1;
+	    }
+	}
+
+	// 20200510 bkw - execute command without waiting
+	public void exec_async(string cmd) {
+		try { Process.spawn_command_line_async (cmd); }
+		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}
 
 }

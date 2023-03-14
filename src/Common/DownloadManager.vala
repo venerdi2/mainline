@@ -8,9 +8,6 @@ public class DownloadTask : AsyncTask {
 
 	// settings
 	public int timeout_secs = 60;
-	private int connect_timeout = App.connect_timeout_seconds;
-	private int max_concurrent = App.concurrent_downloads;
-	private string all_proxy = App.all_proxy;
 
 	// download lists
 	private Gee.ArrayList<DownloadItem> downloads;
@@ -91,16 +88,16 @@ public class DownloadTask : AsyncTask {
 		+ " --auto-save-interval=1"
 		+ " --enable-color=false"
 		+ " --allow-overwrite"
-		+ " --connect-timeout=%d".printf(connect_timeout)
-		+ " --timeout=%d".printf(timeout_secs)
-		+ " --max-concurrent-downloads=%d".printf(max_concurrent)
+		+ " --connect-timeout=%d".printf(App.connect_timeout_seconds)
+		+ " --timeout=600"
+		+ " --max-concurrent-downloads=%d".printf(App.concurrent_downloads)
 		+ " --max-file-not-found=3"
 		+ " --retry-wait=2"
 		+ " --show-console-readout=false"
 		+ " --human-readable=false"
 		;
 
-		if (all_proxy!="") cmd += " --all-proxy='"+all_proxy+"'";
+		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
 
 		vprint(cmd,2);
 
