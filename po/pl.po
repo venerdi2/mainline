@@ -34,7 +34,7 @@ msgstr "OK"
 
 #: src/Common/LinuxKernel.vala:347 src/Common/LinuxKernel.vala:900
 msgid "FAILED"
-msgstr ""
+msgstr "NIEPOWODZENIE"
 
 #: src/Common/LinuxKernel.vala:761
 msgid "Packages Available"
@@ -66,9 +66,8 @@ msgid "Downloading"
 msgstr "Pobieranie"
 
 #: src/Common/LinuxKernel.vala:913
-#, fuzzy
 msgid "is already installed."
-msgstr "To jądro jest już zainstalowane."
+msgstr "jest już zainstalowane."
 
 #: src/Common/LinuxKernel.vala:943
 msgid "Uninstalling selected kernels"
@@ -79,9 +78,8 @@ msgid "requested"
 msgstr "zażądane"
 
 #: src/Common/LinuxKernel.vala:952
-#, fuzzy
 msgid "not uninstalling the currently running kernel"
-msgstr "pominięcie aktualnie uruchomionego jądra"
+msgstr "bez odinstalowywania aktualnie uruchomionego jądra"
 
 #: src/Common/LinuxKernel.vala:968
 msgid "found"
@@ -100,9 +98,8 @@ msgid "Could not find any kernels to uninstall"
 msgstr "Nie można znaleźć żadnych jąder do odinstalowania"
 
 #: src/Common/LinuxKernel.vala:1032
-#, fuzzy
 msgid "The following kernels will be uninstalled"
-msgstr "Następujące jądra zostaną odinstalowane:"
+msgstr "Następujące jądra zostaną odinstalowane"
 
 #: src/Common/LinuxKernel.vala:1036
 msgid "Continue ?"
@@ -180,9 +177,8 @@ msgid "Uninstall specified kernel"
 msgstr "Odinstaluj wybrane jądro"
 
 #: src/Console/AppConsole.vala:61
-#, fuzzy
 msgid "Uninstall kernels older than the latest installed"
-msgstr "Odinstaluj jądra starsze niż działające jądro"
+msgstr "Odinstaluj jądra starsze niż ostatnio zainstalowane"
 
 #: src/Console/AppConsole.vala:62
 msgid "Download specified kernels"
@@ -218,12 +214,11 @@ msgstr "Ciąg wersji pobrany z danych wyjściowych --list"
 
 #: src/Console/AppConsole.vala:74
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "Jedno lub więcej, oddzielone przecinkami"
 
 #: src/Console/AppConsole.vala:75
-#, fuzzy
 msgid "The currently running kernel will always be ignored"
-msgstr "Następujące jądra zostaną odinstalowane:"
+msgstr "Aktualnie uruchomione jądro będzie zawsze ignorowane"
 
 #: src/Console/AppConsole.vala:153 src/Gtk/AppGtk.vala:123
 msgid "Unknown option"
@@ -346,7 +341,7 @@ msgstr "Odinstaluj stare"
 
 #: src/Gtk/MainWindow.vala:310
 msgid "Uninstall kernels older than running kernel"
-msgstr "Odinstaluj jądra starsze niż działające jądro"
+msgstr "Odinstaluj jądra starsze niż uruchomione jądro"
 
 #: src/Gtk/MainWindow.vala:315
 msgid "Reload"
@@ -406,9 +401,8 @@ msgid "Notify if a point release is available"
 msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 
 #: src/Gtk/SettingsDialog.vala:87
-#, fuzzy
 msgid "Seconds interval enabled for debugging"
-msgstr "(Zezwalanie na interwały w sekundach dla --debug)"
+msgstr "Interwał w sekundach włączony do debugowania"
 
 #: src/Gtk/SettingsDialog.vala:110
 msgid "Check every"
