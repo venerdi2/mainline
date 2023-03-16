@@ -29,7 +29,6 @@ using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
-using l.time;
 using l.misc;
 
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
@@ -55,6 +54,8 @@ public class Main : GLib.Object {
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
+	public string OLD_STARTUP_SCRIPT_FILE = ""; // TRANSITION
+	public string OLD_STARTUP_DESKTOP_FILE = ""; // TRANSITION
 	public string NOTIFICATION_ID_FILE = "";
 	public string MAJ_SEEN_FILE = "";
 	public string MIN_SEEN_FILE = "";
@@ -143,8 +144,10 @@ public class Main : GLib.Object {
 
 		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
 		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";
-		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify-loop.sh";
-		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop";
+		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
+		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
+		OLD_STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify-loop.sh"; // TRANSITION
+		OLD_STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop"; // TRANSITION
 		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
 		MAJ_SEEN_FILE = APP_CONF_DIR + "/notification_seen.major";
 		MIN_SEEN_FILE = APP_CONF_DIR + "/notification_seen.minor";
@@ -264,44 +267,42 @@ public class Main : GLib.Object {
 		}
 
 		file_delete(STARTUP_SCRIPT_FILE);
+		file_delete(OLD_STARTUP_SCRIPT_FILE); // TRANSITION
 
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
 		string s = "#!/bin/bash\n"
-			+ "# " +_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
-			+ "# This file is over-written and executed again whenever settings are saved in "+BRANDING_SHORTNAME+"-gtk\n"
-			+ "[[ \"${1}\" = \"--autostart\" ]] && rm -f "+NOTIFICATION_ID_FILE+" "+MAJ_SEEN_FILE+" "+MIN_SEEN_FILE+"\n"
+			+ "# "+_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
+			+ "# "+_("This file is over-written and executed again whenever settings are saved in")+" "+BRANDING_SHORTNAME+"-gtk\n"
+			+ "[[ $1 == --autostart ]] && rm -f \""+NOTIFICATION_ID_FILE+"\" \""+MAJ_SEEN_FILE+"\" \""+MIN_SEEN_FILE+"\"\n"
 			+ "TMP=${XDG_RUNTIME_DIR:-/tmp}\n"
-			+ "F=\"${TMP}/"+BRANDING_SHORTNAME+"-notify-loop.${$}.p\"\n"
-			+ "trap \"rm -f \\\"${F}\\\"\" 0\n"
+			+ "N=${0//\\//_}\n"
+			+ "F=\"${TMP}/${N}.${$}.p\"\n"
+			+ "trap 'read c<\\\"${F}_\\\" ;kill $c ;rm -f \\\"$F{,_}\\\"' 0\n"
 			+ "echo -n \"${DISPLAY} ${$}\" > \"${F}\"\n"
 			+ "typeset -i p\n"
 			+ "shopt -s extglob\n"
 			+ "\n"
 			+ "# clear previous state (kill previous instance)\n"
-			+ "for f in ${TMP}/"+BRANDING_SHORTNAME+"-notify-loop.+([0-9]).p ;do\n"
+			+ "for f in ${TMP}/${N}.+([0-9]).p ;do\n"
 			+ "\t[[ -s ${f} ]] || continue\n"
-			+ "\t[[ ${f} -ot ${F} ]] || continue\n"
-			+ "\tread d p x < \"${f}\"\n"
-			+ "\t[[ \"${d}\" == \"${DISPLAY}\" ]] || continue\n"
-			+ "\t((${p}>1)) || continue\n"
-			+ "\trm -f \"${f}\"\n"
-			+ "\tkill ${p}\n"
+			+ "\t[[ $f -ot $F ]] || continue\n"
+			+ "\tread d p x < \"$f\"\n"
+			+ "\t[[ $d == ${DISPLAY} ]] || continue\n"
+			+ "\t((p>1)) || continue\n"
+			+ "\trm -f \"$f\"\n"
+			+ "\tkill $p\n"
 			+ "done\n"
-			+ "unset F f p d x\n"
+			+ "unset N f p d x\n"
 			+ "\n"
-			+ "# run current state\n";
+			+ "# run whatever the new state should be\n";
 		if (notify_minor || notify_major) {
-			// This gdbus check doesn't do what I'd hoped.
-			// Still succeeds while logged out but sitting at a display manager login screen.
-			s += ""
-			//+ "export VERBOSE=0\n"
-			+ "while gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.GetId 2>&- >&- ;do\n"
-			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&-";
-			//if (LOG_DEBUG) s += " --debug";
-			s += "\n"
+			s += "while [[ -f \"$F\" ]] ;do\n"
+			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&-\n"
 			+ "\tsleep %d%s &\n".printf(count,suffix)
-			+ "\twait ${!}\n"	// respond to signals during sleep
+			+ "\tc=$!\n"
+			+ "\techo $c >>\"${F}_\"\n"
+			+ "\twait $c\n"	// respond to signals during sleep
 			+ "done\n";
 		} else {
 			s += "# " + _("Notifications are disabled") + "\n"
@@ -310,14 +311,14 @@ public class Main : GLib.Object {
 
 		file_write(STARTUP_SCRIPT_FILE,s);
 		// settings get saved on startup if the file doesn't exist yet,
-		// so we don't always want to launch the bg process
-		// on every save, because when notifications are enabled,
-		// the bg process runs another instance of ourself while we are still starting up ourselves,
+		// so we don't always want to launch the background process immediately on save,
+		// because when notifications are enabled,
+		// the background process runs another instance of ourself while we are still starting up ourselves,
 		// and the two instances' cache operations step all over each other.
-		// slightly better:
-		// if notifications are now off, then run immediately so it clears out the existing bg possibly already running
+		// This is not really a fully correct answer, but mostly good enough:
+		// if notifications are now off, then run immediately so it clears out the existing watcher possibly already running
 		// if notifications are now on, then run on exit.
-		if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&-");
+		if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
 	}
 
 	private void update_startup_desktop_file() {
@@ -325,16 +326,12 @@ public class Main : GLib.Object {
 
 		if (notify_minor || notify_major) {
 			string txt = "[Desktop Entry]\n"
-				+ "Type=Application\n"
 				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --autostart\n"
-				+ "Hidden=false\n"
-				+ "NoDisplay=false\n"
-				+ "X-GNOME-Autostart-enabled=true\n"
-				+ "Name="+BRANDING_SHORTNAME+" notification\n"
-				+ "Comment="+BRANDING_SHORTNAME+" notification\n";
+				;
 			file_write(STARTUP_DESKTOP_FILE, txt);
 		} else {
 			file_delete(STARTUP_DESKTOP_FILE);
+			file_delete(OLD_STARTUP_DESKTOP_FILE); // TRANSITION
 		}
 	}
 

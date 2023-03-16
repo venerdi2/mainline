@@ -29,7 +29,6 @@ using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
-using l.time;
 using l.misc;
 
 public class SettingsDialog : Gtk.Dialog {

@@ -30,7 +30,6 @@ using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
-using l.time;
 using l.misc;
 
 public Main App;
@@ -84,8 +83,8 @@ public class AppGtk : GLib.Object {
 				//|| App.term_y != App._term_y
 			) App.save_app_config();
 
-		// start the notification bg process if notifcations enabled
-		if (App.notify_major || App.notify_major) exec_async("bash "+App.STARTUP_SCRIPT_FILE+" 2>&- >&-");
+		// start the notification background process if notifcations enabled
+		if (App.notify_major || App.notify_major) exec_async("bash "+App.STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
 
 		return 0;
 	}

@@ -36,8 +36,7 @@ namespace TeeJee.Misc {
 				.replace("\\u00", "")
 				.replace("\\x"  , ""); 
 		} else {
-			txt = txt
-				.replace(" ", "&nbsp;");  // pango markup throws an error with &nbsp;
+			txt = txt.replace(" ", "&nbsp;");  // pango markup throws an error with &nbsp;
 		}
 
 		txt = txt
@@ -50,11 +49,7 @@ namespace TeeJee.Misc {
 		return txt;
 	}
 
-	public string uri_decode(string path) {
-		return Uri.unescape_string(path);
-	}
-
-	public string random_string(int length = 8, string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"){
+	public string random_string(int length = 8, string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890") {
 		string random = "";
 
 		for(int i=0;i<length;i++) {
@@ -70,13 +65,8 @@ namespace TeeJee.Misc {
 
 		Regex regex = null;
 
-		try {
-			regex = new Regex(expression);
-		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-			return null;
-		}
+		try { regex = new Regex(expression); }
+		catch (Error e) { vprint(e.message,1,stderr); return null; }
 
 		MatchInfo match;
 		if (regex.match(line, 0, out match)) { return match; }

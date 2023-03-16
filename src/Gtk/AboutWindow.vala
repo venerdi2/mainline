@@ -23,12 +23,8 @@
 
 using Gtk;
 
-using TeeJee.FileSystem;
-using TeeJee.JsonHelper;
-using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
-using l.time;
 using l.misc;
 
 public class AboutWindow : Dialog {
@@ -48,152 +44,54 @@ public class AboutWindow : Dialog {
 	private Label lbl_copyright;
 
 	private string[] _artists;
-	public string[] artists{
-		get{
-			return _artists;
-		}
-		set{
-			_artists = value;
-		}
-	}
+	public string[] artists { get { return _artists; } set { _artists = value; } }
 
 	private string[] _authors;
-	public string[] authors{
-		get{
-			return _authors;
-		}
-		set{
-			_authors = value;
-		}
-	}
+	public string[] authors { get { return _authors; } set { _authors = value; } }
 
 	private string[] _contributors;
-	public string[] contributors{
-		get{
-			return _contributors;
-		}
-		set{
-			_contributors = value;
-		}
-	}
-	
+	public string[] contributors { get { return _contributors; } set { _contributors = value; } }
+
 	private string _comments = "";
-	public string comments{
-		get{
-			return _comments;
-		}
-		set{
-			_comments = value;
-		}
-	}
+	public string comments { get { return _comments; } set { _comments = value; } }
 
 	private string _copyright = "";
-	public string copyright{
-		get{
-			return _copyright;
-		}
-		set{
-			_copyright = value;
-		}
-	}
+	public string copyright { get { return _copyright; } set { _copyright = value; } }
 
 	private string[] _documenters;
-	public string[] documenters{
-		get{
-			return _documenters;
-		}
-		set{
-			_documenters = value;
-		}
-	}
+	public string[] documenters { get { return _documenters; } set { _documenters = value; } }
 
 	private string _license = "";
-	public string license{
-		get{
-			return _license;
-		}
-		set{
-			_license = value;
-		}
-	}
+	public string license { get { return _license; } set { _license = value; } }
 
 	private Gdk.Pixbuf _logo;
-	public Gdk.Pixbuf logo{
-		get{
-			return _logo;
-		}
-		set{
-			_logo = value;
-		}
-	}
+	public Gdk.Pixbuf logo { get { return _logo; } set { _logo = value; } }
 
 	private string _program_name = "";
-	public string program_name{
-		get{
-			return _program_name;
-		}
-		set{
-			_program_name = value;
-		}
-	}
+	public string program_name { get { return _program_name; } set { _program_name = value; } }
 
 	private string[] _translators;
-	public string[] translators{
-		get{
-			return _translators;
-		}
-		set{
-			_translators = value;
-		}
-	}
+	public string[] translators { get { return _translators; } set { _translators = value; } }
 
 	private string[] _third_party;
-	public string[] third_party{
-		get{
-			return _third_party;
-		}
-		set{
-			_third_party = value;
-		}
-	}
+	public string[] third_party { get { return _third_party; } set { _third_party = value; } }
 
 	private string _version = "";
-	public string version {
-		get {
-			return _version;
-		}
-		set {
-			_version = value;
-		}
-	}
+	public string version { get { return _version; } set { _version = value; } }
 
 	private string _website = "";
-	public string website{
-		get{
-			return _website;
-		}
-		set{
-			_website = value;
-		}
-	}
+	public string website { get { return _website; } set { _website = value; } }
 
 	private string _website_label = "";
-	public string website_label{
-		get{
-			return _website_label;
-		}
-		set{
-			_website_label = value;
-		}
-	}
+	public string website_label { get { return _website_label; } set { _website_label = value; } }
 
 	public AboutWindow() {
-        window_position = WindowPosition.CENTER_ON_PARENT;
+		window_position = WindowPosition.CENTER_ON_PARENT;
 		set_destroy_with_parent (true);
 		set_modal (true);
-        set_default_size (450, 400);
+		set_default_size (450, 400);
 
-	    vbox_main = get_content_area();
+		vbox_main = get_content_area();
 		vbox_main.margin = 6;
 		vbox_main.spacing = 6;
 
@@ -262,30 +160,30 @@ public class AboutWindow : Dialog {
 
 		//btn_credits
 		btn_credits = new Button.with_label(_("Credits"));
-		btn_credits.set_image (new Image.from_icon_name ("gtk-about", IconSize.MENU));
+		btn_credits.set_image (new Image.from_icon_name("gtk-about", IconSize.MENU));
 		hbox_action.add(btn_credits);
 
         btn_credits.clicked.connect(()=>{
 			vbox_logo.visible = !(vbox_logo.visible);
 			vbox_credits.visible = !(vbox_credits.visible);
 
-			if ((vbox_credits.visible)&&(!sw_credits.visible)){
+			if ((vbox_credits.visible)&&(!sw_credits.visible)) {
 				sw_credits.show_all();
 			}
 
-			if (vbox_credits.visible){
+			if (vbox_credits.visible) {
 				btn_credits.label = _("Back");
-				btn_credits.set_image (new Image.from_icon_name ("gtk-go-back", IconSize.MENU));
+				btn_credits.set_image (new Image.from_icon_name("gtk-go-back", IconSize.MENU));
 			}
 			else{
 				btn_credits.label = _("Credits");
-				btn_credits.set_image (new Image.from_icon_name ("gtk-about", IconSize.MENU));
+				btn_credits.set_image (new Image.from_icon_name("gtk-about", IconSize.MENU));
 			}
 		});
 
 		//btn_close
 		btn_close = new Button.with_label(_("Close"));
-		btn_close.set_image (new Image.from_icon_name ("gtk-close", IconSize.MENU));
+		btn_close.set_image (new Image.from_icon_name("gtk-close", IconSize.MENU));
 		hbox_action.add(btn_close);
 
 		btn_close.clicked.connect(()=>{ this.destroy(); });
@@ -304,7 +202,7 @@ public class AboutWindow : Dialog {
 
 		if (authors.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Authors")));
-			foreach(string name in authors){
+			foreach(string name in authors) {
 				add_line("%s".printf(name));
 			}
 			add_line("");
@@ -312,7 +210,7 @@ public class AboutWindow : Dialog {
 
 		if (contributors.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Contributions")));
-			foreach(string name in contributors){
+			foreach(string name in contributors) {
 				add_line("%s".printf(name));
 			}
 			add_line("");
@@ -320,7 +218,7 @@ public class AboutWindow : Dialog {
 
 		if (artists.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Artists")));
-			foreach(string name in artists){
+			foreach(string name in artists) {
 				add_line("%s".printf(name));
 			}
 			add_line("");
@@ -328,7 +226,7 @@ public class AboutWindow : Dialog {
 
 		if (translators.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Translators")));
-			foreach(string name in translators){
+			foreach(string name in translators) {
 				add_line("%s".printf(name),true,false);
 			}
 			add_line("");
@@ -336,7 +234,7 @@ public class AboutWindow : Dialog {
 
 		if (documenters.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Documenters")));
-			foreach(string name in documenters){
+			foreach(string name in documenters) {
 				add_line("%s".printf(name));
 			}
 			add_line("");
@@ -344,37 +242,31 @@ public class AboutWindow : Dialog {
 
 		if (third_party.length > 0){
 			add_header("<b>%s</b>\n".printf(_("Third Party Inclusions")));
-			foreach(string name in third_party){
+			foreach(string name in third_party) {
 				add_line("%s".printf(name));
 			}
 			add_line("");
 		}
 
-		if (vbox_lines.get_children().length() == 0){
+		if (vbox_lines.get_children().length() == 0) {
 			btn_credits.visible = false;
 		}
 	}
 
-	public void add_line(string text, bool escape_html_chars = true, bool parse = true){
-		
-		if (text.split(":").length >= 2 && parse){
+	public void add_line(string text, bool escape_html_chars = true, bool parse = true) {
+
+		if (text.split(":").length >= 2 && parse) {
 			var link = new LinkButton(escape_html(text.split(":")[0]));
 			vbox_lines.add(link);
 
 			string val = text[text.index_of(":") + 1:text.length];
-			if (val.contains("@")){
-				link.uri = "mailto:" + val;
-			}
-			else if(val.has_prefix("http://")){
-				link.uri = val;
-			}
-			else{
-				link.uri = "http://" + val;
-			}
+			if (val.contains("@")) link.uri = "mailto:" + val;
+			else if(val.has_prefix("http://")) link.uri = val;
+			else if(val.has_prefix("https://")) link.uri = val;
+			else link.uri = "http://" + val;
 
 			link.activate_link.connect(() => { uri_open(link.uri); return true; });
-		}
-		else{
+		} else {
 			var txt = text;
 			if (escape_html_chars) txt = escape_html(text);
 
@@ -387,7 +279,7 @@ public class AboutWindow : Dialog {
 		}
 	}
 
-	public void add_header(string text){
+	public void add_header(string text) {
 		add_line(text, false);
 	}
 }
