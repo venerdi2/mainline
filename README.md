@@ -88,6 +88,11 @@ That can lead to some files being stale or wrong over time, so, to compensate fo
 For the single manual uninstall button, the button simply isn't activated. For the cli app if you manually give that version, it will simply ignore it. For uninstall-old, either gui or cli, the currently running kernel is simply skipped over when scanning and building the list of uninstall candidates.
 
 # Help / FAQ
+* **Uninstall Old** doesn't remove some distribution kernel packages  
+  Use the normal package manager like apt or synaptic to remove the parent meta-package:  
+  ```$ sudo apt remove linux-image-generic```  
+  Then **Uninstall Old** should successfully remove everything.  
+  Also you should hit the **Reload** button once after that (or run ```$ mainline --delete-cache```)  
 
 * General debugging  
   Aside from the ```--debug``` option, there is an environment variable ```VERBOSE```, which takes a numerical value from 0 and up.  
