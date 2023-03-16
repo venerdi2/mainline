@@ -89,6 +89,16 @@ For the single manual uninstall button, the button simply isn't activated. For t
 
 # Help / FAQ
 
+* General debugging  
+  Aside from the ```--debug``` option, there is an environment variable ```VERBOSE```, which takes a numerical value from 0 and up.  
+  Example: ```$ VERBOSE=3 mainline-gtk```  
+  0 = silence all output  
+  1 = normal output (default)  
+  2 = --debug  
+  3 = more verbose  
+  4 = even more  
+  5+ mostly just for uncommenting things in the code and recompiling, not really useful in the release builds
+
 * Secure Boot  
   Possibly useful, I have not tried:  
   https://github.com/M-P-P-C/Signing-a-Linux-Kernel-for-Secure-Boot
