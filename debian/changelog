@@ -1,3 +1,9 @@
+mainline (1.1.8) unstable; urgency=medium
+
+  * make load_app_config() more resilient
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 19 Mar 2023 16:55:36 -0400
+
 mainline (1.1.7) unstable; urgency=medium
 
   * fix detect notification settings change on exit missed notify_minor
