@@ -21,14 +21,16 @@
  *
  *
  */
- 
+
+using Gee;
 using Json;
 
 namespace TeeJee.JsonHelper {
 
 	using l.misc;
 
-	public string json_get_string(Json.Object jobj, string member, string def_value) {
+	public string json_get_string(Json.Object jobj, string member, string def_value="") {
+		vprint("json_get_string("+member+","+def_value+")",4);
 		if (jobj.has_member(member)) {
 			return jobj.get_string_member(member);
 		} else {
@@ -37,7 +39,8 @@ namespace TeeJee.JsonHelper {
 		}
 	}
 
-	public double json_get_double(Json.Object jobj, string member, double def_value) {
+	public double json_get_double(Json.Object jobj, string member, double def_value=0) {
+		vprint("json_get_double("+member+","+def_value.to_string()+")",4);
 		var text = json_get_string(jobj, member, def_value.to_string());
 		double double_value;
 		if (double.try_parse(text, out double_value)) {
@@ -47,7 +50,8 @@ namespace TeeJee.JsonHelper {
 		}
 	}
 
-	public bool json_get_bool(Json.Object jobj, string member, bool def_value) {
+	public bool json_get_bool(Json.Object jobj, string member, bool def_value=false) {
+		vprint("json_get_bool("+member+","+def_value.to_string()+")",4);
 		if (jobj.has_member(member)) {
 			return bool.parse(jobj.get_string_member(member));
 		} else {
@@ -56,7 +60,8 @@ namespace TeeJee.JsonHelper {
 		}
 	}
 
-	public int json_get_int(Json.Object jobj, string member, int def_value) {
+	public int json_get_int(Json.Object jobj, string member, int def_value=0) {
+		vprint("json_get_int("+member+","+def_value.to_string()+")",4);
 		if (jobj.has_member(member)) {
 			return int.parse(jobj.get_string_member(member));
 		} else {
@@ -64,8 +69,9 @@ namespace TeeJee.JsonHelper {
 			return def_value;
 		}
 	}
-	
-	public int64 json_get_int64(Json.Object jobj, string member, int64 def_value) {
+
+	public int64 json_get_int64(Json.Object jobj, string member, int64 def_value=0) {
+		vprint("json_get_int64("+member+","+def_value.to_string()+")",4);
 		if (jobj.has_member(member)) {
 			return int64.parse(jobj.get_string_member(member));
 		} else {
@@ -74,14 +80,11 @@ namespace TeeJee.JsonHelper {
 		}
 	}
 
-	public Gee.ArrayList<string> json_get_array(
-		Json.Object jobj,
-		string member,
-		Gee.ArrayList<string> def_value) {
-			
+	public ArrayList<string> json_get_array(Json.Object jobj, string member, ArrayList<string> def_value=new ArrayList<string>()) {
+		vprint("json_get_array("+member+","+def_value[0]+")",4);
 		if (jobj.has_member(member)) {
 			var jarray = jobj.get_array_member(member);
-			var list = new Gee.ArrayList<string>();
+			var list = new ArrayList<string>();
 			foreach(var node in jarray.get_elements()) list.add(node.get_string());
 			return list;
 		} else {

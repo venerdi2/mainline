@@ -209,8 +209,14 @@ public class Main : GLib.Object {
 
 		if (!file_exists(APP_CONFIG_FILE)) save_app_config();
 
+		bool cf = true;
 		try { parser.load_from_file(APP_CONFIG_FILE); }
-		catch (Error e) { vprint(e.message,1,stderr); }
+		catch (Error e) { cf = false; vprint(e.message,1,stderr); }
+		if (!cf) {
+			save_app_config();
+			try { parser.load_from_file(APP_CONFIG_FILE); }
+			catch (Error e) { vprint(e.message,1,stderr); exit(1); }
+		}
 
 		var node = parser.get_root();
 		var config = node.get_object();
@@ -317,7 +323,7 @@ public class Main : GLib.Object {
 		// and the two instances' cache operations step all over each other.
 		// This is not really a fully correct answer, but mostly good enough:
 		// if notifications are now off, then run immediately so it clears out the existing watcher possibly already running
-		// if notifications are now on, then run on exit.
+		// if notifications are now on, then wait and run later on exit.
 		if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
 	}
 

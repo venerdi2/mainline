@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 01:19-0400\n"
+"POT-Creation-Date: 2023-03-19 16:41-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -132,16 +132,16 @@ msgstr "No se encontró ninguna actualización"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/Main.vala:275
+#: src/Common/Main.vala:281
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:276
+#: src/Common/Main.vala:282
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:308
+#: src/Common/Main.vala:314
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Notificación"

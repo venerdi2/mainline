@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 01:19-0400\n"
+"POT-Creation-Date: 2023-03-19 16:41-0400\n"
 "PO-Revision-Date: 2023-03-12 18:24+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
@@ -128,16 +128,16 @@ msgstr "Обновлений не найдено"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Установить версию ядра %s ? (y/n): "
 
-#: src/Common/Main.vala:275
+#: src/Common/Main.vala:281
 msgid "Called from"
 msgstr "Вызван из"
 
-#: src/Common/Main.vala:276
+#: src/Common/Main.vala:282
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:308
+#: src/Common/Main.vala:314
 msgid "Notifications are disabled"
 msgstr "Уведомления отключены"
 
