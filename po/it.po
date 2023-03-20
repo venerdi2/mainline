@@ -117,7 +117,7 @@ msgstr "Ultimo aggiornamento"
 
 #: src/Common/LinuxKernel.vala:1068 src/Console/AppConsole.vala:292
 msgid "Latest point update"
-msgstr "Ultimo aggiornamento del punto"
+msgstr "Ultimo aggiornamento del rilascio parziale"
 
 #: src/Common/LinuxKernel.vala:1076 src/Console/AppConsole.vala:297
 #: src/Console/AppConsole.vala:352
@@ -158,7 +158,7 @@ msgstr "Comandi"
 
 #: src/Console/AppConsole.vala:52
 msgid "Check for kernel updates"
-msgstr "Verifica aggiornamenti per il kernel"
+msgstr "Verifica aggiornamenti del kernel"
 
 #: src/Console/AppConsole.vala:53
 msgid "Check for kernel updates and notify current user"
@@ -212,7 +212,7 @@ msgstr "Includi versioni instabili e rilasci RC"
 #: src/Console/AppConsole.vala:67
 #, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "Includi versioni instabili e rilasci RC"
+msgstr "Escludi versioni instabili e rilasci RC"
 
 #: src/Console/AppConsole.vala:68
 msgid "Enable verbose debugging output"
@@ -262,7 +262,7 @@ msgstr "Impossibile trovare la versione richiesta"
 
 #: src/Console/AppConsole.vala:243
 msgid "and use a version string listed in first column"
-msgstr "e usa una stringa di versione elencata nella prima colonna"
+msgstr "ed usa una stringa di versione elencata nella prima colonna"
 
 #: src/Console/AppConsole.vala:270
 msgid "Command not specified"
@@ -270,7 +270,7 @@ msgstr "Comando non specificato"
 
 #: src/Console/AppConsole.vala:271
 msgid "to list all commands"
-msgstr "Elencare tutti i comandi"
+msgstr "elencare tutti i comandi"
 
 #: src/Console/AppConsole.vala:325 src/Gtk/SettingsDialog.vala:165
 msgid "Show"
@@ -357,7 +357,7 @@ msgstr "Disinstalla i vecchi"
 
 #: src/Gtk/MainWindow.vala:309
 msgid "Uninstall kernels older than running kernel"
-msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
+msgstr "Rimuove i kernel installati più vecchi del kernel in esecuzione"
 
 #: src/Gtk/MainWindow.vala:314
 msgid "Reload"
