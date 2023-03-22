@@ -25,7 +25,6 @@ using Gtk;
 using Gee;
 
 using TeeJee.FileSystem;
-using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;

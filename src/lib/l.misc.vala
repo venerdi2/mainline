@@ -48,12 +48,12 @@ namespace l.misc {
 		string cmd = "aria2c"
 		+ " --no-netrc"
 		+ " --no-conf"
-		+ " --connect-timeout="+App.connect_timeout_seconds.to_string()
 		+ " --max-file-not-found=3"
 		+ " --retry-wait=2"
 		+ " --max-tries=3"
 		+ " --dry-run"
 		+ " --quiet";
+		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string()
 		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
 		cmd += " \""+App.ppa_uri+"\"";
 		vprint(cmd,3);
@@ -64,7 +64,7 @@ namespace l.misc {
 		App.ppa_tried = true;
 		App.ppa_up = false;
 		if (status == 0) App.ppa_up = true;
-		else vprint(_("Can not reach site")+": '"+App.ppa_uri+"'",1,stderr);
+		else vprint(_("Can not reach site")+": \""+App.ppa_uri+"\"",1,stderr);
 
 		App.ppa_up = true;
 		return App.ppa_up;

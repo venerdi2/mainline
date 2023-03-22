@@ -26,7 +26,6 @@ using Gee;
 using Json;
 
 using TeeJee.FileSystem;
-using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.misc;
@@ -38,10 +37,29 @@ using l.misc;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
 [CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
-[CCode(cname="DEFAULT_PPA_URI")] extern const string DEFAULT_PPA_URI;
 
 private const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
 private const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
+
+// .h files are a pain in the ass in vala so dump these "defines" here
+const string DEFAULT_PPA_URI = "https://kernel.ubuntu.com/~kernel-ppa/mainline/";
+const string DEFAULT_ALL_PROXY = "";
+const bool DEFAULT_NOTIFY_MAJOR = false;
+const bool DEFAULT_NOTIFY_MINOR = false;
+const bool DEFAULT_HIDE_UNSTABLE = true;
+const int DEFAULT_PREVIOUS_MAJORS = 0;
+const int DEFAULT_NOTIFY_INTERVAL_VALUE = 4;      // 
+const int DEFAULT_NOTIFY_INTERVAL_UNIT = 0;       // FIXME should really be an enum or string 0=hours, 1=days, 2=weeks, 3=seconds
+const int DEFAULT_CONNECT_TIMEOUT_SECONDS = 15;
+const int DEFAULT_CONCURRENT_DOWNLOADS = 1;
+const int DEFAULT_WINDOW_WIDTH = 800;
+const int DEFAULT_WINDOW_HEIGHT = 600;
+const int DEFAULT_WINDOW_X = -1;
+const int DEFAULT_WINDOW_Y = -1;
+const int DEFAULT_TERM_WIDTH = 1100;
+const int DEFAULT_TERM_HEIGHT = 600;
+//const int DEFAULT_TERM_X = -1;
+//const int DEFAULT_TERM_Y = -1;
 
 extern void exit(int exit_code);
 
@@ -62,7 +80,7 @@ public class Main : GLib.Object {
 
 	public string user_login = "";
 	public string user_home = "";
-	public string CACHE_DIR = "~/.cache/"+BRANDING_SHORTNAME ; // non-empty for safety
+	public string CACHE_DIR = "~/.cache/"+BRANDING_SHORTNAME ; // some hard-coded non-empty for rm -rf safety
 
 	// global progress ----------------
 
@@ -81,35 +99,36 @@ public class Main : GLib.Object {
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;
 
-	public int window_width = 800;
-	public int window_height = 600;
-	public int _window_width = 800;
-	public int _window_height = 600;
-	public int window_x = -1;
-	public int window_y = -1;
-	public int _window_x = -1;
-	public int _window_y = -1;
+	public int window_width = DEFAULT_WINDOW_WIDTH;
+	public int window_height = DEFAULT_WINDOW_HEIGHT;
+	public int _window_width = DEFAULT_WINDOW_WIDTH;
+	public int _window_height = DEFAULT_WINDOW_HEIGHT;
+	public int window_x = DEFAULT_WINDOW_X;
+	public int window_y = DEFAULT_WINDOW_Y;
+	public int _window_x = DEFAULT_WINDOW_X;
+	public int _window_y = DEFAULT_WINDOW_Y;
 
-	public int term_width = 1100;
-	public int term_height = 600;
-	public int _term_width = 1100;
-	public int _term_height = 600;
-/*
-	public int term_x = -1;
-	public int term_y = -1;
-	public int _term_x = -1;
-	public int _term_y = -1;
+	public int term_width = DEFAULT_TERM_WIDTH;
+	public int term_height = DEFAULT_TERM_HEIGHT;
+	public int _term_width = DEFAULT_TERM_WIDTH;
+	public int _term_height = DEFAULT_TERM_HEIGHT;
+/* // positioning terminal window is not working
+	public int term_x = DEFAULT_TERM_X;
+	public int term_y = DEFAULT_TERM_Y;
+	public int _term_x = DEFAULT_TERM_X;
+	public int _term_y = DEFAULT_TERM_Y;
 */
+
 	public string ppa_uri = DEFAULT_PPA_URI;
-	public string all_proxy = "";
-	public bool notify_major = false;
-	public bool notify_minor = false;
-	public bool hide_unstable = true;
-	public int previous_majors = 0;
-	public int notify_interval_unit = 0;
-	public int notify_interval_value = 4;
-	public int connect_timeout_seconds = 15;
-	public int concurrent_downloads = 1;
+	public string all_proxy = DEFAULT_ALL_PROXY;
+	public bool notify_major = DEFAULT_NOTIFY_MAJOR;
+	public bool notify_minor = DEFAULT_NOTIFY_MINOR;
+	public bool hide_unstable = DEFAULT_HIDE_UNSTABLE;
+	public int previous_majors = DEFAULT_PREVIOUS_MAJORS;
+	public int notify_interval_unit = DEFAULT_NOTIFY_INTERVAL_UNIT;
+	public int notify_interval_value = DEFAULT_NOTIFY_INTERVAL_VALUE;
+	public int connect_timeout_seconds = DEFAULT_CONNECT_TIMEOUT_SECONDS;
+	public int concurrent_downloads = DEFAULT_CONCURRENT_DOWNLOADS;
 	public bool confirm = true;
 
 	// constructors ------------
@@ -164,22 +183,22 @@ public class Main : GLib.Object {
 		var config = new Json.Object();
 		config.set_string_member("ppa_uri", ppa_uri);
 		config.set_string_member("all_proxy", all_proxy);
-		config.set_string_member("notify_major", notify_major.to_string());
-		config.set_string_member("notify_minor", notify_minor.to_string());
-		config.set_string_member("hide_unstable", hide_unstable.to_string());
-		config.set_string_member("previous_majors", previous_majors.to_string());
-		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
-		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
-		config.set_string_member("connect_timeout_seconds", connect_timeout_seconds.to_string());
-		config.set_string_member("concurrent_downloads", concurrent_downloads.to_string());
-		config.set_string_member("window_width", window_width.to_string());
-		config.set_string_member("window_height", window_height.to_string());
-		config.set_string_member("window_x", window_x.to_string());
-		config.set_string_member("window_y", window_y.to_string());
-		config.set_string_member("term_width", term_width.to_string());
-		config.set_string_member("term_height", term_height.to_string());
-//		config.set_string_member("term_x", term_x.to_string());
-//		config.set_string_member("term_y", term_y.to_string());
+		config.set_boolean_member("notify_major", notify_major);
+		config.set_boolean_member("notify_minor", notify_minor);
+		config.set_boolean_member("hide_unstable", hide_unstable);
+		config.set_int_member("previous_majors", previous_majors);
+		config.set_int_member("notify_interval_unit", notify_interval_unit);
+		config.set_int_member("notify_interval_value", notify_interval_value);
+		config.set_int_member("connect_timeout_seconds", connect_timeout_seconds);
+		config.set_int_member("concurrent_downloads", concurrent_downloads);
+		config.set_int_member("window_width", window_width);
+		config.set_int_member("window_height", window_height);
+		config.set_int_member("window_x", window_x);
+		config.set_int_member("window_y", window_y);
+		config.set_int_member("term_width", term_width);
+		config.set_int_member("term_height", term_height);
+//		config.set_int_member("term_x", term_x);
+//		config.set_int_member("term_y", term_y);
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -207,11 +226,10 @@ public class Main : GLib.Object {
 
 		var parser = new Json.Parser();
 
-		if (!file_exists(APP_CONFIG_FILE)) save_app_config();
 
 		bool cf = true;
 		try { parser.load_from_file(APP_CONFIG_FILE); }
-		catch (Error e) { cf = false; vprint(e.message,1,stderr); }
+		catch (Error e) { cf = false; vprint(e.message,2); }
 		if (!cf) {
 			save_app_config();
 			try { parser.load_from_file(APP_CONFIG_FILE); }
@@ -221,29 +239,30 @@ public class Main : GLib.Object {
 		var node = parser.get_root();
 		var config = node.get_object();
 
-		ppa_uri = json_get_string(config, "ppa_uri", DEFAULT_PPA_URI);
-		all_proxy = json_get_string(config, "all_proxy", all_proxy);
-		notify_major = json_get_bool(config, "notify_major", notify_major);
-		notify_minor = json_get_bool(config, "notify_minor", notify_minor);
-		notify_interval_unit = json_get_int(config, "notify_interval_unit", notify_interval_unit);
-		notify_interval_value = json_get_int(config, "notify_interval_value", notify_interval_value);
-		connect_timeout_seconds = json_get_int(config, "connect_timeout_seconds", connect_timeout_seconds);
-		concurrent_downloads = json_get_int(config, "concurrent_downloads", concurrent_downloads);
-		hide_unstable = json_get_bool(config, "hide_unstable", hide_unstable);
-		previous_majors = json_get_int(config, "previous_majors", previous_majors);
-		window_width = json_get_int(config, "window_width", window_width);
-		window_height = json_get_int(config, "window_height", window_height);
-		window_x = json_get_int(config, "window_x", window_x);
-		window_y = json_get_int(config, "window_y", window_y);
-		term_width = json_get_int(config, "term_width", term_width);
-		term_height = json_get_int(config, "term_height", term_height);
-//		term_x = json_get_int(config, "term_x", term_x);
-//		term_y = json_get_int(config, "term_y", term_y);
-
-		// fixups
-		//if (ppa_uri.length==0) ppa_uri = DEFAULT_PPA_URI;
+		ppa_uri = config.get_string_member_with_default("ppa_uri",DEFAULT_PPA_URI);
+		if (ppa_uri.length==0) ppa_uri = DEFAULT_PPA_URI;
 		if (!ppa_uri.has_suffix("/")) ppa_uri += "/";
 		LinuxKernel.PPA_URI = ppa_uri;
+
+		all_proxy = config.get_string_member_with_default("all_proxy",DEFAULT_ALL_PROXY);
+		notify_major = config.get_boolean_member_with_default("notify_major",DEFAULT_NOTIFY_MAJOR);
+		notify_minor = config.get_boolean_member_with_default("notify_minor",DEFAULT_NOTIFY_MINOR);
+		notify_interval_unit = (int)config.get_int_member_with_default("notify_interval_unit",DEFAULT_NOTIFY_INTERVAL_UNIT);
+		notify_interval_value = (int)config.get_int_member_with_default("notify_interval_value",DEFAULT_NOTIFY_INTERVAL_VALUE);
+		connect_timeout_seconds = (int)config.get_int_member_with_default("connect_timeout_seconds",DEFAULT_CONNECT_TIMEOUT_SECONDS);
+		concurrent_downloads = (int)config.get_int_member_with_default("concurrent_downloads",DEFAULT_CONCURRENT_DOWNLOADS);
+		hide_unstable = config.get_boolean_member_with_default("hide_unstable",DEFAULT_HIDE_UNSTABLE);
+		previous_majors = (int)config.get_int_member_with_default("previous_majors",DEFAULT_PREVIOUS_MAJORS);
+
+		window_width = (int)config.get_int_member_with_default("window_width",DEFAULT_WINDOW_WIDTH);
+		window_height = (int)config.get_int_member_with_default("window_height",DEFAULT_WINDOW_HEIGHT);
+		window_x = (int)config.get_int_member_with_default("window_x",DEFAULT_WINDOW_X);
+		window_y = (int)config.get_int_member_with_default("window_y",DEFAULT_WINDOW_Y);
+		term_width = (int)config.get_int_member_with_default("term_width",DEFAULT_TERM_WIDTH);
+		term_height = (int)config.get_int_member_with_default("term_height",DEFAULT_TERM_HEIGHT);
+		//term_x = (int)config.get_int_member_with_default("term_x",DEFAULT_TERM_X);
+		//term_y = (int)config.get_int_member_with_default("term_y",DEFAULT_TERM_Y);
+
 
 		vprint("Loaded config file: "+APP_CONFIG_FILE,2);
 	}

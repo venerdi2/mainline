@@ -24,7 +24,6 @@ using Gee;
 using Json;
 
 using TeeJee.FileSystem;
-using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.misc;
@@ -36,7 +35,7 @@ public class AppConsole : GLib.Object {
 	public static int main (string[] args) {
 		set_locale();
 		App = new Main(args, false);
-		var console =  new AppConsole();
+		var console = new AppConsole();
 		bool is_success = console.parse_arguments(args);
 		return (is_success) ? 0 : 1;
 	}
@@ -90,12 +89,14 @@ public class AppConsole : GLib.Object {
 
 		string cmd = "";
 		string cmd_versions = "";
+		string a = "";
 
 		// parse options first --------------
 
 		for (int i = 1; i < args.length; i++)
 		{
-			switch (args[i].down()) {
+			a = args[i].down();
+			switch (a) {
 			case "--debug":
 				App.VERBOSE = 2;
 				break;
@@ -128,22 +129,30 @@ public class AppConsole : GLib.Object {
 			case "--uninstall-old":
 			case "--clean-cache":	// back compat
 			case "--delete-cache":
-				cmd = args[i].down();
+				cmd = a;
 				break;
 
 			case "--remove":	// back compat
+				cmd = "--uninstall";
+				if (++i < args.length) cmd_versions = args[i];
+				break;
+
 			case "--uninstall":
 			case "--download":
 			case "--install":
-				// FUGLY
-				cmd = args[i].down();
+				cmd = a;
 				if (++i < args.length) cmd_versions = args[i];
-				if (cmd == "--remove") cmd="--uninstall"; // re-write so we don't have to check all synonyms later blergh crap
 				break;
 
+			// which is better for no args ?
+			case "":	// no args -> --list
+				cmd = "--list";
+				break;
+
+			//case "":	// no args -> --help
 			case "--help":
-			case "--h":
 			case "-h":
+			case "-?":
 				vprint(help_message(),0);
 				return true;
 
@@ -159,19 +168,16 @@ public class AppConsole : GLib.Object {
 
 		switch (cmd) {
 		case "--list":
-
 			LinuxKernel.query(true);
 			LinuxKernel.print_list();
 			break;
 
 		case "--list-installed":
-
 			Package.update_dpkg_list();
 			LinuxKernel.check_installed();
 			break;
 
 		case "--check":
-
 			print_updates();
 			break;
 
@@ -183,18 +189,15 @@ public class AppConsole : GLib.Object {
 			break;
 
 		case "--install-latest":
-
 			LinuxKernel.kinst_latest(false, App.confirm);
 			break;
 
 		case "--install-point":
-
 			LinuxKernel.kinst_latest(true, App.confirm);
 			break;
 
 		case "--purge-old-kernels":	// back compat
 		case "--uninstall-old":
-
 			LinuxKernel.kunin_old(App.confirm);
 			break;
 
@@ -207,12 +210,14 @@ public class AppConsole : GLib.Object {
 		case "--install":
 		case "--uninstall":
 
+			// FIXME move this list-builder out of the switch
+
 			if (cmd_versions.length==0) {
 				vprint(_("No kernels specified"),1,stderr);
 				exit(1);
 			}
 
-			string[] requested_versions = cmd_versions.split(",");
+			string[] requested_versions = cmd_versions.split_set(",;:| ");
 			if ((requested_versions.length > 1) && (cmd == "--install")) {
 				vprint(_("Multiple kernels selected for installation. Select only one."),1,stderr);
 				exit(1);
@@ -266,7 +271,7 @@ public class AppConsole : GLib.Object {
 			break;
 
 		default:
-			// unknown option
+			// unknown command
 			vprint(_("Command not specified"),1,stderr);
 			vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all commands"),1,stderr);
 			break;
@@ -301,55 +306,42 @@ public class AppConsole : GLib.Object {
 	}
 
 	private void notify_user() {
+		vprint("notify_user()",4);
+
+		if (!App.notify_major && !App.notify_minor) {
+			vprint(_("Notifications disabled in settings"),4);
+			return;
+		}
 
 		LinuxKernel.query(true);
 
-		string seen_maj = "";
-		string seen_min = "";
-		if (file_exists(App.MAJ_SEEN_FILE)) seen_maj = file_read(App.MAJ_SEEN_FILE).strip();
-		if (file_exists(App.MIN_SEEN_FILE)) seen_min = file_read(App.MIN_SEEN_FILE).strip();
-		vprint("seen_maj:\""+seen_maj+"\"",2);
-		vprint("seen_min:\""+seen_min+"\"",2);
+		string title = _("No updates found");
+		string seen = "";
+		var k = new LinuxKernel("",true);
 
-		string debug_action = "";
-		string close_action = "";  // command to run when user closes notification instead of pressing any action button
-		string body = "";
-		var alist = new Gee.ArrayList<string> (); // notification action buttons:  "buttonlabel:command line to run"
-
-		if (App.notify_major || App.notify_minor) {
-			if (App.VERBOSE>1) {
-				debug_action = APP_LIB_DIR+"/notify-action-debug.sh";
-				body = debug_action;
-				debug_action += " ";
-			}
-			alist.add(_("Show")+":"+debug_action+BRANDING_SHORTNAME+"-gtk");
+		if (App.notify_major) {
+			if (file_exists(App.MAJ_SEEN_FILE)) seen = file_read(App.MAJ_SEEN_FILE).strip();
+			k = LinuxKernel.kernel_update_major;
+			if (k!=null && seen!=k.version_main) file_write(App.MAJ_SEEN_FILE,k.version_main);
+		} else if (App.notify_minor) {
+			if (file_exists(App.MIN_SEEN_FILE)) seen = file_read(App.MIN_SEEN_FILE).strip();
+			k = LinuxKernel.kernel_update_minor;
+			if (k!=null && seen!=k.version_main) file_write(App.MIN_SEEN_FILE,k.version_main);
 		}
 
-		var k = LinuxKernel.kernel_update_major;
-		if (App.notify_major && (k!=null) && (seen_maj!=k.version_main)) {
-			var title = _("Kernel %s Available").printf(k.version_main);
-			if (App.notify_major || App.notify_minor) {
-				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
-				file_write(App.MAJ_SEEN_FILE,k.version_main);
-				OSDNotify.notify_send(title,body,alist,close_action);
-			}
-			vprint(title);
-			return;
+		vprint(_("previously notified")+": \""+seen+"\"",3);
+
+		if (k!=null) {
+			title = _("Kernel %s Available").printf(k.version_main);
+			string close_action = ""; // command to run when user closes notification without pressing any action button
+			string body = ""; // notification message body
+			var alist = new Gee.ArrayList<string> (); // notification action buttons:  "buttonlabel:command line to run"
+			alist.add(_("Show")+":"+BRANDING_SHORTNAME+"-gtk");
+			alist.add(_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
+			OSDNotify.notify_send(title,body,alist,close_action);
 		}
 
-		k = LinuxKernel.kernel_update_minor;
-		if (App.notify_minor && (k!=null) && (seen_min!=k.version_main)) {
-			var title = _("Kernel %s Available").printf(k.version_main);
-			if (App.notify_major || App.notify_minor) {
-				alist.add(_("Install")+":"+debug_action+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
-				file_write(App.MIN_SEEN_FILE,k.version_main);
-				OSDNotify.notify_send(title,body,alist,close_action);
-			}
-			vprint(title);
-			return;
-		}
-
-		vprint(_("No updates found"));
+		vprint(title);
 	}
 
 }

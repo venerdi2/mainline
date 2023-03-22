@@ -25,7 +25,6 @@ using Gtk;
 using Gee;
 
 using TeeJee.FileSystem;
-using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
 using l.gtk;
 using TeeJee.Misc;
@@ -131,14 +130,14 @@ public class SettingsDialog : Gtk.Dialog {
 		TreeIter iter;
 		var model = new Gtk.ListStore (1, typeof (string));
 		model.append (out iter);
-		model.set (iter,0,_("Hour(s)"));
+		model.set (iter,0,_("Hours"));
 		model.append (out iter);
-		model.set (iter,0,_("Day(s)"));
+		model.set (iter,0,_("Days"));
 		model.append (out iter);
-		model.set (iter,0,_("Week(s)"));
+		model.set (iter,0,_("Weeks"));
 		if (App.VERBOSE>1) {
 			model.append (out iter);
-			model.set (iter,0,_("Second(s)"));
+			model.set (iter,0,_("Seconds"));
 		}
 		combo.set_model(model);
 		combo.set_active(App.notify_interval_unit);

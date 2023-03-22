@@ -1,8 +1,5 @@
 # Makefile for "mainline"
 
-# url to ubuntu mainline kernels
-DEFAULT_PPA_URI := https://kernel.ubuntu.com/~kernel-ppa/mainline/
-
 SHELL := /bin/bash
 CFLAGS := -O2
 VALACFLAGS := 
@@ -33,8 +30,7 @@ build_symbols := -X -D'INSTALL_PREFIX="$(prefix)"' \
 	-X -D'BRANDING_AUTHORNAME="$(BRANDING_AUTHORNAME)"' \
 	-X -D'BRANDING_AUTHOREMAIL="$(BRANDING_AUTHOREMAIL)"' \
 	-X -D'BRANDING_WEBSITE="$(BRANDING_WEBSITE)"' \
-	-X -D'GETTEXT_PACKAGE="$(BRANDING_SHORTNAME)"' \
-	-X -D'DEFAULT_PPA_URI="$(DEFAULT_PPA_URI)"'
+	-X -D'GETTEXT_PACKAGE="$(BRANDING_SHORTNAME)"'
 
 misc_files := README.md \
 	INSTALL \
@@ -81,7 +77,6 @@ $(misc_files): %: %.src BRANDING.mak
 		-e ';s/BRANDING_VERSION/$(BRANDING_VERSION)/g' \
 		-e ';s|BRANDING_GITREPO|$(BRANDING_GITREPO)|g' \
 		$(@).src >$(@)
-#		-e ';s|DEST_BIN_DIR|$(DESTDIR)$(bindir)|g'
 
 $(pot_file): $(common_vala_files) $(tui_vala_files) $(gui_vala_files)
 	xgettext \
@@ -130,7 +125,6 @@ install: all
 
 .PHONY: uninstall
 uninstall:
-#	$(BRANDING_SHORTNAME) --clean-cache
 	rm -f $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME) $(DESTDIR)$(bindir)/$(BRANDING_SHORTNAME)-gtk
 	rm -f $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME).*
 	rm -rf $(DESTDIR)$(sharedir)/pixmaps/$(BRANDING_SHORTNAME)
