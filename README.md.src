@@ -65,10 +65,11 @@ The app runs as the user and uses pkexec internally just for the dpkg command.
 
 **\[ Uninstall \]** - uninstalls the selected kernel(1)
 
-**\[ Changes \]** - displays the CHANGES file for the selected kernel
+**\[ Notes \]** - opens a notes.txt file in the cache directory for the selected kernel for user notes
 
 **\[ PPA \]** - launches your default https:// handler to the web page for the selected kernel  
-If no kernels are selected (when first launching the app before clicking on any) launches the main page listing all the kernels.
+If no kernels are selected (when first launching the app before clicking on any) launches the main page listing all the kernels.  
+Use this to see the build summary and CHANGES files.
 
 **\[ Uninstall Old \]** - uninstalls all installed kernels below the latest installed version(1)
 
@@ -116,14 +117,12 @@ For the single manual uninstall button, the button simply isn't activated. For t
   If you think the list is missing something, and the "Reload" button didn't make it appear, press the "PPA" button to jump to the mainline-ppa web site where the .deb packages come from, and look at the build results for the missing kernel, and you will usually find that it is a failed or incomplete build for your arch, and can not be installed.
 
 # TODO & WIP
-* Improve the how "invalid" is determined, perhaps use the "status" file as suggested in #71
 * Add some extra info into the version strings used for display and --install etc, to better handle multiple kernels of the same main version but from different sources, and other differences like builds and platform/feature options etc  
 * Replace system("aria2c ...") with libsoup or libcurl or similar  
 * Make the background process for notifications detect when the user logs out of the desktop session and exit itself  
 * Move the notification/dbus code from the current shell script into the app and make an "applet" mode  
 * Combine the gtk and cli apps into one, or, make the gtk app into a pure front-end for the cli app, either way  
 * Replace the commandline parser  
-* Allow attaching notes to each kernel  
 * Toggle display of invalid kernels so you could at least see they aren't simply missing, and use the "PPA" button too  
 * UI quick toggle for show/hide unstable/-rc kernels  
 * Right-click menu for more functions for a given kernel, such as reloading the cache just for a single kernel to check for new build status etc, without adding 18 buttons all over the ui.  
