@@ -1,3 +1,19 @@
+mainline (1.1.9) UNRELEASED; urgency=medium
+
+  * CHECKSUMS - new config option verify_checksums. When true, downloads the
+    CHECKSUMS file before downloading .deb files, extracts the sha256 hashes,
+    and uses them to verify the .deb file downloads.
+
+  * Improved config file and built-in defaults handling
+
+  * Improved notification script reliability.
+
+  * Removed CHANGES file and button. It's essentially redundant with the PPA button, and slows down the cache updates.
+
+  * Add Notes button. Creates/opens notes.txt in individual kernel's cache subdirectory
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 01 Apr 2023 15:22:51 -0400
+
 mainline (1.1.8) unstable; urgency=medium
 
   * make load_app_config() more resilient
