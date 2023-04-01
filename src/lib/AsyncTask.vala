@@ -83,6 +83,7 @@ public abstract class AsyncTask : GLib.Object {
 		is_terminated = false;
 		finish_called = false;
 
+		status_line = "";
 		prg_count = 0;
 		error_msg = "";
 
@@ -259,7 +260,6 @@ public abstract class AsyncTask : GLib.Object {
 			// there may be pending operations which may throw an error
 		}
 
-		status_line = "";
 		err_line = "";
 		out_line = "";
 

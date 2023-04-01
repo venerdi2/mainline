@@ -35,6 +35,7 @@ public class SettingsDialog : Gtk.Dialog {
 	private Gtk.CheckButton chk_notify_major;
 	private Gtk.CheckButton chk_notify_minor;
 	private Gtk.CheckButton chk_hide_unstable;
+	private Gtk.CheckButton chk_verify_checksums;
 
 	public SettingsDialog.with_parent(Window parent) {
 		set_transient_for(parent);
@@ -161,22 +162,22 @@ public class SettingsDialog : Gtk.Dialog {
 		// kernel version threshold
 		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
-		label = new Label(_("Show"));
 
+		label = new Label(_("Show"));
 		label.xalign = (float) 0.0;
 		label.margin_start = 6;
 		hbox.add (label);
 
-		var spm_adj = new Gtk.Adjustment(App.previous_majors, 0, 99, 1, 1, 0);
+		var spm_adj = new Gtk.Adjustment(App.previous_majors, -1, LinuxKernel.kernel_latest_available.version_maj , 1, 1, 0);
 		var spm_spin = new Gtk.SpinButton (spm_adj, 1, 0);
 		spm_spin.xalign = (float) 0.5;
 		hbox.add(spm_spin);
 		spm_spin.changed.connect(()=>{ App.previous_majors = (int) spm_spin.get_value(); });
 
-		label = new Label(_("previous major versions"));
+		label = new Label(_("previous major versions  ( -1 = all )"));
 		hbox.add(label);
 
-		// other
+		// network
 		label = new Label("<b>" + _("Network") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
@@ -184,7 +185,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_bottom = 6;
 		vbox_main.add (label);
 
-        // timeout value
+        // connect timeout
 		hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox);
 
@@ -220,17 +221,25 @@ public class SettingsDialog : Gtk.Dialog {
 
 		spin.changed.connect(()=>{ App.concurrent_downloads = (int) spin_concurrent.get_value(); });
 
+		// verify_checksums
+		chk = new CheckButton.with_label(_("Verify Checksums with the CHECKSUMS files"));
+		chk.active = App.verify_checksums;
+		chk.margin_start = 6;
+		vbox_main.add(chk);
+		chk_verify_checksums = chk;
+		chk.toggled.connect(()=>{ App.verify_checksums = chk_verify_checksums.active; });
+
 		// proxy
-		label = new Label("<b>" + _("Proxy") + "</b>");
-		label.set_use_markup(true);
+		label = new Label(_("Proxy"));
 		label.xalign = (float) 0.0;
-		label.margin_bottom = 6;
+		label.margin_start = 6;
 		vbox_main.add (label);
 
 		var proxy = new Entry ();
 		proxy.set_placeholder_text("[http://][USER:PASSWORD@]HOST[:PORT]");
 		proxy.set_text(App.all_proxy);
 		proxy.activate.connect(()=>{ App.all_proxy = proxy.get_text(); });
+		proxy.margin_start = 6;
 		vbox_main.add(proxy);
 
 // too easily screwed up and "blank to return to default" isn't working

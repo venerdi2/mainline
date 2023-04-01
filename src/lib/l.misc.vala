@@ -53,9 +53,13 @@ namespace l.misc {
 		+ " --max-tries=3"
 		+ " --dry-run"
 		+ " --quiet";
-		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string()
+
+		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string();
+
 		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
-		cmd += " \""+App.ppa_uri+"\"";
+
+		cmd += " '"+App.ppa_uri+"'";
+
 		vprint(cmd,3);
 
 		int status = exec_sync(cmd, out std_out, out std_err);

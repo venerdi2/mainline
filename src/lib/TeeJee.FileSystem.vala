@@ -62,16 +62,13 @@ namespace TeeJee.FileSystem {
 	public string? file_read (string file_path) {
 		vprint("file_read("+file_path+")",3);
 
-		string txt;
+		string txt = "";
 		size_t size;
 
-		try {
-			GLib.FileUtils.get_contents (file_path, out txt, out size);
-			return txt;
-		}
+		try { GLib.FileUtils.get_contents (file_path, out txt, out size); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 
-		return null;
+		return txt;
 	}
 
 	public bool file_write (string f, string contents) {
@@ -157,13 +154,11 @@ namespace TeeJee.FileSystem {
 
 	public bool dir_create (string d) {
 		vprint("dir_create("+d+")",3);
-
-		try{
+		try {
 			var dir = File.parse_name(d);
 			if (!dir.query_exists()) dir.make_directory_with_parents();
 			return true;
-		}
-		catch (Error e) {
+		} catch (Error e) {
 			vprint(e.message,1,stderr);
 			return false;
 		}

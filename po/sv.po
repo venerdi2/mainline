@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 20:12-0400\n"
+"POT-Creation-Date: 2023-04-01 12:41-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -13,136 +13,140 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Common/LinuxKernel.vala:86
+#: src/Common/LinuxKernel.vala:92
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/Common/LinuxKernel.vala:101
+#: src/Common/LinuxKernel.vala:107
 #, fuzzy
 msgid "Architecture"
 msgstr "Systemarkitektur"
 
-#: src/Common/LinuxKernel.vala:276
+#: src/Common/LinuxKernel.vala:280
 #, fuzzy
 msgid "Fetching individual kernel indexes"
 msgstr "Hämtar index för"
 
-#: src/Common/LinuxKernel.vala:325
+#: src/Common/LinuxKernel.vala:332
 msgid "Updating from"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:342 src/Common/LinuxKernel.vala:895
+#: src/Common/LinuxKernel.vala:349
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:345 src/Common/LinuxKernel.vala:898
+#: src/Common/LinuxKernel.vala:352
 msgid "FAILED"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:759
+#: src/Common/LinuxKernel.vala:793
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:764
+#: src/Common/LinuxKernel.vala:798
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:777 src/lib/TeeJee.FileSystem.vala:121
+#: src/Common/LinuxKernel.vala:819 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:841
+#: src/Common/LinuxKernel.vala:886
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:848 src/Gtk/MainWindow.vala:154
+#: src/Common/LinuxKernel.vala:893 src/Gtk/MainWindow.vala:154
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:848 src/Gtk/MainWindow.vala:154
-#: src/Gtk/MainWindow.vala:497 src/Gtk/MainWindow.vala:510
+#: src/Common/LinuxKernel.vala:893 src/Gtk/MainWindow.vala:154
+#: src/Gtk/MainWindow.vala:495 src/Gtk/MainWindow.vala:508
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:883
-msgid "Downloading"
-msgstr "Laddar ner"
+#: src/Common/LinuxKernel.vala:926
+msgid "CHECKSUMS enabled"
+msgstr ""
 
-#: src/Common/LinuxKernel.vala:911
+#: src/Common/LinuxKernel.vala:950
+msgid "Downloading"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:971
 #, fuzzy
 msgid "is already installed."
 msgstr "Denna kärna är redan installerad"
 
-#: src/Common/LinuxKernel.vala:941
+#: src/Common/LinuxKernel.vala:1005
 #, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Installera specificerad kärna"
 
-#: src/Common/LinuxKernel.vala:947
+#: src/Common/LinuxKernel.vala:1011
 msgid "requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:950
+#: src/Common/LinuxKernel.vala:1014
 #, fuzzy
 msgid "not uninstalling the currently running kernel"
 msgstr "Installera specificerad kärna"
 
-#: src/Common/LinuxKernel.vala:966
+#: src/Common/LinuxKernel.vala:1030
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:969
+#: src/Common/LinuxKernel.vala:1033
 #, fuzzy
 msgid "No packages to un-install!"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:1017
+#: src/Common/LinuxKernel.vala:1081
 #, fuzzy
 msgid "Could not find running kernel in list"
 msgstr "Kunde inte hitta efterfrågad version"
 
-#: src/Common/LinuxKernel.vala:1022
+#: src/Common/LinuxKernel.vala:1086
 #, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "Välj kärnor för borttagning"
 
-#: src/Common/LinuxKernel.vala:1030
+#: src/Common/LinuxKernel.vala:1094
 #, fuzzy
 msgid "The following kernels will be uninstalled"
 msgstr "Denna kärna är redan installerad"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1098
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1056 src/Console/AppConsole.vala:290
+#: src/Common/LinuxKernel.vala:1120 src/Console/AppConsole.vala:290
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1067 src/Console/AppConsole.vala:297
+#: src/Common/LinuxKernel.vala:1131 src/Console/AppConsole.vala:297
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1075 src/Console/AppConsole.vala:302
+#: src/Common/LinuxKernel.vala:1139 src/Console/AppConsole.vala:302
 #: src/Console/AppConsole.vala:318
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Common/LinuxKernel.vala:1084
+#: src/Common/LinuxKernel.vala:1148
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/Main.vala:300
+#: src/Common/Main.vala:351
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:301
+#: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:333
+#: src/Common/Main.vala:384
 #, fuzzy
 msgid "Notifications are disabled"
 msgstr "Avisering"
@@ -290,22 +294,22 @@ msgstr "Visa alla alternativ"
 msgid "Notifications disabled in settings"
 msgstr "Avisering"
 
-#: src/Console/AppConsole.vala:332
-msgid "previously notified"
-msgstr ""
-
-#: src/Console/AppConsole.vala:335
+#: src/Console/AppConsole.vala:337
 #, fuzzy, c-format
 msgid "Kernel %s Available"
 msgstr "Tillgängliga paket"
 
-#: src/Console/AppConsole.vala:339 src/Gtk/SettingsDialog.vala:164
+#: src/Console/AppConsole.vala:341 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:340 src/Gtk/MainWindow.vala:265
+#: src/Console/AppConsole.vala:342 src/Gtk/MainWindow.vala:264
 msgid "Install"
 msgstr "Installera"
+
+#: src/Console/AppConsole.vala:345
+msgid "Previously notified"
+msgstr ""
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -365,64 +369,68 @@ msgstr "Kärna"
 msgid "Status"
 msgstr "Status"
 
-#: src/Gtk/MainWindow.vala:275
+#: src/Gtk/MainWindow.vala:274
 #, fuzzy
 msgid "Uninstall"
 msgstr "Installera"
 
-#: src/Gtk/MainWindow.vala:285
-msgid "Changes"
-msgstr "Ändringar"
+#: src/Gtk/MainWindow.vala:284
+msgid "Notes"
+msgstr ""
 
-#: src/Gtk/MainWindow.vala:307
+#: src/Gtk/MainWindow.vala:289
+msgid "User notes for"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:305
 #, fuzzy
 msgid "Uninstall Old"
 msgstr "Avinstallation slutförd"
 
-#: src/Gtk/MainWindow.vala:308
+#: src/Gtk/MainWindow.vala:306
 #, fuzzy
 msgid "Uninstall kernels older than running kernel"
 msgstr "Ta bort installerade kärnor äldre än den som körs"
 
-#: src/Gtk/MainWindow.vala:313
+#: src/Gtk/MainWindow.vala:311
 msgid "Reload"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:318 src/Gtk/SettingsDialog.vala:48
+#: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Inställningar"
 
-#: src/Gtk/MainWindow.vala:323
+#: src/Gtk/MainWindow.vala:321
 msgid "About"
 msgstr "Om"
 
-#: src/Gtk/MainWindow.vala:328
+#: src/Gtk/MainWindow.vala:326
 msgid "Exit"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:396
+#: src/Gtk/MainWindow.vala:394
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kärnuppgraderingsverktyg för Ubuntu-baserade distributioner"
 
-#: src/Gtk/MainWindow.vala:397
+#: src/Gtk/MainWindow.vala:395
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:397
+#: src/Gtk/MainWindow.vala:395
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:435
+#: src/Gtk/MainWindow.vala:433
 msgid "Updating kernels"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:506
+#: src/Gtk/MainWindow.vala:504
 #, fuzzy
 msgid "available"
 msgstr "Tillgängliga paket"
 
-#: src/Gtk/MainWindow.vala:549 src/Gtk/MainWindow.vala:589
-#: src/Gtk/MainWindow.vala:623
+#: src/Gtk/MainWindow.vala:547 src/Gtk/MainWindow.vala:587
+#: src/Gtk/MainWindow.vala:621
 msgid "DONE"
 msgstr ""
 
@@ -430,74 +438,78 @@ msgstr ""
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/Gtk/SettingsDialog.vala:58
+#: src/Gtk/SettingsDialog.vala:59
 msgid "Notification"
 msgstr "Avisering"
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsDialog.vala:66
 msgid "Notify if a major release is available"
 msgstr "Meddela om en ny (stor) uppdatering finns tillgänglig"
 
-#: src/Gtk/SettingsDialog.vala:74
+#: src/Gtk/SettingsDialog.vala:75
 msgid "Notify if a point release is available"
 msgstr "Meddela om en ny (mindre) uppdatering finns tillgänglig"
 
-#: src/Gtk/SettingsDialog.vala:85
+#: src/Gtk/SettingsDialog.vala:86
 msgid "Seconds interval enabled for debugging"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:108
+#: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
 msgstr "Kontrollera varje"
 
-#: src/Gtk/SettingsDialog.vala:133
+#: src/Gtk/SettingsDialog.vala:134
 #, fuzzy
 msgid "Hours"
 msgstr "Timma(r)"
 
-#: src/Gtk/SettingsDialog.vala:135
+#: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsDialog.vala:138
 #, fuzzy
 msgid "Weeks"
 msgstr "Veckor"
 
-#: src/Gtk/SettingsDialog.vala:140
+#: src/Gtk/SettingsDialog.vala:141
 msgid "Seconds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:146
+#: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:155
 msgid "Hide unstable and RC releases"
 msgstr "Dölj instabila- och RC-publiceringar"
 
-#: src/Gtk/SettingsDialog.vala:176
-msgid "previous major versions"
+#: src/Gtk/SettingsDialog.vala:177
+msgid "previous major versions  ( -1 = all )"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:180
+#: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:192
 #, fuzzy
 msgid "Internet connection timeout in"
 msgstr "Internetuppkopplingen är inte aktiv"
 
-#: src/Gtk/SettingsDialog.vala:203
+#: src/Gtk/SettingsDialog.vala:204
 msgid "seconds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:210
+#: src/Gtk/SettingsDialog.vala:211
 msgid "Max concurrent downloads"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:224
+#: src/Gtk/SettingsDialog.vala:225
+msgid "Verify Checksums with the CHECKSUMS files"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
 msgstr ""
 
@@ -505,7 +517,7 @@ msgstr ""
 msgid "Missing Icon"
 msgstr "Saknad ikon"
 
-#: src/lib/l.misc.vala:67
+#: src/lib/l.misc.vala:71
 #, fuzzy
 msgid "Can not reach site"
 msgstr "Kunde inte läsa filen"

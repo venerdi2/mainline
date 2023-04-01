@@ -38,7 +38,7 @@ public class MainWindow : Gtk.Window {
 	private Gtk.TreeView tv;
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_uninstall;
-	private Gtk.Button btn_changes;
+	private Gtk.Button btn_notes;
 	private Gtk.Button btn_ppa;
 	private Gtk.Label lbl_info;
 
@@ -179,7 +179,6 @@ public class MainWindow : Gtk.Window {
 			model.get_iter(out iter, path);
 			model.get (iter, 0, out kern, -1);
 			selected_kernels.add(kern);
-			//log_msg("size=%d".printf(selected_kernels.size));
 		}
 
 		set_button_state();
@@ -206,7 +205,7 @@ public class MainWindow : Gtk.Window {
 		TreeIter iter;
 		bool odd_row = false;
 		foreach (var k in LinuxKernel.kernel_list) {
-			if (!k.is_valid) continue;
+			if (k.is_invalid) continue;
 			if (!k.is_installed) {
 				if (k.is_unstable && App.hide_unstable) continue;
 				if (k.version_maj < LinuxKernel.threshold_major) continue;
@@ -241,13 +240,13 @@ public class MainWindow : Gtk.Window {
 		if (selected_kernels.size == 0) {
 			btn_install.sensitive = false;
 			btn_uninstall.sensitive = false;
-			btn_changes.sensitive = false;
+			btn_notes.sensitive = false;
 			btn_ppa.sensitive = true;
 		} else {
 			// only allow selecting a single kernel for install/uninstall, examine the installed state
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
-			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
+			btn_notes.sensitive = (selected_kernels.size == 1);
 			btn_ppa.sensitive = (selected_kernels.size == 1) && selected_kernels[0].is_mainline;
 			// allow selecting multiple kernels for install/uninstall, but IF only a single selected, examine the installed state
 			// (the rest of the app does not have loops to process a list yet)
@@ -281,15 +280,14 @@ public class MainWindow : Gtk.Window {
 			do_uninstall(selected_kernels);
 		});
 
-		// changes
-		button = new Gtk.Button.with_label (_("Changes"));
+		// notes
+		button = new Gtk.Button.with_label (_("Notes"));
 		hbox.pack_start (button, true, true, 0);
-		btn_changes = button;
+		btn_notes = button;
 
 		button.clicked.connect(() => {
-			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)) {
-				uri_open("file://"+selected_kernels[0].changes_file);
-			}
+			if (!file_exists(selected_kernels[0].user_notes_file)) file_write(selected_kernels[0].user_notes_file,_("User notes for")+" "+selected_kernels[0].version_main+"\n\n");
+			uri_open("file://"+selected_kernels[0].user_notes_file);
 		});
 
 		// ppa

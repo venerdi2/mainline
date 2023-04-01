@@ -63,8 +63,7 @@ public class DownloadTask : AsyncTask {
 	}
 
 	public void prepare() {
-		string s = build_script();
-		save_bash_script_temp(s, script_file);
+		save_bash_script_temp(build_script(), script_file);
 	}
 
 	private string build_script() {
@@ -73,29 +72,43 @@ public class DownloadTask : AsyncTask {
 		vprint("working_dir: '"+working_dir+"'",2);
 		string list = "";
 		string list_file = working_dir+"/download.list";
+
 		foreach (var item in downloads) {
 			list += item.source_uri + "\n"
-			+ "  gid=" + item.gid + "\n"
-			+ "  dir=" + item.download_dir + "\n"
-			+ "  out=" + item.file_name + "\n";
+				+ " gid="+item.gid+"\n"
+				+ " dir="+item.download_dir+"\n"
+				+ " out="+item.file_name+"\n"
+				;
+			if (item.checksum.length>0) list += ""
+				+ " checksum="+item.checksum+"\n"
+				+ " check-integrity=true\n"
+				;
 		}
 		file_write(list_file, list);
+		vprint(list_file+":\n"+list,3);
 
 		string cmd = "aria2c"
-		+ " --no-netrc true"
-		+ " -i '"+list_file.replace("'","'\\''")+"'"
-		+ " --summary-interval=1"
-		+ " --auto-save-interval=1"
-		+ " --enable-color=false"
-		+ " --allow-overwrite"
-		+ " --connect-timeout=%d".printf(App.connect_timeout_seconds)
-		+ " --timeout=600"
-		+ " --max-concurrent-downloads=%d".printf(App.concurrent_downloads)
-		+ " --max-file-not-found=3"
-		+ " --retry-wait=2"
-		+ " --show-console-readout=false"
-		+ " --human-readable=false"
-		;
+			+ " --input-file='"+list_file+"'"
+			+ " --no-netrc=true"
+			+ " --no-conf=true"
+			+ " --summary-interval=1"
+			+ " --auto-save-interval=1"
+			+ " --enable-color=false"
+			+ " --allow-overwrite"
+			+ " --timeout=600"
+			+ " --max-file-not-found=3"
+			+ " --retry-wait=2"
+			+ " --show-console-readout=false"
+			+ " --human-readable=false"
+			//+ " --max-download-limit=256K"  // force slow download to debug progress display
+			;
+
+		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string();
+
+		if (App.concurrent_downloads>0) cmd += ""
+			+ " --max-concurrent-downloads="+App.concurrent_downloads.to_string()
+			+ " --max-connection-per-server="+App.concurrent_downloads.to_string()
+			;
 
 		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
 
@@ -149,6 +162,7 @@ public class DownloadTask : AsyncTask {
 				item.bytes_received = received;
 				if (item.bytes_total == 0) item.bytes_total = total;
 				item.status = "RUNNING";
+				status_line = item.file_name+" "+received.to_string()+"/"+total.to_string();
 			}
 
 		} else {
@@ -162,13 +176,13 @@ public class DownloadTask : AsyncTask {
 	}
 }
 
-public class DownloadItem : GLib.Object
-{
-	// File is saved as 'file_name' not the source file name.
+public class DownloadItem : GLib.Object {
+	// File is saved as 'file_name' in 'download_dir', not the source file name.
 
-	public string file_name = "";
-	public string download_dir = "";
-	public string source_uri = "";
+	public string source_uri = "";		// "https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.2.7/amd64/linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
+	public string download_dir = "";	// "/home/bkw/.cache/mainline/6.2.7/amd64"
+	public string file_name = "";		// "linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
+	public string checksum = "";		// "sha-256=4a90d708984d6a8fab68411710be09aa2614fe1be5b5e054a872b155d15faab6"
 
 	public string gid = ""; // ID
 	public int64 bytes_total = 0;
@@ -177,21 +191,17 @@ public class DownloadItem : GLib.Object
 
 	public DownloadTask task = null;
 
-	public string file_path {
-		owned get {
-			return download_dir+"/"+file_name;
-		}
-	}
-
 	public string gid_key {
 		owned get {
 			return gid.substring(0,6);
 		}
 	}
 
-	public DownloadItem(string _source_uri, string _download_dir, string _file_name) {
-		file_name = _file_name;
-		download_dir = _download_dir;
-		source_uri = _source_uri;
+	public DownloadItem(string uri = "", string destdir = "", string fname = "", string cksum = "") {
+		vprint("DownloadItem("+uri+","+destdir+","+fname+","+cksum+")",3);
+		source_uri = uri;
+		file_name = fname;
+		download_dir = destdir;
+		checksum = cksum;
 	}
 }

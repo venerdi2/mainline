@@ -320,16 +320,18 @@ public class AppConsole : GLib.Object {
 		var k = new LinuxKernel("",true);
 
 		if (App.notify_major) {
-			if (file_exists(App.MAJ_SEEN_FILE)) seen = file_read(App.MAJ_SEEN_FILE).strip();
+			if (file_exists(App.MAJOR_SEEN_FILE)) seen = file_read(App.MAJOR_SEEN_FILE).strip();
 			k = LinuxKernel.kernel_update_major;
-			if (k!=null && seen!=k.version_main) file_write(App.MAJ_SEEN_FILE,k.version_main);
-		} else if (App.notify_minor) {
-			if (file_exists(App.MIN_SEEN_FILE)) seen = file_read(App.MIN_SEEN_FILE).strip();
-			k = LinuxKernel.kernel_update_minor;
-			if (k!=null && seen!=k.version_main) file_write(App.MIN_SEEN_FILE,k.version_main);
+			if (k!=null && seen!=k.version_main) file_write(App.MAJOR_SEEN_FILE,k.version_main);
+			else k = null;
 		}
 
-		vprint(_("previously notified")+": \""+seen+"\"",3);
+		if (App.notify_minor && k==null) {
+			if (file_exists(App.MINOR_SEEN_FILE)) seen = file_read(App.MINOR_SEEN_FILE).strip();
+			k = LinuxKernel.kernel_update_minor;
+			if (k!=null && seen!=k.version_main) file_write(App.MINOR_SEEN_FILE,k.version_main);
+			else k = null;
+		}
 
 		if (k!=null) {
 			title = _("Kernel %s Available").printf(k.version_main);
@@ -339,6 +341,8 @@ public class AppConsole : GLib.Object {
 			alist.add(_("Show")+":"+BRANDING_SHORTNAME+"-gtk");
 			alist.add(_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
 			OSDNotify.notify_send(title,body,alist,close_action);
+		} else {
+			if (seen.length>0) title = _("Previously notified")+": \""+seen+"\"";
 		}
 
 		vprint(title);
