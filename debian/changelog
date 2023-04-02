@@ -1,4 +1,10 @@
-mainline (1.1.9) UNRELEASED; urgency=medium
+mainline (1.1.10) unstable; urgency=medium
+
+  * bugfix - when verify_checksums disabled, fixes github.com/bkw777/mainline/issues/215
+
+ -- Brian K. White <bkw@fw>  Sun, 02 Apr 2023 02:16:47 -0400
+
+mainline (1.1.9) unstable; urgency=medium
 
   * CHECKSUMS - new config option verify_checksums. When true, downloads the
     CHECKSUMS file before downloading .deb files, extracts the sha256 hashes,
