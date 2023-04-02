@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -24,29 +24,29 @@ msgstr "Architecture"
 #: src/Common/LinuxKernel.vala:129
 #, fuzzy
 msgid "Running kernel"
-msgstr "Actuel"
+msgstr "Exécution du noyau"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "chargement mis en cache"
 
 #: src/Common/LinuxKernel.vala:264
 #, fuzzy
 msgid "queuing download"
-msgstr "Nombre maximum de téléchargements parallèles"
+msgstr "téléchargement de la file d'attente"
 
 #: src/Common/LinuxKernel.vala:287
 #, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "Récupération de l'index..."
+msgstr "Récupération d'index de noyau individuels"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "chargement téléchargé"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
-msgstr ""
+msgstr "Mise à jour à partir de"
 
 #: src/Common/LinuxKernel.vala:347
 msgid "OK"
@@ -54,27 +54,12 @@ msgstr "OK"
 
 #: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "disponible"
+msgstr "RATÉ"
 
 #: src/Common/LinuxKernel.vala:396
 #, fuzzy
 msgid "Found installed"
-msgstr "Installé"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Paquets Installés"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
-msgstr "Installé"
+msgstr "Trouvé installé"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -102,12 +87,12 @@ msgid "Running"
 msgstr "Actuel"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "activé"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Téléchargement"
 
 #: src/Common/LinuxKernel.vala:969
 #, fuzzy
@@ -117,25 +102,25 @@ msgstr "Ce noyau est déjà installé."
 #: src/Common/LinuxKernel.vala:1003
 #, fuzzy
 msgid "Uninstalling selected kernels"
-msgstr "Installer les noyaux spécifiés"
+msgstr "Désinstallation des noyaux sélectionnés"
 
 #: src/Common/LinuxKernel.vala:1009
 msgid "requested"
-msgstr ""
+msgstr "Demandé"
 
 #: src/Common/LinuxKernel.vala:1012
 #, fuzzy
 msgid "not uninstalling the currently running kernel"
-msgstr "Installer les noyaux spécifiés"
+msgstr "Ne pas désinstaller le noyau en cours d'exécution"
 
 #: src/Common/LinuxKernel.vala:1028
 msgid "found"
-msgstr ""
+msgstr "fonder"
 
 #: src/Common/LinuxKernel.vala:1031
 #, fuzzy
 msgid "No packages to un-install!"
-msgstr "Paquets Installés"
+msgstr "Pas de paquets à désinstaller !"
 
 #: src/Common/LinuxKernel.vala:1079
 #, fuzzy
@@ -150,7 +135,7 @@ msgstr "Impossible de trouver de noyaux à supprimer"
 #: src/Common/LinuxKernel.vala:1092
 #, fuzzy
 msgid "The following kernels will be uninstalled"
-msgstr "Les noyaux suivants seront supprimés:"
+msgstr "Les noyaux suivants seront désinstallés"
 
 #: src/Common/LinuxKernel.vala:1096
 msgid "Continue ?"
@@ -176,12 +161,14 @@ msgstr "Installer le noyau en version %s ? (y/n): "
 
 #: src/Common/Main.vala:351
 msgid "Called from"
-msgstr ""
+msgstr "Appelé à partir de"
 
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
+"Ce fichier est écrasé et exécuté à nouveau chaque fois que les paramètres "
+"sont enregistrés dans"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -231,7 +218,7 @@ msgstr "Installer le noyau mainline spécifié"
 #: src/Console/AppConsole.vala:58
 #, fuzzy
 msgid "Uninstall specified kernel"
-msgstr "Installer les noyaux spécifiés"
+msgstr "Désinstaller le noyau spécifié"
 
 #: src/Console/AppConsole.vala:59
 #, fuzzy
@@ -244,7 +231,7 @@ msgstr "Télécharger les noyaux spécifiés"
 
 #: src/Console/AppConsole.vala:61
 msgid "Delete cached info about available kernels"
-msgstr ""
+msgstr "Supprimer les informations mises en cache sur les noyaux disponibles"
 
 #: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
 msgid "Options"
@@ -253,12 +240,12 @@ msgstr "Options"
 #: src/Console/AppConsole.vala:65
 #, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "Cacher les versions instables et RC"
+msgstr "Inclure les versions instables et RC"
 
 #: src/Console/AppConsole.vala:66
 #, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "Cacher les versions instables et RC"
+msgstr "Exclure les versions instables et RC"
 
 #: src/Console/AppConsole.vala:67
 msgid "Enable verbose debugging output"
@@ -266,7 +253,7 @@ msgstr "Active la sortie verbeuse de débogage"
 
 #: src/Console/AppConsole.vala:68
 msgid "Assume Yes for all prompts (non-interactive mode)"
-msgstr ""
+msgstr "Supposons Oui pour toutes les invites (mode non interactif)"
 
 #: src/Console/AppConsole.vala:71
 msgid "A version string taken from the output of --list"
@@ -274,12 +261,12 @@ msgstr "Une version prise du resultat de --list"
 
 #: src/Console/AppConsole.vala:72
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "Une ou plusieurs, séparées par des virgules"
 
 #: src/Console/AppConsole.vala:73
 #, fuzzy
 msgid "The currently running kernel will always be ignored"
-msgstr "Les noyaux suivants seront supprimés:"
+msgstr "Le noyau en cours d'exécution sera toujours ignoré"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
 msgid "Unknown option"
@@ -310,7 +297,7 @@ msgstr "Impossible de trouver la version demandée"
 
 #: src/Console/AppConsole.vala:248
 msgid "and use a version string listed in first column"
-msgstr ""
+msgstr "et utilisez une chaîne de version répertoriée dans la première colonne"
 
 #: src/Console/AppConsole.vala:275
 msgid "Command not specified"
@@ -340,7 +327,7 @@ msgstr "Installer"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Précédemment notifié"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -402,7 +389,7 @@ msgstr "Statut"
 #: src/Gtk/MainWindow.vala:274
 #, fuzzy
 msgid "Uninstall"
-msgstr "Installer"
+msgstr "Désinstaller"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
@@ -410,7 +397,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Notes d'utilisation pour"
 
 #: src/Gtk/MainWindow.vala:305
 #, fuzzy
@@ -419,12 +406,12 @@ msgstr "Désinstallation complète"
 
 #: src/Gtk/MainWindow.vala:306
 #, fuzzy
-msgid "Uninstall kernels older than running kernel"
-msgstr "Désinstalle les noyaux plus anciens que le noyau courant"
+msgid "Uninstall kernels older than latest installed"
+msgstr "Désinstaller les noyaux plus anciens que les derniers installés"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
-msgstr ""
+msgstr "Recharger"
 
 #: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
@@ -436,7 +423,7 @@ msgstr "À propos"
 
 #: src/Gtk/MainWindow.vala:326
 msgid "Exit"
-msgstr ""
+msgstr "Sortie"
 
 #: src/Gtk/MainWindow.vala:394
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
@@ -446,15 +433,15 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:395
 msgid "Forked"
-msgstr "Version forkée :"
+msgstr "Forkée"
 
 #: src/Gtk/MainWindow.vala:395
 msgid "Original"
-msgstr "Version originale :"
+msgstr "Originale"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Updating kernels"
-msgstr ""
+msgstr "Mise à jour des noyaux"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "available"
@@ -463,7 +450,7 @@ msgstr "disponible"
 #: src/Gtk/MainWindow.vala:547 src/Gtk/MainWindow.vala:587
 #: src/Gtk/MainWindow.vala:621
 msgid "DONE"
-msgstr ""
+msgstr "FAIT"
 
 #: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
@@ -483,7 +470,7 @@ msgstr "Notifier si une version stable mineure est disponible"
 
 #: src/Gtk/SettingsDialog.vala:86
 msgid "Seconds interval enabled for debugging"
-msgstr ""
+msgstr "Intervalle de secondes activé pour le débogage"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
@@ -492,25 +479,25 @@ msgstr "Vérifier toutes les"
 #: src/Gtk/SettingsDialog.vala:134
 #, fuzzy
 msgid "Hours"
-msgstr "Heure(s)"
+msgstr "Heures"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "Jours"
 
 #: src/Gtk/SettingsDialog.vala:138
 #, fuzzy
 msgid "Weeks"
-msgstr "Semaine(s)"
+msgstr "Semaines"
 
 #: src/Gtk/SettingsDialog.vala:141
 #, fuzzy
 msgid "Seconds"
-msgstr "Seconde(s)"
+msgstr "Secondes"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
-msgstr ""
+msgstr "Filtres"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Hide unstable and RC releases"
@@ -519,11 +506,11 @@ msgstr "Cacher les versions instables et RC"
 #: src/Gtk/SettingsDialog.vala:177
 #, fuzzy
 msgid "previous major versions  ( -1 = all )"
-msgstr "Montrer les N dernières versions majeures"
+msgstr "Versions majeures précédentes ( -1 = toutes )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
-msgstr ""
+msgstr "Réseau"
 
 #: src/Gtk/SettingsDialog.vala:192
 #, fuzzy
@@ -540,7 +527,7 @@ msgstr "Nombre maximum de téléchargements parallèles"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Vérifier les sommes de contrôle avec les fichiers CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"

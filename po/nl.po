@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -22,31 +22,28 @@ msgid "Architecture"
 msgstr "Architectuur"
 
 #: src/Common/LinuxKernel.vala:129
-#, fuzzy
 msgid "Running kernel"
-msgstr "Bezig met bijwerken van kernels…"
+msgstr "Kernel uitvoeren"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "laden in cache"
 
 #: src/Common/LinuxKernel.vala:264
-#, fuzzy
 msgid "queuing download"
-msgstr "Max. aantal gelijktijdige downloads"
+msgstr "wachtrijen downloaden"
 
 #: src/Common/LinuxKernel.vala:287
-#, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "Bezig met ophalen van kernelindexen…"
+msgstr "Afzonderlijke kernelindexen ophalen"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "laden gedownload"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
-msgstr "Bezig met bijwerken van"
+msgstr "Bijwerken van"
 
 #: src/Common/LinuxKernel.vala:347
 msgid "OK"
@@ -54,27 +51,11 @@ msgstr "Oké"
 
 #: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "beschikbaar"
+msgstr "MISLUKT"
 
 #: src/Common/LinuxKernel.vala:396
-#, fuzzy
 msgid "Found installed"
-msgstr "Geïnstalleerd"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Geïnstalleerde pakketten"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
-msgstr "Geïnstalleerd"
+msgstr "Geïnstalleerd gevonden"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -102,12 +83,12 @@ msgid "Running"
 msgstr "In gebruik"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "ingeschakeld"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Downloaden"
 
 #: src/Common/LinuxKernel.vala:969
 #, fuzzy
@@ -117,40 +98,35 @@ msgstr "Deze kernel is al geïnstalleerd."
 #: src/Common/LinuxKernel.vala:1003
 #, fuzzy
 msgid "Uninstalling selected kernels"
-msgstr "Bezig met deïnstalleren van geselecteerde kernels…"
+msgstr "Geselecteerde kernels verwijderen"
 
 #: src/Common/LinuxKernel.vala:1009
 msgid "requested"
 msgstr "verzocht"
 
 #: src/Common/LinuxKernel.vala:1012
-#, fuzzy
 msgid "not uninstalling the currently running kernel"
-msgstr "Opgegeven kernels deïnstalleren"
+msgstr "de momenteel actieve kernel niet verwijderen"
 
 #: src/Common/LinuxKernel.vala:1028
 msgid "found"
 msgstr "gevonden"
 
 #: src/Common/LinuxKernel.vala:1031
-#, fuzzy
 msgid "No packages to un-install!"
-msgstr "Er zijn geen te deïnstalleren pakketten!"
+msgstr "Geen pakketten om te verwijderen!"
 
 #: src/Common/LinuxKernel.vala:1079
-#, fuzzy
 msgid "Could not find running kernel in list"
 msgstr "De in gebruik zijnde kernel staat niet op de lijst"
 
 #: src/Common/LinuxKernel.vala:1084
-#, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "Er zijn geen te verwijderen kernels"
 
 #: src/Common/LinuxKernel.vala:1092
-#, fuzzy
 msgid "The following kernels will be uninstalled"
-msgstr "De volgende kernels worden verwijderd:"
+msgstr "De volgende kernels worden verwijderd"
 
 #: src/Common/LinuxKernel.vala:1096
 msgid "Continue ?"
@@ -181,7 +157,7 @@ msgstr "Aangeroepen door"
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
-msgstr ""
+msgstr "Dit bestand wordt overschreven en opnieuw uitgevoerd wanneer instellingen worden opgeslagen in"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -229,14 +205,12 @@ msgid "Install specified mainline kernel"
 msgstr "Opgegeven mainline-kernel installeren"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid "Uninstall specified kernel"
-msgstr "Gekozen kernel deïnstalleren"
+msgstr "Opgegeven kernel verwijderen"
 
 #: src/Console/AppConsole.vala:59
-#, fuzzy
 msgid "Uninstall kernels older than the latest installed"
-msgstr "Geïnstalleerde kernels verwijderen die ouder zijn dan de huidige"
+msgstr "Kernels verwijderen die ouder zijn dan de laatst geïnstalleerde"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -244,21 +218,19 @@ msgstr "Opgegeven kernels downloaden"
 
 #: src/Console/AppConsole.vala:61
 msgid "Delete cached info about available kernels"
-msgstr "Kernelcache wissen"
+msgstr "Informatie over beschikbare kernels in de cache verwijderen"
 
 #: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
 msgid "Options"
 msgstr "Opties"
 
 #: src/Console/AppConsole.vala:65
-#, fuzzy
 msgid "Include unstable and RC releases"
-msgstr "Instabiele en rc-uitgaven tonen"
+msgstr "Inclusief onstabiele en RC-releases"
 
 #: src/Console/AppConsole.vala:66
-#, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "Instabiele en rc-uitgaven verbergen"
+msgstr "Onstabiele en RC-releases uitsluiten"
 
 #: src/Console/AppConsole.vala:67
 msgid "Enable verbose debugging output"
@@ -274,12 +246,11 @@ msgstr "Een versietekenreeks uit de uitvoer van --list"
 
 #: src/Console/AppConsole.vala:72
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "Een of meer, komma-gescheiden"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "The currently running kernel will always be ignored"
-msgstr "De volgende kernels worden verwijderd:"
+msgstr "De momenteel actieve kernel wordt altijd genegeerd"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
 msgid "Unknown option"
@@ -378,9 +349,8 @@ msgid "Third Party Inclusions"
 msgstr "Externe code"
 
 #: src/Gtk/AppGtk.vala:135
-#, fuzzy
 msgid "options"
-msgstr "Opties"
+msgstr "opties"
 
 #: src/Gtk/AppGtk.vala:139
 msgid "Print debug information"
@@ -399,27 +369,24 @@ msgid "Status"
 msgstr "Status"
 
 #: src/Gtk/MainWindow.vala:274
-#, fuzzy
 msgid "Uninstall"
 msgstr "Deïnstalleren"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
-msgstr ""
+msgstr "Notities"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Gebruikersnotities voor"
 
 #: src/Gtk/MainWindow.vala:305
-#, fuzzy
 msgid "Uninstall Old"
-msgstr "Verouderde deïnstalleren"
+msgstr "Verwijder Oude"
 
 #: src/Gtk/MainWindow.vala:306
-#, fuzzy
-msgid "Uninstall kernels older than running kernel"
-msgstr "Kernels verwijderen die ouder zijn dan de huidige"
+msgid "Uninstall kernels older than latest installed"
+msgstr "Kernels verwijderen die ouder zijn dan de laatst geïnstalleerde"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
@@ -451,7 +418,7 @@ msgstr "Origineel"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Updating kernels"
-msgstr "Bezig met bijwerken van kernels…"
+msgstr "Kernels bijwerken"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "available"
@@ -479,32 +446,28 @@ msgid "Notify if a point release is available"
 msgstr "Melding tonen als er een puntupdate beschikbaar is"
 
 #: src/Gtk/SettingsDialog.vala:86
-#, fuzzy
 msgid "Seconds interval enabled for debugging"
-msgstr "(staat tussenpozen in seconden toe voor --debug)"
+msgstr "Secondeninterval ingeschakeld voor foutopsporing"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
 msgstr "Controleren, elke"
 
 #: src/Gtk/SettingsDialog.vala:134
-#, fuzzy
 msgid "Hours"
 msgstr "uur"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "dagen"
 
 #: src/Gtk/SettingsDialog.vala:138
-#, fuzzy
 msgid "Weeks"
-msgstr "week/weken"
+msgstr "weken"
 
 #: src/Gtk/SettingsDialog.vala:141
-#, fuzzy
 msgid "Seconds"
-msgstr "seconde(n)"
+msgstr "seconden"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
@@ -515,9 +478,8 @@ msgid "Hide unstable and RC releases"
 msgstr "Instabiele en rc-uitgaven verbergen"
 
 #: src/Gtk/SettingsDialog.vala:177
-#, fuzzy
 msgid "previous major versions  ( -1 = all )"
-msgstr "vorige grote updates"
+msgstr "vorige hoofdversies ( -1 = alle )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
@@ -537,7 +499,7 @@ msgstr "Max. aantal gelijktijdige downloads"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Controleer controlesommen met de CHECKSUMS-bestanden"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"

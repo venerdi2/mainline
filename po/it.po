@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
@@ -26,12 +26,12 @@ msgstr "Aggiornamento dei kernel"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "Caricamento memorizzato nella cache"
 
 #: src/Common/LinuxKernel.vala:264
 #, fuzzy
 msgid "queuing download"
-msgstr "Numero massimo di download simultanei"
+msgstr "code scaricare"
 
 #: src/Common/LinuxKernel.vala:287
 #, fuzzy
@@ -40,7 +40,7 @@ msgstr "Recupero dei singoli indici del kernel"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "caricamento scaricati"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
@@ -54,25 +54,10 @@ msgstr "OK"
 msgid "FAILED"
 msgstr "FALLITO"
 
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "disponibile"
-
 #: src/Common/LinuxKernel.vala:396
 #, fuzzy
 msgid "Found installed"
-msgstr "Installato"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Pacchetti installati"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
-msgstr "Installato"
+msgstr "Trovato installato"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -100,12 +85,12 @@ msgid "Running"
 msgstr "In esecuzione"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "abilitato"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Scaricare"
 
 #: src/Common/LinuxKernel.vala:969
 #, fuzzy
@@ -337,7 +322,7 @@ msgstr "Installa"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Notificato in precedenza"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -365,7 +350,7 @@ msgstr "Artisti"
 
 #: src/Gtk/AboutWindow.vala:228
 msgid "Translators"
-msgstr "Albano Battistella, Demetrio Mendozzi"
+msgstr "Traduttori"
 
 #: src/Gtk/AboutWindow.vala:236
 msgid "Documenters"
@@ -402,19 +387,20 @@ msgstr "Disinstalla"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
-msgstr ""
+msgstr "Note"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Note utente per"
 
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
 msgstr "Disinstalla i vecchi"
 
 #: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than running kernel"
-msgstr "Rimuove i kernel installati più vecchi del kernel in esecuzione"
+#, fuzzy
+msgid "Uninstall kernels older than latest installed"
+msgstr "Rimuovere i kernel installati più vecchi del kernel in esecuzione"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
@@ -485,16 +471,16 @@ msgstr "Controlla ogni"
 #: src/Gtk/SettingsDialog.vala:134
 #, fuzzy
 msgid "Hours"
-msgstr "Ora(e)"
+msgstr "Orario"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "Giorni"
 
 #: src/Gtk/SettingsDialog.vala:138
 #, fuzzy
 msgid "Weeks"
-msgstr "Settimana(e)"
+msgstr "Settimane"
 
 #: src/Gtk/SettingsDialog.vala:141
 #, fuzzy
@@ -533,7 +519,7 @@ msgstr "Numero massimo di download simultanei"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Verifica dei checksum con i file CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"

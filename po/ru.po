@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2023-03-12 18:24+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
@@ -29,20 +29,19 @@ msgstr "Обновление ядер"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "загрузка в кэше"
 
 #: src/Common/LinuxKernel.vala:264
-#, fuzzy
 msgid "queuing download"
-msgstr "Максимальное количество одновременных загрузок"
+msgstr "загрузка очередей"
 
 #: src/Common/LinuxKernel.vala:287
 msgid "Fetching individual kernel indexes"
-msgstr "Получение индивидуальных индексов ядра"
+msgstr "Получение отдельных индексов ядра"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "загрузка загруженных"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
@@ -54,27 +53,12 @@ msgstr "OK"
 
 #: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "доступно"
+msgstr "НЕУДАВШИЙСЯ"
 
 #: src/Common/LinuxKernel.vala:396
 #, fuzzy
 msgid "Found installed"
-msgstr "Установлено"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Установленные пакеты"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
-msgstr "Установлено"
+msgstr "Найдено установленным"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -102,17 +86,16 @@ msgid "Running"
 msgstr "Используется"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "включено"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Загрузки"
 
 #: src/Common/LinuxKernel.vala:969
-#, fuzzy
 msgid "is already installed."
-msgstr "Это ядро уже установлено."
+msgstr "уже установлен."
 
 #: src/Common/LinuxKernel.vala:1003
 msgid "Uninstalling selected kernels"
@@ -123,9 +106,8 @@ msgid "requested"
 msgstr "запрошено"
 
 #: src/Common/LinuxKernel.vala:1012
-#, fuzzy
 msgid "not uninstalling the currently running kernel"
-msgstr "пропуск текущего загруженного ядра"
+msgstr "не удаляет текущее работающее ядро"
 
 #: src/Common/LinuxKernel.vala:1028
 msgid "found"
@@ -144,9 +126,8 @@ msgid "Could not find any kernels to uninstall"
 msgstr "Не удалось найти ядра для деинсталляции"
 
 #: src/Common/LinuxKernel.vala:1092
-#, fuzzy
 msgid "The following kernels will be uninstalled"
-msgstr "Следующие ядра будут деинсталлированы:"
+msgstr "Следующие ядра будут удалены"
 
 #: src/Common/LinuxKernel.vala:1096
 msgid "Continue ?"
@@ -177,7 +158,7 @@ msgstr "Вызван из"
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
-msgstr ""
+msgstr "Этот файл перезаписывается и выполняется снова при сохранении настроек в"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -229,9 +210,8 @@ msgid "Uninstall specified kernel"
 msgstr "Установить указанное ядро"
 
 #: src/Console/AppConsole.vala:59
-#, fuzzy
 msgid "Uninstall kernels older than the latest installed"
-msgstr "Удалить более старшие установленные ядра, чем используемое ядро"
+msgstr "Удаление ядер старше последней установленной версии"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -267,12 +247,11 @@ msgstr "Строка версии, взятая из вывода --list"
 
 #: src/Console/AppConsole.vala:72
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "Один или несколько, разделенных запятыми"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "The currently running kernel will always be ignored"
-msgstr "Следующие ядра будут деинсталлированы:"
+msgstr "Текущее работающее ядро всегда будет игнорироваться"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
 msgid "Unknown option"
@@ -312,9 +291,8 @@ msgid "to list all commands"
 msgstr "чтобы перечислить все команды"
 
 #: src/Console/AppConsole.vala:312
-#, fuzzy
 msgid "Notifications disabled in settings"
-msgstr "Уведомления отключены"
+msgstr "Уведомления отключены в настройках"
 
 #: src/Console/AppConsole.vala:337
 #, c-format
@@ -331,7 +309,7 @@ msgstr "Установить"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Предварительно уведомлено"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -395,19 +373,19 @@ msgstr "Удалить"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
-msgstr ""
+msgstr "Примечания"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Примечания пользователя для"
 
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
 msgstr "Удалить старые"
 
 #: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than running kernel"
-msgstr "Удалить более старшие установленные ядра, чем используемое"
+msgid "Uninstall kernels older than latest installed"
+msgstr "Удаление ядер старше последних установленных"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
@@ -467,32 +445,28 @@ msgid "Notify if a point release is available"
 msgstr "Уведомлять, если доступно небольшое обновление"
 
 #: src/Gtk/SettingsDialog.vala:86
-#, fuzzy
 msgid "Seconds interval enabled for debugging"
-msgstr "(Разрешение интервалов в секундах для --debug)"
+msgstr "Интервал секунд включен для отладки"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
 msgstr "Проверять каждые"
 
 #: src/Gtk/SettingsDialog.vala:134
-#, fuzzy
 msgid "Hours"
-msgstr "Час(ов)"
+msgstr "часов"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "дней"
 
 #: src/Gtk/SettingsDialog.vala:138
-#, fuzzy
 msgid "Weeks"
-msgstr "Неделю(ли)"
+msgstr "недель"
 
 #: src/Gtk/SettingsDialog.vala:141
-#, fuzzy
 msgid "Seconds"
-msgstr "Секунду(ды)"
+msgstr "секунд"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
@@ -503,9 +477,8 @@ msgid "Hide unstable and RC releases"
 msgstr "Скрыть нестабильные и релиз-кандидат версии"
 
 #: src/Gtk/SettingsDialog.vala:177
-#, fuzzy
 msgid "previous major versions  ( -1 = all )"
-msgstr "предыдущие основные версии"
+msgstr "предыдущие основные версии ( -1 = все )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
@@ -525,11 +498,11 @@ msgstr "Максимальное количество одновременных
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Проверка контрольных сумм с помощью файлов CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
-msgstr ""
+msgstr "Доверенность"
 
 #: src/Gtk/l.gtk.vala:42
 msgid "Missing Icon"

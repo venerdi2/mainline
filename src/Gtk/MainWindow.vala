@@ -303,7 +303,7 @@ public class MainWindow : Gtk.Window {
 
 		// uninstall-old
 		button = new Gtk.Button.with_label (_("Uninstall Old"));
-		button.set_tooltip_text(_("Uninstall kernels older than running kernel"));
+		button.set_tooltip_text(_("Uninstall kernels older than latest installed"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(do_purge);
 

@@ -378,7 +378,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			kernel_list.sort((a,b) => { return a.compare_to(b) * -1; });
 
 			kernel_latest_available = kernel_list[0];
-			vprint(_("latest_available")+": "+kernel_latest_available.version_main,2);
+			vprint("latest_available: "+kernel_latest_available.version_main,2);
 		}
 		catch (Error e) {
 			vprint(e.message,1,stderr);
@@ -496,8 +496,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 //		log_debug("latest_available: "+kernel_latest_available.version_main);
-		vprint(_("latest_installed")+": "+kernel_latest_installed.version_main,2);
-		vprint(_("oldest_installed")+": "+kernel_oldest_installed.version_main,2);
+		vprint("latest_installed: "+kernel_latest_installed.version_main,2);
+		vprint("oldest_installed: "+kernel_oldest_installed.version_main,2);
 	}
 
 	// scan kernel_list for versions newer than latest installed
@@ -921,7 +921,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_checksum_list.clear();
 		foreach (string f in deb_url_list.keys) deb_checksum_list[f] = "";
 		if (App.verify_checksums) {
-			vprint(_("CHECKSUMS enabled"),2);
+			vprint("CHECKSUMS "+_("enabled"),2);
 
 			if (!file_exists(cached_checksums_file)) {
 				mgr.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));

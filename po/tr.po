@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -22,31 +22,28 @@ msgid "Architecture"
 msgstr "Sistem mimarisi"
 
 #: src/Common/LinuxKernel.vala:129
-#, fuzzy
 msgid "Running kernel"
-msgstr "Çalışıyor"
+msgstr "Çalışan çekirdek"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "önbelleğe alınmış yükleme"
 
 #: src/Common/LinuxKernel.vala:264
-#, fuzzy
 msgid "queuing download"
-msgstr "Azami eşzamanlı indirme"
+msgstr "kuyruğa alma indirme"
 
 #: src/Common/LinuxKernel.vala:287
-#, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "İçerik dizini alınıyor..."
+msgstr "Tek tek çekirdek dizinlerini alma"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "indirilen yükleniyor"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
-msgstr ""
+msgstr "Şuradan güncelleniyor"
 
 #: src/Common/LinuxKernel.vala:347
 msgid "OK"
@@ -54,27 +51,11 @@ msgstr "Tamam"
 
 #: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "mevcut"
+msgstr "BAŞARISIZ"
 
 #: src/Common/LinuxKernel.vala:396
-#, fuzzy
 msgid "Found installed"
-msgstr "Kurulu"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Kurulu Paketler"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
-msgstr "Kurulu"
+msgstr "Yüklü bulundu"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -102,54 +83,48 @@ msgid "Running"
 msgstr "Çalışıyor"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "etkin"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Indiriyor"
 
 #: src/Common/LinuxKernel.vala:969
-#, fuzzy
 msgid "is already installed."
-msgstr "Bu çekirdek zaten kurulu."
+msgstr "zaten yüklü."
 
 #: src/Common/LinuxKernel.vala:1003
-#, fuzzy
 msgid "Uninstalling selected kernels"
-msgstr "Belirtilen çekirdeğini kaldır"
+msgstr "Seçili çekirdekleri kaldırma"
 
 #: src/Common/LinuxKernel.vala:1009
 msgid "requested"
-msgstr ""
+msgstr "istenen"
 
 #: src/Common/LinuxKernel.vala:1012
-#, fuzzy
 msgid "not uninstalling the currently running kernel"
-msgstr "Belirtilen çekirdeğini kaldır"
+msgstr "çalışmakta olan çekirdeğin kaldırılmaması"
 
 #: src/Common/LinuxKernel.vala:1028
 msgid "found"
-msgstr ""
+msgstr "kurmak"
 
 #: src/Common/LinuxKernel.vala:1031
-#, fuzzy
 msgid "No packages to un-install!"
-msgstr "Kurulu Paketler"
+msgstr "Kaldırılacak paket yok!"
 
 #: src/Common/LinuxKernel.vala:1079
-#, fuzzy
 msgid "Could not find running kernel in list"
-msgstr "Çalışan sürüm listede bulunamadı!"
+msgstr "Listede çalışan çekirdek bulunamadı"
 
 #: src/Common/LinuxKernel.vala:1084
 msgid "Could not find any kernels to uninstall"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
 #: src/Common/LinuxKernel.vala:1092
-#, fuzzy
 msgid "The following kernels will be uninstalled"
-msgstr "Aşağıdaki çekirdekler kaldırılacak:"
+msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 
 #: src/Common/LinuxKernel.vala:1096
 msgid "Continue ?"
@@ -181,16 +156,16 @@ msgstr "Çağrı konumu"
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
-msgstr ""
+msgstr "Bu dosyanın üzerine yazılır ve ayarlar her kaydedildiğinde yeniden yürütülür"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
 msgstr "Bildirimler devre dışı bırakılmış"
 
 #: src/Common/Package.vala:58
-#, fuzzy, c-format
+#, c-format
 msgid "File not found: %s"
-msgstr "Dosya bulunamadı"
+msgstr "Dosya bulunamadı: %s"
 
 #: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:135
 msgid "Syntax"
@@ -233,9 +208,8 @@ msgid "Uninstall specified kernel"
 msgstr "Belirtilen çekirdeğini kaldır"
 
 #: src/Console/AppConsole.vala:59
-#, fuzzy
 msgid "Uninstall kernels older than the latest installed"
-msgstr "Çalışan çekirdekten daha eski çekirdekleri kaldır"
+msgstr "En son yüklenenden daha eski çekirdekleri kaldırma"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -243,7 +217,7 @@ msgstr "Belirtilen çekirdekleri indir"
 
 #: src/Console/AppConsole.vala:61
 msgid "Delete cached info about available kernels"
-msgstr ""
+msgstr "Kullanılabilir çekirdekler hakkında önbelleğe alınmış bilgileri silme"
 
 #: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
 msgid "Options"
@@ -254,9 +228,8 @@ msgid "Include unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri dahil et"
 
 #: src/Console/AppConsole.vala:66
-#, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "Kararsız ve RC sürümleri dahil et"
+msgstr "Kararsız ve RC sürümlerini hariç tutma"
 
 #: src/Console/AppConsole.vala:67
 msgid "Enable verbose debugging output"
@@ -272,12 +245,11 @@ msgstr "--list çıktısından alınan sürüm dizgesi"
 
 #: src/Console/AppConsole.vala:72
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "Bir veya daha fazla, virgülle ayrılmış"
 
 #: src/Console/AppConsole.vala:73
-#, fuzzy
 msgid "The currently running kernel will always be ignored"
-msgstr "Aşağıdaki çekirdekler kaldırılacak:"
+msgstr "Şu anda çalışan çekirdek her zaman yoksayılır"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
 msgid "Unknown option"
@@ -317,9 +289,8 @@ msgid "to list all commands"
 msgstr "tüm komutları listele"
 
 #: src/Console/AppConsole.vala:312
-#, fuzzy
 msgid "Notifications disabled in settings"
-msgstr "Bildirimler devre dışı bırakılmış"
+msgstr "Ayarlarda devre dışı bırakılan bildirimler"
 
 #: src/Console/AppConsole.vala:337
 #, c-format
@@ -336,7 +307,7 @@ msgstr "Kur"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Daha önce bildirilmiş"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -375,9 +346,8 @@ msgid "Third Party Inclusions"
 msgstr "Üçüncü Taraf Eklemeler"
 
 #: src/Gtk/AppGtk.vala:135
-#, fuzzy
 msgid "options"
-msgstr "Seçenekler"
+msgstr "seçenekler"
 
 #: src/Gtk/AppGtk.vala:139
 msgid "Print debug information"
@@ -401,23 +371,23 @@ msgstr "Kaldır"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
-msgstr ""
+msgstr "Notlar"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Kullanıcı notları"
 
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
 msgstr "Eskileri Kaldır"
 
 #: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than running kernel"
-msgstr "Çalışan çekirdekten daha eski çekirdekleri kaldır"
+msgid "Uninstall kernels older than latest installed"
+msgstr "En son yüklenenden daha eski çekirdekleri kaldırma"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
-msgstr ""
+msgstr "Arjantin"
 
 #: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
@@ -429,7 +399,7 @@ msgstr "Hakkında"
 
 #: src/Gtk/MainWindow.vala:326
 msgid "Exit"
-msgstr ""
+msgstr "Çıkış"
 
 #: src/Gtk/MainWindow.vala:394
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
@@ -445,7 +415,7 @@ msgstr "Özgün"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Updating kernels"
-msgstr ""
+msgstr "Çekirdekleri güncelleme"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "available"
@@ -454,7 +424,7 @@ msgstr "mevcut"
 #: src/Gtk/MainWindow.vala:547 src/Gtk/MainWindow.vala:587
 #: src/Gtk/MainWindow.vala:621
 msgid "DONE"
-msgstr ""
+msgstr "YAPILMIŞ"
 
 #: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
@@ -473,52 +443,46 @@ msgid "Notify if a point release is available"
 msgstr "Nokta sürüm mevcutsa bildir"
 
 #: src/Gtk/SettingsDialog.vala:86
-#, fuzzy
 msgid "Seconds interval enabled for debugging"
-msgstr "(--debug için saniye cinsinden aralıklara izin verir)"
+msgstr "Hata ayıklama için etkinleştirilen saniye aralığı"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
 msgstr "Kontrol aralığı"
 
 #: src/Gtk/SettingsDialog.vala:134
-#, fuzzy
 msgid "Hours"
-msgstr "Saat"
+msgstr "saat"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "gün"
 
 #: src/Gtk/SettingsDialog.vala:138
-#, fuzzy
 msgid "Weeks"
-msgstr "Hafta"
+msgstr "hafta"
 
 #: src/Gtk/SettingsDialog.vala:141
-#, fuzzy
 msgid "Seconds"
-msgstr "Saniye"
+msgstr "saniye"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
-msgstr ""
+msgstr "Filtre"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Hide unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri gizle"
 
 #: src/Gtk/SettingsDialog.vala:177
-#, fuzzy
 msgid "previous major versions  ( -1 = all )"
-msgstr "Önceki ana sürümleri gösterme sayısı "
+msgstr "önceki ana sürümler ( -1 = tümü )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
-msgstr ""
+msgstr "Ağ"
 
 #: src/Gtk/SettingsDialog.vala:192
-#, fuzzy
 msgid "Internet connection timeout in"
 msgstr "İnternet bağlantısı zaman aşımı "
 
@@ -532,7 +496,7 @@ msgstr "Azami eşzamanlı indirme"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Sağlama toplamlarını CHECKSUMS dosyalarıyla doğrulama"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"

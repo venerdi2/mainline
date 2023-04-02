@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2023-03-11 12:47+0100\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -27,20 +27,19 @@ msgstr "Aktualizowanie jąder"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "ładuje buforowanego"
 
 #: src/Common/LinuxKernel.vala:264
-#, fuzzy
 msgid "queuing download"
-msgstr "Maksymalna liczba jednoczesnych pobrań"
+msgstr "kolejkowanie do pobrania"
 
 #: src/Common/LinuxKernel.vala:287
 msgid "Fetching individual kernel indexes"
-msgstr "Pobieranie indywidualnych indeksów jąder"
+msgstr "Pobieranie poszczególnych indeksów jądra"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "ładowanie pobranych"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
@@ -54,24 +53,9 @@ msgstr "OK"
 msgid "FAILED"
 msgstr "NIEPOWODZENIE"
 
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "dostępne"
-
 #: src/Common/LinuxKernel.vala:396
 #, fuzzy
 msgid "Found installed"
-msgstr "Zainstalowane"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Pakiety zainstalowane"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
 msgstr "Zainstalowane"
 
 #: src/Common/LinuxKernel.vala:790
@@ -100,12 +84,12 @@ msgid "Running"
 msgstr "Uruchomione"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "włączone"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Pobieranie"
 
 #: src/Common/LinuxKernel.vala:969
 msgid "is already installed."
@@ -172,7 +156,7 @@ msgstr "Wywołano z"
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
-msgstr ""
+msgstr "Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy ustawienia są zapisywane w"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -305,9 +289,8 @@ msgid "to list all commands"
 msgstr "do wyświetlenia wszystkich poleceń"
 
 #: src/Console/AppConsole.vala:312
-#, fuzzy
 msgid "Notifications disabled in settings"
-msgstr "Powiadomienia są wyłączone"
+msgstr "Powiadomienia wyłączone w ustawieniach"
 
 #: src/Console/AppConsole.vala:337
 #, c-format
@@ -324,7 +307,7 @@ msgstr "Zainstaluj"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Wcześniej zgłoszone"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -388,23 +371,23 @@ msgstr "Odinstaluj"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
-msgstr ""
+msgstr "Notatki"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Uwagi użytkownika dotyczące"
 
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
 msgstr "Odinstaluj stare"
 
 #: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than running kernel"
-msgstr "Odinstaluj jądra starsze niż uruchomione jądro"
+msgid "Uninstall kernels older than latest installed"
+msgstr "Odinstaluj jądra starsze niż ostatnio zainstalowane"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
-msgstr "Wczytaj ponownie"
+msgstr "Przeładować"
 
 #: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
@@ -461,20 +444,19 @@ msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 
 #: src/Gtk/SettingsDialog.vala:86
 msgid "Seconds interval enabled for debugging"
-msgstr "Interwał w sekundach włączony do debugowania"
+msgstr "Interwał sekund włączony do debugowania"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
 msgstr "Sprawdzaj co"
 
 #: src/Gtk/SettingsDialog.vala:134
-#, fuzzy
 msgid "Hours"
-msgstr "godziny"
+msgstr "godzin"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "dni"
 
 #: src/Gtk/SettingsDialog.vala:138
 #, fuzzy
@@ -482,9 +464,8 @@ msgid "Weeks"
 msgstr "tygodnie"
 
 #: src/Gtk/SettingsDialog.vala:141
-#, fuzzy
 msgid "Seconds"
-msgstr "sekundy"
+msgstr "sekund"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
@@ -495,9 +476,8 @@ msgid "Hide unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
 
 #: src/Gtk/SettingsDialog.vala:177
-#, fuzzy
 msgid "previous major versions  ( -1 = all )"
-msgstr "poprzednie główne wersje"
+msgstr "Poprzednie wersje główne ( -1 = wszystkie )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
@@ -509,7 +489,7 @@ msgstr "Limit czasu połączenia internetowego po"
 
 #: src/Gtk/SettingsDialog.vala:204
 msgid "seconds"
-msgstr "sekundach"
+msgstr "sekund"
 
 #: src/Gtk/SettingsDialog.vala:211
 msgid "Max concurrent downloads"
@@ -517,7 +497,7 @@ msgstr "Maksymalna liczba jednoczesnych pobrań"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Weryfikowanie sum kontrolnych za pomocą plików CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"

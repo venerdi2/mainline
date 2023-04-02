@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -28,25 +28,25 @@ msgstr "구동 중"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "캐시된 로드 중"
 
 #: src/Common/LinuxKernel.vala:264
 #, fuzzy
 msgid "queuing download"
-msgstr "동시 다운로드 최대 수"
+msgstr "대기열 다운로드"
 
 #: src/Common/LinuxKernel.vala:287
 #, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "목록 가져오기..."
+msgstr "개별 커널 인덱스 페치"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "다운로드 로드 중"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
-msgstr ""
+msgstr "다음에서 업데이트"
 
 #: src/Common/LinuxKernel.vala:347
 msgid "OK"
@@ -54,27 +54,12 @@ msgstr "확인"
 
 #: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "사용가능"
+msgstr "실패"
 
 #: src/Common/LinuxKernel.vala:396
 #, fuzzy
 msgid "Found installed"
-msgstr "설치 됨"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "설치된 패키지"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
-msgstr "설치 됨"
+msgstr "설치된 것을 찾았습니다."
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -102,12 +87,12 @@ msgid "Running"
 msgstr "구동 중"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "사용"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "다운로드"
 
 #: src/Common/LinuxKernel.vala:969
 #, fuzzy
@@ -121,16 +106,16 @@ msgstr "지정한 커널 삭제"
 
 #: src/Common/LinuxKernel.vala:1009
 msgid "requested"
-msgstr ""
+msgstr "요청"
 
 #: src/Common/LinuxKernel.vala:1012
 #, fuzzy
 msgid "not uninstalling the currently running kernel"
-msgstr "지정한 커널 삭제"
+msgstr "현재 실행 중인 커널을 제거하지 않음"
 
 #: src/Common/LinuxKernel.vala:1028
 msgid "found"
-msgstr ""
+msgstr "설립하다"
 
 #: src/Common/LinuxKernel.vala:1031
 #, fuzzy
@@ -180,7 +165,7 @@ msgstr "에서 호출"
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
-msgstr ""
+msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행됩니다."
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -242,7 +227,7 @@ msgstr "지정한 커널 다운로드"
 
 #: src/Console/AppConsole.vala:61
 msgid "Delete cached info about available kernels"
-msgstr ""
+msgstr "사용 가능한 커널에 대한 캐시된 정보 삭제"
 
 #: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
 msgid "Options"
@@ -250,12 +235,11 @@ msgstr "옵션"
 
 #: src/Console/AppConsole.vala:65
 msgid "Include unstable and RC releases"
-msgstr "목록에서 unstable, RC 버전 포함"
+msgstr "unstable 및 RC 릴리스 포함"
 
 #: src/Console/AppConsole.vala:66
-#, fuzzy
 msgid "Exclude unstable and RC releases"
-msgstr "목록에서 unstable, RC 버전 포함"
+msgstr "unstable 및 RC 릴리스 제외"
 
 #: src/Console/AppConsole.vala:67
 msgid "Enable verbose debugging output"
@@ -271,12 +255,12 @@ msgstr "--list 의 출력에서 가져온 버전 문자열"
 
 #: src/Console/AppConsole.vala:72
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "하나 이상, 쉼표로 구분"
 
 #: src/Console/AppConsole.vala:73
 #, fuzzy
 msgid "The currently running kernel will always be ignored"
-msgstr "아래 커널이 삭제됩니다:"
+msgstr "현재 실행중인 커널은 항상 무시됩니다."
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
 msgid "Unknown option"
@@ -316,9 +300,8 @@ msgid "to list all commands"
 msgstr "모든 명령어 나열"
 
 #: src/Console/AppConsole.vala:312
-#, fuzzy
 msgid "Notifications disabled in settings"
-msgstr "알림이 비활성화 되었습니다"
+msgstr "설정에서 비활성화된 알림"
 
 #: src/Console/AppConsole.vala:337
 #, c-format
@@ -335,7 +318,7 @@ msgstr "설치"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "이전에 통보됨"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -374,7 +357,6 @@ msgid "Third Party Inclusions"
 msgstr "서드파티 포함"
 
 #: src/Gtk/AppGtk.vala:135
-#, fuzzy
 msgid "options"
 msgstr "옵션"
 
@@ -400,23 +382,24 @@ msgstr "삭제"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"
-msgstr ""
+msgstr "노트"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "사용자 참고 사항"
 
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
 msgstr "오래된 커널 제거"
 
 #: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than running kernel"
-msgstr "현재 사용 중인 커널보다 이전 버전의 커널을 제거"
+#, fuzzy
+msgid "Uninstall kernels older than latest installed"
+msgstr "현재 사용중인 커널보다 이전 버전의 설치된 커널을 제거"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
-msgstr ""
+msgstr "새로고침"
 
 #: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
@@ -428,7 +411,7 @@ msgstr "정보"
 
 #: src/Gtk/MainWindow.vala:326
 msgid "Exit"
-msgstr ""
+msgstr "출구"
 
 #: src/Gtk/MainWindow.vala:394
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
@@ -436,15 +419,15 @@ msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
 
 #: src/Gtk/MainWindow.vala:395
 msgid "Forked"
-msgstr ""
+msgstr "가랑이진"
 
 #: src/Gtk/MainWindow.vala:395
 msgid "Original"
-msgstr ""
+msgstr "원문 언어"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Updating kernels"
-msgstr ""
+msgstr "커널 업데이트"
 
 #: src/Gtk/MainWindow.vala:504
 msgid "available"
@@ -453,7 +436,7 @@ msgstr "사용가능"
 #: src/Gtk/MainWindow.vala:547 src/Gtk/MainWindow.vala:587
 #: src/Gtk/MainWindow.vala:621
 msgid "DONE"
-msgstr ""
+msgstr "수행"
 
 #: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
@@ -472,9 +455,8 @@ msgid "Notify if a point release is available"
 msgstr "포인트 릴리즈가 있으면 알림"
 
 #: src/Gtk/SettingsDialog.vala:86
-#, fuzzy
 msgid "Seconds interval enabled for debugging"
-msgstr "(--debug 를 위한 몇초간 지연 허용)"
+msgstr "디버깅에 사용할 수 있는 초 간격"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
@@ -487,7 +469,7 @@ msgstr "시간"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "일"
 
 #: src/Gtk/SettingsDialog.vala:138
 #, fuzzy
@@ -501,7 +483,7 @@ msgstr "초"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
-msgstr ""
+msgstr "필터"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Hide unstable and RC releases"
@@ -510,11 +492,11 @@ msgstr "목록에서 unstable, RC 버전 포함"
 #: src/Gtk/SettingsDialog.vala:177
 #, fuzzy
 msgid "previous major versions  ( -1 = all )"
-msgstr "보여 질 이전 메이저 버전 수 "
+msgstr "이전 주 버전 ( -1 = 모두 )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
-msgstr ""
+msgstr "네트워크"
 
 #: src/Gtk/SettingsDialog.vala:192
 #, fuzzy
@@ -531,11 +513,11 @@ msgstr "동시 다운로드 최대 수"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "CHECKSUMS 파일로 체크섬 확인"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
-msgstr ""
+msgstr "대리"
 
 #: src/Gtk/l.gtk.vala:42
 msgid "Missing Icon"

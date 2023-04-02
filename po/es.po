@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 01:20-0400\n"
+"POT-Creation-Date: 2023-04-02 04:23-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -28,24 +28,24 @@ msgstr "En ejecución"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr ""
+msgstr "carga en caché"
 
 #: src/Common/LinuxKernel.vala:264
 msgid "queuing download"
-msgstr ""
+msgstr "descarga de colas"
 
 #: src/Common/LinuxKernel.vala:287
 #, fuzzy
 msgid "Fetching individual kernel indexes"
-msgstr "Recuperando índice..."
+msgstr "Obtención de índices de kernel individuales"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
-msgstr ""
+msgstr "cargando descargado"
 
 #: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
-msgstr ""
+msgstr "Actualización desde"
 
 #: src/Common/LinuxKernel.vala:347
 msgid "OK"
@@ -53,26 +53,11 @@ msgstr "Aceptar"
 
 #: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:381
-#, fuzzy
-msgid "latest_available"
-msgstr "Paquetes disponibles"
+msgstr "FRACASADO"
 
 #: src/Common/LinuxKernel.vala:396
 #, fuzzy
 msgid "Found installed"
-msgstr "Instalado"
-
-#: src/Common/LinuxKernel.vala:499
-#, fuzzy
-msgid "latest_installed"
-msgstr "Paquetes instalados"
-
-#: src/Common/LinuxKernel.vala:500
-#, fuzzy
-msgid "oldest_installed"
 msgstr "Instalado"
 
 #: src/Common/LinuxKernel.vala:790
@@ -101,12 +86,12 @@ msgid "Running"
 msgstr "En ejecución"
 
 #: src/Common/LinuxKernel.vala:924
-msgid "CHECKSUMS enabled"
-msgstr ""
+msgid "enabled"
+msgstr "habilitado"
 
 #: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
-msgstr ""
+msgstr "Descargar"
 
 #: src/Common/LinuxKernel.vala:969
 #, fuzzy
@@ -120,7 +105,7 @@ msgstr "Instalar núcleo troncal especificado"
 
 #: src/Common/LinuxKernel.vala:1009
 msgid "requested"
-msgstr ""
+msgstr "solicitado"
 
 #: src/Common/LinuxKernel.vala:1012
 #, fuzzy
@@ -129,7 +114,7 @@ msgstr "Instalar núcleo troncal especificado"
 
 #: src/Common/LinuxKernel.vala:1028
 msgid "found"
-msgstr ""
+msgstr "fundar"
 
 #: src/Common/LinuxKernel.vala:1031
 #, fuzzy
@@ -157,11 +142,11 @@ msgstr "¿Continuar?"
 
 #: src/Common/LinuxKernel.vala:1118 src/Console/AppConsole.vala:290
 msgid "Latest update"
-msgstr ""
+msgstr "Última actualización"
 
 #: src/Common/LinuxKernel.vala:1129 src/Console/AppConsole.vala:297
 msgid "Latest point update"
-msgstr ""
+msgstr "Última actualización puntual"
 
 #: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:302
 #: src/Console/AppConsole.vala:318
@@ -171,21 +156,23 @@ msgstr "No se encontró ninguna actualización"
 #: src/Common/LinuxKernel.vala:1146
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
-msgstr ""
+msgstr "Instalar la versión del kernel %s? (s/n): "
 
 #: src/Common/Main.vala:351
 msgid "Called from"
-msgstr ""
+msgstr "Llamado desde"
 
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
+"Este archivo se sobrescribe y se ejecuta de nuevo cada vez que se guarda la "
+"configuración en"
 
 #: src/Common/Main.vala:384
 #, fuzzy
 msgid "Notifications are disabled"
-msgstr "Notificación"
+msgstr "Las notificaciones están deshabilitadas"
 
 #: src/Common/Package.vala:58
 #, fuzzy, c-format
@@ -222,7 +209,7 @@ msgstr "Instalar kernel troncal especificado"
 
 #: src/Console/AppConsole.vala:56
 msgid "Install latest point update for current series"
-msgstr ""
+msgstr "Instalar la actualización de punto más reciente para la serie actual"
 
 #: src/Console/AppConsole.vala:57
 msgid "Install specified mainline kernel"
@@ -235,7 +222,7 @@ msgstr "Instalar núcleo troncal especificado"
 
 #: src/Console/AppConsole.vala:59
 msgid "Uninstall kernels older than the latest installed"
-msgstr ""
+msgstr "Desinstalar kernels anteriores a los últimos instalados"
 
 #: src/Console/AppConsole.vala:60
 #, fuzzy
@@ -244,7 +231,7 @@ msgstr "Descargar paquetes del núcleo especificado"
 
 #: src/Console/AppConsole.vala:61
 msgid "Delete cached info about available kernels"
-msgstr ""
+msgstr "Eliminar información almacenada en caché sobre los kernels disponibles"
 
 #: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
 msgid "Options"
@@ -262,7 +249,7 @@ msgstr "Ocultar versiones inestables y RC"
 
 #: src/Console/AppConsole.vala:67
 msgid "Enable verbose debugging output"
-msgstr ""
+msgstr "Habilitar la salida de depuración detallada"
 
 #: src/Console/AppConsole.vala:68
 msgid "Assume Yes for all prompts (non-interactive mode)"
@@ -270,11 +257,11 @@ msgstr "Asumir Sí para todas las solicitudes (modo no interactivo)"
 
 #: src/Console/AppConsole.vala:71
 msgid "A version string taken from the output of --list"
-msgstr ""
+msgstr "Una cadena de versión tomada de la salida de --list"
 
 #: src/Console/AppConsole.vala:72
 msgid "One or more, comma-seperated"
-msgstr ""
+msgstr "Uno o más, separados por comas"
 
 #: src/Console/AppConsole.vala:73
 #, fuzzy
@@ -298,7 +285,7 @@ msgstr "Mostrar todas las opciones"
 
 #: src/Console/AppConsole.vala:216 src/Console/AppConsole.vala:256
 msgid "No kernels specified"
-msgstr ""
+msgstr "No se especifican núcleos"
 
 #: src/Console/AppConsole.vala:222
 msgid "Multiple kernels selected for installation. Select only one."
@@ -310,7 +297,7 @@ msgstr "No se pudo encontrar la versión solicitada"
 
 #: src/Console/AppConsole.vala:248
 msgid "and use a version string listed in first column"
-msgstr ""
+msgstr "y utilice una cadena de versión enumerada en la primera columna"
 
 #: src/Console/AppConsole.vala:275
 msgid "Command not specified"
@@ -333,7 +320,7 @@ msgstr "Paquetes disponibles"
 
 #: src/Console/AppConsole.vala:341 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
-msgstr ""
+msgstr "Mostrar"
 
 #: src/Console/AppConsole.vala:342 src/Gtk/MainWindow.vala:264
 msgid "Install"
@@ -341,7 +328,7 @@ msgstr "Instalar"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Notificado previamente"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -412,7 +399,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr ""
+msgstr "Notas de usuario para"
 
 #: src/Gtk/MainWindow.vala:305
 #, fuzzy
@@ -420,12 +407,12 @@ msgid "Uninstall Old"
 msgstr "Desinstalación finalizada"
 
 #: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than running kernel"
-msgstr ""
+msgid "Uninstall kernels older than latest installed"
+msgstr "Desinstalar kernels anteriores a los últimos instalados"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
-msgstr ""
+msgstr "Recargar"
 
 #: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
@@ -437,7 +424,7 @@ msgstr "Acerca de"
 
 #: src/Gtk/MainWindow.vala:326
 msgid "Exit"
-msgstr ""
+msgstr "Salida"
 
 #: src/Gtk/MainWindow.vala:394
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
@@ -446,7 +433,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:395
 msgid "Forked"
-msgstr ""
+msgstr "Bifurcada"
 
 #: src/Gtk/MainWindow.vala:395
 msgid "Original"
@@ -454,7 +441,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Updating kernels"
-msgstr ""
+msgstr "Actualización de kernels"
 
 #: src/Gtk/MainWindow.vala:504
 #, fuzzy
@@ -464,7 +451,7 @@ msgstr "Paquetes disponibles"
 #: src/Gtk/MainWindow.vala:547 src/Gtk/MainWindow.vala:587
 #: src/Gtk/MainWindow.vala:621
 msgid "DONE"
-msgstr ""
+msgstr "HECHO"
 
 #: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
@@ -484,7 +471,7 @@ msgstr "Notificar si hay una versión puntual disponible"
 
 #: src/Gtk/SettingsDialog.vala:86
 msgid "Seconds interval enabled for debugging"
-msgstr ""
+msgstr "Intervalo de segundos habilitado para la depuración"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
@@ -497,7 +484,7 @@ msgstr "Horas"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr ""
+msgstr "Días"
 
 #: src/Gtk/SettingsDialog.vala:138
 #, fuzzy
@@ -506,11 +493,11 @@ msgstr "Semanas"
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "Seconds"
-msgstr ""
+msgstr "Sobras"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: src/Gtk/SettingsDialog.vala:155
 msgid "Hide unstable and RC releases"
@@ -518,11 +505,11 @@ msgstr "Ocultar versiones inestables y RC"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "previous major versions  ( -1 = all )"
-msgstr ""
+msgstr "Versiones principales anteriores ( -1 = todas )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
-msgstr ""
+msgstr "Red"
 
 #: src/Gtk/SettingsDialog.vala:192
 #, fuzzy
@@ -531,15 +518,15 @@ msgstr "La conexión a Internet está inactiva"
 
 #: src/Gtk/SettingsDialog.vala:204
 msgid "seconds"
-msgstr ""
+msgstr "sobras"
 
 #: src/Gtk/SettingsDialog.vala:211
 msgid "Max concurrent downloads"
-msgstr ""
+msgstr "Descargas máximas de la competencia"
 
 #: src/Gtk/SettingsDialog.vala:225
 msgid "Verify Checksums with the CHECKSUMS files"
-msgstr ""
+msgstr "Verificar sumas de comprobación con los archivos CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
