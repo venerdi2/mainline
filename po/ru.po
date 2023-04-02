@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-02 04:23-0400\n"
-"PO-Revision-Date: 2023-03-12 18:24+0300\n"
+"PO-Revision-Date: 2023-04-02 17:50+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -23,9 +23,8 @@ msgid "Architecture"
 msgstr "Архитектура"
 
 #: src/Common/LinuxKernel.vala:129
-#, fuzzy
 msgid "Running kernel"
-msgstr "Обновление ядер"
+msgstr "Запущенное ядро"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
@@ -56,9 +55,8 @@ msgid "FAILED"
 msgstr "НЕУДАВШИЙСЯ"
 
 #: src/Common/LinuxKernel.vala:396
-#, fuzzy
 msgid "Found installed"
-msgstr "Найдено установленным"
+msgstr "Найдено установлененное"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -454,19 +452,19 @@ msgstr "Проверять каждые"
 
 #: src/Gtk/SettingsDialog.vala:134
 msgid "Hours"
-msgstr "часов"
+msgstr "Часов"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
-msgstr "дней"
+msgstr "Дней"
 
 #: src/Gtk/SettingsDialog.vala:138
 msgid "Weeks"
-msgstr "недель"
+msgstr "Недель"
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "Seconds"
-msgstr "секунд"
+msgstr "Секунд"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
@@ -509,6 +507,5 @@ msgid "Missing Icon"
 msgstr "Значок отсутствует"
 
 #: src/lib/l.misc.vala:71
-#, fuzzy
 msgid "Can not reach site"
-msgstr "Не удается получить"
+msgstr "Не удается связаться с сайтом"
