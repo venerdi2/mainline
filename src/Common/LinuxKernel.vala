@@ -26,7 +26,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public bool is_installed = false;
 	public bool is_running = false;
 	public bool is_mainline = false;
-	public int ppa_dirs_ver = 0; // 1 = no ./<arch>/... , 2 = with ./<arch>/...
+	public int ppa_dirs_ver = 0; // 0 = not set, 1 = old single dirs, 2 = new /<arch>/ subdirs
 
 	public string deb_header = "";
 	public string deb_header_all = "";
@@ -59,10 +59,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Regex rex_modules = null;
 
 	// global progress  ------------
-	public static string status_line;
-	public static int progress_total;
-	public static int progress_count;
-	public static bool cancelled;
+	public static string status_line = "";
+	public static int progress_total = 0;
+	public static int progress_count = 0;
+	public static bool cancelled = false;
 	public static int threshold_major = 0;
 
 	// class initialize
@@ -73,8 +73,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		NATIVE_ARCH = check_package_architecture();
 		RUNNING_KERNEL = check_running_kernel().replace("-generic","");
 		initialize_regex();
+
+		// Special kernel versions where the mainline-ppa site changed their directory structure.
+		// affects:
+		// - ./foo.deb vs ./<arch>/foo.deb
+		// - ./CHECKSUMS vs ./<arch>/CHECKSUMS
+		// - ./BUILT vs ./<arch>/status
 		kernel_last_stable_old_ppa_dirs = new LinuxKernel.from_version("5.6.17");
 		kernel_last_unstable_old_ppa_dirs = new LinuxKernel.from_version("5.7-rc7");
+
 		kernel_latest_installed = new LinuxKernel.from_version(RUNNING_KERNEL);
 		kernel_oldest_installed = kernel_latest_installed;
 		kernel_latest_available = kernel_latest_installed;
@@ -363,7 +370,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (string line in txt.split("\n")) {
 				if (!rex.match(line, 0, out match)) continue;
 				var k = new LinuxKernel(match.fetch(1), true);
-				//if (!k.is_valid) continue;
 				if (k.is_unstable && App.hide_unstable) continue;
 				kernel_list.add(k);
 				vprint("kernel_list.add("+k.kname+")",3);
@@ -913,6 +919,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// CHECKSUMS
 		//fetch CHECKSUMS or <arch>/CHECKSUMS depending on version
 		deb_checksum_list.clear();
+		foreach (string f in deb_url_list.keys) deb_checksum_list[f] = "";
 		if (App.verify_checksums) {
 			vprint(_("CHECKSUMS enabled"),2);
 

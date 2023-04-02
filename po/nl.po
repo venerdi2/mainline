@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 12:41-0400\n"
+"POT-Creation-Date: 2023-04-02 01:20-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -13,125 +13,163 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: src/Common/LinuxKernel.vala:92
+#: src/Common/LinuxKernel.vala:99
 msgid "Distribution"
 msgstr "Distributie"
 
-#: src/Common/LinuxKernel.vala:107
+#: src/Common/LinuxKernel.vala:114
 msgid "Architecture"
 msgstr "Architectuur"
 
-#: src/Common/LinuxKernel.vala:280
+#: src/Common/LinuxKernel.vala:129
+#, fuzzy
+msgid "Running kernel"
+msgstr "Bezig met bijwerken van kernels…"
+
+#: src/Common/LinuxKernel.vala:250
+msgid "loading cached"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:264
+#, fuzzy
+msgid "queuing download"
+msgstr "Max. aantal gelijktijdige downloads"
+
+#: src/Common/LinuxKernel.vala:287
 #, fuzzy
 msgid "Fetching individual kernel indexes"
 msgstr "Bezig met ophalen van kernelindexen…"
 
-#: src/Common/LinuxKernel.vala:332
+#: src/Common/LinuxKernel.vala:303
+msgid "loading downloaded"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:339
 msgid "Updating from"
 msgstr "Bezig met bijwerken van"
 
-#: src/Common/LinuxKernel.vala:349
+#: src/Common/LinuxKernel.vala:347
 msgid "OK"
 msgstr "Oké"
 
-#: src/Common/LinuxKernel.vala:352
+#: src/Common/LinuxKernel.vala:350
 msgid "FAILED"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:793
+#: src/Common/LinuxKernel.vala:381
+#, fuzzy
+msgid "latest_available"
+msgstr "beschikbaar"
+
+#: src/Common/LinuxKernel.vala:396
+#, fuzzy
+msgid "Found installed"
+msgstr "Geïnstalleerd"
+
+#: src/Common/LinuxKernel.vala:499
+#, fuzzy
+msgid "latest_installed"
+msgstr "Geïnstalleerde pakketten"
+
+#: src/Common/LinuxKernel.vala:500
+#, fuzzy
+msgid "oldest_installed"
+msgstr "Geïnstalleerd"
+
+#: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
 msgstr "Beschikbare pakketten"
 
-#: src/Common/LinuxKernel.vala:798
+#: src/Common/LinuxKernel.vala:795
 msgid "Packages Installed"
 msgstr "Geïnstalleerde pakketten"
 
-#: src/Common/LinuxKernel.vala:819 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:816 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Het bestand is niet gevonden"
 
-#: src/Common/LinuxKernel.vala:886
+#: src/Common/LinuxKernel.vala:883
 msgid "Available Kernels"
 msgstr "Beschikbare kernels"
 
-#: src/Common/LinuxKernel.vala:893 src/Gtk/MainWindow.vala:154
+#: src/Common/LinuxKernel.vala:890 src/Gtk/MainWindow.vala:154
 msgid "Installed"
 msgstr "Geïnstalleerd"
 
-#: src/Common/LinuxKernel.vala:893 src/Gtk/MainWindow.vala:154
+#: src/Common/LinuxKernel.vala:890 src/Gtk/MainWindow.vala:154
 #: src/Gtk/MainWindow.vala:495 src/Gtk/MainWindow.vala:508
 msgid "Running"
 msgstr "In gebruik"
 
-#: src/Common/LinuxKernel.vala:926
+#: src/Common/LinuxKernel.vala:924
 msgid "CHECKSUMS enabled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:950
+#: src/Common/LinuxKernel.vala:948
 msgid "Downloading"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:971
+#: src/Common/LinuxKernel.vala:969
 #, fuzzy
 msgid "is already installed."
 msgstr "Deze kernel is al geïnstalleerd."
 
-#: src/Common/LinuxKernel.vala:1005
+#: src/Common/LinuxKernel.vala:1003
 #, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Bezig met deïnstalleren van geselecteerde kernels…"
 
-#: src/Common/LinuxKernel.vala:1011
+#: src/Common/LinuxKernel.vala:1009
 msgid "requested"
 msgstr "verzocht"
 
-#: src/Common/LinuxKernel.vala:1014
+#: src/Common/LinuxKernel.vala:1012
 #, fuzzy
 msgid "not uninstalling the currently running kernel"
 msgstr "Opgegeven kernels deïnstalleren"
 
-#: src/Common/LinuxKernel.vala:1030
+#: src/Common/LinuxKernel.vala:1028
 msgid "found"
 msgstr "gevonden"
 
-#: src/Common/LinuxKernel.vala:1033
+#: src/Common/LinuxKernel.vala:1031
 #, fuzzy
 msgid "No packages to un-install!"
 msgstr "Er zijn geen te deïnstalleren pakketten!"
 
-#: src/Common/LinuxKernel.vala:1081
+#: src/Common/LinuxKernel.vala:1079
 #, fuzzy
 msgid "Could not find running kernel in list"
 msgstr "De in gebruik zijnde kernel staat niet op de lijst"
 
-#: src/Common/LinuxKernel.vala:1086
+#: src/Common/LinuxKernel.vala:1084
 #, fuzzy
 msgid "Could not find any kernels to uninstall"
 msgstr "Er zijn geen te verwijderen kernels"
 
-#: src/Common/LinuxKernel.vala:1094
+#: src/Common/LinuxKernel.vala:1092
 #, fuzzy
 msgid "The following kernels will be uninstalled"
 msgstr "De volgende kernels worden verwijderd:"
 
-#: src/Common/LinuxKernel.vala:1098
+#: src/Common/LinuxKernel.vala:1096
 msgid "Continue ?"
 msgstr "Wilt u doorgaan?"
 
-#: src/Common/LinuxKernel.vala:1120 src/Console/AppConsole.vala:290
+#: src/Common/LinuxKernel.vala:1118 src/Console/AppConsole.vala:290
 msgid "Latest update"
 msgstr "Recentste update"
 
-#: src/Common/LinuxKernel.vala:1131 src/Console/AppConsole.vala:297
+#: src/Common/LinuxKernel.vala:1129 src/Console/AppConsole.vala:297
 msgid "Latest point update"
 msgstr "Recentste puntupdate"
 
-#: src/Common/LinuxKernel.vala:1139 src/Console/AppConsole.vala:302
+#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:302
 #: src/Console/AppConsole.vala:318
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
-#: src/Common/LinuxKernel.vala:1148
+#: src/Common/LinuxKernel.vala:1146
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Wilt u versie %s installeren? (j/n): "
