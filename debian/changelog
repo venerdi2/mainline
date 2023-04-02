@@ -1,3 +1,9 @@
+mainline (1.1.11) unstable; urgency=medium
+
+  * update translations
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 02 Apr 2023 07:07:30 -0400
+
 mainline (1.1.10) unstable; urgency=medium
 
   * bugfix - when verify_checksums disabled, fixes github.com/bkw777/mainline/issues/215
