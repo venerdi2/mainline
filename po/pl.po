@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-02 04:23-0400\n"
-"PO-Revision-Date: 2023-03-11 12:47+0100\n"
+"PO-Revision-Date: 2023-04-02 21:31+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -21,21 +21,20 @@ msgid "Architecture"
 msgstr "Architektura"
 
 #: src/Common/LinuxKernel.vala:129
-#, fuzzy
 msgid "Running kernel"
-msgstr "Aktualizowanie jąder"
+msgstr "Uruchomione jądro"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
-msgstr "ładuje buforowanego"
+msgstr "ładowanie z pamięci podręcznej"
 
 #: src/Common/LinuxKernel.vala:264
 msgid "queuing download"
-msgstr "kolejkowanie do pobrania"
+msgstr "pobieranie w kolejce"
 
 #: src/Common/LinuxKernel.vala:287
 msgid "Fetching individual kernel indexes"
-msgstr "Pobieranie poszczególnych indeksów jądra"
+msgstr "Pobieranie indywidualnych indeksów jądra"
 
 #: src/Common/LinuxKernel.vala:303
 msgid "loading downloaded"
@@ -54,9 +53,8 @@ msgid "FAILED"
 msgstr "NIEPOWODZENIE"
 
 #: src/Common/LinuxKernel.vala:396
-#, fuzzy
 msgid "Found installed"
-msgstr "Zainstalowane"
+msgstr "Znaleziono zainstalowane"
 
 #: src/Common/LinuxKernel.vala:790
 msgid "Packages Available"
@@ -156,7 +154,9 @@ msgstr "Wywołano z"
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
-msgstr "Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy ustawienia są zapisywane w"
+msgstr ""
+"Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy "
+"ustawienia są zapisywane w"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -307,7 +307,7 @@ msgstr "Zainstaluj"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr "Wcześniej zgłoszone"
+msgstr "Wcześniej powiadomiono"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -375,7 +375,7 @@ msgstr "Notatki"
 
 #: src/Gtk/MainWindow.vala:289
 msgid "User notes for"
-msgstr "Uwagi użytkownika dotyczące"
+msgstr "Notatki użytkownika dotyczące"
 
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
@@ -387,7 +387,7 @@ msgstr "Odinstaluj jądra starsze niż ostatnio zainstalowane"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"
-msgstr "Przeładować"
+msgstr "Wczytaj ponownie"
 
 #: src/Gtk/MainWindow.vala:316 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
@@ -444,7 +444,7 @@ msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 
 #: src/Gtk/SettingsDialog.vala:86
 msgid "Seconds interval enabled for debugging"
-msgstr "Interwał sekund włączony do debugowania"
+msgstr "Interwał w sekundach włączony do debugowania"
 
 #: src/Gtk/SettingsDialog.vala:109
 msgid "Check every"
@@ -452,20 +452,19 @@ msgstr "Sprawdzaj co"
 
 #: src/Gtk/SettingsDialog.vala:134
 msgid "Hours"
-msgstr "godzin"
+msgstr "godziny"
 
 #: src/Gtk/SettingsDialog.vala:136
 msgid "Days"
 msgstr "dni"
 
 #: src/Gtk/SettingsDialog.vala:138
-#, fuzzy
 msgid "Weeks"
 msgstr "tygodnie"
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "Seconds"
-msgstr "sekund"
+msgstr "sekundy"
 
 #: src/Gtk/SettingsDialog.vala:147
 msgid "Filters"
@@ -477,7 +476,7 @@ msgstr "Ukryj wydania niestabilne i RC"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid "previous major versions  ( -1 = all )"
-msgstr "Poprzednie wersje główne ( -1 = wszystkie )"
+msgstr "poprzednie główne wersje  ( -1 = wszystkie )"
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Network"
@@ -489,7 +488,7 @@ msgstr "Limit czasu połączenia internetowego po"
 
 #: src/Gtk/SettingsDialog.vala:204
 msgid "seconds"
-msgstr "sekund"
+msgstr "sekundy"
 
 #: src/Gtk/SettingsDialog.vala:211
 msgid "Max concurrent downloads"
@@ -501,13 +500,12 @@ msgstr "Weryfikowanie sum kontrolnych za pomocą plików CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
-msgstr ""
+msgstr "Serwer pośredniczący"
 
 #: src/Gtk/l.gtk.vala:42
 msgid "Missing Icon"
 msgstr "Brakująca ikona"
 
 #: src/lib/l.misc.vala:71
-#, fuzzy
 msgid "Can not reach site"
-msgstr "Nie można dotrzeć"
+msgstr "Nie można dotrzeć do witryny"
