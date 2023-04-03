@@ -1,6 +1,3 @@
-# Known Issue in 1.1.9 : assertion 'cksum != NULL'<br>Work-Around: Settings -> enable Verify Checksums<br>As soon as the ppa updates to 1.1.11 the problem will be gone.
-----
-
 # Ubuntu Mainline Kernel Installer
 A tool for installing the latest Linux kernels from the [ubuntu mainline ppa](https://kernel.ubuntu.com/~kernel-ppa/mainline/) onto debian-based distributions.
 
