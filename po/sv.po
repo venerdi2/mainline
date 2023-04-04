@@ -18,14 +18,12 @@ msgid "Distribution"
 msgstr "Distribution"
 
 #: src/Common/LinuxKernel.vala:114
-#, fuzzy
 msgid "Architecture"
-msgstr "Systemarkitektur"
+msgstr "Arkitektur"
 
 #: src/Common/LinuxKernel.vala:129
-#, fuzzy
 msgid "Running kernel"
-msgstr "Köra kernel"
+msgstr "Löpande kernel"
 
 #: src/Common/LinuxKernel.vala:250
 msgid "loading cached"
@@ -209,9 +207,8 @@ msgid "Uninstall specified kernel"
 msgstr "Avinstallera angiven kärna"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
-#, fuzzy
 msgid "Uninstall all but the highest installed version"
-msgstr "Avinstallera kärnor som är äldre än de senast installerade"
+msgstr "Avinstallera alla utom den högsta installerade versionen"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -368,9 +365,8 @@ msgid "Status"
 msgstr "Status"
 
 #: src/Gtk/MainWindow.vala:274
-#, fuzzy
 msgid "Uninstall"
-msgstr "Installera"
+msgstr "Avinstallera"
 
 #: src/Gtk/MainWindow.vala:284
 msgid "Notes"

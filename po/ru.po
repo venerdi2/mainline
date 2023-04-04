@@ -209,9 +209,8 @@ msgid "Uninstall specified kernel"
 msgstr "Установить указанное ядро"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
-#, fuzzy
 msgid "Uninstall all but the highest installed version"
-msgstr "Удаление ядер старше последней установленной версии"
+msgstr "Удаление всех установленных версий, кроме самой высокой"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"

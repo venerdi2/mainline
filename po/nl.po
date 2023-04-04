@@ -91,12 +91,10 @@ msgid "Downloading"
 msgstr "Downloaden"
 
 #: src/Common/LinuxKernel.vala:970
-#, fuzzy
 msgid "is already installed."
-msgstr "Deze kernel is al geïnstalleerd."
+msgstr "is al geïnstalleerd."
 
 #: src/Common/LinuxKernel.vala:1004
-#, fuzzy
 msgid "Uninstalling selected kernels"
 msgstr "Geselecteerde kernels verwijderen"
 
@@ -166,9 +164,9 @@ msgid "Notifications are disabled"
 msgstr "Meldingen zijn uitgeschakeld"
 
 #: src/Common/Package.vala:58
-#, fuzzy, c-format
+#, c-format
 msgid "File not found: %s"
-msgstr "Bestand is niet gevonden: %s"
+msgstr "Bestand niet gevonden: %s"
 
 #: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:135
 msgid "Syntax"
@@ -211,9 +209,8 @@ msgid "Uninstall specified kernel"
 msgstr "Opgegeven kernel verwijderen"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
-#, fuzzy
 msgid "Uninstall all but the highest installed version"
-msgstr "Kernels verwijderen die ouder zijn dan de laatst geïnstalleerde"
+msgstr "Verwijder alle behalve de hoogst geïnstalleerde versie"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -294,9 +291,8 @@ msgid "to list all commands"
 msgstr "om alle opdrachten te tonen"
 
 #: src/Console/AppConsole.vala:312
-#, fuzzy
 msgid "Notifications disabled in settings"
-msgstr "Meldingen zijn uitgeschakeld"
+msgstr "Meldingen uitgeschakeld in instellingen"
 
 #: src/Console/AppConsole.vala:337
 #, c-format
@@ -313,7 +309,7 @@ msgstr "Installeren"
 
 #: src/Console/AppConsole.vala:345
 msgid "Previously notified"
-msgstr ""
+msgstr "Eerder gemeld"
 
 #: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
 msgid "Credits"
@@ -502,13 +498,12 @@ msgstr "Controleer controlesommen met de CHECKSUMS-bestanden"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: src/Gtk/l.gtk.vala:42
 msgid "Missing Icon"
 msgstr "Ontbrekend pictogram"
 
 #: src/lib/l.misc.vala:71
-#, fuzzy
 msgid "Can not reach site"
-msgstr "Het bestand kan niet worden uitgelezen"
+msgstr "Kan de site niet bereiken"

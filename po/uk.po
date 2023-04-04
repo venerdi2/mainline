@@ -104,7 +104,7 @@ msgstr "запитуваний"
 
 #: src/Common/LinuxKernel.vala:1013
 msgid "not uninstalling the currently running kernel"
-msgstr "Не видаляючи поточне запущене ядро"
+msgstr "не видалятиме поточне запущене ядро"
 
 #: src/Common/LinuxKernel.vala:1029
 msgid "found"
@@ -208,9 +208,8 @@ msgid "Uninstall specified kernel"
 msgstr "Видаліть конкретні ядра"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
-#, fuzzy
 msgid "Uninstall all but the highest installed version"
-msgstr "Видалення ядер, старіших за останні встановлені"
+msgstr "Видаліть усі, крім найвищої встановленої версії"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"

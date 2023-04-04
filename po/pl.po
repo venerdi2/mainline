@@ -208,9 +208,8 @@ msgid "Uninstall specified kernel"
 msgstr "Odinstaluj wybrane jądro"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
-#, fuzzy
 msgid "Uninstall all but the highest installed version"
-msgstr "Odinstaluj jądra starsze niż ostatnio zainstalowane"
+msgstr "Odinstaluj wszystkie wersje oprócz najwyżej zainstalowanej"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"

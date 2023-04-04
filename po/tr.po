@@ -209,9 +209,8 @@ msgid "Uninstall specified kernel"
 msgstr "Belirtilen çekirdeğini kaldır"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
-#, fuzzy
 msgid "Uninstall all but the highest installed version"
-msgstr "En son yüklenenden daha eski çekirdekleri kaldırma"
+msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -498,13 +497,12 @@ msgstr "Sağlama toplamlarını CHECKSUMS dosyalarıyla doğrulama"
 
 #: src/Gtk/SettingsDialog.vala:233
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: src/Gtk/l.gtk.vala:42
 msgid "Missing Icon"
 msgstr "Eksik Simge"
 
 #: src/lib/l.misc.vala:71
-#, fuzzy
 msgid "Can not reach site"
-msgstr "Dosya okunamadı"
+msgstr "Siteye ulaşılamıyor"
