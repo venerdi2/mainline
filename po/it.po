@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-04 07:52-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Last-Translator: Demetrio Mendozzi, Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr "Architettura"
 
 #: src/Common/LinuxKernel.vala:132
 msgid "Running kernel"
-msgstr "Aggiornamento dei kernel"
+msgstr "Kernel in esecuzione"
 
 #: src/Common/LinuxKernel.vala:253
 msgid "loading cached"
@@ -184,9 +184,8 @@ msgstr "Verifica aggiornamenti del kernel"
 
 #: src/Console/AppConsole.vala:52
 msgid "Check for kernel updates and notify current user"
-msgstr ""
-"Verifica la disponibilità di aggiornamenti del kerneled avvisa l'utente "
-"corrente"
+msgstr "Verifica la disponibilità di aggiornamenti del kernel"
+"ed avvisa l'utente corrente"
 
 #: src/Console/AppConsole.vala:53
 msgid "List all available mainline kernels"
@@ -198,7 +197,7 @@ msgstr "Elenca i kernel installati"
 
 #: src/Console/AppConsole.vala:55
 msgid "Install latest mainline kernel"
-msgstr "Installa ultimo kernel mainline"
+msgstr "Installa l'ultimo kernel mainline"
 
 #: src/Console/AppConsole.vala:56
 msgid "Install latest point update for current series"
@@ -206,7 +205,7 @@ msgstr "installa l'ultimo rilascio parziale per le serie attuali"
 
 #: src/Console/AppConsole.vala:57
 msgid "Install specified mainline kernel"
-msgstr "Installa kernel mainline specificato"
+msgstr "Installa il kernel mainline specificato"
 
 #: src/Console/AppConsole.vala:58
 msgid "Uninstall specified kernel"
