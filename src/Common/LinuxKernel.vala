@@ -11,6 +11,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string version_main = "";
 	public string version_package = "";
 	public string page_uri = "";
+	public string notes = "";
 
 	public int version_maj = -1;
 	public int version_min = -1;
@@ -40,6 +41,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string PPA_URI;
 	public static string CACHE_DIR;
+	public static string MAIN_INDEX_HTML;
 
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
@@ -72,6 +74,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		LINUX_DISTRO = check_distribution();
 		NATIVE_ARCH = check_package_architecture();
 		RUNNING_KERNEL = check_running_kernel().replace("-generic","");
+		MAIN_INDEX_HTML = CACHE_DIR+"/index.html";
 		initialize_regex();
 
 		// Special kernel versions where the mainline-ppa site changed their directory structure.
@@ -175,11 +178,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// same as what's in the urls on the kernel ppa index.html
 
 		// strip off the trailing "/"
-		if (_name.has_suffix("/")) this.kname = _name[0: _name.length - 1];
-		else this.kname = _name;
+		if (_name.has_suffix("/")) kname = _name[0: _name.length - 1];
+		else kname = _name;
 
 		// extract version numbers from the name
-		kver = this.kname;
+		kver = kname;
 		split_version_string(kver, out version_main);
 
 		// build url
@@ -322,11 +325,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_if_initialized();
 
 		if (!try_ppa()) return false;
-		if (!file_exists(index_page)) App.index_is_fresh=false;
+		if (!file_exists(MAIN_INDEX_HTML)) App.index_is_fresh=false;
 		if (App.index_is_fresh) return true;
 
-		dir_create(file_parent(index_page));
-		file_delete(index_page+"_");
+		dir_create(CACHE_DIR);
 
 		// preserve the old index in case the dl fails
 		string tbn = random_string();
@@ -342,7 +344,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		while (mgr.is_running()) sleep(500);
 
 		if (file_exists(tfn)) {
-			file_move(tfn,index_page);
+			file_move(tfn,MAIN_INDEX_HTML);
 			App.index_is_fresh=true;
 			vprint(_("OK"));
 			return true;
@@ -356,8 +358,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	private static void load_index() {
 		vprint("load_index()",2);
 
-		if (!file_exists(index_page)) return;
-		string txt = file_read(index_page);
+		if (!file_exists(MAIN_INDEX_HTML)) return;
+		string txt = file_read(MAIN_INDEX_HTML);
 		kernel_list.clear();
 
 		try {
@@ -370,7 +372,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (string line in txt.split("\n")) {
 				if (!rex.match(line, 0, out match)) continue;
 				var k = new LinuxKernel(match.fetch(1), true);
-				if (k.is_unstable && App.hide_unstable) continue;
 				kernel_list.add(k);
 				vprint("kernel_list.add("+k.kname+")",3);
 			}
@@ -420,6 +421,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (!found) {
 				//vprint("kernel_list.add("+pkern.kname+") (distro kernel)",3); // not always true, --uninstall-old thinks all are
 				vprint("kernel_list.add("+pkern.kname+")",3);
+				pkern.is_mainline = false;
+				if (file_exists(pkern.notes_file)) pkern.notes = file_read(pkern.notes_file);
 				kernel_list.add(pkern);
 			}
 		}
@@ -712,6 +715,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	public string status {
+		get {
+				return
+					is_running ? _("Running") :
+					is_installed ? _("Installed") :
+					is_invalid ? _("Invalid") :
+					"";
+		}
+	}
+
 	public bool new_ppa_dirs {
 		get {
 			//    if stable   and newer than kernel_last_stable_old_ppa_dirs
@@ -723,12 +736,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			else r = compare_to(kernel_last_stable_old_ppa_dirs);
 			if (r>0) { ppa_dirs_ver = 2; return true; }
 			else { ppa_dirs_ver = 1; return false; }
-		}
-	}
-
-	public static string index_page {
-		owned get {
-			return CACHE_DIR+"/index.html";
 		}
 	}
 
@@ -750,9 +757,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public string user_notes_file {
+	public string notes_file {
 		owned get {
-			return cache_subdir+"/notes.txt";
+			return cache_subdir+"/notes";
 		}
 	}
 
@@ -812,6 +819,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_modules = "";
 		version_package = "";
 		deb_url_list.clear();
+		notes = "";
 
 		if (!file_exists(cached_page)) {
 			vprint("load_cached_page(): " + _("File not found") + ": "+cached_page,1,stderr);
@@ -820,6 +828,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// skip if we already know it's a failed build
 		if (is_invalid) return;
+
+		if (file_exists(notes_file)) notes = file_read(notes_file).strip();
 
 		// parse index.html --------------------------
 		txt = file_read(cached_page);
@@ -884,11 +894,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(_("Available Kernels"));
 		vprint("----------------------------------------------------------------");
 
+		int nl = 16; // name length
 		foreach(var k in kernel_list) {
 			if (k.is_invalid) continue;
-
-			// check running/installed state before checking for hidden
-			var desc = k.is_running ? _("Running") : (k.is_installed ? _("Installed") : "");
 
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
@@ -896,10 +904,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.version_maj < threshold_major) continue;
 			}
 
-			// kern.kname "v5.6.11" -> cache download dir names, needed for --install, --remove
-			// kern.kver or kern.version_main "5.6.11" -> most displays & references
-			//log_msg("%-32s %-32s %s".printf(kern.kname, kern.version_main, desc));
-			vprint("%-32s %s".printf(k.version_main, desc));
+			if (k.version_main.length>nl) nl = k.version_main.length;
+			vprint("%-*s %-10s %s".printf(nl, k.version_main, k.status, k.notes));
 		}
 	}
 
@@ -977,10 +983,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		int status = -1;
 
 		if (ok) {
-
-			// TODO
-			// collect the stdout and parse for errors
-			// write results to user_notes_file
 
 			// full paths instead of env -C
 			// https://github.com/bkw777/mainline/issues/128

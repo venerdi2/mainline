@@ -38,7 +38,6 @@ public class MainWindow : Gtk.Window {
 	private Gtk.TreeView tv;
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_uninstall;
-	private Gtk.Button btn_notes;
 	private Gtk.Button btn_ppa;
 	private Gtk.Label lbl_info;
 
@@ -110,6 +109,9 @@ public class MainWindow : Gtk.Window {
 		var col = new TreeViewColumn();
 		col.title = _("Kernel");
 		col.resizable = true;
+		col.set_sort_column_id(0);
+		col.set_sort_indicator(true);
+		col.sort_indicator = true;
 		col.min_width = 200;
 		tv.append_column(col);
 
@@ -120,7 +122,7 @@ public class MainWindow : Gtk.Window {
 		col.pack_start (cell_pix, false);
 		col.set_cell_data_func (cell_pix, (cell_layout, cell, model, iter)=>{
 			Gdk.Pixbuf pix;
-			model.get (iter, 1, out pix, -1);
+			model.get (iter, 2, out pix, -1);
 			return_if_fail(cell as Gtk.CellRendererPixbuf != null);
 			((Gtk.CellRendererPixbuf) cell).pixbuf = pix;
 		});
@@ -131,7 +133,7 @@ public class MainWindow : Gtk.Window {
 		col.pack_start (cellText, false);
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
 			LinuxKernel kern;
-			model.get (iter, 0, out kern, -1);
+			model.get (iter, 1, out kern, -1);
 			return_if_fail(cell as Gtk.CellRendererText != null);
 			((Gtk.CellRendererText) cell).text = kern.version_main;
 		});
@@ -139,6 +141,8 @@ public class MainWindow : Gtk.Window {
 		//column
 		col = new TreeViewColumn();
 		col.title = _("Status");
+		col.set_sort_column_id(3);
+		col.set_sort_indicator(true);
 		col.resizable = true;
 		col.min_width = 200;
 		tv.append_column(col);
@@ -146,22 +150,49 @@ public class MainWindow : Gtk.Window {
 		//cell text
 		cellText = new CellRendererText();
 		cellText.ellipsize = Pango.EllipsizeMode.END;
+		col.pack_start(cellText, true);
+		col.add_attribute(cellText, "text", 3);
+
+		//column
+		col = new TreeViewColumn();
+		col.title = _("Notes");
+		//col.set_sort_column_id(4); // not working ?
+		col.resizable = true;
+		col.min_width = 200;
+		tv.append_column(col);
+
+		//cell text
+		cellText = new CellRendererText();
+		cellText.ellipsize = Pango.EllipsizeMode.END;
+
 		col.pack_start (cellText, false);
-		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
-			LinuxKernel kern;
-			model.get (iter, 0, out kern, -1);
+		col.set_cell_data_func(cellText, (cell_layout, cell, model, iter)=>{
+			LinuxKernel k;
+			model.get(iter, 1, out k, -1);
 			return_if_fail(cell as Gtk.CellRendererText != null);
-			((Gtk.CellRendererText) cell).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
+			((Gtk.CellRendererText) cell).text = k.notes;
 		});
 
-		tv.set_tooltip_column(3);
+		cellText.editable = true;
+		cellText.edited.connect((path,data) => {
+			TreeIter iter;
+			tv.model.get_iter_from_string(out iter, path);
+			LinuxKernel k;
+			tv.model.get(iter, 1, out k, -1);
+			if (k.notes != data._strip()) {
+				k.notes = data;
+				file_write(k.notes_file,data);
+			}
+		});
+
+		tv.set_tooltip_column(5);
 	}
 
 	private void tv_row_activated(TreePath path, TreeViewColumn column) {
 		TreeIter iter;
 		tv.model.get_iter_from_string(out iter, path.to_string());
-		LinuxKernel kern;
-		tv.model.get (iter, 0, out kern, -1);
+		LinuxKernel k;
+		tv.model.get (iter, 1, out k, -1);
 
 		set_button_state();
 	}
@@ -175,10 +206,10 @@ public class MainWindow : Gtk.Window {
 
 		selected_kernels.clear();
 		foreach (var path in paths) {
-			LinuxKernel kern;
+			LinuxKernel k;
 			model.get_iter(out iter, path);
-			model.get (iter, 0, out kern, -1);
-			selected_kernels.add(kern);
+			model.get(iter, 1, out k, -1);
+			selected_kernels.add(k);
 		}
 
 		set_button_state();
@@ -186,8 +217,8 @@ public class MainWindow : Gtk.Window {
 
 	private void tv_refresh() {
 		vprint("tv_refresh()",2);
-
-		var model = new Gtk.ListStore(4, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool), typeof(string));
+		//								 0 index      1 kernel             2 icon              3 status        4 notes         5 tooltip
+		var model = new Gtk.ListStore(6, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(string), typeof(string));
 
 		Gdk.Pixbuf pix_ubuntu = null;
 		Gdk.Pixbuf pix_mainline = null;
@@ -202,8 +233,8 @@ public class MainWindow : Gtk.Window {
 			vprint(e.message,1,stderr);
 		}
 
+		int i = -1;
 		TreeIter iter;
-		bool odd_row = false;
 		foreach (var k in LinuxKernel.kernel_list) {
 			if (k.is_invalid) continue;
 			if (!k.is_installed) {
@@ -211,20 +242,23 @@ public class MainWindow : Gtk.Window {
 				if (k.version_maj < LinuxKernel.threshold_major) continue;
 			}
 
-			odd_row = !odd_row;
-
 			// add row
 			model.append(out iter);
-			model.set(iter, 0, k);
+			model.set(iter, 0, ++i); // for sorting the "Kernel" column
+			model.set(iter, 1, k);
 
-			if (k.is_mainline) {
-				if (k.is_unstable) model.set(iter, 1, pix_mainline_rc);
-				else model.set (iter, 1, pix_mainline);
+			if (!k.is_invalid) {
+				if (k.is_mainline) {
+					if (k.is_unstable) model.set(iter, 2, pix_mainline_rc);
+					else model.set (iter, 2, pix_mainline);
+				} else model.set(iter, 2, pix_ubuntu);
 			}
-			else model.set(iter, 1, pix_ubuntu);
 
-			model.set(iter, 2, odd_row);
-			model.set(iter, 3, k.tooltip_text());
+			model.set(iter, 3, k.status);
+
+			//model.set(iter, 4, file_read(k.user_notes_file));
+
+			model.set(iter, 5, k.tooltip_text());
 		}
 
 		tv.set_model(model);
@@ -240,13 +274,11 @@ public class MainWindow : Gtk.Window {
 		if (selected_kernels.size == 0) {
 			btn_install.sensitive = false;
 			btn_uninstall.sensitive = false;
-			btn_notes.sensitive = false;
 			btn_ppa.sensitive = true;
 		} else {
 			// only allow selecting a single kernel for install/uninstall, examine the installed state
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
-			btn_notes.sensitive = (selected_kernels.size == 1);
 			btn_ppa.sensitive = (selected_kernels.size == 1) && selected_kernels[0].is_mainline;
 			// allow selecting multiple kernels for install/uninstall, but IF only a single selected, examine the installed state
 			// (the rest of the app does not have loops to process a list yet)
@@ -280,16 +312,6 @@ public class MainWindow : Gtk.Window {
 			do_uninstall(selected_kernels);
 		});
 
-		// notes
-		button = new Gtk.Button.with_label (_("Notes"));
-		hbox.pack_start (button, true, true, 0);
-		btn_notes = button;
-
-		button.clicked.connect(() => {
-			if (!file_exists(selected_kernels[0].user_notes_file)) file_write(selected_kernels[0].user_notes_file,_("User notes for")+" "+selected_kernels[0].version_main+"\n\n");
-			uri_open("file://"+selected_kernels[0].user_notes_file);
-		});
-
 		// ppa
 		button = new Gtk.Button.with_label ("PPA");
 		hbox.pack_start (button, true, true, 0);
@@ -309,6 +331,7 @@ public class MainWindow : Gtk.Window {
 
 		// reload
 		button = new Gtk.Button.with_label (_("Reload"));
+		button.set_tooltip_text(_("Delete cache and reload all kernel info\n\nTHIS WILL ALSO DELETE ALL USER NOTES"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(reload_cache);
 
@@ -341,7 +364,8 @@ public class MainWindow : Gtk.Window {
 					(_previous_majors != App.previous_majors) ||
 					(_hide_unstable != App.hide_unstable)
 				) {
-				reload_cache();
+				//reload_cache();
+				update_cache();
 			}
 	}
 
@@ -512,9 +536,9 @@ public class MainWindow : Gtk.Window {
 	public void do_install(LinuxKernel k) {
 		if (App.command == "install") App.command = "list";
 		return_if_fail(!k.is_installed);
-		// let it try even if we think the net is down
-		// just so the button responds instead of looking broken
-		//if (!test_net()) return;
+		// try even if we think the net is down
+		// so the button responds instead of looking broken
+		//if (!ppa_up()) return;
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();

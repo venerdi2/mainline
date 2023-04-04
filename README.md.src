@@ -65,8 +65,6 @@ The app runs as the user and uses pkexec internally just for the dpkg command.
 
 **\[ Uninstall \]** - uninstalls the selected kernel(1)
 
-**\[ Notes \]** - opens a notes.txt file in the cache directory for the selected kernel for user notes
-
 **\[ PPA \]** - launches your default https:// handler to the web page for the selected kernel  
 If no kernels are selected (when first launching the app before clicking on any) launches the main page listing all the kernels.  
 Use this to see the build summary and CHANGES files.

@@ -8,18 +8,6 @@ namespace l.gtk {
 
 	using Gtk;
 
-	public void errbox (Window parent, string message) {
-		Gtk.MessageDialog msg = new Gtk.MessageDialog (
-			parent,
-			Gtk.DialogFlags.MODAL,
-			Gtk.MessageType.ERROR,
-			Gtk.ButtonsType.OK,
-			message
-		);
-		msg.response.connect((response_id) => msg.destroy());
-		msg.show();
-	}
-
 	public Gdk.Pixbuf? get_app_icon(int icon_size) {
 		var img_icon = get_shared_icon(BRANDING_SHORTNAME ,icon_size);
 		if (img_icon != null) return img_icon.pixbuf;
@@ -33,8 +21,7 @@ namespace l.gtk {
 
 		try {
 			Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
-			pix_icon = icon_theme.load_icon_for_scale (
-				icon_name, Gtk.IconSize.MENU, icon_size, Gtk.IconLookupFlags.FORCE_SIZE);
+			pix_icon = icon_theme.load_icon_for_scale (icon_name, Gtk.IconSize.MENU, icon_size, Gtk.IconLookupFlags.FORCE_SIZE);
 		} catch (Error e) {
 			//vprint(e.message,1,stderr);
 		}

@@ -2,8 +2,8 @@
 # This is the single place where you edit these values manually
 
 VERSION_MAJOR = 1
-VERSION_MINOR = 1
-VERSION_MICRO = 11
+VERSION_MINOR = 2
+VERSION_MICRO = 0
 BRANDING_SHORTNAME = mainline
 BRANDING_LONGNAME = Ubuntu Mainline Kernel Installer
 BRANDING_AUTHORNAME = Brian K. White
