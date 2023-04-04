@@ -56,7 +56,7 @@ public class AppConsole : GLib.Object {
 		+ "  --install-point     " + _("Install latest point update for current series") + "\n"
 		+ "  --install <name>    " + _("Install specified mainline kernel") + "(1)(3)\n"
 		+ "  --uninstall <name>  " + _("Uninstall specified kernel") + "(1)(2)(3)\n"
-		+ "  --uninstall-old     " + _("Uninstall kernels older than the latest installed") + "(3)\n"
+		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(3)\n"
 		+ "  --download <name>   " + _("Download specified kernels") + "(2)\n"
 		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
 		+ "\n"

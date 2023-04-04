@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 04:23-0400\n"
+"POT-Creation-Date: 2023-04-03 19:46-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -63,89 +63,89 @@ msgstr "Hittade installerat"
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:795
+#: src/Common/LinuxKernel.vala:796
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:816 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:817 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:883
+#: src/Common/LinuxKernel.vala:884
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:890 src/Gtk/MainWindow.vala:154
+#: src/Common/LinuxKernel.vala:891 src/Gtk/MainWindow.vala:154
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:890 src/Gtk/MainWindow.vala:154
+#: src/Common/LinuxKernel.vala:891 src/Gtk/MainWindow.vala:154
 #: src/Gtk/MainWindow.vala:495 src/Gtk/MainWindow.vala:508
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:924
+#: src/Common/LinuxKernel.vala:925
 msgid "enabled"
 msgstr "aktiverat"
 
-#: src/Common/LinuxKernel.vala:948
+#: src/Common/LinuxKernel.vala:949
 msgid "Downloading"
 msgstr "Ladda ner"
 
-#: src/Common/LinuxKernel.vala:969
+#: src/Common/LinuxKernel.vala:970
 msgid "is already installed."
 msgstr "är redan installerat."
 
-#: src/Common/LinuxKernel.vala:1003
+#: src/Common/LinuxKernel.vala:1004
 msgid "Uninstalling selected kernels"
 msgstr "Avinstallera valda kärnor"
 
-#: src/Common/LinuxKernel.vala:1009
+#: src/Common/LinuxKernel.vala:1010
 msgid "requested"
 msgstr "begärd"
 
-#: src/Common/LinuxKernel.vala:1012
+#: src/Common/LinuxKernel.vala:1013
 msgid "not uninstalling the currently running kernel"
 msgstr "Avinstallera inte den kärna som körs, för närvarande"
 
-#: src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:1029
 msgid "found"
 msgstr "grunda"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:1032
 msgid "No packages to un-install!"
 msgstr "Inga paket att avinstallera!"
 
-#: src/Common/LinuxKernel.vala:1079
+#: src/Common/LinuxKernel.vala:1080
 msgid "Could not find running kernel in list"
 msgstr "Det gick inte att hitta kernel som körs i listan"
 
-#: src/Common/LinuxKernel.vala:1084
+#: src/Common/LinuxKernel.vala:1085
 msgid "Could not find any kernels to uninstall"
 msgstr "Det gick inte att hitta några kärnor att avinstallera"
 
-#: src/Common/LinuxKernel.vala:1092
+#: src/Common/LinuxKernel.vala:1093
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
-#: src/Common/LinuxKernel.vala:1096
+#: src/Common/LinuxKernel.vala:1097
 msgid "Continue ?"
 msgstr "Fortsätta?"
 
-#: src/Common/LinuxKernel.vala:1118 src/Console/AppConsole.vala:290
+#: src/Common/LinuxKernel.vala:1119 src/Console/AppConsole.vala:290
 msgid "Latest update"
 msgstr "Senaste uppdatering"
 
-#: src/Common/LinuxKernel.vala:1129 src/Console/AppConsole.vala:297
+#: src/Common/LinuxKernel.vala:1130 src/Console/AppConsole.vala:297
 msgid "Latest point update"
 msgstr "Senaste punktuppdatering"
 
-#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:302
+#: src/Common/LinuxKernel.vala:1138 src/Console/AppConsole.vala:302
 #: src/Console/AppConsole.vala:318
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1147
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installera kärnversion %s ? (j/n):"
@@ -208,8 +208,9 @@ msgstr "Installera angiven huvudkärna"
 msgid "Uninstall specified kernel"
 msgstr "Avinstallera angiven kärna"
 
-#: src/Console/AppConsole.vala:59
-msgid "Uninstall kernels older than the latest installed"
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:306
+#, fuzzy
+msgid "Uninstall all but the highest installed version"
 msgstr "Avinstallera kärnor som är äldre än de senast installerade"
 
 #: src/Console/AppConsole.vala:60
@@ -382,10 +383,6 @@ msgstr "Användaranteckningar för"
 #: src/Gtk/MainWindow.vala:305
 msgid "Uninstall Old"
 msgstr "Avinstallera Gamla"
-
-#: src/Gtk/MainWindow.vala:306
-msgid "Uninstall kernels older than latest installed"
-msgstr "Avinstallera kärnor som är äldre än senast installerade"
 
 #: src/Gtk/MainWindow.vala:311
 msgid "Reload"

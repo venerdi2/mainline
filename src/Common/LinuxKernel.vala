@@ -792,7 +792,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		list = "";
 		foreach (string deb in pkg_list.keys) list += "\n"+deb;
 
-		if (list.length > 0) txt += "\n\n<b>"+_("Packages Installed")+"</b>\n"+list;
+		if (txt.length > 0 && list.length > 0) txt += "\n\n";
+		if (list.length > 0) txt += "<b>"+_("Packages Installed")+"</b>\n"+list;
 
 		return txt;
 	}

@@ -115,10 +115,9 @@ install: all
 	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(libdir)/$(BRANDING_SHORTNAME)" lib/*
 #	install -m 0644 share/polkit-1/actions/$(BRANDING_SHORTNAME).policy "$(DESTDIR)$(polkitdir)"
 	install -m 0755 $(BRANDING_SHORTNAME).desktop "$(DESTDIR)$(launcherdir)"
-	for p in $(po_files) ; do \
-		l=$${p##*/} l=$${l%.*}; \
+	for p in $(po_files) ; do l=$${p##*/} l=$${l%.*}; echo -n "$${l}: "; \
 		mkdir -p "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES"; \
-		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES/$(BRANDING_SHORTNAME).mo" $${p} ; \
+		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$${l}/LC_MESSAGES/$(BRANDING_SHORTNAME).mo" $${p}; \
 	done
 	install -m 0755 $(BRANDING_SHORTNAME) "$(DESTDIR)$(bindir)"
 	install -m 0755 $(BRANDING_SHORTNAME)-gtk "$(DESTDIR)$(bindir)"
