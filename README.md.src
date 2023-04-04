@@ -13,7 +13,8 @@ BRANDING_SHORTNAME is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 * Removed un-related/un-used code
 * Better temp and cache management
 * Better desktop notification behavior
-* Reduced dependencies and system()s (still ongoing)
+* Reduced dependencies and system() (still ongoing)
+* Notes
 * Slow but ongoing re-writes of most parts
 
 ## Features
@@ -86,6 +87,8 @@ That can lead to some files being stale or wrong over time, so, to compensate fo
 (1) In all cases the currently running kernel is protected and the app will not uninstall the currently running kernel.  
 For the single manual uninstall button, the button simply isn't activated. For the cli app if you manually give that version, it will simply ignore it. For uninstall-old, either gui or cli, the currently running kernel is simply skipped over when scanning and building the list of uninstall candidates.
 
+Clicking on the Notes field allows to attach arbitrary text to a kernel.
+
 # Help / FAQ
 * General debugging  
   Aside from the ```--debug``` option, there is an environment variable ```VERBOSE```, which takes a numerical value from 0 and up.  
@@ -122,6 +125,7 @@ For the single manual uninstall button, the button simply isn't activated. For t
 * Combine the gtk and cli apps into one, or, make the gtk app into a pure front-end for the cli app, either way  
 * Replace the commandline parser  
 * Toggle display of invalid kernels so you could at least see they aren't simply missing, and use the "PPA" button too  
-* UI quick toggle for show/hide unstable/-rc kernels  
+* UI quick toggle for show/hide unstable/-rc kernels instead of going to settings  
 * Right-click menu for more functions for a given kernel, such as reloading the cache just for a single kernel to check for new build status etc, without adding 18 buttons all over the ui.  
 * Support all installable kernel variants, not just "-generic"  
+* Add commandline flags to override all settings. Currently the filter settings also control the cli output, but the cli has no way to change settings.
