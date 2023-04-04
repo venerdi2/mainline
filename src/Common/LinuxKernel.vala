@@ -378,8 +378,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			kernel_list.sort((a,b) => { return a.compare_to(b) * -1; });
 
-			kernel_latest_available = kernel_list[0];
-			vprint("latest_available: "+kernel_latest_available.version_main,2);
 		}
 		catch (Error e) {
 			vprint(e.message,1,stderr);
@@ -498,7 +496,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-//		log_debug("latest_available: "+kernel_latest_available.version_main);
+//		vprint("latest_available: "+kernel_latest_available.version_main,2);
 		vprint("latest_installed: "+kernel_latest_installed.version_main,2);
 		vprint("oldest_installed: "+kernel_oldest_installed.version_main,2);
 	}
@@ -508,15 +506,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint("check_updates()",2);
 		kernel_update_major = null;
 		kernel_update_minor = null;
+		kernel_latest_available = kernel_latest_installed;
+
+		bool major_available = false;
+		bool minor_available = false;
 
 		foreach(var k in LinuxKernel.kernel_list) {
+			vprint(k.version_main,3);
 			if (k.is_invalid) continue;
 			if (k.is_installed) continue;
 			if (k.is_unstable && App.hide_unstable) continue;
+			if (k.version_maj < threshold_major) break;
+			if (k.compare_to(kernel_latest_installed)<=0) break;
 
-			bool major_available = false;
-			bool minor_available = false;
-
+			// kernel_list is sorted so first match is highest match
 			if (k.version_maj > kernel_latest_installed.version_maj) major_available = true;
 			else if (k.version_maj == kernel_latest_installed.version_maj) {
 				if (k.version_min > kernel_latest_installed.version_min) major_available = true;
@@ -529,12 +532,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			if (major_available && (kernel_update_major == null)) kernel_update_major = k;
-
 			if (minor_available && (kernel_update_minor == null)) kernel_update_minor = k;
 
-			// stop if we have everything possible
-			if ((kernel_update_major != null) && (kernel_update_minor != null) && (kernel_latest_available != null)) break;
+			// if we have everything possible, skip the rest
+			if (kernel_update_major != null && kernel_update_minor != null) break;
 		}
+
+		if (kernel_update_minor != null) kernel_latest_available = kernel_update_minor;
+		if (kernel_update_major != null) kernel_latest_available = kernel_update_major;
+
+		if (kernel_update_minor != null) vprint("minor available: "+kernel_update_minor.version_main,2);
+		if (kernel_update_major != null) vprint("major available: "+kernel_update_major.version_main,2);
+		if (kernel_latest_available != kernel_latest_installed) vprint("latest available: "+kernel_latest_available.version_main,2);
+
 	}
 
 	// helpers

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 07:52-0400\n"
+"POT-Creation-Date: 2023-04-04 17:58-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
@@ -51,101 +51,101 @@ msgstr "OK"
 msgid "FAILED"
 msgstr "FALLITO"
 
-#: src/Common/LinuxKernel.vala:397
+#: src/Common/LinuxKernel.vala:395
 msgid "Found installed"
 msgstr "Trovato installato"
 
-#: src/Common/LinuxKernel.vala:721 src/Gtk/MainWindow.vala:519
+#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:519
 #: src/Gtk/MainWindow.vala:532
 msgid "Running"
 msgstr "In esecuzione"
 
-#: src/Common/LinuxKernel.vala:722
+#: src/Common/LinuxKernel.vala:732
 msgid "Installed"
 msgstr "Installato"
 
-#: src/Common/LinuxKernel.vala:723
+#: src/Common/LinuxKernel.vala:733
 msgid "Invalid"
 msgstr "Non valido"
 
-#: src/Common/LinuxKernel.vala:797
+#: src/Common/LinuxKernel.vala:807
 msgid "Packages Available"
 msgstr "Pacchetti disponibili"
 
-#: src/Common/LinuxKernel.vala:803
+#: src/Common/LinuxKernel.vala:813
 msgid "Packages Installed"
 msgstr "Pacchetti installati"
 
-#: src/Common/LinuxKernel.vala:825 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:835 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "File non trovato"
 
-#: src/Common/LinuxKernel.vala:894
+#: src/Common/LinuxKernel.vala:904
 msgid "Available Kernels"
 msgstr "Kernel disponibili"
 
-#: src/Common/LinuxKernel.vala:931
+#: src/Common/LinuxKernel.vala:941
 msgid "enabled"
 msgstr "abilitato"
 
-#: src/Common/LinuxKernel.vala:955
+#: src/Common/LinuxKernel.vala:965
 msgid "Downloading"
 msgstr "Scaricamento"
 
-#: src/Common/LinuxKernel.vala:976
+#: src/Common/LinuxKernel.vala:986
 msgid "is already installed."
 msgstr "è già installato."
 
-#: src/Common/LinuxKernel.vala:1006
+#: src/Common/LinuxKernel.vala:1016
 msgid "Uninstalling selected kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Common/LinuxKernel.vala:1012
+#: src/Common/LinuxKernel.vala:1022
 msgid "requested"
 msgstr "richiesto"
 
-#: src/Common/LinuxKernel.vala:1015
+#: src/Common/LinuxKernel.vala:1025
 msgid "not uninstalling the currently running kernel"
 msgstr "non disinstallare il kernel attualmente in esecuzione"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:1041
 msgid "found"
 msgstr "trovato"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1044
 msgid "No packages to un-install!"
 msgstr "Nessun pacchetto da disinstallare!"
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1092
 msgid "Could not find running kernel in list"
 msgstr "Impossibile trovare il kernel in esecuzione nell'elenco"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1097
 msgid "Could not find any kernels to uninstall"
 msgstr "Impossibile trovare alcun kernel da rimuovere"
 
-#: src/Common/LinuxKernel.vala:1095
+#: src/Common/LinuxKernel.vala:1105
 msgid "The following kernels will be uninstalled"
 msgstr "I seguenti kernel saranno rimossi"
 
-#: src/Common/LinuxKernel.vala:1099
+#: src/Common/LinuxKernel.vala:1109
 msgid "Continue ?"
 msgstr "Continuare ?"
 
-#: src/Common/LinuxKernel.vala:1121 src/Console/AppConsole.vala:290
+#: src/Common/LinuxKernel.vala:1131 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Common/LinuxKernel.vala:1132 src/Console/AppConsole.vala:297
+#: src/Common/LinuxKernel.vala:1142 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del rilascio parziale"
 
-#: src/Common/LinuxKernel.vala:1140 src/Console/AppConsole.vala:302
-#: src/Console/AppConsole.vala:318
+#: src/Common/LinuxKernel.vala:1150 src/Console/AppConsole.vala:304
+#: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
-#: src/Common/LinuxKernel.vala:1149
+#: src/Common/LinuxKernel.vala:1159
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
@@ -170,7 +170,7 @@ msgstr "Le notifiche sono disabilitate"
 msgid "File not found: %s"
 msgstr "File non trovato: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:135
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
 msgid "Syntax"
 msgstr "Sintassi"
 
@@ -224,7 +224,7 @@ msgstr "Scarica i kernel specificati"
 msgid "Delete cached info about available kernels"
 msgstr "Elimina le informazioni sui kernel disponibili dalla cache "
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
 msgid "Options"
 msgstr "Opzioni"
 
@@ -256,61 +256,61 @@ msgstr "Uno o più, separati da virgola"
 msgid "The currently running kernel will always be ignored"
 msgstr "Il kernel attualmente in esecuzione sarà sempre ignorato"
 
-#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
 
-#: src/Console/AppConsole.vala:162 src/Console/AppConsole.vala:248
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:164 src/Console/AppConsole.vala:250
+#: src/Console/AppConsole.vala:278
 msgid "Run"
 msgstr "In corso"
 
-#: src/Console/AppConsole.vala:162
+#: src/Console/AppConsole.vala:164
 msgid "to list all options"
 msgstr "elencare tutte le opzioni"
 
-#: src/Console/AppConsole.vala:216 src/Console/AppConsole.vala:256
+#: src/Console/AppConsole.vala:218 src/Console/AppConsole.vala:258
 msgid "No kernels specified"
 msgstr "Nessun kernel specificato"
 
-#: src/Console/AppConsole.vala:222
+#: src/Console/AppConsole.vala:224
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr "Più kernel selezionati per l'installazione. Selezionarne uno solo."
 
-#: src/Console/AppConsole.vala:245
+#: src/Console/AppConsole.vala:247
 msgid "Could not find requested version"
 msgstr "Impossibile trovare la versione richiesta"
 
-#: src/Console/AppConsole.vala:248
+#: src/Console/AppConsole.vala:250
 msgid "and use a version string listed in first column"
 msgstr "ed usa una stringa di versione elencata nella prima colonna"
 
-#: src/Console/AppConsole.vala:275
+#: src/Console/AppConsole.vala:277
 msgid "Command not specified"
 msgstr "Comando non specificato"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:278
 msgid "to list all commands"
 msgstr "elencare tutti i comandi"
 
-#: src/Console/AppConsole.vala:312
+#: src/Console/AppConsole.vala:314
 msgid "Notifications disabled in settings"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Console/AppConsole.vala:337
+#: src/Console/AppConsole.vala:339
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
-#: src/Console/AppConsole.vala:341 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:342 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Installa"
 
-#: src/Console/AppConsole.vala:345
+#: src/Console/AppConsole.vala:347
 msgid "Previously notified"
 msgstr "Notificato in precedenza"
 
@@ -350,15 +350,15 @@ msgstr "Documentatori"
 msgid "Third Party Inclusions"
 msgstr "Inclusioni di terze parti"
 
-#: src/Gtk/AppGtk.vala:135
+#: src/Gtk/AppGtk.vala:136
 msgid "options"
 msgstr "opzioni"
 
-#: src/Gtk/AppGtk.vala:139
+#: src/Gtk/AppGtk.vala:140
 msgid "Print debug information"
 msgstr "Stampa le informazioni di debug"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:141
 msgid "Show all options"
 msgstr "Mostra tutte le opzioni"
 
@@ -428,8 +428,8 @@ msgstr "Aggiornamento dei kernel"
 msgid "available"
 msgstr "disponibile"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:611
-#: src/Gtk/MainWindow.vala:645
+#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:612
+#: src/Gtk/MainWindow.vala:647
 msgid "DONE"
 msgstr "FATTO"
 

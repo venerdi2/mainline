@@ -2,7 +2,7 @@
 
 namespace l.misc {
 
-	public static int VERBOSE = 1;
+	public int VERBOSE = 1;
 
 	private static void set_locale() {
 		Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);

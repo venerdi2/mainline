@@ -99,6 +99,8 @@ public class AppConsole : GLib.Object {
 			switch (a) {
 			case "--debug":
 				App.VERBOSE = 2;
+				l.misc.VERBOSE = 2;
+				Environment.set_variable("VERBOSE","2",true);
 				break;
 
 			case "--yes":

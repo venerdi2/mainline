@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 07:52-0400\n"
+"POT-Creation-Date: 2023-04-04 17:58-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -53,101 +53,101 @@ msgstr "Oké"
 msgid "FAILED"
 msgstr "MISLUKT"
 
-#: src/Common/LinuxKernel.vala:397
+#: src/Common/LinuxKernel.vala:395
 msgid "Found installed"
 msgstr "Geïnstalleerd gevonden"
 
-#: src/Common/LinuxKernel.vala:721 src/Gtk/MainWindow.vala:519
+#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:519
 #: src/Gtk/MainWindow.vala:532
 msgid "Running"
 msgstr "In gebruik"
 
-#: src/Common/LinuxKernel.vala:722
+#: src/Common/LinuxKernel.vala:732
 msgid "Installed"
 msgstr "Geïnstalleerd"
 
-#: src/Common/LinuxKernel.vala:723
+#: src/Common/LinuxKernel.vala:733
 msgid "Invalid"
 msgstr "Ongeldig"
 
-#: src/Common/LinuxKernel.vala:797
+#: src/Common/LinuxKernel.vala:807
 msgid "Packages Available"
 msgstr "Beschikbare pakketten"
 
-#: src/Common/LinuxKernel.vala:803
+#: src/Common/LinuxKernel.vala:813
 msgid "Packages Installed"
 msgstr "Geïnstalleerde pakketten"
 
-#: src/Common/LinuxKernel.vala:825 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:835 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Het bestand is niet gevonden"
 
-#: src/Common/LinuxKernel.vala:894
+#: src/Common/LinuxKernel.vala:904
 msgid "Available Kernels"
 msgstr "Beschikbare kernels"
 
-#: src/Common/LinuxKernel.vala:931
+#: src/Common/LinuxKernel.vala:941
 msgid "enabled"
 msgstr "ingeschakeld"
 
-#: src/Common/LinuxKernel.vala:955
+#: src/Common/LinuxKernel.vala:965
 msgid "Downloading"
 msgstr "Downloaden"
 
-#: src/Common/LinuxKernel.vala:976
+#: src/Common/LinuxKernel.vala:986
 msgid "is already installed."
 msgstr "is al geïnstalleerd."
 
-#: src/Common/LinuxKernel.vala:1006
+#: src/Common/LinuxKernel.vala:1016
 msgid "Uninstalling selected kernels"
 msgstr "Geselecteerde kernels verwijderen"
 
-#: src/Common/LinuxKernel.vala:1012
+#: src/Common/LinuxKernel.vala:1022
 msgid "requested"
 msgstr "verzocht"
 
-#: src/Common/LinuxKernel.vala:1015
+#: src/Common/LinuxKernel.vala:1025
 msgid "not uninstalling the currently running kernel"
 msgstr "de momenteel actieve kernel niet verwijderen"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:1041
 msgid "found"
 msgstr "gevonden"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1044
 msgid "No packages to un-install!"
 msgstr "Geen pakketten om te verwijderen!"
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1092
 msgid "Could not find running kernel in list"
 msgstr "De in gebruik zijnde kernel staat niet op de lijst"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1097
 msgid "Could not find any kernels to uninstall"
 msgstr "Er zijn geen te verwijderen kernels"
 
-#: src/Common/LinuxKernel.vala:1095
+#: src/Common/LinuxKernel.vala:1105
 msgid "The following kernels will be uninstalled"
 msgstr "De volgende kernels worden verwijderd"
 
-#: src/Common/LinuxKernel.vala:1099
+#: src/Common/LinuxKernel.vala:1109
 msgid "Continue ?"
 msgstr "Wilt u doorgaan?"
 
-#: src/Common/LinuxKernel.vala:1121 src/Console/AppConsole.vala:290
+#: src/Common/LinuxKernel.vala:1131 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Recentste update"
 
-#: src/Common/LinuxKernel.vala:1132 src/Console/AppConsole.vala:297
+#: src/Common/LinuxKernel.vala:1142 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Recentste puntupdate"
 
-#: src/Common/LinuxKernel.vala:1140 src/Console/AppConsole.vala:302
-#: src/Console/AppConsole.vala:318
+#: src/Common/LinuxKernel.vala:1150 src/Console/AppConsole.vala:304
+#: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
-#: src/Common/LinuxKernel.vala:1149
+#: src/Common/LinuxKernel.vala:1159
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Wilt u versie %s installeren? (j/n): "
@@ -172,7 +172,7 @@ msgstr "Meldingen zijn uitgeschakeld"
 msgid "File not found: %s"
 msgstr "Bestand niet gevonden: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:135
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
 msgid "Syntax"
 msgstr "Syntaxis"
 
@@ -224,7 +224,7 @@ msgstr "Opgegeven kernels downloaden"
 msgid "Delete cached info about available kernels"
 msgstr "Informatie over beschikbare kernels in de cache verwijderen"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:137
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
 msgid "Options"
 msgstr "Opties"
 
@@ -256,62 +256,62 @@ msgstr "Een of meer, komma-gescheiden"
 msgid "The currently running kernel will always be ignored"
 msgstr "De momenteel actieve kernel wordt altijd genegeerd"
 
-#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:121
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
-#: src/Console/AppConsole.vala:162 src/Console/AppConsole.vala:248
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:164 src/Console/AppConsole.vala:250
+#: src/Console/AppConsole.vala:278
 msgid "Run"
 msgstr "Uitvoeren"
 
-#: src/Console/AppConsole.vala:162
+#: src/Console/AppConsole.vala:164
 msgid "to list all options"
 msgstr "om alle opties te tonen"
 
-#: src/Console/AppConsole.vala:216 src/Console/AppConsole.vala:256
+#: src/Console/AppConsole.vala:218 src/Console/AppConsole.vala:258
 msgid "No kernels specified"
 msgstr "Geen kernels opgegeven"
 
-#: src/Console/AppConsole.vala:222
+#: src/Console/AppConsole.vala:224
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Er zijn meerdere te installeren kernels geselecteerd. Selecteer er één."
 
-#: src/Console/AppConsole.vala:245
+#: src/Console/AppConsole.vala:247
 msgid "Could not find requested version"
 msgstr "De vereiste versie kan niet worden gevonden"
 
-#: src/Console/AppConsole.vala:248
+#: src/Console/AppConsole.vala:250
 msgid "and use a version string listed in first column"
 msgstr "en gebruik een versietekenreeks in de eerste kolom"
 
-#: src/Console/AppConsole.vala:275
+#: src/Console/AppConsole.vala:277
 msgid "Command not specified"
 msgstr "Geen opdracht opgegeven"
 
-#: src/Console/AppConsole.vala:276
+#: src/Console/AppConsole.vala:278
 msgid "to list all commands"
 msgstr "om alle opdrachten te tonen"
 
-#: src/Console/AppConsole.vala:312
+#: src/Console/AppConsole.vala:314
 msgid "Notifications disabled in settings"
 msgstr "Meldingen uitgeschakeld in instellingen"
 
-#: src/Console/AppConsole.vala:337
+#: src/Console/AppConsole.vala:339
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s is beschikbaar"
 
-#: src/Console/AppConsole.vala:341 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Tonen"
 
-#: src/Console/AppConsole.vala:342 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Installeren"
 
-#: src/Console/AppConsole.vala:345
+#: src/Console/AppConsole.vala:347
 msgid "Previously notified"
 msgstr "Eerder gemeld"
 
@@ -351,15 +351,15 @@ msgstr "Documenteerders"
 msgid "Third Party Inclusions"
 msgstr "Externe code"
 
-#: src/Gtk/AppGtk.vala:135
+#: src/Gtk/AppGtk.vala:136
 msgid "options"
 msgstr "opties"
 
-#: src/Gtk/AppGtk.vala:139
+#: src/Gtk/AppGtk.vala:140
 msgid "Print debug information"
 msgstr "Foutopsporingsinformatie tonen"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:141
 msgid "Show all options"
 msgstr "Alle opties tonen"
 
@@ -429,8 +429,8 @@ msgstr "Kernels bijwerken"
 msgid "available"
 msgstr "beschikbaar"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:611
-#: src/Gtk/MainWindow.vala:645
+#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:612
+#: src/Gtk/MainWindow.vala:647
 msgid "DONE"
 msgstr "AFGEROND"
 

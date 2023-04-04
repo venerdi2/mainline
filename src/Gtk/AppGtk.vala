@@ -45,7 +45,6 @@ public class AppGtk : GLib.Object {
 		// create main window --------------------------------------
 		var window = new MainWindow ();
 		window.configure_event.connect ((event) => {
-			//log_debug("resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
 			App.window_width = event.width;
 			App.window_height = event.height;
 			App.window_x = event.x;
@@ -97,6 +96,8 @@ public class AppGtk : GLib.Object {
 
 			case "--debug":
 				App.VERBOSE = 2;
+				l.misc.VERBOSE = 2;
+				Environment.set_variable("VERBOSE","2",true);
 				break;
 
 			// this is used by the notifications

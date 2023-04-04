@@ -573,6 +573,7 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
+		vprint("------------------------------------------------------------------------------");
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
@@ -613,6 +614,7 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
+		vprint("------------------------------------------------------------------------------");
 	}
 
 	public void do_purge () {
@@ -647,6 +649,7 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
+		vprint("------------------------------------------------------------------------------");
 	}
 
 }
