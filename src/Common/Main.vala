@@ -348,13 +348,13 @@ public class Main : GLib.Object {
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
 		string s = "#!/bin/bash\n"
-			+ "# "+_("Called from")+" "+STARTUP_DESKTOP_FILE+" at logon.\n"
+			+ "# "+_("Called from")+" "+STARTUP_DESKTOP_FILE+" "+_("at logon")+".\n"
 			+ "# "+_("This file is over-written and executed again whenever settings are saved in")+" "+BRANDING_SHORTNAME+"-gtk\n"
 			+ "[[ $1 == --autostart ]] && rm -f \""+NOTIFICATION_ID_FILE+"\" \""+MAJOR_SEEN_FILE+"\" \""+MINOR_SEEN_FILE+"\"\n"
 			+ "TMP=${XDG_RUNTIME_DIR:-/tmp}\n"
 			+ "N=${0//\\//_}\n"
 			+ "F=\"${TMP}/${N}.${$}.p\"\n"
-			+ "trap '[[ -f ${F}_ ]] && read c < ${F}_ && kill $c ;rm -f $F{,_}' 0\n"
+			+ "trap '[[ -f ${F}_ ]] && read c < ${F}_ && kill $c ;rm -f ${F}{,_}' 0\n"
 			+ "typeset -i p\n"
 			+ "shopt -s extglob\n"
 			+ "\n"
@@ -385,21 +385,23 @@ public class Main : GLib.Object {
 			+ "exit 0\n";
 		}
 
-		file_write(STARTUP_SCRIPT_FILE,s);
-		// save_app_config() gets run right at app startup if the config file
-		// doesn't exist yet, so sometimes update_startup_script() might run
-		// early in app start-up when we haven't done the cache update yet.
-		// If we blindly launch the background notification process immediately
-		// any time settings are updated, the --notify process and ourselves
-		// will both try to update the same cache files at the same time and
-		// step all over each other.
-		// This is not really a fully correct answer, but mostly good enough:
-		// * If notifications are now OFF, then run the new startup script
-		//   immediately so that it clears out the existing notification loop
-		//   that might be running.
-		// * If notifications are now ON, then delay running the new startup
-		//   script until later at app exit.
-		if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
+		if (GUI_MODE) {
+			// save_app_config() gets run right at app startup if the config file
+			// doesn't exist yet, so sometimes update_startup_script() might run
+			// early in app start-up when we haven't done the cache update yet.
+			// If we blindly launch the background notification process immediately
+			// any time settings are updated, the --notify process and ourselves
+			// will both try to update the same cache files at the same time and
+			// step all over each other.
+			// This is not really a fully correct answer, but mostly good enough:
+			// * If all notifications are now OFF, then run the new startup script
+			//   immediately so that it clears out the existing notification loop
+			//   that might be running.
+			// * Otherwise don't do anything right now, and run the new startup
+			//   script at app exit instead.
+			file_write(STARTUP_SCRIPT_FILE,s);
+			if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
+		}
 	}
 
 	private void update_startup_desktop_file() {

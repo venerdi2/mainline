@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2023-02-20 18:40+0100\n"
 "Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
@@ -156,6 +156,10 @@ msgstr "Kernel-Version %s installieren? (j/n):"
 msgid "Called from"
 msgstr "Angerufen von"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "beim start"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -171,7 +175,7 @@ msgstr "Benachrichtigungen sind deaktiviert"
 msgid "File not found: %s"
 msgstr "Datei nicht gefunden: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Syntax"
 
@@ -224,7 +228,7 @@ msgstr "Herunterladen bestimmter Kernel"
 msgid "Delete cached info about available kernels"
 msgstr "Löschen zwischengespeicherter Informationen über verfügbare Kernel"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Optionen"
 
@@ -256,7 +260,7 @@ msgstr "Ein oder mehrere, durch Kommas getrennte"
 msgid "The currently running kernel will always be ignored"
 msgstr "Der aktuell laufende Kernel wird immer ignoriert"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Unbekannte Option"
 
@@ -299,20 +303,20 @@ msgstr "um alle Befehle aufzulisten"
 msgid "Notifications disabled in settings"
 msgstr "Benachrichtigungen sind deaktiviert"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s verfügbar"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Zeigen"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Installieren"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Zuvor gemeldet"
 
@@ -352,15 +356,15 @@ msgstr "Dokumentierer"
 msgid "Third Party Inclusions"
 msgstr "Einschlüsse von Drittparteien"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "optionen"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Zeige Debug Informationen"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Alle Optionen anzeigen"
 

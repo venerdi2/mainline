@@ -168,7 +168,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_start = 6;
 		hbox.add (label);
 
-		var spm_adj = new Gtk.Adjustment(App.previous_majors, -1, LinuxKernel.kernel_latest_available.version_maj , 1, 1, 0);
+		var spm_adj = new Gtk.Adjustment(App.previous_majors, -1, LinuxKernel.kernel_latest_available.version_major , 1, 1, 0);
 		var spm_spin = new Gtk.SpinButton (spm_adj, 1, 0);
 		spm_spin.xalign = (float) 0.5;
 		hbox.add(spm_spin);

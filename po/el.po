@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -156,6 +156,10 @@ msgstr "Εγκατάσταση του πυρήνα έκδοσης %s ; (ν/ό):"
 msgid "Called from"
 msgstr "Κλήθηκε από"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "κατά την εκκίνηση"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -172,7 +176,7 @@ msgstr "Οι ειδοποιήσεις είναι απενεργοποιημέν�
 msgid "File not found: %s"
 msgstr "Το αρχείο δεν βρέθηκε: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Σύνταξη"
 
@@ -225,7 +229,7 @@ msgid "Delete cached info about available kernels"
 msgstr ""
 "Διαγραφή προσωρινά αποθηκευμένων πληροφοριών σχετικά με διαθέσιμους πυρήνες"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Επιλογές"
 
@@ -257,7 +261,7 @@ msgstr "Ένα ή περισσότερα, διαχωρισμένα με κόμμ
 msgid "The currently running kernel will always be ignored"
 msgstr "Αυτός ο πυρήνας είναι ήδη εγκατεστημένος."
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Άγνωστη επιλογή"
 
@@ -299,20 +303,20 @@ msgstr "για να παραθέσετε όλες τις εντολές"
 msgid "Notifications disabled in settings"
 msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες στις ρυθμίσεις"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Πυρήνας %s διαθέσιμος"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Προβολή"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Εγκατάσταση"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Έχει ήδη κοινοποιηθεί"
 
@@ -352,15 +356,15 @@ msgstr "Τεκμηριωτές"
 msgid "Third Party Inclusions"
 msgstr "Συμπεριλήψεις τρίτων"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "επιλογές"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Εκτύπωση πληροφοριών εντοπισμού σφαλμάτων"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Εμφάνιση όλων των επιλογών"
 

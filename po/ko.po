@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -156,6 +156,10 @@ msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 msgid "Called from"
 msgstr "에서 호출"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "로그온 시"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -170,7 +174,7 @@ msgstr "알림이 비활성화 되었습니다"
 msgid "File not found: %s"
 msgstr "파일을 찾을 수 없음: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "문법"
 
@@ -222,7 +226,7 @@ msgstr "지정한 커널 다운로드"
 msgid "Delete cached info about available kernels"
 msgstr "사용 가능한 커널에 대한 캐시된 정보 삭제"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "옵션"
 
@@ -254,7 +258,7 @@ msgstr "하나 이상, 쉼표로 구분"
 msgid "The currently running kernel will always be ignored"
 msgstr "현재 실행중인 커널은 항상 무시됩니다"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "알 수 없는 옵션"
 
@@ -295,20 +299,20 @@ msgstr "모든 명령어 나열"
 msgid "Notifications disabled in settings"
 msgstr "설정에서 비활성화된 알림"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "커널 %s 사용 가능"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "보이기"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "설치"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "이전에 통보됨"
 
@@ -348,15 +352,15 @@ msgstr "문서작성"
 msgid "Third Party Inclusions"
 msgstr "서드파티 포함"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "옵션"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "디버그 정보 출력"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "모든 옵션 보기"
 

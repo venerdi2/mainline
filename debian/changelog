@@ -1,3 +1,9 @@
+mainline (1.2.2) unstable; urgency=medium
+
+  * un-bork the notification available version logic, again
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Thu, 06 Apr 2023 18:59:49 -0400
+
 mainline (1.2.1) unstable; urgency=medium
 
   * improve the logic for determining if a new kernel is available

@@ -308,10 +308,10 @@ public class AppConsole : GLib.Object {
 	}
 
 	private void notify_user() {
-		vprint("notify_user()",4);
+		vprint("notify_user()",2);
 
 		if (!App.notify_major && !App.notify_minor) {
-			vprint(_("Notifications disabled in settings"),4);
+			vprint(_("Notifications disabled in settings"),2);
 			return;
 		}
 
@@ -319,35 +319,38 @@ public class AppConsole : GLib.Object {
 
 		string title = _("No updates found");
 		string seen = "";
-		var k = new LinuxKernel("",true);
+		string available = "";
 
-		if (App.notify_major) {
-			if (file_exists(App.MAJOR_SEEN_FILE)) seen = file_read(App.MAJOR_SEEN_FILE).strip();
-			k = LinuxKernel.kernel_update_major;
-			if (k!=null && seen!=k.version_main) file_write(App.MAJOR_SEEN_FILE,k.version_main);
-			else k = null;
-		}
-
-		if (App.notify_minor && k==null) {
+		if (App.notify_minor) {
+			var k = LinuxKernel.kernel_update_minor;
+			if (k!=null && k.version_main!="") available = k.version_main;
 			if (file_exists(App.MINOR_SEEN_FILE)) seen = file_read(App.MINOR_SEEN_FILE).strip();
-			k = LinuxKernel.kernel_update_minor;
-			if (k!=null && seen!=k.version_main) file_write(App.MINOR_SEEN_FILE,k.version_main);
-			else k = null;
-		}
+			if (seen!=available) file_write(App.MINOR_SEEN_FILE,available);
+		} else vprint("notify point releases disabled",2);
 
-		if (k!=null) {
-			title = _("Kernel %s Available").printf(k.version_main);
+		// if notify_major enabled and there is one, simply overwrite available
+		if (App.notify_major) {
+			var k = LinuxKernel.kernel_update_major;
+			if (k!=null && k.version_main!="") available = k.version_main;
+			if (file_exists(App.MAJOR_SEEN_FILE)) seen = file_read(App.MAJOR_SEEN_FILE).strip();
+			if (seen!=available) file_write(App.MAJOR_SEEN_FILE,available);
+		} else vprint("notify major releases disabled",2);
+
+		if (seen==available) available = "";
+
+		if (available!="") {
+			title = _("Kernel %s Available").printf(available);
 			string close_action = ""; // command to run when user closes notification without pressing any action button
 			string body = ""; // notification message body
 			var alist = new Gee.ArrayList<string> (); // notification action buttons:  "buttonlabel:command line to run"
 			alist.add(_("Show")+":"+BRANDING_SHORTNAME+"-gtk");
-			alist.add(_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+k.version_main);
+			alist.add(_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+available);
 			OSDNotify.notify_send(title,body,alist,close_action);
 		} else {
-			if (seen.length>0) title = _("Previously notified")+": \""+seen+"\"";
+			if (seen!="") title = _("Previously notified")+": \""+seen+"\"";
 		}
 
-		vprint(title);
+		vprint(title,2);
 	}
 
 }

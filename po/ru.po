@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2023-04-02 17:50+0300\n"
 "Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
 "<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
@@ -157,6 +157,10 @@ msgstr "Установить версию ядра %s ? (y/n): "
 msgid "Called from"
 msgstr "Вызван из"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "при запуске"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -172,7 +176,7 @@ msgstr "Уведомления отключены"
 msgid "File not found: %s"
 msgstr "Файл не найден: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Синтаксис"
 
@@ -224,7 +228,7 @@ msgstr "Скачать указанные ядра"
 msgid "Delete cached info about available kernels"
 msgstr "Удаление кэшированной информации о доступных ядрах"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Параметры"
 
@@ -256,7 +260,7 @@ msgstr "Один или несколько, разделенных запяты�
 msgid "The currently running kernel will always be ignored"
 msgstr "Текущее работающее ядро всегда будет игнорироваться"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Неизвестный параметр"
 
@@ -297,20 +301,20 @@ msgstr "чтобы перечислить все команды"
 msgid "Notifications disabled in settings"
 msgstr "Уведомления отключены в настройках"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Доступно ядро %s"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Показать"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Установить"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Предварительно уведомлено"
 
@@ -350,15 +354,15 @@ msgstr "Составители документации"
 msgid "Third Party Inclusions"
 msgstr "Включая сторонние инструменты"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "параметры"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Распечатать отладочную информацию"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Показать все параметры"
 

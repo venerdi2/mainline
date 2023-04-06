@@ -81,8 +81,8 @@ public class AppGtk : GLib.Object {
 				//|| App.term_y != App._term_y
 			) App.save_app_config();
 
-		// start the notification background process if notifcations enabled
-		if (App.notify_major || App.notify_major) exec_async("bash "+App.STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
+		// start the notification background process if any notifcations are enabled
+		if (App.notify_major || App.notify_minor) exec_async("bash "+App.STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
 
 		return 0;
 	}
@@ -106,9 +106,6 @@ public class AppGtk : GLib.Object {
 					App.command = "install";
 					App.requested_version = args[i].down();
 				}
-				//if (App.VERBOSE<1) App.VERBOSE = 1;
-				//l.misc.VERBOSE = App.VERBOSE;
-				//Environment.set_variable("VERBOSE",App.VERBOSE.to_string(),true);
 				break;
 
 			case "--help":

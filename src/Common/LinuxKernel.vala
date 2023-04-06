@@ -13,8 +13,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string page_uri = "";
 	public string notes = "";
 
-	public int version_maj = -1;
-	public int version_min = -1;
+	public int version_major = -1;
+	public int version_minor = -1;
 	public int version_point = -1;
 	public int version_rc = -1;
 
@@ -258,7 +258,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.is_invalid) continue;
 
 			if (!k.is_installed) {
-				if (k.version_maj < threshold_major) continue;
+				if (k.version_major < threshold_major) continue;
 				if (App.hide_unstable && k.is_unstable) continue;
 			}
 
@@ -406,7 +406,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			bool found = false;
 			foreach (var k in kernel_list) {
 				if (k.is_invalid) continue;
-				if (k.version_maj<threshold_major) continue;
+				if (k.version_major<threshold_major) continue;
 				if (k.version_package == pkern.kname) {
 					found = true;
 					k.pkg_list = pkern.pkg_list;
@@ -429,7 +429,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		foreach (string pkg_version in pkg_versions) {
 			foreach (var k in kernel_list) {
 				if (k.is_invalid) continue;
-				if (k.version_maj<threshold_major) continue;
+				if (k.version_major<threshold_major) continue;
 				if (k.version_package == "") continue;
 				if (pkg_version == k.version_package) {
 					k.is_installed = true;
@@ -491,7 +491,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_oldest_installed = kernel_latest_installed;
 		foreach(var k in kernel_list) {
 			if (k.is_installed) {
-				if (kernel_latest_installed.version_maj==0) kernel_latest_installed = k;
+				if (kernel_latest_installed.version_major==0) kernel_latest_installed = k;
 				kernel_oldest_installed = k;
 			}
 		}
@@ -516,14 +516,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.is_invalid) continue;
 			if (k.is_installed) continue;
 			if (k.is_unstable && App.hide_unstable) continue;
-			if (k.version_maj < threshold_major) break;
+			if (k.version_major < threshold_major) break;
 			if (k.compare_to(kernel_latest_installed)<=0) break;
 
 			// kernel_list is sorted so first match is highest match
-			if (k.version_maj > kernel_latest_installed.version_maj) major_available = true;
-			else if (k.version_maj == kernel_latest_installed.version_maj) {
-				if (k.version_min > kernel_latest_installed.version_min) major_available = true;
-				else if (k.version_min == kernel_latest_installed.version_min) {
+			if (k.version_major > kernel_latest_installed.version_major) major_available = true;
+			else if (k.version_major == kernel_latest_installed.version_major) {
+				if (k.version_minor > kernel_latest_installed.version_minor) major_available = true;
+				else if (k.version_minor == kernel_latest_installed.version_minor) {
 					if (k.version_point > kernel_latest_installed.version_point) minor_available = true;
 					else if (k.version_point == kernel_latest_installed.version_point) {
 						if (k.version_rc > kernel_latest_installed.version_rc) minor_available = true;
@@ -554,7 +554,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		//Package.update_dpkg_list();
 
-		if (App.previous_majors<0 || App.previous_majors>=kernel_latest_available.version_maj) { threshold_major=0; return; }
+		if (App.previous_majors<0 || App.previous_majors>=kernel_latest_available.version_major) { threshold_major=0; return; }
 
 		// start from the running kernel and work down
 		kernel_oldest_installed = new LinuxKernel.from_version(RUNNING_KERNEL);
@@ -562,18 +562,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		foreach (var pkg in Package.dpkg_list) {
 			if (!pkg.pname.has_prefix("linux-image-")) continue;
 			var candidate = new LinuxKernel(pkg.version, false);
-			if (candidate.version_maj < kernel_oldest_installed.version_maj) kernel_oldest_installed = candidate;
+			if (candidate.version_major < kernel_oldest_installed.version_major) kernel_oldest_installed = candidate;
 		}
 
-		threshold_major = kernel_latest_available.version_maj - App.previous_majors;
-		if (kernel_oldest_installed.version_maj < threshold_major) threshold_major = kernel_oldest_installed.version_maj;
+		threshold_major = kernel_latest_available.version_major - App.previous_majors;
+		if (kernel_oldest_installed.version_major < threshold_major) threshold_major = kernel_oldest_installed.version_major;
 		vprint("threshold_major %d".printf(threshold_major),2);
 	}
 
 	public void split_version_string(string _version_string, out string ver_main) {
 		ver_main = "";
-		version_maj = 0;
-		version_min = 0;
+		version_major = 0;
+		version_minor = 0;
 		version_point = 0;
 		version_rc = -1;
 
@@ -599,10 +599,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				} else {
 					switch (index) {
 					case 0:
-						version_maj = int.parse(num);
+						version_major = int.parse(num);
 						break;
 					case 1:
-						version_min = int.parse(num);
+						version_minor = int.parse(num);
 						break;
 					case 2:
 						version_point = int.parse(num);
@@ -619,7 +619,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			if (version_rc>-1) version_extra = "-rc%d".printf(version_rc);
-			ver_main = "%d.%d.%d%s".printf(version_maj,version_min,version_point,version_extra);
+			ver_main = "%d.%d.%d%s".printf(version_major,version_minor,version_point,version_extra);
 
 			try{
 				if (!match.next()) break;
@@ -911,7 +911,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
 				if (App.hide_unstable && k.is_unstable) continue;
-				if (k.version_maj < threshold_major) continue;
+				if (k.version_major < threshold_major) continue;
 			}
 
 			if (k.version_main.length>nl) nl = k.version_main.length;

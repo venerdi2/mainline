@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -156,6 +156,10 @@ msgstr "Installera kärnversion %s ? (j/n):"
 msgid "Called from"
 msgstr "Ringde från"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "vid start"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -170,7 +174,7 @@ msgstr "Meddelanden är inaktiverade"
 msgid "File not found: %s"
 msgstr "Filen hittades inte: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Syntax"
 
@@ -222,7 +226,7 @@ msgstr "Ladda ner angivna kärnor"
 msgid "Delete cached info about available kernels"
 msgstr "Ta bort cachelagrad information om tillgängliga kärnor"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Alternativ"
 
@@ -254,7 +258,7 @@ msgstr "En eller flera, kommaseparerade"
 msgid "The currently running kernel will always be ignored"
 msgstr "Den kärna som för närvarande körs ignoreras alltid"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Okänt alternativ"
 
@@ -295,20 +299,20 @@ msgstr "för att lista alla kommandon"
 msgid "Notifications disabled in settings"
 msgstr "Meddelanden inaktiverade i inställningarna"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s tillgängliga"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Visa"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Installera"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Tidigare anmält"
 
@@ -348,15 +352,15 @@ msgstr "Dokumentalister"
 msgid "Third Party Inclusions"
 msgstr "Tredjepartsverktyg"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "alternativ"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Skriv ut felsökningsinformation"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Visa alla alternativ"
 

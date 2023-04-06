@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
-"Last-Translator: Demetrio Mendozzi, Albano Battistella <albano_battistella@hotmail.com>\n"
+"Last-Translator: Demetrio Mendozzi, Albano Battistella "
+"<albano_battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -154,6 +155,10 @@ msgstr "Installare la versione del kernel %s ? (y/n): "
 msgid "Called from"
 msgstr "Chiamato da"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "all'avvio"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -170,7 +175,7 @@ msgstr "Le notifiche sono disabilitate"
 msgid "File not found: %s"
 msgstr "File non trovato: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Sintassi"
 
@@ -184,8 +189,9 @@ msgstr "Verifica aggiornamenti del kernel"
 
 #: src/Console/AppConsole.vala:52
 msgid "Check for kernel updates and notify current user"
-msgstr "Verifica la disponibilità di aggiornamenti del kernel"
-"ed avvisa l'utente corrente"
+msgstr ""
+"Verifica la disponibilità di aggiornamenti del kerneled avvisa l'utente "
+"corrente"
 
 #: src/Console/AppConsole.vala:53
 msgid "List all available mainline kernels"
@@ -223,7 +229,7 @@ msgstr "Scarica i kernel specificati"
 msgid "Delete cached info about available kernels"
 msgstr "Elimina le informazioni sui kernel disponibili dalla cache "
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Opzioni"
 
@@ -255,7 +261,7 @@ msgstr "Uno o più, separati da virgola"
 msgid "The currently running kernel will always be ignored"
 msgstr "Il kernel attualmente in esecuzione sarà sempre ignorato"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
 
@@ -296,20 +302,20 @@ msgstr "elencare tutti i comandi"
 msgid "Notifications disabled in settings"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Installa"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Notificato in precedenza"
 
@@ -349,15 +355,15 @@ msgstr "Documentatori"
 msgid "Third Party Inclusions"
 msgstr "Inclusioni di terze parti"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "opzioni"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Stampa le informazioni di debug"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Mostra tutte le opzioni"
 

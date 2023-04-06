@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -157,6 +157,10 @@ msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
 msgid "Called from"
 msgstr "Çağrı konumu"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "başlangıçta"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -172,7 +176,7 @@ msgstr "Bildirimler devre dışı bırakılmış"
 msgid "File not found: %s"
 msgstr "Dosya bulunamadı: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Sözdizimi"
 
@@ -224,7 +228,7 @@ msgstr "Belirtilen çekirdekleri indir"
 msgid "Delete cached info about available kernels"
 msgstr "Kullanılabilir çekirdekler hakkında önbelleğe alınmış bilgileri silme"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Seçenekler"
 
@@ -256,7 +260,7 @@ msgstr "Bir veya daha fazla, virgülle ayrılmış"
 msgid "The currently running kernel will always be ignored"
 msgstr "Şu anda çalışan çekirdek her zaman yoksayılır"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
@@ -297,20 +301,20 @@ msgstr "tüm komutları listele"
 msgid "Notifications disabled in settings"
 msgstr "Ayarlarda devre dışı bırakılan bildirimler"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Çekirdek %s Kullanılabilir"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Göster"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Kur"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Daha önce bildirilmiş"
 
@@ -350,15 +354,15 @@ msgstr "Belgelendirenler"
 msgid "Third Party Inclusions"
 msgstr "Üçüncü Taraf Eklemeler"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "seçenekler"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Hata ayıklama bilgisini yazdır"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Tüm seçenekleri göster"
 

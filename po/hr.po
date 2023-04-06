@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -156,6 +156,10 @@ msgstr "Instaliraj kernel inačice %s ? (d/n): "
 msgid "Called from"
 msgstr "Pozvano od"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "indításkor"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -171,7 +175,7 @@ msgstr "Obavijesti su onemogućene"
 msgid "File not found: %s"
 msgstr "Datoteka nije pronađena: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Sintaksa"
 
@@ -223,7 +227,7 @@ msgstr "Preuzmi određene kernele"
 msgid "Delete cached info about available kernels"
 msgstr "Brisanje predmemoriranih podataka o dostupnim jezgrama"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Mogućnosti"
 
@@ -255,7 +259,7 @@ msgstr "Jedan ili više njih, odvojeni zarezom"
 msgid "The currently running kernel will always be ignored"
 msgstr "Trenutno pokrenuta jezgra uvijek će se zanemariti"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
@@ -296,20 +300,20 @@ msgstr "za prikaz svih mogućnosti"
 msgid "Notifications disabled in settings"
 msgstr "Obavijesti onemogućene u postavkama"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Instaliraj"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Prethodno prijavljeno"
 
@@ -349,15 +353,15 @@ msgstr "Autori dokumentacije"
 msgid "Third Party Inclusions"
 msgstr "Uključene treće strane"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "mogućnosti"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Ispiši informacije otklanjanja grešaka"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Prikaži sve mogućnosti"
 

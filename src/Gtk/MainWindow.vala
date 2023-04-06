@@ -239,7 +239,7 @@ public class MainWindow : Gtk.Window {
 			if (k.is_invalid) continue;
 			if (!k.is_installed) {
 				if (k.is_unstable && App.hide_unstable) continue;
-				if (k.version_maj < LinuxKernel.threshold_major) continue;
+				if (k.version_major < LinuxKernel.threshold_major) continue;
 			}
 
 			// add row

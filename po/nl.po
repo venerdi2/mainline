@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:58-0400\n"
+"POT-Creation-Date: 2023-04-06 18:59-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -156,6 +156,10 @@ msgstr "Wilt u versie %s installeren? (j/n): "
 msgid "Called from"
 msgstr "Aangeroepen door"
 
+#: src/Common/Main.vala:351
+msgid "at logon"
+msgstr "bij het opstarten"
+
 #: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
@@ -172,7 +176,7 @@ msgstr "Meldingen zijn uitgeschakeld"
 msgid "File not found: %s"
 msgstr "Bestand niet gevonden: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:136
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
 msgid "Syntax"
 msgstr "Syntaxis"
 
@@ -224,7 +228,7 @@ msgstr "Opgegeven kernels downloaden"
 msgid "Delete cached info about available kernels"
 msgstr "Informatie over beschikbare kernels in de cache verwijderen"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:138
+#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
 msgid "Options"
 msgstr "Opties"
 
@@ -256,7 +260,7 @@ msgstr "Een of meer, komma-gescheiden"
 msgid "The currently running kernel will always be ignored"
 msgstr "De momenteel actieve kernel wordt altijd genegeerd"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:122
+#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
@@ -298,20 +302,20 @@ msgstr "om alle opdrachten te tonen"
 msgid "Notifications disabled in settings"
 msgstr "Meldingen uitgeschakeld in instellingen"
 
-#: src/Console/AppConsole.vala:339
+#: src/Console/AppConsole.vala:342
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s is beschikbaar"
 
-#: src/Console/AppConsole.vala:343 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
 msgid "Show"
 msgstr "Tonen"
 
-#: src/Console/AppConsole.vala:344 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Installeren"
 
-#: src/Console/AppConsole.vala:347
+#: src/Console/AppConsole.vala:350
 msgid "Previously notified"
 msgstr "Eerder gemeld"
 
@@ -351,15 +355,15 @@ msgstr "Documenteerders"
 msgid "Third Party Inclusions"
 msgstr "Externe code"
 
-#: src/Gtk/AppGtk.vala:136
+#: src/Gtk/AppGtk.vala:133
 msgid "options"
 msgstr "opties"
 
-#: src/Gtk/AppGtk.vala:140
+#: src/Gtk/AppGtk.vala:137
 msgid "Print debug information"
 msgstr "Foutopsporingsinformatie tonen"
 
-#: src/Gtk/AppGtk.vala:141
+#: src/Gtk/AppGtk.vala:138
 msgid "Show all options"
 msgstr "Alle opties tonen"
 
