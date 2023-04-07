@@ -119,7 +119,7 @@ Clicking on the Notes field allows to attach arbitrary text to a kernel.
 
 # TODO & WIP
 * Add some extra info into the version strings used for display and --install etc, to better handle multiple kernels of the same main version but from different sources, and other differences like builds and platform/feature options etc  
-* Replace system("aria2c ...") with libsoup or libcurl or similar  
+* Replace Process.spawn_async_with_pipes("aria2c ...",...) with libcurl  
 * Make the background process for notifications detect when the user logs out of the desktop session and exit itself  
 * Move the notification/dbus code from the current shell script into the app and make an "applet" mode  
 * Combine the gtk and cli apps into one, or, make the gtk app into a pure front-end for the cli app, either way  

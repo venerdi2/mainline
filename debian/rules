@@ -9,5 +9,12 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+# debhelper>9 uses make -jN by default, which fails on vala projects
+# https://github.com/bkw777/mainline/issues/74
+# unless you do
+# https://wiki.gnome.org/Projects/Vala/Documentation/ParallelBuilds
+# which is ridiculous nonsense
+# add --no-parallel to prevent debhelper>9 from using make -jN
+
 %:
-	dh $@
+	dh $@ --no-parallel
