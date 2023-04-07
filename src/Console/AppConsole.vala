@@ -304,7 +304,7 @@ public class AppConsole : GLib.Object {
 			vprint(_("No updates found"));
 		}
 
-		vprint(string.nfill(70, '-'));
+		vprint(line);
 	}
 
 	private void notify_user() {

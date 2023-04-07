@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: mainline 1.0.14\n"
+"Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 18:59-0400\n"
+"POT-Creation-Date: 2023-04-07 14:01-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -57,8 +57,8 @@ msgstr "실패"
 msgid "Found installed"
 msgstr "설치된 것을 찾았습니다"
 
-#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:519
-#: src/Gtk/MainWindow.vala:532
+#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:520
+#: src/Gtk/MainWindow.vala:533
 msgid "Running"
 msgstr "구동 중"
 
@@ -152,20 +152,20 @@ msgstr "업데이트를 찾을 수 없습니다"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:353
 msgid "Called from"
 msgstr "에서 호출"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:353
 msgid "at logon"
 msgstr "로그온 시"
 
-#: src/Common/Main.vala:352
+#: src/Common/Main.vala:354
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행됩니다."
 
-#: src/Common/Main.vala:384
+#: src/Common/Main.vala:386
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
@@ -214,7 +214,7 @@ msgstr "지정한 메인라인 커널 설치"
 msgid "Uninstall specified kernel"
 msgstr "지정한 커널 삭제"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:328
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:329
 msgid "Uninstall all but the highest installed version"
 msgstr "설치된 가장 높은 버전을 제외한 모든 버전을 제거합니다"
 
@@ -308,7 +308,7 @@ msgstr "커널 %s 사용 가능"
 msgid "Show"
 msgstr "보이기"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:297
 msgid "Install"
 msgstr "설치"
 
@@ -376,19 +376,19 @@ msgstr "상태"
 msgid "Notes"
 msgstr "노트"
 
-#: src/Gtk/MainWindow.vala:306
+#: src/Gtk/MainWindow.vala:307
 msgid "Uninstall"
 msgstr "삭제"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:328
 msgid "Uninstall Old"
 msgstr "오래된 커널 제거"
 
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:334
 msgid "Reload"
 msgstr "새로고침"
 
-#: src/Gtk/MainWindow.vala:334
+#: src/Gtk/MainWindow.vala:335
 msgid ""
 "Delete cache and reload all kernel info\n"
 "\n"
@@ -398,40 +398,40 @@ msgstr ""
 "\n"
 "!! 이렇게 하면 모든 사용자 메모도 삭제됩니다 !!"
 
-#: src/Gtk/MainWindow.vala:339 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:340 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "설정"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:345
 msgid "About"
 msgstr "정보"
 
-#: src/Gtk/MainWindow.vala:349
+#: src/Gtk/MainWindow.vala:350
 msgid "Exit"
 msgstr "출구"
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:419
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:420
 msgid "Forked"
 msgstr "가랑이진"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:420
 msgid "Original"
 msgstr "원문 언어"
 
-#: src/Gtk/MainWindow.vala:457
+#: src/Gtk/MainWindow.vala:458
 msgid "Updating kernels"
 msgstr "커널 업데이트"
 
-#: src/Gtk/MainWindow.vala:528
+#: src/Gtk/MainWindow.vala:529
 msgid "available"
 msgstr "사용가능"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:612
-#: src/Gtk/MainWindow.vala:647
+#: src/Gtk/MainWindow.vala:572 src/Gtk/MainWindow.vala:613
+#: src/Gtk/MainWindow.vala:648
 msgid "DONE"
 msgstr "수행"
 

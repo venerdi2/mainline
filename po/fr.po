@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 18:59-0400\n"
+"POT-Creation-Date: 2023-04-07 14:01-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -57,8 +57,8 @@ msgstr "RATÉ"
 msgid "Found installed"
 msgstr "Trouvé installé"
 
-#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:519
-#: src/Gtk/MainWindow.vala:532
+#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:520
+#: src/Gtk/MainWindow.vala:533
 msgid "Running"
 msgstr "Actuel"
 
@@ -152,22 +152,22 @@ msgstr "Aucune mise à jour disponible"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installer le noyau en version %s ? (y/n): "
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:353
 msgid "Called from"
 msgstr "Appelé à partir de"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:353
 msgid "at logon"
 msgstr "au démarrage"
 
-#: src/Common/Main.vala:352
+#: src/Common/Main.vala:354
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ce fichier est écrasé et exécuté à nouveau chaque fois que les paramètres "
 "sont enregistrés dans"
 
-#: src/Common/Main.vala:384
+#: src/Common/Main.vala:386
 msgid "Notifications are disabled"
 msgstr "Les notifications sont désactivées"
 
@@ -216,7 +216,7 @@ msgstr "Installer le noyau mainline spécifié"
 msgid "Uninstall specified kernel"
 msgstr "Désinstaller le noyau spécifié"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:328
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:329
 msgid "Uninstall all but the highest installed version"
 msgstr "Désinstallez toutes le version installées, sauf la plus élevée"
 
@@ -312,7 +312,7 @@ msgstr "Paquet %s disponibles"
 msgid "Show"
 msgstr "Montrer"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:297
 msgid "Install"
 msgstr "Installer"
 
@@ -380,19 +380,19 @@ msgstr "Statut"
 msgid "Notes"
 msgstr "Notes"
 
-#: src/Gtk/MainWindow.vala:306
+#: src/Gtk/MainWindow.vala:307
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:328
 msgid "Uninstall Old"
 msgstr "Désinstaller Ancien"
 
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:334
 msgid "Reload"
 msgstr "Recharger"
 
-#: src/Gtk/MainWindow.vala:334
+#: src/Gtk/MainWindow.vala:335
 msgid ""
 "Delete cache and reload all kernel info\n"
 "\n"
@@ -402,42 +402,42 @@ msgstr ""
 "\n"
 "CELA SUPPRIMERA ÉGALEMENT TOUTES LES NOTES DE UTILISATEUR"
 
-#: src/Gtk/MainWindow.vala:339 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:340 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:345
 msgid "About"
 msgstr "À propos"
 
-#: src/Gtk/MainWindow.vala:349
+#: src/Gtk/MainWindow.vala:350
 msgid "Exit"
 msgstr "Sortie"
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:419
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Utilitaire de mise à niveau des noyaux pour les distributions basées sur "
 "Ubuntu"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:420
 msgid "Forked"
 msgstr "Forkée"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:420
 msgid "Original"
 msgstr "Originale"
 
-#: src/Gtk/MainWindow.vala:457
+#: src/Gtk/MainWindow.vala:458
 msgid "Updating kernels"
 msgstr "Mise à jour des noyaux"
 
-#: src/Gtk/MainWindow.vala:528
+#: src/Gtk/MainWindow.vala:529
 msgid "available"
 msgstr "disponible"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:612
-#: src/Gtk/MainWindow.vala:647
+#: src/Gtk/MainWindow.vala:572 src/Gtk/MainWindow.vala:613
+#: src/Gtk/MainWindow.vala:648
 msgid "DONE"
 msgstr "FAIT"
 

@@ -1,3 +1,9 @@
+mainline (1.2.3) unstable; urgency=medium
+
+  * make the Notes column sortable
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Fri, 07 Apr 2023 14:10:40 -0400
+
 mainline (1.2.2) unstable; urgency=medium
 
   * un-bork the notification available version logic, again

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 18:59-0400\n"
+"POT-Creation-Date: 2023-04-07 14:01-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -57,8 +57,8 @@ msgstr "НЕ ВДАЛОСЯ"
 msgid "Found installed"
 msgstr "Знайдено встановленим"
 
-#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:519
-#: src/Gtk/MainWindow.vala:532
+#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:520
+#: src/Gtk/MainWindow.vala:533
 msgid "Running"
 msgstr "Використовується"
 
@@ -152,21 +152,21 @@ msgstr "Оновлень не знайдено"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Встановити Ядро Версії %s ? (так/ні): "
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:353
 msgid "Called from"
 msgstr "Викликано з"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:353
 msgid "at logon"
 msgstr "при запуску"
 
-#: src/Common/Main.vala:352
+#: src/Common/Main.vala:354
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Цей файл перезаписується та виконується знову під час збереження налаштувань"
 
-#: src/Common/Main.vala:384
+#: src/Common/Main.vala:386
 msgid "Notifications are disabled"
 msgstr "Повідомлення вимкнено"
 
@@ -215,7 +215,7 @@ msgstr "Встановіть конкретне основне ядро"
 msgid "Uninstall specified kernel"
 msgstr "Видаліть конкретні ядра"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:328
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:329
 msgid "Uninstall all but the highest installed version"
 msgstr "Видаліть усі, крім найвищої встановленої версії"
 
@@ -309,7 +309,7 @@ msgstr "Ядро %s Доступне"
 msgid "Show"
 msgstr "Показати"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:296
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:297
 msgid "Install"
 msgstr "Встановити"
 
@@ -377,19 +377,19 @@ msgstr "Стан"
 msgid "Notes"
 msgstr "Нотатки"
 
-#: src/Gtk/MainWindow.vala:306
+#: src/Gtk/MainWindow.vala:307
 msgid "Uninstall"
 msgstr "Видалити"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:328
 msgid "Uninstall Old"
 msgstr "Видалити старе"
 
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:334
 msgid "Reload"
 msgstr "Перезавантажити"
 
-#: src/Gtk/MainWindow.vala:334
+#: src/Gtk/MainWindow.vala:335
 msgid ""
 "Delete cache and reload all kernel info\n"
 "\n"
@@ -399,40 +399,40 @@ msgstr ""
 "\n"
 "ЦЕ ТАКОЖ ВИДАЛИТЬ УСІ НОТАТКИ КОРИСТУВАЧА"
 
-#: src/Gtk/MainWindow.vala:339 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:340 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:345
 msgid "About"
 msgstr "Про программу"
 
-#: src/Gtk/MainWindow.vala:349
+#: src/Gtk/MainWindow.vala:350
 msgid "Exit"
 msgstr "Вихід"
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:419
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Програма оновлення ядра для дистрибутивів на базі Ubuntu"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:420
 msgid "Forked"
 msgstr "Двоєний"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:420
 msgid "Original"
 msgstr "Оригінал"
 
-#: src/Gtk/MainWindow.vala:457
+#: src/Gtk/MainWindow.vala:458
 msgid "Updating kernels"
 msgstr "Оновлення ядер"
 
-#: src/Gtk/MainWindow.vala:528
+#: src/Gtk/MainWindow.vala:529
 msgid "available"
 msgstr "доступний"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:612
-#: src/Gtk/MainWindow.vala:647
+#: src/Gtk/MainWindow.vala:572 src/Gtk/MainWindow.vala:613
+#: src/Gtk/MainWindow.vala:648
 msgid "DONE"
 msgstr "ГОТОВО"
 

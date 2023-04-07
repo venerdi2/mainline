@@ -70,6 +70,8 @@ const int		DEFAULT_TERM_HEIGHT				= 600		;
 //const int		DEFAULT_TERM_X					= -1		;
 //const int		DEFAULT_TERM_Y					= -1		;
 
+const string line = "----------------------------------------------------------------------";
+
 extern void exit(int exit_code);
 
 public class Main : GLib.Object {

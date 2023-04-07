@@ -87,10 +87,10 @@ public class MainWindow : Gtk.Window {
 
 		// hbox
 		hbox_list = new Gtk.Box(Orientation.HORIZONTAL, 6);
-		//hbox.margin = 6;
+		// hbox.margin = 6;
 		vbox_main.add(hbox_list);
 
-		//add treeview
+		// add treeview
 		tv = new TreeView();
 		tv.get_selection().mode = SelectionMode.MULTIPLE;
 		tv.headers_visible = true;
@@ -105,7 +105,7 @@ public class MainWindow : Gtk.Window {
 		scrollwin.add (tv);
 		hbox_list.add(scrollwin);
 
-		//column
+		// column
 		var col = new TreeViewColumn();
 		col.title = _("Kernel");
 		col.resizable = true;
@@ -127,18 +127,18 @@ public class MainWindow : Gtk.Window {
 			((Gtk.CellRendererPixbuf) cell).pixbuf = pix;
 		});
 
-		//cell text
+		// cell text
 		var cellText = new CellRendererText();
 		cellText.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start (cellText, false);
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
-			LinuxKernel kern;
-			model.get (iter, 1, out kern, -1);
+			LinuxKernel k;
+			model.get (iter, 1, out k, -1);
 			return_if_fail(cell as Gtk.CellRendererText != null);
-			((Gtk.CellRendererText) cell).text = kern.version_main;
+			((Gtk.CellRendererText) cell).text = k.version_main;
 		});
 
-		//column
+		// column
 		col = new TreeViewColumn();
 		col.title = _("Status");
 		col.set_sort_column_id(3);
@@ -147,21 +147,21 @@ public class MainWindow : Gtk.Window {
 		col.min_width = 200;
 		tv.append_column(col);
 
-		//cell text
+		// cell text
 		cellText = new CellRendererText();
 		cellText.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start(cellText, true);
 		col.add_attribute(cellText, "text", 3);
 
-		//column
+		// column
 		col = new TreeViewColumn();
 		col.title = _("Notes");
-		//col.set_sort_column_id(4); // not working ?
+		col.set_sort_column_id(4);
 		col.resizable = true;
 		col.min_width = 200;
 		tv.append_column(col);
 
-		//cell text
+		// cell text
 		cellText = new CellRendererText();
 		cellText.ellipsize = Pango.EllipsizeMode.END;
 
@@ -175,13 +175,14 @@ public class MainWindow : Gtk.Window {
 
 		cellText.editable = true;
 		cellText.edited.connect((path,data) => {
-			TreeIter iter;
-			tv.model.get_iter_from_string(out iter, path);
+			Gtk.TreeIter iter;
 			LinuxKernel k;
+			tv.model.get_iter_from_string(out iter, path);
 			tv.model.get(iter, 1, out k, -1);
 			if (k.notes != data._strip()) {
 				k.notes = data;
 				file_write(k.notes_file,data);
+				tv_refresh(); // updates the sort, otherwise not needed
 			}
 		});
 
@@ -256,7 +257,7 @@ public class MainWindow : Gtk.Window {
 
 			model.set(iter, 3, k.status);
 
-			//model.set(iter, 4, file_read(k.user_notes_file));
+			model.set(iter, 4, k.notes);
 
 			model.set(iter, 5, k.tooltip_text());
 		}
@@ -401,14 +402,14 @@ public class MainWindow : Gtk.Window {
 			"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>",
 			"fr: Yolateng0 <yo@yo.nohost.me>",
 			"hr: gogo <trebelnik2@gmail.com>",
-			"it: Albano Battistella <albano_battistella@hotmail.com>",
+			"it: Demetrio Mendozzi",
 			"ko: Kevin Kim <root@hamonikr.org>",
 			"nl: Heimen Stoffels <vistausss@outlook.com>",
-			"pl: Viktor Sokyrko <victor_sokyrko@windowslive.com>",
-			"ru: Danik2343 <krutalevex@mail.ru>",
+			"pl: Matthaiks",
+			"ru: Danik2343 <slavusik1988@gmail.com>",
 			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
 			"tr: Sabri Ünal <libreajans@gmail.com>",
-			"uk: Serhii Golovko <cappelikan@gmail.com>",
+			"uk: Serhii Golovko <cappelikan@gmail.com>"
 		};
 
 		dialog.documenters = null;
@@ -545,7 +546,7 @@ public class MainWindow : Gtk.Window {
 		string t_file = get_temp_file_path(t_dir)+".sh";
 
 		term.configure_event.connect ((event) => {
-			//log_debug("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y));
+			//vprint("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y),2);
 			App.term_width = event.width;
 			App.term_height = event.height;
 //			App.term_x = event.x;
@@ -573,7 +574,7 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-		vprint("------------------------------------------------------------------------------");
+		vprint(line);
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
@@ -614,7 +615,7 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-		vprint("------------------------------------------------------------------------------");
+		vprint(line);
 	}
 
 	public void do_purge () {
@@ -649,7 +650,7 @@ public class MainWindow : Gtk.Window {
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-		vprint("------------------------------------------------------------------------------");
+		vprint(line);
 	}
 
 }
