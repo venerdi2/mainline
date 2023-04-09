@@ -1,5 +1,5 @@
 # Ubuntu Mainline Kernel Installer
-A tool for installing the latest Linux kernels from the [ubuntu mainline ppa](https://kernel.ubuntu.com/~kernel-ppa/mainline/) onto debian-based distributions.
+A tool for installing [Ubuntu Mainline Kernel Builds](https://wiki.ubuntu.com/Kernel/MainlineBuilds) onto debian-based distributions.
 
 ![Main window screenshot](main_window.png)
 
@@ -90,6 +90,9 @@ For the single manual uninstall button, the button simply isn't activated. For t
 Clicking on the Notes field allows to attach arbitrary text to a kernel.
 
 # Help / FAQ
+
+* [MainlineBuilds WIKI](https://wiki.ubuntu.com/Kernel/MainlineBuilds)
+
 * General debugging  
   Aside from the ```--debug``` option, there is an environment variable ```VERBOSE```, which takes a numerical value from 0 and up.  
   Example: ```$ VERBOSE=3 mainline-gtk```  

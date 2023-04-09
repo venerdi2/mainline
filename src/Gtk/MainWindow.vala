@@ -94,6 +94,7 @@ public class MainWindow : Gtk.Window {
 		tv = new TreeView();
 		tv.get_selection().mode = SelectionMode.MULTIPLE;
 		tv.headers_visible = true;
+		tv.set_grid_lines(BOTH);
 		tv.expand = true;
 
 		tv.row_activated.connect(tv_row_activated);
@@ -315,6 +316,7 @@ public class MainWindow : Gtk.Window {
 
 		// ppa
 		button = new Gtk.Button.with_label ("PPA");
+		button.set_tooltip_text(_("Changelog, build status, etc"));
 		hbox.pack_start (button, true, true, 0);
 		btn_ppa = button;
 

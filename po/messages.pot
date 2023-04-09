@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-07 16:30-0400\n"
+"POT-Creation-Date: 2023-04-09 12:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,129 +29,129 @@ msgstr ""
 msgid "Running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:253
+#: src/Common/LinuxKernel.vala:255
 msgid "loading cached"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:267
+#: src/Common/LinuxKernel.vala:269
 msgid "queuing download"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:290
+#: src/Common/LinuxKernel.vala:292
 msgid "Fetching individual kernel indexes"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:306
+#: src/Common/LinuxKernel.vala:308
 msgid "loading downloaded"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:341
+#: src/Common/LinuxKernel.vala:343
 msgid "Updating from"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:349
+#: src/Common/LinuxKernel.vala:351
 msgid "OK"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:352
+#: src/Common/LinuxKernel.vala:354
 msgid "FAILED"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:395
+#: src/Common/LinuxKernel.vala:397
 msgid "Found installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:731 src/Gtk/MainWindow.vala:520
-#: src/Gtk/MainWindow.vala:533
+#: src/Common/LinuxKernel.vala:733 src/Gtk/MainWindow.vala:522
+#: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:732
+#: src/Common/LinuxKernel.vala:734
 msgid "Installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:733
+#: src/Common/LinuxKernel.vala:735
 msgid "Invalid"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:807
+#: src/Common/LinuxKernel.vala:809
 msgid "Packages Available"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:813
+#: src/Common/LinuxKernel.vala:815
 msgid "Packages Installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:835 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:837 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:904
+#: src/Common/LinuxKernel.vala:908
 msgid "Available Kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:941
+#: src/Common/LinuxKernel.vala:945
 msgid "enabled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:965
+#: src/Common/LinuxKernel.vala:969
 msgid "Downloading"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:986
+#: src/Common/LinuxKernel.vala:990
 msgid "is already installed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1016
+#: src/Common/LinuxKernel.vala:1020
 msgid "Uninstalling selected kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1022
+#: src/Common/LinuxKernel.vala:1026
 msgid "requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1025
+#: src/Common/LinuxKernel.vala:1029
 msgid "not uninstalling the currently running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1041
+#: src/Common/LinuxKernel.vala:1045
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1044
+#: src/Common/LinuxKernel.vala:1048
 msgid "No packages to un-install!"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1092
+#: src/Common/LinuxKernel.vala:1096
 msgid "Could not find running kernel in list"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1097
+#: src/Common/LinuxKernel.vala:1101
 msgid "Could not find any kernels to uninstall"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1105
+#: src/Common/LinuxKernel.vala:1109
 msgid "The following kernels will be uninstalled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1113
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1131 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1135 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1142 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1146 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1150 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1154 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1159
+#: src/Common/LinuxKernel.vala:1163
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
@@ -218,7 +218,7 @@ msgstr ""
 msgid "Uninstall specified kernel"
 msgstr ""
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:329
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:331
 msgid "Uninstall all but the highest installed version"
 msgstr ""
 
@@ -312,7 +312,7 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:297
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:298
 msgid "Install"
 msgstr ""
 
@@ -368,71 +368,75 @@ msgstr ""
 msgid "Show all options"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:110
+#: src/Gtk/MainWindow.vala:111
 msgid "Kernel"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:143
+#: src/Gtk/MainWindow.vala:144
 msgid "Status"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:158
+#: src/Gtk/MainWindow.vala:159
 msgid "Notes"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:307
+#: src/Gtk/MainWindow.vala:308
 msgid "Uninstall"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:328
+#: src/Gtk/MainWindow.vala:319
+msgid "Changelog, build status, etc"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:330
 msgid "Uninstall Old"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:334
+#: src/Gtk/MainWindow.vala:336
 msgid "Reload"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:335
+#: src/Gtk/MainWindow.vala:337
 msgid ""
 "Delete cache and reload all kernel info\n"
 "\n"
 "THIS WILL ALSO DELETE ALL USER NOTES"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:340 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:342 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:345
+#: src/Gtk/MainWindow.vala:347
 msgid "About"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:350
+#: src/Gtk/MainWindow.vala:352
 msgid "Exit"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:421
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:420
+#: src/Gtk/MainWindow.vala:422
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:420
+#: src/Gtk/MainWindow.vala:422
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:458
+#: src/Gtk/MainWindow.vala:460
 msgid "Updating kernels"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:529
+#: src/Gtk/MainWindow.vala:531
 msgid "available"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:572 src/Gtk/MainWindow.vala:613
-#: src/Gtk/MainWindow.vala:648
+#: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:615
+#: src/Gtk/MainWindow.vala:650
 msgid "DONE"
 msgstr ""
 

@@ -137,20 +137,22 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void initialize_regex() {
 		//log_debug("initialize_regex()");
 		try {
+
 			//linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_header = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-[a-zA-Z0-9.\-_]*-generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_header = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-[a-zA-Z0-9\.\-_]*-generic_[a-zA-Z0-9\.\-]*_""" + NATIVE_ARCH + ".deb");
 
 			//linux-headers-3.4.75-030475_3.4.75-030475.201312201255_all.deb
-			rex_header_all = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-[a-zA-Z0-9.\-_]*_all.deb""");
+			rex_header_all = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-[a-zA-Z0-9\.\-_]*_all.deb""");
 
 			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-[a-zA-Z0-9.\-_]*-generic_([a-zA-Z0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
+			rex_image = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-[a-zA-Z0-9\.\-_]*-generic_([a-zA-Z0-9\.\-]*)_""" + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image_extra = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-extra-[a-zA-Z0-9.\-_]*-generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_image_extra = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-extra-[a-zA-Z0-9\.\-_]*-generic_[a-zA-Z0-9\.\-]*_""" + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_modules = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-modules-[a-zA-Z0-9.\-_]*-generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_modules = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-modules-[a-zA-Z0-9\.\-_]*-generic_[a-zA-Z0-9\.\-]*_""" + NATIVE_ARCH + ".deb");
+
 		} catch (Error e) {
 			vprint(e.message,1,stderr);
 		}
@@ -845,7 +847,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		txt = file_read(cached_page);
 		try {
 			//<a href="linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb">//same deb name//</a>
-			var rex = new Regex("""<a href="([a-zA-Z0-9\-._/]+)">([a-zA-Z0-9\-._/]+)<\/a>""");
+			var rex = new Regex("""<a href="([a-zA-Z0-9\-\._/]+\.deb)">([a-zA-Z0-9\-\._/]+\.deb)<\/a>""");
 			MatchInfo match;
 
 			foreach (string line in txt.split("\n")) {
@@ -853,6 +855,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 					string file_name = Path.get_basename (match.fetch(2));
 					string file_uri = "%s%s".printf(page_uri, match.fetch(1));
+					if (url_list.has_key(file_name)) continue;
+
 					bool add = false;
 
 					if (rex_header.match(file_name, 0, out match)) {
