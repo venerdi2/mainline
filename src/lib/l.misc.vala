@@ -1,5 +1,3 @@
-// 
-
 namespace l.misc {
 
 	public int VERBOSE = 1;
@@ -110,5 +108,4 @@ namespace l.misc {
 	public void sleep(int milliseconds) {
 		Thread.usleep ((ulong) milliseconds * 1000);
 	}
-
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-09 12:06-0400\n"
+"POT-Creation-Date: 2023-04-12 18:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,20 +156,20 @@ msgstr ""
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/Main.vala:353
+#: src/Common/Main.vala:379
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:353
+#: src/Common/Main.vala:379
 msgid "at logon"
 msgstr ""
 
-#: src/Common/Main.vala:354
+#: src/Common/Main.vala:380
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:386
+#: src/Common/Main.vala:412
 msgid "Notifications are disabled"
 msgstr ""
 
@@ -520,6 +520,6 @@ msgstr ""
 msgid "Missing Icon"
 msgstr ""
 
-#: src/lib/l.misc.vala:71
+#: src/lib/l.misc.vala:69
 msgid "Can not reach site"
 msgstr ""

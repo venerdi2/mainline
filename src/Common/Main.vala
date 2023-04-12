@@ -29,6 +29,7 @@ using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.misc;
+using l.json; // REMOVE when bionic no longer supported
 
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
@@ -258,55 +259,80 @@ public class Main : GLib.Object {
 		// detect old file format
 		// hide_unstable, notify_major, notify minor
 		// are all options that have existed since the oldest version of ukuu,
-		// still exist today, and are not string type.
+		// still exist today, and are not (now) string type.
 		// They should be present in all config files no matter how old,
 		// and if they are stored as a string,
 		// then the config file is in the old format
 		bool resave = false;
 		if (config.get_string_member("hide_unstable")==null) {
-			vprint("detetcted new config file format",2);
 			// new config file format - values stored in native format
-			ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
-			all_proxy				=	config.get_string_member_with_default(		"all_proxy",				DEFAULT_ALL_PROXY				);
-			connect_timeout_seconds	=	(int)config.get_int_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
-			concurrent_downloads	=	(int)config.get_int_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	);
-			hide_unstable			=	config.get_boolean_member_with_default(		"hide_unstable",			DEFAULT_HIDE_UNSTABLE			);
-			previous_majors			=	(int)config.get_int_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			);
-			notify_major			=	config.get_boolean_member_with_default(		"notify_major",				DEFAULT_NOTIFY_MAJOR			);
-			notify_minor			=	config.get_boolean_member_with_default(		"notify_minor",				DEFAULT_NOTIFY_MINOR			);
-			notify_interval_unit	=	(int)config.get_int_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
-			notify_interval_value	=	(int)config.get_int_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
-			verify_checksums		=	config.get_boolean_member_with_default(		"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
-			window_width			=	(int)config.get_int_member_with_default(	"window_width",				DEFAULT_WINDOW_WIDTH			);
-			window_height			=	(int)config.get_int_member_with_default(	"window_height",			DEFAULT_WINDOW_HEIGHT			);
-			window_x				=	(int)config.get_int_member_with_default(	"window_x",					DEFAULT_WINDOW_X				);
-			window_y				=	(int)config.get_int_member_with_default(	"window_y",					DEFAULT_WINDOW_Y				);
-			term_width				=	(int)config.get_int_member_with_default(	"term_width",				DEFAULT_TERM_WIDTH				);
-			term_height				=	(int)config.get_int_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				);
-			//term_x				=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
-			//term_y				=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
+			// bionic doesn't have get_*_member_with_default()
+			if (Json.MAJOR_VERSION>=1 && Json.MINOR_VERSION>=6) {
+				ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
+				all_proxy				=	config.get_string_member_with_default(		"all_proxy",				DEFAULT_ALL_PROXY				);
+				connect_timeout_seconds	=	(int)config.get_int_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
+				concurrent_downloads	=	(int)config.get_int_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	);
+				hide_unstable			=	config.get_boolean_member_with_default(		"hide_unstable",			DEFAULT_HIDE_UNSTABLE			);
+				previous_majors			=	(int)config.get_int_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			);
+				notify_major			=	config.get_boolean_member_with_default(		"notify_major",				DEFAULT_NOTIFY_MAJOR			);
+				notify_minor			=	config.get_boolean_member_with_default(		"notify_minor",				DEFAULT_NOTIFY_MINOR			);
+				notify_interval_unit	=	(int)config.get_int_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
+				notify_interval_value	=	(int)config.get_int_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
+				verify_checksums		=	config.get_boolean_member_with_default(		"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
+				window_width			=	(int)config.get_int_member_with_default(	"window_width",				DEFAULT_WINDOW_WIDTH			);
+				window_height			=	(int)config.get_int_member_with_default(	"window_height",			DEFAULT_WINDOW_HEIGHT			);
+				window_x				=	(int)config.get_int_member_with_default(	"window_x",					DEFAULT_WINDOW_X				);
+				window_y				=	(int)config.get_int_member_with_default(	"window_y",					DEFAULT_WINDOW_Y				);
+				term_width				=	(int)config.get_int_member_with_default(	"term_width",				DEFAULT_TERM_WIDTH				);
+				term_height				=	(int)config.get_int_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				);
+				//term_x				=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
+				//term_y				=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
+			} else {
+				// REMOVE when bionic no longer supported
+				vprint("bionic-compatible json loader",3);
+				ppa_uri					=	json_get_string(	config,	"ppa_uri",					DEFAULT_PPA_URI					);
+				all_proxy				=	json_get_string(	config,	"all_proxy",				DEFAULT_ALL_PROXY				);
+				connect_timeout_seconds	=	json_get_int(		config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
+				concurrent_downloads	=	json_get_int(		config,	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	);
+				hide_unstable			=	json_get_bool(		config,	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			);
+				previous_majors			=	json_get_int(		config,	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			);
+				notify_major			=	json_get_bool(		config,	"notify_major",				DEFAULT_NOTIFY_MAJOR			);
+				notify_minor			=	json_get_bool(		config,	"notify_minor",				DEFAULT_NOTIFY_MINOR			);
+				notify_interval_unit	=	json_get_int(		config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
+				notify_interval_value	=	json_get_int(		config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
+				verify_checksums		=	json_get_bool(		config,	"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
+				window_width			=	json_get_int(		config,	"window_width",				DEFAULT_WINDOW_WIDTH			);
+				window_height			=	json_get_int(		config,	"window_height",			DEFAULT_WINDOW_HEIGHT			);
+				window_x				=	json_get_int(		config,	"window_x",					DEFAULT_WINDOW_X				);
+				window_y				=	json_get_int(		config,	"window_y",					DEFAULT_WINDOW_Y				);
+				term_width				=	json_get_int(		config,	"term_width",				DEFAULT_TERM_WIDTH				);
+				term_height				=	json_get_int(		config,	"term_height",				DEFAULT_TERM_HEIGHT				);
+			}
 		} else {
+			// old config file format - all values stored as string
 			vprint("detetcted old config file format",2);
 			resave = true;
-			// old config file format - all values stored as string
-			ppa_uri					=				config.get_string_member_with_default(	"ppa_uri",					DEFAULT_PPA_URI									)	;
-			all_proxy				=				config.get_string_member_with_default(	"all_proxy",				DEFAULT_ALL_PROXY								)	;
-			connect_timeout_seconds	=	int.parse(	config.get_string_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
-			concurrent_downloads	=	int.parse(	config.get_string_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
-			hide_unstable			=	bool.parse(	config.get_string_member_with_default(	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
-			previous_majors			=	int.parse(	config.get_string_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
-			notify_major			=	bool.parse(	config.get_string_member_with_default(	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
-			notify_minor			=	bool.parse(	config.get_string_member_with_default(	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
-			notify_interval_unit	=	int.parse(	config.get_string_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
-			notify_interval_value	=	int.parse(	config.get_string_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-			window_width			=	int.parse(	config.get_string_member_with_default(	"window_width",				DEFAULT_WINDOW_WIDTH			.to_string()	)	);
-			window_height			=	int.parse(	config.get_string_member_with_default(	"window_height",			DEFAULT_WINDOW_HEIGHT			.to_string()	)	);
-			window_x				=	int.parse(	config.get_string_member_with_default(	"window_x",					DEFAULT_WINDOW_X				.to_string()	)	);
-			window_y				=	int.parse(	config.get_string_member_with_default(	"window_y",					DEFAULT_WINDOW_Y				.to_string()	)	);
-			term_width				=	int.parse(	config.get_string_member_with_default(	"term_width",				DEFAULT_TERM_WIDTH				.to_string()	)	);
-			term_height				=	int.parse(	config.get_string_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				.to_string()	)	);
-			//term_x				=	int.parse(	config.get_string_member_with_default(	"term_x",					DEFAULT_TERM_X					.to_string()	)	);
-			//term_y				=	int.parse(	config.get_string_member_with_default(	"term_y",					DEFAULT_TERM_Y					.to_string()	)	);
+			// bionic doesn't have get_*_member_with_default()
+			if (Json.MAJOR_VERSION>=1 && Json.MINOR_VERSION>=6) {
+				connect_timeout_seconds	=	int.parse(	config.get_string_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
+				concurrent_downloads	=	int.parse(	config.get_string_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
+				hide_unstable			=	bool.parse(	config.get_string_member_with_default(	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
+				previous_majors			=	int.parse(	config.get_string_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
+				notify_major			=	bool.parse(	config.get_string_member_with_default(	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
+				notify_minor			=	bool.parse(	config.get_string_member_with_default(	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
+				notify_interval_unit	=	int.parse(	config.get_string_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
+				notify_interval_value	=	int.parse(	config.get_string_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
+			} else {
+				// REMOVE when bionic no longer supported
+				connect_timeout_seconds	=	int.parse(	json_get_string(	config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
+				concurrent_downloads	=	int.parse(	json_get_string(	config,	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
+				hide_unstable			=	bool.parse(	json_get_string(	config,	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
+				previous_majors			=	int.parse(	json_get_string(	config,	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
+				notify_major			=	bool.parse(	json_get_string(	config,	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
+				notify_minor			=	bool.parse(	json_get_string(	config,	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
+				notify_interval_unit	=	int.parse(	json_get_string(	config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
+				notify_interval_value	=	int.parse(	json_get_string(	config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
+			}
 		}
 
 		// fixups

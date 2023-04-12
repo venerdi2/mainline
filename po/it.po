@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-09 11:59-0400\n"
+"POT-Creation-Date: 2023-04-12 18:25-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -150,22 +150,22 @@ msgstr "Nessun aggiornamento trovato"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
 
-#: src/Common/Main.vala:353
+#: src/Common/Main.vala:379
 msgid "Called from"
 msgstr "Chiamato da"
 
-#: src/Common/Main.vala:353
+#: src/Common/Main.vala:379
 msgid "at logon"
 msgstr "all'avvio"
 
-#: src/Common/Main.vala:354
+#: src/Common/Main.vala:380
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Questo file viene sovrascritto ed eseguito nuovamente ogni volta che vengono "
 "salvate le impostazioni"
 
-#: src/Common/Main.vala:386
+#: src/Common/Main.vala:412
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
 
@@ -521,6 +521,6 @@ msgstr "Proxy"
 msgid "Missing Icon"
 msgstr "Icona mancante"
 
-#: src/lib/l.misc.vala:71
+#: src/lib/l.misc.vala:69
 msgid "Can not reach site"
 msgstr "Impossibile raggiungere il sito"
