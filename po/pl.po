@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-12 18:25-0400\n"
-"PO-Revision-Date: 2023-04-02 21:31+0200\n"
+"POT-Creation-Date: 2023-04-12 18:33-0400\n"
+"PO-Revision-Date: 2023-04-13 07:43+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -67,7 +67,7 @@ msgstr "Zainstalowane"
 
 #: src/Common/LinuxKernel.vala:735
 msgid "Invalid"
-msgstr "Nieprawidłowy"
+msgstr "Nieprawidłowe"
 
 #: src/Common/LinuxKernel.vala:809
 msgid "Packages Available"
@@ -157,7 +157,7 @@ msgstr "Wywołano z"
 
 #: src/Common/Main.vala:379
 msgid "at logon"
-msgstr "przy starcie"
+msgstr "przy logowaniu"
 
 #: src/Common/Main.vala:380
 msgid ""
@@ -217,7 +217,7 @@ msgstr "Odinstaluj wybrane jądro"
 
 #: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:331
 msgid "Uninstall all but the highest installed version"
-msgstr "Odinstaluj wszystkie wersje oprócz najwyżej zainstalowanej"
+msgstr "Odinstaluj wszystkie oprócz najwyższej zainstalowanej wersji"
 
 #: src/Console/AppConsole.vala:60
 msgid "Download specified kernels"
@@ -383,7 +383,7 @@ msgstr "Odinstaluj"
 
 #: src/Gtk/MainWindow.vala:319
 msgid "Changelog, build status, etc"
-msgstr ""
+msgstr "Dziennik zmian, status kompilacji itd."
 
 #: src/Gtk/MainWindow.vala:330
 msgid "Uninstall Old"
