@@ -383,7 +383,7 @@ msgstr "Видалити"
 
 #: src/Gtk/MainWindow.vala:319
 msgid "Changelog, build status, etc"
-msgstr ""
+msgstr "Журнал змін, статус збірки тощо"
 
 #: src/Gtk/MainWindow.vala:330
 msgid "Uninstall Old"
