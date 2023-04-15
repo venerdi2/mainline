@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-12 18:25-0400\n"
+"POT-Creation-Date: 2023-04-15 12:22-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -55,117 +55,117 @@ msgstr "FALLITO"
 msgid "Found installed"
 msgstr "Trovato installato"
 
-#: src/Common/LinuxKernel.vala:733 src/Gtk/MainWindow.vala:522
+#: src/Common/LinuxKernel.vala:735 src/Gtk/MainWindow.vala:522
 #: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr "In esecuzione"
 
-#: src/Common/LinuxKernel.vala:734
+#: src/Common/LinuxKernel.vala:736
 msgid "Installed"
 msgstr "Installato"
 
-#: src/Common/LinuxKernel.vala:735
+#: src/Common/LinuxKernel.vala:737
 msgid "Invalid"
 msgstr "Non valido"
 
-#: src/Common/LinuxKernel.vala:809
+#: src/Common/LinuxKernel.vala:811
 msgid "Packages Available"
 msgstr "Pacchetti disponibili"
 
-#: src/Common/LinuxKernel.vala:815
+#: src/Common/LinuxKernel.vala:817
 msgid "Packages Installed"
 msgstr "Pacchetti installati"
 
-#: src/Common/LinuxKernel.vala:837 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:839 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "File non trovato"
 
-#: src/Common/LinuxKernel.vala:908
+#: src/Common/LinuxKernel.vala:910
 msgid "Available Kernels"
 msgstr "Kernel disponibili"
 
-#: src/Common/LinuxKernel.vala:945
+#: src/Common/LinuxKernel.vala:947
 msgid "enabled"
 msgstr "abilitato"
 
-#: src/Common/LinuxKernel.vala:969
+#: src/Common/LinuxKernel.vala:971
 msgid "Downloading"
 msgstr "Scaricamento"
 
-#: src/Common/LinuxKernel.vala:990
+#: src/Common/LinuxKernel.vala:992
 msgid "is already installed."
 msgstr "è già installato."
 
-#: src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1022
 msgid "Uninstalling selected kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Common/LinuxKernel.vala:1026
+#: src/Common/LinuxKernel.vala:1028
 msgid "requested"
 msgstr "richiesto"
 
-#: src/Common/LinuxKernel.vala:1029
+#: src/Common/LinuxKernel.vala:1031
 msgid "not uninstalling the currently running kernel"
 msgstr "non disinstallare il kernel attualmente in esecuzione"
 
-#: src/Common/LinuxKernel.vala:1045
+#: src/Common/LinuxKernel.vala:1047
 msgid "found"
 msgstr "trovato"
 
-#: src/Common/LinuxKernel.vala:1048
+#: src/Common/LinuxKernel.vala:1050
 msgid "No packages to un-install!"
 msgstr "Nessun pacchetto da disinstallare!"
 
-#: src/Common/LinuxKernel.vala:1096
+#: src/Common/LinuxKernel.vala:1098
 msgid "Could not find running kernel in list"
 msgstr "Impossibile trovare il kernel in esecuzione nell'elenco"
 
-#: src/Common/LinuxKernel.vala:1101
+#: src/Common/LinuxKernel.vala:1103
 msgid "Could not find any kernels to uninstall"
 msgstr "Impossibile trovare alcun kernel da rimuovere"
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1111
 msgid "The following kernels will be uninstalled"
 msgstr "I seguenti kernel saranno rimossi"
 
-#: src/Common/LinuxKernel.vala:1113
+#: src/Common/LinuxKernel.vala:1115
 msgid "Continue ?"
 msgstr "Continuare ?"
 
-#: src/Common/LinuxKernel.vala:1135 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Common/LinuxKernel.vala:1146 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1148 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del rilascio parziale"
 
-#: src/Common/LinuxKernel.vala:1154 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1156 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
-#: src/Common/LinuxKernel.vala:1163
+#: src/Common/LinuxKernel.vala:1165
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:380
 msgid "Called from"
 msgstr "Chiamato da"
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:380
 msgid "at logon"
 msgstr "all'avvio"
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:381
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Questo file viene sovrascritto ed eseguito nuovamente ogni volta che vengono "
 "salvate le impostazioni"
 
-#: src/Common/Main.vala:412
+#: src/Common/Main.vala:413
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
 

@@ -1,3 +1,12 @@
+mainline (1.2.5) unstable; urgency=medium
+
+  * actually do what 1.2.4 claimed
+    - support bionic by setting debian/compat < 13
+    - support bionic, focal, and any other systems with glib-json-1.0 < 1.6
+    - use glib-json >= 1.6 get_*_member_with_default() if available
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 15 Apr 2023 12:29:48 -0400
+
 mainline (1.2.4) unstable; urgency=medium
 
   * restore bionic support

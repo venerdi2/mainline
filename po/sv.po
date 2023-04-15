@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-12 18:25-0400\n"
+"POT-Creation-Date: 2023-04-15 12:22-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -57,115 +57,115 @@ msgstr "MISSLYCKADES"
 msgid "Found installed"
 msgstr "Hittade installerat"
 
-#: src/Common/LinuxKernel.vala:733 src/Gtk/MainWindow.vala:522
+#: src/Common/LinuxKernel.vala:735 src/Gtk/MainWindow.vala:522
 #: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:734
+#: src/Common/LinuxKernel.vala:736
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:735
+#: src/Common/LinuxKernel.vala:737
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: src/Common/LinuxKernel.vala:809
+#: src/Common/LinuxKernel.vala:811
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:815
+#: src/Common/LinuxKernel.vala:817
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:837 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:839 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:908
+#: src/Common/LinuxKernel.vala:910
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:945
+#: src/Common/LinuxKernel.vala:947
 msgid "enabled"
 msgstr "aktiverat"
 
-#: src/Common/LinuxKernel.vala:969
+#: src/Common/LinuxKernel.vala:971
 msgid "Downloading"
 msgstr "Ladda ner"
 
-#: src/Common/LinuxKernel.vala:990
+#: src/Common/LinuxKernel.vala:992
 msgid "is already installed."
 msgstr "är redan installerat."
 
-#: src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1022
 msgid "Uninstalling selected kernels"
 msgstr "Avinstallera valda kärnor"
 
-#: src/Common/LinuxKernel.vala:1026
+#: src/Common/LinuxKernel.vala:1028
 msgid "requested"
 msgstr "begärd"
 
-#: src/Common/LinuxKernel.vala:1029
+#: src/Common/LinuxKernel.vala:1031
 msgid "not uninstalling the currently running kernel"
 msgstr "Avinstallera inte den kärna som körs, för närvarande"
 
-#: src/Common/LinuxKernel.vala:1045
+#: src/Common/LinuxKernel.vala:1047
 msgid "found"
 msgstr "grunda"
 
-#: src/Common/LinuxKernel.vala:1048
+#: src/Common/LinuxKernel.vala:1050
 msgid "No packages to un-install!"
 msgstr "Inga paket att avinstallera!"
 
-#: src/Common/LinuxKernel.vala:1096
+#: src/Common/LinuxKernel.vala:1098
 msgid "Could not find running kernel in list"
 msgstr "Det gick inte att hitta kernel som körs i listan"
 
-#: src/Common/LinuxKernel.vala:1101
+#: src/Common/LinuxKernel.vala:1103
 msgid "Could not find any kernels to uninstall"
 msgstr "Det gick inte att hitta några kärnor att avinstallera"
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1111
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
-#: src/Common/LinuxKernel.vala:1113
+#: src/Common/LinuxKernel.vala:1115
 msgid "Continue ?"
 msgstr "Fortsätta?"
 
-#: src/Common/LinuxKernel.vala:1135 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Senaste uppdatering"
 
-#: src/Common/LinuxKernel.vala:1146 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1148 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Senaste punktuppdatering"
 
-#: src/Common/LinuxKernel.vala:1154 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1156 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Common/LinuxKernel.vala:1163
+#: src/Common/LinuxKernel.vala:1165
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installera kärnversion %s ? (j/n):"
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:380
 msgid "Called from"
 msgstr "Ringde från"
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:380
 msgid "at logon"
 msgstr "vid start"
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:381
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "Den här filen skrivs över och körs igen när inställningar sparas i"
 
-#: src/Common/Main.vala:412
+#: src/Common/Main.vala:413
 msgid "Notifications are disabled"
 msgstr "Meddelanden är inaktiverade"
 

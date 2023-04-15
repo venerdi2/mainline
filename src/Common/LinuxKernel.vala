@@ -694,7 +694,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return 1;
 		}
 
-		return (arr_a.length - arr_b.length) * -1; // smaller array is larger version
+		// the larger array is the lower version,
+		// because 1.2.3-rcN comes before 1.2.3
+		return (arr_a.length - arr_b.length) * -1;
 	}
 
 	public void set_pkg_list() {

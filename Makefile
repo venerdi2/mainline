@@ -21,6 +21,11 @@ gtk+ := gtk+-3.0
 json-glib := json-glib-1.0
 gee := gee-0.8
 
+x != pkg-config $(json-glib) --atleast-version=1.6.0
+ifeq ($(.SHELLSTATUS),0)
+VALACFLAGS += -D GLIB_JSON_1_6
+endif
+
 include BRANDING.mak
 BRANDING_VERSION := $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_MICRO)
 build_symbols := -X -D'INSTALL_PREFIX="$(prefix)"' \

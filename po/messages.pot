@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mainline 1.2.3\n"
+"Project-Id-Version: mainline 1.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-12 18:33-0400\n"
+"POT-Creation-Date: 2023-04-15 12:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,115 +61,115 @@ msgstr ""
 msgid "Found installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:733 src/Gtk/MainWindow.vala:522
+#: src/Common/LinuxKernel.vala:735 src/Gtk/MainWindow.vala:522
 #: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:734
+#: src/Common/LinuxKernel.vala:736
 msgid "Installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:735
+#: src/Common/LinuxKernel.vala:737
 msgid "Invalid"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:809
+#: src/Common/LinuxKernel.vala:811
 msgid "Packages Available"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:815
+#: src/Common/LinuxKernel.vala:817
 msgid "Packages Installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:837 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:839 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:908
+#: src/Common/LinuxKernel.vala:910
 msgid "Available Kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:945
+#: src/Common/LinuxKernel.vala:947
 msgid "enabled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:969
+#: src/Common/LinuxKernel.vala:971
 msgid "Downloading"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:990
+#: src/Common/LinuxKernel.vala:992
 msgid "is already installed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1022
 msgid "Uninstalling selected kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1026
+#: src/Common/LinuxKernel.vala:1028
 msgid "requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1029
+#: src/Common/LinuxKernel.vala:1031
 msgid "not uninstalling the currently running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1045
+#: src/Common/LinuxKernel.vala:1047
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1048
+#: src/Common/LinuxKernel.vala:1050
 msgid "No packages to un-install!"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1096
+#: src/Common/LinuxKernel.vala:1098
 msgid "Could not find running kernel in list"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1101
+#: src/Common/LinuxKernel.vala:1103
 msgid "Could not find any kernels to uninstall"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1111
 msgid "The following kernels will be uninstalled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1113
+#: src/Common/LinuxKernel.vala:1115
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1135 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1146 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1148 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1154 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1156 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1163
+#: src/Common/LinuxKernel.vala:1165
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:380
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:380
 msgid "at logon"
 msgstr ""
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:381
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:412
+#: src/Common/Main.vala:413
 msgid "Notifications are disabled"
 msgstr ""
 

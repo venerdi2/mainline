@@ -29,7 +29,9 @@ using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.misc;
-using l.json; // REMOVE when bionic no longer supported
+#if ! GLIB_JSON_1_6
+using l.json;
+#endif
 
 [CCode(cname="BRANDING_SHORTNAME")] extern const string BRANDING_SHORTNAME;
 [CCode(cname="BRANDING_LONGNAME")] extern const string BRANDING_LONGNAME;
@@ -266,8 +268,8 @@ public class Main : GLib.Object {
 		bool resave = false;
 		if (config.get_string_member("hide_unstable")==null) {
 			// new config file format - values stored in native format
-			// bionic doesn't have get_*_member_with_default()
-			if (Json.MAJOR_VERSION>=1 && Json.MINOR_VERSION>=6) {
+#if GLIB_JSON_1_6
+				vprint("glib-json >= 1.6",3);
 				ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
 				all_proxy				=	config.get_string_member_with_default(		"all_proxy",				DEFAULT_ALL_PROXY				);
 				connect_timeout_seconds	=	(int)config.get_int_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
@@ -287,9 +289,8 @@ public class Main : GLib.Object {
 				term_height				=	(int)config.get_int_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				);
 				//term_x				=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
 				//term_y				=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
-			} else {
-				// REMOVE when bionic no longer supported
-				vprint("bionic-compatible json loader",3);
+#else
+				vprint("glib-json < 1.6",3);
 				ppa_uri					=	json_get_string(	config,	"ppa_uri",					DEFAULT_PPA_URI					);
 				all_proxy				=	json_get_string(	config,	"all_proxy",				DEFAULT_ALL_PROXY				);
 				connect_timeout_seconds	=	json_get_int(		config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
@@ -307,13 +308,13 @@ public class Main : GLib.Object {
 				window_y				=	json_get_int(		config,	"window_y",					DEFAULT_WINDOW_Y				);
 				term_width				=	json_get_int(		config,	"term_width",				DEFAULT_TERM_WIDTH				);
 				term_height				=	json_get_int(		config,	"term_height",				DEFAULT_TERM_HEIGHT				);
-			}
+#endif
 		} else {
 			// old config file format - all values stored as string
 			vprint("detetcted old config file format",2);
 			resave = true;
-			// bionic doesn't have get_*_member_with_default()
-			if (Json.MAJOR_VERSION>=1 && Json.MINOR_VERSION>=6) {
+#if GLIB_JSON_1_6
+				vprint("glib-json >= 1.6",3);
 				connect_timeout_seconds	=	int.parse(	config.get_string_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
 				concurrent_downloads	=	int.parse(	config.get_string_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
 				hide_unstable			=	bool.parse(	config.get_string_member_with_default(	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
@@ -322,8 +323,8 @@ public class Main : GLib.Object {
 				notify_minor			=	bool.parse(	config.get_string_member_with_default(	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
 				notify_interval_unit	=	int.parse(	config.get_string_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
 				notify_interval_value	=	int.parse(	config.get_string_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-			} else {
-				// REMOVE when bionic no longer supported
+#else
+				vprint("glib-json < 1.6",3);
 				connect_timeout_seconds	=	int.parse(	json_get_string(	config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
 				concurrent_downloads	=	int.parse(	json_get_string(	config,	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
 				hide_unstable			=	bool.parse(	json_get_string(	config,	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
@@ -332,7 +333,7 @@ public class Main : GLib.Object {
 				notify_minor			=	bool.parse(	json_get_string(	config,	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
 				notify_interval_unit	=	int.parse(	json_get_string(	config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
 				notify_interval_value	=	int.parse(	json_get_string(	config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-			}
+#endif
 		}
 
 		// fixups
