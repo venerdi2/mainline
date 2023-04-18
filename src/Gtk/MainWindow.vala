@@ -408,7 +408,7 @@ public class MainWindow : Gtk.Window {
 			"ko: Kevin Kim <root@hamonikr.org>",
 			"nl: Heimen Stoffels <vistausss@outlook.com>",
 			"pl: Matthaiks",
-			"ru: Danik2343 <slavusik1988@gmail.com>",
+			"ru: Danik2343 <krutalevex@mail.ru>",
 			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
 			"tr: Sabri Ünal <libreajans@gmail.com>",
 			"uk: Serhii Golovko <cappelikan@gmail.com>"
