@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 12:22-0400\n"
+"POT-Creation-Date: 2023-05-20 06:35-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -13,141 +13,141 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:103
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/Common/LinuxKernel.vala:117
+#: src/Common/LinuxKernel.vala:118
 msgid "Architecture"
 msgstr "Arkitektur"
 
-#: src/Common/LinuxKernel.vala:132
+#: src/Common/LinuxKernel.vala:133
 msgid "Running kernel"
 msgstr "Löpande kernel"
 
-#: src/Common/LinuxKernel.vala:255
+#: src/Common/LinuxKernel.vala:258
 msgid "loading cached"
 msgstr "laddar cachelagrat"
 
-#: src/Common/LinuxKernel.vala:269
+#: src/Common/LinuxKernel.vala:270
 msgid "queuing download"
 msgstr "köbildning nedladdning"
 
-#: src/Common/LinuxKernel.vala:292
+#: src/Common/LinuxKernel.vala:291
 msgid "Fetching individual kernel indexes"
 msgstr "Hämta enskilda kernelindex"
 
-#: src/Common/LinuxKernel.vala:308
+#: src/Common/LinuxKernel.vala:307
 msgid "loading downloaded"
 msgstr "laddar nedladdad"
 
-#: src/Common/LinuxKernel.vala:343
+#: src/Common/LinuxKernel.vala:342
 msgid "Updating from"
 msgstr "Uppdatering från"
 
-#: src/Common/LinuxKernel.vala:351
+#: src/Common/LinuxKernel.vala:350
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:354
+#: src/Common/LinuxKernel.vala:353
 msgid "FAILED"
 msgstr "MISSLYCKADES"
 
-#: src/Common/LinuxKernel.vala:397
+#: src/Common/LinuxKernel.vala:403
 msgid "Found installed"
 msgstr "Hittade installerat"
 
-#: src/Common/LinuxKernel.vala:735 src/Gtk/MainWindow.vala:522
+#: src/Common/LinuxKernel.vala:741 src/Gtk/MainWindow.vala:522
 #: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:736
+#: src/Common/LinuxKernel.vala:742
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:737
+#: src/Common/LinuxKernel.vala:743
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: src/Common/LinuxKernel.vala:811
+#: src/Common/LinuxKernel.vala:817
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:817
+#: src/Common/LinuxKernel.vala:823
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:839 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:847 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:910
+#: src/Common/LinuxKernel.vala:947
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:947
+#: src/Common/LinuxKernel.vala:984
 msgid "enabled"
 msgstr "aktiverat"
 
-#: src/Common/LinuxKernel.vala:971
+#: src/Common/LinuxKernel.vala:1008
 msgid "Downloading"
 msgstr "Ladda ner"
 
-#: src/Common/LinuxKernel.vala:992
+#: src/Common/LinuxKernel.vala:1029
 msgid "is already installed."
 msgstr "är redan installerat."
 
-#: src/Common/LinuxKernel.vala:1022
+#: src/Common/LinuxKernel.vala:1059
 msgid "Uninstalling selected kernels"
 msgstr "Avinstallera valda kärnor"
 
-#: src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:1065
 msgid "requested"
 msgstr "begärd"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:1068
 msgid "not uninstalling the currently running kernel"
 msgstr "Avinstallera inte den kärna som körs, för närvarande"
 
-#: src/Common/LinuxKernel.vala:1047
+#: src/Common/LinuxKernel.vala:1084
 msgid "found"
 msgstr "grunda"
 
-#: src/Common/LinuxKernel.vala:1050
+#: src/Common/LinuxKernel.vala:1087
 msgid "No packages to un-install!"
 msgstr "Inga paket att avinstallera!"
 
-#: src/Common/LinuxKernel.vala:1098
+#: src/Common/LinuxKernel.vala:1135
 msgid "Could not find running kernel in list"
 msgstr "Det gick inte att hitta kernel som körs i listan"
 
-#: src/Common/LinuxKernel.vala:1103
+#: src/Common/LinuxKernel.vala:1140
 msgid "Could not find any kernels to uninstall"
 msgstr "Det gick inte att hitta några kärnor att avinstallera"
 
-#: src/Common/LinuxKernel.vala:1111
+#: src/Common/LinuxKernel.vala:1148
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
-#: src/Common/LinuxKernel.vala:1115
+#: src/Common/LinuxKernel.vala:1152
 msgid "Continue ?"
 msgstr "Fortsätta?"
 
-#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1174 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Senaste uppdatering"
 
-#: src/Common/LinuxKernel.vala:1148 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1185 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Senaste punktuppdatering"
 
-#: src/Common/LinuxKernel.vala:1156 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1193 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Common/LinuxKernel.vala:1165
+#: src/Common/LinuxKernel.vala:1202
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installera kärnversion %s ? (j/n):"

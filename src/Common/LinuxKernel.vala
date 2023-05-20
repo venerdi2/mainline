@@ -28,6 +28,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public bool is_running = false;
 	public bool is_mainline = false;
 	public int ppa_dirs_ver = 0; // 0 = not set, 1 = old single dirs, 2 = new /<arch>/ subdirs
+	public int64 ppa_datetime = -1; // timestamp from the main index
 
 	public string deb_header = "";
 	public string deb_header_all = "";
@@ -250,11 +251,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (cancelled) break;
 
 			// skip some kernels for various reasons
+
+			// load the cached index before checking is_invalid
+			// because we may discover that the cached invalid status is out of date
 			if (k.cached_page_exists) {
-				// load the index.html files we already had in cache
 				vprint(_("loading cached")+" "+k.version_main,3);
-				k.load_cached_page();
-				continue;
+				if (k.load_cached_page()) continue;
 			}
 
 			if (k.is_invalid) continue;
@@ -264,11 +266,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (App.hide_unstable && k.is_unstable) continue;
 			}
 
-			//log_debug(k.version_main+" "+_("GET"));
-
-			vprint(_("queuing download")+" "+k.version_main,3);
-
 			// add index.html to download list
+			vprint(_("queuing download")+" "+k.version_main,3);
 			var item = new DownloadItem(k.cached_page_uri, file_parent(k.cached_page), file_basename(k.cached_page));
 			downloads.add(item);
 
@@ -365,7 +364,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_list.clear();
 
 		try {
-			var rex = new Regex("""<a href="(v[a-zA-Z0-9\-._\/]+)">v([a-zA-Z0-9\-._]+)[\/]*<\/a>""");
+// <tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="v2.6.27.61/">v2.6.27.61/</a></td><td align="right">2018-05-13 20:40  </td><td align="right">  - </td><td>&nbsp;</td></tr>
+			var rex = new Regex("""<a href="(v[a-zA-Z0-9\-._\/]+)">v([a-zA-Z0-9\-._]+)[\/]*<\/a>.*>([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}) *<""");
 			// <a href="v3.1.8-precise/">v3.1.8-precise/</a>
 			//          ###fetch(1)####   ##fetch(2)###
 
@@ -375,6 +375,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (!rex.match(line, 0, out match)) continue;
 				var k = new LinuxKernel(match.fetch(1), true);
 				kernel_list.add(k);
+
+				// "...<td align="right">2018-05-13 20:40  </td>..." -> 201805132040
+				// kernel date/time from main index converted to int
+				// used to detect kernel that changed after we cached it
+				k.ppa_datetime = int64.parse(match.fetch(3)+match.fetch(4)+match.fetch(5)+match.fetch(6)+match.fetch(7));
+
 				vprint("kernel_list.add("+k.kname+")",3);
 			}
 
@@ -821,11 +827,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// load
 
-	private void load_cached_page() {
+	private bool load_cached_page() {
 		vprint("load_cached_page(): '"+cached_page+"'",4);
 
 		string txt = "";
 		var url_list = new Gee.HashMap<string,string>();
+		int64 d_this = 0;
+		int64 d_max = 0;
 		deb_image = "";
 		deb_header = "";
 		deb_header_all = "";
@@ -837,16 +845,44 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (!file_exists(cached_page)) {
 			vprint("load_cached_page(): " + _("File not found") + ": "+cached_page,1,stderr);
-			return;
+			return false;
 		}
 
-		// skip if we already know it's a failed build
-		if (is_invalid) return;
-
-		if (file_exists(notes_file)) notes = file_read(notes_file).strip();
 
 		// parse index.html --------------------------
 		txt = file_read(cached_page);
+
+		// find the highest datetime anywhere in the cached index
+		//<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="HEADER.html">HEADER.html</a></td><td align="right">2023-05-11 23:21  </td><td align="right">5.6K</td><td>&nbsp;</td></tr>
+		//<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="amd64/">amd64/</a></td><td align="right">2023-05-11 22:30  </td><td align="right">  - </td><td>&nbsp;</td></tr>
+		try {
+			var rex = new Regex(""">([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}) *<""");
+			MatchInfo match;
+			foreach (string line in txt.split("\n")) {
+				if (rex.match(line, 0, out match)) {
+					d_this = int64.parse(match.fetch(1)+match.fetch(2)+match.fetch(3)+match.fetch(4)+match.fetch(5));
+					if (d_this>d_max) d_max = d_this;
+				}
+			}
+		} catch (Error e) {
+			vprint(e.message,1,stderr);
+		}
+
+		// if datetime from main index is newer than the latest cached datetime,
+		// delete the cached index and status, keep the notes, return false
+		if (ppa_datetime>d_max) {
+			file_delete(cached_page);
+			file_delete(cached_status_file);
+			file_delete(cached_checksums_file);
+			return false;
+		}
+
+		// skip if we already know it's a failed build
+		if (is_invalid) return true;
+
+		if (file_exists(notes_file)) notes = file_read(notes_file).strip();
+
+		// scan for urls to .deb files
 		try {
 			//<a href="linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb">//same deb name//</a>
 			var rex = new Regex("""<a href="([a-zA-Z0-9\-\._/]+\.deb)">([a-zA-Z0-9\-\._/]+\.deb)<\/a>""");
@@ -897,10 +933,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// if ((deb_header.length == 0) || (deb_header_all.length == 0) || (deb_image.length == 0))
 		if (deb_image.length<1 || url_list.size<1) mark_invalid();
 
-		if (is_invalid) return;
+		if (is_invalid) return true;
 
 		deb_url_list = url_list;
 
+		return true;
 	}
 
 	// actions

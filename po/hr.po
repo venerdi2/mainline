@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 12:22-0400\n"
+"POT-Creation-Date: 2023-05-20 06:35-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -13,141 +13,141 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-12-23 23:36+0000\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:103
 msgid "Distribution"
 msgstr "Distribucija"
 
-#: src/Common/LinuxKernel.vala:117
+#: src/Common/LinuxKernel.vala:118
 msgid "Architecture"
 msgstr "Arhitektura"
 
-#: src/Common/LinuxKernel.vala:132
+#: src/Common/LinuxKernel.vala:133
 msgid "Running kernel"
 msgstr "Trčanje kernel"
 
-#: src/Common/LinuxKernel.vala:255
+#: src/Common/LinuxKernel.vala:258
 msgid "loading cached"
 msgstr "učitavanje predmemoriranog"
 
-#: src/Common/LinuxKernel.vala:269
+#: src/Common/LinuxKernel.vala:270
 msgid "queuing download"
 msgstr "preuzimanje u redu čekanja"
 
-#: src/Common/LinuxKernel.vala:292
+#: src/Common/LinuxKernel.vala:291
 msgid "Fetching individual kernel indexes"
 msgstr "Dohvaćanje pojedinačnih indeksa kernel"
 
-#: src/Common/LinuxKernel.vala:308
+#: src/Common/LinuxKernel.vala:307
 msgid "loading downloaded"
 msgstr "učitavanje preuzeto"
 
-#: src/Common/LinuxKernel.vala:343
+#: src/Common/LinuxKernel.vala:342
 msgid "Updating from"
 msgstr "Ažuriranje iz"
 
-#: src/Common/LinuxKernel.vala:351
+#: src/Common/LinuxKernel.vala:350
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:354
+#: src/Common/LinuxKernel.vala:353
 msgid "FAILED"
 msgstr "NIJE USPIO"
 
-#: src/Common/LinuxKernel.vala:397
+#: src/Common/LinuxKernel.vala:403
 msgid "Found installed"
 msgstr "Pronađeno instalirano"
 
-#: src/Common/LinuxKernel.vala:735 src/Gtk/MainWindow.vala:522
+#: src/Common/LinuxKernel.vala:741 src/Gtk/MainWindow.vala:522
 #: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr "Pokrenuto"
 
-#: src/Common/LinuxKernel.vala:736
+#: src/Common/LinuxKernel.vala:742
 msgid "Installed"
 msgstr "Instalirano"
 
-#: src/Common/LinuxKernel.vala:737
+#: src/Common/LinuxKernel.vala:743
 msgid "Invalid"
 msgstr "Érvénytelen"
 
-#: src/Common/LinuxKernel.vala:811
+#: src/Common/LinuxKernel.vala:817
 msgid "Packages Available"
 msgstr "Dostupni Paketi"
 
-#: src/Common/LinuxKernel.vala:817
+#: src/Common/LinuxKernel.vala:823
 msgid "Packages Installed"
 msgstr "Instalirani paketi"
 
-#: src/Common/LinuxKernel.vala:839 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:847 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Datoteka nije pronađena"
 
-#: src/Common/LinuxKernel.vala:910
+#: src/Common/LinuxKernel.vala:947
 msgid "Available Kernels"
 msgstr "Dostupni kerneli"
 
-#: src/Common/LinuxKernel.vala:947
+#: src/Common/LinuxKernel.vala:984
 msgid "enabled"
 msgstr "omogućen"
 
-#: src/Common/LinuxKernel.vala:971
+#: src/Common/LinuxKernel.vala:1008
 msgid "Downloading"
 msgstr "Učitavanje"
 
-#: src/Common/LinuxKernel.vala:992
+#: src/Common/LinuxKernel.vala:1029
 msgid "is already installed."
 msgstr "je već instaliran."
 
-#: src/Common/LinuxKernel.vala:1022
+#: src/Common/LinuxKernel.vala:1059
 msgid "Uninstalling selected kernels"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:1065
 msgid "requested"
 msgstr "Zatražio"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:1068
 msgid "not uninstalling the currently running kernel"
 msgstr "ne deinstaliranje trenutno pokrenute kernel"
 
-#: src/Common/LinuxKernel.vala:1047
+#: src/Common/LinuxKernel.vala:1084
 msgid "found"
 msgstr "pronađen"
 
-#: src/Common/LinuxKernel.vala:1050
+#: src/Common/LinuxKernel.vala:1087
 msgid "No packages to un-install!"
 msgstr "Nema paketa za poništavanje instalacije!"
 
-#: src/Common/LinuxKernel.vala:1098
+#: src/Common/LinuxKernel.vala:1135
 msgid "Could not find running kernel in list"
 msgstr "Nije moguće pronaći pokrenutu kernel na popisu"
 
-#: src/Common/LinuxKernel.vala:1103
+#: src/Common/LinuxKernel.vala:1140
 msgid "Could not find any kernels to uninstall"
 msgstr "Nema pronađenih kernela za deinstaliranje"
 
-#: src/Common/LinuxKernel.vala:1111
+#: src/Common/LinuxKernel.vala:1148
 msgid "The following kernels will be uninstalled"
 msgstr "Deinstalirat će se sljedeće kerneli"
 
-#: src/Common/LinuxKernel.vala:1115
+#: src/Common/LinuxKernel.vala:1152
 msgid "Continue ?"
 msgstr "Nastavi?"
 
-#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1174 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Najnovija nadopuna"
 
-#: src/Common/LinuxKernel.vala:1148 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1185 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Najnovija ciljana nadopuna"
 
-#: src/Common/LinuxKernel.vala:1156 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1193 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
-#: src/Common/LinuxKernel.vala:1165
+#: src/Common/LinuxKernel.vala:1202
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Instaliraj kernel inačice %s ? (d/n): "
