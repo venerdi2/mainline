@@ -42,6 +42,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string PPA_URI;
 	public static string CACHE_DIR;
+	public static string DATA_DIR;
 	public static string MAIN_INDEX_HTML;
 
 	public static LinuxKernel kernel_active;
@@ -765,6 +766,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	public string data_subdir {
+		owned get {
+			return DATA_DIR+"/"+version_main;
+		}
+	}
+
 	public string cached_page {
 		owned get {
 			return cache_subdir+"/index.html";
@@ -779,7 +786,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public string notes_file {
 		owned get {
-			return cache_subdir+"/notes";
+			return data_subdir+"/notes";
 		}
 	}
 
@@ -827,11 +834,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// load
 
+	// return false if we don't have the cached page or if it's out of date
+	// return true if we have a valid cached page, whether the kernel itself is a valid build or not
 	private bool load_cached_page() {
 		vprint("load_cached_page(): '"+cached_page+"'",4);
 
 		string txt = "";
-		var url_list = new Gee.HashMap<string,string>();
 		int64 d_this = 0;
 		int64 d_max = 0;
 		deb_image = "";
@@ -843,11 +851,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_url_list.clear();
 		notes = "";
 
+		// load locally generated data regardless of the state of the cached index
+		if (file_exists(notes_file)) notes = file_read(notes_file).strip();
+
 		if (!file_exists(cached_page)) {
 			vprint("load_cached_page(): " + _("File not found") + ": "+cached_page,1,stderr);
 			return false;
 		}
-
 
 		// parse index.html --------------------------
 		txt = file_read(cached_page);
@@ -877,10 +887,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return false;
 		}
 
-		// skip if we already know it's a failed build
+		// skip the rest of the work if we already know it's a failed build
 		if (is_invalid) return true;
-
-		if (file_exists(notes_file)) notes = file_read(notes_file).strip();
 
 		// scan for urls to .deb files
 		try {
@@ -893,7 +901,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 					string file_name = Path.get_basename (match.fetch(2));
 					string file_uri = "%s%s".printf(page_uri, match.fetch(1));
-					if (url_list.has_key(file_name)) continue;
+					if (deb_url_list.has_key(file_name)) continue;
 
 					bool add = false;
 
@@ -923,20 +931,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 						add = true;
 					}
 
-					if (add) url_list[file_name] = file_uri;
+					if (add) deb_url_list[file_name] = file_uri;
 				}
 			}
 		} catch (Error e) {
 			vprint(e.message,1,stderr);
 		}
-
-		// if ((deb_header.length == 0) || (deb_header_all.length == 0) || (deb_image.length == 0))
-		if (deb_image.length<1 || url_list.size<1) mark_invalid();
-
-		if (is_invalid) return true;
-
-		deb_url_list = url_list;
-
+		if (deb_image.length<1 || deb_url_list.size<1) mark_invalid();
 		return true;
 	}
 

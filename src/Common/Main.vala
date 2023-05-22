@@ -81,8 +81,11 @@ public class Main : GLib.Object {
 
 	// constants ----------
 
+	public string CONFIG_DIR = "";
+	public string CACHE_DIR = "";
+	public string DATA_DIR = "";
 	public string TMP_PREFIX = "";
-	public string APP_CONF_DIR = "";
+
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
@@ -91,10 +94,6 @@ public class Main : GLib.Object {
 	public string NOTIFICATION_ID_FILE = "";
 	public string MAJOR_SEEN_FILE = "";
 	public string MINOR_SEEN_FILE = "";
-
-	public string user_login = "";
-	public string user_home = "";
-	public string CACHE_DIR = "~/.cache/"+BRANDING_SHORTNAME ; // some hard-coded non-empty for rm -rf safety
 
 	// global progress ----------------
 
@@ -174,23 +173,20 @@ public class Main : GLib.Object {
 
 	public void init_paths() {
 
-		// user info
-		user_login = Environment.get_user_name();
-		user_home = Environment.get_home_dir();
-
-		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
-		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";
-		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
-		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
-		OLD_STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify-loop.sh"; // TRANSITION
-		OLD_STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop"; // TRANSITION
-		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
-		MAJOR_SEEN_FILE = APP_CONF_DIR + "/notification_seen.major";
-		MINOR_SEEN_FILE = APP_CONF_DIR + "/notification_seen.minor";
-		CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
+		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
+		DATA_DIR = Environment.get_user_data_dir() + "/" + BRANDING_SHORTNAME;
+		CACHE_DIR = Environment.get_user_cache_dir() + "/" + BRANDING_SHORTNAME;
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
 
+		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
+		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
+		STARTUP_DESKTOP_FILE = CONFIG_DIR + "/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
+		NOTIFICATION_ID_FILE = CONFIG_DIR + "/notification_id";
+		MAJOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.major";
+		MINOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.minor";
+
 		LinuxKernel.CACHE_DIR = CACHE_DIR;
+		LinuxKernel.DATA_DIR = DATA_DIR;
 
 	}
 
@@ -225,7 +221,7 @@ public class Main : GLib.Object {
 		node.set_object(config);
 		json.set_root(node);
 
-		dir_create(APP_CONF_DIR);
+		dir_create(CONFIG_DIR);
 		try { json.to_file(APP_CONFIG_FILE); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 

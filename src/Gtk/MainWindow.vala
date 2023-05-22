@@ -182,7 +182,8 @@ public class MainWindow : Gtk.Window {
 			tv.model.get(iter, 1, out k, -1);
 			if (k.notes != data._strip()) {
 				k.notes = data;
-				file_write(k.notes_file,data);
+				if (k.notes.strip()=="") file_delete(k.notes_file);
+				else file_write(k.notes_file,data);
 				tv_refresh(); // updates the sort, otherwise not needed
 			}
 		});

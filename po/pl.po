@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-20 06:35-0400\n"
+"POT-Creation-Date: 2023-05-22 13:54-0400\n"
 "PO-Revision-Date: 2023-04-13 07:43+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -12,161 +12,161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2\n"
 
-#: src/Common/LinuxKernel.vala:103
+#: src/Common/LinuxKernel.vala:104
 msgid "Distribution"
 msgstr "Dystrybucja"
 
-#: src/Common/LinuxKernel.vala:118
+#: src/Common/LinuxKernel.vala:119
 msgid "Architecture"
 msgstr "Architektura"
 
-#: src/Common/LinuxKernel.vala:133
+#: src/Common/LinuxKernel.vala:134
 msgid "Running kernel"
 msgstr "Uruchomione jądro"
 
-#: src/Common/LinuxKernel.vala:258
+#: src/Common/LinuxKernel.vala:259
 msgid "loading cached"
 msgstr "ładowanie z pamięci podręcznej"
 
-#: src/Common/LinuxKernel.vala:270
+#: src/Common/LinuxKernel.vala:271
 msgid "queuing download"
 msgstr "pobieranie w kolejce"
 
-#: src/Common/LinuxKernel.vala:291
+#: src/Common/LinuxKernel.vala:292
 msgid "Fetching individual kernel indexes"
 msgstr "Pobieranie indywidualnych indeksów jądra"
 
-#: src/Common/LinuxKernel.vala:307
+#: src/Common/LinuxKernel.vala:308
 msgid "loading downloaded"
 msgstr "ładowanie pobranych"
 
-#: src/Common/LinuxKernel.vala:342
+#: src/Common/LinuxKernel.vala:343
 msgid "Updating from"
 msgstr "Aktualizowanie z"
 
-#: src/Common/LinuxKernel.vala:350
+#: src/Common/LinuxKernel.vala:351
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:353
+#: src/Common/LinuxKernel.vala:354
 msgid "FAILED"
 msgstr "NIEPOWODZENIE"
 
-#: src/Common/LinuxKernel.vala:403
+#: src/Common/LinuxKernel.vala:404
 msgid "Found installed"
 msgstr "Znaleziono zainstalowane"
 
-#: src/Common/LinuxKernel.vala:741 src/Gtk/MainWindow.vala:522
-#: src/Gtk/MainWindow.vala:535
+#: src/Common/LinuxKernel.vala:742 src/Gtk/MainWindow.vala:523
+#: src/Gtk/MainWindow.vala:536
 msgid "Running"
 msgstr "Uruchomione"
 
-#: src/Common/LinuxKernel.vala:742
+#: src/Common/LinuxKernel.vala:743
 msgid "Installed"
 msgstr "Zainstalowane"
 
-#: src/Common/LinuxKernel.vala:743
+#: src/Common/LinuxKernel.vala:744
 msgid "Invalid"
 msgstr "Nieprawidłowe"
 
-#: src/Common/LinuxKernel.vala:817
+#: src/Common/LinuxKernel.vala:824
 msgid "Packages Available"
 msgstr "Dostępne pakiety"
 
-#: src/Common/LinuxKernel.vala:823
+#: src/Common/LinuxKernel.vala:830
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: src/Common/LinuxKernel.vala:847 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:858 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Nie odnaleziono pliku"
 
-#: src/Common/LinuxKernel.vala:947
+#: src/Common/LinuxKernel.vala:948
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
-#: src/Common/LinuxKernel.vala:984
+#: src/Common/LinuxKernel.vala:985
 msgid "enabled"
 msgstr "włączone"
 
-#: src/Common/LinuxKernel.vala:1008
+#: src/Common/LinuxKernel.vala:1009
 msgid "Downloading"
 msgstr "Pobieranie"
 
-#: src/Common/LinuxKernel.vala:1029
+#: src/Common/LinuxKernel.vala:1030
 msgid "is already installed."
 msgstr "jest już zainstalowane."
 
-#: src/Common/LinuxKernel.vala:1059
+#: src/Common/LinuxKernel.vala:1060
 msgid "Uninstalling selected kernels"
 msgstr "Odinstalowanie wybranych jąder"
 
-#: src/Common/LinuxKernel.vala:1065
+#: src/Common/LinuxKernel.vala:1066
 msgid "requested"
 msgstr "zażądane"
 
-#: src/Common/LinuxKernel.vala:1068
+#: src/Common/LinuxKernel.vala:1069
 msgid "not uninstalling the currently running kernel"
 msgstr "bez odinstalowywania aktualnie uruchomionego jądra"
 
-#: src/Common/LinuxKernel.vala:1084
+#: src/Common/LinuxKernel.vala:1085
 msgid "found"
 msgstr "znalezione"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1088
 msgid "No packages to un-install!"
 msgstr "Brak pakietów do odinstalowania!"
 
-#: src/Common/LinuxKernel.vala:1135
+#: src/Common/LinuxKernel.vala:1136
 msgid "Could not find running kernel in list"
 msgstr "Nie można znaleźć uruchomionego jądra na liście"
 
-#: src/Common/LinuxKernel.vala:1140
+#: src/Common/LinuxKernel.vala:1141
 msgid "Could not find any kernels to uninstall"
 msgstr "Nie można znaleźć żadnych jąder do odinstalowania"
 
-#: src/Common/LinuxKernel.vala:1148
+#: src/Common/LinuxKernel.vala:1149
 msgid "The following kernels will be uninstalled"
 msgstr "Następujące jądra zostaną odinstalowane"
 
-#: src/Common/LinuxKernel.vala:1152
+#: src/Common/LinuxKernel.vala:1153
 msgid "Continue ?"
 msgstr "Kontynuować?"
 
-#: src/Common/LinuxKernel.vala:1174 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1175 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Najnowsza aktualizacja"
 
-#: src/Common/LinuxKernel.vala:1185 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1186 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Najnowsza aktualizacja punktowa"
 
-#: src/Common/LinuxKernel.vala:1193 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1194 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
-#: src/Common/LinuxKernel.vala:1202
+#: src/Common/LinuxKernel.vala:1203
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Zainstalować wersję jądra %s? (t/n): "
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:376
 msgid "Called from"
 msgstr "Wywołano z"
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:376
 msgid "at logon"
 msgstr "przy logowaniu"
 
-#: src/Common/Main.vala:381
+#: src/Common/Main.vala:377
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy "
 "ustawienia są zapisywane w"
 
-#: src/Common/Main.vala:413
+#: src/Common/Main.vala:409
 msgid "Notifications are disabled"
 msgstr "Powiadomienia są wyłączone"
 
@@ -215,7 +215,7 @@ msgstr "Zainstaluj wybrane jądro"
 msgid "Uninstall specified kernel"
 msgstr "Odinstaluj wybrane jądro"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:331
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:332
 msgid "Uninstall all but the highest installed version"
 msgstr "Odinstaluj wszystkie oprócz najwyższej zainstalowanej wersji"
 
@@ -309,7 +309,7 @@ msgstr "Dostępne %s jądra"
 msgid "Show"
 msgstr "Pokaż"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:298
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:299
 msgid "Install"
 msgstr "Zainstaluj"
 
@@ -377,23 +377,23 @@ msgstr "Status"
 msgid "Notes"
 msgstr "Notatki"
 
-#: src/Gtk/MainWindow.vala:308
+#: src/Gtk/MainWindow.vala:309
 msgid "Uninstall"
 msgstr "Odinstaluj"
 
-#: src/Gtk/MainWindow.vala:319
+#: src/Gtk/MainWindow.vala:320
 msgid "Changelog, build status, etc"
 msgstr "Dziennik zmian, status kompilacji itd."
 
-#: src/Gtk/MainWindow.vala:330
+#: src/Gtk/MainWindow.vala:331
 msgid "Uninstall Old"
 msgstr "Odinstaluj stare"
 
-#: src/Gtk/MainWindow.vala:336
+#: src/Gtk/MainWindow.vala:337
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
-#: src/Gtk/MainWindow.vala:337
+#: src/Gtk/MainWindow.vala:338
 msgid ""
 "Delete cache and reload all kernel info\n"
 "\n"
@@ -403,40 +403,40 @@ msgstr ""
 "\n"
 "SPOWODUJE TO RÓWNIEŻ USUNIĘCIE WSZYSTKICH NOTATEK UŻYTKOWNIKA"
 
-#: src/Gtk/MainWindow.vala:342 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:343 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:348
 msgid "About"
 msgstr "O programie"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:353
 msgid "Exit"
 msgstr "Wyjdź"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:422
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Narzędzie uaktualniania jądra dla dystrybucji z rodziny Ubuntu"
 
-#: src/Gtk/MainWindow.vala:422
+#: src/Gtk/MainWindow.vala:423
 msgid "Forked"
 msgstr "Sforkowane"
 
-#: src/Gtk/MainWindow.vala:422
+#: src/Gtk/MainWindow.vala:423
 msgid "Original"
 msgstr "Oryginalne"
 
-#: src/Gtk/MainWindow.vala:460
+#: src/Gtk/MainWindow.vala:461
 msgid "Updating kernels"
 msgstr "Aktualizowanie jąder"
 
-#: src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:532
 msgid "available"
 msgstr "dostępne"
 
-#: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:615
-#: src/Gtk/MainWindow.vala:650
+#: src/Gtk/MainWindow.vala:575 src/Gtk/MainWindow.vala:616
+#: src/Gtk/MainWindow.vala:651
 msgid "DONE"
 msgstr "GOTOWE"
 

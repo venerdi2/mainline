@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-20 06:35-0400\n"
+"POT-Creation-Date: 2023-05-22 13:54-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -13,159 +13,159 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Common/LinuxKernel.vala:103
+#: src/Common/LinuxKernel.vala:104
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/Common/LinuxKernel.vala:118
+#: src/Common/LinuxKernel.vala:119
 msgid "Architecture"
 msgstr "Arkitektur"
 
-#: src/Common/LinuxKernel.vala:133
+#: src/Common/LinuxKernel.vala:134
 msgid "Running kernel"
 msgstr "Löpande kernel"
 
-#: src/Common/LinuxKernel.vala:258
+#: src/Common/LinuxKernel.vala:259
 msgid "loading cached"
 msgstr "laddar cachelagrat"
 
-#: src/Common/LinuxKernel.vala:270
+#: src/Common/LinuxKernel.vala:271
 msgid "queuing download"
 msgstr "köbildning nedladdning"
 
-#: src/Common/LinuxKernel.vala:291
+#: src/Common/LinuxKernel.vala:292
 msgid "Fetching individual kernel indexes"
 msgstr "Hämta enskilda kernelindex"
 
-#: src/Common/LinuxKernel.vala:307
+#: src/Common/LinuxKernel.vala:308
 msgid "loading downloaded"
 msgstr "laddar nedladdad"
 
-#: src/Common/LinuxKernel.vala:342
+#: src/Common/LinuxKernel.vala:343
 msgid "Updating from"
 msgstr "Uppdatering från"
 
-#: src/Common/LinuxKernel.vala:350
+#: src/Common/LinuxKernel.vala:351
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:353
+#: src/Common/LinuxKernel.vala:354
 msgid "FAILED"
 msgstr "MISSLYCKADES"
 
-#: src/Common/LinuxKernel.vala:403
+#: src/Common/LinuxKernel.vala:404
 msgid "Found installed"
 msgstr "Hittade installerat"
 
-#: src/Common/LinuxKernel.vala:741 src/Gtk/MainWindow.vala:522
-#: src/Gtk/MainWindow.vala:535
+#: src/Common/LinuxKernel.vala:742 src/Gtk/MainWindow.vala:523
+#: src/Gtk/MainWindow.vala:536
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:742
+#: src/Common/LinuxKernel.vala:743
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:743
+#: src/Common/LinuxKernel.vala:744
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: src/Common/LinuxKernel.vala:817
+#: src/Common/LinuxKernel.vala:824
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:823
+#: src/Common/LinuxKernel.vala:830
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:847 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:858 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:947
+#: src/Common/LinuxKernel.vala:948
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:984
+#: src/Common/LinuxKernel.vala:985
 msgid "enabled"
 msgstr "aktiverat"
 
-#: src/Common/LinuxKernel.vala:1008
+#: src/Common/LinuxKernel.vala:1009
 msgid "Downloading"
 msgstr "Ladda ner"
 
-#: src/Common/LinuxKernel.vala:1029
+#: src/Common/LinuxKernel.vala:1030
 msgid "is already installed."
 msgstr "är redan installerat."
 
-#: src/Common/LinuxKernel.vala:1059
+#: src/Common/LinuxKernel.vala:1060
 msgid "Uninstalling selected kernels"
 msgstr "Avinstallera valda kärnor"
 
-#: src/Common/LinuxKernel.vala:1065
+#: src/Common/LinuxKernel.vala:1066
 msgid "requested"
 msgstr "begärd"
 
-#: src/Common/LinuxKernel.vala:1068
+#: src/Common/LinuxKernel.vala:1069
 msgid "not uninstalling the currently running kernel"
 msgstr "Avinstallera inte den kärna som körs, för närvarande"
 
-#: src/Common/LinuxKernel.vala:1084
+#: src/Common/LinuxKernel.vala:1085
 msgid "found"
 msgstr "grunda"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1088
 msgid "No packages to un-install!"
 msgstr "Inga paket att avinstallera!"
 
-#: src/Common/LinuxKernel.vala:1135
+#: src/Common/LinuxKernel.vala:1136
 msgid "Could not find running kernel in list"
 msgstr "Det gick inte att hitta kernel som körs i listan"
 
-#: src/Common/LinuxKernel.vala:1140
+#: src/Common/LinuxKernel.vala:1141
 msgid "Could not find any kernels to uninstall"
 msgstr "Det gick inte att hitta några kärnor att avinstallera"
 
-#: src/Common/LinuxKernel.vala:1148
+#: src/Common/LinuxKernel.vala:1149
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
-#: src/Common/LinuxKernel.vala:1152
+#: src/Common/LinuxKernel.vala:1153
 msgid "Continue ?"
 msgstr "Fortsätta?"
 
-#: src/Common/LinuxKernel.vala:1174 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1175 src/Console/AppConsole.vala:292
 msgid "Latest update"
 msgstr "Senaste uppdatering"
 
-#: src/Common/LinuxKernel.vala:1185 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1186 src/Console/AppConsole.vala:299
 msgid "Latest point update"
 msgstr "Senaste punktuppdatering"
 
-#: src/Common/LinuxKernel.vala:1193 src/Console/AppConsole.vala:304
+#: src/Common/LinuxKernel.vala:1194 src/Console/AppConsole.vala:304
 #: src/Console/AppConsole.vala:320
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Common/LinuxKernel.vala:1202
+#: src/Common/LinuxKernel.vala:1203
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installera kärnversion %s ? (j/n):"
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:376
 msgid "Called from"
 msgstr "Ringde från"
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:376
 msgid "at logon"
 msgstr "vid start"
 
-#: src/Common/Main.vala:381
+#: src/Common/Main.vala:377
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "Den här filen skrivs över och körs igen när inställningar sparas i"
 
-#: src/Common/Main.vala:413
+#: src/Common/Main.vala:409
 msgid "Notifications are disabled"
 msgstr "Meddelanden är inaktiverade"
 
@@ -214,7 +214,7 @@ msgstr "Installera angiven huvudkärna"
 msgid "Uninstall specified kernel"
 msgstr "Avinstallera angiven kärna"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:331
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:332
 msgid "Uninstall all but the highest installed version"
 msgstr "Avinstallera alla utom den högsta installerade versionen"
 
@@ -308,7 +308,7 @@ msgstr "Kernel %s tillgängliga"
 msgid "Show"
 msgstr "Visa"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:298
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:299
 msgid "Install"
 msgstr "Installera"
 
@@ -376,23 +376,23 @@ msgstr "Status"
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: src/Gtk/MainWindow.vala:308
+#: src/Gtk/MainWindow.vala:309
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-#: src/Gtk/MainWindow.vala:319
+#: src/Gtk/MainWindow.vala:320
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:330
+#: src/Gtk/MainWindow.vala:331
 msgid "Uninstall Old"
 msgstr "Avinstallera Gamla"
 
-#: src/Gtk/MainWindow.vala:336
+#: src/Gtk/MainWindow.vala:337
 msgid "Reload"
 msgstr "Reload"
 
-#: src/Gtk/MainWindow.vala:337
+#: src/Gtk/MainWindow.vala:338
 msgid ""
 "Delete cache and reload all kernel info\n"
 "\n"
@@ -402,40 +402,40 @@ msgstr ""
 "\n"
 "DETTA TAR OCKSÅ BORT ALLA ANVÄNDARANTECKNINGAR"
 
-#: src/Gtk/MainWindow.vala:342 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:343 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Inställningar"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:348
 msgid "About"
 msgstr "Om"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:353
 msgid "Exit"
 msgstr "Utgång"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:422
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kärnuppgraderingsverktyg för Ubuntu-baserade distributioner"
 
-#: src/Gtk/MainWindow.vala:422
+#: src/Gtk/MainWindow.vala:423
 msgid "Forked"
 msgstr "Kluven"
 
-#: src/Gtk/MainWindow.vala:422
+#: src/Gtk/MainWindow.vala:423
 msgid "Original"
 msgstr "Original"
 
-#: src/Gtk/MainWindow.vala:460
+#: src/Gtk/MainWindow.vala:461
 msgid "Updating kernels"
 msgstr "Uppdatera kärnor"
 
-#: src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:532
 msgid "available"
 msgstr "tillgänglig"
 
-#: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:615
-#: src/Gtk/MainWindow.vala:650
+#: src/Gtk/MainWindow.vala:575 src/Gtk/MainWindow.vala:616
+#: src/Gtk/MainWindow.vala:651
 msgid "DONE"
 msgstr "FÄRDIG"
 
