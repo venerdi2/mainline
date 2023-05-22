@@ -1,3 +1,10 @@
+mainline (1.2.6) unstable; urgency=medium
+
+  * move user data (notes, and the upcoming flags) out of cache so it survives Reload
+  * compare date/timestamps in the cached per-kernel indexes against the main index to detect when a kernel build status changes after we've cached it, and invalidate & reload the cache for that kernel without having to reload all
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Mon, 22 May 2023 17:27:38 -0400
+
 mainline (1.2.5) unstable; urgency=medium
 
   * actually do what 1.2.4 claimed
