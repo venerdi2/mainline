@@ -80,7 +80,7 @@ Use this to see the build summary and CHANGES files.
 
 **\[ Exit \]** - order pizza
 
-(1) The currently running kernel and any locked kernels are protected and ignoreded.
+(1) The currently running kernel and any locked kernels are protected and ignored.
 
 ## Notes
 Clicking on the Notes field allows to attach arbitrary text to a kernel.
