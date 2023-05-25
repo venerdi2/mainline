@@ -89,6 +89,12 @@ For the single manual uninstall button, the button simply isn't activated. For t
 
 Clicking on the Notes field allows to attach arbitrary text to a kernel.
 
+The Lock checkbox serves as both whitelist and blacklist.
+A locked kernel will not be installed if it's currently uninstalled, and will not be uninstalled if it's currently installed.
+This applies to all methods of installing or uninstalling, from the gui or cli,  
+including the gui Install & Uninstall buttons, cli ""--install" & "--uninstall",  
+gui "Uninstall Old" & cli "--uninstall-old", and cli "--install-latest"
+
 # Help / FAQ
 
 * [MainlineBuilds WIKI](https://wiki.ubuntu.com/Kernel/MainlineBuilds)

@@ -89,8 +89,6 @@ public class Main : GLib.Object {
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
-	public string OLD_STARTUP_SCRIPT_FILE = ""; // TRANSITION
-	public string OLD_STARTUP_DESKTOP_FILE = ""; // TRANSITION
 	public string NOTIFICATION_ID_FILE = "";
 	public string MAJOR_SEEN_FILE = "";
 	public string MINOR_SEEN_FILE = "";
@@ -253,17 +251,6 @@ public class Main : GLib.Object {
 		var node = parser.get_root();
 		var config = node.get_object();
 
-		// TRANSITION PERIOD
-		// detect old file format
-		// hide_unstable, notify_major, notify minor
-		// are all options that have existed since the oldest version of ukuu,
-		// still exist today, and are not (now) string type.
-		// They should be present in all config files no matter how old,
-		// and if they are stored as a string,
-		// then the config file is in the old format
-		bool resave = false;
-		if (config.get_string_member("hide_unstable")==null) {
-			// new config file format - values stored in native format
 #if GLIB_JSON_1_6
 				vprint("glib-json >= 1.6",3);
 				ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
@@ -305,39 +292,13 @@ public class Main : GLib.Object {
 				term_width				=	json_get_int(		config,	"term_width",				DEFAULT_TERM_WIDTH				);
 				term_height				=	json_get_int(		config,	"term_height",				DEFAULT_TERM_HEIGHT				);
 #endif
-		} else {
-			// old config file format - all values stored as string
-			vprint("detetcted old config file format",2);
-			resave = true;
-#if GLIB_JSON_1_6
-				vprint("glib-json >= 1.6",3);
-				connect_timeout_seconds	=	int.parse(	config.get_string_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
-				concurrent_downloads	=	int.parse(	config.get_string_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
-				hide_unstable			=	bool.parse(	config.get_string_member_with_default(	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
-				previous_majors			=	int.parse(	config.get_string_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
-				notify_major			=	bool.parse(	config.get_string_member_with_default(	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
-				notify_minor			=	bool.parse(	config.get_string_member_with_default(	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
-				notify_interval_unit	=	int.parse(	config.get_string_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
-				notify_interval_value	=	int.parse(	config.get_string_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-#else
-				vprint("glib-json < 1.6",3);
-				connect_timeout_seconds	=	int.parse(	json_get_string(	config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
-				concurrent_downloads	=	int.parse(	json_get_string(	config,	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
-				hide_unstable			=	bool.parse(	json_get_string(	config,	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
-				previous_majors			=	int.parse(	json_get_string(	config,	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
-				notify_major			=	bool.parse(	json_get_string(	config,	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
-				notify_minor			=	bool.parse(	json_get_string(	config,	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
-				notify_interval_unit	=	int.parse(	json_get_string(	config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
-				notify_interval_value	=	int.parse(	json_get_string(	config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-#endif
-		}
 
 		// fixups
+		bool resave = false;
 		if (ppa_uri.length==0) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
 		if (!ppa_uri.has_suffix("/")) { ppa_uri += "/"; resave = true; }
 		LinuxKernel.PPA_URI = ppa_uri;
 		if (connect_timeout_seconds>600) connect_timeout_seconds = 600; // aria2c max allowed
-
 		if (resave) save_app_config();
 
 		vprint("Loaded config file: "+APP_CONFIG_FILE,2);
@@ -368,7 +329,6 @@ public class Main : GLib.Object {
 		}
 
 		file_delete(STARTUP_SCRIPT_FILE);
-		file_delete(OLD_STARTUP_SCRIPT_FILE); // TRANSITION
 
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
@@ -439,7 +399,6 @@ public class Main : GLib.Object {
 			file_write(STARTUP_DESKTOP_FILE,s);
 		} else {
 			file_delete(STARTUP_DESKTOP_FILE);
-			file_delete(OLD_STARTUP_DESKTOP_FILE); // TRANSITION
 		}
 	}
 

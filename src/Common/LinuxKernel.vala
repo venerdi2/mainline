@@ -9,7 +9,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string kname = "";
 	public string kver = "";
 	public string version_main = "";
-	public string version_package = "";
+	//public string pname = "";
+	public string pver = "";
 	public string page_uri = "";
 	public string notes = "";
 
@@ -26,7 +27,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public bool is_installed = false;
 	public bool is_running = false;
-	public bool is_mainline = false;
+	public bool is_mainline = true;
 	public int ppa_dirs_ver = 0; // 0 = not set, 1 = old single dirs, 2 = new /<arch>/ subdirs
 	public int64 ppa_datetime = -1; // timestamp from the main index
 
@@ -71,7 +72,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// class initialize
 	public static void initialize() {
-		new LinuxKernel("", false); // instance must be created before setting static members
+		new LinuxKernel(""); // instance must be created before setting static members
 
 		LINUX_DISTRO = check_distribution();
 		NATIVE_ARCH = check_package_architecture();
@@ -176,8 +177,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// constructor
-	public LinuxKernel(string _name, bool _is_mainline) {
-		vprint("LinuxKernel("+_name+","+_is_mainline.to_string()+")",4);
+	public LinuxKernel(string _name) {
+		vprint("LinuxKernel("+_name+")",4);
 		// _name, kname includes the leading "v" and everything after the version number
 		// same as what's in the urls on the kernel ppa index.html
 
@@ -191,9 +192,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// build url
 		page_uri = PPA_URI + _name;
-
-		// override is_mainline from split_version_string()
-		is_mainline = _is_mainline;
 	}
 
 	public LinuxKernel.from_version(string _version) {
@@ -374,8 +372,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			foreach (string line in txt.split("\n")) {
 				if (!rex.match(line, 0, out match)) continue;
-				var k = new LinuxKernel(match.fetch(1), true);
+				var k = new LinuxKernel(match.fetch(1));
 				kernel_list.add(k);
+				k.is_mainline = true;
 
 				// "...<td align="right">2018-05-13 20:40  </td>..." -> 201805132040
 				// kernel date/time from main index converted to int
@@ -398,15 +397,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint("check_installed()",2);
 
 		var pkg_versions = new Gee.ArrayList<string>();
+		string msg = "";
 
 		foreach (var pkg in Package.dpkg_list) {
 			if (!pkg.pname.has_prefix("linux-image-")) continue;
-			vprint(_("Found installed")+" : "+pkg.version);
+			//vprint(_("Found installed")+" : "+pkg.version);
+			msg = _("Found installed")+" : "+pkg.version;
 			pkg_versions.add(pkg.version);
 
 			// temp kernel object for current pkg
 			string pkern_name = pkg.version;
-			var pkern = new LinuxKernel(pkern_name, false);
+			var pkern = new LinuxKernel(pkern_name);
+			if (pkern.is_locked) msg += " (" + _("locked") +")";
+			vprint(msg);
+			pkern.is_mainline = false;
 			pkern.is_installed = true; // dpkg_list[] only contains installed packages
 			pkern.set_pkg_list(); // find assosciated packages and fill pkern.pkg_list[]
 
@@ -414,91 +418,54 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// fill k.pkg_list list of assosciated pkgs
 			bool found = false;
 			foreach (var k in kernel_list) {
+				//k.is_mainline = true;  // HACK FIXME --uninstall-old thinks all kernels are not mainline
 				if (k.is_invalid) continue;
-				if (k.version_major<threshold_major) continue;
-				if (k.version_package == pkern.kname) {
+				//if (k.version_major<threshold_major) continue;
+				if (k.pver == pkern.kname) {
 					found = true;
+					pkern.is_mainline = true;
 					k.pkg_list = pkern.pkg_list;
+					k.is_installed = true;
 					break;
 				}
 			}
 
-			// current package was not found in the mainline list
-			// so it's a distro kernel, add a kernel_list entry
+			// installed package was not found in the mainline list
+			// so it's a distro kernel, add to kernel_list with is_mainline = false;
 			if (!found) {
 				//vprint("kernel_list.add("+pkern.kname+") (distro kernel)",3); // not always true, --uninstall-old thinks all are
 				vprint("kernel_list.add("+pkern.kname+")",3);
 				pkern.is_mainline = false;
+				pkern.pver = pkg.version;
 				if (file_exists(pkern.notes_file)) pkern.notes = file_read(pkern.notes_file);
 				kernel_list.add(pkern);
 			}
 		}
 
-		// mark the installed mainline kernels
-		foreach (string pkg_version in pkg_versions) {
-			foreach (var k in kernel_list) {
-				if (k.is_invalid) continue;
-				if (k.version_major<threshold_major) continue;
-				if (k.version_package == "") continue;
-				if (pkg_version == k.version_package) {
-					k.is_installed = true;
-					break;
-				}
-			}
-		}
-
-		// Find and tag the running kernel in list ------------------
-		
-		// Running: 4.2.7-040207-generic
-		// Package: 4.2.7-040207.201512091533
-
-		// Running: 4.4.0-28-generic
-		// Package: 4.4.0-28.47
-
-		var kern_running = new LinuxKernel.from_version(RUNNING_KERNEL);
+		//var kern_running = new LinuxKernel.from_version(RUNNING_KERNEL);
 		kernel_active = null;
 
 		// https://github.com/bkw777/mainline/issues/91
 
-		// scan mainline kernels
+		// kernel_list should contain both mainline and distro kernels now
 		foreach (var k in kernel_list) {
-			if (k.is_invalid) continue;
-			if (!k.is_mainline) continue;
-			if (k.version_package.length > 0) {
-				// (k.version_main.contains(kern_running.version_main) || kern_running.version_main.contains(k.version_main))
-				if (k.version_package[0 : k.version_package.last_index_of(".")] == RUNNING_KERNEL) {
-					k.is_running = true;
-					k.is_installed = true;
-					kernel_active = k;
-					break;
-				}
-			}
-		}
-
-		// scan ubuntu kernels
-		if (kernel_active == null) {
-			foreach (var k in kernel_list) {
-				if (k.is_invalid) continue;
-				if (k.is_mainline) continue;
-				//if (kern_running.version_main == k.version_main) {  // strict
-				//if (k.version_main.contains(kern_running.version_main) || kern_running.version_main.contains(k.version_main)) { // forgiving
-				if (k.version_main.has_prefix(kern_running.version_main) || kern_running.version_main.has_prefix(k.version_main)) { // forgiving
-					k.is_running = true;
-					k.is_installed = true;
-					kernel_active = k;
-					break;
-				}
-			}
+			if (k.pver.length < 1) continue;
+			if (k.pver[0 : k.pver.last_index_of(".")] != RUNNING_KERNEL) continue;
+			k.is_running = true;
+			k.is_installed = true; // redundant but whatever
+			kernel_active = k;
+			break;
 		}
 
 		kernel_list.sort((a,b) => {
 			return a.compare_to(b) * -1;
 		});
 
-		// find the highest & lowest installed versions ----------------------
+		// find the highest & lowest installed versions
 		kernel_latest_installed = new LinuxKernel.from_version("0");
 		kernel_oldest_installed = kernel_latest_installed;
 		foreach(var k in kernel_list) {
+			//if (k.is_installed && k.is_mainline) {
 			if (k.is_installed) {
 				if (kernel_latest_installed.version_major==0) kernel_latest_installed = k;
 				kernel_oldest_installed = k;
@@ -524,6 +491,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			vprint(k.version_main,3);
 			if (k.is_invalid) continue;
 			if (k.is_installed) continue;
+			if (k.is_locked) {
+				vprint(k.version_main+" "+_("is locked."),2);
+				continue;
+			}
 			if (k.is_unstable && App.hide_unstable) continue;
 			if (k.version_major < threshold_major) break;
 			if (k.compare_to(kernel_latest_installed)<=0) break;
@@ -565,17 +536,26 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (App.previous_majors<0 || App.previous_majors>=kernel_latest_available.version_major) { threshold_major=0; return; }
 
-		// start from the running kernel and work down
-		kernel_oldest_installed = new LinuxKernel.from_version(RUNNING_KERNEL);
-
+		// start from the latest available and work down, ignore ubuntu kernels
+		kernel_oldest_installed = kernel_latest_installed;
 		foreach (var pkg in Package.dpkg_list) {
 			if (!pkg.pname.has_prefix("linux-image-")) continue;
-			var candidate = new LinuxKernel(pkg.version, false);
-			if (candidate.version_major < kernel_oldest_installed.version_major) kernel_oldest_installed = candidate;
+			var candidate = new LinuxKernel(pkg.version);
+
+			// override the garbage guess made in split_version_string()
+			candidate.is_mainline = false;
+			foreach (var k in LinuxKernel.kernel_list) {
+				if (k.pver == candidate.kname) {
+					candidate.is_mainline = true;
+					break;
+				}
+			}
+
+			if (candidate.is_mainline && candidate.version_major < kernel_oldest_installed.version_major) kernel_oldest_installed = candidate;
 		}
 
 		threshold_major = kernel_latest_available.version_major - App.previous_majors;
-		if (kernel_oldest_installed.version_major < threshold_major) threshold_major = kernel_oldest_installed.version_major;
+		if (kernel_oldest_installed.is_mainline && kernel_oldest_installed.version_major < threshold_major) threshold_major = kernel_oldest_installed.version_major;
 		vprint("threshold_major %d".printf(threshold_major),2);
 	}
 
@@ -585,6 +565,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		version_minor = 0;
 		version_point = 0;
 		version_rc = -1;
+		is_mainline = true; // FIXME garbage assumption
 
 		if (_version_string.length == 0) return;
 
@@ -623,7 +604,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 						if ((version_rc<0) && (num.length<3)) version_extra += "."+num;
 						break;
 					}
-					if (num.length >= 12) is_mainline = true;
+					if (num.length < 12) is_mainline = false; // FIXME this is garbage
 				}
 			}
 
@@ -736,6 +717,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	public bool is_locked {
+		get {
+			return file_exists(locked_file);
+		}
+	}
+
 	public string status {
 		get {
 				return
@@ -787,6 +774,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string notes_file {
 		owned get {
 			return data_subdir+"/notes";
+		}
+	}
+
+	public string locked_file {
+		owned get {
+			return data_subdir+"/locked";
 		}
 	}
 
@@ -847,7 +840,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_header_all = "";
 		deb_image_extra = "";
 		deb_modules = "";
-		version_package = "";
+		pver = "";
 		deb_url_list.clear();
 		notes = "";
 
@@ -917,7 +910,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 					if (rex_image.match(file_name, 0, out match)) {
 						deb_image = file_name;
-						version_package = match.fetch(1);
+						//pname = file_name.split("_")[0];
+						pver = match.fetch(1);
 						add = true;
 					}
 
@@ -958,8 +952,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.version_major < threshold_major) continue;
 			}
 
+			string lck = "  ";
+			if (k.is_locked) lck = "🔒";
+
 			if (k.version_main.length>nl) nl = k.version_main.length;
-			vprint("%-*s %-10s %s".printf(nl, k.version_main, k.status, k.notes));
+			vprint("%-*s %s %-10s %s".printf(nl, k.version_main, lck, k.status, k.notes));
 		}
 	}
 
@@ -1025,9 +1022,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// dep: dpkg
 	public bool kinst() {
 
-		// check if installed
 		if (is_installed) {
 			vprint(version_main+" "+_("is already installed."),1,stderr);
+			return false;
+		}
+
+		if (is_locked) {
+			vprint(version_main+" "+_("is locked."),1,stderr);
 			return false;
 		}
 
@@ -1070,6 +1071,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
+			if (k.is_locked) {
+				vprint("! "+k.version_main+" "+_("is locked."));
+				continue;
+			}
+
 			found = "";
 			foreach (var pkg_name in k.pkg_list.values) {
 				//vprint(pkg_name,5);
@@ -1107,6 +1113,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		update_threshold_major();
 		check_installed();
 
+		//vprint("kernel_oldest_installed: "+kernel_oldest_installed.version_main,2);
+		//vprint("kernel_latest_installed: "+kernel_latest_installed.version_main,2);
+		//vprint("kernel_latest_available: "+kernel_latest_available.version_main,2);
+
 		var list = new Gee.ArrayList<LinuxKernel>();
 
 		var kern_running = new LinuxKernel.from_version(RUNNING_KERNEL);
@@ -1121,13 +1131,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (!k.is_installed) continue;
 			if (k.version_main == kern_running.version_main) {
 				found_running_kernel = true;
-				//vprint(k.version_main+" == running_kernel -> skip",4);
+				vprint(k.version_main+" "+"is running.",2);
 				continue;
 			}
 			if (k.compare_to(kernel_latest_installed) >= 0) {
-				//vprint(k.version_main+" >= "+kernel_latest_installed.version_main+" -> skip ",4);
+				vprint(k.version_main+" "+_("is the highest installed version."),2);
 				continue;
 			}
+			if (k.is_locked) {
+				vprint(k.version_main+" "+_("is locked."),2);
+				continue;
+			}
+
 			//vprint(k.version_main+" < "+kernel_latest_installed.version_main+" -> delete",4);
 			list.add(k);
 		}
