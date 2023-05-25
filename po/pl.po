@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-25 07:13-0400\n"
-"PO-Revision-Date: 2023-04-13 07:43+0200\n"
+"PO-Revision-Date: 2023-05-25 13:37+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: src/Common/LinuxKernel.vala:105
 msgid "Distribution"
@@ -58,12 +58,12 @@ msgstr "Znaleziono zainstalowane"
 
 #: src/Common/LinuxKernel.vala:411
 msgid "locked"
-msgstr ""
+msgstr "zablokowane"
 
 #: src/Common/LinuxKernel.vala:495 src/Common/LinuxKernel.vala:1031
 #: src/Common/LinuxKernel.vala:1075 src/Common/LinuxKernel.vala:1142
 msgid "is locked."
-msgstr ""
+msgstr "jest zablokowane."
 
 #: src/Common/LinuxKernel.vala:729 src/Gtk/MainWindow.vala:523
 #: src/Gtk/MainWindow.vala:536
@@ -127,9 +127,8 @@ msgid "No packages to un-install!"
 msgstr "Brak pakietów do odinstalowania!"
 
 #: src/Common/LinuxKernel.vala:1138
-#, fuzzy
 msgid "is the highest installed version."
-msgstr "Odinstaluj wszystkie oprócz najwyższej zainstalowanej wersji"
+msgstr "to najwyższa zainstalowana wersja."
 
 #: src/Common/LinuxKernel.vala:1151
 msgid "Could not find running kernel in list"
@@ -385,7 +384,7 @@ msgstr "Jądro"
 
 #: src/Gtk/MainWindow.vala:143
 msgid "Lock"
-msgstr ""
+msgstr "Zablokuj"
 
 #: src/Gtk/MainWindow.vala:160
 msgid "Status"
