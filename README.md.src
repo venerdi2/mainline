@@ -73,10 +73,6 @@ Use this to see the build summary and CHANGES files.
 **\[ Uninstall Old \]** - uninstalls all installed kernels below the latest installed version(1)
 
 **\[ Reload \]** - deletes, re-downloads, and re-reads the local cached copies of all the index.html's from the mainline-ppa web site, and regenerates the displayed list.  
-Management of these files has been a problem with this app in the past due to various spaghetti code and permissions issues.  
-This is much more reliable now, but there can still be glitches from bad downloads or sometimes the upstream contents change after your copy was downloaded. For instance a kernel might be invalid when you happened to first cache it, and then later become valid (failed build that later succeeded), but your local cached info about that kernel doesn't know it, etc.  
-Normally the app avoids re-downloading things as much as possible for speed and annoyance reasons. The main index is always re-downloaded at least once every start-up, but the individual pages for each kernel are cached and never re-downloaded by default, only new/missing ones are downloaded.  
-That can lead to some files being stale or wrong over time, so, to compensate for that, this button just makes it as convenient as possible to force a full re-load any time you want.  
 
 **\[ Settings \]** - access the [settings](settings.md) dialog to configure various options
 
@@ -84,16 +80,16 @@ That can lead to some files being stale or wrong over time, so, to compensate fo
 
 **\[ Exit \]** - order pizza
 
-(1) In all cases the currently running kernel is protected and the app will not uninstall the currently running kernel.  
-For the single manual uninstall button, the button simply isn't activated. For the cli app if you manually give that version, it will simply ignore it. For uninstall-old, either gui or cli, the currently running kernel is simply skipped over when scanning and building the list of uninstall candidates.
+(1) The currently running kernel and any locked kernels are protected and ignoreded.
 
+## Notes
 Clicking on the Notes field allows to attach arbitrary text to a kernel.
 
-The Lock checkbox serves as both whitelist and blacklist.
-A locked kernel will not be installed if it's currently uninstalled, and will not be uninstalled if it's currently installed.
-This applies to all methods of installing or uninstalling, from the gui or cli,  
-including the gui Install & Uninstall buttons, cli ""--install" & "--uninstall",  
-gui "Uninstall Old" & cli "--uninstall-old", and cli "--install-latest"
+## Lock
+The Lock checkbox serves as both whitelist and blacklist.  
+A locked kernel will not be installed or uninstalled.  
+If it is currently installed, the Uninstall button is inactive and it will be ignored by "Uninstall Old" and "--uninstall".  
+If it is not currently installed, the Install button is inactive and it will be ignored by "--install-latest", "--notify", and "--install".  
 
 # Help / FAQ
 
