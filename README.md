@@ -3,6 +3,15 @@ A tool for installing [Ubuntu Mainline Kernel Builds](https://wiki.ubuntu.com/Ke
 
 ![Main window screenshot](main_window.png)
 
+Sort by the Lock column to collect all the locked kernels together
+![sort by locked](sort_by_locked.png)
+
+Sort by the Status column to collect all the installed kernels together
+![sort by status](sort_by_status.png)
+
+Sort by the Notes column to see all kernels with any remarks
+![sort_by_notes](sort_by_notes.png)
+
 ## About
 mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)  
 

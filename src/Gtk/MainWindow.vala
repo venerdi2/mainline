@@ -138,12 +138,16 @@ public class MainWindow : Gtk.Window {
 		col.add_attribute(k_version_text, "text", COL.VERSION);
 
 		// locked
+		var k_lock_toggle = new CellRendererToggle();
+#if LOCK_TOGGLES_IN_KERNEL_COLUMN  // not sortable
+		col.pack_end(k_lock_toggle, false);
+#else  // sortable
 		col = new TreeViewColumn();
 		col.set_sort_column_id(COL.LOCKED);
 		col.title = _("Lock");
-		var k_lock_toggle = new CellRendererToggle();
 		col.pack_start(k_lock_toggle, false);
 		tv.append_column (col);
+#endif
 		col.add_attribute(k_lock_toggle,"active", COL.LOCKED);
 		k_lock_toggle.toggled.connect((toggle,path) => {
 			TreeIter iter;
@@ -338,7 +342,7 @@ public class MainWindow : Gtk.Window {
 
 		// reload
 		button = new Gtk.Button.with_label (_("Reload"));
-		button.set_tooltip_text(_("Delete cache and reload all kernel info\n\nTHIS WILL ALSO DELETE ALL USER NOTES"));
+		button.set_tooltip_text(_("Delete and reload all cached kernel info"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(reload_cache);
 
