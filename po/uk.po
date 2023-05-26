@@ -59,12 +59,12 @@ msgstr "Знайдено встановленим"
 
 #: src/Common/LinuxKernel.vala:411
 msgid "locked"
-msgstr ""
+msgstr "заблокований"
 
 #: src/Common/LinuxKernel.vala:495 src/Common/LinuxKernel.vala:1031
 #: src/Common/LinuxKernel.vala:1075 src/Common/LinuxKernel.vala:1142
 msgid "is locked."
-msgstr ""
+msgstr "заблоковано."
 
 #: src/Common/LinuxKernel.vala:729 src/Gtk/MainWindow.vala:527
 #: src/Gtk/MainWindow.vala:540
