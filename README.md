@@ -105,7 +105,7 @@ The gui "Uninstall Old" button and the cli "--uninstall-old" command ignore that
 The cli "--install-latest" and "--notify" for the background notification ignore that kernel.  
 The kernel is still visible, you can still write notes and pull up the PPA info page and toggle the lock to unlock it.
 
-This can be handy to keep a stock distribution kernel from being uninstalled by "Uninstall Old", or prevent a known buggy kernel from being installed by "--install-latest" and preven "--notify" from generating a notification to install it.
+This can be handy to keep a stock distribution kernel from being uninstalled by "Uninstall Old", or prevent a known buggy kernel from being installed by "--install-latest" and prevent "--notify" from generating a notification to install it.
 
 ## Notes
 Clicking on the Notes field allows to attach arbitrary note text to a kernel.
