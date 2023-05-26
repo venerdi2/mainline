@@ -22,7 +22,6 @@
  */
 
 using Gtk;
-using Gee;
 
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
@@ -30,18 +29,18 @@ using l.gtk;
 using TeeJee.Misc;
 using l.misc;
 
-public class MainWindow : Gtk.Window {
+public class MainWindow : Window {
 
-	private Gtk.Box vbox_main;
-	private Gtk.Box hbox_list;
+	private Box vbox_main;
+	private Box hbox_list;
 
-	private Gtk.Button btn_install;
-	private Gtk.Button btn_uninstall;
-	private Gtk.Button btn_ppa;
-	private Gtk.Label lbl_info;
+	private Button btn_install;
+	private Button btn_uninstall;
+	private Button btn_ppa;
+	private Label lbl_info;
 
-	private Gtk.TreeView tv;
-	private Gtk.ListStore tv_model;
+	private Gtk.ListStore tm;
+	private TreeView tv;
 	private Gee.ArrayList<LinuxKernel> selected_kernels;
 
 	enum COL {
@@ -63,7 +62,7 @@ public class MainWindow : Gtk.Window {
 		icon = get_app_icon(16);
 
 		// vbox_main
-		vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
+		vbox_main = new Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
 		vbox_main.set_size_request(App._window_width,App._window_height);
 		App._window_width = App.window_width;
@@ -71,9 +70,9 @@ public class MainWindow : Gtk.Window {
 		add(vbox_main);
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
-		//                              0 index      1 kernel             2 kernel-icon       3 version       4 locked      5 status        6 notes         7 tooltip
-		tv_model = new Gtk.ListStore(8, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(bool), typeof(string), typeof(string), typeof(string));
-		tv = new TreeView.with_model(tv_model);
+		//                        0 index      1 kernel             2 kernel-icon       3 version       4 locked      5 status        6 notes         7 tooltip
+		tm = new Gtk.ListStore(8, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(bool), typeof(string), typeof(string), typeof(string));
+		tv = new TreeView.with_model(tm);
 
 		init_ui();
 
@@ -131,7 +130,6 @@ public class MainWindow : Gtk.Window {
 		k_version_icon.ypad = 6;
 		col.pack_start(k_version_icon, false);
 		col.add_attribute(k_version_icon, "pixbuf", COL.ICON);
-
 		var k_version_text = new CellRendererText();
 		k_version_text.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start(k_version_text, true);
@@ -151,12 +149,12 @@ public class MainWindow : Gtk.Window {
 		col.add_attribute(k_lock_toggle,"active", COL.LOCKED);
 		k_lock_toggle.toggled.connect((toggle,path) => {
 			TreeIter iter;
-			tv_model.get_iter_from_string(out iter, path);
+			tm.get_iter_from_string(out iter, path);
 			LinuxKernel k;
-			tv_model.get(iter, COL.KERN, out k, -1);
+			tm.get(iter, COL.KERN, out k, -1);
 			if (toggle.active) file_delete(k.locked_file);
 			else file_write(k.locked_file, "");
-			tv_model.set(iter, COL.LOCKED, k.is_locked);
+			tm.set(iter, COL.LOCKED, k.is_locked);
 		});
 
 		// status
@@ -184,17 +182,17 @@ public class MainWindow : Gtk.Window {
 		col.add_attribute(k_notes_text, "text", COL.NOTES); // text from column 5
 		k_notes_text.editable = true;
 		k_notes_text.edited.connect((path, data) => {
-			TreeIter iter;
+			TreeIter i;
 			LinuxKernel k;
-			tv_model.get_iter_from_string(out iter, path);
-			tv_model.get(iter, COL.KERN, out k, -1);
+			tm.get_iter_from_string(out i, path);
+			tm.get(i, COL.KERN, out k, -1);
 			var t_old = k.notes.strip();
 			var t_new = data.strip();
 			if (t_old != t_new) {
 				k.notes = t_new;
 				if (t_new=="") file_delete(k.notes_file);
 				else file_write(k.notes_file, t_new);
-				tv_model.set(iter, COL.NOTES, t_new, -1);
+				tm.set(i, COL.NOTES, t_new, -1);
 			}
 		});
 
@@ -210,15 +208,15 @@ public class MainWindow : Gtk.Window {
 	private void tv_selection_changed() {
 		var sel = tv.get_selection();
 
-		TreeModel model;
-		TreeIter iter;
-		var paths = sel.get_selected_rows (out model);
+		TreeModel m;
+		TreeIter i;
+		var paths = sel.get_selected_rows (out m);
 
 		selected_kernels.clear();
 		foreach (var path in paths) {
 			LinuxKernel k;
-			model.get_iter(out iter, path);
-			model.get(iter, 1, out k, -1);
+			m.get_iter(out i, path);
+			m.get(i, 1, out k, -1);
 			selected_kernels.add(k);
 		}
 
@@ -242,9 +240,9 @@ public class MainWindow : Gtk.Window {
 		}
 
 		int i = -1;
-		Gdk.Pixbuf p = null;
+		Gdk.Pixbuf p;
 		TreeIter iter;
-		tv_model.clear();
+		tm.clear();
 		foreach (var k in LinuxKernel.kernel_list) {
 
 			if (!k.is_installed) { // don't hide anything that's installed
@@ -253,26 +251,27 @@ public class MainWindow : Gtk.Window {
 				if (k.version_major < LinuxKernel.threshold_major) continue; // hide versions older than settings threshold
 			}
 
-			tv_model.append(out iter); // add row
+			tm.append(out iter); // add row
 
-			tv_model.set(iter, COL.INDEX, ++i); // saves the special version sorting from compare_to()
+			tm.set(iter, COL.INDEX, ++i); // saves the special version number sorting built by compare_to()
 
-			tv_model.set(iter, COL.KERN, k);
+			tm.set(iter, COL.KERN, k);
 
+			// TODO store a pointer not a pixbuf
 			p = pix_mainline;
 			if (k.is_unstable) p = pix_mainline_rc;
 			if (!k.is_mainline) p = pix_ubuntu;
-			tv_model.set(iter, COL.ICON, p);
+			tm.set(iter, COL.ICON, p);
 
-			tv_model.set(iter, COL.VERSION, k.version_main);
+			tm.set(iter, COL.VERSION, k.version_main);
 
-			tv_model.set(iter, COL.LOCKED, k.is_locked);
+			tm.set(iter, COL.LOCKED, k.is_locked);
 
-			tv_model.set(iter, COL.STATUS, k.status);
+			tm.set(iter, COL.STATUS, k.status);
 
-			tv_model.set(iter, COL.NOTES, k.notes);
+			tm.set(iter, COL.NOTES, k.notes);
 
-			tv_model.set(iter, COL.TOOLTIP, k.tooltip_text());
+			tm.set(iter, COL.TOOLTIP, k.tooltip_text());
 		}
 
 		selected_kernels.clear();
@@ -299,11 +298,11 @@ public class MainWindow : Gtk.Window {
 
 	private void init_actions() {
 
-		var hbox = new Gtk.Box(Orientation.VERTICAL, 6);
+		var hbox = new Box(Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
 
 		// install
-		var button = new Gtk.Button.with_label (_("Install"));
+		var button = new Button.with_label (_("Install"));
 		hbox.pack_start (button, true, true, 0);
 		btn_install = button;
 
@@ -313,7 +312,7 @@ public class MainWindow : Gtk.Window {
 		});
 
 		// uninstall
-		button = new Gtk.Button.with_label (_("Uninstall"));
+		button = new Button.with_label (_("Uninstall"));
 		hbox.pack_start (button, true, true, 0);
 		btn_uninstall = button;
 
@@ -323,7 +322,7 @@ public class MainWindow : Gtk.Window {
 		});
 
 		// ppa
-		button = new Gtk.Button.with_label ("PPA");
+		button = new Button.with_label ("PPA");
 		button.set_tooltip_text(_("Changelog, build status, etc"));
 		hbox.pack_start (button, true, true, 0);
 		btn_ppa = button;
@@ -335,29 +334,29 @@ public class MainWindow : Gtk.Window {
 		});
 
 		// uninstall-old
-		button = new Gtk.Button.with_label (_("Uninstall Old"));
+		button = new Button.with_label (_("Uninstall Old"));
 		button.set_tooltip_text(_("Uninstall all but the highest installed version"));
 		hbox.pack_start (button, true, true, 0);
-		button.clicked.connect(do_purge);
+		button.clicked.connect(uninstall_old);
 
 		// reload
-		button = new Gtk.Button.with_label (_("Reload"));
+		button = new Button.with_label (_("Reload"));
 		button.set_tooltip_text(_("Delete and reload all cached kernel info"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(reload_cache);
 
 		// settings
-		button = new Gtk.Button.with_label (_("Settings"));
+		button = new Button.with_label (_("Settings"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(do_settings);
 
 		// about
-		button = new Gtk.Button.with_label (_("About"));
+		button = new Button.with_label (_("About"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(do_about);
 
 		// exit
-		button = new Gtk.Button.with_label (_("Exit"));
+		button = new Button.with_label (_("Exit"));
 		hbox.pack_start (button, true, true, 0);
 		button.clicked.connect(do_exit);
 
@@ -378,7 +377,7 @@ public class MainWindow : Gtk.Window {
 	}
 
 	private void do_exit () {
-		Gtk.main_quit();
+		main_quit();
 	}
 
 	private void do_about () {
@@ -457,20 +456,16 @@ public class MainWindow : Gtk.Window {
 		if (!try_ppa()) return;
 
 		if (!App.GUI_MODE) {
-			// refresh without GUI
-			LinuxKernel.query(false);
+			LinuxKernel.query(true);
 			return;
 		}
 
 		string message = _("Updating kernels");
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
-
 		LinuxKernel.query(false, (timer, ref count, last) => {
 			update_progress_window(progress_window, message, timer, ref count, last);
 		});
-
-		tv_refresh();
 	}
 
 	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref long count, bool last = false) {
@@ -505,16 +500,16 @@ public class MainWindow : Gtk.Window {
 		scrolled.set_shadow_type (ShadowType.ETCHED_IN);
 		//scrolled.margin = 6;
 		scrolled.margin_top = 0;
-		scrolled.hscrollbar_policy = Gtk.PolicyType.NEVER;
-		scrolled.vscrollbar_policy = Gtk.PolicyType.NEVER;
+		scrolled.hscrollbar_policy = PolicyType.NEVER;
+		scrolled.vscrollbar_policy = PolicyType.NEVER;
 		vbox_main.add(scrolled);
 
 		// hbox
-		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		var hbox = new Box(Orientation.HORIZONTAL, 6);
 		//hbox.margin = 6;
 		scrolled.add(hbox);
 
-		lbl_info = new Gtk.Label("");
+		lbl_info = new Label("");
 		lbl_info.margin = 6;
 		lbl_info.set_use_markup(true);
 		hbox.add(lbl_info);
@@ -624,7 +619,7 @@ public class MainWindow : Gtk.Window {
 		vprint(line);
 	}
 
-	public void do_purge () {
+	public void uninstall_old () {
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";

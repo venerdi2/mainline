@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-25 23:23-0400\n"
+"POT-Creation-Date: 2023-05-26 13:36-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -66,8 +66,8 @@ msgstr ""
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:729 src/Gtk/MainWindow.vala:527
-#: src/Gtk/MainWindow.vala:540
+#: src/Common/LinuxKernel.vala:729 src/Gtk/MainWindow.vala:522
+#: src/Gtk/MainWindow.vala:535
 msgid "Running"
 msgstr "Pokrenuto"
 
@@ -229,7 +229,7 @@ msgstr "Instaliraj određeni mainline kernel"
 msgid "Uninstall specified kernel"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:339
+#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:338
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
 
@@ -323,7 +323,7 @@ msgstr "Kernel %s je dostupan"
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:306
+#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:305
 msgid "Install"
 msgstr "Instaliraj"
 
@@ -379,76 +379,76 @@ msgstr "Ispiši informacije otklanjanja grešaka"
 msgid "Show all options"
 msgstr "Prikaži sve mogućnosti"
 
-#: src/Gtk/MainWindow.vala:124
+#: src/Gtk/MainWindow.vala:123
 msgid "Kernel"
 msgstr "Kernel"
 
-#: src/Gtk/MainWindow.vala:147
+#: src/Gtk/MainWindow.vala:145
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:164
+#: src/Gtk/MainWindow.vala:162
 msgid "Status"
 msgstr "Stanje"
 
-#: src/Gtk/MainWindow.vala:176
+#: src/Gtk/MainWindow.vala:174
 msgid "Notes"
 msgstr "Bilješke"
 
-#: src/Gtk/MainWindow.vala:316
+#: src/Gtk/MainWindow.vala:315
 msgid "Uninstall"
 msgstr "Deinstaliraj"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:326
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:338
+#: src/Gtk/MainWindow.vala:337
 msgid "Uninstall Old"
 msgstr "Deinstaliraj staro"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:343
 msgid "Reload"
 msgstr "Ponovno učitati"
 
-#: src/Gtk/MainWindow.vala:345
+#: src/Gtk/MainWindow.vala:344
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:350 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:349 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Postavke"
 
-#: src/Gtk/MainWindow.vala:355
+#: src/Gtk/MainWindow.vala:354
 msgid "About"
 msgstr "O programu"
 
-#: src/Gtk/MainWindow.vala:360
+#: src/Gtk/MainWindow.vala:359
 msgid "Exit"
 msgstr "Izlaz"
 
-#: src/Gtk/MainWindow.vala:426
+#: src/Gtk/MainWindow.vala:425
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
-#: src/Gtk/MainWindow.vala:427
+#: src/Gtk/MainWindow.vala:426
 msgid "Forked"
 msgstr "Forkano"
 
-#: src/Gtk/MainWindow.vala:427
+#: src/Gtk/MainWindow.vala:426
 msgid "Original"
 msgstr "Izvornik"
 
-#: src/Gtk/MainWindow.vala:465
+#: src/Gtk/MainWindow.vala:463
 msgid "Updating kernels"
 msgstr "Ažuriranje jezgri"
 
-#: src/Gtk/MainWindow.vala:536
+#: src/Gtk/MainWindow.vala:531
 msgid "available"
 msgstr "dostupno"
 
-#: src/Gtk/MainWindow.vala:578 src/Gtk/MainWindow.vala:619
-#: src/Gtk/MainWindow.vala:654
+#: src/Gtk/MainWindow.vala:573 src/Gtk/MainWindow.vala:614
+#: src/Gtk/MainWindow.vala:649
 msgid "DONE"
 msgstr "UČINJENO"
 

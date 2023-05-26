@@ -236,7 +236,7 @@ public class AppConsole : GLib.Object {
 					// FIXME version_main can dupe with mainline & distro pkgs of the same version
 					// if cmd is uninstall, must also match k.is_installed
 					// but if cmd is download or install, must IGNORE k.is_installed
-					// extra FUGLY because this whole cmdline parser is redundant junk
+					// extra FUGLY because this whole cmdline parser is redundant multi-pass junk
 					if (k.version_main == requested_version && (cmd != "--uninstall" || k.is_installed)) {
 						kern_requested = k;
 						break;
