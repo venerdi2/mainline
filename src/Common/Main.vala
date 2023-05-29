@@ -105,7 +105,7 @@ public class Main : GLib.Object {
 	public int VERBOSE = 1;
 	public bool GUI_MODE = false;
 	public string command = "list";
-	public string requested_version = "";
+	public string requested_versions = "";
 	public bool ppa_tried = false;
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;

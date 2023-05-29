@@ -94,17 +94,23 @@ public class AppGtk : GLib.Object {
 		{
 			switch (args[i].down()) {
 
+			case "-v":
 			case "--debug":
-				App.VERBOSE = 2;
-				l.misc.VERBOSE = 2;
-				Environment.set_variable("VERBOSE","2",true);
+			case "--verbose":
+				int v = App.VERBOSE;
+				if (args[i+1]==null || args[i+1].has_prefix("-")) v++;
+				else if (++i < args.length) v = int.parse(args[i]);
+				App.VERBOSE = v;
+				l.misc.VERBOSE = v;
+				Environment.set_variable("VERBOSE",v.to_string(),true);
+				//vprint("verbose="+App.VERBOSE.to_string());
 				break;
 
-			// this is used by the notifications
+			// this is the notification run action
 			case "--install":
 				if (++i < args.length) {
 					App.command = "install";
-					App.requested_version = args[i].down();
+					App.requested_versions = args[i].down();
 				}
 				break;
 

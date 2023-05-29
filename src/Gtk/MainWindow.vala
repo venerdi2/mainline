@@ -36,7 +36,6 @@ public class MainWindow : Window {
 
 	private Button btn_install;
 	private Button btn_uninstall;
-	private Button btn_ppa;
 	private Label lbl_info;
 
 	private Gtk.ListStore tm;
@@ -70,21 +69,18 @@ public class MainWindow : Window {
 		add(vbox_main);
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
+
 		//                        0 index      1 kernel             2 kernel-icon       3 version       4 locked      5 status        6 notes         7 tooltip
 		tm = new Gtk.ListStore(8, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(bool), typeof(string), typeof(string), typeof(string));
 		tv = new TreeView.with_model(tm);
 
 		init_ui();
-
-		if (App.command == "install") do_install(new LinuxKernel.from_version(App.requested_version));
-
+		if (App.command == "install") do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
 		update_cache();
-
 	}
 
 	private void init_ui() {
 		init_treeview();
-
 		init_actions();
 		init_infobar();
 
@@ -118,18 +114,20 @@ public class MainWindow : Window {
 
 		// kernel icon & version
 		// sort on the index column not on the version column
-		// special version/rc sorting by compare_to()
+		// special version number sorting built by compare_to()
 		var col = new TreeViewColumn();
 		col.title = _("Kernel");
 		col.resizable = true;
 		col.set_sort_column_id(COL.INDEX);
 		col.min_width = 180;
 		tv.append_column(col);
+
 		var k_version_icon = new CellRendererPixbuf();
 		k_version_icon.xpad = 4;
 		k_version_icon.ypad = 6;
 		col.pack_start(k_version_icon, false);
 		col.add_attribute(k_version_icon, "pixbuf", COL.ICON);
+
 		var k_version_text = new CellRendererText();
 		k_version_text.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start(k_version_text, true);
@@ -206,17 +204,16 @@ public class MainWindow : Window {
 	}
 
 	private void tv_selection_changed() {
+		TreeModel model;
+		TreeIter iter;
 		var sel = tv.get_selection();
-
-		TreeModel m;
-		TreeIter i;
-		var paths = sel.get_selected_rows (out m);
+		var paths = sel.get_selected_rows (out model);
 
 		selected_kernels.clear();
 		foreach (var path in paths) {
 			LinuxKernel k;
-			m.get_iter(out i, path);
-			m.get(i, 1, out k, -1);
+			model.get_iter(out iter, path);
+			model.get(iter, 1, out k, -1);
 			selected_kernels.add(k);
 		}
 
@@ -229,7 +226,6 @@ public class MainWindow : Window {
 		Gdk.Pixbuf pix_ubuntu = null;
 		Gdk.Pixbuf pix_mainline = null;
 		Gdk.Pixbuf pix_mainline_rc = null;
-
 		try {
 			pix_ubuntu = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
 			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
@@ -257,13 +253,15 @@ public class MainWindow : Window {
 
 			tm.set(iter, COL.KERN, k);
 
-			// TODO store a pointer not a pixbuf
 			p = pix_mainline;
 			if (k.is_unstable) p = pix_mainline_rc;
 			if (!k.is_mainline) p = pix_ubuntu;
 			tm.set(iter, COL.ICON, p);
 
 			tm.set(iter, COL.VERSION, k.version_main);
+			//tm.set(iter, COL.VERSION, k.kver);
+			//tm.set(iter, COL.VERSION, k.kname);
+			//tm.set(iter, COL.VERSION, k.kname.replace("linux-image-",""));
 
 			tm.set(iter, COL.LOCKED, k.is_locked);
 
@@ -280,19 +278,15 @@ public class MainWindow : Window {
 	}
 
 	private void set_button_state() {
-		if (selected_kernels.size == 0) {
-			btn_install.sensitive = false;
-			btn_uninstall.sensitive = false;
-			btn_ppa.sensitive = true;
-		} else {
-			// only allow selecting a single kernel for install/uninstall, examine the installed state
-			btn_install.sensitive = selected_kernels.size==1 && !selected_kernels[0].is_installed && !selected_kernels[0].is_locked;
-			btn_uninstall.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running && !selected_kernels[0].is_locked ;
-			btn_ppa.sensitive = (selected_kernels.size == 1) && selected_kernels[0].is_mainline;
-			// allow selecting multiple kernels for install/uninstall, but IF only a single selected, examine the installed state
-			// (the rest of the app does not have loops to process a list yet)
-			//btn_install.sensitive = selected_kernels.size == 1 ? !selected_kernels[0].is_installed : true;
-			//btn_uninstall.sensitive = selected_kernels.size == 1 ? selected_kernels[0].is_installed && !selected_kernels[0].is_running : true;
+		btn_install.sensitive = false;
+		btn_uninstall.sensitive = false;
+
+		if (selected_kernels.size > 0) {
+			foreach (var k in selected_kernels) {
+				if (k.is_locked || k.is_running) continue;
+				if (k.is_installed) btn_uninstall.sensitive = true;
+				else btn_install.sensitive = true;
+			}
 		}
 	}
 
@@ -305,19 +299,15 @@ public class MainWindow : Window {
 		var button = new Button.with_label (_("Install"));
 		hbox.pack_start (button, true, true, 0);
 		btn_install = button;
-
 		button.clicked.connect(() => {
-			return_if_fail(selected_kernels.size == 1);
-			do_install(selected_kernels[0]);
+			do_install(selected_kernels);
 		});
 
 		// uninstall
 		button = new Button.with_label (_("Uninstall"));
 		hbox.pack_start (button, true, true, 0);
 		btn_uninstall = button;
-
 		button.clicked.connect(() => {
-			return_if_fail(selected_kernels.size > 0);
 			do_uninstall(selected_kernels);
 		});
 
@@ -325,11 +315,10 @@ public class MainWindow : Window {
 		button = new Button.with_label ("PPA");
 		button.set_tooltip_text(_("Changelog, build status, etc"));
 		hbox.pack_start (button, true, true, 0);
-		btn_ppa = button;
 
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
-			if (selected_kernels.size == 1) uri += selected_kernels[0].kname;
+			if (selected_kernels.size==1 && selected_kernels[0].is_mainline) uri += selected_kernels[0].kname;
 			uri_open(uri);
 		});
 
@@ -456,14 +445,14 @@ public class MainWindow : Window {
 		if (!try_ppa()) return;
 
 		if (!App.GUI_MODE) {
-			LinuxKernel.query(true);
+			LinuxKernel.mk_kernel_list(true);
 			return;
 		}
 
 		string message = _("Updating kernels");
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
-		LinuxKernel.query(false, (timer, ref count, last) => {
+		LinuxKernel.mk_kernel_list(false, (timer, ref count, last) => {
 			update_progress_window(progress_window, message, timer, ref count, last);
 		});
 	}
@@ -536,12 +525,27 @@ public class MainWindow : Window {
 		}
 	}
 
-	public void do_install(LinuxKernel k) {
+	public void do_install(Gee.ArrayList<LinuxKernel> klist = new Gee.ArrayList<LinuxKernel>()) {
+		string vlist="";
+		if (App.VERBOSE>2) {
+			foreach (var k in klist) vlist += k.version_main+" ";
+			vprint("do_install("+vlist.strip()+")");
+		}
+
+		// if we jumped directly here from a notification, switch to normal interactive mode after this
 		if (App.command == "install") App.command = "list";
-		return_if_fail(!k.is_installed);
-		// try even if we think the net is down
-		// so the button responds instead of looking broken
-		//if (!ppa_up()) return;
+
+		vlist = "";
+		foreach (var k in klist) {
+			vprint(k.version_main);
+			if (k.is_installed) { vprint(k.version_main+" is already installed"); continue; }
+			if (k.is_locked) { vprint(k.version_main+" is locked"); continue; }
+			vprint("adding "+k.version_main);
+			vlist += k.version_main+" ";
+		}
+		if (vlist=="") { vprint("no installable kernels specified"); return; }
+		vprint("vlist=\""+vlist+"\"",3);
+
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
@@ -565,20 +569,19 @@ public class MainWindow : Window {
 			update_cache();
 		});
 
-		string sh = BRANDING_SHORTNAME;
-		if (App.index_is_fresh) sh += " --index-is-fresh";
-		if (App.VERBOSE>1) sh += " --debug";
-		sh += " --install %s\n".printf(k.version_main)
-		+ "echo \n"
-		+ "echo '"+_("DONE")+"'\n"
-		;
+		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
+			if (App.index_is_fresh) sh += " --index-is-fresh";
+			sh += " --install \"" + vlist + "\"\n"
+			+ "echo '"+_("DONE")+"'\n"
+			;
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-		vprint(line);
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
+		if (klist==null || klist.size<1) return;
+
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
@@ -595,28 +598,24 @@ public class MainWindow : Window {
 			dir_delete(t_dir);
 		});
 
-		term.destroy.connect(()=>{
+		term.destroy.connect(() => {
 			this.present();
 			update_cache();
 		});
 
-		string names = "";
+		string cmd_klist = "";
 		foreach(var k in klist) {
-			if (names.length > 0) names += ",";
-			names += "%s".printf(k.version_main);
+			cmd_klist += k.version_main+" ";
 		}
 
-		string sh = BRANDING_SHORTNAME;
-		if (App.index_is_fresh) sh += " --index-is-fresh";
-		if (App.VERBOSE>1) sh += " --debug";
-			sh += " --uninstall %s\n".printf(names)
-			+ "echo \n"
+		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
+			if (App.index_is_fresh) sh += " --index-is-fresh";
+			sh += " --uninstall \"" + cmd_klist + "\"\n"
 			+ "echo '"+_("DONE")+"'\n"
 			;
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-		vprint(line);
 	}
 
 	public void uninstall_old () {
@@ -641,17 +640,14 @@ public class MainWindow : Window {
 			update_cache();
 		});
 
-		string sh = BRANDING_SHORTNAME+" --uninstall-old";
-		if (App.index_is_fresh) sh += " --index-is-fresh";
-		if (App.VERBOSE>1) sh += " --debug";
+		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME+" --uninstall-old";
+			if (App.index_is_fresh) sh += " --index-is-fresh";
 			sh += "\n"
-			+ "echo \n"
 			+ "echo '"+_("DONE")+"'\n"
 			;
 
 		save_bash_script_temp(sh,t_file);
 		term.execute_script(t_file,t_dir);
-		vprint(line);
 	}
 
 }
