@@ -67,7 +67,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int progress_total = 0;
 	public static int progress_count = 0;
 	public static bool cancelled = false;
-	public static int threshold_major = 0;
+	public static int threshold_major = -1;
 
 	// class initialize
 	public static void initialize() {
@@ -255,7 +255,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			if (!k.is_installed) {
 				if (k.version_major < threshold_major) continue;
-				if (App.hide_unstable && k.is_unstable) continue;
+				if (App.hide_unstable && k.version_rc>=0) continue;
 			}
 
 			// add index.html to download list
@@ -350,8 +350,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// read the main index.html listing all kernels
 	private static void load_index() {
 		vprint("load_index()",2);
-		if (threshold_major<1) update_threshold_major(true);
-		if (threshold_major<1) { vprint("threshold_major not initialized"); exit(1); }
+		if (threshold_major<0) update_threshold_major(true);
+		if (threshold_major<0) { vprint("load_index(): threshold_major not initialized"); exit(1); }
 
 		if (!file_exists(MAIN_INDEX_HTML)) return;
 		string txt = file_read(MAIN_INDEX_HTML);
@@ -417,7 +417,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			bool found = false;
 			foreach (var k in kernel_list) {
 				if (k.is_invalid) continue;
-				if (k.version_major<threshold_major) continue; // break; // break ok vs continue b/c sorted highest-first
+				if (k.version_major<threshold_major) continue; // if sorted from top down, can we break instead of continue?
 				//vprint("----  "+p.pname+"  "+p.version+"  ----");
 				//vprint("k.version_main:"+k.version_main+" pk.version_main:"+pk.version_main);
 				//vprint("k.kname:"+k.kname+" pk.kname:"+pk.kname);
@@ -497,7 +497,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				vprint(k.version_main+" "+_("is locked."),2);
 				continue;
 			}
-			if (k.is_unstable && App.hide_unstable) continue;
+			if (k.version_rc>=0 && App.hide_unstable) continue;
 			if (k.version_major < threshold_major) break;
 			if (k.compare_to(kernel_latest_installed)<=0) break;
 
@@ -548,9 +548,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// This k.is_mainline test is only based on an unreliable semantic used in split_version_string().
 			// A real test would be to scan kernel_list for matching k.kver or k.name,
 			// but we don't have kernel_list yet and we can't run mk_kernel_list to generate it,
-			// because we are being run from within mk_kernel_list itself to set bounds on kernel_list.
+			// because we are run from within mk_kernel_list itself to set bounds on kernel_list.
 			// It's not critical. All this does is try to avoid having an installed distro kernel
 			// cause kernel_list to include a whole previous generation.
+			// If the assumption in split_version_string() is ever wrong,
+			// all it means is threshold_major would not ignore non-mainline kernels.
 			if (k.version_major < kernel_oldest_installed.version_major && k.is_mainline) kernel_oldest_installed = k;
 		}
 
@@ -567,63 +569,81 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		version_extra = "";
 		is_mainline = true; // FIXME bad assumption
 
+		/*
+		 * The is_mainline test below is an unsafe assumption.
+		 * But we need *something*, and it is working for now.
+		 * 
+		 * The definitive way to determine is_mainline, is to scan the main
+		 * index.html and see if the current kernel is in there.
+		 * 
+		 * But mk_kernel_list() uses is_mainline itself as part of
+		 * determining threshold_major.
+		 * 
+		 * Possible fix, go back to letting mk_kernel_list() build
+		 * a full list including everything in the main index.html,
+		 * tag those all as mainline, make sure kernel_list
+		 * has a unique id index that can be used to find a record without
+		 * walking the entire list with a foreach loop.
+		 * 
+		 * Then when getting a new unknown kernel from a version number
+		 * or from dpkg, we can answer if it's mainline by looking if
+		 * the same id exists in the list.
+		 * 
+		 * Actually this whole version string parser is pretty hokey.
+		*/
+
 		string t = s;
 		if (t==null || t.length<1) t = "0";
 		if (t.has_prefix("v")) t = t[1: t.length - 1];
 		if (t.has_suffix("/")) t = t[0: t.length - 1];
+		t = t.split("~")[0];  // old ubuntu versions in dpkg, not seen lately
 
-		var version_string = t.split("~")[0];
-		var mi = regex_match("""([0-9]+|rc)""", version_string);
+		// Unsafe. "rc" could be part of intel-arc or something some day.
+		var mi = regex_match("""([0-9]+|rc)""",t);
 		int i = -1;
-		bool saw_rc = false;
+		bool rc = false;
 
 		while (mi != null) {
-			string? num = mi.fetch(1);
+			string? v = mi.fetch(1);
 
-			if (num != null) {
+			if (v != null) {
 				i++;
 
-				//vprint("num="+num);
-				if (saw_rc) {
-					saw_rc = false;
-					version_rc = int.parse(num);
-				} else if (num == "rc") {
-					saw_rc = true;
+				if (rc) {
+					rc = false;
+					version_rc = int.parse(v);
+					//vprint ("%s: i=%d v.length=%d mainline=%s".printf(t,i,v.length,is_mainline.to_string()));
+				} else if (v == "rc") {
+					rc = true;
+					//vprint ("%s: i=%d v.length=%d mainline=%s".printf(t,i,v.length,is_mainline.to_string()));
 				} else {
 					switch (i) {
-					case 0:
-						version_major = int.parse(num);
-						break;
-					case 1:
-						version_minor = int.parse(num);
-						break;
-					case 2:
-						version_point = int.parse(num);
-						break;
-					case 3:
-						if ((version_rc<0) && (num.length<3)) version_extra += "."+num;
-						break;
-					case 4:
-						if ((version_rc<0) && (num.length<3)) version_extra += "."+num;
-						break;
+						case 0: version_major = int.parse(v); break;
+						case 1: version_minor = int.parse(v); break;
+						case 2: version_point = int.parse(v); break;
+						case 3: if (version_rc<0 && v.length<6) version_extra += "."+v; break;  // not great
+						case 4:
+							if (version_rc<0 && v.length<6) version_extra += "."+v; // not great
+							if (v.length<12) is_mainline = false; // FIXME bad assumption
+							break;
 					}
-					if (num.length<12) is_mainline = false; // FIXME bad assumption
+					//vprint ("%s: i=%d v.length=%d mainline=%s".printf(t,i,v.length,is_mainline.to_string()));
 				}
 			}
 
-			if (version_rc>-1) version_extra = "-rc%d".printf(version_rc);
+			if (version_rc>=0) version_extra = "-rc%d".printf(version_rc);
 			version_main = "%d.%d.%d%s".printf(version_major,version_minor,version_point,version_extra);
 
-			try{
-				if (!mi.next()) break;
-			}
-			catch(Error e) {
-				break;
-			}
+			try { if (!mi.next()) break; }
+			catch (Error e) { break; }
 		}
-
 	}
 
+// inputs a & b:  a.compare_to(b)
+// return:
+//    a<b return -1
+//    a==b return 0
+//    a>b  return 1
 	public int compare_to(LinuxKernel b) {
 		LinuxKernel a = this;
 		//vprint("compare_to()",5);
@@ -632,58 +652,61 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		//vprint("a "+a.version_main,5);
 		//vprint("b "+b.version_main,5);
 
-		int i = 0;
+		int i = -1;
 		int x, y;
 
 		// while both arrays have an element
-		while ((i < arr_a.length) && (i < arr_b.length)) {
+		while ((++i < arr_a.length) && (i < arr_b.length)) {
 
-			// continue if equal
-			//vprint("("+arr_a[i]+" == "+arr_b[i]+")",5);
-			if (arr_a[i] == arr_b[i]) {
-				i++;
-				continue;
-			}
+			// keep reading if both are the same
+			if (arr_a[i] == arr_b[i]) continue;
 
-			// check if number
+			// this doesn't distinguish "000" from "abc", but quickly handles if both are >0
 			x = int.parse(arr_a[i]);
 			y = int.parse(arr_b[i]);
-			if ((x > 0) && (y > 0)) {
-				// both are numbers
-				//vprint(arr_a[i]+" - "+arr_b[i]+" = return "+(x-y).to_string(),5);
-				return (x - y);
-			} else if ((x == 0) && (y == 0)) {
-				// BKW - this is one place where "-rc3" gets compared to "-rc4"
-				// both are strings
-				//vprint("strcmp("+arr_a[i]+","+arr_b[i]+") = return "+strcmp(arr_a[i], arr_b[i]).to_string(),5);
-				return strcmp(arr_a[i], arr_b[i]);
-			} else {
-				//vprint("("+arr_a[i]+">0)",5);
-				if (x > 0) {
-					//vprint("return 1",5);
-					return 1;
-				}
-				//vprint("return -1",5);
-				return -1;
-			}
-		}
+			if (x>0 && y>0) return (x - y);
 
-		// if we got here
-		// one array has less parts than the other, and all corresponding parts are equal
+			// this is one place where "-rc3" gets compared to "-rc4"
+			// both are either text or "0", int.parse() returns 0 for "ABC" or "000"
+			// strcmp() will return "00" is less than "ab"
+			if (x==0 && y==0) return strcmp(arr_a[i], arr_b[i]);
 
-		if (i < arr_a.length) {
-			//vprint("a ("+arr_a[i]+">0)",5);
-			x = int.parse(arr_a[i]);
+			// if we got this far:
+			// the two sides were neither both numbers nor both text
+
+			// if a is a number > 0, then b must be either text or number 0
+			// any number > 0 is bigger than either text or number 0
+			// because rc comes before non-rc
 			if (x > 0) return 1;
+
+			// if we didn't return above, then all the same but for b
 			return -1;
 		}
 
-		if (i < arr_b.length) {
-			//vprint("b ("+arr_b[i]+">0)",5);
-			y = int.parse(arr_b[i]);
-			if (y > 0) return -1;
-			return 1;
+		// if we got this far:
+		// * all elements are equal up to this point
+		// * one array has more elements than the other
+
+
+		// These next two catch the case where one array
+		// is longer than the other, and the longer arrays
+		// next element is numeric, not rnN
+
+		// if there are any more a elements
+		if (i < arr_a.length) {
+			// if a is a number > 0
+			if (int.parse(arr_a[i])>0) return 1; // a is bigger
+			return -1; // b is bigger
 		}
+
+		// if there are any more b elements
+		if (i < arr_b.length) {
+			// if b is a number > 0
+			if (int.parse(arr_b[i]) > 0) return -1; // b is bigger
+			return 1; // a is bigger
+		}
+
+		// is it possible to get here?
 
 		// the larger array is the lower version,
 		// because 1.2.3-rcN comes before 1.2.3
@@ -693,11 +716,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public void set_pkg_list() {
 		vprint("set_pkg_list()",2);
 		vprint("kname:"+kname+" kver:"+kver+" version_main:"+version_main,3);
-		foreach(var pkg in Package.dpkg_list) {
-			if (!pkg.pname.has_prefix("linux-")) continue;
-			if (pkg.version == kver) {
-				pkg_list[pkg.pname] = pkg.pname;
-				vprint("Package: "+pkg.pname,2);
+		foreach(var p in Package.dpkg_list) {
+			if (!p.pname.has_prefix("linux-")) continue;
+			if (p.version == kver) {
+				pkg_list[p.pname] = p.pname;
+				vprint("Package: "+p.pname,2);
 			}
 		}
 	}
@@ -707,12 +730,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// properties
-
-	public bool is_unstable {
-		get {
-			return version_main.contains("-rc") || version_main.contains("-unstable");
-		}
-	}
 
 	public bool is_invalid {
 		get {
@@ -743,7 +760,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (ppa_dirs_ver==2) return true;
 			if (ppa_dirs_ver==1) return false;
 			int r = 0;
-			if (is_unstable) r = compare_to(kernel_last_unstable_old_ppa_dirs);
+			if (version_rc>=0) r = compare_to(kernel_last_unstable_old_ppa_dirs);
 			else r = compare_to(kernel_last_stable_old_ppa_dirs);
 			if (r>0) { ppa_dirs_ver = 2; return true; }
 			else { ppa_dirs_ver = 1; return false; }
@@ -951,7 +968,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
-				if (App.hide_unstable && k.is_unstable) continue;
+				if (App.hide_unstable && k.version_rc>=0) continue;
 				if (k.version_major < threshold_major) continue;
 			}
 

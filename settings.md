@@ -15,16 +15,16 @@ Excludes less stable more bleeding edge -rc kernels from the list.
 **Show N previous major versions \[#\]**  
 Defines a threshold value for the oldest major version to include in the display, as an offset from the whatever the current latest version is.  
 
-The algorithm is essentially this pseudocode:  
-threshold_major = min( latest_available - N , oldest_installed )  
+The threshold is whichever is lower:  
+ - the oldest mainline kernel you have installed
+ - the highest mainline version available minus N
 
-In other words, whichever is lower: the latest major version available minus N, or the oldest major version you have installed.
+The special value "-1" is also allowed, and means to show all possible kernel versions. With this setting the initial cache update or Reload takes a long time, but it's actually usable after that.
 
-The special value "-1" is also allowed, and means always show all kernel versions. With this value the initial cache update takes a long time, but it's actually usable after that.
+Any installed non-mainline kernels are ignored for this.  
+This allows to have a prior-generation distribution kernel installed without causing the list to include the entire prior generation of mainline kernels for no reason.  
 
 Generally, you want this setting to just be 0.  
-
-Distribution (non-mainline) kernels are not included when determining the lowest or highest installed versions.  
 
 ## Network
 **Internet connection timeout in \[##\] seconds**  

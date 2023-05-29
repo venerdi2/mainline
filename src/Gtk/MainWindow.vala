@@ -243,7 +243,7 @@ public class MainWindow : Window {
 
 			if (!k.is_installed) { // don't hide anything that's installed
 				if (k.is_invalid) continue; // hide invalid
-				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
+				if (k.version_rc>=0 && App.hide_unstable) continue; // hide unstable if settings say to
 				if (k.version_major < LinuxKernel.threshold_major) continue; // hide versions older than settings threshold
 			}
 
@@ -254,7 +254,7 @@ public class MainWindow : Window {
 			tm.set(iter, COL.KERN, k);
 
 			p = pix_mainline;
-			if (k.is_unstable) p = pix_mainline_rc;
+			if (k.version_rc>=0) p = pix_mainline_rc;
 			if (!k.is_mainline) p = pix_ubuntu;
 			tm.set(iter, COL.ICON, p);
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 06:50-0400\n"
+"POT-Creation-Date: 2023-05-29 18:58-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -61,125 +61,125 @@ msgstr "설치된 것을 찾았습니다"
 msgid "locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:497 src/Common/LinuxKernel.vala:1060
-#: src/Common/LinuxKernel.vala:1094 src/Common/LinuxKernel.vala:1150
+#: src/Common/LinuxKernel.vala:497 src/Common/LinuxKernel.vala:1077
+#: src/Common/LinuxKernel.vala:1111 src/Common/LinuxKernel.vala:1167
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:732 src/Gtk/MainWindow.vala:511
+#: src/Common/LinuxKernel.vala:749 src/Gtk/MainWindow.vala:511
 #: src/Gtk/MainWindow.vala:524
 msgid "Running"
 msgstr "구동 중"
 
-#: src/Common/LinuxKernel.vala:733
+#: src/Common/LinuxKernel.vala:750
 msgid "Installed"
 msgstr "설치 됨"
 
-#: src/Common/LinuxKernel.vala:734
+#: src/Common/LinuxKernel.vala:751
 msgid "Invalid"
 msgstr "사용할 수 없음"
 
-#: src/Common/LinuxKernel.vala:820
+#: src/Common/LinuxKernel.vala:837
 msgid "Packages Available"
 msgstr "설치 가능한 패키지"
 
-#: src/Common/LinuxKernel.vala:826
+#: src/Common/LinuxKernel.vala:843
 msgid "Packages Installed"
 msgstr "설치된 패키지"
 
-#: src/Common/LinuxKernel.vala:851 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:868 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "파일을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:945
+#: src/Common/LinuxKernel.vala:962
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
 
-#: src/Common/LinuxKernel.vala:973
+#: src/Common/LinuxKernel.vala:990
 #, fuzzy
 msgid "No kernels specified"
 msgstr "지정한 명령어가 없습니다"
 
-#: src/Common/LinuxKernel.vala:980 src/Gtk/MainWindow.vala:119
+#: src/Common/LinuxKernel.vala:997 src/Gtk/MainWindow.vala:119
 msgid "Kernel"
 msgstr "커널"
 
-#: src/Common/LinuxKernel.vala:980
+#: src/Common/LinuxKernel.vala:997
 #, fuzzy
 msgid "not found"
 msgstr "파일을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:1006
+#: src/Common/LinuxKernel.vala:1023
 msgid "enabled"
 msgstr "사용"
 
-#: src/Common/LinuxKernel.vala:1030
+#: src/Common/LinuxKernel.vala:1047
 msgid "Downloading"
 msgstr "다운로드"
 
-#: src/Common/LinuxKernel.vala:1055
+#: src/Common/LinuxKernel.vala:1072
 msgid "is already installed."
 msgstr "가 이미 설치되어 있습니다"
 
-#: src/Common/LinuxKernel.vala:1065
+#: src/Common/LinuxKernel.vala:1082
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1099
 msgid "Uninstalling selected kernels"
 msgstr "선택한 커널 제거"
 
-#: src/Common/LinuxKernel.vala:1086
+#: src/Common/LinuxKernel.vala:1103
 msgid "requested"
 msgstr "요청"
 
-#: src/Common/LinuxKernel.vala:1089
+#: src/Common/LinuxKernel.vala:1106
 msgid "not uninstalling the currently running kernel"
 msgstr "현재 실행 중인 커널을 제거하지 않음"
 
-#: src/Common/LinuxKernel.vala:1102
+#: src/Common/LinuxKernel.vala:1119
 msgid "found"
 msgstr "설립하다"
 
-#: src/Common/LinuxKernel.vala:1107
+#: src/Common/LinuxKernel.vala:1124
 msgid "No packages to un-install!"
 msgstr "제거 할 패키지가 없습니다!"
 
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:1163
 #, fuzzy
 msgid "is the highest installed version."
 msgstr "설치된 가장 높은 버전을 제외한 모든 버전을 제거합니다"
 
-#: src/Common/LinuxKernel.vala:1159
+#: src/Common/LinuxKernel.vala:1176
 msgid "Could not find running kernel in list"
 msgstr "현재 실행 중인 커널을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:1164
+#: src/Common/LinuxKernel.vala:1181
 msgid "Could not find any kernels to uninstall"
 msgstr "삭제할 커널을 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:1172
+#: src/Common/LinuxKernel.vala:1189
 msgid "The following kernels will be uninstalled"
 msgstr "풀이"
 
-#: src/Common/LinuxKernel.vala:1176
+#: src/Common/LinuxKernel.vala:1193
 msgid "Continue ?"
 msgstr "계속하시겠습니까?"
 
-#: src/Common/LinuxKernel.vala:1198 src/Console/AppConsole.vala:234
+#: src/Common/LinuxKernel.vala:1215 src/Console/AppConsole.vala:234
 msgid "Latest update"
 msgstr "최신 업데이트"
 
-#: src/Common/LinuxKernel.vala:1209 src/Console/AppConsole.vala:241
+#: src/Common/LinuxKernel.vala:1226 src/Console/AppConsole.vala:241
 msgid "Latest point update"
 msgstr "최신 포인트 업데이트"
 
-#: src/Common/LinuxKernel.vala:1217 src/Console/AppConsole.vala:246
+#: src/Common/LinuxKernel.vala:1234 src/Console/AppConsole.vala:246
 #: src/Console/AppConsole.vala:262
 msgid "No updates found"
 msgstr "업데이트를 찾을 수 없습니다"
 
-#: src/Common/LinuxKernel.vala:1226
+#: src/Common/LinuxKernel.vala:1243
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
