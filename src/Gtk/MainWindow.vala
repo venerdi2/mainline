@@ -441,6 +441,8 @@ public class MainWindow : Window {
 	// Update the cache as optimally as possible.
 	private void update_cache() {
 		vprint("update_cache()",2);
+		string message = _("Updating kernels");
+		vprint(message);
 
 		if (!try_ppa()) return;
 
@@ -449,7 +451,6 @@ public class MainWindow : Window {
 			return;
 		}
 
-		string message = _("Updating kernels");
 		var progress_window = new ProgressWindow.with_parent(this, message, true);
 		progress_window.show_all();
 		LinuxKernel.mk_kernel_list(false, (timer, ref count, last) => {
@@ -525,7 +526,7 @@ public class MainWindow : Window {
 		}
 	}
 
-	public void do_install(Gee.ArrayList<LinuxKernel> klist = new Gee.ArrayList<LinuxKernel>()) {
+	public void do_install(Gee.ArrayList<LinuxKernel> klist) {
 		string vlist="";
 		if (App.VERBOSE>2) {
 			foreach (var k in klist) vlist += k.version_main+" ";
@@ -537,14 +538,14 @@ public class MainWindow : Window {
 
 		vlist = "";
 		foreach (var k in klist) {
-			vprint(k.version_main);
 			if (k.is_installed) { vprint(k.version_main+" is already installed"); continue; }
 			if (k.is_locked) { vprint(k.version_main+" is locked"); continue; }
 			vprint("adding "+k.version_main);
-			vlist += k.version_main+" ";
+			vlist += " "+k.version_main;
 		}
-		if (vlist=="") { vprint("no installable kernels specified"); return; }
-		vprint("vlist=\""+vlist+"\"",3);
+		vlist = vlist.strip();
+		if (vlist=="") { vprint("Install: no installable kernels specified"); return; }
+		vprint("vlist=\""+vlist+"\"");
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
@@ -571,7 +572,7 @@ public class MainWindow : Window {
 
 		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
 			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += " --install \"" + vlist + "\"\n"
+			sh += " --install \""+vlist+"\"\n"
 			+ "echo '"+_("DONE")+"'\n"
 			;
 

@@ -376,7 +376,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				kernel_list.add(k);
 			}
 
-			kernel_list.sort((a,b) => { return a.compare_to(b) * -1; });
+			// sort the list, highest first
+			kernel_list.sort((a,b) => { return b.compare_to(a); });
 
 		}
 		catch (Error e) {
@@ -459,9 +460,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			break;
 		}
 
-		kernel_list.sort((a,b) => {
-			return a.compare_to(b) * -1;
-		});
+		// sort, reverse
+		kernel_list.sort((a,b) => { return b.compare_to(a); });
 
 		// find the highest & lowest installed versions
 		kernel_latest_installed = new LinuxKernel.from_version("0");
@@ -489,17 +489,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		bool major_available = false;
 		bool minor_available = false;
 
-		foreach(var k in LinuxKernel.kernel_list) {
+		foreach(var k in kernel_list) {
 			vprint(k.version_main,3);
 			if (k.is_invalid) continue;
 			if (k.is_installed) continue;
-			if (k.is_locked) {
-				vprint(k.version_main+" "+_("is locked."),2);
-				continue;
-			}
+			if (k.is_locked) { vprint(k.version_main+" "+_("is locked."),2); continue; }
 			if (k.version_rc>=0 && App.hide_unstable) continue;
 			if (k.version_major < threshold_major) break;
-			if (k.compare_to(kernel_latest_installed)<=0) break;
+			if (k.compare_to(kernel_latest_installed)<1) break;
 
 			// kernel_list is sorted so first match is highest match
 			if (k.version_major > kernel_latest_installed.version_major) major_available = true;
@@ -639,78 +636,28 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-// inputs a & b:  a.compare_to(b)
-// return:
-//    a<b return -1
-//    a==b return 0
-//    a>b  return 1
-	public int compare_to(LinuxKernel b) {
-		LinuxKernel a = this;
-		//vprint("compare_to()",5);
-		string[] arr_a = a.version_main.split_set(".-_");
-		string[] arr_b = b.version_main.split_set(".-_");
-		//vprint("a "+a.version_main,5);
-		//vprint("b "+b.version_main,5);
-
-		int i = -1;
-		int x, y;
-
-		// while both arrays have an element
-		while ((++i < arr_a.length) && (i < arr_b.length)) {
-
-			// keep reading if both are the same
-			if (arr_a[i] == arr_b[i]) continue;
-
-			// this doesn't distinguish "000" from "abc", but quickly handles if both are >0
-			x = int.parse(arr_a[i]);
-			y = int.parse(arr_b[i]);
+// complicated comparison logic for kernel version strings
+// like strcmp(), but l & r are LinuxKernel objects
+//  l<r  return -1
+//  l==r return 0
+//  l>r  return 1
+	public int compare_to(LinuxKernel t) {
+		vprint("version_main compare_to("+t.version_main+")",4);
+		var a = version_main.split_set(".-_");
+		var b = t.version_main.split_set(".-_");
+		int x, y, i = -1;
+		while (++i<a.length && i<b.length) {
+			if (a[i] == b[i]) continue;
+			x = int.parse(a[i]);
+			y = int.parse(b[i]);
 			if (x>0 && y>0) return (x - y);
-
-			// this is one place where "-rc3" gets compared to "-rc4"
-			// both are either text or "0", int.parse() returns 0 for "ABC" or "000"
-			// strcmp() will return "00" is less than "ab"
-			if (x==0 && y==0) return strcmp(arr_a[i], arr_b[i]);
-
-			// if we got this far:
-			// the two sides were neither both numbers nor both text
-
-			// if a is a number > 0, then b must be either text or number 0
-			// any number > 0 is bigger than either text or number 0
-			// because rc comes before non-rc
-			if (x > 0) return 1;
-
-			// if we didn't return above, then all the same but for b
+			if (x==0 && y==0) return strcmp(a[i],b[i]);
+			if (x>0) return 1;
 			return -1;
 		}
-
-		// if we got this far:
-		// * all elements are equal up to this point
-		// * one array has more elements than the other
-
-
-		// These next two catch the case where one array
-		// is longer than the other, and the longer arrays
-		// next element is numeric, not rnN
-
-		// if there are any more a elements
-		if (i < arr_a.length) {
-			// if a is a number > 0
-			if (int.parse(arr_a[i])>0) return 1; // a is bigger
-			return -1; // b is bigger
-		}
-
-		// if there are any more b elements
-		if (i < arr_b.length) {
-			// if b is a number > 0
-			if (int.parse(arr_b[i]) > 0) return -1; // b is bigger
-			return 1; // a is bigger
-		}
-
-		// is it possible to get here?
-
-		// the larger array is the lower version,
-		// because 1.2.3-rcN comes before 1.2.3
-		return (arr_b.length - arr_a.length);
+		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; }
+		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; }
+		return 0;
 	}
 
 	public void set_pkg_list() {
@@ -759,10 +706,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// or if unstable and newer than kernel_last_unstable_old_ppa_dirs
 			if (ppa_dirs_ver==2) return true;
 			if (ppa_dirs_ver==1) return false;
-			int r = 0;
-			if (version_rc>=0) r = compare_to(kernel_last_unstable_old_ppa_dirs);
-			else r = compare_to(kernel_last_stable_old_ppa_dirs);
-			if (r>0) { ppa_dirs_ver = 2; return true; }
+			var k = kernel_last_stable_old_ppa_dirs;
+			if (version_rc>=0) k = kernel_last_unstable_old_ppa_dirs;
+			if (compare_to(k)>0) { ppa_dirs_ver = 2; return true; }
 			else { ppa_dirs_ver = 1; return false; }
 		}
 	}
@@ -987,7 +933,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var vlist = list.split_set(",;:| ");
 		int i=vlist.length;
 		foreach (var v in vlist) if (v.strip()=="") i-- ;
-		if (i<1) { vprint(_("No kernels specified")); return klist; }
+		if (i<1) return klist;
 		if (uk || kernel_list.size<1) mk_kernel_list(true);
 		bool e = false;
 		foreach (var v in vlist) {
@@ -996,11 +942,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (var k in kernel_list) if (k.version_main==v) { e = true; klist.add(k); break; }
 			if (!e) vprint(_("Kernel")+" \""+v+"\" "+_("not found"));
 		}
-		//vprint("end vlist_to_klist");
 		return klist;
 	}
 
 	public static bool download_klist(Gee.ArrayList<LinuxKernel> klist) {
+		vprint("download_klist()",2);
+		if (klist.size<1) vprint(_("Download: no downloadable kernels specified")); 
 		bool r = true;
 		foreach (var k in klist) if (!k.download_packages()) r = false;
 		return r;
@@ -1008,7 +955,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: aria2c
 	public bool download_packages() {
-		vprint("download_packages()",2);
+		vprint("download_packages("+version_main+")",2);
 		check_if_initialized();
 		bool ok = true;
 		int MB = 1024 * 1024;
@@ -1086,6 +1033,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (string f in k.deb_url_list.keys) flist += " '"+k.cache_subdir+"/"+f+"'";
 		}
 
+		flist = flist.strip();
+		if (flist=="") { vprint(_("Install: no installable kernels secified")); return false; }
+
 		// full paths instead of env -C
 		// https://github.com/bkw777/mainline/issues/128
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install " + flist;
@@ -1100,15 +1050,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string pnames = "";
 		foreach (var k in klist) {
-			vprint(_("requested")+" "+k.version_main);
+			vprint(_("Requested")+" "+k.version_main);
 
 			if (k.is_running) {
-				vprint("! "+_("not uninstalling the currently running kernel")+" "+k.version_main);
+				vprint("! "+_("Not uninstalling the currently running kernel")+" "+k.version_main);
 				continue;
 			}
 
 			if (k.is_locked) {
-				vprint("! "+k.version_main+" "+_("is locked."));
+				vprint("! "+k.version_main+" "+_("is locked"));
 				continue;
 			}
 
@@ -1119,11 +1069,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				vprint(_("found")+" : "+p,2);
 			}
 		}
-
-		if (pnames=="") {
-			vprint(_("No packages to un-install!"),1,stderr);
-			return false;
-		}
+		pnames = pnames.strip();
+		if (pnames=="") { vprint(_("Uninstall: no uninstallable packages found"),1,stderr); return false; }
 
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --purge " + pnames;
 		vprint(cmd,2);
@@ -1151,7 +1098,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		//vprint("latest_installed: "+kernel_latest_installed.version_main,4);
 		//vprint("running_kernel: "+kern_running.version_main,4);
 
-		foreach(var k in LinuxKernel.kernel_list) {
+		foreach(var k in kernel_list) {
 			if (k.is_invalid) continue;
 			if (!k.is_installed) continue;
 			if (k.version_main == kern_running.version_main) {

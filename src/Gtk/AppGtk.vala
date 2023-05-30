@@ -106,12 +106,10 @@ public class AppGtk : GLib.Object {
 				//vprint("verbose="+App.VERBOSE.to_string());
 				break;
 
-			// this is the notification run action
+			// this is the notification action
 			case "--install":
-				if (++i < args.length) {
-					App.command = "install";
-					App.requested_versions = args[i].down();
-				}
+				App.command = "install";
+				if (++i < args.length) App.requested_versions = args[i].down();
 				break;
 
 			case "--help":

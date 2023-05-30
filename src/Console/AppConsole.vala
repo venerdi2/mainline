@@ -246,7 +246,6 @@ public class AppConsole : GLib.Object {
 			vprint(_("No updates found"));
 		}
 
-		vprint(line);
 	}
 
 	private void notify_user() {
