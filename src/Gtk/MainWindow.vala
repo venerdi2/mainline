@@ -259,9 +259,6 @@ public class MainWindow : Window {
 			tm.set(iter, COL.ICON, p);
 
 			tm.set(iter, COL.VERSION, k.version_main);
-			//tm.set(iter, COL.VERSION, k.kver);
-			//tm.set(iter, COL.VERSION, k.kname);
-			//tm.set(iter, COL.VERSION, k.kname.replace("linux-image-",""));
 
 			tm.set(iter, COL.LOCKED, k.is_locked);
 
@@ -318,7 +315,7 @@ public class MainWindow : Window {
 
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
-			if (selected_kernels.size==1 && selected_kernels[0].is_mainline) uri += selected_kernels[0].kname;
+			if (selected_kernels.size==1 && selected_kernels[0].is_mainline) uri=selected_kernels[0].page_uri;
 			uri_open(uri);
 		});
 
@@ -545,7 +542,6 @@ public class MainWindow : Window {
 		}
 		vlist = vlist.strip();
 		if (vlist=="") { vprint("Install: no installable kernels specified"); return; }
-		vprint("vlist=\""+vlist+"\"");
 
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();

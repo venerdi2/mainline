@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 02:25-0400\n"
+"POT-Creation-Date: 2023-05-30 10:06-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -13,185 +13,185 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: src/Common/LinuxKernel.vala:104
+#: src/Common/LinuxKernel.vala:105
 msgid "Distribution"
 msgstr "Dağıtım"
 
-#: src/Common/LinuxKernel.vala:119
+#: src/Common/LinuxKernel.vala:120
 msgid "Architecture"
 msgstr "Sistem mimarisi"
 
-#: src/Common/LinuxKernel.vala:134
+#: src/Common/LinuxKernel.vala:135
 msgid "Running kernel"
 msgstr "Çalışan çekirdek"
 
-#: src/Common/LinuxKernel.vala:250
+#: src/Common/LinuxKernel.vala:238
 msgid "loading cached"
 msgstr "önbelleğe alınmış yükleme"
 
-#: src/Common/LinuxKernel.vala:262
+#: src/Common/LinuxKernel.vala:250
 msgid "queuing download"
 msgstr "kuyruğa alma indirme"
 
-#: src/Common/LinuxKernel.vala:283
+#: src/Common/LinuxKernel.vala:271
 msgid "Fetching individual kernel indexes"
 msgstr "Tek tek çekirdek dizinlerini alma"
 
-#: src/Common/LinuxKernel.vala:299
+#: src/Common/LinuxKernel.vala:287
 msgid "loading downloaded"
 msgstr "indirilen yükleniyor"
 
-#: src/Common/LinuxKernel.vala:334
+#: src/Common/LinuxKernel.vala:322
 msgid "Updating from"
 msgstr "Şuradan güncelleniyor"
 
-#: src/Common/LinuxKernel.vala:342
+#: src/Common/LinuxKernel.vala:330
 msgid "OK"
 msgstr "Tamam"
 
-#: src/Common/LinuxKernel.vala:345
+#: src/Common/LinuxKernel.vala:333
 msgid "FAILED"
 msgstr "BAŞARISIZ"
 
-#: src/Common/LinuxKernel.vala:410
+#: src/Common/LinuxKernel.vala:392
 msgid "Found installed"
 msgstr "Yüklü bulundu"
 
-#: src/Common/LinuxKernel.vala:411
+#: src/Common/LinuxKernel.vala:393
 msgid "locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:496 src/Common/LinuxKernel.vala:1024
-#: src/Common/LinuxKernel.vala:1114
+#: src/Common/LinuxKernel.vala:477 src/Common/LinuxKernel.vala:1009
+#: src/Common/LinuxKernel.vala:1098
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:696 src/Gtk/MainWindow.vala:512
-#: src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:681 src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:522
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/Common/LinuxKernel.vala:697
+#: src/Common/LinuxKernel.vala:682
 msgid "Installed"
 msgstr "Kurulu"
 
-#: src/Common/LinuxKernel.vala:698
+#: src/Common/LinuxKernel.vala:683
 msgid "Invalid"
 msgstr "Geçersiz"
 
-#: src/Common/LinuxKernel.vala:783
+#: src/Common/LinuxKernel.vala:768
 msgid "Packages Available"
 msgstr "Mevcut Paketler"
 
-#: src/Common/LinuxKernel.vala:789
+#: src/Common/LinuxKernel.vala:774
 msgid "Packages Installed"
 msgstr "Kurulu Paketler"
 
-#: src/Common/LinuxKernel.vala:814 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:799 src/lib/TeeJee.FileSystem.vala:118
 msgid "File not found"
 msgstr "Dosya bulunamadı"
 
-#: src/Common/LinuxKernel.vala:908
+#: src/Common/LinuxKernel.vala:893
 msgid "Available Kernels"
 msgstr "Mevcut Çekirdekler"
 
-#: src/Common/LinuxKernel.vala:943 src/Gtk/MainWindow.vala:119
+#: src/Common/LinuxKernel.vala:928 src/Gtk/MainWindow.vala:119
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: src/Common/LinuxKernel.vala:943
+#: src/Common/LinuxKernel.vala:928
 #, fuzzy
 msgid "not found"
 msgstr "Dosya bulunamadı"
 
-#: src/Common/LinuxKernel.vala:950
+#: src/Common/LinuxKernel.vala:935
 #, fuzzy
 msgid "Download: no downloadable kernels specified"
 msgstr "Komut belirtilmedi"
 
-#: src/Common/LinuxKernel.vala:970
+#: src/Common/LinuxKernel.vala:955
 msgid "enabled"
 msgstr "etkin"
 
-#: src/Common/LinuxKernel.vala:994
+#: src/Common/LinuxKernel.vala:979
 msgid "Downloading"
 msgstr "Indiriyor"
 
-#: src/Common/LinuxKernel.vala:1019
+#: src/Common/LinuxKernel.vala:1004
 msgid "is already installed."
 msgstr "zaten yüklü."
 
-#: src/Common/LinuxKernel.vala:1029
+#: src/Common/LinuxKernel.vala:1014
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1037
+#: src/Common/LinuxKernel.vala:1022
 #, fuzzy
 msgid "Install: no installable kernels secified"
 msgstr "Komut belirtilmedi"
 
-#: src/Common/LinuxKernel.vala:1049
+#: src/Common/LinuxKernel.vala:1034
 msgid "Uninstalling selected kernels"
 msgstr "Seçili çekirdekleri kaldırma"
 
-#: src/Common/LinuxKernel.vala:1053
+#: src/Common/LinuxKernel.vala:1038
 #, fuzzy
 msgid "Requested"
 msgstr "istenen"
 
-#: src/Common/LinuxKernel.vala:1056
+#: src/Common/LinuxKernel.vala:1041
 #, fuzzy
 msgid "Not uninstalling the currently running kernel"
 msgstr "çalışmakta olan çekirdeğin kaldırılmaması"
 
-#: src/Common/LinuxKernel.vala:1061
+#: src/Common/LinuxKernel.vala:1046
 msgid "is locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1069
+#: src/Common/LinuxKernel.vala:1054
 msgid "found"
 msgstr "kurmak"
 
-#: src/Common/LinuxKernel.vala:1073
+#: src/Common/LinuxKernel.vala:1058
 msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1110
+#: src/Common/LinuxKernel.vala:1094
 #, fuzzy
 msgid "is the highest installed version."
 msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
-#: src/Common/LinuxKernel.vala:1123
+#: src/Common/LinuxKernel.vala:1107
 msgid "Could not find running kernel in list"
 msgstr "Listede çalışan çekirdek bulunamadı"
 
-#: src/Common/LinuxKernel.vala:1128
+#: src/Common/LinuxKernel.vala:1112
 msgid "Could not find any kernels to uninstall"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
-#: src/Common/LinuxKernel.vala:1136
+#: src/Common/LinuxKernel.vala:1120
 msgid "The following kernels will be uninstalled"
 msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 
-#: src/Common/LinuxKernel.vala:1140
+#: src/Common/LinuxKernel.vala:1124
 msgid "Continue ?"
 msgstr "Devam edilsin mi?"
 
-#: src/Common/LinuxKernel.vala:1162 src/Console/AppConsole.vala:234
+#: src/Common/LinuxKernel.vala:1146 src/Console/AppConsole.vala:234
 msgid "Latest update"
 msgstr "Son güncelleme"
 
 # Point burada point release anlamında kullanılıyor. Örneğin 5.10.x sayısının en sonundaki x rakamı point release/nokta sürüm oluyor.
-#: src/Common/LinuxKernel.vala:1173 src/Console/AppConsole.vala:241
+#: src/Common/LinuxKernel.vala:1157 src/Console/AppConsole.vala:241
 msgid "Latest point update"
 msgstr "Son nokta güncellemesi"
 
-#: src/Common/LinuxKernel.vala:1181 src/Console/AppConsole.vala:246
+#: src/Common/LinuxKernel.vala:1165 src/Console/AppConsole.vala:246
 #: src/Console/AppConsole.vala:261
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
-#: src/Common/LinuxKernel.vala:1190
+#: src/Common/LinuxKernel.vala:1174
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
@@ -263,7 +263,7 @@ msgstr "Belirtilen çekirdeğini kaldır"
 msgid "Uninstall specified kernels"
 msgstr "Belirtilen çekirdeğini kaldır"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/MainWindow.vala:327
+#: src/Console/AppConsole.vala:55 src/Gtk/MainWindow.vala:324
 msgid "Uninstall all but the highest installed version"
 msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
@@ -342,7 +342,7 @@ msgstr "Çekirdek %s Kullanılabilir"
 msgid "Show"
 msgstr "Göster"
 
-#: src/Console/AppConsole.vala:288 src/Gtk/MainWindow.vala:299
+#: src/Console/AppConsole.vala:288 src/Gtk/MainWindow.vala:296
 msgid "Install"
 msgstr "Kur"
 
@@ -410,60 +410,60 @@ msgstr "Durum"
 msgid "Notes"
 msgstr "Notlar"
 
-#: src/Gtk/MainWindow.vala:307
+#: src/Gtk/MainWindow.vala:304
 msgid "Uninstall"
 msgstr "Kaldır"
 
-#: src/Gtk/MainWindow.vala:316
+#: src/Gtk/MainWindow.vala:313
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:326
+#: src/Gtk/MainWindow.vala:323
 msgid "Uninstall Old"
 msgstr "Eskileri Kaldır"
 
-#: src/Gtk/MainWindow.vala:332
+#: src/Gtk/MainWindow.vala:329
 msgid "Reload"
 msgstr "Arjantin"
 
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:330
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:338 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:335 src/Gtk/SettingsDialog.vala:49
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/Gtk/MainWindow.vala:343
+#: src/Gtk/MainWindow.vala:340
 msgid "About"
 msgstr "Hakkında"
 
-#: src/Gtk/MainWindow.vala:348
+#: src/Gtk/MainWindow.vala:345
 msgid "Exit"
 msgstr "Çıkış"
 
-#: src/Gtk/MainWindow.vala:414
+#: src/Gtk/MainWindow.vala:411
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
-#: src/Gtk/MainWindow.vala:415
+#: src/Gtk/MainWindow.vala:412
 msgid "Forked"
 msgstr "Çatallandı"
 
-#: src/Gtk/MainWindow.vala:415
+#: src/Gtk/MainWindow.vala:412
 msgid "Original"
 msgstr "Özgün"
 
-#: src/Gtk/MainWindow.vala:444
+#: src/Gtk/MainWindow.vala:441
 msgid "Updating kernels"
 msgstr "Çekirdekleri güncelleme"
 
-#: src/Gtk/MainWindow.vala:521
+#: src/Gtk/MainWindow.vala:518
 msgid "available"
 msgstr "mevcut"
 
-#: src/Gtk/MainWindow.vala:576 src/Gtk/MainWindow.vala:615
-#: src/Gtk/MainWindow.vala:647
+#: src/Gtk/MainWindow.vala:572 src/Gtk/MainWindow.vala:611
+#: src/Gtk/MainWindow.vala:643
 msgid "DONE"
 msgstr ""
 
