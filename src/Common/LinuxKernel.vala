@@ -213,7 +213,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		//progress_count = 0;
 
 		// find the oldest major version to include
-		update_threshold_major(true);
+		find_thresholds(true);
 
 		// ===== download the main index.html listing all kernels =====
 		download_index();
@@ -336,7 +336,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// read the main index.html listing all kernels
 	private static void load_index() {
 		vprint("load_index()",2);
-		if (THRESHOLD_MAJOR<0) update_threshold_major(true);
+		if (THRESHOLD_MAJOR<0) find_thresholds(true);
 		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
 
 		if (!file_exists(MAIN_INDEX_HTML)) return;
@@ -355,7 +355,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (!rex.match(l, 0, out mi)) continue;
 				v = mi.fetch(1);
 				var k = new LinuxKernel(v);
-				if (k.version_major<THRESHOLD_MAJOR) continue;
+
+				if (k.version_major<THRESHOLD_MAJOR ||
+					(k.version_rc>=0 && App.hide_unstable)) { delete_r(k.cache_subdir); continue; }
+
 				k.page_uri = PPA_URI + v;
 				k.is_mainline = true;
 				k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
@@ -523,8 +526,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// use that here and along the way delete the unwanted items from kernel_list[]
 	// then mk_kernel_list() can just process that kernel_list[]
 	// 
-	public static void update_threshold_major(bool up=false) {
-		vprint("update_threshold_major()",2);
+	public static void find_thresholds(bool up=false) {
+		vprint("find_thresholds()",2);
 
 		if (up || Package.dpkg_list.size<1) Package.mk_dpkg_list();
 
@@ -1053,7 +1056,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void kunin_old(bool confirm) {
 		vprint("kunin_old()",2);
 
-		update_threshold_major(true);
+		find_thresholds(true);
 		download_index();
 		load_index();
 		check_installed();

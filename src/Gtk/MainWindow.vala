@@ -356,22 +356,8 @@ public class MainWindow : Window {
 		dlg.run();
 		dlg.destroy();
 
-		// allows leftover cache to stay, but faster for the user
 		if (App.previous_majors != old_previous_majors ||
 			App.hide_unstable != old_hide_unstable) update_cache();
-
-/*
-		// keeps the cache trimmed, but slow for the user
-		// instead, TODO: write a trim_cache() that can run during mk_kernel_list() or update_threshold_major()
-		// all that will do is scan the cache dirs and delete anything that isn't in the current kernel_list
-		int p = 0, r = 0;
-		if (App.previous_majors >= 0 && App.previous_majors < old_previous_majors) p--; // selection set shrank
-		if (App.previous_majors < 0 || App.previous_majors > old_previous_majors) p++; // selection set grew
-		if (App.hide_unstable==true && old_hide_unstable==false) r--; // selection set shrank
-		if (App.hide_unstable==false && old_hide_unstable==true) r++; // selection set grew
-		if (p<0 || r<0) reload_cache(); // if either one shrank, delete & reload
-		else if (p>0 || r>0) update_cache(); // if neither one shrank but either one grew, update but no need to delete
-*/
 	}
 
 	private void do_exit () {
