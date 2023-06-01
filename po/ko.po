@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 20:53-0400\n"
+"POT-Creation-Date: 2023-06-01 01:49-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -86,7 +86,7 @@ msgstr "설치 가능한 패키지"
 msgid "Packages Installed"
 msgstr "설치된 패키지"
 
-#: src/Common/LinuxKernel.vala:784 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:784 src/lib/TeeJee.FileSystem.vala:103
 msgid "File not found"
 msgstr "파일을 찾을 수 없습니다"
 
@@ -199,20 +199,20 @@ msgstr "업데이트를 찾을 수 없습니다"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:345
 msgid "Called from"
 msgstr "에서 호출"
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:345
 msgid "at logon"
 msgstr "로그온 시"
 
-#: src/Common/Main.vala:347
+#: src/Common/Main.vala:346
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행됩니다."
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:378
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 

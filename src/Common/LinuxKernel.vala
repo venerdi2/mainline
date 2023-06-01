@@ -173,7 +173,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void delete_cache() {
 		vprint("delete_cache()",2);
 		kernel_list.clear();
-		dir_delete(CACHE_DIR);
+		delete_r(CACHE_DIR);
 	}
 
 	// constructor
@@ -809,7 +809,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// delete the cached index and status, return false
 		if (ppa_datetime>d_max) {
 			vprint(version_main+": ppa:"+ppa_datetime.to_string()+" > cache:"+d_max.to_string()+" : needs update");
-			dir_delete(cache_subdir);
+			delete_r(cache_subdir);
 			return false;
 		}
 
@@ -1013,7 +1013,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install " + flist;
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
-		foreach (var f in flist.split(" ")) file_delete(f);
+		foreach (var f in flist.split(" ")) delete_r(f);
 		return r;
 	}
 

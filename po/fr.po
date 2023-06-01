@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 20:53-0400\n"
+"POT-Creation-Date: 2023-06-01 01:49-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -86,7 +86,7 @@ msgstr "Paquets Disponibles"
 msgid "Packages Installed"
 msgstr "Paquets Installés"
 
-#: src/Common/LinuxKernel.vala:784 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:784 src/lib/TeeJee.FileSystem.vala:103
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
@@ -199,22 +199,22 @@ msgstr "Aucune mise à jour disponible"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installer le noyau en version %s ? (y/n): "
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:345
 msgid "Called from"
 msgstr "Appelé à partir de"
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:345
 msgid "at logon"
 msgstr "au démarrage"
 
-#: src/Common/Main.vala:347
+#: src/Common/Main.vala:346
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ce fichier est écrasé et exécuté à nouveau chaque fois que les paramètres "
 "sont enregistrés dans"
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:378
 msgid "Notifications are disabled"
 msgstr "Les notifications sont désactivées"
 

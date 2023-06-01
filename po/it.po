@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 20:53-0400\n"
+"POT-Creation-Date: 2023-06-01 01:49-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -84,7 +84,7 @@ msgstr "Pacchetti disponibili"
 msgid "Packages Installed"
 msgstr "Pacchetti installati"
 
-#: src/Common/LinuxKernel.vala:784 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:784 src/lib/TeeJee.FileSystem.vala:103
 msgid "File not found"
 msgstr "File non trovato"
 
@@ -197,22 +197,22 @@ msgstr "Nessun aggiornamento trovato"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:345
 msgid "Called from"
 msgstr "Chiamato da"
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:345
 msgid "at logon"
 msgstr "all'avvio"
 
-#: src/Common/Main.vala:347
+#: src/Common/Main.vala:346
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Questo file viene sovrascritto ed eseguito nuovamente ogni volta che vengono "
 "salvate le impostazioni"
 
-#: src/Common/Main.vala:379
+#: src/Common/Main.vala:378
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
 

@@ -267,7 +267,7 @@ public abstract class AsyncTask : GLib.Object {
 
 		finish_task();
 
-		dir_delete(working_dir);
+		delete_r(working_dir);
 
 		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) status = AppStatus.FINISHED;
 

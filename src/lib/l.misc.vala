@@ -125,4 +125,22 @@ namespace l.misc {
 	public void sleep(int milliseconds) {
 		Thread.usleep ((ulong) milliseconds * 1000);
 	}
+
+	public bool delete_r(string dir_path) {
+		vprint("delete_r("+dir_path+")",3);
+		File p = File.new_for_path(dir_path);
+		if (!p.query_exists()) return true;
+		if (p.query_file_type(FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.DIRECTORY) try {
+			FileEnumerator en = p.enumerate_children ("standard::*",FileQueryInfoFlags.NOFOLLOW_SYMLINKS,null);
+			FileInfo i; File n; string s;
+			while (((i = en.next_file(null)) != null)) {
+				n = p.resolve_relative_path(i.get_name());
+				s = n.get_path();
+				if (i.get_file_type() == FileType.DIRECTORY) delete_r(s);
+				else n.delete();
+			}
+		} catch (Error e) { print ("Error: %s\n", e.message); }
+		try { p.delete(); } catch (Error e) { print ("Error: %s\n", e.message); }
+		return !p.query_exists();
+	}
 }

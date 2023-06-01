@@ -167,7 +167,6 @@ public class Main : GLib.Object {
 	}
 
 	public bool set_verbose(string? s) {
-		vprint(s.to_string());
 		string a = (s==null) ? "" : s.strip();
 		int v = VERBOSE;
 		bool r=true;
@@ -338,7 +337,7 @@ public class Main : GLib.Object {
 			break;
 		}
 
-		file_delete(STARTUP_SCRIPT_FILE);
+		delete_r(STARTUP_SCRIPT_FILE);
 
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
@@ -408,7 +407,7 @@ public class Main : GLib.Object {
 				;
 			file_write(STARTUP_DESKTOP_FILE,s);
 		} else {
-			file_delete(STARTUP_DESKTOP_FILE);
+			delete_r(STARTUP_DESKTOP_FILE);
 		}
 	}
 
