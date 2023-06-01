@@ -44,7 +44,7 @@ namespace TeeJee.FileSystem {
 			&& !FileUtils.test(file_path, GLib.FileTest.IS_DIR));
 	}
 
-	public string? file_read (string file_path) {
+	public string? file_read(string file_path) {
 		vprint("file_read("+file_path+")",3);
 
 		string txt = "";
@@ -56,7 +56,7 @@ namespace TeeJee.FileSystem {
 		return txt;
 	}
 
-	public bool file_write (string f, string contents) {
+	public bool file_write(string f, string contents) {
 		vprint("file_write("+f+")",3);
 
 		try {
@@ -69,7 +69,7 @@ namespace TeeJee.FileSystem {
 
 			var file_stream = file.create(FileCreateFlags.REPLACE_DESTINATION);
 			var data_stream = new DataOutputStream(file_stream);
-			data_stream.put_string (contents);
+			data_stream.put_string(contents);
 			data_stream.close();
 
 			return true;
@@ -80,7 +80,7 @@ namespace TeeJee.FileSystem {
 		}
 	}
 
-	public bool file_copy (string src_file, string dest_file) {
+	public bool file_copy(string src_file, string dest_file) {
 		vprint("file_copy('"+src_file+"','"+dest_file+"')",3);
 
 		try {
@@ -96,7 +96,7 @@ namespace TeeJee.FileSystem {
 		return false;
 	}
 
-	public void file_move (string src_file, string dest_file) {
+	public void file_move(string src_file, string dest_file) {
 		vprint("file_move('"+src_file+"','"+dest_file+"')",3);
 		try {
 			if (!file_exists(src_file)) {
@@ -112,7 +112,7 @@ namespace TeeJee.FileSystem {
 			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
 
 		}
-		catch(Error e) { vprint(e.message,1,stderr); }
+		catch (Error e) { vprint(e.message,1,stderr); }
 	}
 
 	public int64 file_get_size(string file_path) {
@@ -125,14 +125,14 @@ namespace TeeJee.FileSystem {
 				}
 			}
 		}
-		catch(Error e) {
+		catch (Error e) {
 			vprint(e.message,1,stderr);
 		}
 
 		return -1;
 	}
 
-	public bool dir_create (string d) {
+	public bool dir_create(string d) {
 		vprint("dir_create("+d+")",3);
 		try {
 			var dir = File.parse_name(d);

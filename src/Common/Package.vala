@@ -1,7 +1,6 @@
 
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
-using TeeJee.Misc;
 using l.misc;
 
 public class Package : GLib.Object {

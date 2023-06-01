@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-01 02:19-0400\n"
+"POT-Creation-Date: 2023-06-01 03:06-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:517
+#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:503
 msgid "Running"
 msgstr "En ejecución"
 
@@ -218,7 +218,7 @@ msgstr ""
 msgid "Notifications are disabled"
 msgstr "Las notificaciones están deshabilitadas"
 
-#: src/Common/Package.vala:58
+#: src/Common/Package.vala:57
 #, c-format
 msgid "File not found: %s"
 msgstr "Archivo no encontrado: %s"
@@ -431,29 +431,29 @@ msgstr "Acerca de"
 msgid "Exit"
 msgstr "Salida"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:409
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:410
 msgid "Forked"
 msgstr "Bifurcada"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:410
 msgid "Original"
 msgstr "Original"
 
-#: src/Gtk/MainWindow.vala:453
+#: src/Gtk/MainWindow.vala:439
 msgid "Updating kernels"
 msgstr "Actualización de kernels"
 
-#: src/Gtk/MainWindow.vala:521
+#: src/Gtk/MainWindow.vala:507
 msgid "available"
 msgstr "disponibles"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:610
-#: src/Gtk/MainWindow.vala:644
+#: src/Gtk/MainWindow.vala:557 src/Gtk/MainWindow.vala:596
+#: src/Gtk/MainWindow.vala:630
 msgid "DONE"
 msgstr ""
 

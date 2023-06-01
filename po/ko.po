@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-01 02:19-0400\n"
+"POT-Creation-Date: 2023-06-01 03:06-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:517
+#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:503
 msgid "Running"
 msgstr "구동 중"
 
@@ -216,7 +216,7 @@ msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행�
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
-#: src/Common/Package.vala:58
+#: src/Common/Package.vala:57
 #, c-format
 msgid "File not found: %s"
 msgstr "파일을 찾을 수 없음: %s"
@@ -429,28 +429,28 @@ msgstr "정보"
 msgid "Exit"
 msgstr "출구"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:409
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:410
 msgid "Forked"
 msgstr "가랑이진"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:410
 msgid "Original"
 msgstr "원문 언어"
 
-#: src/Gtk/MainWindow.vala:453
+#: src/Gtk/MainWindow.vala:439
 msgid "Updating kernels"
 msgstr "커널 업데이트"
 
-#: src/Gtk/MainWindow.vala:521
+#: src/Gtk/MainWindow.vala:507
 msgid "available"
 msgstr "사용가능"
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:610
-#: src/Gtk/MainWindow.vala:644
+#: src/Gtk/MainWindow.vala:557 src/Gtk/MainWindow.vala:596
+#: src/Gtk/MainWindow.vala:630
 msgid "DONE"
 msgstr ""
 

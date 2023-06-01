@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-01 02:19-0400\n"
+"POT-Creation-Date: 2023-06-01 03:13-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgstr ""
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:517
+#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:503
 msgid "Running"
 msgstr ""
 
@@ -213,7 +213,7 @@ msgstr ""
 msgid "Notifications are disabled"
 msgstr ""
 
-#: src/Common/Package.vala:58
+#: src/Common/Package.vala:57
 #, c-format
 msgid "File not found: %s"
 msgstr ""
@@ -420,28 +420,28 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:409
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:410
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:410
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:453
+#: src/Gtk/MainWindow.vala:439
 msgid "Updating kernels"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:521
+#: src/Gtk/MainWindow.vala:507
 msgid "available"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:571 src/Gtk/MainWindow.vala:610
-#: src/Gtk/MainWindow.vala:644
+#: src/Gtk/MainWindow.vala:557 src/Gtk/MainWindow.vala:596
+#: src/Gtk/MainWindow.vala:630
 msgid "DONE"
 msgstr ""
 
