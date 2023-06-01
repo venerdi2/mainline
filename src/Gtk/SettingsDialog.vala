@@ -22,12 +22,9 @@
  */
 
 using Gtk;
-using Gee;
 
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.gtk;
-using TeeJee.Misc;
 using l.misc;
 
 public class SettingsDialog : Gtk.Dialog {
@@ -263,6 +260,13 @@ public class SettingsDialog : Gtk.Dialog {
 		button.clicked.connect(()=>{ this.close(); });
 		this.destroy.connect(btn_ok_click);
 		show_all();
+
+		// DEBUG rapid toggle stress test
+		//if (VERBOSE==999) {
+		//	App.hide_unstable = !App.hide_unstable;
+		//	this.close();
+		//}
+
 	}
 
 	private void btn_ok_click() {

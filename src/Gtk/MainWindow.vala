@@ -244,7 +244,7 @@ public class MainWindow : Window {
 			if (!k.is_installed) { // don't hide anything that's installed
 				if (k.is_invalid) continue; // hide invalid
 				if (k.version_rc>=0 && App.hide_unstable) continue; // hide unstable if settings say to
-				if (k.version_major < LinuxKernel.threshold_major) continue; // hide versions older than settings threshold
+				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide versions older than settings threshold
 			}
 
 			tm.append(out iter); // add row
@@ -349,17 +349,29 @@ public class MainWindow : Window {
 	}
 
 	private void do_settings () {
-			int _previous_majors = App.previous_majors;
-			bool _hide_unstable = App.hide_unstable;
+		int old_previous_majors = App.previous_majors;
+		bool old_hide_unstable = App.hide_unstable;
 
-			var dlg = new SettingsDialog.with_parent(this);
-			dlg.run();
-			dlg.destroy();
+		var dlg = new SettingsDialog.with_parent(this);
+		dlg.run();
+		dlg.destroy();
 
-			if (
-					(_previous_majors != App.previous_majors) ||
-					(_hide_unstable != App.hide_unstable)
-				) update_cache();
+		// allows leftover cache to stay, but faster for the user
+		if (App.previous_majors != old_previous_majors ||
+			App.hide_unstable != old_hide_unstable) update_cache();
+
+/*
+		// keeps the cache trimmed, but slow for the user
+		// instead, TODO: write a trim_cache() that can run during mk_kernel_list() or update_threshold_major()
+		// all that will do is scan the cache dirs and delete anything that isn't in the current kernel_list
+		int p = 0, r = 0;
+		if (App.previous_majors >= 0 && App.previous_majors < old_previous_majors) p--; // selection set shrank
+		if (App.previous_majors < 0 || App.previous_majors > old_previous_majors) p++; // selection set grew
+		if (App.hide_unstable==true && old_hide_unstable==false) r--; // selection set shrank
+		if (App.hide_unstable==false && old_hide_unstable==true) r++; // selection set grew
+		if (p<0 || r<0) reload_cache(); // if either one shrank, delete & reload
+		else if (p>0 || r>0) update_cache(); // if neither one shrank but either one grew, update but no need to delete
+*/
 	}
 
 	private void do_exit () {
@@ -438,8 +450,8 @@ public class MainWindow : Window {
 	// Update the cache as optimally as possible.
 	private void update_cache() {
 		vprint("update_cache()",2);
-		string message = _("Updating kernels");
-		vprint(message);
+		string msg = _("Updating kernels");
+		vprint(msg);
 
 		if (!try_ppa()) return;
 
@@ -448,32 +460,30 @@ public class MainWindow : Window {
 			return;
 		}
 
-		var progress_window = new ProgressWindow.with_parent(this, message, true);
+		var progress_window = new ProgressWindow.with_parent(this, msg);
 		progress_window.show_all();
 		LinuxKernel.mk_kernel_list(false, (timer, ref count, last) => {
-			update_progress_window(progress_window, message, timer, ref count, last);
+			update_progress_window(progress_window, msg, timer, ref count, last);
 		});
 	}
 
-	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref long count, bool last = false) {
+	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref int count, bool last = false) {
 		if (last) {
-			progress_window.destroy();
-			Gdk.threads_add_idle_full(0, () => {
+			Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
 				tv_refresh();
 				return false;
 			});
 			timer_elapsed(timer, true);
+			progress_window.destroy();
 		}
 
-		App.status_line = LinuxKernel.status_line;
-		App.progress_total = LinuxKernel.progress_total;
-		App.progress_count = LinuxKernel.progress_count;
+		//App.progress_total = LinuxKernel.progress_total;
+		//App.progress_count = LinuxKernel.progress_count;
 
 		Gdk.threads_add_idle_full(0, () => {
 			if (App.progress_total > 0)
+				//progress_window.update_message(App.status_line);
 				progress_window.update_message("%s %s/%s".printf(message, App.progress_count.to_string(), App.progress_total.to_string()));
-
-			progress_window.update_status_line(); 
 			return false;
 		});
 
@@ -503,23 +513,12 @@ public class MainWindow : Window {
 	}
 
 	private void set_infobar() {
-
-		if (LinuxKernel.kernel_active != null) {
-
-			lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
-
-			if (LinuxKernel.kernel_active.is_mainline) {
-				lbl_info.label += " (mainline)";
-			} else {
-				lbl_info.label += " (ubuntu)";
-			}
-
-			if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0) {
-				lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
-			}
-		}
-		else{
-			lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.RUNNING_KERNEL);
+		//vprint("set_infobar()",9);
+		lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
+		if (LinuxKernel.kernel_active.is_mainline) lbl_info.label += " (mainline)";
+		else lbl_info.label += " (ubuntu)";
+		if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0) {
+			lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
 		}
 	}
 
@@ -558,11 +557,11 @@ public class MainWindow : Window {
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
-			dir_delete(t_dir);
 		});
 
 		term.destroy.connect(()=>{
 			this.present();
+			dir_delete(t_dir);
 			update_cache();
 		});
 
@@ -586,28 +585,28 @@ public class MainWindow : Window {
 		term.configure_event.connect ((event) => {
 			App.term_width = event.width;
 			App.term_height = event.height;
+//			App.term_x = event.x;
+//			App.term_y = event.y;
 			return false;
 		});
 
-
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
-			dir_delete(t_dir);
 		});
 
 		term.destroy.connect(() => {
 			this.present();
+			dir_delete(t_dir);
 			update_cache();
 		});
 
-		string cmd_klist = "";
-		foreach(var k in klist) {
-			cmd_klist += k.version_main+" ";
-		}
+		string vlist = "";
+		foreach(var k in klist) vlist += " "+k.version_main;
+		vlist = vlist.strip();
 
 		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
 			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += " --uninstall \"" + cmd_klist + "\"\n"
+			sh += " --uninstall \""+vlist+"\"\n"
 			+ "echo '"+_("DONE")+"'\n"
 			;
 
@@ -623,17 +622,19 @@ public class MainWindow : Window {
 		term.configure_event.connect ((event) => {
 			App.term_width = event.width;
 			App.term_height = event.height;
+//			App.term_x = event.x;
+//			App.term_y = event.y;
 			return false;
 		});
 
 
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
-			dir_delete(t_dir);
 		});
 
 		term.destroy.connect(()=>{
 			this.present();
+			dir_delete(t_dir);
 			update_cache();
 		});
 

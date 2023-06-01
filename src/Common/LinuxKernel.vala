@@ -45,6 +45,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string CACHE_DIR;
 	public static string DATA_DIR;
 	public static string MAIN_INDEX_HTML;
+	public static int THRESHOLD_MAJOR = -1;
 
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
@@ -64,11 +65,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Regex rex_modules = null;
 
 	// global progress  ------------
-	public static string status_line = "";
-	public static int progress_total = 0;
-	public static int progress_count = 0;
-	public static bool cancelled = false;
-	public static int threshold_major = -1;
 
 	// class initialize
 	public static void initialize() {
@@ -76,9 +72,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		LINUX_DISTRO = check_distribution();
 		NATIVE_ARCH = check_package_architecture();
-		RUNNING_KERNEL = check_running_kernel(); //.replace("-generic","");
+		RUNNING_KERNEL = check_running_kernel();
 		MAIN_INDEX_HTML = CACHE_DIR+"/index.html";
 		initialize_regex();
+
+		kernel_active = new LinuxKernel(RUNNING_KERNEL);
+		kernel_latest_installed = kernel_active;
+		kernel_oldest_installed = kernel_active;
+		kernel_latest_available = kernel_active;
+		kernel_update_major = kernel_active;
+		kernel_update_minor = kernel_active;
 
 		// Special kernel versions where the mainline-ppa site changed their directory structure.
 		// affects:
@@ -88,9 +91,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_last_stable_old_ppa_dirs = new LinuxKernel("5.6.17");
 		kernel_last_unstable_old_ppa_dirs = new LinuxKernel("5.7-rc7");
 
-		kernel_latest_installed = new LinuxKernel(RUNNING_KERNEL);
-		kernel_oldest_installed = kernel_latest_installed;
-		kernel_latest_available = kernel_latest_installed;
 	}
 
 	// dep: lsb_release
@@ -184,16 +184,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// static
 
-	public delegate void Notifier(GLib.Timer timer, ref long count, bool last = false);
+	public delegate void Notifier(GLib.Timer timer, ref int count, bool last = false);
 
 	public static void mk_kernel_list(bool wait = true, owned Notifier? notifier = null) {
-		vprint("LinuxKernel.mk_kernel_list()",2);
+		vprint("mk_kernel_list()",2);
 		check_if_initialized();
 
 		kernel_list.clear();
 
 		try {
-			cancelled = false;
+			App.cancelled = false;
 			var worker = new Thread<bool>.try(null, () => query_thread((owned) notifier) );
 			if (wait) worker.join();
 		} catch (Error e) {
@@ -203,14 +203,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	private static bool query_thread(owned Notifier? notifier) {
 		vprint("query_thread()",2);
-		App.progress_total = 1;
+		App.progress_total = 0;
 		App.progress_count = 0;
 
 		var timer = timer_start();
-		long count = 0;
-		status_line = "";
-		progress_total = 0;
-		progress_count = 0;
+		int count = 0;
+		//status_line = "";
+		//progress_total = 0;
+		//progress_count = 0;
 
 		// find the oldest major version to include
 		update_threshold_major(true);
@@ -228,7 +228,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// add files to download list, and add kernels to kernel list
 		foreach (var k in kernel_list) {
-			if (cancelled) break;
+			if (App.cancelled) break;
 
 			// skip some kernels for various reasons
 
@@ -242,7 +242,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.is_invalid) continue;
 
 			if (!k.is_installed) {
-				if (k.version_major < threshold_major) continue;
+				if (k.version_major < THRESHOLD_MAJOR) continue;
 				if (App.hide_unstable && k.version_rc>=0) continue;
 			}
 
@@ -259,7 +259,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// process the download list
 		if (downloads.size>0 && App.ppa_up) {
-			progress_total = downloads.size;
+			App.progress_total = downloads.size;
 			var mgr = new DownloadTask();
 
 			// add download list to queue
@@ -272,14 +272,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// while downloading
 			while (mgr.is_running()) {
-				progress_count = mgr.prg_count; // also used by the progress window in MainWindow.vala
+				App.progress_count = mgr.prg_count; // also used by the progress window in MainWindow.vala
 				//pbar(mgr.prg_count,progress_total,"files");
-				pbar(progress_count,progress_total);
+				pbar(App.progress_count,App.progress_total);
 				sleep(250);
 				if (notifier != null) notifier(timer, ref count);
 			}
-
-			// done downloading
 			pbar(0,0);
 
 			// load the index.html files we just added to cache
@@ -338,8 +336,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// read the main index.html listing all kernels
 	private static void load_index() {
 		vprint("load_index()",2);
-		if (threshold_major<0) update_threshold_major(true);
-		if (threshold_major<0) { vprint("load_index(): threshold_major not initialized"); exit(1); }
+		if (THRESHOLD_MAJOR<0) update_threshold_major(true);
+		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
 
 		if (!file_exists(MAIN_INDEX_HTML)) return;
 		string txt = file_read(MAIN_INDEX_HTML);
@@ -357,7 +355,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (!rex.match(l, 0, out mi)) continue;
 				v = mi.fetch(1);
 				var k = new LinuxKernel(v);
-				if (k.version_major<threshold_major) continue;
+				if (k.version_major<THRESHOLD_MAJOR) continue;
 				k.page_uri = PPA_URI + v;
 				k.is_mainline = true;
 				k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
@@ -398,7 +396,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			bool found = false;
 			foreach (var k in kernel_list) {
 				if (k.is_invalid) continue;
-				if (k.version_major<threshold_major) continue;
+				if (k.version_major<THRESHOLD_MAJOR) continue;
 				if (k.kver == pk.kver) {
 					found = true;
 					k.pkg_list = pk.pkg_list;
@@ -418,8 +416,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				kernel_list.add(pk);
 			}
 		}
-
-		kernel_active = null;
 
 		// finding the running kernel reliably is hard, because uname
 		// output does not relaibly match any of the other available
@@ -476,7 +472,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.is_installed) continue;
 			if (k.is_locked) { vprint(k.version_main+" "+_("is locked."),2); continue; }
 			if (k.version_rc>=0 && App.hide_unstable) continue;
-			if (k.version_major < threshold_major) break;
+			if (k.version_major < THRESHOLD_MAJOR) break;
 			if (k.compare_to(kernel_latest_installed)<1) break;
 
 			// kernel_list is sorted so first match is highest match
@@ -507,35 +503,43 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	}
 
-	// helpers
-
-	// this is needed before mk_kernel_list, used within mk_kernel_list
-	// so we cannot consult kernel_list or run mk_kernel_list
+	// There is a circular dependency here.
+	// (1) Ideally we want to know THRESHOLD_MAJOR before running mk_kernel_list(),
+	//     so mk_kernel_list() can use it to set bounds on the size of it's job,
+	//     instead of processing all kernels since the beginning of time, every time.
+	// (2) Ideally we want is_mainline while finding THRESHOLD_MAJOR, to ignore non-mainline kernels
+	//     so that an installed distro kernel doesn't pull THRESHOLD_MAJOR down a whole generation.
+	// (3) The only way to find out is_mainline for real is to scan kernel_list[],
+	//     and see if a given installed package matches one of those.
+	// (4) But we don't have kernel_list[] yet, and we can't get it yet, because GOTO (1)
+	// 
+	// So for this early task, we rely on a weak is_mainline that was made
+	// from an unsafe assumption in split_version_string(), when mk_dpkg_list()
+	// generates some kernel objects from the installed package info from dpkg.
+	//
+	// TODO maybe... get a full kernel_list from a preliminary pass with load_index()
+	// before runing mk_dpkg_list(). have mk_dpkg_list() use that
+	// to fill in a real actual is_mainline for each item in dpkg_list[]
+	// use that here and along the way delete the unwanted items from kernel_list[]
+	// then mk_kernel_list() can just process that kernel_list[]
+	// 
 	public static void update_threshold_major(bool up=false) {
 		vprint("update_threshold_major()",2);
 
 		if (up || Package.dpkg_list.size<1) Package.mk_dpkg_list();
 
-		if (App.previous_majors<0 || App.previous_majors>=kernel_latest_available.version_major) { threshold_major=0; return; }
+		if (App.previous_majors<0 || App.previous_majors>=kernel_latest_available.version_major) { THRESHOLD_MAJOR = 0; return; }
 
 		// start from the latest available and work down, ignore distro kernels
 		kernel_oldest_installed = kernel_latest_installed;
 		foreach (var p in Package.dpkg_list) {
 			if (!p.pname.has_prefix("linux-image-")) continue;
 			var k = new LinuxKernel(p.version);
-			// This k.is_mainline test is only based on an unreliable semantic used in split_version_string().
-			// A real test would be to scan kernel_list for matching k.kver or k.name,
-			// but we don't have kernel_list yet and we can't run mk_kernel_list to generate it,
-			// because we are run from within mk_kernel_list itself to set bounds on kernel_list.
-			// It's not critical. All this does is try to avoid having an installed distro kernel
-			// cause kernel_list to include a whole previous generation.
-			// If the assumption in split_version_string() is ever wrong,
-			// all it means is threshold_major would not ignore non-mainline kernels.
 			if (k.version_major < kernel_oldest_installed.version_major && k.is_mainline) kernel_oldest_installed = k;
 		}
 
-		threshold_major = kernel_latest_available.version_major - App.previous_majors;
-		if (kernel_oldest_installed.is_mainline && kernel_oldest_installed.version_major < threshold_major) threshold_major = kernel_oldest_installed.version_major;
+		THRESHOLD_MAJOR = kernel_latest_available.version_major - App.previous_majors;
+		if (kernel_oldest_installed.is_mainline && kernel_oldest_installed.version_major < THRESHOLD_MAJOR) THRESHOLD_MAJOR = kernel_oldest_installed.version_major;
 	}
 
 	public void split_version_string(string s="") {
@@ -546,29 +550,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		version_rc = -1;
 		version_extra = "";
 		is_mainline = true; // FIXME bad assumption
-
-		/*
-		 * The is_mainline test below is an unsafe assumption.
-		 * But we need *something*, and it is working for now.
-		 * 
-		 * The definitive way to determine is_mainline, is to scan the main
-		 * index.html and see if the current kernel is in there.
-		 * 
-		 * But mk_kernel_list() uses is_mainline itself as part of
-		 * determining threshold_major.
-		 * 
-		 * Possible fix, go back to letting mk_kernel_list() build
-		 * a full list including everything in the main index.html,
-		 * tag those all as mainline, make sure kernel_list
-		 * has a unique id index that can be used to find a record without
-		 * walking the entire list with a foreach loop.
-		 * 
-		 * Then when getting a new unknown kernel from a version number
-		 * or from dpkg, we can answer if it's mainline by looking if
-		 * the same id exists in the list.
-		 * 
-		 * Actually this whole version string parser is pretty hokey.
-		*/
 
 		string t = s.strip();
 		if (t.has_prefix("v")) t = t[1: t.length - 1];
@@ -627,7 +608,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 //  l==r return 0
 //  l>r  return 1
 	public int compare_to(LinuxKernel t) {
-		vprint("version_main compare_to("+t.version_main+")",4);
+		vprint(version_main+" compare_to() "+t.version_main,4);
+		// TODO version_sort is a transitional hack to keep doing the old way of parsing version_main
+		// since version_main has a different format now.
+		// The better way will be to just examine the individual variables we already have for free,
+		// version_major, version_minor, etc...
 		var a = version_sort.split_set(".-_");
 		var b = t.version_sort.split_set(".-_");
 		int x, y, i = -1;
@@ -900,7 +885,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
 				if (App.hide_unstable && k.version_rc>=0) continue;
-				if (k.version_major < threshold_major) continue;
+				if (k.version_major < THRESHOLD_MAJOR) continue;
 			}
 
 			string lck = "  ";
@@ -930,11 +915,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return klist;
 	}
 
-	public static bool download_klist(Gee.ArrayList<LinuxKernel> klist) {
+	public static int download_klist(Gee.ArrayList<LinuxKernel> klist) {
 		vprint("download_klist()",2);
 		if (klist.size<1) vprint(_("Download: no downloadable kernels specified")); 
-		bool r = true;
-		foreach (var k in klist) if (!k.download_packages()) r = false;
+		int r = 0;
+		foreach (var k in klist) if (!k.download_packages()) r++;
 		return r;
 	}
 
@@ -993,9 +978,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
-	public static bool install_klist(Gee.ArrayList<LinuxKernel> klist) {
+	public static int install_klist(Gee.ArrayList<LinuxKernel> klist) {
 
-		if (!try_ppa()) return false;
+		if (!try_ppa()) return 1;
 
 		string flist = "";
 		foreach (var k in klist) {
@@ -1019,18 +1004,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		flist = flist.strip();
-		if (flist=="") { vprint(_("Install: no installable kernels secified")); return false; }
+		if (flist=="") { vprint(_("Install: no installable kernels secified")); return 1; }
 
 		// full paths instead of env -C
 		// https://github.com/bkw777/mainline/issues/128
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install " + flist;
-		bool r = (Posix.system(cmd)==0);
+		int r = Posix.system(cmd);
 		foreach (var f in flist.split(" ")) file_delete(f);
 		return r;
 	}
 
 	// dep: dpkg
-	public static bool uninstall_klist(Gee.ArrayList<LinuxKernel> klist) {
+	public static int uninstall_klist(Gee.ArrayList<LinuxKernel> klist) {
 		vprint(_("Uninstalling selected kernels")+":");
 
 		string pnames = "";
@@ -1055,11 +1040,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 		pnames = pnames.strip();
-		if (pnames=="") { vprint(_("Uninstall: no uninstallable packages found"),1,stderr); return false; }
+		if (pnames=="") { vprint(_("Uninstall: no uninstallable packages found"),1,stderr); return 1; }
 
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --purge " + pnames;
 		vprint(cmd,2);
-		return (Posix.system(cmd)==0);
+		return Posix.system(cmd);
 	}
 
 	public static void kunin_old(bool confirm) {

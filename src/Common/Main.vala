@@ -22,7 +22,6 @@
  */
 
 using GLib;
-using Gee;
 using Json;
 
 using TeeJee.FileSystem;
@@ -167,6 +166,19 @@ public class Main : GLib.Object {
 		}
 	}
 
+	public bool set_verbose(string? s) {
+		vprint(s.to_string());
+		string a = (s==null) ? "" : s.strip();
+		int v = VERBOSE;
+		bool r=true;
+		if (a=="" || a.has_prefix("-")) { r=false; v++; }
+		else v = int.parse(a);
+		VERBOSE = v;
+		l.misc.VERBOSE = v;
+		Environment.set_variable("VERBOSE",v.to_string(),true);
+		return r;
+	}
+
 	public void init_paths() {
 
 		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
@@ -307,22 +319,22 @@ public class Main : GLib.Object {
 		vprint("update_startup_script()",2);
 
 		// construct the commandline argument for "sleep"
-		int count = notify_interval_value;
-		string suffix = "h";
+		int n = notify_interval_value;
+		string u = "h";
 		switch (notify_interval_unit) {
 		case 0: // hour
-			suffix = "h";
+			u = "h";
 			break;
 		case 1: // day
-			suffix = "d";
+			u = "d";
 			break;
 		case 2: // week
-			suffix = "d";
-			count = notify_interval_value * 7;
+			u = "d";
+			n = notify_interval_value * 7;
 			break;
 		case 3: // second
-			suffix = "";
-			count = notify_interval_value;
+			u = "";
+			n = notify_interval_value;
 			break;
 		}
 
@@ -358,7 +370,7 @@ public class Main : GLib.Object {
 		if (notify_minor || notify_major) {
 			s += "while [[ -f $F ]] ;do\n"
 			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&-\n"
-			+ "\tsleep %d%s &\n".printf(count,suffix)
+			+ "\tsleep %d%s &\n".printf(n,u)
 			+ "\tc=$!\n"
 			+ "\techo $c >>${F}_\n"
 			+ "\twait $c\n"	// respond to signals during sleep

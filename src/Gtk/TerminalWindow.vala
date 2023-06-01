@@ -227,8 +227,10 @@ public class TerminalWindow : Gtk.Window {
 	public void allow_cancel(bool allow = true) {
 		if (allow) {
 			btn_cancel.visible = true;
+			btn_cancel.sensitive = true;
 			vbox_main.margin = 3;
 		} else {
+			btn_cancel.visible = false;
 			btn_cancel.sensitive = false;
 			vbox_main.margin = 3;
 		}

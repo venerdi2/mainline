@@ -20,8 +20,6 @@
  */
 
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
-using TeeJee.Misc;
 using l.misc;
 
 public Main App;
@@ -32,13 +30,12 @@ public class AppConsole : GLib.Object {
 		set_locale();
 		App = new Main(args, false);
 		var console = new AppConsole();
-		bool is_success = console.parse_arguments(args);
-		return (is_success) ? 0 : 1;
+		return console.parse_arguments(args);
 	}
 
-	private static string help_message() {
+	public int parse_arguments(string[] args) {
 
-		string msg = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
+		string help = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
 		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
 		+ "\n"
@@ -68,10 +65,6 @@ public class AppConsole : GLib.Object {
 		+ "    " +_("comma, pipe, or colon-seperated, or quoted space seperated") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
-		return msg;
-	}
-
-	public bool parse_arguments(string[] args) {
 
 		string txt = BRANDING_SHORTNAME + " ";
 		for (int i = 1; i < args.length; i++) txt += "'%s' ".printf(args[i]);
@@ -79,8 +72,8 @@ public class AppConsole : GLib.Object {
 		// check argument count -----------------
 
 		if (args.length == 1) {
-			vprint(help_message(),0);
-			return false;
+			vprint(help,0);
+			return 1;
 		}
 
 		string cmd = "";
@@ -89,139 +82,127 @@ public class AppConsole : GLib.Object {
 
 		// parse options first --------------
 
-		for (int i = 1; i < args.length; i++)
-		{
+		for (int i = 1; i < args.length; i++) {
 			a = args[i].down();
 			switch (a) {
 
-			case "-v":
-			case "--debug":
-			case "--verbose":
-				int v = App.VERBOSE;
-				a = args[i+1];
-				if (a==null || a.has_prefix("-")) v++;
-				else if (++i < args.length) v = int.parse(args[i]);
-				App.VERBOSE = v;
-				l.misc.VERBOSE = v;
-				Environment.set_variable("VERBOSE",v.to_string(),true);
-				//vprint("verbose="+App.VERBOSE.to_string());
-				break;
+				case "-v":
+				case "--debug":
+				case "--verbose":
+					if (App.set_verbose(args[i+1])) i++;
+					break;
 
-			case "-y":
-			case "--yes":
-				App.confirm = false;
-				break;
+				case "-y":
+				case "--yes":
+					App.confirm = false;
+					break;
 
-			// used by gui front-end
-			case "--index-is-fresh":
-				App.index_is_fresh = true;
-				break;
+				// used by gui front-end
+				case "--index-is-fresh":
+					App.index_is_fresh = true;
+					break;
 
-			case "--show-unstable":		// back compat
-			case "--include-unstable":
-				App.hide_unstable = false;
-				break;
-			case "--hide-unstable":		// back compat
-			case "--exclude-unstable":
-				App.hide_unstable = true;
-				break;
+				case "--show-unstable":		// back compat
+				case "--include-unstable":
+					App.hide_unstable = false;
+					break;
+				case "--hide-unstable":		// back compat
+				case "--exclude-unstable":
+					App.hide_unstable = true;
+					break;
 
-			case "--list":
-			case "--list-installed":
-			case "--check":
-			case "--notify":
-			case "--install-latest":
-			case "--install-point":
-			case "--purge-old-kernels":	// back compat
-			case "--uninstall-old":
-			case "--clean-cache":	// back compat
-			case "--delete-cache":
-				cmd = a;
-				break;
+				case "--list":
+				case "--list-installed":
+				case "--check":
+				case "--notify":
+				case "--install-latest":
+				case "--install-point":
+				case "--purge-old-kernels":	// back compat
+				case "--uninstall-old":
+				case "--clean-cache":	// back compat
+				case "--delete-cache":
+					cmd = a;
+					break;
 
-			case "--download":
-			case "--remove":
-			case "--uninstall":
-			case "--install":
-				if (a=="--remove") a = "--uninstall";
-				cmd = a;
-				if (++i < args.length) vlist = args[i];
-				break;
+				case "--download":
+				case "--remove":
+				case "--uninstall":
+				case "--install":
+					cmd = (a=="--remove") ? "--uninstall" : a ;
+					if (++i < args.length) vlist = args[i];
+					break;
 
-			case "":
-			case "--help":
-			case "-h":
-			case "-?":
-				vprint(help_message(),0);
-				return true;
+				case "":
+				case "-?":
+				case "-h":
+				case "--help":
+					vprint(help,0);
+					return 0;
 
-			default:
-				// unknown option
-				vprint(_("Unknown option") + ": %s".printf(args[i]),1,stderr);
-				vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all options"),1,stderr);
-				return false;
+				default:
+					vprint(_("Unknown option") + ": \"%s\"".printf(args[i]),1,stderr);
+					vprint(help,0);
+					return 1;
 			}
 		}
 
 		// run command --------------------------------------
 
 		switch (cmd) {
-		case "--list":
-			LinuxKernel.mk_kernel_list(true);
-			LinuxKernel.print_list();
-			break;
+			case "--list":
+				LinuxKernel.mk_kernel_list(true);
+				LinuxKernel.print_list();
+				break;
 
-		case "--list-installed":
-			Package.mk_dpkg_list();
-			LinuxKernel.check_installed();
-			break;
+			case "--list-installed":
+				Package.mk_dpkg_list();
+				LinuxKernel.check_installed();
+				break;
 
-		case "--check":
-			print_updates();
-			break;
+			case "--check":
+				print_updates();
+				break;
 
-		case "--notify":
-			// silence VERBOSE only if it's exactly 1
-			if (App.VERBOSE==1) App.VERBOSE=0;
-			l.misc.VERBOSE = App.VERBOSE;
-			notify_user();
-			break;
+			case "--notify":
+				// silence VERBOSE only if it's exactly 1
+				if (App.VERBOSE==1) App.set_verbose("0");
+				notify_user();
+				break;
 
-		case "--install-latest":
-			LinuxKernel.kinst_latest(false, App.confirm);
-			break;
+			case "--install-latest":
+				LinuxKernel.kinst_latest(false, App.confirm);
+				break;
 
-		case "--install-point":
-			LinuxKernel.kinst_latest(true, App.confirm);
-			break;
+			case "--install-point":
+				LinuxKernel.kinst_latest(true, App.confirm);
+				break;
 
-		case "--purge-old-kernels":	// back compat
-		case "--uninstall-old":
-			LinuxKernel.kunin_old(App.confirm);
-			break;
+			case "--purge-old-kernels":	// back compat
+			case "--uninstall-old":
+				LinuxKernel.kunin_old(App.confirm);
+				break;
 
-		case "--clean-cache": // back compat
-		case "--delete-cache":
-			LinuxKernel.delete_cache();
-			break;
+			case "--clean-cache": // back compat
+			case "--delete-cache":
+				LinuxKernel.delete_cache();
+				break;
 
-		case "--download":
-			return LinuxKernel.download_klist(LinuxKernel.vlist_to_klist(vlist,true));
+			case "--download":
+				return LinuxKernel.download_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-		case "--uninstall":
-			return LinuxKernel.uninstall_klist(LinuxKernel.vlist_to_klist(vlist,true));
+			case "--uninstall":
+				return LinuxKernel.uninstall_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-		case "--install":
-			return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
+			case "--install":
+				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-		default:
-			// unknown command
-			vprint(_("Command not specified"),1,stderr);
-			vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all commands"),1,stderr);
-			break;
+			default:
+				vprint(_("Unknown option") + ": \""+cmd+"\"",1,stderr);
+				vprint(help,0);
+				return 1;
 		}
 
-		return true;
+		return 0;
 	}
 
 	private void print_updates() {
