@@ -979,24 +979,26 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: dpkg
 	public static int install_klist(Gee.ArrayList<LinuxKernel> klist) {
+		vprint(_("Installing selected kernels")+":");
 
 		if (!try_ppa()) return 1;
 
 		string flist = "";
 		foreach (var k in klist) {
+			vprint(_("Requested")+" "+k.version_main);
 
 			if (k.is_installed) {
-				vprint(k.version_main+" "+_("is already installed."),1,stderr);
+				vprint(k.version_main+"! "+_("is already installed."),1,stderr);
 				continue;
 			}
 
 			if (k.is_locked) {
-				vprint(k.version_main+" "+_("is locked."),1,stderr);
+				vprint(k.version_main+"! "+_("is locked."),1,stderr);
 				continue;
 			}
 
 			if (!k.download_packages()) {
-				vprint(k.version_main+" "+_("download failed."),1,stderr);
+				vprint(k.version_main+"! "+_("download failed."),1,stderr);
 				continue;
 			}
 
@@ -1009,6 +1011,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// full paths instead of env -C
 		// https://github.com/bkw777/mainline/issues/128
 		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install " + flist;
+		vprint(cmd,2);
 		int r = Posix.system(cmd);
 		foreach (var f in flist.split(" ")) file_delete(f);
 		return r;

@@ -89,6 +89,7 @@ namespace l.misc {
 
 	// execute command synchronously
 	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
+		vprint("exec_sync("+cmd+")",2);
 		try {
 			int status;
 			Process.spawn_command_line_sync(cmd, out std_out, out std_err, out status);
@@ -101,6 +102,7 @@ namespace l.misc {
 
 	// 20200510 bkw - execute command without waiting
 	public void exec_async(string cmd) {
+		vprint("exec_async("+cmd+")",2);
 		try { Process.spawn_command_line_async (cmd); }
 		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}
