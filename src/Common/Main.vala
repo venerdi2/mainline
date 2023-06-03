@@ -69,8 +69,8 @@ const int		DEFAULT_WINDOW_X				= -1		;
 const int		DEFAULT_WINDOW_Y				= -1		;
 const int		DEFAULT_TERM_WIDTH				= 1100		;
 const int		DEFAULT_TERM_HEIGHT				= 600		;
-//const int		DEFAULT_TERM_X					= -1		;
-//const int		DEFAULT_TERM_Y					= -1		;
+const int		DEFAULT_TERM_X					= -1		;
+const int		DEFAULT_TERM_Y					= -1		;
 
 extern void exit(int exit_code);
 
@@ -98,14 +98,14 @@ public class Main : GLib.Object {
 	public bool cancelled = false;
 
 	// state flags ----------
-
-	public int VERBOSE = 1;
+	public static int VERBOSE = 1;
 	public bool GUI_MODE = false;
 	public string command = "list";
 	public string requested_versions = "";
 	public bool ppa_tried = false;
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;
+	public bool RUN_NOTIFY_SCRIPT = false;
 
 	public string ppa_uri = DEFAULT_PPA_URI;
 	public string all_proxy = DEFAULT_ALL_PROXY;
@@ -119,6 +119,7 @@ public class Main : GLib.Object {
 	public int notify_interval_value = DEFAULT_NOTIFY_INTERVAL_VALUE;
 	public bool verify_checksums = DEFAULT_VERIFY_CHECKSUMS;
 
+	// save & restore window size & position
 	public int window_width = DEFAULT_WINDOW_WIDTH;
 	public int window_height = DEFAULT_WINDOW_HEIGHT;
 	public int _window_width = DEFAULT_WINDOW_WIDTH;
@@ -127,18 +128,14 @@ public class Main : GLib.Object {
 	public int window_y = DEFAULT_WINDOW_Y;
 	public int _window_x = DEFAULT_WINDOW_X;
 	public int _window_y = DEFAULT_WINDOW_Y;
-
-	// *sizing* the terminal window is working
 	public int term_width = DEFAULT_TERM_WIDTH;
 	public int term_height = DEFAULT_TERM_HEIGHT;
 	public int _term_width = DEFAULT_TERM_WIDTH;
 	public int _term_height = DEFAULT_TERM_HEIGHT;
-/* // *positioning* the terminal window is not working
 	public int term_x = DEFAULT_TERM_X;
 	public int term_y = DEFAULT_TERM_Y;
 	public int _term_x = DEFAULT_TERM_X;
 	public int _term_y = DEFAULT_TERM_Y;
-*/
 
 	public bool confirm = true;
 
@@ -147,6 +144,7 @@ public class Main : GLib.Object {
 	public Main(string[] arg0, bool _gui_mode) {
 		GUI_MODE = _gui_mode;
 		get_env();
+		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 		init_paths();
 		load_app_config();
@@ -157,44 +155,42 @@ public class Main : GLib.Object {
 	// helpers ------------
 
 	public void get_env() {
-		if (Environment.get_variable("VERBOSE")!=null) {
-			string s = Environment.get_variable("VERBOSE").down();
-			if (s=="false") s = "0";
-			if (s=="true") s = "1";
-			VERBOSE = int.parse(s);
-			l.misc.VERBOSE = VERBOSE;
-		}
+		var s = Environment.get_variable("VERBOSE");
+		if (s != null) set_verbose(s.down().strip()); // don't do VERBOSE++
 	}
 
 	public bool set_verbose(string? s) {
 		string a = (s==null) ? "" : s.strip();
+		switch (a) {
+			case "n":
+			case "no":
+			case "off":
+			case "false": a = "0"; break;
+			case "y":
+			case "yes":
+			case "on":
+			case "true": a = "1"; break;
+		}
 		int v = VERBOSE;
-		bool r=true;
-		if (a=="" || a.has_prefix("-")) { r=false; v++; }
+		bool r = true;
+		if (a=="" || a.has_prefix("-")) { r = false; v++; }
 		else v = int.parse(a);
 		VERBOSE = v;
-		l.misc.VERBOSE = v;
 		Environment.set_variable("VERBOSE",v.to_string(),true);
 		return r;
 	}
 
 	public void init_paths() {
-
 		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
 		DATA_DIR = Environment.get_user_data_dir() + "/" + BRANDING_SHORTNAME;
 		CACHE_DIR = Environment.get_user_cache_dir() + "/" + BRANDING_SHORTNAME;
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
-
 		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
 		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
 		STARTUP_DESKTOP_FILE = CONFIG_DIR + "/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
 		NOTIFICATION_ID_FILE = CONFIG_DIR + "/notification_id";
 		MAJOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.major";
 		MINOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.minor";
-
-		LinuxKernel.CACHE_DIR = CACHE_DIR;
-		LinuxKernel.DATA_DIR = DATA_DIR;
-
 	}
 
 	public void save_app_config() {
@@ -218,8 +214,8 @@ public class Main : GLib.Object {
 		config.set_int_member(		"window_y",					window_y				);
 		config.set_int_member(		"term_width",				term_width				);
 		config.set_int_member(		"term_height",				term_height				);
-//		config.set_int_member(		"term_x",					term_x					);
-//		config.set_int_member(		"term_y",					term_y					);
+		config.set_int_member(		"term_x",					term_x					);
+		config.set_int_member(		"term_y",					term_y					);
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -279,8 +275,8 @@ public class Main : GLib.Object {
 				window_y				=	(int)config.get_int_member_with_default(	"window_y",					DEFAULT_WINDOW_Y				);
 				term_width				=	(int)config.get_int_member_with_default(	"term_width",				DEFAULT_TERM_WIDTH				);
 				term_height				=	(int)config.get_int_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				);
-				//term_x				=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
-				//term_y				=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
+				term_x					=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
+				term_y					=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
 #else
 				vprint("glib-json < 1.6",3);
 				ppa_uri					=	json_get_string(	config,	"ppa_uri",					DEFAULT_PPA_URI					);
@@ -300,13 +296,14 @@ public class Main : GLib.Object {
 				window_y				=	json_get_int(		config,	"window_y",					DEFAULT_WINDOW_Y				);
 				term_width				=	json_get_int(		config,	"term_width",				DEFAULT_TERM_WIDTH				);
 				term_height				=	json_get_int(		config,	"term_height",				DEFAULT_TERM_HEIGHT				);
+				term_x					=	json_get_int(		config,	"term_x",					DEFAULT_TERM_X					);
+				term_y					=	json_get_int(		config,	"term_y",					DEFAULT_TERM_Y					);
 #endif
 
 		// fixups
 		bool resave = false;
 		if (ppa_uri.length==0) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
 		if (!ppa_uri.has_suffix("/")) { ppa_uri += "/"; resave = true; }
-		LinuxKernel.PPA_URI = ppa_uri;
 		if (connect_timeout_seconds>600) connect_timeout_seconds = 600; // aria2c max allowed
 		if (resave) save_app_config();
 
@@ -337,8 +334,6 @@ public class Main : GLib.Object {
 			break;
 		}
 
-		delete_r(STARTUP_SCRIPT_FILE);
-
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
 		string s = "#!/bin/bash\n"
@@ -368,7 +363,7 @@ public class Main : GLib.Object {
 			+ "# run whatever the new state should be\n";
 		if (notify_minor || notify_major) {
 			s += "while [[ -f $F ]] ;do\n"
-			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&-\n"
+			+ "\tVERBOSE=0 "+BRANDING_SHORTNAME+" --notify 2>&- >&- || exit\n"
 			+ "\tsleep %d%s &\n".printf(n,u)
 			+ "\tc=$!\n"
 			+ "\techo $c >>${F}_\n"
@@ -379,23 +374,8 @@ public class Main : GLib.Object {
 			+ "exit 0\n";
 		}
 
-		if (GUI_MODE) {
-			// save_app_config() gets run right at app startup if the config file
-			// doesn't exist yet, so sometimes update_startup_script() might run
-			// early in app start-up when we haven't done the cache update yet.
-			// If we blindly launch the background notification process immediately
-			// any time settings are updated, the --notify process and ourselves
-			// will both try to update the same cache files at the same time and
-			// step all over each other.
-			// This is not really a fully correct answer, but mostly good enough:
-			// * If all notifications are now OFF, then run the new startup script
-			//   immediately so that it clears out the existing notification loop
-			//   that might be running.
-			// * Otherwise don't do anything right now, and run the new startup
-			//   script at app exit instead.
-			file_write(STARTUP_SCRIPT_FILE,s);
-			if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
-		}
+		file_write(STARTUP_SCRIPT_FILE,s);
+		RUN_NOTIFY_SCRIPT = true;
 	}
 
 	private void update_startup_desktop_file() {
@@ -409,6 +389,12 @@ public class Main : GLib.Object {
 		} else {
 			delete_r(STARTUP_DESKTOP_FILE);
 		}
+	}
+
+	public void run_notify_script() {
+		if (!RUN_NOTIFY_SCRIPT) return;
+		RUN_NOTIFY_SCRIPT = false;
+		exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
 	}
 
 }

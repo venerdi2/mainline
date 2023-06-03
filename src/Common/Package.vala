@@ -11,11 +11,12 @@ public class Package : GLib.Object {
 	public static Gee.ArrayList<Package> dpkg_list = new Gee.ArrayList<Package>();
 
 	public static void initialize() {
-		new Package("");
+		new Package();
 	}
 
-	public Package(string _name) {
-		pname = _name;
+	public Package(string s="") {
+		vprint("Package("+s+")",4);
+		pname = s;
 	}
 
 	public static void mk_dpkg_list() {

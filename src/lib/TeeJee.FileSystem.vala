@@ -60,21 +60,17 @@ namespace TeeJee.FileSystem {
 		vprint("file_write("+f+")",3);
 
 		try {
-
-			string d = file_parent(f);
-			dir_create(d);
-
+			dir_create(file_parent(f));
 			var file = File.new_for_path(f);
-			if (file.query_exists()) file.delete ();
-
-			var file_stream = file.create(FileCreateFlags.REPLACE_DESTINATION);
+			//delete_r(f);
+			//var file_stream = file.create();
+			var file_stream = file.replace(null, false, FileCreateFlags.REPLACE_DESTINATION);
+			//var file_stream = file.replace(null, false, FileCreateFlags.NONE);
 			var data_stream = new DataOutputStream(file_stream);
 			data_stream.put_string(contents);
 			data_stream.close();
-
 			return true;
-		}
-		catch (Error e) {
+		} catch (Error e) {
 			vprint(e.message,1,stderr);
 			return false;
 		}

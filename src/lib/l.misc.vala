@@ -1,6 +1,6 @@
 namespace l.misc {
 
-	public int VERBOSE = 1;
+	//public int VERBOSE = 1;
 
 	private static void set_locale() {
 		Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
@@ -10,9 +10,9 @@ namespace l.misc {
 	}
 
 	public void vprint(string s,int v=1,FileStream f=stdout,bool n=true) {
-		if (v>VERBOSE) return;
+		if (v>Main.VERBOSE) return;
 		string o = s;
-		if (VERBOSE>3) o = "%d: ".printf(Posix.getpid()) + o;
+		if (Main.VERBOSE>3) o = "%d: ".printf(Posix.getpid()) + o;
 		if (n) o += "\n";
 		f.printf(o);
 		f.flush();
@@ -24,7 +24,7 @@ namespace l.misc {
 	}
 
 	private static void pbar(int64 part=0,int64 whole=100,string units="") {
-		if (VERBOSE<1) return;
+		if (Main.VERBOSE<1) return;
 		int l = 79; // bar length
 		if (whole<1) { vprint("\r%*.s\r".printf(l,""),1,stdout,false); return; }
 		int64 c = 0, plen = 0, wlen = 40;

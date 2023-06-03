@@ -41,10 +41,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string NATIVE_ARCH;
 	public static string LINUX_DISTRO;
 	public static string RUNNING_KERNEL;
-	public static string PPA_URI;
-	public static string CACHE_DIR;
-	public static string DATA_DIR;
-	public static string MAIN_INDEX_HTML;
 	public static int THRESHOLD_MAJOR = -1;
 
 	public static LinuxKernel kernel_active;
@@ -73,7 +69,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		LINUX_DISTRO = check_distribution();
 		NATIVE_ARCH = check_package_architecture();
 		RUNNING_KERNEL = check_running_kernel();
-		MAIN_INDEX_HTML = CACHE_DIR+"/index.html";
 		initialize_regex();
 
 		kernel_active = new LinuxKernel(RUNNING_KERNEL);
@@ -173,7 +168,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void delete_cache() {
 		vprint("delete_cache()",2);
 		kernel_list.clear();
-		delete_r(CACHE_DIR);
+		delete_r(App.CACHE_DIR);
 	}
 
 	// constructor
@@ -208,9 +203,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		var timer = timer_start();
 		int count = 0;
-		//status_line = "";
-		//progress_total = 0;
-		//progress_count = 0;
 
 		// find the oldest major version to include
 		find_thresholds(true);
@@ -272,9 +264,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// while downloading
 			while (mgr.is_running()) {
-				App.progress_count = mgr.prg_count; // also used by the progress window in MainWindow.vala
-				//pbar(mgr.prg_count,progress_total,"files");
-				pbar(App.progress_count,App.progress_total);
+				App.progress_count = mgr.prg_count; // also used by the progress indicator in MainWindow.vala
+				pbar(App.progress_count,App.progress_total,"(files)");
+				//pbar(App.progress_count,App.progress_total);
 				sleep(250);
 				if (notifier != null) notifier(timer, ref count);
 			}
@@ -292,6 +284,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_installed();
 		check_updates();
 
+		// This is here because it had to be delayed from whenever settings
+		// changed until now, so that the notify script instance of ourself
+		// doesn't do mk_kernel_list() at the same time while we still are.
+		App.run_notify_script();
+
 		timer_elapsed(timer, true);
 		if (notifier != null) notifier(timer, ref count, true);
 
@@ -303,27 +300,28 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint("download_index()",2);
 		check_if_initialized();
 
-		if (!file_exists(MAIN_INDEX_HTML)) App.index_is_fresh=false;
+		string cif = main_index_file();
+		if (!file_exists(cif)) App.index_is_fresh=false;
 		if (App.index_is_fresh) return true;
 		if (!try_ppa()) return false;
 
-		dir_create(CACHE_DIR);
+		dir_create(App.CACHE_DIR);
 
 		// preserve the old index in case the dl fails
 		string tbn = random_string();
-		string tfn = CACHE_DIR+"/"+tbn;
-		vprint("+ DownloadItem("+PPA_URI+","+CACHE_DIR+","+tbn+")",4);
-		var item = new DownloadItem(PPA_URI, CACHE_DIR, tbn);
+		string tfn = App.CACHE_DIR+"/"+tbn;
+		vprint("+ DownloadItem("+App.ppa_uri+","+App.CACHE_DIR+","+tbn+")",4);
+		var item = new DownloadItem(App.ppa_uri, App.CACHE_DIR, tbn);
 		var mgr = new DownloadTask();
 		mgr.add_to_queue(item);
 
-		vprint(_("Updating from")+": '"+PPA_URI+"'");
+		vprint(_("Updating from")+": '"+App.ppa_uri+"'");
 		mgr.execute();
 
 		while (mgr.is_running()) sleep(500);
 
 		if (file_exists(tfn)) {
-			file_move(tfn,MAIN_INDEX_HTML);
+			file_move(tfn,cif);
 			App.index_is_fresh=true;
 			vprint(_("OK"));
 			return true;
@@ -339,8 +337,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (THRESHOLD_MAJOR<0) find_thresholds(true);
 		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
 
-		if (!file_exists(MAIN_INDEX_HTML)) return;
-		string txt = file_read(MAIN_INDEX_HTML);
+		string cif = main_index_file();
+		if (!file_exists(cif)) return;
+		string txt = file_read(cif);
 		kernel_list.clear();
 
 		try {
@@ -359,7 +358,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.version_major<THRESHOLD_MAJOR ||
 					(k.version_rc>=0 && App.hide_unstable)) { delete_r(k.cache_subdir); continue; }
 
-				k.page_uri = PPA_URI + v;
+				k.page_uri = App.ppa_uri + v;
 				k.is_mainline = true;
 				k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
 				vprint("kernel_list.add("+k.version_main+") "+k.ppa_datetime.to_string(),2);
@@ -686,15 +685,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+
+	public static string main_index_file () {
+		return App.CACHE_DIR+"/index.html";
+	}
+
 	public string cache_subdir {
 		owned get {
-			return CACHE_DIR+"/"+version_main;
+			return App.CACHE_DIR+"/"+version_main;
 		}
 	}
 
 	public string data_subdir {
 		owned get {
-			return DATA_DIR+"/"+version_main;
+			return App.DATA_DIR+"/"+version_main;
 		}
 	}
 
