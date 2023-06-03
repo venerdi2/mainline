@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mainline 1.3.7\n"
+"Project-Id-Version: mainline 1.3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-03 06:21-0400\n"
+"POT-Creation-Date: 2023-06-03 08:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,16 +178,16 @@ msgstr ""
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1141 src/Console/AppConsole.vala:211
+#: src/Common/LinuxKernel.vala:1141 src/Console/AppConsole.vala:208
 msgid "Latest update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1152 src/Console/AppConsole.vala:218
+#: src/Common/LinuxKernel.vala:1152 src/Console/AppConsole.vala:215
 msgid "Latest point update"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1160 src/Console/AppConsole.vala:223
-#: src/Console/AppConsole.vala:243
+#: src/Common/LinuxKernel.vala:1160 src/Console/AppConsole.vala:220
+#: src/Console/AppConsole.vala:240
 msgid "No updates found"
 msgstr ""
 
@@ -196,20 +196,20 @@ msgstr ""
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/Main.vala:340
+#: src/Common/Main.vala:346
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:340
+#: src/Common/Main.vala:346
 msgid "at logon"
 msgstr ""
 
-#: src/Common/Main.vala:341
+#: src/Common/Main.vala:347
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:373
+#: src/Common/Main.vala:379
 msgid "Notifications are disabled"
 msgstr ""
 
@@ -302,29 +302,29 @@ msgstr ""
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr ""
 
-#: src/Console/AppConsole.vala:142 src/Console/AppConsole.vala:196
+#: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:193
 #: src/Gtk/AppGtk.vala:111
 msgid "Unknown option"
 msgstr ""
 
-#: src/Console/AppConsole.vala:232
-msgid "Notifications disabled in settings"
+#: src/Console/AppConsole.vala:229
+msgid "Notifications disabled"
 msgstr ""
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:262
 #, c-format
 msgid "Kernel %s Available"
 msgstr ""
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:154
+#: src/Console/AppConsole.vala:266 src/Gtk/SettingsDialog.vala:154
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:305
+#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:305
 msgid "Install"
 msgstr ""
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:270
 msgid "Previously notified"
 msgstr ""
 
@@ -517,7 +517,11 @@ msgstr ""
 msgid "Proxy"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:249
+#: src/Gtk/SettingsDialog.vala:252
+msgid "Auth Command"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:273
 msgid "Done"
 msgstr ""
 

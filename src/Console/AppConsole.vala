@@ -65,9 +65,6 @@ public class AppConsole : GLib.Object {
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
 
-		string txt = BRANDING_SHORTNAME + " ";
-		for (int i = 1; i < args.length; i++) txt += "'%s' ".printf(args[i]);
-
 		// check argument count -----------------
 
 		if (args.length == 1) {
@@ -229,7 +226,7 @@ public class AppConsole : GLib.Object {
 		vprint("notify_user()",2);
 
 		if (!App.notify_major && !App.notify_minor) {
-			vprint(_("Notifications disabled in settings"),2);
+			vprint(_("Notifications disabled"),2);
 			return 1;
 		}
 

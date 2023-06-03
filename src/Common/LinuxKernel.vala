@@ -558,7 +558,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (t.has_suffix("/")) t = t[0: t.length - 1];
 		version_main = t;
 
-		t = t.split("~")[0];  // old ubuntu versions in dpkg, not seen lately
+		t = t.split("~")[0];
 		if (t==null || t=="") t = "0";
 		kver = t;
 		//vprint("\""+t+"\"");
@@ -1017,7 +1017,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// full paths instead of env -C
 		// https://github.com/bkw777/mainline/issues/128
-		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --install " + flist;
+		string cmd = App.auth_cmd+" dpkg --install " + flist;
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
 		foreach (var f in flist.split(" ")) delete_r(f);
@@ -1052,7 +1052,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		pnames = pnames.strip();
 		if (pnames=="") { vprint(_("Uninstall: no uninstallable packages found"),1,stderr); return 1; }
 
-		string cmd = "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} dpkg --purge " + pnames;
+		string cmd = App.auth_cmd+" dpkg --purge " + pnames;
 		vprint(cmd,2);
 		return Posix.system(cmd);
 	}

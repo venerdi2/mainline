@@ -62,6 +62,8 @@ const int		DEFAULT_NOTIFY_INTERVAL_VALUE	= 4			;  // FIXME
 const int		DEFAULT_NOTIFY_INTERVAL_UNIT	= 0			;  // use enum
 // other
 const bool		DEFAULT_VERIFY_CHECKSUMS		= false		;
+const string	DEFAULT_AUTH_CMD				= "pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}";
+
 // windows
 const int		DEFAULT_WINDOW_WIDTH			= 800		;
 const int		DEFAULT_WINDOW_HEIGHT			= 600		;
@@ -118,6 +120,7 @@ public class Main : GLib.Object {
 	public int notify_interval_unit = DEFAULT_NOTIFY_INTERVAL_UNIT;
 	public int notify_interval_value = DEFAULT_NOTIFY_INTERVAL_VALUE;
 	public bool verify_checksums = DEFAULT_VERIFY_CHECKSUMS;
+	public string auth_cmd = DEFAULT_AUTH_CMD;
 
 	// save & restore window size & position
 	public int window_width = DEFAULT_WINDOW_WIDTH;
@@ -208,6 +211,7 @@ public class Main : GLib.Object {
 		config.set_int_member(		"notify_interval_unit",		notify_interval_unit	);
 		config.set_int_member(		"notify_interval_value",	notify_interval_value	);
 		config.set_boolean_member(	"verify_checksums",			verify_checksums		);
+		config.set_string_member(	"auth_cmd",					auth_cmd				);
 		config.set_int_member(		"window_width",				window_width			);
 		config.set_int_member(		"window_height",			window_height			);
 		config.set_int_member(		"window_x",					window_x				);
@@ -269,6 +273,7 @@ public class Main : GLib.Object {
 				notify_interval_unit	=	(int)config.get_int_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
 				notify_interval_value	=	(int)config.get_int_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
 				verify_checksums		=	config.get_boolean_member_with_default(		"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
+				auth_cmd				=	config.get_string_member_with_default(		"auth_cmd",					DEFAULT_AUTH_CMD				);
 				window_width			=	(int)config.get_int_member_with_default(	"window_width",				DEFAULT_WINDOW_WIDTH			);
 				window_height			=	(int)config.get_int_member_with_default(	"window_height",			DEFAULT_WINDOW_HEIGHT			);
 				window_x				=	(int)config.get_int_member_with_default(	"window_x",					DEFAULT_WINDOW_X				);
@@ -290,6 +295,7 @@ public class Main : GLib.Object {
 				notify_interval_unit	=	json_get_int(		config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
 				notify_interval_value	=	json_get_int(		config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
 				verify_checksums		=	json_get_bool(		config,	"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
+				auth_cmd				=	json_get_string(	config,	"auth_cmd",					DEFAULT_AUTH_CMD				);
 				window_width			=	json_get_int(		config,	"window_width",				DEFAULT_WINDOW_WIDTH			);
 				window_height			=	json_get_int(		config,	"window_height",			DEFAULT_WINDOW_HEIGHT			);
 				window_x				=	json_get_int(		config,	"window_x",					DEFAULT_WINDOW_X				);

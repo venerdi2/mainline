@@ -36,3 +36,13 @@ When downloading .deb packages, first download the CHECKSUMS file and extract th
 **Proxy
 \[                               \]**  
 proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-all-proxy) setting
+
+**mainline-ppa url
+\[                               \]**  
+
+## Auth Command
+\[pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}  \]**  
+This is the "sudo" equivalent used internally to run `dpkg` as root.  
+pkexec can be difficult though, so if you need to, you can specify "sudo" or "gksudo" etc, or anything you want.  
+This probably most useful when ssh-ing in to a headless box where there is no desktop session or gdbus daemon runnning.  
+You can restore the built-in default by just blanking out the entire field and hitting Enter.

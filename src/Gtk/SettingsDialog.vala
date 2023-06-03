@@ -35,19 +35,19 @@ public class SettingsDialog : Gtk.Dialog {
 		set_transient_for(parent);
 		set_modal(true);
 		window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-		deletable = false;
-		resizable = false;
+		//deletable = true;
+		//resizable = true;
 
 		icon = get_app_icon(16);
 
-		title = _("Settings");
+		title = BRANDING_LONGNAME + " " + _("Settings");
 
 		// get content area
 		var vbox_main = get_content_area();
 		vbox_main.spacing = 6;
 		vbox_main.margin = 12;
 		//vbox_main.margin_bottom = 12;
-		vbox_main.set_size_request(400,500);
+		vbox_main.set_size_request(700,500);
 
 		// notification
 		var label = new Gtk.Label("<b>" + _("Notification") + "</b>");
@@ -229,25 +229,49 @@ public class SettingsDialog : Gtk.Dialog {
 		vbox_main.add(proxy);
 		proxy.activate.connect(()=>{ App.all_proxy = proxy.get_text(); });
 
-// too easily screwed up and "blank to return to default" isn't working
-/*
 		// ppa url
-		label = new Label("<b>" + "PPA" + "</b>");
+		label = new Gtk.Label("mainline-ppa url");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
+		label.margin_start = 6;
+		vbox_main.add (label);
+
+		var ppa = new Gtk.Entry ();
+		ppa.set_text(App.ppa_uri);
+		ppa.margin_start = 6;
+		vbox_main.add(ppa);
+		ppa.activate.connect(()=>{
+			App.ppa_uri = ppa.get_text().strip();
+			if (App.ppa_uri=="") {
+				App.ppa_uri = DEFAULT_PPA_URI;
+				ppa.set_text(App.ppa_uri);
+			}
+		});
+
+		// auth command
+		label = new Gtk.Label("<b>"+_("Auth Command")+"</b>");
+		label.set_use_markup(true);
+		label.xalign = (float) 0.0;
+		label.margin_start = 6;
+		label.margin_top = 12;
 		label.margin_bottom = 6;
 		vbox_main.add (label);
 
-		var ppa = new Entry ();
-		ppa.set_placeholder_text(DEFAULT_PPA_URI);
-		ppa.set_text(App.ppa_uri);
-		ppa.activate.connect(()=>{ App.ppa_uri = ppa.get_text(); });
-		vbox_main.add(ppa);
-*/
+		var authcmd = new Gtk.Entry ();
+		authcmd.set_text(App.auth_cmd);
+		authcmd.margin_start = 6;
+		vbox_main.add(authcmd);
+		authcmd.activate.connect(()=>{
+			App.auth_cmd = authcmd.get_text().strip();
+			if (App.auth_cmd=="") {
+				App.auth_cmd = DEFAULT_AUTH_CMD;
+				authcmd.set_text(App.auth_cmd);
+			}
+		});
 
 		// ok button
 		var button = (Gtk.Button)add_button(_("Done"), Gtk.ResponseType.ACCEPT);
-		button.clicked.connect(()=>{ this.close(); });
+		button.clicked.connect(()=>{ close(); });
 
 		// run
 		show_all();
