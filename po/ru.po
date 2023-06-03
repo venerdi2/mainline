@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-03 06:21-0400\n"
+"POT-Creation-Date: 2023-06-03 08:40-0400\n"
 "PO-Revision-Date: 2023-04-17 20:16+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -181,16 +181,16 @@ msgstr "Следующие ядра будут удалены"
 msgid "Continue ?"
 msgstr "Продолжить ?"
 
-#: src/Common/LinuxKernel.vala:1141 src/Console/AppConsole.vala:211
+#: src/Common/LinuxKernel.vala:1141 src/Console/AppConsole.vala:208
 msgid "Latest update"
 msgstr "Последнее обновление"
 
-#: src/Common/LinuxKernel.vala:1152 src/Console/AppConsole.vala:218
+#: src/Common/LinuxKernel.vala:1152 src/Console/AppConsole.vala:215
 msgid "Latest point update"
 msgstr "Последнее обновление пунктов"
 
-#: src/Common/LinuxKernel.vala:1160 src/Console/AppConsole.vala:223
-#: src/Console/AppConsole.vala:243
+#: src/Common/LinuxKernel.vala:1160 src/Console/AppConsole.vala:220
+#: src/Console/AppConsole.vala:240
 msgid "No updates found"
 msgstr "Обновлений не найдено"
 
@@ -199,21 +199,21 @@ msgstr "Обновлений не найдено"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Установить версию ядра %s ? (y/n): "
 
-#: src/Common/Main.vala:340
+#: src/Common/Main.vala:346
 msgid "Called from"
 msgstr "Вызван из"
 
-#: src/Common/Main.vala:340
+#: src/Common/Main.vala:346
 msgid "at logon"
 msgstr "при запуске"
 
-#: src/Common/Main.vala:341
+#: src/Common/Main.vala:347
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Этот файл перезаписывается и выполняется снова при сохранении настроек в"
 
-#: src/Common/Main.vala:373
+#: src/Common/Main.vala:379
 msgid "Notifications are disabled"
 msgstr "Уведомления отключены"
 
@@ -312,29 +312,30 @@ msgstr ""
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Текущее работающее ядро всегда будет игнорироваться"
 
-#: src/Console/AppConsole.vala:142 src/Console/AppConsole.vala:196
+#: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:193
 #: src/Gtk/AppGtk.vala:111
 msgid "Unknown option"
 msgstr "Неизвестный параметр"
 
-#: src/Console/AppConsole.vala:232
-msgid "Notifications disabled in settings"
-msgstr "Уведомления отключены в настройках"
+#: src/Console/AppConsole.vala:229
+#, fuzzy
+msgid "Notifications disabled"
+msgstr "Уведомления отключены"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:262
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Доступно ядро %s"
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:154
+#: src/Console/AppConsole.vala:266 src/Gtk/SettingsDialog.vala:154
 msgid "Show"
 msgstr "Показать"
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:305
+#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:305
 msgid "Install"
 msgstr "Установить"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:270
 msgid "Previously notified"
 msgstr "Предварительно уведомлено"
 
@@ -527,7 +528,12 @@ msgstr "Проверка контрольных сумм с помощью фа�
 msgid "Proxy"
 msgstr "Доверенность"
 
-#: src/Gtk/SettingsDialog.vala:249
+#: src/Gtk/SettingsDialog.vala:252
+#, fuzzy
+msgid "Auth Command"
+msgstr "Комманды"
+
+#: src/Gtk/SettingsDialog.vala:273
 msgid "Done"
 msgstr ""
 

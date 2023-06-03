@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-03 06:21-0400\n"
+"POT-Creation-Date: 2023-06-03 08:40-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -179,16 +179,16 @@ msgstr "I seguenti kernel saranno rimossi"
 msgid "Continue ?"
 msgstr "Continuare ?"
 
-#: src/Common/LinuxKernel.vala:1141 src/Console/AppConsole.vala:211
+#: src/Common/LinuxKernel.vala:1141 src/Console/AppConsole.vala:208
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Common/LinuxKernel.vala:1152 src/Console/AppConsole.vala:218
+#: src/Common/LinuxKernel.vala:1152 src/Console/AppConsole.vala:215
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del rilascio parziale"
 
-#: src/Common/LinuxKernel.vala:1160 src/Console/AppConsole.vala:223
-#: src/Console/AppConsole.vala:243
+#: src/Common/LinuxKernel.vala:1160 src/Console/AppConsole.vala:220
+#: src/Console/AppConsole.vala:240
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
@@ -197,22 +197,22 @@ msgstr "Nessun aggiornamento trovato"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
 
-#: src/Common/Main.vala:340
+#: src/Common/Main.vala:346
 msgid "Called from"
 msgstr "Chiamato da"
 
-#: src/Common/Main.vala:340
+#: src/Common/Main.vala:346
 msgid "at logon"
 msgstr "all'avvio"
 
-#: src/Common/Main.vala:341
+#: src/Common/Main.vala:347
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Questo file viene sovrascritto ed eseguito nuovamente ogni volta che vengono "
 "salvate le impostazioni"
 
-#: src/Common/Main.vala:373
+#: src/Common/Main.vala:379
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
 
@@ -313,29 +313,30 @@ msgstr ""
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Il kernel attualmente in esecuzione sarà sempre ignorato"
 
-#: src/Console/AppConsole.vala:142 src/Console/AppConsole.vala:196
+#: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:193
 #: src/Gtk/AppGtk.vala:111
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
 
-#: src/Console/AppConsole.vala:232
-msgid "Notifications disabled in settings"
+#: src/Console/AppConsole.vala:229
+#, fuzzy
+msgid "Notifications disabled"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:262
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:154
+#: src/Console/AppConsole.vala:266 src/Gtk/SettingsDialog.vala:154
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:305
+#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:305
 msgid "Install"
 msgstr "Installa"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:270
 msgid "Previously notified"
 msgstr "Notificato in precedenza"
 
@@ -528,7 +529,12 @@ msgstr "Verifica dei checksum con i file CHECKSUMS"
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/Gtk/SettingsDialog.vala:249
+#: src/Gtk/SettingsDialog.vala:252
+#, fuzzy
+msgid "Auth Command"
+msgstr "Comandi"
+
+#: src/Gtk/SettingsDialog.vala:273
 msgid "Done"
 msgstr ""
 
