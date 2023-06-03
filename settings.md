@@ -41,7 +41,7 @@ proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/ar
 \[                               \]**  
 
 ## Auth Command
-\[pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}  \]**  
+**\[pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}  \]**  
 This is the "sudo" equivalent used internally to run `dpkg` as root.  
 pkexec can be difficult though, so if you need to, you can specify "sudo" or "gksudo" etc, or anything you want.  
 This probably most useful when ssh-ing in to a headless box where there is no desktop session or gdbus daemon runnning.  
