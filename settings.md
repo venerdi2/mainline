@@ -33,16 +33,19 @@ Generally, you want this setting to just be 0.
 **\[ \] Verify Checksums**  
 When downloading .deb packages, first download the CHECKSUMS file and extract the sha-256 hashes from it, and use them to verify the .deb file downloads.
 
-**Proxy
-\[                               \]**  
+**Proxy  
+\[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]**  
 proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-all-proxy) setting
 
-**mainline-ppa url
-\[                               \]**  
+**mainline-ppa url  
+\[https://kernel.ubuntu.com/~kernel-ppa/mainline/  \]**  
 
 ## Auth Command
 **\[pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}  \]**  
 This is the "sudo" equivalent used internally to run `dpkg` as root.  
+
 pkexec can be difficult though, so if you need to, you can specify "sudo" or "gksudo" etc, or anything you want.  
+
 This probably most useful when ssh-ing in to a headless box where there is no desktop session or gdbus daemon runnning.  
-You can restore the built-in default by just blanking out the entire field and hitting Enter.
+
+You can restore the built-in default at any time by just blanking out the field and hitting Enter.
