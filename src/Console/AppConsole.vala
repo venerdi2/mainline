@@ -27,7 +27,6 @@ public Main App;
 public class AppConsole : GLib.Object {
 
 	public static int main (string[] args) {
-		set_locale();
 		App = new Main(args, false);
 		var console = new AppConsole();
 		return console.parse_arguments(args);
@@ -65,9 +64,6 @@ public class AppConsole : GLib.Object {
 		+ "    " +_("comma, pipe, or colon-seperated, or quoted space seperated") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
-
-		string txt = BRANDING_SHORTNAME + " ";
-		for (int i = 1; i < args.length; i++) txt += "'%s' ".printf(args[i]);
 
 		// check argument count -----------------
 
@@ -164,10 +160,7 @@ public class AppConsole : GLib.Object {
 				break;
 
 			case "--notify":
-				// silence VERBOSE only if it's exactly 1
-				if (App.VERBOSE==1) App.set_verbose("0");
-				notify_user();
-				break;
+				return notify_user();
 
 			case "--install-latest":
 				LinuxKernel.kinst_latest(false, App.confirm);
@@ -229,12 +222,17 @@ public class AppConsole : GLib.Object {
 
 	}
 
-	private void notify_user() {
+	private int notify_user() {
 		vprint("notify_user()",2);
 
 		if (!App.notify_major && !App.notify_minor) {
-			vprint(_("Notifications disabled in settings"),2);
-			return;
+			vprint(_("Notifications disabled"),2);
+			return 1;
+		}
+
+		if (Environment.get_variable("DISPLAY")==null) {
+			vprint("No $DISPLAY",2);
+			return 1;
 		}
 
 		LinuxKernel.mk_kernel_list(true);
@@ -273,6 +271,7 @@ public class AppConsole : GLib.Object {
 		}
 
 		vprint(title,2);
+		return 0;
 	}
 
 }

@@ -30,7 +30,6 @@ public Main App;
 public class AppGtk : GLib.Object {
 
 	public static int main (string[] args) {
-		set_locale();
 		X.init_threads();
 		Gtk.init(ref args);
 		App = new Main(args, true);
@@ -58,10 +57,14 @@ public class AppGtk : GLib.Object {
 				App.window_width  + App.window_height  + App.window_x  + App.window_y  + App.term_width  + App.term_height
 				!=
 				App._window_width + App._window_height + App._window_x + App._window_y + App._term_width + App._term_height
-			) App.save_app_config();
+			) {
+				var x = App.RUN_NOTIFY_SCRIPT;
+				App.save_app_config();
+				App.RUN_NOTIFY_SCRIPT = x;
+			}
 
-		// start/replace the notification background process if any notifcations are enabled
-		if (App.notify_major || App.notify_minor) exec_async("bash "+App.STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
+		// just in case it was missed earlier
+		App.run_notify_script();
 
 		return 0;
 	}

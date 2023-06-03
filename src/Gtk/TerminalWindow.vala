@@ -53,24 +53,30 @@ public class TerminalWindow : Gtk.Window {
 		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
+			window_position = WindowPosition.CENTER_ON_PARENT;
 		}
 
-		set_modal(true);
-		//window_position = WindowPosition.CENTER;
-		window_position = WindowPosition.CENTER_ON_PARENT;
-		//window_position = WindowPosition.NONE;
-		if (fullscreen) this.fullscreen();
+		configure_event.connect ((event) => {
+			//vprint("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y),2);
+			App.term_width = event.width;
+			App.term_height = event.height;
+			App.term_x = event.x;
+			App.term_y = event.y;
+			return false;
+		});
 
-		this.delete_event.connect(cancel_window_close);
+		delete_event.connect(cancel_window_close);
+
+		set_modal(true);
+
+		if (fullscreen) this.fullscreen();
 
 		init_window();
 
 		show_all();
 
-		this.resize(App.term_width,App.term_height);
-//		if (App.term_x >=0 && App.term_y >= 0) this.move(App.window_x,App.window_y);
-//		App._window_x = App.window_x;
-//		App._window_y = App.window_y;
+		resize(App.term_width,App.term_height);
+		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
 		btn_cancel.visible = false;
 		btn_close.visible = false;
@@ -96,6 +102,8 @@ public class TerminalWindow : Gtk.Window {
 		//vbox_main.set_size_request(def_width,def_height);
 		App._term_width = App.term_width;
 		App._term_height = App.term_height;
+		App._term_x = App.term_x;
+		App._term_y = App.term_y;
 
 		add (vbox_main);
 

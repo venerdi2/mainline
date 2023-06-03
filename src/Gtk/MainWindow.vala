@@ -36,13 +36,20 @@ public class MainWindow : Window {
 
 	private Button btn_install;
 	private Button btn_uninstall;
+	private Button btn_uninstall_old;
+	private Button btn_reload;
 	private Label lbl_info;
+	private bool updating;
 
+	private Gee.ArrayList<LinuxKernel> selected_kernels;
 	private Gtk.ListStore tm;
 	private TreeView tv;
-	private Gee.ArrayList<LinuxKernel> selected_kernels;
 
-	enum COL {
+	private Gdk.Pixbuf pix_ubuntu;
+	private Gdk.Pixbuf pix_mainline;
+	private Gdk.Pixbuf pix_mainline_rc;
+
+	enum TM {
 		INDEX,
 		KERN,
 		ICON,
@@ -50,14 +57,13 @@ public class MainWindow : Window {
 		LOCKED,
 		STATUS,
 		NOTES,
-		TOOLTIP
+		TOOLTIP,
+		N_COLS
 	}
 
 	public MainWindow() {
 
 		title = BRANDING_LONGNAME;
-		//window_position = WindowPosition.CENTER;
-		window_position = WindowPosition.NONE;
 		icon = get_app_icon(16);
 
 		// vbox_main
@@ -69,10 +75,14 @@ public class MainWindow : Window {
 		add(vbox_main);
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
-
-		//                        0 index      1 kernel             2 kernel-icon       3 version       4 locked      5 status        6 notes         7 tooltip
-		tm = new Gtk.ListStore(8, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(bool), typeof(string), typeof(string), typeof(string));
+		tm = new Gtk.ListStore(TM.N_COLS, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(bool), typeof(string), typeof(string), typeof(string));
 		tv = new TreeView.with_model(tm);
+
+		try {
+			pix_ubuntu = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
+			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
+			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
+		} catch (Error e) { vprint(e.message,1,stderr); }
 
 		init_ui();
 		if (App.command == "install") do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
@@ -94,7 +104,6 @@ public class MainWindow : Window {
 
 		// hbox
 		hbox_list = new Box(Orientation.HORIZONTAL, 6);
-		// hbox.margin = 6;
 		vbox_main.add(hbox_list);
 
 		// add treeview
@@ -118,7 +127,7 @@ public class MainWindow : Window {
 		var col = new TreeViewColumn();
 		col.title = _("Kernel");
 		col.resizable = true;
-		col.set_sort_column_id(COL.INDEX);
+		col.set_sort_column_id(TM.INDEX);
 		col.min_width = 180;
 		tv.append_column(col);
 
@@ -126,12 +135,12 @@ public class MainWindow : Window {
 		k_version_icon.xpad = 4;
 		k_version_icon.ypad = 6;
 		col.pack_start(k_version_icon, false);
-		col.add_attribute(k_version_icon, "pixbuf", COL.ICON);
+		col.add_attribute(k_version_icon, "pixbuf", TM.ICON);
 
 		var k_version_text = new CellRendererText();
 		k_version_text.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start(k_version_text, true);
-		col.add_attribute(k_version_text, "text", COL.VERSION);
+		col.add_attribute(k_version_text, "text", TM.VERSION);
 
 		// locked
 		var k_lock_toggle = new CellRendererToggle();
@@ -139,63 +148,63 @@ public class MainWindow : Window {
 		col.pack_end(k_lock_toggle, false);
 #else  // sortable
 		col = new TreeViewColumn();
-		col.set_sort_column_id(COL.LOCKED);
+		col.set_sort_column_id(TM.LOCKED);
 		col.title = _("Lock");
 		col.pack_start(k_lock_toggle, false);
 		tv.append_column (col);
 #endif
-		col.add_attribute(k_lock_toggle,"active", COL.LOCKED);
+		col.add_attribute(k_lock_toggle,"active", TM.LOCKED);
 		k_lock_toggle.toggled.connect((toggle,path) => {
 			TreeIter iter;
 			tm.get_iter_from_string(out iter, path);
 			LinuxKernel k;
-			tm.get(iter, COL.KERN, out k, -1);
+			tm.get(iter, TM.KERN, out k, -1);
 			if (toggle.active) delete_r(k.locked_file);
 			else file_write(k.locked_file, "");
-			tm.set(iter, COL.LOCKED, k.is_locked);
+			tm.set(iter, TM.LOCKED, k.is_locked);
 		});
 
 		// status
 		col = new TreeViewColumn();
 		col.title = _("Status");
-		col.set_sort_column_id(COL.STATUS);
+		col.set_sort_column_id(TM.STATUS);
 		col.resizable = true;
 		col.min_width = 100;
 		tv.append_column(col);
 		var k_status_text = new CellRendererText();
 		k_status_text.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start(k_status_text, true);
-		col.add_attribute(k_status_text, "text", COL.STATUS); // text from column 4
+		col.add_attribute(k_status_text, "text", TM.STATUS); // text from column 4
 
 		// notes
 		col = new TreeViewColumn();
 		col.title = _("Notes");
-		col.set_sort_column_id(COL.NOTES);
+		col.set_sort_column_id(TM.NOTES);
 		col.resizable = true;
 		col.min_width = 100;
 		tv.append_column(col);
 		var k_notes_text = new CellRendererText();
 		k_notes_text.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start (k_notes_text, true);
-		col.add_attribute(k_notes_text, "text", COL.NOTES); // text from column 5
+		col.add_attribute(k_notes_text, "text", TM.NOTES); // text from column 5
 		k_notes_text.editable = true;
 		k_notes_text.edited.connect((path, data) => {
 			TreeIter i;
 			LinuxKernel k;
 			tm.get_iter_from_string(out i, path);
-			tm.get(i, COL.KERN, out k, -1);
+			tm.get(i, TM.KERN, out k, -1);
 			var t_old = k.notes.strip();
 			var t_new = data.strip();
 			if (t_old != t_new) {
 				k.notes = t_new;
 				if (t_new=="") delete_r(k.notes_file);
 				else file_write(k.notes_file, t_new);
-				tm.set(i, COL.NOTES, t_new, -1);
+				tm.set(i, TM.NOTES, t_new, -1);
 			}
 		});
 
 		// tooltip
-		tv.set_tooltip_column(COL.TOOLTIP);
+		tv.set_tooltip_column(TM.TOOLTIP);
 
 	}
 
@@ -223,18 +232,6 @@ public class MainWindow : Window {
 	private void tv_refresh() {
 		vprint("tv_refresh()",2);
 
-		Gdk.Pixbuf pix_ubuntu = null;
-		Gdk.Pixbuf pix_mainline = null;
-		Gdk.Pixbuf pix_mainline_rc = null;
-		try {
-			pix_ubuntu = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
-			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
-			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
-		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
-
 		int i = -1;
 		Gdk.Pixbuf p;
 		TreeIter iter;
@@ -249,34 +246,44 @@ public class MainWindow : Window {
 
 			tm.append(out iter); // add row
 
-			tm.set(iter, COL.INDEX, ++i); // saves the special version number sorting built by compare_to()
+			tm.set(iter, TM.INDEX, ++i); // saves the special version number sorting built by compare_to()
 
-			tm.set(iter, COL.KERN, k);
+			tm.set(iter, TM.KERN, k);
 
 			p = pix_mainline;
 			if (k.version_rc>=0) p = pix_mainline_rc;
 			if (!k.is_mainline) p = pix_ubuntu;
-			tm.set(iter, COL.ICON, p);
+			tm.set(iter, TM.ICON, p);
 
-			tm.set(iter, COL.VERSION, k.version_main);
+			tm.set(iter, TM.VERSION, k.version_main);
 
-			tm.set(iter, COL.LOCKED, k.is_locked);
+			tm.set(iter, TM.LOCKED, k.is_locked);
 
-			tm.set(iter, COL.STATUS, k.status);
+			tm.set(iter, TM.STATUS, k.status);
 
-			tm.set(iter, COL.NOTES, k.notes);
+			tm.set(iter, TM.NOTES, k.notes);
 
-			tm.set(iter, COL.TOOLTIP, k.tooltip_text());
+			tm.set(iter, TM.TOOLTIP, k.tooltip_text());
 		}
 
 		selected_kernels.clear();
-		set_button_state();
+		updating = false;
 		set_infobar();
+		set_button_state();
 	}
 
 	private void set_button_state() {
 		btn_install.sensitive = false;
 		btn_uninstall.sensitive = false;
+
+		if (updating) {
+			btn_uninstall_old.sensitive = false;
+			btn_reload.sensitive = false;
+			return;
+		}
+
+		btn_uninstall_old.sensitive = true;
+		btn_reload.sensitive = true;
 
 		if (selected_kernels.size > 0) {
 			foreach (var k in selected_kernels) {
@@ -289,30 +296,25 @@ public class MainWindow : Window {
 
 	private void init_actions() {
 
+		Button button;
+
 		var hbox = new Box(Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
 
 		// install
-		var button = new Button.with_label (_("Install"));
-		hbox.pack_start (button, true, true, 0);
-		btn_install = button;
-		button.clicked.connect(() => {
-			do_install(selected_kernels);
-		});
+		btn_install = new Button.with_label (_("Install"));
+		hbox.pack_start (btn_install, true, true, 0);
+		btn_install.clicked.connect(() => { do_install(selected_kernels); });
 
 		// uninstall
-		button = new Button.with_label (_("Uninstall"));
-		hbox.pack_start (button, true, true, 0);
-		btn_uninstall = button;
-		button.clicked.connect(() => {
-			do_uninstall(selected_kernels);
-		});
+		btn_uninstall = new Button.with_label (_("Uninstall"));
+		hbox.pack_start (btn_uninstall, true, true, 0);
+		btn_uninstall.clicked.connect(() => { do_uninstall(selected_kernels); });
 
 		// ppa
 		button = new Button.with_label ("PPA");
 		button.set_tooltip_text(_("Changelog, build status, etc"));
 		hbox.pack_start (button, true, true, 0);
-
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
 			if (selected_kernels.size==1 && selected_kernels[0].is_mainline) uri=selected_kernels[0].page_uri;
@@ -320,16 +322,16 @@ public class MainWindow : Window {
 		});
 
 		// uninstall-old
-		button = new Button.with_label (_("Uninstall Old"));
-		button.set_tooltip_text(_("Uninstall all but the highest installed version"));
-		hbox.pack_start (button, true, true, 0);
-		button.clicked.connect(uninstall_old);
+		btn_uninstall_old = new Button.with_label (_("Uninstall Old"));
+		btn_uninstall_old.set_tooltip_text(_("Uninstall all but the highest installed version"));
+		hbox.pack_start (btn_uninstall_old, true, true, 0);
+		btn_uninstall_old.clicked.connect(uninstall_old);
 
 		// reload
-		button = new Button.with_label (_("Reload"));
-		button.set_tooltip_text(_("Delete and reload all cached kernel info"));
-		hbox.pack_start (button, true, true, 0);
-		button.clicked.connect(reload_cache);
+		btn_reload = new Button.with_label (_("Reload"));
+		btn_reload.set_tooltip_text(_("Delete and reload all cached kernel info"));
+		hbox.pack_start (btn_reload, true, true, 0);
+		btn_reload.clicked.connect(reload_cache);
 
 		// settings
 		button = new Button.with_label (_("Settings"));
@@ -344,24 +346,41 @@ public class MainWindow : Window {
 		// exit
 		button = new Button.with_label (_("Exit"));
 		hbox.pack_start (button, true, true, 0);
-		button.clicked.connect(do_exit);
+		button.clicked.connect(Gtk.main_quit);
 
 	}
 
 	private void do_settings () {
-		int old_previous_majors = App.previous_majors;
-		bool old_hide_unstable = App.hide_unstable;
+		var old_previous_majors = App.previous_majors;
+		var old_hide_unstable = App.hide_unstable;
+		var old_notify_interval_unit = App.notify_interval_unit;
+		var old_notify_interval_value = App.notify_interval_value;
+		var old_notify_major = App.notify_major;
+		var old_notify_minor = App.notify_minor;
 
 		var dlg = new SettingsDialog.with_parent(this);
 		dlg.run();
 		dlg.destroy();
 
-		if (App.previous_majors != old_previous_majors ||
-			App.hide_unstable != old_hide_unstable) update_cache();
-	}
+		App.save_app_config();
 
-	private void do_exit () {
-		main_quit();
+		// if no notifications settings changed, don't (re)run the script
+		if (App.notify_interval_unit == old_notify_interval_unit &&
+			App.notify_interval_value == old_notify_interval_value &&
+			App.notify_major == old_notify_major &&
+			App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
+
+		// if the selection set didn't change,
+		//    then don't trigger cache update
+		//    do run the notify script now
+		// if the selection set changed
+		//    don't run the notify script now
+		//    update the cache
+		//    the notify script will run if needed at the end of cache update
+		if (App.previous_majors == old_previous_majors &&
+			App.hide_unstable == old_hide_unstable) App.run_notify_script();
+		else update_cache();
+
 	}
 
 	private void do_about () {
@@ -441,39 +460,28 @@ public class MainWindow : Window {
 
 		if (!try_ppa()) return;
 
-		if (!App.GUI_MODE) {
-			LinuxKernel.mk_kernel_list(true);
-			return;
-		}
-
-		var progress_window = new ProgressWindow.with_parent(this, msg);
-		progress_window.show_all();
+		updating = true;
+		set_button_state();
+		set_infobar(msg);
 		LinuxKernel.mk_kernel_list(false, (timer, ref count, last) => {
-			update_progress_window(progress_window, msg, timer, ref count, last);
+			update_status_line(msg, timer, ref count, last);
 		});
 	}
 
-	private void update_progress_window(ProgressWindow progress_window, string message, GLib.Timer timer, ref int count, bool last = false) {
+	private void update_status_line(string message, GLib.Timer timer, ref int count, bool last = false) {
+		count++;
 		if (last) {
 			Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
 				tv_refresh();
 				return false;
 			});
 			timer_elapsed(timer, true);
-			progress_window.destroy();
 		}
 
-		//App.progress_total = LinuxKernel.progress_total;
-		//App.progress_count = LinuxKernel.progress_count;
-
-		Gdk.threads_add_idle_full(0, () => {
-			if (App.progress_total > 0)
-				//progress_window.update_message(App.status_line);
-				progress_window.update_message("%s %s/%s".printf(message, App.progress_count.to_string(), App.progress_total.to_string()));
+		Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
+			if (updating) set_infobar("%s %d/%d".printf(message, App.progress_count, App.progress_total));
 			return false;
 		});
-
-		count++;
 	}
 
 	private void init_infobar() {
@@ -495,22 +503,26 @@ public class MainWindow : Window {
 		lbl_info = new Label("");
 		lbl_info.margin = 6;
 		lbl_info.set_use_markup(true);
+		lbl_info.set_single_line_mode(true);
+		lbl_info.selectable = false;
 		hbox.add(lbl_info);
 	}
 
-	private void set_infobar() {
-		//vprint("set_infobar()",9);
-		lbl_info.label = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
-		if (LinuxKernel.kernel_active.is_mainline) lbl_info.label += " (mainline)";
-		else lbl_info.label += " (ubuntu)";
-		if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0) {
-			lbl_info.label += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
-		}
+	private void set_infobar(string s="") {
+		if (s!="") { lbl_info.set_label(s); return; }
+
+		string l = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
+		if (LinuxKernel.kernel_active.is_mainline) l += " (mainline)";
+		else l += " (ubuntu)";
+		if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0)
+			l += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
+
+		lbl_info.set_label(l);
 	}
 
 	public void do_install(Gee.ArrayList<LinuxKernel> klist) {
 		string vlist="";
-		if (App.VERBOSE>2) {
+		if (Main.VERBOSE>2) {
 			foreach (var k in klist) vlist += k.version_main+" ";
 			vprint("do_install("+vlist.strip()+")");
 		}
@@ -532,26 +544,17 @@ public class MainWindow : Window {
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
 
-		term.configure_event.connect ((event) => {
-			//vprint("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y),2);
-			App.term_width = event.width;
-			App.term_height = event.height;
-//			App.term_x = event.x;
-//			App.term_y = event.y;
-			return false;
-		});
-
 		term.script_complete.connect(()=>{
+			term.present();
 			term.allow_window_close();
 		});
 
 		term.destroy.connect(()=>{
-			this.present();
 			delete_r(t_dir);
 			update_cache();
 		});
 
-		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
+		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
 			if (App.index_is_fresh) sh += " --index-is-fresh";
 			sh += " --install \""+vlist+"\"\n"
 			+ "echo '"+_("DONE")+"'\n"
@@ -568,20 +571,12 @@ public class MainWindow : Window {
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
 
-		term.configure_event.connect ((event) => {
-			App.term_width = event.width;
-			App.term_height = event.height;
-//			App.term_x = event.x;
-//			App.term_y = event.y;
-			return false;
-		});
-
 		term.script_complete.connect(()=>{
+			term.present();
 			term.allow_window_close();
 		});
 
 		term.destroy.connect(() => {
-			this.present();
 			delete_r(t_dir);
 			update_cache();
 		});
@@ -590,7 +585,7 @@ public class MainWindow : Window {
 		foreach(var k in klist) vlist += " "+k.version_main;
 		vlist = vlist.strip();
 
-		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
+		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
 			if (App.index_is_fresh) sh += " --index-is-fresh";
 			sh += " --uninstall \""+vlist+"\"\n"
 			+ "echo '"+_("DONE")+"'\n"
@@ -605,26 +600,17 @@ public class MainWindow : Window {
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
 
-		term.configure_event.connect ((event) => {
-			App.term_width = event.width;
-			App.term_height = event.height;
-//			App.term_x = event.x;
-//			App.term_y = event.y;
-			return false;
-		});
-
-
 		term.script_complete.connect(()=>{
+			term.present();
 			term.allow_window_close();
 		});
 
 		term.destroy.connect(()=>{
-			this.present();
 			delete_r(t_dir);
 			update_cache();
 		});
 
-		string sh = "VERBOSE="+App.VERBOSE.to_string()+" "+BRANDING_SHORTNAME+" --uninstall-old";
+		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME+" --uninstall-old";
 			if (App.index_is_fresh) sh += " --index-is-fresh";
 			sh += "\n"
 			+ "echo '"+_("DONE")+"'\n"
