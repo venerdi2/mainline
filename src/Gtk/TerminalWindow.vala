@@ -19,13 +19,8 @@
  * MA 02110-1301, USA.
  */
 
-using Gtk;
-using Gee;
-
-using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using l.gtk;
-using TeeJee.Misc;
 using l.misc;
 
 public class TerminalWindow : Gtk.Window {
@@ -35,9 +30,6 @@ public class TerminalWindow : Gtk.Window {
 	private Gtk.Button btn_cancel;
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
-
-	//private int def_width = 1100;
-	//private int def_height = 600;
 
 	private Pid child_pid;
 	private Gtk.Window parent_win = null;
@@ -53,17 +45,11 @@ public class TerminalWindow : Gtk.Window {
 		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
-			window_position = WindowPosition.CENTER_ON_PARENT;
+			window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 		}
 
-		configure_event.connect ((event) => {
-			//vprint("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y),2);
-			App.term_width = event.width;
-			App.term_height = event.height;
-			App.term_x = event.x;
-			App.term_y = event.y;
-			return false;
-		});
+		set_default_size(App.term_width,App.term_height);
+		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
 		delete_event.connect(cancel_window_close);
 
@@ -74,9 +60,6 @@ public class TerminalWindow : Gtk.Window {
 		init_window();
 
 		show_all();
-
-		resize(App.term_width,App.term_height);
-		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
 		btn_cancel.visible = false;
 		btn_close.visible = false;
@@ -91,6 +74,11 @@ public class TerminalWindow : Gtk.Window {
 
 	public void init_window () {
 
+		App._term_width = App.term_width;
+		App._term_height = App.term_height;
+		App._term_x = App.term_x;
+		App._term_y = App.term_y;
+
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
 		resizable = true;
@@ -98,46 +86,41 @@ public class TerminalWindow : Gtk.Window {
 
 		// vbox_main ---------------
 
-		vbox_main = new Gtk.Box(Orientation.VERTICAL, 0);
-		//vbox_main.set_size_request(def_width,def_height);
-		App._term_width = App.term_width;
-		App._term_height = App.term_height;
-		App._term_x = App.term_x;
-		App._term_y = App.term_y;
+		vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 
 		add (vbox_main);
 
 		// terminal ----------------------
 
 		term = new Vte.Terminal();
+
 		term.expand = true;
 
 		// sw_ppa
 		scroll_win = new Gtk.ScrolledWindow(null, null);
-		scroll_win.set_shadow_type (ShadowType.ETCHED_IN);
+		scroll_win.set_shadow_type (Gtk.ShadowType.ETCHED_IN);
 		scroll_win.add (term);
 		scroll_win.expand = true;
-		scroll_win.hscrollbar_policy = PolicyType.AUTOMATIC;
-		scroll_win.vscrollbar_policy = PolicyType.AUTOMATIC;
+		scroll_win.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
+		scroll_win.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
 		vbox_main.add(scroll_win);
 
 		term.input_enabled = true;
 		term.backspace_binding = Vte.EraseBinding.AUTO;
 		term.cursor_blink_mode = Vte.CursorBlinkMode.SYSTEM;
 		term.cursor_shape = Vte.CursorShape.UNDERLINE;
-		
+
 		term.scroll_on_keystroke = true;
 		term.scroll_on_output = true;
 		term.scrollback_lines = 100000;
 
 		// colors -----------------------------
-
-		var color = Gdk.RGBA();
-		color.parse("#FFFFFF");
-		term.set_color_foreground(color);
-
-		color.parse("#404040");
-		term.set_color_background(color);
+		// why override the users desktop preference?
+		//var color = Gdk.RGBA();
+		//color.parse("#FFFFFF");
+		//term.set_color_foreground(color);
+		//color.parse("#404040");
+		//term.set_color_background(color);
 
 		// grab focus ----------------
 
@@ -145,7 +128,7 @@ public class TerminalWindow : Gtk.Window {
 
 		// add cancel button --------------
 
-		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
 		vbox_main.add (hbox);
 
@@ -155,7 +138,7 @@ public class TerminalWindow : Gtk.Window {
 		label = new Gtk.Label("");
 		hbox.pack_start (label, true, true, 0);
 		
-		//btn_cancel
+		// btn_cancel
 		var button = new Gtk.Button.with_label (_("Cancel"));
 		hbox.pack_start (button, true, true, 0);
 		btn_cancel = button;
@@ -165,13 +148,15 @@ public class TerminalWindow : Gtk.Window {
 			terminate_child();
 		});
 
-		//btn_close
+		// btn_close
 		button = new Gtk.Button.with_label (_("Close"));
 		hbox.pack_start (button, true, true, 0);
 		btn_close = button;
 		
 		btn_close.clicked.connect(()=>{
-			this.destroy();
+			get_size(out App.term_width, out App.term_height);
+			get_position(out App.term_x, out App.term_y);
+			destroy();
 		});
 
 		label = new Gtk.Label("");
@@ -179,6 +164,7 @@ public class TerminalWindow : Gtk.Window {
 
 		label = new Gtk.Label("");
 		hbox.pack_start (label, true, true, 0);
+
 	}
 
 	public void terminate_child() {
@@ -224,11 +210,11 @@ public class TerminalWindow : Gtk.Window {
 
 	public void allow_window_close(bool allow = true) {
 		if (allow) {
-			this.delete_event.disconnect(cancel_window_close);
-			this.deletable = true;
+			delete_event.disconnect(cancel_window_close);
+			deletable = true;
 		} else {
-			this.delete_event.connect(cancel_window_close);
-			this.deletable = false;
+			delete_event.connect(cancel_window_close);
+			deletable = false;
 		}
 	}
 

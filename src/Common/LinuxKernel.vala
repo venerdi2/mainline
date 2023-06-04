@@ -990,7 +990,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (!try_ppa()) return 1;
 
-		string flist = "";
+		string[] flist = {};
 		foreach (var k in klist) {
 			vprint(_("Requested")+" "+k.version_main);
 
@@ -1009,18 +1009,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
-			foreach (string f in k.deb_url_list.keys) flist += " "+k.cache_subdir+"/"+f;
+			foreach (string f in k.deb_url_list.keys) flist += k.cache_subdir+"/"+f;
 		}
 
-		flist = flist.strip();
-		if (flist=="") { vprint(_("Install: no installable kernels secified")); return 1; }
+		if (flist.length==0) { vprint(_("Install: no installable kernels secified")); return 1; }
 
 		// full paths instead of env -C
 		// https://github.com/bkw777/mainline/issues/128
-		string cmd = App.auth_cmd+" dpkg --install " + flist;
+		string cmd = "";
+		foreach (string f in flist) { cmd += " '"+f+"'"; }
+		cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --install "+cmd);
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
-		foreach (var f in flist.split(" ")) delete_r(f);
+		foreach (string f in flist) delete_r(f);
 		return r;
 	}
 
@@ -1052,7 +1053,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		pnames = pnames.strip();
 		if (pnames=="") { vprint(_("Uninstall: no uninstallable packages found"),1,stderr); return 1; }
 
-		string cmd = App.auth_cmd+" dpkg --purge " + pnames;
+		string cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --purge "+pnames);
 		vprint(cmd,2);
 		return Posix.system(cmd);
 	}

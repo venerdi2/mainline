@@ -62,6 +62,16 @@ public class MainWindow : Window {
 	}
 
 	public MainWindow() {
+		set_default_size(App.window_width,App.window_height);
+		if (App.window_x>=0 && App.window_y>=0) move(App.window_x,App.window_y);
+
+		configure_event.connect ((event) => {
+			App.window_width = event.width;
+			App.window_height = event.height;
+			App.window_x = event.x;
+			App.window_y = event.y;
+			return false;
+		});
 
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
@@ -69,9 +79,7 @@ public class MainWindow : Window {
 		// vbox_main
 		vbox_main = new Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
-		vbox_main.set_size_request(App._window_width,App._window_height);
-		App._window_width = App.window_width;
-		App._window_height = App.window_height;
+
 		add(vbox_main);
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();

@@ -23,6 +23,24 @@ namespace l.misc {
 		catch (Error e) { warning("Unable to launch %s",s); }
 	}
 
+	// doesn't really sanitize much, just disables extra printf
+	// formatting codes, more for crashing than security
+	// Find the first "%s" that isn't "%%s" if any.
+	// replace all other % with %%
+	public string sanitize_auth_cmd(string s) {
+		int p = 0;
+		while (p>=0 && p<s.length) {
+			p = s.index_of("%s",p);
+			if (p<1) continue;
+			if (s.substring(p-1,1)=="%") p++;
+			else break;
+		}
+		string a = s.substring(0,p); if (a.index_of("%")>=0) a = a.replace("%","%%");
+		string b = ""; if (p<0 || p>s.length-2) a += " ";
+		else { b = s.substring(p+2); if (b.index_of("%")>=0) b = b.replace("%","%%"); }
+		return a + "%s" + b;
+	}
+
 	private static void pbar(int64 part=0,int64 whole=100,string units="") {
 		if (Main.VERBOSE<1) return;
 		int l = 79; // bar length

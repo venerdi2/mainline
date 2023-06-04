@@ -35,8 +35,6 @@ public class SettingsDialog : Gtk.Dialog {
 		set_transient_for(parent);
 		set_modal(true);
 		window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-		//deletable = true;
-		//resizable = true;
 
 		icon = get_app_icon(16);
 
@@ -46,7 +44,6 @@ public class SettingsDialog : Gtk.Dialog {
 		var vbox_main = get_content_area();
 		vbox_main.spacing = 6;
 		vbox_main.margin = 12;
-		//vbox_main.margin_bottom = 12;
 		vbox_main.set_size_request(700,500);
 
 		// notification
@@ -249,6 +246,7 @@ public class SettingsDialog : Gtk.Dialog {
 		});
 
 		// auth command
+
 		label = new Gtk.Label("<b>"+_("Auth Command")+"</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
@@ -257,16 +255,25 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_bottom = 6;
 		vbox_main.add (label);
 
-		var authcmd = new Gtk.Entry ();
-		authcmd.set_text(App.auth_cmd);
-		authcmd.margin_start = 6;
-		vbox_main.add(authcmd);
-		authcmd.activate.connect(()=>{
-			App.auth_cmd = authcmd.get_text().strip();
-			if (App.auth_cmd=="") {
-				App.auth_cmd = DEFAULT_AUTH_CMD;
-				authcmd.set_text(App.auth_cmd);
-			}
+		var acbt = new Gtk.ComboBoxText.with_entry();
+		acbt.margin_start = 6;
+		acbt.active = -1;
+		for (int i=0;i<DEFAULT_AUTH_CMDS.length;i++) {
+			acbt.append_text(DEFAULT_AUTH_CMDS[i]);
+			if (App.auth_cmd == DEFAULT_AUTH_CMDS[i]) acbt.active = i;
+		}
+		if (acbt.active<0) {
+			acbt.append_text(App.auth_cmd);
+			acbt.active = DEFAULT_AUTH_CMDS.length;
+		} else {
+			acbt.append_text("");
+		}
+		vbox_main.add(acbt);
+		acbt.changed.connect (() => {
+			//int i = acbt.active;
+			string s = acbt.get_active_text().strip();
+			if (s != App.auth_cmd) App.auth_cmd = s;
+			//vprint("Auth Command: %d: %s".printf(i,s),3);
 		});
 
 		// ok button
