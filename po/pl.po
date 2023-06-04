@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 08:48-0400\n"
+"POT-Creation-Date: 2023-06-04 18:30-0400\n"
 "PO-Revision-Date: 2023-06-03 14:24+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -522,7 +522,7 @@ msgstr "Serwer pośredniczący"
 msgid "Auth Command"
 msgstr "Polecenia"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:278
 msgid "Done"
 msgstr "Gotowe"
 
@@ -530,6 +530,6 @@ msgstr "Gotowe"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/lib/l.misc.vala:102
+#: src/lib/l.misc.vala:107
 msgid "Can not reach site"
 msgstr "Nie można dotrzeć do witryny"

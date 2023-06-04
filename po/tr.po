@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 08:48-0400\n"
+"POT-Creation-Date: 2023-06-04 18:30-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -534,7 +534,7 @@ msgstr "Proxy"
 msgid "Auth Command"
 msgstr "Komutlar"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:278
 msgid "Done"
 msgstr ""
 
@@ -542,6 +542,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: src/lib/l.misc.vala:102
+#: src/lib/l.misc.vala:107
 msgid "Can not reach site"
 msgstr "Siteye ulaşılamıyor"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 08:48-0400\n"
+"POT-Creation-Date: 2023-06-04 18:30-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -520,7 +520,7 @@ msgstr "Проксі"
 msgid "Auth Command"
 msgstr "Команди"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:278
 msgid "Done"
 msgstr ""
 
@@ -528,6 +528,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "Відміна"
 
-#: src/lib/l.misc.vala:102
+#: src/lib/l.misc.vala:107
 msgid "Can not reach site"
 msgstr "Не вдається дістатися до сайту"

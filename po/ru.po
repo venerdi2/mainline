@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 08:48-0400\n"
+"POT-Creation-Date: 2023-06-04 18:30-0400\n"
 "PO-Revision-Date: 2023-04-17 20:16+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -533,7 +533,7 @@ msgstr "Доверенность"
 msgid "Auth Command"
 msgstr "Комманды"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:278
 msgid "Done"
 msgstr ""
 
@@ -541,6 +541,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/lib/l.misc.vala:102
+#: src/lib/l.misc.vala:107
 msgid "Can not reach site"
 msgstr "Не удается связаться с сайтом"

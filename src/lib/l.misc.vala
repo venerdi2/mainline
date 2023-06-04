@@ -1,6 +1,6 @@
-namespace l.misc {
+// misc lib
 
-	//public int VERBOSE = 1;
+namespace l.misc {
 
 	private static void set_locale() {
 		Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
@@ -23,20 +23,25 @@ namespace l.misc {
 		catch (Error e) { warning("Unable to launch %s",s); }
 	}
 
-	// doesn't really sanitize much, just disables extra printf
-	// formatting codes, more for crashing than security
-	// Find the first "%s" that isn't "%%s" if any.
-	// replace all other % with %%
-	public string sanitize_auth_cmd(string s) {
+	// Doesn't really sanitize much, just escapes any %* except
+	// a single "%s" to reduce the chance of ugly crash from printf.
+	//
+	// This is still user-supplied data fed to printf and then to a shell.
+	//
+	// Find the first "%s", ignore "%%", replace all other "%" with "%%".
+	//
+	// TODO: Working, but maybe there is a less confusing more state-machine way?
+	public string sanitize_auth_cmd(string cmd) {
+		string s = cmd.strip();
 		int p = 0;
 		while (p>=0 && p<s.length) {
 			p = s.index_of("%s",p);
-			if (p<1) continue;
+			if (p<1) break;
 			if (s.substring(p-1,1)=="%") p++;
 			else break;
 		}
 		string a = s.substring(0,p); if (a.index_of("%")>=0) a = a.replace("%","%%");
-		string b = ""; if (p<0 || p>s.length-2) a += " ";
+		string b = ""; if (p<0 || p>s.length-2) a = a.strip()+" ";
 		else { b = s.substring(p+2); if (b.index_of("%")>=0) b = b.replace("%","%%"); }
 		return a + "%s" + b;
 	}

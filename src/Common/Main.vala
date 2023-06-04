@@ -63,13 +63,13 @@ const int		DEFAULT_NOTIFY_INTERVAL_UNIT	= 0			;  // use enum
 // other
 const bool		DEFAULT_VERIFY_CHECKSUMS		= false		;
 const string[]	DEFAULT_AUTH_CMDS = {
-	"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} %s",
-	"sudo %s",
+	"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}",
+	"sudo",
 	"su -c \"%s\"",
-	"doas %s",
-	"gksudo %s",
-	"gksu --su-mode %s",
-	"pbrun %s"
+	"doas",
+	"gksudo",
+	"gksu --su-mode",
+	"pbrun"
 	};
 
 // windows

@@ -359,8 +359,10 @@ public class MainWindow : Window {
 	}
 
 	private void do_settings () {
+		// settings that change the selection set -> trigger cache update
 		var old_previous_majors = App.previous_majors;
 		var old_hide_unstable = App.hide_unstable;
+		// settings that change the notification behavior -> trigger notify script update
 		var old_notify_interval_unit = App.notify_interval_unit;
 		var old_notify_interval_value = App.notify_interval_value;
 		var old_notify_major = App.notify_major;
@@ -372,23 +374,21 @@ public class MainWindow : Window {
 
 		App.save_app_config();
 
-		// if no notifications settings changed, don't (re)run the script
+		// By default the notify script will be flagged to (re)run itself
+		// simply because settings were saved at all. It is not run immediately,
+		// only flagged to be run at the end of cache update.
+
+		// If no notifications settings changed, un-flag the notify script update.
 		if (App.notify_interval_unit == old_notify_interval_unit &&
 			App.notify_interval_value == old_notify_interval_value &&
 			App.notify_major == old_notify_major &&
 			App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
 
-		// if the selection set didn't change,
-		//    then don't trigger cache update
-		//    do run the notify script now
-		// if the selection set changed
-		//    don't run the notify script now
-		//    update the cache
-		//    the notify script will run if needed at the end of cache update
+		// If the selection set didn't change, then don't update cache.
+		// If we don't update cache, then we have to do the notify script now.
 		if (App.previous_majors == old_previous_majors &&
 			App.hide_unstable == old_hide_unstable) App.run_notify_script();
 		else update_cache();
-
 	}
 
 	private void do_about () {

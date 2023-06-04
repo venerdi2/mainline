@@ -270,10 +270,8 @@ public class SettingsDialog : Gtk.Dialog {
 		}
 		vbox_main.add(acbt);
 		acbt.changed.connect (() => {
-			//int i = acbt.active;
 			string s = acbt.get_active_text().strip();
 			if (s != App.auth_cmd) App.auth_cmd = s;
-			//vprint("Auth Command: %d: %s".printf(i,s),3);
 		});
 
 		// ok button

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 08:48-0400\n"
+"POT-Creation-Date: 2023-06-04 18:30-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -532,7 +532,7 @@ msgstr "대리"
 msgid "Auth Command"
 msgstr "명령어"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:278
 msgid "Done"
 msgstr ""
 
@@ -540,6 +540,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "취소"
 
-#: src/lib/l.misc.vala:102
+#: src/lib/l.misc.vala:107
 msgid "Can not reach site"
 msgstr "사이트에 도달 할 수 없습니다"
