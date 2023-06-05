@@ -1,26 +1,26 @@
 
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
-using TeeJee.Misc;
 using l.misc;
 
 public class Package : GLib.Object {
 	public string pname = "";
-	public string arch = "";
 	public string version = "";
+	public string arch = "";
 	public bool is_installed = false;
 	public static Gee.ArrayList<Package> dpkg_list = new Gee.ArrayList<Package>();
 
 	public static void initialize() {
-		new Package("");
+		new Package();
 	}
 
-	public Package(string _name) {
-		pname = _name;
+	public Package(string s="") {
+		vprint("Package("+s+")",4);
+		pname = s;
 	}
 
-	public static void update_dpkg_list() {
-		vprint("update_dpkg_list()",2);
+	public static void mk_dpkg_list() {
+		vprint("mk_dpkg_list()",2);
 		// get installed packages from dpkg --------------
 
 		string t_dir = create_tmp_dir();
@@ -33,11 +33,11 @@ public class Package : GLib.Object {
 
 		try {
 			string line;
-			var file = File.new_for_path (t_file);
-			if (file.query_exists ()) {
-				var dis = new DataInputStream (file.read());
+			var file = File.new_for_path(t_file);
+			if (file.query_exists()) {
+				var dis = new DataInputStream(file.read());
 				dpkg_list.clear();
-				while ((line = dis.read_line (null)) != null) {
+				while ((line = dis.read_line(null)) != null) {
 					string[] arr = line.split("|");
 					if (arr.length != 4) continue;
 					if (arr[3].substring(1,1) != "i" ) continue;
@@ -48,11 +48,11 @@ public class Package : GLib.Object {
 
 					if (arch != LinuxKernel.NATIVE_ARCH && arch != "all" && arch != "any") continue;
 
-					var pkg = new Package(name);
-					pkg.version = vers;
-					pkg.arch = arch;
-					dpkg_list.add(pkg);
-					vprint("dpkg_list.add("+pkg.pname+")  version:"+pkg.version+"  arch:"+pkg.arch,3);
+					var p = new Package(name);
+					p.version = vers;
+					p.arch = arch;
+					dpkg_list.add(p);
+					vprint("dpkg_list.add("+p.pname+")  version:"+p.version+"  arch:"+p.arch,2);
 				}
 			} else {
 				vprint(_("File not found: %s").printf(t_file),1,stderr);
@@ -61,6 +61,6 @@ public class Package : GLib.Object {
 		catch (Error e) {
 			vprint(e.message,1,stderr);
 		}
-		dir_delete(t_dir);
+		delete_r(t_dir);
 	}
 }

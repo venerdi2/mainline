@@ -2,7 +2,7 @@
 
 SHELL := /bin/bash
 CFLAGS := -O2
-VALACFLAGS := 
+VALACFLAGS := #-D LOCK_TOGGLES_IN_KERNEL_COLUMN #-D VTE_ASYNC
 
 prefix := /usr
 bindir := $(prefix)/bin

@@ -22,7 +22,6 @@
  */
 
 using GLib;
-using Gee;
 using Json;
 
 using TeeJee.FileSystem;
@@ -63,6 +62,16 @@ const int		DEFAULT_NOTIFY_INTERVAL_VALUE	= 4			;  // FIXME
 const int		DEFAULT_NOTIFY_INTERVAL_UNIT	= 0			;  // use enum
 // other
 const bool		DEFAULT_VERIFY_CHECKSUMS		= false		;
+const string[]	DEFAULT_AUTH_CMDS = {
+	"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}",
+	"sudo",
+	"su -c \"%s\"",
+	"doas",
+	"gksudo",
+	"gksu --su-mode",
+	"pbrun"
+	};
+
 // windows
 const int		DEFAULT_WINDOW_WIDTH			= 800		;
 const int		DEFAULT_WINDOW_HEIGHT			= 600		;
@@ -70,10 +79,8 @@ const int		DEFAULT_WINDOW_X				= -1		;
 const int		DEFAULT_WINDOW_Y				= -1		;
 const int		DEFAULT_TERM_WIDTH				= 1100		;
 const int		DEFAULT_TERM_HEIGHT				= 600		;
-//const int		DEFAULT_TERM_X					= -1		;
-//const int		DEFAULT_TERM_Y					= -1		;
-
-const string line = "----------------------------------------------------------------------";
+const int		DEFAULT_TERM_X					= -1		;
+const int		DEFAULT_TERM_Y					= -1		;
 
 extern void exit(int exit_code);
 
@@ -81,20 +88,17 @@ public class Main : GLib.Object {
 
 	// constants ----------
 
+	public string CONFIG_DIR = "";
+	public string CACHE_DIR = "";
+	public string DATA_DIR = "";
 	public string TMP_PREFIX = "";
-	public string APP_CONF_DIR = "";
+
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
-	public string OLD_STARTUP_SCRIPT_FILE = ""; // TRANSITION
-	public string OLD_STARTUP_DESKTOP_FILE = ""; // TRANSITION
 	public string NOTIFICATION_ID_FILE = "";
 	public string MAJOR_SEEN_FILE = "";
 	public string MINOR_SEEN_FILE = "";
-
-	public string user_login = "";
-	public string user_home = "";
-	public string CACHE_DIR = "~/.cache/"+BRANDING_SHORTNAME ; // some hard-coded non-empty for rm -rf safety
 
 	// global progress ----------------
 
@@ -104,14 +108,14 @@ public class Main : GLib.Object {
 	public bool cancelled = false;
 
 	// state flags ----------
-
-	public int VERBOSE = 1;
+	public static int VERBOSE = 1;
 	public bool GUI_MODE = false;
 	public string command = "list";
-	public string requested_version = "";
+	public string requested_versions = "";
 	public bool ppa_tried = false;
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;
+	public bool RUN_NOTIFY_SCRIPT = false;
 
 	public string ppa_uri = DEFAULT_PPA_URI;
 	public string all_proxy = DEFAULT_ALL_PROXY;
@@ -124,7 +128,9 @@ public class Main : GLib.Object {
 	public int notify_interval_unit = DEFAULT_NOTIFY_INTERVAL_UNIT;
 	public int notify_interval_value = DEFAULT_NOTIFY_INTERVAL_VALUE;
 	public bool verify_checksums = DEFAULT_VERIFY_CHECKSUMS;
+	public string auth_cmd = DEFAULT_AUTH_CMDS[0];
 
+	// save & restore window size & position
 	public int window_width = DEFAULT_WINDOW_WIDTH;
 	public int window_height = DEFAULT_WINDOW_HEIGHT;
 	public int _window_width = DEFAULT_WINDOW_WIDTH;
@@ -133,18 +139,14 @@ public class Main : GLib.Object {
 	public int window_y = DEFAULT_WINDOW_Y;
 	public int _window_x = DEFAULT_WINDOW_X;
 	public int _window_y = DEFAULT_WINDOW_Y;
-
-	// *sizing* the terminal window is working
 	public int term_width = DEFAULT_TERM_WIDTH;
 	public int term_height = DEFAULT_TERM_HEIGHT;
 	public int _term_width = DEFAULT_TERM_WIDTH;
 	public int _term_height = DEFAULT_TERM_HEIGHT;
-/* // *positioning* the terminal window is not working
 	public int term_x = DEFAULT_TERM_X;
 	public int term_y = DEFAULT_TERM_Y;
 	public int _term_x = DEFAULT_TERM_X;
 	public int _term_y = DEFAULT_TERM_Y;
-*/
 
 	public bool confirm = true;
 
@@ -153,6 +155,7 @@ public class Main : GLib.Object {
 	public Main(string[] arg0, bool _gui_mode) {
 		GUI_MODE = _gui_mode;
 		get_env();
+		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 		init_paths();
 		load_app_config();
@@ -163,35 +166,42 @@ public class Main : GLib.Object {
 	// helpers ------------
 
 	public void get_env() {
-		if (Environment.get_variable("VERBOSE")!=null) {
-			string s = Environment.get_variable("VERBOSE").down();
-			if (s=="false") s = "0";
-			if (s=="true") s = "1";
-			VERBOSE = int.parse(s);
-			l.misc.VERBOSE = VERBOSE;
+		var s = Environment.get_variable("VERBOSE");
+		if (s != null) set_verbose(s.down().strip()); // don't do VERBOSE++
+	}
+
+	public bool set_verbose(string? s) {
+		string a = (s==null) ? "" : s.strip();
+		switch (a) {
+			case "n":
+			case "no":
+			case "off":
+			case "false": a = "0"; break;
+			case "y":
+			case "yes":
+			case "on":
+			case "true": a = "1"; break;
 		}
+		int v = VERBOSE;
+		bool r = true;
+		if (a=="" || a.has_prefix("-")) { r = false; v++; }
+		else v = int.parse(a);
+		VERBOSE = v;
+		Environment.set_variable("VERBOSE",v.to_string(),true);
+		return r;
 	}
 
 	public void init_paths() {
-
-		// user info
-		user_login = Environment.get_user_name();
-		user_home = Environment.get_home_dir();
-
-		APP_CONF_DIR = user_home + "/.config/" + BRANDING_SHORTNAME;
-		APP_CONFIG_FILE = APP_CONF_DIR + "/config.json";
-		STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
-		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
-		OLD_STARTUP_SCRIPT_FILE = APP_CONF_DIR + "/notify-loop.sh"; // TRANSITION
-		OLD_STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/" + BRANDING_SHORTNAME + ".desktop"; // TRANSITION
-		NOTIFICATION_ID_FILE = APP_CONF_DIR + "/notification_id";
-		MAJOR_SEEN_FILE = APP_CONF_DIR + "/notification_seen.major";
-		MINOR_SEEN_FILE = APP_CONF_DIR + "/notification_seen.minor";
-		CACHE_DIR = user_home + "/.cache/" + BRANDING_SHORTNAME;
+		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
+		DATA_DIR = Environment.get_user_data_dir() + "/" + BRANDING_SHORTNAME;
+		CACHE_DIR = Environment.get_user_cache_dir() + "/" + BRANDING_SHORTNAME;
 		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
-
-		LinuxKernel.CACHE_DIR = CACHE_DIR;
-
+		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
+		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
+		STARTUP_DESKTOP_FILE = CONFIG_DIR + "/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
+		NOTIFICATION_ID_FILE = CONFIG_DIR + "/notification_id";
+		MAJOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.major";
+		MINOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.minor";
 	}
 
 	public void save_app_config() {
@@ -209,14 +219,15 @@ public class Main : GLib.Object {
 		config.set_int_member(		"notify_interval_unit",		notify_interval_unit	);
 		config.set_int_member(		"notify_interval_value",	notify_interval_value	);
 		config.set_boolean_member(	"verify_checksums",			verify_checksums		);
+		config.set_string_member(	"auth_cmd",					auth_cmd				);
 		config.set_int_member(		"window_width",				window_width			);
 		config.set_int_member(		"window_height",			window_height			);
 		config.set_int_member(		"window_x",					window_x				);
 		config.set_int_member(		"window_y",					window_y				);
 		config.set_int_member(		"term_width",				term_width				);
 		config.set_int_member(		"term_height",				term_height				);
-//		config.set_int_member(		"term_x",					term_x					);
-//		config.set_int_member(		"term_y",					term_y					);
+		config.set_int_member(		"term_x",					term_x					);
+		config.set_int_member(		"term_y",					term_y					);
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -225,7 +236,7 @@ public class Main : GLib.Object {
 		node.set_object(config);
 		json.set_root(node);
 
-		dir_create(APP_CONF_DIR);
+		dir_create(CONFIG_DIR);
 		try { json.to_file(APP_CONFIG_FILE); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 
@@ -257,17 +268,6 @@ public class Main : GLib.Object {
 		var node = parser.get_root();
 		var config = node.get_object();
 
-		// TRANSITION PERIOD
-		// detect old file format
-		// hide_unstable, notify_major, notify minor
-		// are all options that have existed since the oldest version of ukuu,
-		// still exist today, and are not (now) string type.
-		// They should be present in all config files no matter how old,
-		// and if they are stored as a string,
-		// then the config file is in the old format
-		bool resave = false;
-		if (config.get_string_member("hide_unstable")==null) {
-			// new config file format - values stored in native format
 #if GLIB_JSON_1_6
 				vprint("glib-json >= 1.6",3);
 				ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
@@ -281,14 +281,15 @@ public class Main : GLib.Object {
 				notify_interval_unit	=	(int)config.get_int_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
 				notify_interval_value	=	(int)config.get_int_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
 				verify_checksums		=	config.get_boolean_member_with_default(		"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
+				auth_cmd				=	config.get_string_member_with_default(		"auth_cmd",					DEFAULT_AUTH_CMDS[0]			);
 				window_width			=	(int)config.get_int_member_with_default(	"window_width",				DEFAULT_WINDOW_WIDTH			);
 				window_height			=	(int)config.get_int_member_with_default(	"window_height",			DEFAULT_WINDOW_HEIGHT			);
 				window_x				=	(int)config.get_int_member_with_default(	"window_x",					DEFAULT_WINDOW_X				);
 				window_y				=	(int)config.get_int_member_with_default(	"window_y",					DEFAULT_WINDOW_Y				);
 				term_width				=	(int)config.get_int_member_with_default(	"term_width",				DEFAULT_TERM_WIDTH				);
 				term_height				=	(int)config.get_int_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				);
-				//term_x				=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
-				//term_y				=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
+				term_x					=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
+				term_y					=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
 #else
 				vprint("glib-json < 1.6",3);
 				ppa_uri					=	json_get_string(	config,	"ppa_uri",					DEFAULT_PPA_URI					);
@@ -302,46 +303,22 @@ public class Main : GLib.Object {
 				notify_interval_unit	=	json_get_int(		config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
 				notify_interval_value	=	json_get_int(		config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
 				verify_checksums		=	json_get_bool(		config,	"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
+				auth_cmd				=	json_get_string(	config,	"auth_cmd",					DEFAULT_AUTH_CMDS[0]			);
 				window_width			=	json_get_int(		config,	"window_width",				DEFAULT_WINDOW_WIDTH			);
 				window_height			=	json_get_int(		config,	"window_height",			DEFAULT_WINDOW_HEIGHT			);
 				window_x				=	json_get_int(		config,	"window_x",					DEFAULT_WINDOW_X				);
 				window_y				=	json_get_int(		config,	"window_y",					DEFAULT_WINDOW_Y				);
 				term_width				=	json_get_int(		config,	"term_width",				DEFAULT_TERM_WIDTH				);
 				term_height				=	json_get_int(		config,	"term_height",				DEFAULT_TERM_HEIGHT				);
+				term_x					=	json_get_int(		config,	"term_x",					DEFAULT_TERM_X					);
+				term_y					=	json_get_int(		config,	"term_y",					DEFAULT_TERM_Y					);
 #endif
-		} else {
-			// old config file format - all values stored as string
-			vprint("detetcted old config file format",2);
-			resave = true;
-#if GLIB_JSON_1_6
-				vprint("glib-json >= 1.6",3);
-				connect_timeout_seconds	=	int.parse(	config.get_string_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
-				concurrent_downloads	=	int.parse(	config.get_string_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
-				hide_unstable			=	bool.parse(	config.get_string_member_with_default(	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
-				previous_majors			=	int.parse(	config.get_string_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
-				notify_major			=	bool.parse(	config.get_string_member_with_default(	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
-				notify_minor			=	bool.parse(	config.get_string_member_with_default(	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
-				notify_interval_unit	=	int.parse(	config.get_string_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
-				notify_interval_value	=	int.parse(	config.get_string_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-#else
-				vprint("glib-json < 1.6",3);
-				connect_timeout_seconds	=	int.parse(	json_get_string(	config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	.to_string()	)	);
-				concurrent_downloads	=	int.parse(	json_get_string(	config,	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	.to_string()	)	);
-				hide_unstable			=	bool.parse(	json_get_string(	config,	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			.to_string()	)	);
-				previous_majors			=	int.parse(	json_get_string(	config,	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			.to_string()	)	);
-				notify_major			=	bool.parse(	json_get_string(	config,	"notify_major",				DEFAULT_NOTIFY_MAJOR			.to_string()	)	);
-				notify_minor			=	bool.parse(	json_get_string(	config,	"notify_minor",				DEFAULT_NOTIFY_MINOR			.to_string()	)	);
-				notify_interval_unit	=	int.parse(	json_get_string(	config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	.to_string()	)	);
-				notify_interval_value	=	int.parse(	json_get_string(	config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	.to_string()	)	);
-#endif
-		}
 
 		// fixups
+		bool resave = false;
 		if (ppa_uri.length==0) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
 		if (!ppa_uri.has_suffix("/")) { ppa_uri += "/"; resave = true; }
-		LinuxKernel.PPA_URI = ppa_uri;
 		if (connect_timeout_seconds>600) connect_timeout_seconds = 600; // aria2c max allowed
-
 		if (resave) save_app_config();
 
 		vprint("Loaded config file: "+APP_CONFIG_FILE,2);
@@ -352,27 +329,24 @@ public class Main : GLib.Object {
 		vprint("update_startup_script()",2);
 
 		// construct the commandline argument for "sleep"
-		int count = notify_interval_value;
-		string suffix = "h";
+		int n = notify_interval_value;
+		string u = "h";
 		switch (notify_interval_unit) {
 		case 0: // hour
-			suffix = "h";
+			u = "h";
 			break;
 		case 1: // day
-			suffix = "d";
+			u = "d";
 			break;
 		case 2: // week
-			suffix = "d";
-			count = notify_interval_value * 7;
+			u = "d";
+			n = notify_interval_value * 7;
 			break;
 		case 3: // second
-			suffix = "";
-			count = notify_interval_value;
+			u = "";
+			n = notify_interval_value;
 			break;
 		}
-
-		file_delete(STARTUP_SCRIPT_FILE);
-		file_delete(OLD_STARTUP_SCRIPT_FILE); // TRANSITION
 
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
@@ -403,8 +377,8 @@ public class Main : GLib.Object {
 			+ "# run whatever the new state should be\n";
 		if (notify_minor || notify_major) {
 			s += "while [[ -f $F ]] ;do\n"
-			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&-\n"
-			+ "\tsleep %d%s &\n".printf(count,suffix)
+			+ "\tVERBOSE=0 "+BRANDING_SHORTNAME+" --notify 2>&- >&- || exit\n"
+			+ "\tsleep %d%s &\n".printf(n,u)
 			+ "\tc=$!\n"
 			+ "\techo $c >>${F}_\n"
 			+ "\twait $c\n"	// respond to signals during sleep
@@ -414,23 +388,8 @@ public class Main : GLib.Object {
 			+ "exit 0\n";
 		}
 
-		if (GUI_MODE) {
-			// save_app_config() gets run right at app startup if the config file
-			// doesn't exist yet, so sometimes update_startup_script() might run
-			// early in app start-up when we haven't done the cache update yet.
-			// If we blindly launch the background notification process immediately
-			// any time settings are updated, the --notify process and ourselves
-			// will both try to update the same cache files at the same time and
-			// step all over each other.
-			// This is not really a fully correct answer, but mostly good enough:
-			// * If all notifications are now OFF, then run the new startup script
-			//   immediately so that it clears out the existing notification loop
-			//   that might be running.
-			// * Otherwise don't do anything right now, and run the new startup
-			//   script at app exit instead.
-			file_write(STARTUP_SCRIPT_FILE,s);
-			if (!notify_major && !notify_minor) exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
-		}
+		file_write(STARTUP_SCRIPT_FILE,s);
+		RUN_NOTIFY_SCRIPT = true;
 	}
 
 	private void update_startup_desktop_file() {
@@ -442,9 +401,14 @@ public class Main : GLib.Object {
 				;
 			file_write(STARTUP_DESKTOP_FILE,s);
 		} else {
-			file_delete(STARTUP_DESKTOP_FILE);
-			file_delete(OLD_STARTUP_DESKTOP_FILE); // TRANSITION
+			delete_r(STARTUP_DESKTOP_FILE);
 		}
+	}
+
+	public void run_notify_script() {
+		if (!RUN_NOTIFY_SCRIPT) return;
+		RUN_NOTIFY_SCRIPT = false;
+		exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
 	}
 
 }

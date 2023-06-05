@@ -19,13 +19,7 @@
  * MA 02110-1301, USA.
  */
 
-using GLib;
-using Gee;
-using Json;
-
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
-using TeeJee.Misc;
 using l.misc;
 
 public Main App;
@@ -33,16 +27,14 @@ public Main App;
 public class AppConsole : GLib.Object {
 
 	public static int main (string[] args) {
-		set_locale();
 		App = new Main(args, false);
 		var console = new AppConsole();
-		bool is_success = console.parse_arguments(args);
-		return (is_success) ? 0 : 1;
+		return console.parse_arguments(args);
 	}
 
-	private static string help_message() {
+	public int parse_arguments(string[] args) {
 
-		string msg = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
+		string help = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
 		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
 		+ "\n"
@@ -50,241 +42,165 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ "  --check             " + _("Check for kernel updates") + "\n"
 		+ "  --notify            " + _("Check for kernel updates and notify current user") + "\n"
-		+ "  --list              " + _("List all available mainline kernels") + "\n"
+		+ "  --list              " + _("List available mainline kernels") + "\n"
 		+ "  --list-installed    " + _("List installed kernels") + "\n"
 		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
-		+ "  --install-point     " + _("Install latest point update for current series") + "\n"
-		+ "  --install <name>    " + _("Install specified mainline kernel") + "(1)(3)\n"
-		+ "  --uninstall <name>  " + _("Uninstall specified kernel") + "(1)(2)(3)\n"
-		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(3)\n"
-		+ "  --download <name>   " + _("Download specified kernels") + "(2)\n"
+		+ "  --install-point     " + _("Install latest point update in the current major version") + "\n"
+		+ "  --install <names>   " + _("Install specified kernels") + "(1)(2)\n"
+		+ "  --uninstall <names> " + _("Uninstall specified kernels") + "(1)(2)\n"
+		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(2)\n"
+		+ "  --download <names>  " + _("Download specified kernels") + "(1)\n"
 		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
 		+ "  --include-unstable  " + _("Include unstable and RC releases") + "\n"
 		+ "  --exclude-unstable  " + _("Exclude unstable and RC releases") + "\n"
-		+ "  --debug             " + _("Enable verbose debugging output") + "\n"
-		+ "  --yes               " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
+		+ "  -v|--verbose [n]    " + _("Verbosity. Set to n if given, or increment.") + "\n"
+		+ "  -y|--yes            " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
 		+ "\n"
 		+ "Notes:\n"
-		+ "(1) " +_("A version string taken from the output of --list") + "\n"
-		+ "(2) " +_("One or more, comma-seperated") + "\n"
-		+ "(3) " +_("The currently running kernel will always be ignored") + "\n"
+		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
+		+ "    " +_("comma, pipe, or colon-seperated, or quoted space seperated") + "\n"
+		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
-		return msg;
-	}
-
-	public bool parse_arguments(string[] args) {
-
-		string txt = BRANDING_SHORTNAME + " ";
-		for (int i = 1; i < args.length; i++) txt += "'%s' ".printf(args[i]);
 
 		// check argument count -----------------
 
 		if (args.length == 1) {
-			vprint(help_message(),0);
-			return false;
+			vprint(help,0);
+			return 1;
 		}
 
 		string cmd = "";
-		string cmd_versions = "";
+		string vlist = "";
 		string a = "";
 
 		// parse options first --------------
 
-		for (int i = 1; i < args.length; i++)
-		{
+		for (int i = 1; i < args.length; i++) {
 			a = args[i].down();
 			switch (a) {
-			case "--debug":
-				App.VERBOSE = 2;
-				l.misc.VERBOSE = 2;
-				Environment.set_variable("VERBOSE","2",true);
-				break;
 
-			case "--yes":
-				App.confirm = false;
-				break;
+				case "-v":
+				case "--debug":
+				case "--verbose":
+					if (App.set_verbose(args[i+1])) i++;
+					break;
 
-			// used by gui front-end
-			case "--index-is-fresh":
-				App.index_is_fresh = true;
-				break;
+				case "-y":
+				case "--yes":
+					App.confirm = false;
+					break;
 
-			case "--show-unstable":		// back compat
-			case "--include-unstable":
-				App.hide_unstable = false;
-				break;
-			case "--hide-unstable":		// back compat
-			case "--exclude-unstable":
-				App.hide_unstable = true;
-				break;
+				// used by gui front-end
+				case "--index-is-fresh":
+					App.index_is_fresh = true;
+					break;
 
-			case "--list":
-			case "--list-installed":
-			case "--check":
-			case "--notify":
-			case "--install-latest":
-			case "--install-point":
-			case "--purge-old-kernels":	// back compat
-			case "--uninstall-old":
-			case "--clean-cache":	// back compat
-			case "--delete-cache":
-				cmd = a;
-				break;
+				case "--show-unstable":		// back compat
+				case "--include-unstable":
+					App.hide_unstable = false;
+					break;
+				case "--hide-unstable":		// back compat
+				case "--exclude-unstable":
+					App.hide_unstable = true;
+					break;
 
-			case "--remove":	// back compat
-				cmd = "--uninstall";
-				if (++i < args.length) cmd_versions = args[i];
-				break;
+				case "--list":
+				case "--list-installed":
+				case "--check":
+				case "--notify":
+				case "--install-latest":
+				case "--install-point":
+				case "--purge-old-kernels":	// back compat
+				case "--uninstall-old":
+				case "--clean-cache":	// back compat
+				case "--delete-cache":
+					cmd = a;
+					break;
 
-			case "--uninstall":
-			case "--download":
-			case "--install":
-				cmd = a;
-				if (++i < args.length) cmd_versions = args[i];
-				break;
+				case "--download":
+				case "--remove":
+				case "--uninstall":
+				case "--install":
+					cmd = (a=="--remove") ? "--uninstall" : a ;
+					if (++i < args.length) vlist = args[i];
+					break;
 
-			// which is better for no args ?
-			case "":	// no args -> --list
-				cmd = "--list";
-				break;
+				case "":
+				case "-?":
+				case "-h":
+				case "--help":
+					vprint(help,0);
+					return 0;
 
-			//case "":	// no args -> --help
-			case "--help":
-			case "-h":
-			case "-?":
-				vprint(help_message(),0);
-				return true;
-
-			default:
-				// unknown option
-				vprint(_("Unknown option") + ": %s".printf(args[i]),1,stderr);
-				vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all options"),1,stderr);
-				return false;
+				default:
+					vprint(_("Unknown option") + ": \"%s\"".printf(args[i]),1,stderr);
+					vprint(help,0);
+					return 1;
 			}
 		}
 
 		// run command --------------------------------------
 
 		switch (cmd) {
-		case "--list":
-			LinuxKernel.query(true);
-			LinuxKernel.print_list();
-			break;
+			case "--list":
+				LinuxKernel.mk_kernel_list(true);
+				LinuxKernel.print_list();
+				break;
 
-		case "--list-installed":
-			Package.update_dpkg_list();
-			LinuxKernel.check_installed();
-			break;
+			case "--list-installed":
+				Package.mk_dpkg_list();
+				LinuxKernel.check_installed();
+				break;
 
-		case "--check":
-			print_updates();
-			break;
+			case "--check":
+				print_updates();
+				break;
 
-		case "--notify":
-			// silence VERBOSE only if it's 1
-			if (App.VERBOSE==1) App.VERBOSE=0;
-			l.misc.VERBOSE = App.VERBOSE;
-			notify_user();
-			break;
+			case "--notify":
+				return notify_user();
 
-		case "--install-latest":
-			LinuxKernel.kinst_latest(false, App.confirm);
-			break;
+			case "--install-latest":
+				LinuxKernel.kinst_latest(false, App.confirm);
+				break;
 
-		case "--install-point":
-			LinuxKernel.kinst_latest(true, App.confirm);
-			break;
+			case "--install-point":
+				LinuxKernel.kinst_latest(true, App.confirm);
+				break;
 
-		case "--purge-old-kernels":	// back compat
-		case "--uninstall-old":
-			LinuxKernel.kunin_old(App.confirm);
-			break;
+			case "--purge-old-kernels":	// back compat
+			case "--uninstall-old":
+				LinuxKernel.kunin_old(App.confirm);
+				break;
 
-		case "--clean-cache": // back compat
-		case "--delete-cache":
-			LinuxKernel.delete_cache();
-			break;
+			case "--clean-cache": // back compat
+			case "--delete-cache":
+				LinuxKernel.delete_cache();
+				break;
 
-		case "--download":
-		case "--install":
-		case "--uninstall":
-
-			// FIXME move this list-builder out of the switch
-
-			if (cmd_versions.length==0) {
-				vprint(_("No kernels specified"),1,stderr);
-				exit(1);
-			}
-
-			string[] requested_versions = cmd_versions.split_set(",;:| ");
-			if ((requested_versions.length > 1) && (cmd == "--install")) {
-				vprint(_("Multiple kernels selected for installation. Select only one."),1,stderr);
-				exit(1);
-			}
-
-			LinuxKernel.query(true);
-
-			var list = new Gee.ArrayList<LinuxKernel>();
-
-			foreach(string requested_version in requested_versions) {
-				LinuxKernel kern_requested = null;
-				foreach(var k in LinuxKernel.kernel_list) {
-					// match --list output
-					// FIXME version_main can dupe with mainline & distro pkgs of the same version
-					// if cmd is uninstall, must also match k.is_installed
-					// but if cmd is download or install, must IGNORE k.is_installed
-					// extra FUGLY because this whole cmdline parser is redundant junk
-					if (k.version_main == requested_version && (cmd != "--uninstall" || k.is_installed)) {
-						kern_requested = k;
-						break;
-					}
-				}
-
-				if (kern_requested == null) {
-					var msg = _("Could not find requested version");
-					msg += ": "+requested_version;
-					vprint(msg,1,stderr);
-					vprint(_("Run")+" '"+args[0]+" --list' "+_("and use a version string listed in first column"),1,stderr);
-					exit(1);
-				}
-
-				list.add(kern_requested);
-			}
-
-			if (list.size == 0) {
-				vprint(_("No kernels specified"),1,stderr);
-				exit(1);
-			}
-
-			switch (cmd) {
 			case "--download":
-				return LinuxKernel.download_kernels(list);
+				return LinuxKernel.download_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
 			case "--uninstall":
-				return LinuxKernel.kunin_list(list);
+				return LinuxKernel.uninstall_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
 			case "--install":
-				return list[0].kinst();
-			}
+				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-			break;
-
-		default:
-			// unknown command
-			vprint(_("Command not specified"),1,stderr);
-			vprint(_("Run")+" '"+args[0]+" --help' "+_("to list all commands"),1,stderr);
-			break;
+			default:
+				vprint(_("Unknown option") + ": \""+cmd+"\"",1,stderr);
+				vprint(help,0);
+				return 1;
 		}
 
-		return true;
+		return 0;
 	}
 
 	private void print_updates() {
 
-		LinuxKernel.query(true);
+		LinuxKernel.mk_kernel_list(true);
 
 		var kern_major = LinuxKernel.kernel_update_major;
 		
@@ -304,18 +220,22 @@ public class AppConsole : GLib.Object {
 			vprint(_("No updates found"));
 		}
 
-		vprint(line);
 	}
 
-	private void notify_user() {
+	private int notify_user() {
 		vprint("notify_user()",2);
 
 		if (!App.notify_major && !App.notify_minor) {
-			vprint(_("Notifications disabled in settings"),2);
-			return;
+			vprint(_("Notifications disabled"),2);
+			return 1;
 		}
 
-		LinuxKernel.query(true);
+		if (Environment.get_variable("DISPLAY")==null) {
+			vprint("No $DISPLAY",2);
+			return 1;
+		}
+
+		LinuxKernel.mk_kernel_list(true);
 
 		string title = _("No updates found");
 		string seen = "";
@@ -351,6 +271,7 @@ public class AppConsole : GLib.Object {
 		}
 
 		vprint(title,2);
+		return 0;
 	}
 
 }

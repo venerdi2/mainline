@@ -15,16 +15,16 @@ Excludes less stable more bleeding edge -rc kernels from the list.
 **Show N previous major versions \[#\]**  
 Defines a threshold value for the oldest major version to include in the display, as an offset from the whatever the current latest version is.  
 
-The algorithm is essentially this pseudocode:  
-threshold_major = min( latest_available - N , oldest_installed )  
+The threshold is whichever is lower:  
+ - the oldest mainline kernel you have installed
+ - the highest mainline version available minus N
 
-In other words, whichever is lower: the latest major version available minus N, or the oldest major version you have installed.
+The special value "-1" is also allowed, and means to show all possible kernel versions. With this setting the initial cache update or Reload takes a long time, but it's actually usable after that.
 
-The special value "-1" is also allowed, and means always show all kernel versions. With this value the initial cache update takes a long time, but it's actually usable after that.
+Any installed non-mainline kernels are ignored for this.  
+This allows to have a prior-generation distribution kernel installed without causing the list to include the entire prior generation of mainline kernels for no reason.  
 
 Generally, you want this setting to just be 0.  
-
-Distribution (non-mainline) kernels are not included when determining the lowest or highest installed versions.  
 
 ## Network
 **Internet connection timeout in \[##\] seconds**  
@@ -33,6 +33,19 @@ Distribution (non-mainline) kernels are not included when determining the lowest
 **\[ \] Verify Checksums**  
 When downloading .deb packages, first download the CHECKSUMS file and extract the sha-256 hashes from it, and use them to verify the .deb file downloads.
 
-**Proxy
-\[                               \]**  
+**Proxy  
+\[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]**  
 proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-all-proxy) setting
+
+**mainline-ppa url  
+\[https://kernel.ubuntu.com/~kernel-ppa/mainline/  \]**  
+
+## Auth Command
+**\[pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}  \]**  
+This is the "sudo" equivalent used internally to run `dpkg` as root.  
+
+pkexec can be difficult though, so if you need to, you can specify "sudo" or "gksudo" etc, or anything you want.  
+
+This probably most useful when ssh-ing in to a headless box where there is no desktop session or gdbus daemon runnning.  
+
+You can restore the built-in default at any time by just blanking out the field and hitting Enter.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 12:22-0400\n"
+"POT-Creation-Date: 2023-06-05 00:44-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -13,78 +13,100 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-12-23 23:36+0000\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:100
 msgid "Distribution"
 msgstr "Distribucija"
 
-#: src/Common/LinuxKernel.vala:117
+#: src/Common/LinuxKernel.vala:115
 msgid "Architecture"
 msgstr "Arhitektura"
 
-#: src/Common/LinuxKernel.vala:132
+#: src/Common/LinuxKernel.vala:130
 msgid "Running kernel"
 msgstr "Trčanje kernel"
 
-#: src/Common/LinuxKernel.vala:255
+#: src/Common/LinuxKernel.vala:230
 msgid "loading cached"
 msgstr "učitavanje predmemoriranog"
 
-#: src/Common/LinuxKernel.vala:269
+#: src/Common/LinuxKernel.vala:242
 msgid "queuing download"
 msgstr "preuzimanje u redu čekanja"
 
-#: src/Common/LinuxKernel.vala:292
+#: src/Common/LinuxKernel.vala:263
 msgid "Fetching individual kernel indexes"
 msgstr "Dohvaćanje pojedinačnih indeksa kernel"
 
-#: src/Common/LinuxKernel.vala:308
+#: src/Common/LinuxKernel.vala:277
 msgid "loading downloaded"
 msgstr "učitavanje preuzeto"
 
-#: src/Common/LinuxKernel.vala:343
+#: src/Common/LinuxKernel.vala:318
 msgid "Updating from"
 msgstr "Ažuriranje iz"
 
-#: src/Common/LinuxKernel.vala:351
+#: src/Common/LinuxKernel.vala:326
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:354
+#: src/Common/LinuxKernel.vala:329
 msgid "FAILED"
 msgstr "NIJE USPIO"
 
-#: src/Common/LinuxKernel.vala:397
+#: src/Common/LinuxKernel.vala:392
 msgid "Found installed"
 msgstr "Pronađeno instalirano"
 
-#: src/Common/LinuxKernel.vala:735 src/Gtk/MainWindow.vala:522
-#: src/Gtk/MainWindow.vala:535
+#: src/Common/LinuxKernel.vala:393
+msgid "locked"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:475 src/Common/LinuxKernel.vala:1003
+#: src/Common/LinuxKernel.vala:1094
+msgid "is locked."
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:668 src/Gtk/MainWindow.vala:521
 msgid "Running"
 msgstr "Pokrenuto"
 
-#: src/Common/LinuxKernel.vala:736
+#: src/Common/LinuxKernel.vala:669
 msgid "Installed"
 msgstr "Instalirano"
 
-#: src/Common/LinuxKernel.vala:737
+#: src/Common/LinuxKernel.vala:670
 msgid "Invalid"
 msgstr "Érvénytelen"
 
-#: src/Common/LinuxKernel.vala:811
+#: src/Common/LinuxKernel.vala:760
 msgid "Packages Available"
 msgstr "Dostupni Paketi"
 
-#: src/Common/LinuxKernel.vala:817
+#: src/Common/LinuxKernel.vala:766
 msgid "Packages Installed"
 msgstr "Instalirani paketi"
 
-#: src/Common/LinuxKernel.vala:839 src/lib/TeeJee.FileSystem.vala:118
+#: src/Common/LinuxKernel.vala:791 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Datoteka nije pronađena"
 
-#: src/Common/LinuxKernel.vala:910
+#: src/Common/LinuxKernel.vala:885
 msgid "Available Kernels"
 msgstr "Dostupni kerneli"
+
+#: src/Common/LinuxKernel.vala:920 src/Gtk/MainWindow.vala:135
+msgid "Kernel"
+msgstr "Kernel"
+
+#: src/Common/LinuxKernel.vala:920
+#, fuzzy
+msgid "not found"
+msgstr "Datoteka nije pronađena"
+
+#: src/Common/LinuxKernel.vala:927
+#, fuzzy
+msgid "Download: no downloadable kernels specified"
+msgstr "Naredba nije navedena"
 
 #: src/Common/LinuxKernel.vala:947
 msgid "enabled"
@@ -94,79 +116,104 @@ msgstr "omogućen"
 msgid "Downloading"
 msgstr "Učitavanje"
 
-#: src/Common/LinuxKernel.vala:992
+#: src/Common/LinuxKernel.vala:989
+#, fuzzy
+msgid "Installing selected kernels"
+msgstr "Deinstaliraj određene kernele"
+
+#: src/Common/LinuxKernel.vala:995 src/Common/LinuxKernel.vala:1034
+#, fuzzy
+msgid "Requested"
+msgstr "Zatražio"
+
+#: src/Common/LinuxKernel.vala:998
 msgid "is already installed."
 msgstr "je već instaliran."
 
-#: src/Common/LinuxKernel.vala:1022
+#: src/Common/LinuxKernel.vala:1008
+msgid "download failed."
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:1015
+#, fuzzy
+msgid "Install: no installable kernels secified"
+msgstr "Naredba nije navedena"
+
+#: src/Common/LinuxKernel.vala:1030
 msgid "Uninstalling selected kernels"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Common/LinuxKernel.vala:1028
-msgid "requested"
-msgstr "Zatražio"
-
-#: src/Common/LinuxKernel.vala:1031
-msgid "not uninstalling the currently running kernel"
+#: src/Common/LinuxKernel.vala:1037
+#, fuzzy
+msgid "Not uninstalling the currently running kernel"
 msgstr "ne deinstaliranje trenutno pokrenute kernel"
 
-#: src/Common/LinuxKernel.vala:1047
+#: src/Common/LinuxKernel.vala:1042
+msgid "is locked"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:1050
 msgid "found"
 msgstr "pronađen"
 
-#: src/Common/LinuxKernel.vala:1050
-msgid "No packages to un-install!"
-msgstr "Nema paketa za poništavanje instalacije!"
+#: src/Common/LinuxKernel.vala:1054
+msgid "Uninstall: no uninstallable packages found"
+msgstr ""
 
-#: src/Common/LinuxKernel.vala:1098
+#: src/Common/LinuxKernel.vala:1090
+#, fuzzy
+msgid "is the highest installed version."
+msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
+
+#: src/Common/LinuxKernel.vala:1103
 msgid "Could not find running kernel in list"
 msgstr "Nije moguće pronaći pokrenutu kernel na popisu"
 
-#: src/Common/LinuxKernel.vala:1103
+#: src/Common/LinuxKernel.vala:1108
 msgid "Could not find any kernels to uninstall"
 msgstr "Nema pronađenih kernela za deinstaliranje"
 
-#: src/Common/LinuxKernel.vala:1111
+#: src/Common/LinuxKernel.vala:1116
 msgid "The following kernels will be uninstalled"
 msgstr "Deinstalirat će se sljedeće kerneli"
 
-#: src/Common/LinuxKernel.vala:1115
+#: src/Common/LinuxKernel.vala:1120
 msgid "Continue ?"
 msgstr "Nastavi?"
 
-#: src/Common/LinuxKernel.vala:1137 src/Console/AppConsole.vala:292
+#: src/Common/LinuxKernel.vala:1142 src/Console/AppConsole.vala:208
 msgid "Latest update"
 msgstr "Najnovija nadopuna"
 
-#: src/Common/LinuxKernel.vala:1148 src/Console/AppConsole.vala:299
+#: src/Common/LinuxKernel.vala:1153 src/Console/AppConsole.vala:215
 msgid "Latest point update"
 msgstr "Najnovija ciljana nadopuna"
 
-#: src/Common/LinuxKernel.vala:1156 src/Console/AppConsole.vala:304
-#: src/Console/AppConsole.vala:320
+#: src/Common/LinuxKernel.vala:1161 src/Console/AppConsole.vala:220
+#: src/Console/AppConsole.vala:240
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
-#: src/Common/LinuxKernel.vala:1165
+#: src/Common/LinuxKernel.vala:1170
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Instaliraj kernel inačice %s ? (d/n): "
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:354
 msgid "Called from"
 msgstr "Pozvano od"
 
-#: src/Common/Main.vala:380
+#: src/Common/Main.vala:354
 msgid "at logon"
 msgstr "indításkor"
 
-#: src/Common/Main.vala:381
+#: src/Common/Main.vala:355
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ova se datoteka prepisuje i ponovno izvršava kad god se postavke spremaju u"
 
-#: src/Common/Main.vala:413
+#: src/Common/Main.vala:387
 msgid "Notifications are disabled"
 msgstr "Obavijesti su onemogućene"
 
@@ -175,351 +222,325 @@ msgstr "Obavijesti su onemogućene"
 msgid "File not found: %s"
 msgstr "Datoteka nije pronađena: %s"
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:133
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:75
 msgid "Syntax"
 msgstr "Sintaksa"
 
-#: src/Console/AppConsole.vala:49
+#: src/Console/AppConsole.vala:41
 msgid "Commands"
 msgstr "Naredbe"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:43
 msgid "Check for kernel updates"
 msgstr "Provjeri nadopune kernela"
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:44
 msgid "Check for kernel updates and notify current user"
 msgstr "Provjeri nadopune kernela i obavijesti trenutnog korisnika"
 
-#: src/Console/AppConsole.vala:53
-msgid "List all available mainline kernels"
+#: src/Console/AppConsole.vala:45
+#, fuzzy
+msgid "List available mainline kernels"
 msgstr "Prikaži sve mainline kernele"
 
-#: src/Console/AppConsole.vala:54
+#: src/Console/AppConsole.vala:46
 msgid "List installed kernels"
 msgstr "Prikaži instalirane kernele"
 
-#: src/Console/AppConsole.vala:55
+#: src/Console/AppConsole.vala:47
 msgid "Install latest mainline kernel"
 msgstr "Instaliraj najnoviji mainline kernel"
 
-#: src/Console/AppConsole.vala:56
-msgid "Install latest point update for current series"
+#: src/Console/AppConsole.vala:48
+#, fuzzy
+msgid "Install latest point update in the current major version"
 msgstr "Instaliraj najnoviju ciljanu nadopunu za trenutnu seriju"
 
-#: src/Console/AppConsole.vala:57
-msgid "Install specified mainline kernel"
-msgstr "Instaliraj određeni mainline kernel"
-
-#: src/Console/AppConsole.vala:58
-msgid "Uninstall specified kernel"
+#: src/Console/AppConsole.vala:49
+#, fuzzy
+msgid "Install specified kernels"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/MainWindow.vala:331
+#: src/Console/AppConsole.vala:50
+#, fuzzy
+msgid "Uninstall specified kernels"
+msgstr "Deinstaliraj određene kernele"
+
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:333
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
 
-#: src/Console/AppConsole.vala:60
+#: src/Console/AppConsole.vala:52
 msgid "Download specified kernels"
 msgstr "Preuzmi određene kernele"
 
-#: src/Console/AppConsole.vala:61
+#: src/Console/AppConsole.vala:53
 msgid "Delete cached info about available kernels"
 msgstr "Brisanje predmemoriranih podataka o dostupnim jezgrama"
 
-#: src/Console/AppConsole.vala:63 src/Gtk/AppGtk.vala:135
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:77
 msgid "Options"
 msgstr "Mogućnosti"
 
-#: src/Console/AppConsole.vala:65
+#: src/Console/AppConsole.vala:57
 msgid "Include unstable and RC releases"
 msgstr "Uključivati nestabilne i RC kernele"
 
-#: src/Console/AppConsole.vala:66
+#: src/Console/AppConsole.vala:58
 msgid "Exclude unstable and RC releases"
 msgstr "Isključivati nestabilne i RC izdanja"
 
-#: src/Console/AppConsole.vala:67
-msgid "Enable verbose debugging output"
-msgstr "Omogući opširnije zapisivanje"
+#: src/Console/AppConsole.vala:59
+msgid "Verbosity. Set to n if given, or increment."
+msgstr ""
 
-#: src/Console/AppConsole.vala:68
+#: src/Console/AppConsole.vala:60
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Pretpostavi Da za sve upite (neinteraktivan način rada)"
 
-#: src/Console/AppConsole.vala:71
-msgid "A version string taken from the output of --list"
+#: src/Console/AppConsole.vala:63
+#, fuzzy
+msgid "One or more version strings taken from the output of --list"
 msgstr "Izraz inačice uzet iz zapisa --list"
 
-#: src/Console/AppConsole.vala:72
-msgid "One or more, comma-seperated"
-msgstr "Jedan ili više njih, odvojeni zarezom"
+#: src/Console/AppConsole.vala:64
+msgid "comma, pipe, or colon-seperated, or quoted space seperated"
+msgstr ""
 
-#: src/Console/AppConsole.vala:73
-msgid "The currently running kernel will always be ignored"
+#: src/Console/AppConsole.vala:65
+#, fuzzy
+msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Trenutno pokrenuta jezgra uvijek će se zanemariti"
 
-#: src/Console/AppConsole.vala:163 src/Gtk/AppGtk.vala:119
+#: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:193
+#: src/Gtk/AppGtk.vala:109
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:164 src/Console/AppConsole.vala:250
-#: src/Console/AppConsole.vala:278
-msgid "Run"
-msgstr "Pokreni"
+#: src/Console/AppConsole.vala:229
+#, fuzzy
+msgid "Notifications disabled"
+msgstr "Obavijesti su onemogućene"
 
-#: src/Console/AppConsole.vala:164
-msgid "to list all options"
-msgstr "za prikaz svih mogućnosti"
-
-#: src/Console/AppConsole.vala:218 src/Console/AppConsole.vala:258
-msgid "No kernels specified"
-msgstr "Nema određenih kernela"
-
-#: src/Console/AppConsole.vala:224
-msgid "Multiple kernels selected for installation. Select only one."
-msgstr "Više kernela je odabrano za instalaciju. odaberite samo jedan."
-
-#: src/Console/AppConsole.vala:247
-msgid "Could not find requested version"
-msgstr "Nemoguće je pronaći zatraženu inačicu"
-
-#: src/Console/AppConsole.vala:250
-msgid "and use a version string listed in first column"
-msgstr "i koristite izraz inačice prikazan u prvom stupcu"
-
-#: src/Console/AppConsole.vala:277
-msgid "Command not specified"
-msgstr "Naredba nije navedena"
-
-#: src/Console/AppConsole.vala:278
-msgid "to list all commands"
-msgstr "za prikaz svih mogućnosti"
-
-#: src/Console/AppConsole.vala:314
-msgid "Notifications disabled in settings"
-msgstr "Obavijesti onemogućene u postavkama"
-
-#: src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:262
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:346 src/Gtk/SettingsDialog.vala:166
+#: src/Console/AppConsole.vala:266 src/Gtk/SettingsDialog.vala:151
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:347 src/Gtk/MainWindow.vala:298
+#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:312
 msgid "Install"
 msgstr "Instaliraj"
 
-#: src/Console/AppConsole.vala:350
+#: src/Console/AppConsole.vala:270
 msgid "Previously notified"
 msgstr "Prethodno prijavljeno"
 
-#: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
+#: src/Gtk/AboutWindow.vala:32 src/Gtk/AboutWindow.vala:170
 msgid "Credits"
 msgstr "Zasluge"
 
-#: src/Gtk/AboutWindow.vala:175
-msgid "Back"
-msgstr "Natrag"
-
-#: src/Gtk/AboutWindow.vala:185 src/Gtk/TerminalWindow.vala:161
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:151
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/Gtk/AboutWindow.vala:204
+#: src/Gtk/AboutWindow.vala:166
+msgid "Back"
+msgstr "Natrag"
+
+#: src/Gtk/AboutWindow.vala:193
 msgid "Authors"
 msgstr "Autori"
 
-#: src/Gtk/AboutWindow.vala:212
+#: src/Gtk/AboutWindow.vala:201
 msgid "Contributions"
 msgstr "Prilozi"
 
-#: src/Gtk/AboutWindow.vala:220
+#: src/Gtk/AboutWindow.vala:209
 msgid "Artists"
 msgstr "Dizajneri"
 
-#: src/Gtk/AboutWindow.vala:228
+#: src/Gtk/AboutWindow.vala:217
 msgid "Translators"
 msgstr "Prevoditelji"
 
-#: src/Gtk/AboutWindow.vala:236
+#: src/Gtk/AboutWindow.vala:225
 msgid "Documenters"
 msgstr "Autori dokumentacije"
 
-#: src/Gtk/AboutWindow.vala:244
+#: src/Gtk/AboutWindow.vala:233
 msgid "Third Party Inclusions"
 msgstr "Uključene treće strane"
 
-#: src/Gtk/AppGtk.vala:133
+#: src/Gtk/AppGtk.vala:75
 msgid "options"
 msgstr "mogućnosti"
 
-#: src/Gtk/AppGtk.vala:137
+#: src/Gtk/AppGtk.vala:79
 msgid "Print debug information"
 msgstr "Ispiši informacije otklanjanja grešaka"
 
-#: src/Gtk/AppGtk.vala:138
+#: src/Gtk/AppGtk.vala:80
 msgid "Show all options"
 msgstr "Prikaži sve mogućnosti"
 
-#: src/Gtk/MainWindow.vala:111
-msgid "Kernel"
-msgstr "Kernel"
+#: src/Gtk/MainWindow.vala:159
+msgid "Lock"
+msgstr ""
 
-#: src/Gtk/MainWindow.vala:144
+#: src/Gtk/MainWindow.vala:176
 msgid "Status"
 msgstr "Stanje"
 
-#: src/Gtk/MainWindow.vala:159
+#: src/Gtk/MainWindow.vala:188
 msgid "Notes"
 msgstr "Bilješke"
 
-#: src/Gtk/MainWindow.vala:308
+#: src/Gtk/MainWindow.vala:317
 msgid "Uninstall"
 msgstr "Deinstaliraj"
 
-#: src/Gtk/MainWindow.vala:319
+#: src/Gtk/MainWindow.vala:323
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:330
+#: src/Gtk/MainWindow.vala:332
 msgid "Uninstall Old"
 msgstr "Deinstaliraj staro"
 
-#: src/Gtk/MainWindow.vala:336
+#: src/Gtk/MainWindow.vala:338
 msgid "Reload"
 msgstr "Ponovno učitati"
 
-#: src/Gtk/MainWindow.vala:337
-msgid ""
-"Delete cache and reload all kernel info\n"
-"\n"
-"THIS WILL ALSO DELETE ALL USER NOTES"
+#: src/Gtk/MainWindow.vala:339
+msgid "Delete and reload all cached kernel info"
 msgstr ""
-"Törölje a gyorsítótárat, és töltse be újra az összes kernelinformációt\n"
-"\n"
-"EZZEL AZ ÖSSZES FELHASZNÁLÓI JEGYZETET IS TÖRLI"
 
-#: src/Gtk/MainWindow.vala:342 src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/MainWindow.vala:344 src/Gtk/SettingsDialog.vala:41
 msgid "Settings"
 msgstr "Postavke"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:349
 msgid "About"
 msgstr "O programu"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:354
 msgid "Exit"
 msgstr "Izlaz"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:435
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
-#: src/Gtk/MainWindow.vala:422
+#: src/Gtk/MainWindow.vala:436
 msgid "Forked"
 msgstr "Forkano"
 
-#: src/Gtk/MainWindow.vala:422
+#: src/Gtk/MainWindow.vala:436
 msgid "Original"
 msgstr "Izvornik"
 
-#: src/Gtk/MainWindow.vala:460
+#: src/Gtk/MainWindow.vala:465
 msgid "Updating kernels"
 msgstr "Ažuriranje jezgri"
 
-#: src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:525
 msgid "available"
 msgstr "dostupno"
 
-#: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:615
-#: src/Gtk/MainWindow.vala:650
+#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:598
+#: src/Gtk/MainWindow.vala:623
 msgid "DONE"
-msgstr "UČINJENO"
+msgstr ""
 
-#: src/Gtk/ProgressWindow.vala:126 src/Gtk/TerminalWindow.vala:151
-msgid "Cancel"
-msgstr "Odustani"
-
-#: src/Gtk/SettingsDialog.vala:59
+#: src/Gtk/SettingsDialog.vala:50
 msgid "Notification"
 msgstr "Obavijesti"
 
-#: src/Gtk/SettingsDialog.vala:66
+#: src/Gtk/SettingsDialog.vala:57
 msgid "Notify if a major release is available"
 msgstr "Obavijesti kada je glavno izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:75
+#: src/Gtk/SettingsDialog.vala:65
 msgid "Notify if a point release is available"
 msgstr "Obavijesti kada je pojedino izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:86
+#: src/Gtk/SettingsDialog.vala:73
 msgid "Seconds interval enabled for debugging"
 msgstr "Interval sekundi omogućen za ispravljanje pogrešaka"
 
-#: src/Gtk/SettingsDialog.vala:109
+#: src/Gtk/SettingsDialog.vala:96
 msgid "Check every"
 msgstr "Provjeri svaka"
 
-#: src/Gtk/SettingsDialog.vala:134
+#: src/Gtk/SettingsDialog.vala:119
 msgid "Hours"
 msgstr "Sati"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsDialog.vala:121
 msgid "Days"
 msgstr "Dani"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsDialog.vala:123
 msgid "Weeks"
 msgstr "Tjedna"
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:126
 msgid "Seconds"
 msgstr "Sekunde"
 
-#: src/Gtk/SettingsDialog.vala:147
+#: src/Gtk/SettingsDialog.vala:132
 msgid "Filters"
 msgstr "Filteri"
 
-#: src/Gtk/SettingsDialog.vala:155
+#: src/Gtk/SettingsDialog.vala:140
 msgid "Hide unstable and RC releases"
 msgstr "Sakrij nestabilna i RC izdanja"
 
-#: src/Gtk/SettingsDialog.vala:177
+#: src/Gtk/SettingsDialog.vala:162
 msgid "previous major versions  ( -1 = all )"
 msgstr "prethodne glavne verzije  ( -1 = sve )"
 
-#: src/Gtk/SettingsDialog.vala:181
+#: src/Gtk/SettingsDialog.vala:166
 msgid "Network"
 msgstr "Mreža"
 
-#: src/Gtk/SettingsDialog.vala:192
+#: src/Gtk/SettingsDialog.vala:177
 msgid "Internet connection timeout in"
 msgstr "Prekoračenje vremena internetske veze u"
 
-#: src/Gtk/SettingsDialog.vala:204
+#: src/Gtk/SettingsDialog.vala:189
 msgid "seconds"
 msgstr "sekunde"
 
-#: src/Gtk/SettingsDialog.vala:211
+#: src/Gtk/SettingsDialog.vala:196
 msgid "Max concurrent downloads"
 msgstr "Najviše istodobnih preuzimanja"
 
-#: src/Gtk/SettingsDialog.vala:225
+#: src/Gtk/SettingsDialog.vala:209
 msgid "Verify Checksums with the CHECKSUMS files"
 msgstr "Provjera kontrolnih zbrojeva pomoću CHECKSUMS datoteka"
 
-#: src/Gtk/SettingsDialog.vala:233
+#: src/Gtk/SettingsDialog.vala:217
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/Gtk/l.gtk.vala:29
-msgid "Missing Icon"
-msgstr "Ikone koje nedostaju"
+#: src/Gtk/SettingsDialog.vala:250
+#, fuzzy
+msgid "Auth Command"
+msgstr "Naredbe"
 
-#: src/lib/l.misc.vala:69
+#: src/Gtk/SettingsDialog.vala:278
+msgid "Done"
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:141
+msgid "Cancel"
+msgstr "Odustani"
+
+#: src/lib/l.misc.vala:107
 msgid "Can not reach site"
 msgstr "Nije moguće doći do web-mjesta"

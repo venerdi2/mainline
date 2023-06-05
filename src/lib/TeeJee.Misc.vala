@@ -40,11 +40,11 @@ namespace TeeJee.Misc {
 		}
 
 		txt = txt
-				.replace("&" , "&amp;")
-				.replace("\"", "&quot;")
-				.replace("<" , "&lt;")
-				.replace(">" , "&gt;")
-				;
+			.replace("&" , "&amp;")
+			.replace("\"", "&quot;")
+			.replace("<" , "&lt;")
+			.replace(">" , "&gt;")
+			;
 
 		return txt;
 	}

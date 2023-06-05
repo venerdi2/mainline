@@ -19,13 +19,8 @@
  * MA 02110-1301, USA.
  */
 
-using Gtk;
-using Gee;
-
-using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using l.gtk;
-using TeeJee.Misc;
 using l.misc;
 
 public class TerminalWindow : Gtk.Window {
@@ -35,9 +30,6 @@ public class TerminalWindow : Gtk.Window {
 	private Gtk.Button btn_cancel;
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
-
-	//private int def_width = 1100;
-	//private int def_height = 600;
 
 	private Pid child_pid;
 	private Gtk.Window parent_win = null;
@@ -53,24 +45,21 @@ public class TerminalWindow : Gtk.Window {
 		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
+			window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 		}
 
-		set_modal(true);
-		//window_position = WindowPosition.CENTER;
-		window_position = WindowPosition.CENTER_ON_PARENT;
-		//window_position = WindowPosition.NONE;
-		if (fullscreen) this.fullscreen();
+		set_default_size(App.term_width,App.term_height);
+		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
-		this.delete_event.connect(cancel_window_close);
+		delete_event.connect(cancel_window_close);
+
+		set_modal(true);
+
+		if (fullscreen) this.fullscreen();
 
 		init_window();
 
 		show_all();
-
-		this.resize(App.term_width,App.term_height);
-//		if (App.term_x >=0 && App.term_y >= 0) this.move(App.window_x,App.window_y);
-//		App._window_x = App.window_x;
-//		App._window_y = App.window_y;
 
 		btn_cancel.visible = false;
 		btn_close.visible = false;
@@ -85,6 +74,11 @@ public class TerminalWindow : Gtk.Window {
 
 	public void init_window () {
 
+		App._term_width = App.term_width;
+		App._term_height = App.term_height;
+		App._term_x = App.term_x;
+		App._term_y = App.term_y;
+
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
 		resizable = true;
@@ -92,44 +86,40 @@ public class TerminalWindow : Gtk.Window {
 
 		// vbox_main ---------------
 
-		vbox_main = new Gtk.Box(Orientation.VERTICAL, 0);
-		//vbox_main.set_size_request(def_width,def_height);
-		App._term_width = App.term_width;
-		App._term_height = App.term_height;
-
-		add (vbox_main);
+		vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+		add(vbox_main);
 
 		// terminal ----------------------
 
 		term = new Vte.Terminal();
+
 		term.expand = true;
 
 		// sw_ppa
 		scroll_win = new Gtk.ScrolledWindow(null, null);
-		scroll_win.set_shadow_type (ShadowType.ETCHED_IN);
+		scroll_win.set_shadow_type (Gtk.ShadowType.ETCHED_IN);
 		scroll_win.add (term);
 		scroll_win.expand = true;
-		scroll_win.hscrollbar_policy = PolicyType.AUTOMATIC;
-		scroll_win.vscrollbar_policy = PolicyType.AUTOMATIC;
+		scroll_win.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
+		scroll_win.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
 		vbox_main.add(scroll_win);
 
 		term.input_enabled = true;
 		term.backspace_binding = Vte.EraseBinding.AUTO;
 		term.cursor_blink_mode = Vte.CursorBlinkMode.SYSTEM;
 		term.cursor_shape = Vte.CursorShape.UNDERLINE;
-		
+
 		term.scroll_on_keystroke = true;
 		term.scroll_on_output = true;
 		term.scrollback_lines = 100000;
 
 		// colors -----------------------------
-
-		var color = Gdk.RGBA();
-		color.parse("#FFFFFF");
-		term.set_color_foreground(color);
-
-		color.parse("#404040");
-		term.set_color_background(color);
+		// why override the users desktop preference?
+		//var color = Gdk.RGBA();
+		//color.parse("#FFFFFF");
+		//term.set_color_foreground(color);
+		//color.parse("#404040");
+		//term.set_color_background(color);
 
 		// grab focus ----------------
 
@@ -137,7 +127,7 @@ public class TerminalWindow : Gtk.Window {
 
 		// add cancel button --------------
 
-		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
 		vbox_main.add (hbox);
 
@@ -147,7 +137,7 @@ public class TerminalWindow : Gtk.Window {
 		label = new Gtk.Label("");
 		hbox.pack_start (label, true, true, 0);
 		
-		//btn_cancel
+		// btn_cancel
 		var button = new Gtk.Button.with_label (_("Cancel"));
 		hbox.pack_start (button, true, true, 0);
 		btn_cancel = button;
@@ -157,13 +147,15 @@ public class TerminalWindow : Gtk.Window {
 			terminate_child();
 		});
 
-		//btn_close
+		// btn_close
 		button = new Gtk.Button.with_label (_("Close"));
 		hbox.pack_start (button, true, true, 0);
 		btn_close = button;
 		
 		btn_close.clicked.connect(()=>{
-			this.destroy();
+			get_size(out App.term_width, out App.term_height);
+			get_position(out App.term_x, out App.term_y);
+			destroy();
 		});
 
 		label = new Gtk.Label("");
@@ -171,6 +163,7 @@ public class TerminalWindow : Gtk.Window {
 
 		label = new Gtk.Label("");
 		hbox.pack_start (label, true, true, 0);
+
 	}
 
 	public void terminate_child() {
@@ -178,33 +171,53 @@ public class TerminalWindow : Gtk.Window {
 		process_quit(child_pid);
 	}
 
+// $ make clean all VALACFLAGS="-D VTE_ASYNC" && sudo make install VALACFLAGS="-D VTE_ASYNC"
+#if VTE_ASYNC
+	public void t_callback(Vte.Terminal terminal, Pid pid, Error? error) {
+		if (error != null) { vprint("Error setting up terminal: "+error.message,1,stderr); return; }
+		vprint("Terminal set up, process ID: "+pid.to_string(),4);
+		child_pid = pid;
+	}
+#endif
+
 	public void execute_script(string f, string d) {
 		string[] argv = {"sh", f};
 
 		string[] env = Environ.get();
 
-		try {
-
+#if VTE_ASYNC
 			is_running = true;
-
-			term.spawn_sync (
+			term.spawn_async (
 				Vte.PtyFlags.DEFAULT, //pty_flags
-				d, //working_directory
-				argv, //argv
-				env, //env
+				d, // working_directory
+				argv, // argv
+				env, // env
 				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-				null, //child_setup
-				out child_pid,
-				null
+				null, // child_setup() func
+				-1, // timeout
+				null, // cancellable
+				t_callback // callback
 			);
-
+			term.watch_child(child_pid); // VTE-CRITICAL **: 02:34:56.658: void vte_terminal_watch_child(VteTerminal*, GPid): assertion 'WIDGET(terminal)->pty() != nullptr' failed
+			term.child_exited.connect(script_exit);
+#else
+		try {
+			is_running = true;
+			term.spawn_sync (
+				Vte.PtyFlags.DEFAULT, // pty_flags
+				d, // working_directory
+				argv, // argv
+				env, // env
+				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
+				null, // child_setup() func
+				out child_pid, // child pid receiver var
+				null // cancellable
+			);
 			term.watch_child(child_pid);
-
 			term.child_exited.connect(script_exit);
 		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
+		catch (Error e) { vprint(e.message,1,stderr); }
+#endif
 	}
 
 	public void script_exit(int status) {
@@ -216,19 +229,21 @@ public class TerminalWindow : Gtk.Window {
 
 	public void allow_window_close(bool allow = true) {
 		if (allow) {
-			this.delete_event.disconnect(cancel_window_close);
-			this.deletable = true;
+			delete_event.disconnect(cancel_window_close);
+			deletable = true;
 		} else {
-			this.delete_event.connect(cancel_window_close);
-			this.deletable = false;
+			delete_event.connect(cancel_window_close);
+			deletable = false;
 		}
 	}
 
 	public void allow_cancel(bool allow = true) {
 		if (allow) {
 			btn_cancel.visible = true;
+			btn_cancel.sensitive = true;
 			vbox_main.margin = 3;
 		} else {
+			btn_cancel.visible = false;
 			btn_cancel.sensitive = false;
 			vbox_main.margin = 3;
 		}

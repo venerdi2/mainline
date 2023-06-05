@@ -22,8 +22,6 @@
  *
  */
 
-using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.misc;
 
 public class OSDNotify : GLib.Object {
