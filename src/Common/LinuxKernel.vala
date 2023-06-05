@@ -1012,7 +1012,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (string f in k.deb_url_list.keys) flist += k.cache_subdir+"/"+f;
 		}
 
-		if (flist.length==0) { vprint(_("Install: no installable kernels secified")); return 1; }
+		if (flist.length==0) { vprint(_("Install: no installable kernels specified")); return 1; }
 
 		// full paths instead of env -C
 		// https://github.com/bkw777/mainline/issues/128

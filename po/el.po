@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-05 19:12-0400\n"
+"POT-Creation-Date: 2023-06-05 19:44-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -136,7 +136,7 @@ msgstr ""
 
 #: src/Common/LinuxKernel.vala:1015
 #, fuzzy
-msgid "Install: no installable kernels secified"
+msgid "Install: no installable kernels specified"
 msgstr "Η εντολή δεν προσδιορίστηκε"
 
 #: src/Common/LinuxKernel.vala:1030
