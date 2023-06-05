@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-05 00:44-0400\n"
+"POT-Creation-Date: 2023-06-05 19:44-0400\n"
 "PO-Revision-Date: 2023-02-20 18:40+0100\n"
 "Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
@@ -136,7 +136,7 @@ msgstr ""
 
 #: src/Common/LinuxKernel.vala:1015
 #, fuzzy
-msgid "Install: no installable kernels secified"
+msgid "Install: no installable kernels specified"
 msgstr "Befehl nicht angegeben"
 
 #: src/Common/LinuxKernel.vala:1030
@@ -344,7 +344,7 @@ msgstr "Zuvor gemeldet"
 msgid "Credits"
 msgstr "Credits"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
 msgid "Close"
 msgstr "Schließen"
 
@@ -452,8 +452,8 @@ msgstr "Aktualisieren von Kernels"
 msgid "available"
 msgstr "Verfügbar"
 
-#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:598
-#: src/Gtk/MainWindow.vala:623
+#: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
+#: src/Gtk/MainWindow.vala:632
 msgid "DONE"
 msgstr ""
 
@@ -538,7 +538,7 @@ msgstr "Befehle"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
 msgstr "Abbrechen"
 

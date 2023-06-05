@@ -131,8 +131,8 @@ msgid "download failed."
 msgstr "загрузка не удалась."
 
 #: src/Common/LinuxKernel.vala:1015
-msgid "Install: no installable kernels secified"
-msgstr "Установка: устанавливаемые ядра не указаны"
+msgid "Install: no installable kernels specified"
+msgstr "Команда не указана"
 
 #: src/Common/LinuxKernel.vala:1030
 msgid "Uninstalling selected kernels"
@@ -327,7 +327,7 @@ msgstr "Предварительно уведомлено"
 msgid "Credits"
 msgstr "Создатели"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
 msgid "Close"
 msgstr "Закрыть"
 
@@ -435,8 +435,8 @@ msgstr "Обновление ядер"
 msgid "available"
 msgstr "доступно"
 
-#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:598
-#: src/Gtk/MainWindow.vala:623
+#: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
+#: src/Gtk/MainWindow.vala:632
 msgid "DONE"
 msgstr "ГОТОВО"
 
@@ -520,7 +520,7 @@ msgstr "Команда авторизации"
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
 msgstr "Отмена"
 
