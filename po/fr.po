@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-05 00:44-0400\n"
+"POT-Creation-Date: 2023-06-05 19:12-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -344,7 +344,7 @@ msgstr "Précédemment notifié"
 msgid "Credits"
 msgstr "Crédits"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
 msgid "Close"
 msgstr "Fermer"
 
@@ -454,8 +454,8 @@ msgstr "Mise à jour des noyaux"
 msgid "available"
 msgstr "disponible"
 
-#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:598
-#: src/Gtk/MainWindow.vala:623
+#: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
+#: src/Gtk/MainWindow.vala:632
 msgid "DONE"
 msgstr ""
 
@@ -540,7 +540,7 @@ msgstr "Commandes"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
 msgstr "Annuler"
 

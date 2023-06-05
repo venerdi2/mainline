@@ -19,7 +19,6 @@
  * MA 02110-1301, USA.
  */
 
-using TeeJee.ProcessHelper;
 using l.gtk;
 using l.misc;
 
@@ -38,6 +37,17 @@ public class TerminalWindow : Gtk.Window {
 	public bool is_running = false;
 
 	public signal void script_complete();
+
+	// annoying
+	enum SIG {
+#if VALA_0_40
+		HUP = Posix.Signal.HUP,
+		TERM = Posix.Signal.TERM
+#else
+		HUP = Posix.SIGHUP,
+		TERM = Posix.SIGTERM
+#endif
+	}
 
 	// init
 
@@ -129,27 +139,27 @@ public class TerminalWindow : Gtk.Window {
 
 		var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
-		vbox_main.add (hbox);
+		vbox_main.add(hbox);
 
 		var label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
+		hbox.pack_start(label, true, true, 0);
 		
 		label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
+		hbox.pack_start(label, true, true, 0);
 		
 		// btn_cancel
 		var button = new Gtk.Button.with_label (_("Cancel"));
-		hbox.pack_start (button, true, true, 0);
+		hbox.pack_start(button, true, true, 0);
 		btn_cancel = button;
 		
 		btn_cancel.clicked.connect(()=>{
 			cancelled = true;
-			terminate_child();
+			Posix.kill(child_pid,SIG.HUP);
 		});
 
 		// btn_close
 		button = new Gtk.Button.with_label (_("Close"));
-		hbox.pack_start (button, true, true, 0);
+		hbox.pack_start(button, true, true, 0);
 		btn_close = button;
 		
 		btn_close.clicked.connect(()=>{
@@ -159,36 +169,32 @@ public class TerminalWindow : Gtk.Window {
 		});
 
 		label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
+		hbox.pack_start(label, true, true, 0);
 
 		label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
+		hbox.pack_start(label, true, true, 0);
 
 	}
 
-	public void terminate_child() {
-		btn_cancel.sensitive = false;
-		process_quit(child_pid);
-	}
-
-// $ make clean all VALACFLAGS="-D VTE_ASYNC" && sudo make install VALACFLAGS="-D VTE_ASYNC"
 #if VTE_ASYNC
-	public void t_callback(Vte.Terminal terminal, Pid pid, Error? error) {
+	public void async_cb(Vte.Terminal terminal, Pid pid, Error? error) {
 		if (error != null) { vprint("Error setting up terminal: "+error.message,1,stderr); return; }
-		vprint("Terminal set up, process ID: "+pid.to_string(),4);
+		vprint("TerminalWindow: child_pid="+pid.to_string(),3);
 		child_pid = pid;
+		term.watch_child(child_pid);
+		term.child_exited.connect(script_has_exited);
 	}
 #endif
 
 	public void execute_script(string f, string d) {
+		vprint("TerminalWindow: execute_script("+f+","+d+")",3);
 		string[] argv = {"sh", f};
-
 		string[] env = Environ.get();
 
 #if VTE_ASYNC
 			is_running = true;
-			term.spawn_async (
-				Vte.PtyFlags.DEFAULT, //pty_flags
+			term.spawn_async(
+				Vte.PtyFlags.DEFAULT, // pty_flags
 				d, // working_directory
 				argv, // argv
 				env, // env
@@ -196,33 +202,32 @@ public class TerminalWindow : Gtk.Window {
 				null, // child_setup() func
 				-1, // timeout
 				null, // cancellable
-				t_callback // callback
+				async_cb // callback
 			);
-			term.watch_child(child_pid); // VTE-CRITICAL **: 02:34:56.658: void vte_terminal_watch_child(VteTerminal*, GPid): assertion 'WIDGET(terminal)->pty() != nullptr' failed
-			term.child_exited.connect(script_exit);
 #else
 		try {
 			is_running = true;
-			term.spawn_sync (
+			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, // pty_flags
 				d, // working_directory
 				argv, // argv
 				env, // env
 				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
 				null, // child_setup() func
-				out child_pid, // child pid receiver var
+				out child_pid, // child pid written here
 				null // cancellable
 			);
+			term.child_exited.connect(script_has_exited);
 			term.watch_child(child_pid);
-			term.child_exited.connect(script_exit);
 		}
 		catch (Error e) { vprint(e.message,1,stderr); }
 #endif
 	}
 
-	public void script_exit(int status) {
+	public void script_has_exited(int status) {
+		vprint("TerminalWindow: script_has_exited("+status.to_string()+")",3);
 		is_running = false;
-		btn_cancel.visible = false;
+		allow_cancel(false);
 		btn_close.visible = true;
 		script_complete();
 	}
@@ -241,11 +246,9 @@ public class TerminalWindow : Gtk.Window {
 		if (allow) {
 			btn_cancel.visible = true;
 			btn_cancel.sensitive = true;
-			vbox_main.margin = 3;
 		} else {
 			btn_cancel.visible = false;
 			btn_cancel.sensitive = false;
-			vbox_main.margin = 3;
 		}
 	}
 }

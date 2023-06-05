@@ -547,6 +547,7 @@ public class MainWindow : Window {
 		vlist = vlist.strip();
 		if (vlist=="") { vprint("Install: no installable kernels specified"); return; }
 
+		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
@@ -554,11 +555,13 @@ public class MainWindow : Window {
 		term.script_complete.connect(()=>{
 			term.present();
 			term.allow_window_close();
+			did_update_cache = true;
+			update_cache();
 		});
 
 		term.destroy.connect(()=>{
 			delete_r(t_dir);
-			update_cache();
+			if (!did_update_cache) update_cache();
 		});
 
 		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
@@ -574,6 +577,7 @@ public class MainWindow : Window {
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
 		if (klist==null || klist.size<1) return;
 
+		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
@@ -581,11 +585,13 @@ public class MainWindow : Window {
 		term.script_complete.connect(()=>{
 			term.present();
 			term.allow_window_close();
+			did_update_cache = true;
+			update_cache();
 		});
 
 		term.destroy.connect(() => {
 			delete_r(t_dir);
-			update_cache();
+			if (!did_update_cache) update_cache();
 		});
 
 		string vlist = "";
@@ -603,6 +609,7 @@ public class MainWindow : Window {
 	}
 
 	public void uninstall_old () {
+		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
 		string t_dir = create_tmp_dir();
 		string t_file = get_temp_file_path(t_dir)+".sh";
@@ -610,11 +617,13 @@ public class MainWindow : Window {
 		term.script_complete.connect(()=>{
 			term.present();
 			term.allow_window_close();
+			did_update_cache = true;
+			update_cache();
 		});
 
 		term.destroy.connect(()=>{
 			delete_r(t_dir);
-			update_cache();
+			if (!did_update_cache) update_cache();
 		});
 
 		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME+" --uninstall-old";

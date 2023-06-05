@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-05 00:44-0400\n"
+"POT-Creation-Date: 2023-06-05 19:12-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -342,7 +342,7 @@ msgstr "Tidigare anmält"
 msgid "Credits"
 msgstr "Tack"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
 msgid "Close"
 msgstr "Stäng"
 
@@ -450,8 +450,8 @@ msgstr "Uppdatera kärnor"
 msgid "available"
 msgstr "tillgänglig"
 
-#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:598
-#: src/Gtk/MainWindow.vala:623
+#: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
+#: src/Gtk/MainWindow.vala:632
 msgid "DONE"
 msgstr ""
 
@@ -536,7 +536,7 @@ msgstr "Kommandon"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
 msgstr "Avbryt"
 
