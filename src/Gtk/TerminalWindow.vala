@@ -171,33 +171,53 @@ public class TerminalWindow : Gtk.Window {
 		process_quit(child_pid);
 	}
 
+// $ make clean all VALACFLAGS="-D VTE_ASYNC" && sudo make install VALACFLAGS="-D VTE_ASYNC"
+#if VTE_ASYNC
+	public void t_callback(Vte.Terminal terminal, Pid pid, Error? error) {
+		if (error != null) { vprint("Error setting up terminal: "+error.message,1,stderr); return; }
+		vprint("Terminal set up, process ID: "+pid.to_string(),4);
+		child_pid = pid;
+	}
+#endif
+
 	public void execute_script(string f, string d) {
 		string[] argv = {"sh", f};
 
 		string[] env = Environ.get();
 
-		try {
-
+#if VTE_ASYNC
 			is_running = true;
-
-			term.spawn_sync (
+			term.spawn_async (
 				Vte.PtyFlags.DEFAULT, //pty_flags
-				d, //working_directory
-				argv, //argv
-				env, //env
+				d, // working_directory
+				argv, // argv
+				env, // env
 				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-				null, //child_setup
-				out child_pid,
-				null
+				null, // child_setup() func
+				-1, // timeout
+				null, // cancellable
+				t_callback // callback
 			);
-
+			term.watch_child(child_pid); // VTE-CRITICAL **: 02:34:56.658: void vte_terminal_watch_child(VteTerminal*, GPid): assertion 'WIDGET(terminal)->pty() != nullptr' failed
+			term.child_exited.connect(script_exit);
+#else
+		try {
+			is_running = true;
+			term.spawn_sync (
+				Vte.PtyFlags.DEFAULT, // pty_flags
+				d, // working_directory
+				argv, // argv
+				env, // env
+				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
+				null, // child_setup() func
+				out child_pid, // child pid receiver var
+				null // cancellable
+			);
 			term.watch_child(child_pid);
-
 			term.child_exited.connect(script_exit);
 		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
+		catch (Error e) { vprint(e.message,1,stderr); }
+#endif
 	}
 
 	public void script_exit(int status) {

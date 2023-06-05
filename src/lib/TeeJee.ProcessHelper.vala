@@ -117,7 +117,7 @@ namespace TeeJee.ProcessHelper {
 	// manage process ---------------------------------
 
 	public void process_quit(Pid process_pid, bool killChildren = true) {
-
+		//vprint("process_quit("+process_pid.to_string()+")");
 		/* Kills specified process and its children (optional).
 		 * Sends signal SIGTERM to the process to allow it to quit gracefully.
 		 * */
