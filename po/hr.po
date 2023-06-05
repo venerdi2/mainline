@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 18:30-0400\n"
+"POT-Creation-Date: 2023-06-05 00:44-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:668 src/Gtk/MainWindow.vala:522
+#: src/Common/LinuxKernel.vala:668 src/Gtk/MainWindow.vala:521
 msgid "Running"
 msgstr "Pokrenuto"
 
@@ -86,7 +86,7 @@ msgstr "Dostupni Paketi"
 msgid "Packages Installed"
 msgstr "Instalirani paketi"
 
-#: src/Common/LinuxKernel.vala:791 src/lib/TeeJee.FileSystem.vala:99
+#: src/Common/LinuxKernel.vala:791 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Datoteka nije pronađena"
 
@@ -94,7 +94,7 @@ msgstr "Datoteka nije pronađena"
 msgid "Available Kernels"
 msgstr "Dostupni kerneli"
 
-#: src/Common/LinuxKernel.vala:920 src/Gtk/MainWindow.vala:136
+#: src/Common/LinuxKernel.vala:920 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr "Kernel"
 
@@ -266,7 +266,7 @@ msgstr "Deinstaliraj određene kernele"
 msgid "Uninstall specified kernels"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:334
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:333
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
 
@@ -331,7 +331,7 @@ msgstr "Kernel %s je dostupan"
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:313
+#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:312
 msgid "Install"
 msgstr "Instaliraj"
 
@@ -339,39 +339,39 @@ msgstr "Instaliraj"
 msgid "Previously notified"
 msgstr "Prethodno prijavljeno"
 
-#: src/Gtk/AboutWindow.vala:162 src/Gtk/AboutWindow.vala:179
+#: src/Gtk/AboutWindow.vala:32 src/Gtk/AboutWindow.vala:170
 msgid "Credits"
 msgstr "Zasluge"
 
-#: src/Gtk/AboutWindow.vala:175
-msgid "Back"
-msgstr "Natrag"
-
-#: src/Gtk/AboutWindow.vala:185 src/Gtk/TerminalWindow.vala:152
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:151
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/Gtk/AboutWindow.vala:204
+#: src/Gtk/AboutWindow.vala:166
+msgid "Back"
+msgstr "Natrag"
+
+#: src/Gtk/AboutWindow.vala:193
 msgid "Authors"
 msgstr "Autori"
 
-#: src/Gtk/AboutWindow.vala:212
+#: src/Gtk/AboutWindow.vala:201
 msgid "Contributions"
 msgstr "Prilozi"
 
-#: src/Gtk/AboutWindow.vala:220
+#: src/Gtk/AboutWindow.vala:209
 msgid "Artists"
 msgstr "Dizajneri"
 
-#: src/Gtk/AboutWindow.vala:228
+#: src/Gtk/AboutWindow.vala:217
 msgid "Translators"
 msgstr "Prevoditelji"
 
-#: src/Gtk/AboutWindow.vala:236
+#: src/Gtk/AboutWindow.vala:225
 msgid "Documenters"
 msgstr "Autori dokumentacije"
 
-#: src/Gtk/AboutWindow.vala:244
+#: src/Gtk/AboutWindow.vala:233
 msgid "Third Party Inclusions"
 msgstr "Uključene treće strane"
 
@@ -387,72 +387,72 @@ msgstr "Ispiši informacije otklanjanja grešaka"
 msgid "Show all options"
 msgstr "Prikaži sve mogućnosti"
 
-#: src/Gtk/MainWindow.vala:160
+#: src/Gtk/MainWindow.vala:159
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:177
+#: src/Gtk/MainWindow.vala:176
 msgid "Status"
 msgstr "Stanje"
 
-#: src/Gtk/MainWindow.vala:189
+#: src/Gtk/MainWindow.vala:188
 msgid "Notes"
 msgstr "Bilješke"
 
-#: src/Gtk/MainWindow.vala:318
+#: src/Gtk/MainWindow.vala:317
 msgid "Uninstall"
 msgstr "Deinstaliraj"
 
-#: src/Gtk/MainWindow.vala:324
+#: src/Gtk/MainWindow.vala:323
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:333
+#: src/Gtk/MainWindow.vala:332
 msgid "Uninstall Old"
 msgstr "Deinstaliraj staro"
 
-#: src/Gtk/MainWindow.vala:339
+#: src/Gtk/MainWindow.vala:338
 msgid "Reload"
 msgstr "Ponovno učitati"
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:339
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:345 src/Gtk/SettingsDialog.vala:41
+#: src/Gtk/MainWindow.vala:344 src/Gtk/SettingsDialog.vala:41
 msgid "Settings"
 msgstr "Postavke"
 
-#: src/Gtk/MainWindow.vala:350
+#: src/Gtk/MainWindow.vala:349
 msgid "About"
 msgstr "O programu"
 
-#: src/Gtk/MainWindow.vala:355
+#: src/Gtk/MainWindow.vala:354
 msgid "Exit"
 msgstr "Izlaz"
 
-#: src/Gtk/MainWindow.vala:436
+#: src/Gtk/MainWindow.vala:435
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Alat za nadogradnju kernela Ubuntu temeljenih distribucija"
 
-#: src/Gtk/MainWindow.vala:437
+#: src/Gtk/MainWindow.vala:436
 msgid "Forked"
 msgstr "Forkano"
 
-#: src/Gtk/MainWindow.vala:437
+#: src/Gtk/MainWindow.vala:436
 msgid "Original"
 msgstr "Izvornik"
 
-#: src/Gtk/MainWindow.vala:466
+#: src/Gtk/MainWindow.vala:465
 msgid "Updating kernels"
 msgstr "Ažuriranje jezgri"
 
-#: src/Gtk/MainWindow.vala:526
+#: src/Gtk/MainWindow.vala:525
 msgid "available"
 msgstr "dostupno"
 
-#: src/Gtk/MainWindow.vala:568 src/Gtk/MainWindow.vala:599
-#: src/Gtk/MainWindow.vala:624
+#: src/Gtk/MainWindow.vala:567 src/Gtk/MainWindow.vala:598
+#: src/Gtk/MainWindow.vala:623
 msgid "DONE"
 msgstr ""
 
@@ -537,7 +537,7 @@ msgstr "Naredbe"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:142
+#: src/Gtk/TerminalWindow.vala:141
 msgid "Cancel"
 msgstr "Odustani"
 

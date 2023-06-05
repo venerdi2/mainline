@@ -24,22 +24,20 @@
 
 namespace TeeJee.FileSystem {
 
-	using TeeJee.ProcessHelper;
-	using TeeJee.Misc;
 	using l.misc;
 
 	public string file_parent(string f) {
-		//log_debug("file_parent("+f+")");
+		//vprint("file_parent("+f+")",4);
 		return File.new_for_path(f).get_parent().get_path();
 	}
 
 	public string file_basename(string f) {
-		//log_debug("file_basename("+f+")");
+		//vprint("file_basename("+f+")",4);
 		return File.new_for_path(f).get_basename();
 	}
 
 	public bool file_exists(string file_path) {
-		//log_debug("file_exists("+file_path+")");
+		//vprint("file_exists("+file_path+")",4);
 		return (FileUtils.test(file_path, GLib.FileTest.EXISTS)
 			&& !FileUtils.test(file_path, GLib.FileTest.IS_DIR));
 	}
@@ -56,18 +54,15 @@ namespace TeeJee.FileSystem {
 		return txt;
 	}
 
-	public bool file_write(string f, string contents) {
-		vprint("file_write("+f+")",3);
+	public bool file_write(string path, string data) {
+		vprint("file_write("+path+")",3);
 
 		try {
-			dir_create(file_parent(f));
-			var file = File.new_for_path(f);
-			//delete_r(f);
-			//var file_stream = file.create();
+			dir_create(file_parent(path));
+			var file = File.new_for_path(path);
 			var file_stream = file.replace(null, false, FileCreateFlags.REPLACE_DESTINATION);
-			//var file_stream = file.replace(null, false, FileCreateFlags.NONE);
 			var data_stream = new DataOutputStream(file_stream);
-			data_stream.put_string(contents);
+			data_stream.put_string(data);
 			data_stream.close();
 			return true;
 		} catch (Error e) {
@@ -109,23 +104,6 @@ namespace TeeJee.FileSystem {
 
 		}
 		catch (Error e) { vprint(e.message,1,stderr); }
-	}
-
-	public int64 file_get_size(string file_path) {
-		try {
-			File file = File.parse_name(file_path);
-			if (FileUtils.test(file_path, GLib.FileTest.EXISTS)) {
-				if (FileUtils.test(file_path, GLib.FileTest.IS_REGULAR)
-					&& !FileUtils.test(file_path, GLib.FileTest.IS_SYMLINK)) {
-					return file.query_info("standard::size",0).get_size();
-				}
-			}
-		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
-
-		return -1;
 	}
 
 	public bool dir_create(string d) {

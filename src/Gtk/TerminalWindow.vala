@@ -87,8 +87,7 @@ public class TerminalWindow : Gtk.Window {
 		// vbox_main ---------------
 
 		vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-
-		add (vbox_main);
+		add(vbox_main);
 
 		// terminal ----------------------
 

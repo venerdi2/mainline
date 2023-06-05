@@ -28,20 +28,16 @@ using TeeJee.Misc;
 using l.misc;
 
 public class AboutWindow : Dialog {
-	private Box vbox_main;
-	private Box vbox_logo;
-	private Box vbox_credits;
-	private Box vbox_lines;
-	private Box hbox_action;
-	private Button btn_credits;
-	private Button btn_close;
 
-	private Gtk.Image img_logo;
-	private Label lbl_program_name;
-	private Label lbl_version;
-	private Label lbl_comments;
-	private LinkButton lbtn_website;
-	private Label lbl_copyright;
+	private Button btn_credits = new Button.with_label(_("Credits"));
+	private Button btn_close = new Button.with_label(_("Close"));
+	private LinkButton lbtn_website = new LinkButton("");
+	private Image img_logo = new Gtk.Image();
+	private Label lbl_program_name = new Label("");
+	private Label lbl_version = new Label("");
+	private Label lbl_comments = new Label("");
+	private Label lbl_copyright = new Label("");
+	private Box vbox_lines = new Box(Orientation.VERTICAL,0);
 
 	private string[] _artists;
 	public string[] artists { get { return _artists; } set { _artists = value; } }
@@ -91,62 +87,56 @@ public class AboutWindow : Dialog {
 		set_modal (true);
 		set_default_size (450, 400);
 
-		vbox_main = get_content_area();
+		var vbox_main = get_content_area();
+
 		vbox_main.margin = 6;
 		vbox_main.spacing = 6;
 
-		vbox_logo = new Box(Orientation.VERTICAL,0);
+		var vbox_logo = new Box(Orientation.VERTICAL,0);
 		vbox_main.add(vbox_logo);
 
-		vbox_credits = new Box(Orientation.VERTICAL,0);
+		var vbox_credits = new Box(Orientation.VERTICAL,0);
 		vbox_credits.no_show_all = true;
 		vbox_main.add(vbox_credits);
 
-		vbox_lines = new Box(Orientation.VERTICAL,0);
 		vbox_lines.margin_top = 10;
 
-		//logo
-		img_logo = new Gtk.Image();
+		// logo
 		img_logo.margin_top = 6;
 		img_logo.margin_bottom = 6;
         vbox_logo.add(img_logo);
 
-		//program_name
-		lbl_program_name = new Label("");
+		// program_name
 		lbl_program_name.set_use_markup(true);
 		vbox_logo.add(lbl_program_name);
 
-		//version
-		lbl_version = new Label("");
+		// version
 		lbl_version.set_use_markup(true);
 		lbl_version.margin_top = 5;
 		vbox_logo.add(lbl_version);
 
-		//comments
-		lbl_comments = new Label("");
+		// comments
 		lbl_comments.set_use_markup(true);
 		lbl_comments.margin_top = 10;
 		vbox_logo.add(lbl_comments);
 
-		//website
-		lbtn_website = new LinkButton("");
+		// website
 		lbtn_website.margin_top = 5;
 		vbox_logo.add(lbtn_website);
 
 		lbtn_website.activate_link.connect(()=>{ uri_open(lbtn_website.uri); return true; });
 
-		//copyright
-		lbl_copyright = new Label("");
+		// copyright
 		lbl_copyright.set_use_markup(true);
 		lbl_copyright.margin_top = 5;
 		vbox_logo.add(lbl_copyright);
 
-		//spacer_bottom
+		// spacer_bottom
 		var spacer_bottom = new Label("");
 		spacer_bottom.margin_top = 20;
 		vbox_logo.add(spacer_bottom);
 
-		//scroller
+		// scroller
 		var sw_credits = new ScrolledWindow(null, null);
 		sw_credits.set_shadow_type(ShadowType.ETCHED_IN);
 		sw_credits.expand = true;
@@ -154,12 +144,13 @@ public class AboutWindow : Dialog {
 		vbox_credits.add(sw_credits);
 		sw_credits.add(vbox_lines);
 
-		//hbox_commands --------------------------------------------------
+		// hbox_commands --------------------------------------------------
 
-		hbox_action = (Box) get_action_area();
+		var hbox_action = new Box(Gtk.Orientation.HORIZONTAL, 6);
+		hbox_action.halign = Gtk.Align.END;
+		vbox_main.add(hbox_action);
 
-		//btn_credits
-		btn_credits = new Button.with_label(_("Credits"));
+		// credits
 		btn_credits.set_image (new Image.from_icon_name("gtk-about", IconSize.MENU));
 		hbox_action.add(btn_credits);
 
@@ -181,12 +172,11 @@ public class AboutWindow : Dialog {
 			}
 		});
 
-		//btn_close
-		btn_close = new Button.with_label(_("Close"));
+		// close
 		btn_close.set_image (new Image.from_icon_name("gtk-close", IconSize.MENU));
 		hbox_action.add(btn_close);
-
 		btn_close.clicked.connect(()=>{ this.destroy(); });
+
 	}
 
 	public void initialize() {
@@ -197,7 +187,6 @@ public class AboutWindow : Dialog {
 		lbl_comments.label = "%s".printf(comments);
 		lbtn_website.uri = website;
 		lbtn_website.label = website_label;
-		//lbl_copyright.label = "<span size='smaller'>%s</span>".printf(copyright);
 		lbl_copyright.label = "<span>%s</span>".printf(copyright);
 
 		if (authors.length > 0){
