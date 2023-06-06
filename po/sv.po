@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 04:33-0400\n"
+"POT-Creation-Date: 2023-06-06 08:23-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -90,6 +90,11 @@ msgstr "Installerade paket"
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
+#: src/Common/LinuxKernel.vala:814
+#, fuzzy
+msgid "needs update"
+msgstr "Senaste uppdatering"
+
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
@@ -134,7 +139,7 @@ msgstr "är redan installerat."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1007
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:548
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Kommandot har inte angetts"
@@ -148,7 +153,7 @@ msgstr "Avinstallera valda kärnor"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Avinstallera inte den kärna som körs, för närvarande"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1034 src/Gtk/MainWindow.vala:543
 msgid "is locked"
 msgstr ""
 
@@ -479,6 +484,15 @@ msgstr "Uppdatera kärnor"
 #: src/Gtk/MainWindow.vala:525
 msgid "available"
 msgstr "tillgänglig"
+
+#: src/Gtk/MainWindow.vala:542
+#, fuzzy
+msgid "is already installed"
+msgstr "är redan installerat."
+
+#: src/Gtk/MainWindow.vala:544
+msgid "adding"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632

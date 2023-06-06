@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 04:33-0400\n"
+"POT-Creation-Date: 2023-06-06 08:23-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -90,6 +90,11 @@ msgstr "설치된 패키지"
 msgid "File not found"
 msgstr "파일을 찾을 수 없습니다"
 
+#: src/Common/LinuxKernel.vala:814
+#, fuzzy
+msgid "needs update"
+msgstr "최신 업데이트"
+
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
@@ -134,7 +139,7 @@ msgstr "가 이미 설치되어 있습니다"
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1007
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:548
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "지정한 명령어가 없습니다"
@@ -148,7 +153,7 @@ msgstr "선택한 커널 제거"
 msgid "Not uninstalling the currently running kernel"
 msgstr "현재 실행 중인 커널을 제거하지 않음"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1034 src/Gtk/MainWindow.vala:543
 msgid "is locked"
 msgstr ""
 
@@ -479,6 +484,15 @@ msgstr "커널 업데이트"
 #: src/Gtk/MainWindow.vala:525
 msgid "available"
 msgstr "사용가능"
+
+#: src/Gtk/MainWindow.vala:542
+#, fuzzy
+msgid "is already installed"
+msgstr "가 이미 설치되어 있습니다"
+
+#: src/Gtk/MainWindow.vala:544
+msgid "adding"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632

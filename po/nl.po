@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 04:33-0400\n"
+"POT-Creation-Date: 2023-06-06 08:23-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -90,6 +90,11 @@ msgstr "Geïnstalleerde pakketten"
 msgid "File not found"
 msgstr "Het bestand is niet gevonden"
 
+#: src/Common/LinuxKernel.vala:814
+#, fuzzy
+msgid "needs update"
+msgstr "Recentste update"
+
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
 msgstr "Beschikbare kernels"
@@ -134,7 +139,7 @@ msgstr "is al geïnstalleerd."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1007
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:548
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Geen opdracht opgegeven"
@@ -148,7 +153,7 @@ msgstr "Geselecteerde kernels verwijderen"
 msgid "Not uninstalling the currently running kernel"
 msgstr "de momenteel actieve kernel niet verwijderen"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1034 src/Gtk/MainWindow.vala:543
 msgid "is locked"
 msgstr ""
 
@@ -481,6 +486,15 @@ msgstr "Kernels bijwerken"
 #: src/Gtk/MainWindow.vala:525
 msgid "available"
 msgstr "beschikbaar"
+
+#: src/Gtk/MainWindow.vala:542
+#, fuzzy
+msgid "is already installed"
+msgstr "is al geïnstalleerd."
+
+#: src/Gtk/MainWindow.vala:544
+msgid "adding"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 04:33-0400\n"
+"POT-Creation-Date: 2023-06-06 08:23-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -90,6 +90,11 @@ msgstr "Встановлені пакети"
 msgid "File not found"
 msgstr "Файл не знайдено"
 
+#: src/Common/LinuxKernel.vala:814
+#, fuzzy
+msgid "needs update"
+msgstr "Останнє оновлення"
+
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
 msgstr "Доступні ядра"
@@ -130,7 +135,7 @@ msgstr "вже встановлено."
 msgid "download failed."
 msgstr "не вдалося завантажити."
 
-#: src/Common/LinuxKernel.vala:1007
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:548
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Встановити: ядра, які можна встановити, не вказано"
@@ -143,7 +148,7 @@ msgstr "Видаліть конкретні ядра"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не видалення поточного запущеного ядра"
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1034 src/Gtk/MainWindow.vala:543
 msgid "is locked"
 msgstr "заблоковано"
 
@@ -468,6 +473,15 @@ msgstr "Оновлення ядер"
 #: src/Gtk/MainWindow.vala:525
 msgid "available"
 msgstr "доступний"
+
+#: src/Gtk/MainWindow.vala:542
+#, fuzzy
+msgid "is already installed"
+msgstr "вже встановлено."
+
+#: src/Gtk/MainWindow.vala:544
+msgid "adding"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632

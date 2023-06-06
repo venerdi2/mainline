@@ -199,14 +199,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		find_thresholds(true);
 
 		// ===== download the main index.html listing all kernels =====
-		download_index();
-		load_index();
+		download_index(); // download the main index.html
+		load_index();  // scrape the index.html to make the initial kernel_list
 
 		// ===== download the per-kernel index.html and CHANGES =====
 
-		// list of kernels - 1 LinuxKernel object per kernel to update
+		// list of kernels - one LinuxKernel object per kernel to update
 		var kernels_to_update = new Gee.ArrayList<LinuxKernel>();
-		// list of files - 1 DownloadItem object per individual file to download
+		// list of files - one DownloadItem object per individual file to download
 		var downloads = new Gee.ArrayList<DownloadItem>();
 
 		// add files to download list, and add kernels to kernel list
@@ -809,9 +809,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		// if datetime from main index is later than the latest cached datetime,
-		// delete the cached index and status, return false
+		// delete the cache, return false. it will get downloaded in the next stage.
 		if (ppa_datetime>d_max) {
-			vprint(version_main+": ppa:"+ppa_datetime.to_string()+" > cache:"+d_max.to_string()+" : needs update");
+			vprint(version_main+": ppa:"+ppa_datetime.to_string()+" > cache:"+d_max.to_string()+" : "+_("needs update"));
 			delete_r(cache_subdir);
 			return false;
 		}

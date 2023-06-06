@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 04:33-0400\n"
+"POT-Creation-Date: 2023-06-06 08:23-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,6 +94,10 @@ msgstr ""
 msgid "File not found"
 msgstr ""
 
+#: src/Common/LinuxKernel.vala:814
+msgid "needs update"
+msgstr ""
+
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
 msgstr ""
@@ -134,7 +138,7 @@ msgstr ""
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1007
+#: src/Common/LinuxKernel.vala:1007 src/Gtk/MainWindow.vala:548
 msgid "Install: no installable kernels specified"
 msgstr ""
 
@@ -146,7 +150,7 @@ msgstr ""
 msgid "Not uninstalling the currently running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:1034 src/Gtk/MainWindow.vala:543
 msgid "is locked"
 msgstr ""
 
@@ -465,6 +469,14 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:525
 msgid "available"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:542
+msgid "is already installed"
+msgstr ""
+
+#: src/Gtk/MainWindow.vala:544
+msgid "adding"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604

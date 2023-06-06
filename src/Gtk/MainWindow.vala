@@ -539,13 +539,13 @@ public class MainWindow : Window {
 
 		vlist = "";
 		foreach (var k in klist) {
-			if (k.is_installed) { vprint(k.version_main+" is already installed"); continue; }
-			if (k.is_locked) { vprint(k.version_main+" is locked"); continue; }
-			vprint("adding "+k.version_main);
+			if (k.is_installed) { vprint(k.version_main+" "+_("is already installed")); continue; }
+			if (k.is_locked) { vprint(k.version_main+" "+_("is locked")); continue; }
+			vprint(_("adding")+" "+k.version_main);
 			vlist += " "+k.version_main;
 		}
 		vlist = vlist.strip();
-		if (vlist=="") { vprint("Install: no installable kernels specified"); return; }
+		if (vlist=="") { vprint(_("Install: no installable kernels specified")); return; }
 
 		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
