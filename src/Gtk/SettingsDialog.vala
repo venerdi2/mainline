@@ -70,7 +70,7 @@ public class SettingsDialog : Gtk.Dialog {
 		chk.toggled.connect(()=>{ App.notify_minor = chk_notify_minor.active; });
 
 		if (Main.VERBOSE>1) {
-			label = new Gtk.Label("( VERBOSE > 1 : "+_("Seconds interval enabled for debugging")+" )");
+			label = new Gtk.Label("( VERBOSE="+Main.VERBOSE.to_string()+" : "+_("Seconds interval enabled for debugging")+" )");
 			label.xalign = (float) 0.0;
 			label.margin_bottom = 6;
 			vbox_main.add (label);

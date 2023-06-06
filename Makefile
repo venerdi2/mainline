@@ -63,12 +63,12 @@ deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_
 .PHONY: all
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
 
-$(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) translations
+$(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) TRANSLATORS
 	valac $(VALACFLAGS) -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) --pkg x11 \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
-$(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) translations
+$(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) TRANSLATORS
 	valac $(VALACFLAGS) -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
