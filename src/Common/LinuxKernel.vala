@@ -49,8 +49,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static LinuxKernel kernel_latest_available;
 	public static LinuxKernel kernel_latest_installed;
 	public static LinuxKernel kernel_oldest_installed;
-	public static LinuxKernel kernel_last_stable_old_ppa_dirs;
-	public static LinuxKernel kernel_last_unstable_old_ppa_dirs;
+	public static LinuxKernel kernel_last_stable_ppa_dirs_v1;
+	public static LinuxKernel kernel_last_rc_ppa_dirs_v1;
+	//public static LinuxKernel kernel_last_stable_ppa_dirs_v2; // if the site changes again
+	//public static LinuxKernel kernel_last_rc_ppa_dirs_v2;
 
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
 
@@ -78,13 +80,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_update_major = kernel_active;
 		kernel_update_minor = kernel_active;
 
-		// Special kernel versions where the mainline-ppa site changed their directory structure.
-		// affects:
-		// - ./foo.deb vs ./<arch>/foo.deb
-		// - ./CHECKSUMS vs ./<arch>/CHECKSUMS
-		// - ./BUILT vs ./<arch>/status
-		kernel_last_stable_old_ppa_dirs = new LinuxKernel("5.6.17");
-		kernel_last_unstable_old_ppa_dirs = new LinuxKernel("5.7-rc7");
+		// Special threshold kernel versions where the mainline-ppa site changed their directory structure.
+		// ppa_dirs_ver=1       ppa_dirs_ver=2
+		// ./foo.deb       vs   ./<arch>/foo.deb
+		// ./CHECKSUMS     vs   ./<arch>/CHECKSUMS
+		// ./BUILT         vs   ./<arch>/status
+		kernel_last_stable_ppa_dirs_v1 = new LinuxKernel("5.6.17");
+		kernel_last_rc_ppa_dirs_v1 = new LinuxKernel("5.7-rc7");
+		//kernel_last_stable_ppa_dirs_v2 = new LinuxKernel("5.6.17"); // if the site changes again
+		//kernel_last_rc_ppa_dirs_v2 = new LinuxKernel("5.7-rc7");
 
 	}
 
@@ -156,15 +160,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public static bool check_if_initialized() {
-		bool ok = (NATIVE_ARCH.length > 0);
-		if (!ok){
-			vprint("LinuxKernel: Class should be initialized before use!",1,stderr);
-			exit(1);
-		}
-		return ok;
-	}
-
 	public static void delete_cache() {
 		vprint("delete_cache()",2);
 		kernel_list.clear();
@@ -183,23 +178,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public static void mk_kernel_list(bool wait = true, owned Notifier? notifier = null) {
 		vprint("mk_kernel_list()",2);
-		check_if_initialized();
-
-		kernel_list.clear();
-
 		try {
-			App.cancelled = false;
-			var worker = new Thread<bool>.try(null, () => query_thread((owned) notifier) );
+			var worker = new Thread<bool>.try(null, () => mk_kernel_list_worker((owned)notifier) );
 			if (wait) worker.join();
-		} catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
+		} catch (Error e) { vprint(e.message,1,stderr); }
 	}
 
-	private static bool query_thread(owned Notifier? notifier) {
-		vprint("query_thread()",2);
+	private static bool mk_kernel_list_worker(owned Notifier? notifier) {
+		vprint("mk_kernel_list_worker()",2);
+
+		kernel_list.clear();
 		App.progress_total = 0;
 		App.progress_count = 0;
+		App.cancelled = false;
 
 		var timer = timer_start();
 		int count = 0;
@@ -240,8 +231,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// add index.html to download list
 			vprint(_("queuing download")+" "+k.version_main,3);
-			var item = new DownloadItem(k.cached_page_uri, file_parent(k.cached_page), file_basename(k.cached_page));
-			downloads.add(item);
+			downloads.add(new DownloadItem(k.cached_page_uri, file_parent(k.cached_page), file_basename(k.cached_page)));
 
 			// add kernel to update list
 			kernels_to_update.add(k);
@@ -298,7 +288,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// download the main index.html listing all mainline kernels
 	private static bool download_index() {
 		vprint("download_index()",2);
-		check_if_initialized();
 
 		string cif = main_index_file();
 		if (!file_exists(cif)) App.index_is_fresh=false;
@@ -323,7 +312,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (file_exists(tfn)) {
 			file_move(tfn,cif);
 			App.index_is_fresh=true;
-			vprint(_("OK"));
+			vprint(_("OK"),2);
 			return true;
 		} else {
 			vprint(_("FAILED"),1,stderr);
@@ -355,8 +344,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				v = mi.fetch(1);
 				var k = new LinuxKernel(v);
 
-				if (k.version_major<THRESHOLD_MAJOR ||
-					(k.version_rc>=0 && App.hide_unstable)) { delete_r(k.cache_subdir); continue; }
+				if (k.version_major<THRESHOLD_MAJOR || (k.version_rc>=0 && App.hide_unstable)) {
+					if (File.parse_name(k.cache_subdir).query_exists()) delete_r(k.cache_subdir);
+					continue;
+				}
 
 				k.page_uri = App.ppa_uri + v;
 				k.is_mainline = true;
@@ -605,41 +596,43 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 // complicated comparison logic for kernel version strings
+// * individual fields tested numerically if possible
+//   so that 1.12.0 is higher than 1.2.0
+// * 1.2.3-rc5 is higher than 1.2.3-rc4    normal, but...
+//   1.2.3 is higher than 1.2.3-rc5        <-- the weird one
 // like strcmp(), but l & r are LinuxKernel objects
+// l.compare_to(r)   name & interface to please Gee.Comparable
 //  l<r  return -1
 //  l==r return 0
 //  l>r  return 1
 	public int compare_to(LinuxKernel t) {
 		vprint(version_main+" compare_to() "+t.version_main,4);
-		// TODO version_sort is a transitional hack to keep doing the old way of parsing version_main
-		// since version_main has a different format now.
-		// The better way will be to just examine the individual variables we already have for free,
-		// version_major, version_minor, etc...
+		// TODO version_sort is a transitional hack to keep doing the old way of
+		// parsing version_main, since version_main has a different format now.
+		// The better way will be to just examine the individual variables
+		// which we already did the work of parsing in split_version_string()
 		var a = version_sort.split_set(".-_");
 		var b = t.version_sort.split_set(".-_");
 		int x, y, i = -1;
-		while (++i<a.length && i<b.length) {
-			if (a[i] == b[i]) continue;
-			x = int.parse(a[i]);
-			y = int.parse(b[i]);
-			if (x>0 && y>0) return (x - y);
-			if (x==0 && y==0) return strcmp(a[i],b[i]);
-			if (x>0) return 1;
-			return -1;
+		while (++i<a.length && i<b.length) {            // while both strings have chunks
+			if (a[i] == b[i]) continue;                 // both the same, next chunk
+			x = int.parse(a[i]); y = int.parse(b[i]);   // parse strings to ints
+			if (x>0 && y>0) return (x - y);             // both numerical >0, numerical compare
+			if (x==0 && y==0) return strcmp(a[i],b[i]); // neither numerical >0 (alpha or maybe 0), lexical compare
+			if (x>0) return 1;                          // only left is numerical>0, left is greater
+			return -1;                                  // only right is numerical>0, right is greater
 		}
-		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; }
-		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; }
-		return 0;
+		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // left is longer { {left is numerical>0) left is greater else right is greater }
+		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // right is longer { {right is numerical>0) right is greater else left is greater }
+		return 0;                                       // left & right identical the whole way
 	}
 
 	public void set_pkg_list() {
-		vprint("set_pkg_list()",2);
-		vprint("kname:"+kname+" kver:"+kver+" version_main:"+version_main,3);
+		vprint("set_pkg_list("+kver+")",2);
 		foreach(var p in Package.dpkg_list) {
-			if (!p.pname.has_prefix("linux-")) continue;
 			if (p.version == kver) {
 				pkg_list[p.pname] = p.pname;
-				vprint("Package: "+p.pname,2);
+				vprint("pkg: "+p.pname,2);
 			}
 		}
 	}
@@ -672,19 +665,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public bool new_ppa_dirs {
-		get {
-			//    if stable   and newer than kernel_last_stable_old_ppa_dirs
-			// or if unstable and newer than kernel_last_unstable_old_ppa_dirs
-			if (ppa_dirs_ver==2) return true;
-			if (ppa_dirs_ver==1) return false;
-			var k = kernel_last_stable_old_ppa_dirs;
-			if (version_rc>=0) k = kernel_last_unstable_old_ppa_dirs;
-			if (compare_to(k)>0) { ppa_dirs_ver = 2; return true; }
-			else { ppa_dirs_ver = 1; return false; }
-		}
+	private void set_ppa_dirs_ver() {
+		if (ppa_dirs_ver>0) return;
+		ppa_dirs_ver = 1;
+		var k = kernel_last_stable_ppa_dirs_v1;            // Which threshold,
+		if (version_rc>=0) k = kernel_last_rc_ppa_dirs_v1; // stable or rc?
+		if (compare_to(k)>0) ppa_dirs_ver = 2;             // Do we exceed it?
+		// and in the future if the ppa site changes again,
+		// add more copies of these 3 lines
+		//k = kernel_last_stable_ppa_dirs_v2;
+		//if (version_rc>=0) k = kernel_last_rc_ppa_dirs_v2;
+		//if (compare_to(k)>0) ppa_dirs_ver = 3;
 	}
-
 
 	public static string main_index_file () {
 		return App.CACHE_DIR+"/index.html";
@@ -740,8 +732,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public string checksums_file_uri {
 		owned get {
-			if (new_ppa_dirs) return page_uri+NATIVE_ARCH+"/CHECKSUMS";
-			return page_uri+"CHECKSUMS";
+			if (ppa_dirs_ver<1) set_ppa_dirs_ver(); // doing here means we only do if needed
+			switch (ppa_dirs_ver) {
+				case 1: return page_uri+"CHECKSUMS";
+				//case 2: return page_uri+NATIVE_ARCH+"/CHECKSUMS";
+				default: return page_uri+NATIVE_ARCH+"/CHECKSUMS";
+			}
 		}
 	}
 
@@ -905,7 +901,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public static Gee.ArrayList<LinuxKernel> vlist_to_klist(string list="",bool uk=false) {
 		vprint("vlist_to_klist("+list+")",3);
-		check_if_initialized();
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		var vlist = list.split_set(",;:| ");
 		int i=vlist.length;
@@ -933,23 +928,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// dep: aria2c
 	public bool download_packages() {
 		vprint("download_packages("+version_main+")",2);
-		check_if_initialized();
 		bool ok = true;
 		int MB = 1024 * 1024;
 
-		var mgr = new DownloadTask();
-
 		// CHECKSUMS
-		//fetch CHECKSUMS or <arch>/CHECKSUMS depending on version
 		deb_checksum_list.clear();
 		foreach (string f in deb_url_list.keys) deb_checksum_list[f] = "";
 		if (App.verify_checksums) {
 			vprint("CHECKSUMS "+_("enabled"),2);
 
 			if (!file_exists(cached_checksums_file)) {
-				mgr.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
-				mgr.execute();
-				while (mgr.is_running()) sleep(250);
+				var dt = new DownloadTask();
+				dt.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
+				dt.execute();
+				while (dt.is_running()) sleep(100);
 			}
 
 			// extract the sha256 hashes and save in aria2c format
@@ -965,7 +957,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		mgr = new DownloadTask();
+		var mgr = new DownloadTask();
 		foreach (string file_name in deb_url_list.keys) mgr.add_to_queue(new DownloadItem(deb_url_list[file_name],cache_subdir,file_name,deb_checksum_list[file_name]));
 
 		vprint(_("Downloading")+" "+version_main);
@@ -1058,7 +1050,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return Posix.system(cmd);
 	}
 
-	public static void kunin_old(bool confirm) {
+	public static int kunin_old(bool confirm) {
 		vprint("kunin_old()",2);
 
 		find_thresholds(true);
@@ -1101,82 +1093,46 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (!found_running_kernel) {
 			vprint(_("Could not find running kernel in list"),1,stderr);
-			return;
+			return 2;
 		}
 
 		if (klist.size == 0){
 			vprint(_("Could not find any kernels to uninstall"),2);
-			return;
+			return 0;
 		}
 
-		// confirm -------------------------------
-
 		if (confirm) {
-
 			var message = "\n"+_("The following kernels will be uninstalled")+"\n";
-
 			foreach (var k in klist) message += " ▰ %s\n".printf(k.version_main);
-
 			message += "\n%s (y/n): ".printf(_("Continue ?"));
-
 			vprint(message,0);
-
 			int ch = stdin.getc();
-
-			if (ch != 'y') return;
+			if (ch != 'y') return 1;
 		}
 
 		// uninstall --------------------------------
-		uninstall_klist(klist);
+		return uninstall_klist(klist);
 	}
 
-	public static void kinst_latest(bool point_update, bool confirm) {
+	public static int kinst_latest(bool point_update = false, bool confirm = true) {
 		vprint("kinst_latest()",2);
-
 		mk_kernel_list(true);
-
-		var kern_major = LinuxKernel.kernel_update_major;
-
-		if ((kern_major != null) && !point_update) {
-
-			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
-			vprint(message);
-
-			kinst_update(kern_major, confirm);
-			return;
-		}
-
-		var kern_minor = LinuxKernel.kernel_update_minor;
-
-		if (kern_minor != null) {
-
-			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
-			vprint(message);
-
-			kinst_update(kern_minor, confirm);
-			return;
-		}
-
-		if ((kern_major == null) && (kern_minor == null)) {
-			vprint(_("No updates found"));
-		}
-
+		var k = LinuxKernel.kernel_update_major;
+		if (point_update) k = LinuxKernel.kernel_update_minor;
+		if (k != null) return kinst_update(k, confirm);
+		vprint(_("No updates"));
+		return 1;
 	}
 
-	public static void kinst_update(LinuxKernel k, bool confirm) {
-
+	public static int kinst_update(LinuxKernel k, bool confirm) {
 		if (confirm) {
-
-			var message = "\n" + _("Install Kernel Version %s ? (y/n): ").printf(k.version_main);
-			vprint(message,0);
-
+			vprint("\n" + _("Install Kernel Version %s ? (y/n): ").printf(k.version_main),0);
 			int ch = stdin.getc();
-			if (ch != 'y') return;
+			if (ch != 'y') return 1;
 		}
-
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		klist.add(k);
-		install_klist(klist);
+		return install_klist(klist);
 	}
 
 }

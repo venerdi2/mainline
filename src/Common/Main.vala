@@ -71,8 +71,7 @@ const string[]	DEFAULT_AUTH_CMDS = {
 	"gksu --su-mode",
 	"pbrun"
 	};
-
-// windows
+// window sizes
 const int		DEFAULT_WINDOW_WIDTH			= 800		;
 const int		DEFAULT_WINDOW_HEIGHT			= 600		;
 const int		DEFAULT_WINDOW_X				= -1		;
@@ -87,12 +86,10 @@ extern void exit(int exit_code);
 public class Main : GLib.Object {
 
 	// constants ----------
-
 	public string CONFIG_DIR = "";
 	public string CACHE_DIR = "";
 	public string DATA_DIR = "";
 	public string TMP_PREFIX = "";
-
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
@@ -101,7 +98,6 @@ public class Main : GLib.Object {
 	public string MINOR_SEEN_FILE = "";
 
 	// global progress ----------------
-
 	public string status_line = "";
 	public int progress_total = 0;
 	public int progress_count = 0;
@@ -117,6 +113,7 @@ public class Main : GLib.Object {
 	public bool index_is_fresh = false;
 	public bool RUN_NOTIFY_SCRIPT = false;
 
+	// config
 	public string ppa_uri = DEFAULT_PPA_URI;
 	public string all_proxy = DEFAULT_ALL_PROXY;
 	public int connect_timeout_seconds = DEFAULT_CONNECT_TIMEOUT_SECONDS;
@@ -240,7 +237,7 @@ public class Main : GLib.Object {
 		try { json.to_file(APP_CONFIG_FILE); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 
-		vprint("Wrote config file: %s".printf(APP_CONFIG_FILE),2);
+		vprint(_("Wrote config file")+": "+APP_CONFIG_FILE,2);
 
 		update_notification_files();
 	}
@@ -259,7 +256,7 @@ public class Main : GLib.Object {
 		try { parser.load_from_file(APP_CONFIG_FILE); }
 		catch (Error e) { cf = false; vprint(e.message,2); }
 		if (!cf) {
-			vprint("detetcted no config file",2);
+			vprint(_("No config file"),2);
 			save_app_config();
 			try { parser.load_from_file(APP_CONFIG_FILE); }
 			catch (Error e) { vprint(e.message,1,stderr); exit(1); }
@@ -321,10 +318,9 @@ public class Main : GLib.Object {
 		if (connect_timeout_seconds>600) connect_timeout_seconds = 600; // aria2c max allowed
 		if (resave) save_app_config();
 
-		vprint("Loaded config file: "+APP_CONFIG_FILE,2);
+		vprint(_("Loaded config file")+": "+APP_CONFIG_FILE,2);
 	}
 
-	// begin ------------
 	private void update_startup_script() {
 		vprint("update_startup_script()",2);
 

@@ -126,7 +126,7 @@ namespace l.misc {
 	// 20200510 bkw - execute command without waiting
 	public void exec_async(string cmd) {
 		vprint("exec_async("+cmd+")",2);
-		try { Process.spawn_command_line_async (cmd); }
+		try { Process.spawn_command_line_async(cmd); }
 		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}
 
@@ -146,7 +146,7 @@ namespace l.misc {
 	}
 
 	public void sleep(int milliseconds) {
-		Thread.usleep ((ulong) milliseconds * 1000);
+		Thread.usleep((ulong) milliseconds * 1000);
 	}
 
 	public bool delete_r(string dir_path) {

@@ -23,7 +23,6 @@ public class DownloadTask : AsyncTask {
 		regex = new Gee.HashMap<string,Regex>();
 
 		try {
-			//Sample:
 			//[#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
 			regex["file-progress"] = new Regex("""^\[#([^ \t]+)[ \t]+([0-9]+)B\/([0-9]+)B\(([0-9]+)%\)[ \t]+[^ \t]+[ \t]+DL\:([0-9]+)B[ \t]+ETA\:([^ \]]+)\]""");
 

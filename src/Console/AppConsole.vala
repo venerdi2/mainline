@@ -163,17 +163,14 @@ public class AppConsole : GLib.Object {
 				return notify_user();
 
 			case "--install-latest":
-				LinuxKernel.kinst_latest(false, App.confirm);
-				break;
+				return LinuxKernel.kinst_latest(false, App.confirm);
 
 			case "--install-point":
-				LinuxKernel.kinst_latest(true, App.confirm);
-				break;
+				return LinuxKernel.kinst_latest(true, App.confirm);
 
 			case "--purge-old-kernels":	// back compat
 			case "--uninstall-old":
-				LinuxKernel.kunin_old(App.confirm);
-				break;
+				return LinuxKernel.kunin_old(App.confirm);
 
 			case "--clean-cache": // back compat
 			case "--delete-cache":
@@ -199,27 +196,12 @@ public class AppConsole : GLib.Object {
 	}
 
 	private void print_updates() {
-
 		LinuxKernel.mk_kernel_list(true);
-
-		var kern_major = LinuxKernel.kernel_update_major;
-		
-		if (kern_major != null) {
-			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
-			vprint(message);
-		}
-
-		var kern_minor = LinuxKernel.kernel_update_minor;
-
-		if (kern_minor != null) {
-			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
-			vprint(message);
-		}
-
-		if ((kern_major == null) && (kern_minor == null)) {
-			vprint(_("No updates found"));
-		}
-
+		var km = LinuxKernel.kernel_update_major;
+		var kp = LinuxKernel.kernel_update_minor;
+		if (km != null) vprint(_("Latest update")+": "+km.version_main);
+		if (kp != null) vprint(_("Latest point update")+": "+kp.version_main);
+		if ((km == null) && (kp == null)) vprint(_("No updates found"));
 	}
 
 	private int notify_user() {
@@ -231,7 +213,7 @@ public class AppConsole : GLib.Object {
 		}
 
 		if (Environment.get_variable("DISPLAY")==null) {
-			vprint("No $DISPLAY",2);
+			vprint(_("No")+" $DISPLAY",2);
 			return 1;
 		}
 
@@ -246,7 +228,7 @@ public class AppConsole : GLib.Object {
 			if (k!=null && k.version_main!="") available = k.version_main;
 			if (file_exists(App.MINOR_SEEN_FILE)) seen = file_read(App.MINOR_SEEN_FILE).strip();
 			if (seen!=available) file_write(App.MINOR_SEEN_FILE,available);
-		} else vprint("notify point releases disabled",2);
+		} else vprint(_("notify point releases disabled"),2);
 
 		// if notify_major enabled and there is one, simply overwrite available
 		if (App.notify_major) {
@@ -254,7 +236,7 @@ public class AppConsole : GLib.Object {
 			if (k!=null && k.version_main!="") available = k.version_main;
 			if (file_exists(App.MAJOR_SEEN_FILE)) seen = file_read(App.MAJOR_SEEN_FILE).strip();
 			if (seen!=available) file_write(App.MAJOR_SEEN_FILE,available);
-		} else vprint("notify major releases disabled",2);
+		} else vprint(_("notify major releases disabled"),2);
 
 		if (seen==available) available = "";
 

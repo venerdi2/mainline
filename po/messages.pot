@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-05 19:44-0400\n"
+"POT-Creation-Date: 2023-06-06 03:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,199 +17,202 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Common/LinuxKernel.vala:100
+#: src/Common/LinuxKernel.vala:104
 msgid "Distribution"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:115
+#: src/Common/LinuxKernel.vala:119
 msgid "Architecture"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:130
+#: src/Common/LinuxKernel.vala:134
 msgid "Running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:230
+#: src/Common/LinuxKernel.vala:221
 msgid "loading cached"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:242
+#: src/Common/LinuxKernel.vala:233
 msgid "queuing download"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:263
+#: src/Common/LinuxKernel.vala:253
 msgid "Fetching individual kernel indexes"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:277
+#: src/Common/LinuxKernel.vala:267
 msgid "loading downloaded"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:318
+#: src/Common/LinuxKernel.vala:307
 msgid "Updating from"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:326
+#: src/Common/LinuxKernel.vala:315
 msgid "OK"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:329
+#: src/Common/LinuxKernel.vala:318
 msgid "FAILED"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:392
+#: src/Common/LinuxKernel.vala:383
 msgid "Found installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:393
+#: src/Common/LinuxKernel.vala:384
 msgid "locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:475 src/Common/LinuxKernel.vala:1003
-#: src/Common/LinuxKernel.vala:1094
+#: src/Common/LinuxKernel.vala:466 src/Common/LinuxKernel.vala:997
+#: src/Common/LinuxKernel.vala:1088
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:668 src/Gtk/MainWindow.vala:521
+#: src/Common/LinuxKernel.vala:661 src/Gtk/MainWindow.vala:521
 msgid "Running"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:669
+#: src/Common/LinuxKernel.vala:662
 msgid "Installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:670
+#: src/Common/LinuxKernel.vala:663
 msgid "Invalid"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:760
+#: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:766
+#: src/Common/LinuxKernel.vala:764
 msgid "Packages Installed"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:791 src/lib/TeeJee.FileSystem.vala:94
+#: src/Common/LinuxKernel.vala:789 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:885
+#: src/Common/LinuxKernel.vala:883
 msgid "Available Kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:920 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:917 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:920
+#: src/Common/LinuxKernel.vala:917
 msgid "not found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:927
+#: src/Common/LinuxKernel.vala:924
 msgid "Download: no downloadable kernels specified"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:947
+#: src/Common/LinuxKernel.vala:940
 msgid "enabled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:971
+#: src/Common/LinuxKernel.vala:965
 msgid "Downloading"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:989
+#: src/Common/LinuxKernel.vala:983
 msgid "Installing selected kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:995 src/Common/LinuxKernel.vala:1034
+#: src/Common/LinuxKernel.vala:989 src/Common/LinuxKernel.vala:1028
 msgid "Requested"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:998
+#: src/Common/LinuxKernel.vala:992
 msgid "is already installed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1008
+#: src/Common/LinuxKernel.vala:1002
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1015
+#: src/Common/LinuxKernel.vala:1009
 msgid "Install: no installable kernels specified"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1030
+#: src/Common/LinuxKernel.vala:1024
 msgid "Uninstalling selected kernels"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1037
+#: src/Common/LinuxKernel.vala:1031
 msgid "Not uninstalling the currently running kernel"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1042
+#: src/Common/LinuxKernel.vala:1036
 msgid "is locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1050
+#: src/Common/LinuxKernel.vala:1044
 msgid "found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1054
+#: src/Common/LinuxKernel.vala:1048
 msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1090
+#: src/Common/LinuxKernel.vala:1084
 msgid "is the highest installed version."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1103
+#: src/Common/LinuxKernel.vala:1097
 msgid "Could not find running kernel in list"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1108
+#: src/Common/LinuxKernel.vala:1102
 msgid "Could not find any kernels to uninstall"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1116
+#: src/Common/LinuxKernel.vala:1107
 msgid "The following kernels will be uninstalled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1120
+#: src/Common/LinuxKernel.vala:1109
 msgid "Continue ?"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1142 src/Console/AppConsole.vala:208
-msgid "Latest update"
+#: src/Common/LinuxKernel.vala:1125
+msgid "No updates"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1153 src/Console/AppConsole.vala:215
-msgid "Latest point update"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:1161 src/Console/AppConsole.vala:220
-#: src/Console/AppConsole.vala:240
-msgid "No updates found"
-msgstr ""
-
-#: src/Common/LinuxKernel.vala:1170
+#: src/Common/LinuxKernel.vala:1131
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr ""
 
-#: src/Common/Main.vala:354
+#: src/Common/Main.vala:240
+msgid "Wrote config file"
+msgstr ""
+
+#: src/Common/Main.vala:259
+msgid "No config file"
+msgstr ""
+
+#: src/Common/Main.vala:321
+msgid "Loaded config file"
+msgstr ""
+
+#: src/Common/Main.vala:350
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:354
+#: src/Common/Main.vala:350
 msgid "at logon"
 msgstr ""
 
-#: src/Common/Main.vala:355
+#: src/Common/Main.vala:351
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:387
+#: src/Common/Main.vala:383
 msgid "Notifications are disabled"
 msgstr ""
 
@@ -302,29 +305,53 @@ msgstr ""
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr ""
 
-#: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:193
+#: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
 #: src/Gtk/AppGtk.vala:109
 msgid "Unknown option"
 msgstr ""
 
-#: src/Console/AppConsole.vala:229
+#: src/Console/AppConsole.vala:202
+msgid "Latest update"
+msgstr ""
+
+#: src/Console/AppConsole.vala:203
+msgid "Latest point update"
+msgstr ""
+
+#: src/Console/AppConsole.vala:204 src/Console/AppConsole.vala:222
+msgid "No updates found"
+msgstr ""
+
+#: src/Console/AppConsole.vala:211
 msgid "Notifications disabled"
 msgstr ""
 
-#: src/Console/AppConsole.vala:262
+#: src/Console/AppConsole.vala:216
+msgid "No"
+msgstr ""
+
+#: src/Console/AppConsole.vala:231
+msgid "notify point releases disabled"
+msgstr ""
+
+#: src/Console/AppConsole.vala:239
+msgid "notify major releases disabled"
+msgstr ""
+
+#: src/Console/AppConsole.vala:244
 #, c-format
 msgid "Kernel %s Available"
 msgstr ""
 
-#: src/Console/AppConsole.vala:266 src/Gtk/SettingsDialog.vala:151
+#: src/Console/AppConsole.vala:248 src/Gtk/SettingsDialog.vala:151
 msgid "Show"
 msgstr ""
 
-#: src/Console/AppConsole.vala:267 src/Gtk/MainWindow.vala:312
+#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:312
 msgid "Install"
 msgstr ""
 
-#: src/Console/AppConsole.vala:270
+#: src/Console/AppConsole.vala:252
 msgid "Previously notified"
 msgstr ""
 
