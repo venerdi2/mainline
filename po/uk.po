@@ -133,7 +133,7 @@ msgstr "не вдалося завантажити."
 #: src/Common/LinuxKernel.vala:1007
 #, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Встановлення: ядра, які можна встановити, не визначені"
+msgstr "Встановити: ядра, які можна встановити, не вказано"
 
 #: src/Common/LinuxKernel.vala:1022
 msgid "Uninstalling selected kernels"
@@ -324,7 +324,7 @@ msgstr "Оновлень не знайдено"
 #: src/Console/AppConsole.vala:211
 #, fuzzy
 msgid "Notifications disabled"
-msgstr "Повідомлення вимкнено"
+msgstr "Сповіщення вимкнено"
 
 #: src/Console/AppConsole.vala:216
 msgid "No"
