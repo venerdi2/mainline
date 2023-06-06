@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 03:55-0400\n"
+"POT-Creation-Date: 2023-06-06 04:33-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -61,8 +61,8 @@ msgstr "Yüklü bulundu"
 msgid "locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:466 src/Common/LinuxKernel.vala:997
-#: src/Common/LinuxKernel.vala:1088
+#: src/Common/LinuxKernel.vala:466 src/Common/LinuxKernel.vala:995
+#: src/Common/LinuxKernel.vala:1086
 msgid "is locked."
 msgstr ""
 
@@ -78,115 +78,115 @@ msgstr "Kurulu"
 msgid "Invalid"
 msgstr "Geçersiz"
 
-#: src/Common/LinuxKernel.vala:758
+#: src/Common/LinuxKernel.vala:756
 msgid "Packages Available"
 msgstr "Mevcut Paketler"
 
-#: src/Common/LinuxKernel.vala:764
+#: src/Common/LinuxKernel.vala:762
 msgid "Packages Installed"
 msgstr "Kurulu Paketler"
 
-#: src/Common/LinuxKernel.vala:789 src/lib/TeeJee.FileSystem.vala:94
+#: src/Common/LinuxKernel.vala:787 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Dosya bulunamadı"
 
-#: src/Common/LinuxKernel.vala:883
+#: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
 msgstr "Mevcut Çekirdekler"
 
-#: src/Common/LinuxKernel.vala:917 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:915 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: src/Common/LinuxKernel.vala:917
+#: src/Common/LinuxKernel.vala:915
 #, fuzzy
 msgid "not found"
 msgstr "Dosya bulunamadı"
 
-#: src/Common/LinuxKernel.vala:924
+#: src/Common/LinuxKernel.vala:922
 #, fuzzy
 msgid "Download: no downloadable kernels specified"
 msgstr "Komut belirtilmedi"
 
-#: src/Common/LinuxKernel.vala:940
+#: src/Common/LinuxKernel.vala:938
 msgid "enabled"
 msgstr "etkin"
 
-#: src/Common/LinuxKernel.vala:965
+#: src/Common/LinuxKernel.vala:963
 msgid "Downloading"
 msgstr "Indiriyor"
 
-#: src/Common/LinuxKernel.vala:983
+#: src/Common/LinuxKernel.vala:981
 #, fuzzy
 msgid "Installing selected kernels"
 msgstr "Seçili çekirdekleri kaldırma"
 
-#: src/Common/LinuxKernel.vala:989 src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:987 src/Common/LinuxKernel.vala:1026
 #, fuzzy
 msgid "Requested"
 msgstr "istenen"
 
-#: src/Common/LinuxKernel.vala:992
+#: src/Common/LinuxKernel.vala:990
 msgid "is already installed."
 msgstr "zaten yüklü."
 
-#: src/Common/LinuxKernel.vala:1002
+#: src/Common/LinuxKernel.vala:1000
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1009
+#: src/Common/LinuxKernel.vala:1007
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Komut belirtilmedi"
 
-#: src/Common/LinuxKernel.vala:1024
+#: src/Common/LinuxKernel.vala:1022
 msgid "Uninstalling selected kernels"
 msgstr "Seçili çekirdekleri kaldırma"
 
-#: src/Common/LinuxKernel.vala:1031
+#: src/Common/LinuxKernel.vala:1029
 #, fuzzy
 msgid "Not uninstalling the currently running kernel"
 msgstr "çalışmakta olan çekirdeğin kaldırılmaması"
 
-#: src/Common/LinuxKernel.vala:1036
+#: src/Common/LinuxKernel.vala:1034
 msgid "is locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1044
+#: src/Common/LinuxKernel.vala:1042
 msgid "found"
 msgstr "kurmak"
 
-#: src/Common/LinuxKernel.vala:1048
+#: src/Common/LinuxKernel.vala:1046
 msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1084
+#: src/Common/LinuxKernel.vala:1082
 #, fuzzy
 msgid "is the highest installed version."
 msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
-#: src/Common/LinuxKernel.vala:1097
+#: src/Common/LinuxKernel.vala:1095
 msgid "Could not find running kernel in list"
 msgstr "Listede çalışan çekirdek bulunamadı"
 
-#: src/Common/LinuxKernel.vala:1102
+#: src/Common/LinuxKernel.vala:1100
 msgid "Could not find any kernels to uninstall"
 msgstr "Kaldırılacak çekirdek bulunamadı"
 
-#: src/Common/LinuxKernel.vala:1107
+#: src/Common/LinuxKernel.vala:1105
 msgid "The following kernels will be uninstalled"
 msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1107
 msgid "Continue ?"
 msgstr "Devam edilsin mi?"
 
-#: src/Common/LinuxKernel.vala:1125
+#: src/Common/LinuxKernel.vala:1123
 #, fuzzy
 msgid "No updates"
 msgstr "Güncelleme bulunamadı"
 
-#: src/Common/LinuxKernel.vala:1131
+#: src/Common/LinuxKernel.vala:1129
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
