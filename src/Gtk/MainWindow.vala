@@ -116,7 +116,7 @@ public class MainWindow : Window {
 		// add treeview
 		tv.get_selection().mode = SelectionMode.MULTIPLE;
 		tv.headers_visible = true;
-		tv.set_grid_lines(BOTH);
+		tv.set_grid_lines(TreeViewGridLines.BOTH);
 		tv.expand = true;
 
 		tv.row_activated.connect(tv_row_activated);

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 08:23-0400\n"
+"POT-Creation-Date: 2023-06-07 03:39-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -190,33 +190,37 @@ msgstr "Оновлень не знайдено"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Встановити Ядро Версії %s ? (так/ні): "
 
-#: src/Common/Main.vala:240
+#: src/Common/Main.vala:158
+msgid "Missing Thread support in Glib."
+msgstr ""
+
+#: src/Common/Main.vala:242
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:259
+#: src/Common/Main.vala:261
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:321
+#: src/Common/Main.vala:322
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:351
 msgid "Called from"
 msgstr "Викликано з"
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:351
 msgid "at logon"
 msgstr "при запуску"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:352
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Цей файл перезаписується та виконується знову під час збереження налаштувань"
 
-#: src/Common/Main.vala:383
+#: src/Common/Main.vala:384
 msgid "Notifications are disabled"
 msgstr "Повідомлення вимкнено"
 

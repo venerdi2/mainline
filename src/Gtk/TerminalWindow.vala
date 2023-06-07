@@ -176,7 +176,7 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
-#if VTE_ASYNC
+#if VALA_0_50
 	public void async_cb(Vte.Terminal terminal, Pid pid, Error? error) {
 		if (error != null) { vprint("Error setting up terminal: "+error.message,1,stderr); return; }
 		vprint("TerminalWindow: child_pid="+pid.to_string(),3);
@@ -191,19 +191,20 @@ public class TerminalWindow : Gtk.Window {
 		string[] argv = {"sh", f};
 		string[] env = Environ.get();
 
-#if VTE_ASYNC
-			is_running = true;
-			term.spawn_async(
-				Vte.PtyFlags.DEFAULT, // pty_flags
-				d, // working_directory
-				argv, // argv
-				env, // env
-				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-				null, // child_setup() func
-				-1, // timeout
-				null, // cancellable
-				async_cb // callback
-			);
+//#if HAVE_VTE_0_66
+#if VALA_0_50
+		is_running = true;
+		term.spawn_async(
+			Vte.PtyFlags.DEFAULT, // pty_flags
+			d, // working_directory
+			argv, // argv
+			env, // env
+			GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
+			null, // child_setup() func
+			-1, // timeout
+			null, // cancellable
+			async_cb // callback
+		);
 #else
 		try {
 			is_running = true;

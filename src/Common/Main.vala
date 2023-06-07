@@ -28,7 +28,8 @@ using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.misc;
-#if ! GLIB_JSON_1_6
+//#if ! HAVE_GLIB_JSON_1_6
+#if ! VALA_0_50
 using l.json;
 #endif
 
@@ -154,6 +155,7 @@ public class Main : GLib.Object {
 		get_env();
 		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
+		if (!Thread.supported()) { vprint(_("Missing Thread support in Glib."),1,stderr); exit(1); }
 		init_paths();
 		load_app_config();
 		Package.initialize();
@@ -265,8 +267,8 @@ public class Main : GLib.Object {
 		var node = parser.get_root();
 		var config = node.get_object();
 
-#if GLIB_JSON_1_6
-				vprint("glib-json >= 1.6",3);
+//#if HAVE_GLIB_JSON_1_6
+#if VALA_0_50
 				ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
 				all_proxy				=	config.get_string_member_with_default(		"all_proxy",				DEFAULT_ALL_PROXY				);
 				connect_timeout_seconds	=	(int)config.get_int_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
@@ -288,7 +290,6 @@ public class Main : GLib.Object {
 				term_x					=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
 				term_y					=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
 #else
-				vprint("glib-json < 1.6",3);
 				ppa_uri					=	json_get_string(	config,	"ppa_uri",					DEFAULT_PPA_URI					);
 				all_proxy				=	json_get_string(	config,	"all_proxy",				DEFAULT_ALL_PROXY				);
 				connect_timeout_seconds	=	json_get_int(		config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
