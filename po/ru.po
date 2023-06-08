@@ -306,7 +306,8 @@ msgstr "Одна или несколько строк версии, взятых
 
 #: src/Console/AppConsole.vala:64
 msgid "comma, pipe, or colon-seperated, or quoted space seperated"
-msgstr "через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
+msgstr ""
+"через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
 
 #: src/Console/AppConsole.vala:65
 msgid "Locked kernels and the currently running kernel are ignored"
