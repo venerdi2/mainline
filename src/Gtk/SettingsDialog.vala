@@ -85,8 +85,8 @@ public class SettingsDialog : Gtk.Dialog {
 			max_intervals = 3600;
 		} else {
 			if (App.notify_interval_unit == 3) {
-				App.notify_interval_value = 1;
-				App.notify_interval_unit = 0;
+				App.notify_interval_value = DEFAULT_NOTIFY_INTERVAL_VALUE;
+				App.notify_interval_unit = DEFAULT_NOTIFY_INTERVAL_UNIT;
 			}
 		}
 
@@ -115,16 +115,10 @@ public class SettingsDialog : Gtk.Dialog {
 
 		Gtk.TreeIter iter;
 		var model = new Gtk.ListStore (1, typeof (string));
-		model.append (out iter);
-		model.set (iter,0,_("Hours"));
-		model.append (out iter);
-		model.set (iter,0,_("Days"));
-		model.append (out iter);
-		model.set (iter,0,_("Weeks"));
-		if (Main.VERBOSE>1) {
-			model.append (out iter);
-			model.set (iter,0,_("Seconds"));
-		}
+		model.append(out iter); model.set(iter,0,_("Hours"));
+		model.append(out iter); model.set(iter,0,_("Days"));
+		model.append(out iter); model.set(iter,0,_("Weeks"));
+		if (Main.VERBOSE>1) { model.append (out iter); model.set (iter,0,_("Seconds")); }
 		combo.set_model(model);
 		combo.set_active(App.notify_interval_unit);
 
