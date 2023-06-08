@@ -191,8 +191,7 @@ public class TerminalWindow : Gtk.Window {
 		string[] argv = {"sh", f};
 		string[] env = Environ.get();
 
-//#if HAVE_VTE_0_66
-#if VALA_0_50
+#if VALA_0_50 // vte 0.66 or so
 		is_running = true;
 		term.spawn_async(
 			Vte.PtyFlags.DEFAULT, // pty_flags

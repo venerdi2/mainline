@@ -28,8 +28,7 @@ using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using TeeJee.Misc;
 using l.misc;
-//#if ! HAVE_GLIB_JSON_1_6
-#if ! VALA_0_50
+#if !VALA_0_50
 using l.json;
 #endif
 
@@ -267,52 +266,50 @@ public class Main : GLib.Object {
 		var node = parser.get_root();
 		var config = node.get_object();
 
-//#if HAVE_GLIB_JSON_1_6
-#if VALA_0_50
-				ppa_uri					=	config.get_string_member_with_default(		"ppa_uri",					DEFAULT_PPA_URI					);
-				all_proxy				=	config.get_string_member_with_default(		"all_proxy",				DEFAULT_ALL_PROXY				);
-				connect_timeout_seconds	=	(int)config.get_int_member_with_default(	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
-				concurrent_downloads	=	(int)config.get_int_member_with_default(	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	);
-				hide_unstable			=	config.get_boolean_member_with_default(		"hide_unstable",			DEFAULT_HIDE_UNSTABLE			);
-				previous_majors			=	(int)config.get_int_member_with_default(	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			);
-				notify_major			=	config.get_boolean_member_with_default(		"notify_major",				DEFAULT_NOTIFY_MAJOR			);
-				notify_minor			=	config.get_boolean_member_with_default(		"notify_minor",				DEFAULT_NOTIFY_MINOR			);
-				notify_interval_unit	=	(int)config.get_int_member_with_default(	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
-				notify_interval_value	=	(int)config.get_int_member_with_default(	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
-				verify_checksums		=	config.get_boolean_member_with_default(		"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
-				auth_cmd				=	config.get_string_member_with_default(		"auth_cmd",					DEFAULT_AUTH_CMDS[0]			);
-				window_width			=	(int)config.get_int_member_with_default(	"window_width",				DEFAULT_WINDOW_WIDTH			);
-				window_height			=	(int)config.get_int_member_with_default(	"window_height",			DEFAULT_WINDOW_HEIGHT			);
-				window_x				=	(int)config.get_int_member_with_default(	"window_x",					DEFAULT_WINDOW_X				);
-				window_y				=	(int)config.get_int_member_with_default(	"window_y",					DEFAULT_WINDOW_Y				);
-				term_width				=	(int)config.get_int_member_with_default(	"term_width",				DEFAULT_TERM_WIDTH				);
-				term_height				=	(int)config.get_int_member_with_default(	"term_height",				DEFAULT_TERM_HEIGHT				);
-				term_x					=	(int)config.get_int_member_with_default(	"term_x",					DEFAULT_TERM_X					);
-				term_y					=	(int)config.get_int_member_with_default(	"term_y",					DEFAULT_TERM_Y					);
+#if VALA_0_50 // glib-json 1.6
+		ppa_uri                 =       config.get_string_member_with_default(  "ppa_uri",                 DEFAULT_PPA_URI                 );
+		all_proxy               =       config.get_string_member_with_default(  "all_proxy",               DEFAULT_ALL_PROXY               );
+		connect_timeout_seconds = (int) config.get_int_member_with_default(     "connect_timeout_seconds", DEFAULT_CONNECT_TIMEOUT_SECONDS );
+		concurrent_downloads    = (int) config.get_int_member_with_default(     "concurrent_downloads",    DEFAULT_CONCURRENT_DOWNLOADS    );
+		hide_unstable           =       config.get_boolean_member_with_default( "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
+		previous_majors         = (int) config.get_int_member_with_default(     "previous_majors",         DEFAULT_PREVIOUS_MAJORS         );
+		notify_major            =       config.get_boolean_member_with_default( "notify_major",            DEFAULT_NOTIFY_MAJOR            );
+		notify_minor            =       config.get_boolean_member_with_default( "notify_minor",            DEFAULT_NOTIFY_MINOR            );
+		notify_interval_unit    = (int) config.get_int_member_with_default(     "notify_interval_unit",    DEFAULT_NOTIFY_INTERVAL_UNIT    );
+		notify_interval_value   = (int) config.get_int_member_with_default(     "notify_interval_value",   DEFAULT_NOTIFY_INTERVAL_VALUE   );
+		verify_checksums        =       config.get_boolean_member_with_default( "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
+		auth_cmd                =       config.get_string_member_with_default(  "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
+		window_width            = (int) config.get_int_member_with_default(     "window_width",            DEFAULT_WINDOW_WIDTH            );
+		window_height           = (int) config.get_int_member_with_default(     "window_height",           DEFAULT_WINDOW_HEIGHT           );
+		window_x                = (int) config.get_int_member_with_default(     "window_x",                DEFAULT_WINDOW_X                );
+		window_y                = (int) config.get_int_member_with_default(     "window_y",                DEFAULT_WINDOW_Y                );
+		term_width              = (int) config.get_int_member_with_default(     "term_width",              DEFAULT_TERM_WIDTH              );
+		term_height             = (int) config.get_int_member_with_default(     "term_height",             DEFAULT_TERM_HEIGHT             );
+		term_x                  = (int) config.get_int_member_with_default(     "term_x",                  DEFAULT_TERM_X                  );
+		term_y                  = (int) config.get_int_member_with_default(     "term_y",                  DEFAULT_TERM_Y                  );
 #else
-				ppa_uri					=	json_get_string(	config,	"ppa_uri",					DEFAULT_PPA_URI					);
-				all_proxy				=	json_get_string(	config,	"all_proxy",				DEFAULT_ALL_PROXY				);
-				connect_timeout_seconds	=	json_get_int(		config,	"connect_timeout_seconds",	DEFAULT_CONNECT_TIMEOUT_SECONDS	);
-				concurrent_downloads	=	json_get_int(		config,	"concurrent_downloads",		DEFAULT_CONCURRENT_DOWNLOADS	);
-				hide_unstable			=	json_get_bool(		config,	"hide_unstable",			DEFAULT_HIDE_UNSTABLE			);
-				previous_majors			=	json_get_int(		config,	"previous_majors",			DEFAULT_PREVIOUS_MAJORS			);
-				notify_major			=	json_get_bool(		config,	"notify_major",				DEFAULT_NOTIFY_MAJOR			);
-				notify_minor			=	json_get_bool(		config,	"notify_minor",				DEFAULT_NOTIFY_MINOR			);
-				notify_interval_unit	=	json_get_int(		config,	"notify_interval_unit",		DEFAULT_NOTIFY_INTERVAL_UNIT	);
-				notify_interval_value	=	json_get_int(		config,	"notify_interval_value",	DEFAULT_NOTIFY_INTERVAL_VALUE	);
-				verify_checksums		=	json_get_bool(		config,	"verify_checksums",			DEFAULT_VERIFY_CHECKSUMS		);
-				auth_cmd				=	json_get_string(	config,	"auth_cmd",					DEFAULT_AUTH_CMDS[0]			);
-				window_width			=	json_get_int(		config,	"window_width",				DEFAULT_WINDOW_WIDTH			);
-				window_height			=	json_get_int(		config,	"window_height",			DEFAULT_WINDOW_HEIGHT			);
-				window_x				=	json_get_int(		config,	"window_x",					DEFAULT_WINDOW_X				);
-				window_y				=	json_get_int(		config,	"window_y",					DEFAULT_WINDOW_Y				);
-				term_width				=	json_get_int(		config,	"term_width",				DEFAULT_TERM_WIDTH				);
-				term_height				=	json_get_int(		config,	"term_height",				DEFAULT_TERM_HEIGHT				);
-				term_x					=	json_get_int(		config,	"term_x",					DEFAULT_TERM_X					);
-				term_y					=	json_get_int(		config,	"term_y",					DEFAULT_TERM_Y					);
+		ppa_uri                 = json_get_string( config, "ppa_uri",                 DEFAULT_PPA_URI                 );
+		all_proxy               = json_get_string( config, "all_proxy",               DEFAULT_ALL_PROXY               );
+		connect_timeout_seconds = json_get_int(    config, "connect_timeout_seconds", DEFAULT_CONNECT_TIMEOUT_SECONDS );
+		concurrent_downloads    = json_get_int(    config, "concurrent_downloads",    DEFAULT_CONCURRENT_DOWNLOADS    );
+		hide_unstable           = json_get_bool(   config, "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
+		previous_majors         = json_get_int(    config, "previous_majors",         DEFAULT_PREVIOUS_MAJORS         );
+		notify_major            = json_get_bool(   config, "notify_major",            DEFAULT_NOTIFY_MAJOR            );
+		notify_minor            = json_get_bool(   config, "notify_minor",            DEFAULT_NOTIFY_MINOR            );
+		notify_interval_unit    = json_get_int(    config, "notify_interval_unit",    DEFAULT_NOTIFY_INTERVAL_UNIT    );
+		notify_interval_value   = json_get_int(    config, "notify_interval_value",   DEFAULT_NOTIFY_INTERVAL_VALUE   );
+		verify_checksums        = json_get_bool(   config, "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
+		auth_cmd                = json_get_string( config, "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
+		window_width            = json_get_int(    config, "window_width",            DEFAULT_WINDOW_WIDTH            );
+		window_height           = json_get_int(    config, "window_height",           DEFAULT_WINDOW_HEIGHT           );
+		window_x                = json_get_int(    config, "window_x",                DEFAULT_WINDOW_X                );
+		window_y                = json_get_int(    config, "window_y",                DEFAULT_WINDOW_Y                );
+		term_width              = json_get_int(    config, "term_width",              DEFAULT_TERM_WIDTH              );
+		term_height             = json_get_int(    config, "term_height",             DEFAULT_TERM_HEIGHT             );
+		term_x                  = json_get_int(    config, "term_x",                  DEFAULT_TERM_X                  );
+		term_y                  = json_get_int(    config, "term_y",                  DEFAULT_TERM_Y                  );
 #endif
 
-		// fixups
 		bool resave = false;
 		if (ppa_uri.length==0) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
 		if (!ppa_uri.has_suffix("/")) { ppa_uri += "/"; resave = true; }
@@ -326,27 +323,18 @@ public class Main : GLib.Object {
 		vprint("update_startup_script()",2);
 
 		// construct the commandline argument for "sleep"
-		int n = notify_interval_value;
-		string u = "h";
+		int n = notify_interval_value; string u = "";
 		switch (notify_interval_unit) {
-		case 0: // hour
-			u = "h";
-			break;
-		case 1: // day
-			u = "d";
-			break;
-		case 2: // week
-			u = "d";
-			n = notify_interval_value * 7;
-			break;
-		case 3: // second
-			u = "";
-			n = notify_interval_value;
-			break;
+			case 0: u = "h"; break;
+			case 1: u = "d"; break;
+			case 2: n = n*7; u = "d"; break;
+			case 3: break;
 		}
 
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
+		//       Sleep for days or weeks makes no sense.
+		//       Really needs to compare target with current date/time.
 		string s = "#!/bin/bash\n"
 			+ "# "+_("Called from")+" "+STARTUP_DESKTOP_FILE+" "+_("at logon")+".\n"
 			+ "# "+_("This file is over-written and executed again whenever settings are saved in")+" "+BRANDING_SHORTNAME+"-gtk\n"
@@ -405,7 +393,7 @@ public class Main : GLib.Object {
 	public void run_notify_script() {
 		if (!RUN_NOTIFY_SCRIPT) return;
 		RUN_NOTIFY_SCRIPT = false;
-		exec_async("bash "+STARTUP_SCRIPT_FILE+" 2>&- >&- <&-");
+		exec_async("bash "+STARTUP_SCRIPT_FILE);
 	}
 
 }

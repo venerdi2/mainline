@@ -23,8 +23,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public Gee.HashMap<string,string> deb_checksum_list = new Gee.HashMap<string,string>(); // assosciated .deb files K=filename,V=checksum
 	public Gee.HashMap<string,string> pkg_list = new Gee.HashMap<string,string>(); // assosciated dpkg package names
 
-	public static Gee.HashMap<string,Package> pkg_list_installed;
-
 	public bool is_installed = false;
 	public bool is_running = false;
 	public bool is_mainline = true;
@@ -536,6 +534,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public void split_version_string(string s="") {
+		//vprint("+k "+s);
 		version_main = "";
 		version_major = 0;
 		version_minor = 0;
@@ -552,7 +551,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		t = t.split("~")[0];
 		if (t==null || t=="") t = "0";
 		kver = t;
-		//vprint("\""+t+"\"");
+		//vprint(t);
 
 		// Unsafe. "rc" could be part of intel-arc or something some day.
 		var mi = regex_match("""([0-9]+|rc)""",t);
@@ -657,11 +656,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public string status {
 		get {
-				return
-					is_running ? _("Running") :
-					is_installed ? _("Installed") :
-					is_invalid ? _("Invalid") :
-					"";
+			return
+				is_running ? _("Running") :
+				is_installed ? _("Installed") :
+				is_invalid ? _("Invalid") :
+				"";
 		}
 	}
 
