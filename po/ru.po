@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-07 03:39-0400\n"
-"PO-Revision-Date: 2023-06-05 23:29+0300\n"
+"PO-Revision-Date: 2023-06-08 11:06+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 
 #: src/Common/LinuxKernel.vala:104
 msgid "Distribution"
@@ -64,7 +64,7 @@ msgstr "заблокирован"
 #: src/Common/LinuxKernel.vala:466 src/Common/LinuxKernel.vala:995
 #: src/Common/LinuxKernel.vala:1086
 msgid "is locked."
-msgstr "заблокирован"
+msgstr "заблокирован."
 
 #: src/Common/LinuxKernel.vala:661 src/Gtk/MainWindow.vala:521
 msgid "Running"
@@ -91,9 +91,8 @@ msgid "File not found"
 msgstr "Файл не найден"
 
 #: src/Common/LinuxKernel.vala:814
-#, fuzzy
 msgid "needs update"
-msgstr "Последнее обновление"
+msgstr "требуется обновление"
 
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
@@ -180,9 +179,8 @@ msgid "Continue ?"
 msgstr "Продолжить ?"
 
 #: src/Common/LinuxKernel.vala:1123
-#, fuzzy
 msgid "No updates"
-msgstr "Обновлений не найдено"
+msgstr "Нет обнолений"
 
 #: src/Common/LinuxKernel.vala:1129
 #, c-format
@@ -191,19 +189,19 @@ msgstr "Установить версию ядра %s ? (y/n): "
 
 #: src/Common/Main.vala:158
 msgid "Missing Thread support in Glib."
-msgstr ""
+msgstr "Отсутствие поддержки потоков в Glib."
 
 #: src/Common/Main.vala:242
 msgid "Wrote config file"
-msgstr ""
+msgstr "Записан файл конфигурации"
 
 #: src/Common/Main.vala:261
 msgid "No config file"
-msgstr ""
+msgstr "Нет файла конфигурации"
 
 #: src/Common/Main.vala:322
 msgid "Loaded config file"
-msgstr ""
+msgstr "Загружен файл конфигурации"
 
 #: src/Common/Main.vala:351
 msgid "Called from"
@@ -214,10 +212,8 @@ msgid "at logon"
 msgstr "при запуске"
 
 #: src/Common/Main.vala:352
-msgid ""
-"This file is over-written and executed again whenever settings are saved in"
-msgstr ""
-"Этот файл перезаписывается и выполняется снова при сохранении настроек в"
+msgid "This file is over-written and executed again whenever settings are saved in"
+msgstr "Этот файл перезаписывается и выполняется снова при сохранении настроек в"
 
 #: src/Common/Main.vala:384
 msgid "Notifications are disabled"
@@ -306,12 +302,11 @@ msgstr "Одна или несколько строк версии, взятых
 
 #: src/Console/AppConsole.vala:64
 msgid "comma, pipe, or colon-seperated, or quoted space seperated"
-msgstr ""
-"через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
+msgstr "через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
 
 #: src/Console/AppConsole.vala:65
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "Заблокированные ядра и работающее в данный момент ядро игнорируются."
+msgstr "Заблокированные ядра и работающее в данный момент ядро игнорируются"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
 #: src/Gtk/AppGtk.vala:109
@@ -336,17 +331,15 @@ msgstr "Уведомления отключены"
 
 #: src/Console/AppConsole.vala:216
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/Console/AppConsole.vala:231
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Уведомлять, если доступно небольшое обновление"
+msgstr "уведомления о выпуске точечных релизов отключены"
 
 #: src/Console/AppConsole.vala:239
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Уведомлять, если доступно крупное обновление"
+msgstr "отключено уведомление о крупных релизах"
 
 #: src/Console/AppConsole.vala:244
 #, c-format
@@ -478,13 +471,12 @@ msgid "available"
 msgstr "доступно"
 
 #: src/Gtk/MainWindow.vala:542
-#, fuzzy
 msgid "is already installed"
-msgstr "уже установлен."
+msgstr "уже установлен"
 
 #: src/Gtk/MainWindow.vala:544
 msgid "adding"
-msgstr ""
+msgstr "добавление"
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632
