@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 
 #: src/Common/LinuxKernel.vala:102
 msgid "Distribution"
@@ -64,7 +64,7 @@ msgstr "заблокирован"
 #: src/Common/LinuxKernel.vala:464 src/Common/LinuxKernel.vala:994
 #: src/Common/LinuxKernel.vala:1085
 msgid "is locked."
-msgstr "заблокирован"
+msgstr "заблокирован."
 
 #: src/Common/LinuxKernel.vala:660 src/Gtk/MainWindow.vala:521
 msgid "Running"
@@ -93,7 +93,7 @@ msgstr "Файл не найден"
 #: src/Common/LinuxKernel.vala:813
 #, fuzzy
 msgid "needs update"
-msgstr "Последнее обновление"
+msgstr "требуется обновление"
 
 #: src/Common/LinuxKernel.vala:880
 msgid "Available Kernels"
@@ -182,7 +182,7 @@ msgstr "Продолжить ?"
 #: src/Common/LinuxKernel.vala:1122
 #, fuzzy
 msgid "No updates"
-msgstr "Обновлений не найдено"
+msgstr "Нет обнолений"
 
 #: src/Common/LinuxKernel.vala:1128
 #, c-format
@@ -191,19 +191,19 @@ msgstr "Установить версию ядра %s ? (y/n): "
 
 #: src/Common/Main.vala:157
 msgid "Missing Thread support in Glib."
-msgstr ""
+msgstr "Отсутствие поддержки потоков в Glib."
 
 #: src/Common/Main.vala:241
 msgid "Wrote config file"
-msgstr ""
+msgstr "Записан файл конфигурации"
 
 #: src/Common/Main.vala:260
 msgid "No config file"
-msgstr ""
+msgstr "Нет файла конфигурации"
 
 #: src/Common/Main.vala:319
 msgid "Loaded config file"
-msgstr ""
+msgstr "Загружен файл конфигурации"
 
 #: src/Common/Main.vala:339
 msgid "Called from"
@@ -306,12 +306,11 @@ msgstr "Одна или несколько строк версии, взятых
 
 #: src/Console/AppConsole.vala:64
 msgid "comma, pipe, or colon-seperated, or quoted space seperated"
-msgstr ""
-"через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
+msgstr "через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
 
 #: src/Console/AppConsole.vala:65
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "Заблокированные ядра и работающее в данный момент ядро игнорируются."
+msgstr "Заблокированные ядра и работающее в данный момент ядро игнорируются"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
 #: src/Gtk/AppGtk.vala:109
@@ -336,17 +335,15 @@ msgstr "Уведомления отключены"
 
 #: src/Console/AppConsole.vala:216
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/Console/AppConsole.vala:231
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Уведомлять, если доступно небольшое обновление"
+msgstr "уведомления о выпуске точечных релизов отключены"
 
 #: src/Console/AppConsole.vala:239
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Уведомлять, если доступно крупное обновление"
+msgstr "отключено уведомление о крупных релизах"
 
 #: src/Console/AppConsole.vala:244
 #, c-format
@@ -478,13 +475,12 @@ msgid "available"
 msgstr "доступно"
 
 #: src/Gtk/MainWindow.vala:542
-#, fuzzy
 msgid "is already installed"
-msgstr "уже установлен."
+msgstr "уже установлен"
 
 #: src/Gtk/MainWindow.vala:544
 msgid "adding"
-msgstr ""
+msgstr "добавление"
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632
