@@ -1,3 +1,19 @@
+mainline (1.3.12) unstable; urgency=medium
+
+  * new version string parser
+    - handles more of the old & irregular versions correctly
+    - preserves more info from the version string
+      old one stripped all non-numeric text like "-dontuse", "-yakkety", etc
+      new one captures all the extra bits into version_extra
+    - mostly trying to get ready for supporting other kernel flavors than just "-generic"
+  * fix --install-latest was ignoring point updates
+  * fix display and cache handling in the case where you have rc kernels enabled,
+    install an rc kernel, and then disable rc kernels,
+    the installed rc kernel was no longer recognized as a mainline kernel
+    and displayed as a distro kernel with the dpkg package version
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 10 Jun 2023 00:30:18 -0400
+
 mainline (1.3.11) unstable; urgency=medium
 
   * support old vte versions that need to keep using Vte.Terminal.spawn_sync
