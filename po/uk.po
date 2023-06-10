@@ -93,7 +93,7 @@ msgstr "Файл не знайдено"
 #: src/Common/LinuxKernel.vala:872
 #, fuzzy
 msgid "needs update"
-msgstr "Останнє оновлення"
+msgstr "потребує оновлення"
 
 #: src/Common/LinuxKernel.vala:939
 msgid "Available Kernels"
@@ -183,7 +183,7 @@ msgstr "Продовжувати ?"
 #: src/Common/LinuxKernel.vala:1181
 #, fuzzy
 msgid "No updates"
-msgstr "Оновлень не знайдено"
+msgstr "Немає оновлень"
 
 #: src/Common/LinuxKernel.vala:1187
 #, c-format
@@ -331,23 +331,20 @@ msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
 #: src/Console/AppConsole.vala:211
-#, fuzzy
 msgid "Notifications disabled"
 msgstr "Сповіщення вимкнено"
 
 #: src/Console/AppConsole.vala:216
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 #: src/Console/AppConsole.vala:231
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Повідомити, чи доступний невеликий випуск"
+msgstr "випуски точки сповіщення вимкнено"
 
 #: src/Console/AppConsole.vala:239
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Повідомити, чи доступний великий випуск"
+msgstr "сповіщення про основні випуски вимкнено"
 
 #: src/Console/AppConsole.vala:244
 #, c-format
@@ -481,11 +478,11 @@ msgstr "доступний"
 #: src/Gtk/MainWindow.vala:546
 #, fuzzy
 msgid "is already installed"
-msgstr "вже встановлено."
+msgstr "вже встановлено"
 
 #: src/Gtk/MainWindow.vala:548
 msgid "adding"
-msgstr ""
+msgstr "додавання"
 
 #: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:608
 #: src/Gtk/MainWindow.vala:636
@@ -565,13 +562,12 @@ msgid "Proxy"
 msgstr "Проксі"
 
 #: src/Gtk/SettingsDialog.vala:244
-#, fuzzy
 msgid "Auth Command"
-msgstr "Команди"
+msgstr "Команда авторизації"
 
 #: src/Gtk/SettingsDialog.vala:272
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
