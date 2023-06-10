@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 02:39-0400\n"
+"POT-Creation-Date: 2023-06-10 03:23-0400\n"
 "PO-Revision-Date: 2023-06-03 14:24+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -60,131 +60,131 @@ msgstr "Znaleziono zainstalowane"
 msgid "locked"
 msgstr "zablokowane"
 
-#: src/Common/LinuxKernel.vala:470 src/Common/LinuxKernel.vala:1055
-#: src/Common/LinuxKernel.vala:1146
+#: src/Common/LinuxKernel.vala:470 src/Common/LinuxKernel.vala:1023
+#: src/Common/LinuxKernel.vala:1114
 msgid "is locked."
 msgstr "jest zablokowane."
 
-#: src/Common/LinuxKernel.vala:721 src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:689 src/Gtk/MainWindow.vala:525
 msgid "Running"
 msgstr "Uruchomione"
 
-#: src/Common/LinuxKernel.vala:722
+#: src/Common/LinuxKernel.vala:690
 msgid "Installed"
 msgstr "Zainstalowane"
 
-#: src/Common/LinuxKernel.vala:723
+#: src/Common/LinuxKernel.vala:691
 msgid "Invalid"
 msgstr "Nieprawidłowe"
 
-#: src/Common/LinuxKernel.vala:816
+#: src/Common/LinuxKernel.vala:784
 msgid "Packages Available"
 msgstr "Dostępne pakiety"
 
-#: src/Common/LinuxKernel.vala:822
+#: src/Common/LinuxKernel.vala:790
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: src/Common/LinuxKernel.vala:847 src/lib/TeeJee.FileSystem.vala:94
+#: src/Common/LinuxKernel.vala:815 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Nie odnaleziono pliku"
 
-#: src/Common/LinuxKernel.vala:874
+#: src/Common/LinuxKernel.vala:842
 #, fuzzy
 msgid "needs update"
 msgstr "Najnowsza aktualizacja"
 
-#: src/Common/LinuxKernel.vala:941
+#: src/Common/LinuxKernel.vala:909
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
-#: src/Common/LinuxKernel.vala:975 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:943 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr "Jądro"
 
-#: src/Common/LinuxKernel.vala:975
+#: src/Common/LinuxKernel.vala:943
 msgid "not found"
 msgstr "nie odnaleziono"
 
-#: src/Common/LinuxKernel.vala:982
+#: src/Common/LinuxKernel.vala:950
 msgid "Download: no downloadable kernels specified"
 msgstr "Pobieranie: nie określono jąder do pobrania"
 
-#: src/Common/LinuxKernel.vala:998
+#: src/Common/LinuxKernel.vala:966
 msgid "enabled"
 msgstr "włączone"
 
-#: src/Common/LinuxKernel.vala:1023
+#: src/Common/LinuxKernel.vala:991
 msgid "Downloading"
 msgstr "Pobieranie"
 
-#: src/Common/LinuxKernel.vala:1041
+#: src/Common/LinuxKernel.vala:1009
 msgid "Installing selected kernels"
 msgstr "Instalowanie wybranych jąder"
 
-#: src/Common/LinuxKernel.vala:1047 src/Common/LinuxKernel.vala:1086
+#: src/Common/LinuxKernel.vala:1015 src/Common/LinuxKernel.vala:1054
 msgid "Requested"
 msgstr "Zażądane"
 
-#: src/Common/LinuxKernel.vala:1050
+#: src/Common/LinuxKernel.vala:1018
 msgid "is already installed."
 msgstr "jest już zainstalowane."
 
-#: src/Common/LinuxKernel.vala:1060
+#: src/Common/LinuxKernel.vala:1028
 msgid "download failed."
 msgstr "pobieranie nie powiodło się."
 
-#: src/Common/LinuxKernel.vala:1067 src/Gtk/MainWindow.vala:552
+#: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:552
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Instalowanie: nie określono jąder do zainstalowania"
 
-#: src/Common/LinuxKernel.vala:1082
+#: src/Common/LinuxKernel.vala:1050
 msgid "Uninstalling selected kernels"
 msgstr "Odinstalowanie wybranych jąder"
 
-#: src/Common/LinuxKernel.vala:1089
+#: src/Common/LinuxKernel.vala:1057
 msgid "Not uninstalling the currently running kernel"
 msgstr "Bez odinstalowywania aktualnie uruchomionego jądra"
 
-#: src/Common/LinuxKernel.vala:1094 src/Gtk/MainWindow.vala:547
+#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:547
 msgid "is locked"
 msgstr "jest zablokowane"
 
-#: src/Common/LinuxKernel.vala:1102
+#: src/Common/LinuxKernel.vala:1070
 msgid "found"
 msgstr "znalezione"
 
-#: src/Common/LinuxKernel.vala:1106
+#: src/Common/LinuxKernel.vala:1074
 msgid "Uninstall: no uninstallable packages found"
 msgstr "Odinstalowanie: nie znaleziono pakietów, które można odinstalować"
 
-#: src/Common/LinuxKernel.vala:1142
+#: src/Common/LinuxKernel.vala:1110
 msgid "is the highest installed version."
 msgstr "to najwyższa zainstalowana wersja."
 
-#: src/Common/LinuxKernel.vala:1155
+#: src/Common/LinuxKernel.vala:1123
 msgid "Could not find running kernel in list"
 msgstr "Nie można znaleźć uruchomionego jądra na liście"
 
-#: src/Common/LinuxKernel.vala:1160
+#: src/Common/LinuxKernel.vala:1128
 msgid "Could not find any kernels to uninstall"
 msgstr "Nie można znaleźć żadnych jąder do odinstalowania"
 
-#: src/Common/LinuxKernel.vala:1165
+#: src/Common/LinuxKernel.vala:1133
 msgid "The following kernels will be uninstalled"
 msgstr "Następujące jądra zostaną odinstalowane"
 
-#: src/Common/LinuxKernel.vala:1167
+#: src/Common/LinuxKernel.vala:1135
 msgid "Continue ?"
 msgstr "Kontynuować?"
 
-#: src/Common/LinuxKernel.vala:1183
+#: src/Common/LinuxKernel.vala:1151
 #, fuzzy
 msgid "No updates"
 msgstr "Nie znaleziono aktualizacji"
 
-#: src/Common/LinuxKernel.vala:1189
+#: src/Common/LinuxKernel.vala:1157
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Zainstalować wersję jądra %s? (t/n): "

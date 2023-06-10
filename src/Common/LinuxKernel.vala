@@ -592,7 +592,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kver = t;
 		//vprint("\n"+t);
 
-#if SPLIT_VERSION_STRING_V2
 		var chunks = t.split_set(".-+_~ ");
 		int i = 0, n = 0;
 		foreach (string chunk in chunks) {
@@ -606,50 +605,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				case 3: version_micro = n; continue;
 			}
 			if (i>=chunks.length) {
-					if (chunk.length==12) continue;
-					is_mainline = false;
+				if (chunk.length==12) continue;
+				is_mainline = false;
 			} else if (i==chunks.length-1) {
-					if (chunk.contains("rc")) { var x = chunk.split("c"); version_rc = int.parse(x[x.length-1]); continue; }
-					if (version_micro<100 && chunk.has_prefix("%02d%02d%02d".printf(version_major,version_minor,version_micro))) continue;
-					else if (chunk.has_prefix("%02d%02d%d".printf(version_major,version_minor,version_micro))) continue;
+				if (chunk.contains("rc")) { var x = chunk.split("c"); version_rc = int.parse(x[x.length-1]); continue; }
+				if (version_micro<100 && chunk.has_prefix("%02d%02d%02d".printf(version_major,version_minor,version_micro))) continue;
+				else if (chunk.has_prefix("%02d%02d%d".printf(version_major,version_minor,version_micro))) continue;
 			}
 			version_extra += "."+chunk;
 		}
 		version_sort = "%d.%d.%d".printf(version_major,version_minor,version_micro);
 		if (version_rc>0) version_sort += ".rc"+version_rc.to_string();
 		version_sort += version_extra;
-#else
-		var mi = regex_match("""([0-9]+|rc)""",t);
-		int i = -1;
-		bool rc = false;
-		while (mi != null) {
-			string? v = mi.fetch(1);
-			if (v != null) {
-				i++;
-				if (rc) {
-					rc = false;
-					version_rc = int.parse(v);
-				} else if (v == "rc") {
-					rc = true;
-				} else {
-					switch (i) {
-						case 0: version_major = int.parse(v); break;
-						case 1: version_minor = int.parse(v); break;
-						case 2: version_micro = int.parse(v); break;
-						case 3: if (version_rc<1 && v.length<6) version_extra += "."+v; break;
-						case 4:
-							if (version_rc<1 && v.length<6) version_extra += "."+v;
-							if (v.length!=12) is_mainline = false;
-							break;
-					}
-				}
-				if (version_rc>0) version_extra = ".rc%d".printf(version_rc);
-				version_sort = "%d.%d.%d%s".printf(version_major,version_minor,version_micro,version_extra);
-				try { if (!mi.next()) break; }
-				catch (Error e) { break; }
-			}
-		}
-#endif
+
 		if (version_rc>0 || version_extra.contains("unstable")) is_unstable = true;
 		//vprint("major: %d\nminor: %d\nmicro: %d\nrc   : %d\nextra: %s\nunstable: %s\nsort :%s".printf(version_major,version_minor,version_micro,version_rc,version_extra,is_unstable.to_string(),version_sort));
 		//vprint(version_sort);
