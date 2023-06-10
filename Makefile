@@ -69,7 +69,10 @@ gui_vala_files := src/Gtk/*.vala
 po_files := po/*.po
 pot_file := po/messages.pot
 
-include .deb_build_number.mak
+-include .deb_build_number.mak
+DEB_BUILD_NUMBER := 0000
+DEB_PKG_VERSION := $(BRANDING_VERSION)
+
 host_dist := $(shell lsb_release -sc)
 host_arch := $(shell dpkg --print-architecture)
 pkg_version = $(shell dpkg-parsechangelog -S Version)

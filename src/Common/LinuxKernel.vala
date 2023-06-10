@@ -141,19 +141,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		try {
 
 			//linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_header = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-[a-zA-Z0-9\.\-_]+-generic_[a-zA-Z0-9\.\-]+_""" + NATIVE_ARCH + ".deb");
+			rex_header      = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-.+-generic_.+_"""     + NATIVE_ARCH + ".deb");
 
 			//linux-headers-3.4.75-030475_3.4.75-030475.201312201255_all.deb
-			rex_header_all = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-[a-zA-Z0-9\.\-_]+_all.deb""");
+			rex_header_all  = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-.+_all.deb""");
 
 			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-[a-zA-Z0-9\.\-_]+-generic_([a-zA-Z0-9\.\-]+)_""" + NATIVE_ARCH + ".deb");
+			rex_image       = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-.+-generic_.+_"""       + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image_extra = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-extra-[a-zA-Z0-9\.\-_]+-generic_[a-zA-Z0-9\.\-]+_""" + NATIVE_ARCH + ".deb");
+			rex_image_extra = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-extra-.+-generic_.+_""" + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_modules = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-modules-[a-zA-Z0-9\.\-_]+-generic_[a-zA-Z0-9\.\-]+_""" + NATIVE_ARCH + ".deb");
+			rex_modules     = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-modules-.+-generic_.+_"""     + NATIVE_ARCH + ".deb");
 
 		} catch (Error e) {
 			vprint(e.message,1,stderr);
@@ -880,7 +880,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// scan for urls to .deb files
 		try {
 			//<a href="linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb">//same deb name//</a>
-			var rex = new Regex("""href="([a-zA-Z0-9\-\._/]+\.deb)"""");
+			var rex = new Regex("""href="(.+\.deb)"""");
 			MatchInfo mi;
 			foreach (string l in txt.split("\n")) {
 				if (rex.match(l, 0, out mi)) {
