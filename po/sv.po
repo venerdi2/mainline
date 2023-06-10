@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 23:18-0400\n"
+"POT-Creation-Date: 2023-06-10 02:39-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -61,137 +61,137 @@ msgstr "Hittade installerat"
 msgid "locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:470 src/Common/LinuxKernel.vala:1053
-#: src/Common/LinuxKernel.vala:1144
+#: src/Common/LinuxKernel.vala:470 src/Common/LinuxKernel.vala:1055
+#: src/Common/LinuxKernel.vala:1146
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:719 src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:721 src/Gtk/MainWindow.vala:525
 msgid "Running"
 msgstr "Körs"
 
-#: src/Common/LinuxKernel.vala:720
+#: src/Common/LinuxKernel.vala:722
 msgid "Installed"
 msgstr "Installerad"
 
-#: src/Common/LinuxKernel.vala:721
+#: src/Common/LinuxKernel.vala:723
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: src/Common/LinuxKernel.vala:814
+#: src/Common/LinuxKernel.vala:816
 msgid "Packages Available"
 msgstr "Tillgängliga paket"
 
-#: src/Common/LinuxKernel.vala:820
+#: src/Common/LinuxKernel.vala:822
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:845 src/lib/TeeJee.FileSystem.vala:94
+#: src/Common/LinuxKernel.vala:847 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:872
+#: src/Common/LinuxKernel.vala:874
 #, fuzzy
 msgid "needs update"
 msgstr "Senaste uppdatering"
 
-#: src/Common/LinuxKernel.vala:939
+#: src/Common/LinuxKernel.vala:941
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:973 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:975 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr "Kärna"
 
-#: src/Common/LinuxKernel.vala:973
+#: src/Common/LinuxKernel.vala:975
 #, fuzzy
 msgid "not found"
 msgstr "Filen kan inte hittas"
 
-#: src/Common/LinuxKernel.vala:980
+#: src/Common/LinuxKernel.vala:982
 #, fuzzy
 msgid "Download: no downloadable kernels specified"
 msgstr "Kommandot har inte angetts"
 
-#: src/Common/LinuxKernel.vala:996
+#: src/Common/LinuxKernel.vala:998
 msgid "enabled"
 msgstr "aktiverat"
 
-#: src/Common/LinuxKernel.vala:1021
+#: src/Common/LinuxKernel.vala:1023
 msgid "Downloading"
 msgstr "Ladda ner"
 
-#: src/Common/LinuxKernel.vala:1039
+#: src/Common/LinuxKernel.vala:1041
 #, fuzzy
 msgid "Installing selected kernels"
 msgstr "Avinstallera valda kärnor"
 
-#: src/Common/LinuxKernel.vala:1045 src/Common/LinuxKernel.vala:1084
+#: src/Common/LinuxKernel.vala:1047 src/Common/LinuxKernel.vala:1086
 #, fuzzy
 msgid "Requested"
 msgstr "begärd"
 
-#: src/Common/LinuxKernel.vala:1048
+#: src/Common/LinuxKernel.vala:1050
 msgid "is already installed."
 msgstr "är redan installerat."
 
-#: src/Common/LinuxKernel.vala:1058
+#: src/Common/LinuxKernel.vala:1060
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1065 src/Gtk/MainWindow.vala:552
+#: src/Common/LinuxKernel.vala:1067 src/Gtk/MainWindow.vala:552
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Kommandot har inte angetts"
 
-#: src/Common/LinuxKernel.vala:1080
+#: src/Common/LinuxKernel.vala:1082
 msgid "Uninstalling selected kernels"
 msgstr "Avinstallera valda kärnor"
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1089
 #, fuzzy
 msgid "Not uninstalling the currently running kernel"
 msgstr "Avinstallera inte den kärna som körs, för närvarande"
 
-#: src/Common/LinuxKernel.vala:1092 src/Gtk/MainWindow.vala:547
+#: src/Common/LinuxKernel.vala:1094 src/Gtk/MainWindow.vala:547
 msgid "is locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1100
+#: src/Common/LinuxKernel.vala:1102
 msgid "found"
 msgstr "grunda"
 
-#: src/Common/LinuxKernel.vala:1104
+#: src/Common/LinuxKernel.vala:1106
 msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1140
+#: src/Common/LinuxKernel.vala:1142
 #, fuzzy
 msgid "is the highest installed version."
 msgstr "Avinstallera alla utom den högsta installerade versionen"
 
-#: src/Common/LinuxKernel.vala:1153
+#: src/Common/LinuxKernel.vala:1155
 msgid "Could not find running kernel in list"
 msgstr "Det gick inte att hitta kernel som körs i listan"
 
-#: src/Common/LinuxKernel.vala:1158
+#: src/Common/LinuxKernel.vala:1160
 msgid "Could not find any kernels to uninstall"
 msgstr "Det gick inte att hitta några kärnor att avinstallera"
 
-#: src/Common/LinuxKernel.vala:1163
+#: src/Common/LinuxKernel.vala:1165
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
-#: src/Common/LinuxKernel.vala:1165
+#: src/Common/LinuxKernel.vala:1167
 msgid "Continue ?"
 msgstr "Fortsätta?"
 
-#: src/Common/LinuxKernel.vala:1181
+#: src/Common/LinuxKernel.vala:1183
 #, fuzzy
 msgid "No updates"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Common/LinuxKernel.vala:1187
+#: src/Common/LinuxKernel.vala:1189
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installera kärnversion %s ? (j/n):"

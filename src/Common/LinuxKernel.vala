@@ -590,6 +590,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (t==null || t=="") t = "0";
 		version_main = t;
 		kver = t;
+		//vprint("\n"+t);
 
 #if SPLIT_VERSION_STRING_V2
 		var chunks = t.split_set(".-+_~ ");
@@ -651,6 +652,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 #endif
 		if (version_rc>0 || version_extra.contains("unstable")) is_unstable = true;
 		//vprint("major: %d\nminor: %d\nmicro: %d\nrc   : %d\nextra: %s\nunstable: %s\nsort :%s".printf(version_major,version_minor,version_micro,version_rc,version_extra,is_unstable.to_string(),version_sort));
+		//vprint(version_sort);
 	}
 
 // complicated comparison logic for kernel version strings
@@ -669,8 +671,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// parsing version_main, since version_main has a different format now.
 		// The better way will be to just examine the individual variables
 		// which we already did the work of parsing in split_version_string()
-		var a = version_sort.split_set(".-_");
-		var b = t.version_sort.split_set(".-_");
+		var a = version_sort.split(".");
+		var b = t.version_sort.split(".");
 		int x, y, i = -1;
 		while (++i<a.length && i<b.length) {            // while both strings have chunks
 			if (a[i] == b[i]) continue;                 // both the same, next chunk
@@ -690,13 +692,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		foreach(var p in Package.dpkg_list) {
 			if (p.version == kver) {
 				pkg_list[p.pname] = p.pname;
-				vprint("pkg: "+p.pname,2);
+				vprint("  p: "+p.pname,2);
 			}
 		}
 	}
 
 	public void mark_invalid() {
-			file_write(cached_status_file,"");
+		file_write(cached_status_file,"");
 	}
 
 	// properties
