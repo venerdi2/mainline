@@ -264,17 +264,12 @@ public abstract class AsyncTask : GLib.Object {
 		out_line = "";
 
 		timer.stop();
-
-		finish_task();
-
 		delete_r(working_dir);
-
 		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) status = AppStatus.FINISHED;
 
 		task_complete(); //signal
-	}
 
-	protected abstract void finish_task();
+	}
 
 	public bool is_running() {
 		return (status == AppStatus.RUNNING);

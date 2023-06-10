@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 03:52-0400\n"
+"POT-Creation-Date: 2023-06-09 23:18-0400\n"
 "PO-Revision-Date: 2023-06-05 23:29+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -13,178 +13,178 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
 "X-Generator: Poedit 3.3\n"
 
-#: src/Common/LinuxKernel.vala:102
+#: src/Common/LinuxKernel.vala:104
 msgid "Distribution"
 msgstr "Дистрибутив"
 
-#: src/Common/LinuxKernel.vala:117
+#: src/Common/LinuxKernel.vala:119
 msgid "Architecture"
 msgstr "Архитектура"
 
-#: src/Common/LinuxKernel.vala:132
+#: src/Common/LinuxKernel.vala:134
 msgid "Running kernel"
 msgstr "Запущенное ядро"
 
-#: src/Common/LinuxKernel.vala:219
+#: src/Common/LinuxKernel.vala:221
 msgid "loading cached"
 msgstr "загрузка в кэше"
 
-#: src/Common/LinuxKernel.vala:231
+#: src/Common/LinuxKernel.vala:233
 msgid "queuing download"
 msgstr "загрузка очередей"
 
-#: src/Common/LinuxKernel.vala:251
+#: src/Common/LinuxKernel.vala:253
 msgid "Fetching individual kernel indexes"
 msgstr "Получение отдельных индексов ядра"
 
-#: src/Common/LinuxKernel.vala:265
+#: src/Common/LinuxKernel.vala:266
 msgid "loading downloaded"
 msgstr "загрузка загруженных"
 
-#: src/Common/LinuxKernel.vala:305
+#: src/Common/LinuxKernel.vala:307
 msgid "Updating from"
 msgstr "Обновление из"
 
-#: src/Common/LinuxKernel.vala:313
+#: src/Common/LinuxKernel.vala:315
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:316
+#: src/Common/LinuxKernel.vala:318
 msgid "FAILED"
 msgstr "НЕУДАВШИЙСЯ"
 
-#: src/Common/LinuxKernel.vala:381
+#: src/Common/LinuxKernel.vala:386
 msgid "Found installed"
 msgstr "Найдено установлененное"
 
-#: src/Common/LinuxKernel.vala:382
+#: src/Common/LinuxKernel.vala:387
 msgid "locked"
 msgstr "заблокирован"
 
-#: src/Common/LinuxKernel.vala:464 src/Common/LinuxKernel.vala:994
-#: src/Common/LinuxKernel.vala:1085
+#: src/Common/LinuxKernel.vala:470 src/Common/LinuxKernel.vala:1053
+#: src/Common/LinuxKernel.vala:1144
 msgid "is locked."
 msgstr "заблокирован."
 
-#: src/Common/LinuxKernel.vala:660 src/Gtk/MainWindow.vala:521
+#: src/Common/LinuxKernel.vala:719 src/Gtk/MainWindow.vala:525
 msgid "Running"
 msgstr "Используется"
 
-#: src/Common/LinuxKernel.vala:661
+#: src/Common/LinuxKernel.vala:720
 msgid "Installed"
 msgstr "Установлено"
 
-#: src/Common/LinuxKernel.vala:662
+#: src/Common/LinuxKernel.vala:721
 msgid "Invalid"
 msgstr "Негодный"
 
-#: src/Common/LinuxKernel.vala:755
+#: src/Common/LinuxKernel.vala:814
 msgid "Packages Available"
 msgstr "Доступные пакеты"
 
-#: src/Common/LinuxKernel.vala:761
+#: src/Common/LinuxKernel.vala:820
 msgid "Packages Installed"
 msgstr "Установленные пакеты"
 
-#: src/Common/LinuxKernel.vala:786 src/lib/TeeJee.FileSystem.vala:94
+#: src/Common/LinuxKernel.vala:845 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: src/Common/LinuxKernel.vala:813
+#: src/Common/LinuxKernel.vala:872
 #, fuzzy
 msgid "needs update"
 msgstr "требуется обновление"
 
-#: src/Common/LinuxKernel.vala:880
+#: src/Common/LinuxKernel.vala:939
 msgid "Available Kernels"
 msgstr "Доступные ядра"
 
-#: src/Common/LinuxKernel.vala:914 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:973 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr "Ядро"
 
-#: src/Common/LinuxKernel.vala:914
+#: src/Common/LinuxKernel.vala:973
 msgid "not found"
 msgstr "не найдено"
 
-#: src/Common/LinuxKernel.vala:921
+#: src/Common/LinuxKernel.vala:980
 msgid "Download: no downloadable kernels specified"
 msgstr "Загрузка: не указаны загружаемые ядра"
 
-#: src/Common/LinuxKernel.vala:937
+#: src/Common/LinuxKernel.vala:996
 msgid "enabled"
 msgstr "включено"
 
-#: src/Common/LinuxKernel.vala:962
+#: src/Common/LinuxKernel.vala:1021
 msgid "Downloading"
 msgstr "Загрузки"
 
-#: src/Common/LinuxKernel.vala:980
+#: src/Common/LinuxKernel.vala:1039
 msgid "Installing selected kernels"
 msgstr "Установка выбранных ядер"
 
-#: src/Common/LinuxKernel.vala:986 src/Common/LinuxKernel.vala:1025
+#: src/Common/LinuxKernel.vala:1045 src/Common/LinuxKernel.vala:1084
 msgid "Requested"
 msgstr "Запрошено"
 
-#: src/Common/LinuxKernel.vala:989
+#: src/Common/LinuxKernel.vala:1048
 msgid "is already installed."
 msgstr "уже установлен."
 
-#: src/Common/LinuxKernel.vala:999
+#: src/Common/LinuxKernel.vala:1058
 msgid "download failed."
 msgstr "загрузка не удалась."
 
-#: src/Common/LinuxKernel.vala:1006 src/Gtk/MainWindow.vala:548
+#: src/Common/LinuxKernel.vala:1065 src/Gtk/MainWindow.vala:552
 msgid "Install: no installable kernels specified"
 msgstr "Команда не указана"
 
-#: src/Common/LinuxKernel.vala:1021
+#: src/Common/LinuxKernel.vala:1080
 msgid "Uninstalling selected kernels"
 msgstr "Удаление выбранных ядер"
 
-#: src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:1087
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не удалять запущенное в данный момент ядро"
 
-#: src/Common/LinuxKernel.vala:1033 src/Gtk/MainWindow.vala:543
+#: src/Common/LinuxKernel.vala:1092 src/Gtk/MainWindow.vala:547
 msgid "is locked"
 msgstr "заблокирован"
 
-#: src/Common/LinuxKernel.vala:1041
+#: src/Common/LinuxKernel.vala:1100
 msgid "found"
 msgstr "найдено"
 
-#: src/Common/LinuxKernel.vala:1045
+#: src/Common/LinuxKernel.vala:1104
 msgid "Uninstall: no uninstallable packages found"
 msgstr "Удаление: не найдено удаляемых пакетов"
 
-#: src/Common/LinuxKernel.vala:1081
+#: src/Common/LinuxKernel.vala:1140
 msgid "is the highest installed version."
 msgstr "это самая высокая установленная версия."
 
-#: src/Common/LinuxKernel.vala:1094
+#: src/Common/LinuxKernel.vala:1153
 msgid "Could not find running kernel in list"
 msgstr "Could not find running kernel in list"
 
-#: src/Common/LinuxKernel.vala:1099
+#: src/Common/LinuxKernel.vala:1158
 msgid "Could not find any kernels to uninstall"
 msgstr "Не удалось найти ядра для деинсталляции"
 
-#: src/Common/LinuxKernel.vala:1104
+#: src/Common/LinuxKernel.vala:1163
 msgid "The following kernels will be uninstalled"
 msgstr "Следующие ядра будут удалены"
 
-#: src/Common/LinuxKernel.vala:1106
+#: src/Common/LinuxKernel.vala:1165
 msgid "Continue ?"
 msgstr "Продолжить ?"
 
-#: src/Common/LinuxKernel.vala:1122
+#: src/Common/LinuxKernel.vala:1181
 #, fuzzy
 msgid "No updates"
 msgstr "Нет обнолений"
 
-#: src/Common/LinuxKernel.vala:1128
+#: src/Common/LinuxKernel.vala:1187
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Установить версию ядра %s ? (y/n): "
@@ -268,7 +268,7 @@ msgstr "Установить указанные ядра"
 msgid "Uninstall specified kernels"
 msgstr "Удалить указанные ядра"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:333
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:337
 msgid "Uninstall all but the highest installed version"
 msgstr "Удаление всех установленных версий, кроме самой высокой"
 
@@ -355,7 +355,7 @@ msgstr "Доступно ядро %s"
 msgid "Show"
 msgstr "Показать"
 
-#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:312
+#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:316
 msgid "Install"
 msgstr "Установить"
 
@@ -423,68 +423,68 @@ msgstr "Состояние"
 msgid "Notes"
 msgstr "Примечания"
 
-#: src/Gtk/MainWindow.vala:317
+#: src/Gtk/MainWindow.vala:321
 msgid "Uninstall"
 msgstr "Удалить"
 
-#: src/Gtk/MainWindow.vala:323
+#: src/Gtk/MainWindow.vala:327
 msgid "Changelog, build status, etc"
 msgstr "Список изменений, статус сборки и т.д"
 
-#: src/Gtk/MainWindow.vala:332
+#: src/Gtk/MainWindow.vala:336
 msgid "Uninstall Old"
 msgstr "Удалить старые"
 
-#: src/Gtk/MainWindow.vala:338
+#: src/Gtk/MainWindow.vala:342
 msgid "Reload"
 msgstr "Перезагрузить"
 
-#: src/Gtk/MainWindow.vala:339
+#: src/Gtk/MainWindow.vala:343
 msgid "Delete and reload all cached kernel info"
 msgstr "Удалить и перезагрузить всю кэшированную информацию о ядре"
 
-#: src/Gtk/MainWindow.vala:344 src/Gtk/SettingsDialog.vala:41
+#: src/Gtk/MainWindow.vala:348 src/Gtk/SettingsDialog.vala:41
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/Gtk/MainWindow.vala:349
+#: src/Gtk/MainWindow.vala:353
 msgid "About"
 msgstr "О программе"
 
-#: src/Gtk/MainWindow.vala:354
+#: src/Gtk/MainWindow.vala:358
 msgid "Exit"
 msgstr "Выход"
 
-#: src/Gtk/MainWindow.vala:435
+#: src/Gtk/MainWindow.vala:439
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Программа обновления ядра для дистрибутивов на базе Ubuntu"
 
-#: src/Gtk/MainWindow.vala:436
+#: src/Gtk/MainWindow.vala:440
 msgid "Forked"
 msgstr "Форк"
 
-#: src/Gtk/MainWindow.vala:436
+#: src/Gtk/MainWindow.vala:440
 msgid "Original"
 msgstr "Оригинал"
 
-#: src/Gtk/MainWindow.vala:465
+#: src/Gtk/MainWindow.vala:469
 msgid "Updating kernels"
 msgstr "Обновление ядер"
 
-#: src/Gtk/MainWindow.vala:525
+#: src/Gtk/MainWindow.vala:529
 msgid "available"
 msgstr "доступно"
 
-#: src/Gtk/MainWindow.vala:542
+#: src/Gtk/MainWindow.vala:546
 msgid "is already installed"
 msgstr "уже установлен"
 
-#: src/Gtk/MainWindow.vala:544
+#: src/Gtk/MainWindow.vala:548
 msgid "adding"
 msgstr "добавление"
 
-#: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
-#: src/Gtk/MainWindow.vala:632
+#: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:608
+#: src/Gtk/MainWindow.vala:636
 msgid "DONE"
 msgstr "ГОТОВО"
 
@@ -572,6 +572,6 @@ msgstr "Готово"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/lib/l.misc.vala:107
+#: src/lib/l.misc.vala:109
 msgid "Can not reach site"
 msgstr "Не удается связаться с сайтом"

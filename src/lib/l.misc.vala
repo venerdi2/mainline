@@ -59,20 +59,22 @@ namespace l.misc {
 		vprint("\r%*.s\r%s %d%% %s ".printf(l,"",b,(int)c,u),1,stdout,false);
 	}
 
-/*  // write to both stdout and to App.status_line
+/*
+	// segfault
+	// write to both stdout and to App.status_line
 	private static void pbar(int64 part=0,int64 whole=100,string units="") {
-		if (whole<1) {
-			App.status_line="\r%79s\r".printf("");
-		} else {
+		int l = 79; // bar length
+		if (whole<1) App.status_line = "";
+		else {
 			int64 c = 0, plen = 0, wlen = 40;
 			string b = "", u = units;
-			if (whole>0) { c=(part*100/whole); plen=(part*wlen/whole); }
-			else { c=100; plen=wlen; }
-			for (int i=0;i<wlen;i++) { if (i<plen) b+="▓"; else b+="░"; }
+			if (whole>0) { c = (part*100/whole); plen = (part*wlen/whole); }
+			else { c = 100; plen = wlen; }
+			for (int i = 0;i<wlen;i++) { if (i<plen) b += "▓"; else b += "░"; }
 			if (u.length>0) u = " "+part.to_string()+"/"+whole.to_string()+" "+u;
-			App.status_line="\r%79s\r%s %d%% %s ".printf("",b,(int)c,u);
+			App.status_line="%s %d%% %s".printf(b,(int)c,u);
 		}
-		vprint(App.status_line,1,stdout,false);
+		vprint("\r%*.s\r%s %d%% %s ".printf(l,"",App.status_line),1,stdout,false);
 	}
 */
 

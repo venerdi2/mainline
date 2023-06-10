@@ -170,9 +170,6 @@ public class DownloadTask : AsyncTask {
 
 		return true;
 	}
-
-	protected override void finish_task() {
-	}
 }
 
 public class DownloadItem : GLib.Object {

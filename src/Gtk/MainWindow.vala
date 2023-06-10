@@ -247,7 +247,7 @@ public class MainWindow : Window {
 
 			if (!k.is_installed) { // don't hide anything that's installed
 				if (k.is_invalid) continue; // hide invalid
-				if (k.version_rc>=0 && App.hide_unstable) continue; // hide unstable if settings say to
+				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
 				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide versions older than settings threshold
 			}
 
@@ -258,11 +258,15 @@ public class MainWindow : Window {
 			tm.set(iter, TM.KERN, k);
 
 			p = pix_mainline;
-			if (k.version_rc>=0) p = pix_mainline_rc;
+			if (k.is_unstable) p = pix_mainline_rc;
 			if (!k.is_mainline) p = pix_ubuntu;
 			tm.set(iter, TM.ICON, p);
 
+#if DISPLAY_VERSION_SORT
+			tm.set(iter, TM.VERSION, k.version_sort);
+#else
 			tm.set(iter, TM.VERSION, k.version_main);
+#endif
 
 			tm.set(iter, TM.LOCKED, k.is_locked);
 
@@ -486,7 +490,7 @@ public class MainWindow : Window {
 		}
 
 		Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
-			if (updating) set_infobar("%s %d/%d".printf(message, App.progress_count, App.progress_total));
+			if (updating) set_infobar("%s: %d/%d".printf(message, App.progress_count, App.progress_total));
 			return false;
 		});
 	}

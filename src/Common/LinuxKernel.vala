@@ -14,7 +14,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public int version_major = -1;
 	public int version_minor = -1;
-	public int version_point = -1;
+	public int version_micro = -1;
 	public int version_rc = -1;
 	public string version_extra = "";
 	public string version_sort = "";
@@ -26,6 +26,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public bool is_installed = false;
 	public bool is_running = false;
 	public bool is_mainline = true;
+	public bool is_unstable = false;
 	public int ppa_dirs_ver = 0; // 0 = not set, 1 = old single dirs, 2 = new /<arch>/ subdirs
 	public int64 ppa_datetime = -1; // timestamp from the main index
 
@@ -48,11 +49,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static LinuxKernel kernel_latest_installed;
 	public static LinuxKernel kernel_oldest_installed;
 	public static LinuxKernel kernel_last_stable_ppa_dirs_v1;
-	public static LinuxKernel kernel_last_rc_ppa_dirs_v1;
+	public static LinuxKernel kernel_last_unstable_ppa_dirs_v1;
 	//public static LinuxKernel kernel_last_stable_ppa_dirs_v2; // if the site changes again
-	//public static LinuxKernel kernel_last_rc_ppa_dirs_v2;
+	//public static LinuxKernel kernel_last_unstable_ppa_dirs_v2;
 
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
+	public static Gee.ArrayList<LinuxKernel> kall = new Gee.ArrayList<LinuxKernel>();
 
 	public static Regex rex_header = null;
 	public static Regex rex_header_all = null;
@@ -84,9 +86,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// ./CHECKSUMS     vs   ./<arch>/CHECKSUMS
 		// ./BUILT         vs   ./<arch>/status
 		kernel_last_stable_ppa_dirs_v1 = new LinuxKernel("5.6.17");
-		kernel_last_rc_ppa_dirs_v1 = new LinuxKernel("5.7-rc7");
-		//kernel_last_stable_ppa_dirs_v2 = new LinuxKernel("5.6.17"); // if the site changes again
-		//kernel_last_rc_ppa_dirs_v2 = new LinuxKernel("5.7-rc7");
+		kernel_last_unstable_ppa_dirs_v1 = new LinuxKernel("5.7-rc7");
+		//kernel_last_stable_ppa_dirs_v2 = new LinuxKernel("x.y.z"); // if the site changes again
+		//kernel_last_unstable_ppa_dirs_v2 = new LinuxKernel("x.y-rcZ");
 
 	}
 
@@ -222,10 +224,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			if (k.is_invalid) continue;
 
-			if (!k.is_installed) {
-				if (k.version_major < THRESHOLD_MAJOR) continue;
-				if (App.hide_unstable && k.version_rc>=0) continue;
-			}
+			// don't try to filter here yet
+			// we don't have is_installed yet until after check_installed()
+			// and we need everything above threshold major in the list
+			// to recognize already-installed rc even if rc are disabled now
 
 			// add index.html to download list
 			vprint(_("queuing download")+" "+k.version_main,3);
@@ -252,9 +254,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// while downloading
 			while (mgr.is_running()) {
-				App.progress_count = mgr.prg_count; // also used by the progress indicator in MainWindow.vala
-				pbar(App.progress_count,App.progress_total,"(files)");
-				//pbar(App.progress_count,App.progress_total);
+				App.progress_count = mgr.prg_count;
+				pbar(App.progress_count,App.progress_total);
 				sleep(250);
 				if (notifier != null) notifier(timer, ref count);
 			}
@@ -270,6 +271,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		check_installed();
+		trim_cache();
 		check_updates();
 
 		// This is here because it had to be delayed from whenever settings
@@ -328,9 +330,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (!file_exists(cif)) return;
 		string txt = file_read(cif);
 		kernel_list.clear();
+		kall.clear();
 
 		try {
-			var rex = new Regex("""href="(v[0-9][a-zA-Z0-9\-._\/]+)".+>[\t ]*([0-9]{4})-([0-9]{2})-([0-9]{2})[\t ]+([0-9]{2}):([0-9]{2})[\t ]*<""");
+			var rex = new Regex("""href="(v.+/)".+>[\t ]*([0-9]{4})-([0-9]{2})-([0-9]{2})[\t ]+([0-9]{2}):([0-9]{2})[\t ]*<""");
 			// <tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="v2.6.27.61/">v2.6.27.61/</a></td><td align="right">2018-05-13 20:40  </td><td align="right">  - </td><td>&nbsp;</td></tr>
 			//                                                                                 ###########                                        #### ## ## ## ##
 			//                                                                                 fetch(1)                                           2    3  4  5  6
@@ -342,16 +345,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				v = mi.fetch(1);
 				var k = new LinuxKernel(v);
 
-				if (k.version_major<THRESHOLD_MAJOR || (k.version_rc>=0 && App.hide_unstable)) {
-					if (File.parse_name(k.cache_subdir).query_exists()) delete_r(k.cache_subdir);
-					continue;
-				}
+				// Don't try to exclude unstable here, just k.version_major<THRESHOLD_MAJOR.
+				// They all need to exist in kernel_list at least long enough for check_installed()
+				// to recognize any already-installed rc even if rc are hidden now.
 
 				k.page_uri = App.ppa_uri + v;
 				k.is_mainline = true;
-				k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
-				vprint("kernel_list.add("+k.version_main+") "+k.ppa_datetime.to_string(),2);
-				kernel_list.add(k);
+				if (k.version_major>=THRESHOLD_MAJOR) {
+					k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
+					vprint("kernel_list.add("+k.version_main+") "+k.ppa_datetime.to_string(),2);
+					kernel_list.add(k); // the active list
+				}
+				kall.add(k); // a seperate full list we don't trim
 			}
 
 			// sort the list, highest first
@@ -383,11 +388,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			vprint(msg);
 
 			// search the mainline list for matching package name
-			// fill k.pkg_list list of assosciated pkgs
+			// fill k.pkg_list list of associated pkgs
 			bool found = false;
 			foreach (var k in kernel_list) {
 				if (k.is_invalid) continue;
 				if (k.version_major<THRESHOLD_MAJOR) continue;
+				//vprint(k.kver+" "+pk.kver);
 				if (k.kver == pk.kver) {
 					found = true;
 					k.pkg_list = pk.pkg_list;
@@ -462,7 +468,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.is_invalid) continue;
 			if (k.is_installed) continue;
 			if (k.is_locked) { vprint(k.version_main+" "+_("is locked."),2); continue; }
-			if (k.version_rc>=0 && App.hide_unstable) continue;
+			if (k.is_unstable && App.hide_unstable) continue;
 			if (k.version_major < THRESHOLD_MAJOR) break;
 			if (k.compare_to(kernel_latest_installed)<1) break;
 
@@ -471,8 +477,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			else if (k.version_major == kernel_latest_installed.version_major) {
 				if (k.version_minor > kernel_latest_installed.version_minor) major_available = true;
 				else if (k.version_minor == kernel_latest_installed.version_minor) {
-					if (k.version_point > kernel_latest_installed.version_point) minor_available = true;
-					else if (k.version_point == kernel_latest_installed.version_point) {
+					if (k.version_micro > kernel_latest_installed.version_micro) minor_available = true;
+					else if (k.version_micro == kernel_latest_installed.version_micro) {
 						if (k.version_rc > kernel_latest_installed.version_rc) minor_available = true;
 					}
 				}
@@ -494,6 +500,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	}
 
+	public static void trim_cache() {
+		foreach (var k in kall) {
+			if (k.is_installed) continue;
+			// don't bother removing any cached rc above the major threshold
+			// because they just end up having to get downloaded anyway on every refresh
+			//if (k.version_major<THRESHOLD_MAJOR || (k.is_unstable && App.hide_unstable)) {
+			if (k.version_major<THRESHOLD_MAJOR && File.parse_name(k.cache_subdir).query_exists()) delete_r(k.cache_subdir);
+		}
+	}
+
 	// There is a circular dependency here.
 	// (1) Ideally we want to know THRESHOLD_MAJOR before running mk_kernel_list(),
 	//     so mk_kernel_list() can use it to set bounds on the size of it's job,
@@ -507,6 +523,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// So for this early task, we rely on a weak is_mainline that was made
 	// from an unsafe assumption in split_version_string(), when mk_dpkg_list()
 	// generates some kernel objects from the installed package info from dpkg.
+	// The version field from dpkg for mainline kernels includes a 12-byte
+	// date/time stamp that distro packages don't have.
 	//
 	// TODO maybe... get a full kernel_list from a preliminary pass with load_index()
 	// before runing mk_dpkg_list(). have mk_dpkg_list() use that
@@ -533,65 +551,106 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (kernel_oldest_installed.is_mainline && kernel_oldest_installed.version_major < THRESHOLD_MAJOR) THRESHOLD_MAJOR = kernel_oldest_installed.version_major;
 	}
 
+	// two main forms of input string:
+	//
+	// directory name & display version from the mainline-ppa web site
+	//    v4.4-rc2+cod1/
+	//    v4.2-rc1-unstable/
+	//    v4.4.10-xenial/
+	//    v4.6-rc2-wily/
+	//    v4.2.8-ckt7-wily/
+	//    v2.6.27.62/
+	//    v4.19.285/
+	//    v5.12-rc1-dontuse/
+	//    v6.0/         trailing .0 but only one (not "6", nor "6.0.0")
+	//    v6.0-rc5/
+	//    v6.1/         no trailing .0 (not 6.1.0)
+	//    v6.1-rc8/
+	//    v6.1.9/
+	//
+	// version field from dpkg from installed packages
+	//    5.19.0-42.43                  distro package
+	//    6.3.6-060306.202306050836     mainline package
+	//    4.6.0-040600rc1.201603261930  sigh, rc without a delimiter...
+
 	public void split_version_string(string s="") {
-		//vprint("+k "+s);
-		version_main = "";
+		//vprint("\n-new-: "+s);
 		version_major = 0;
 		version_minor = 0;
-		version_point = 0;
-		version_rc = -1;
+		version_micro = 0;
+		version_rc = 0;
 		version_extra = "";
-		is_mainline = true; // FIXME bad assumption
+		is_mainline = true;
+		is_unstable = false;
 
 		string t = s.strip();
 		if (t.has_prefix("v")) t = t[1: t.length - 1];
 		if (t.has_suffix("/")) t = t[0: t.length - 1];
-		version_main = t;
 
-		t = t.split("~")[0];
 		if (t==null || t=="") t = "0";
+		version_main = t;
 		kver = t;
-		//vprint(t);
 
-		// Unsafe. "rc" could be part of intel-arc or something some day.
+#if SPLIT_VERSION_STRING_V2
+		var chunks = t.split_set(".-+_~ ");
+		int i = 0, n = 0;
+		foreach (string chunk in chunks) {
+			++i;
+			if (chunk.length<1) continue;
+			if (chunk.has_prefix("rc")) { version_rc = int.parse(chunk.substring(2)); continue; }
+			n = int.parse(chunk);
+			if (n>0 || chunk=="0") switch (i) {  // would fail on "00"  or "000" etc
+				case 1: version_major = n; continue;
+				case 2: version_minor = n; continue;
+				case 3: version_micro = n; continue;
+			}
+			if (i>=chunks.length) {
+					if (chunk.length==12) continue;
+					is_mainline = false;
+			} else if (i==chunks.length-1) {
+					if (chunk.contains("rc")) { var x = chunk.split("c"); version_rc = int.parse(x[x.length-1]); continue; }
+					if (version_micro<100 && chunk.has_prefix("%02d%02d%02d".printf(version_major,version_minor,version_micro))) continue;
+					else if (chunk.has_prefix("%02d%02d%d".printf(version_major,version_minor,version_micro))) continue;
+			}
+			version_extra += "."+chunk;
+		}
+		version_sort = "%d.%d.%d".printf(version_major,version_minor,version_micro);
+		if (version_rc>0) version_sort += ".rc"+version_rc.to_string();
+		version_sort += version_extra;
+#else
 		var mi = regex_match("""([0-9]+|rc)""",t);
 		int i = -1;
 		bool rc = false;
-
 		while (mi != null) {
 			string? v = mi.fetch(1);
-
 			if (v != null) {
 				i++;
-
 				if (rc) {
 					rc = false;
 					version_rc = int.parse(v);
-					//vprint ("%s: i=%d v.length=%d mainline=%s".printf(t,i,v.length,is_mainline.to_string()));
 				} else if (v == "rc") {
 					rc = true;
-					//vprint ("%s: i=%d v.length=%d mainline=%s".printf(t,i,v.length,is_mainline.to_string()));
 				} else {
 					switch (i) {
 						case 0: version_major = int.parse(v); break;
 						case 1: version_minor = int.parse(v); break;
-						case 2: version_point = int.parse(v); break;
-						case 3: if (version_rc<0 && v.length<6) version_extra += "."+v; break;  // not great
+						case 2: version_micro = int.parse(v); break;
+						case 3: if (version_rc<1 && v.length<6) version_extra += "."+v; break;
 						case 4:
-							if (version_rc<0 && v.length<6) version_extra += "."+v; // not great
-							if (v.length<12) is_mainline = false; // FIXME bad assumption
+							if (version_rc<1 && v.length<6) version_extra += "."+v;
+							if (v.length!=12) is_mainline = false;
 							break;
 					}
-					//vprint ("%s: i=%d v.length=%d mainline=%s".printf(t,i,v.length,is_mainline.to_string()));
 				}
+				if (version_rc>0) version_extra = ".rc%d".printf(version_rc);
+				version_sort = "%d.%d.%d%s".printf(version_major,version_minor,version_micro,version_extra);
+				try { if (!mi.next()) break; }
+				catch (Error e) { break; }
 			}
-
-			if (version_rc>=0) version_extra = "-rc%d".printf(version_rc);
-			version_sort = "%d.%d.%d%s".printf(version_major,version_minor,version_point,version_extra);
-
-			try { if (!mi.next()) break; }
-			catch (Error e) { break; }
 		}
+#endif
+		if (version_rc>0 || version_extra.contains("unstable")) is_unstable = true;
+		//vprint("major: %d\nminor: %d\nmicro: %d\nrc   : %d\nextra: %s\nunstable: %s\nsort :%s".printf(version_major,version_minor,version_micro,version_rc,version_extra,is_unstable.to_string(),version_sort));
 	}
 
 // complicated comparison logic for kernel version strings
@@ -667,13 +726,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	private void set_ppa_dirs_ver() {
 		if (ppa_dirs_ver>0) return;
 		ppa_dirs_ver = 1;
-		var k = kernel_last_stable_ppa_dirs_v1;            // Which threshold,
-		if (version_rc>=0) k = kernel_last_rc_ppa_dirs_v1; // stable or rc?
-		if (compare_to(k)>0) ppa_dirs_ver = 2;             // Do we exceed it?
+		var k = kernel_last_stable_ppa_dirs_v1;                // Which threshold,
+		if (is_unstable) k = kernel_last_unstable_ppa_dirs_v1; // stable or unstable?
+		if (compare_to(k)>0) ppa_dirs_ver = 2;                 // Do we exceed it?
 		// and in the future if the ppa site changes again,
 		// add more copies of these 3 lines
 		//k = kernel_last_stable_ppa_dirs_v2;
-		//if (version_rc>=0) k = kernel_last_rc_ppa_dirs_v2;
+		//if (is_unstable) k = kernel_last_unstable_ppa_dirs_v2;
 		//if (compare_to(k)>0) ppa_dirs_ver = 3;
 	}
 
@@ -886,7 +945,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
-				if (App.hide_unstable && k.version_rc>=0) continue;
+				if (App.hide_unstable && k.is_unstable) continue;
 				if (k.version_major < THRESHOLD_MAJOR) continue;
 			}
 
@@ -1113,12 +1172,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return uninstall_klist(klist);
 	}
 
-	public static int kinst_latest(bool point_update = false, bool confirm = true) {
+	public static int kinst_latest(bool point_only = false, bool confirm = true) {
 		vprint("kinst_latest()",2);
 		mk_kernel_list(true);
-		var k = LinuxKernel.kernel_update_major;
-		if (point_update) k = LinuxKernel.kernel_update_minor;
-		if (k != null) return kinst_update(k, confirm);
+		var k = LinuxKernel.kernel_update_minor;
+		if (!point_only && LinuxKernel.kernel_update_major!=null) k = LinuxKernel.kernel_update_major;
+		if (k!=null) return kinst_update(k, confirm);
 		vprint(_("No updates"));
 		return 1;
 	}
