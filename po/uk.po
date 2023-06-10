@@ -91,9 +91,8 @@ msgid "File not found"
 msgstr "Файл не знайдено"
 
 #: src/Common/LinuxKernel.vala:813
-#, fuzzy
 msgid "needs update"
-msgstr "Останнє оновлення"
+msgstr "потребує оновлення"
 
 #: src/Common/LinuxKernel.vala:880
 msgid "Available Kernels"
@@ -136,7 +135,6 @@ msgid "download failed."
 msgstr "не вдалося завантажити."
 
 #: src/Common/LinuxKernel.vala:1006 src/Gtk/MainWindow.vala:548
-#, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Встановити: ядра, які можна встановити, не вказано"
 
@@ -181,9 +179,8 @@ msgid "Continue ?"
 msgstr "Продовжувати ?"
 
 #: src/Common/LinuxKernel.vala:1122
-#, fuzzy
 msgid "No updates"
-msgstr "Оновлень не знайдено"
+msgstr "Немає оновлень"
 
 #: src/Common/LinuxKernel.vala:1128
 #, c-format
@@ -331,23 +328,20 @@ msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
 #: src/Console/AppConsole.vala:211
-#, fuzzy
 msgid "Notifications disabled"
 msgstr "Сповіщення вимкнено"
 
 #: src/Console/AppConsole.vala:216
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 #: src/Console/AppConsole.vala:231
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Повідомити, чи доступний невеликий випуск"
+msgstr "випуски точки сповіщення вимкнено"
 
 #: src/Console/AppConsole.vala:239
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Повідомити, чи доступний великий випуск"
+msgstr "сповіщення про основні випуски вимкнено"
 
 #: src/Console/AppConsole.vala:244
 #, c-format
@@ -479,13 +473,12 @@ msgid "available"
 msgstr "доступний"
 
 #: src/Gtk/MainWindow.vala:542
-#, fuzzy
 msgid "is already installed"
-msgstr "вже встановлено."
+msgstr "вже встановлено"
 
 #: src/Gtk/MainWindow.vala:544
 msgid "adding"
-msgstr ""
+msgstr "додавання"
 
 #: src/Gtk/MainWindow.vala:570 src/Gtk/MainWindow.vala:604
 #: src/Gtk/MainWindow.vala:632
@@ -565,13 +558,12 @@ msgid "Proxy"
 msgstr "Проксі"
 
 #: src/Gtk/SettingsDialog.vala:244
-#, fuzzy
 msgid "Auth Command"
-msgstr "Команди"
+msgstr "Команда авторизації"
 
 #: src/Gtk/SettingsDialog.vala:272
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: src/Gtk/TerminalWindow.vala:151
 msgid "Cancel"
