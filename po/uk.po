@@ -91,7 +91,6 @@ msgid "File not found"
 msgstr "Файл не знайдено"
 
 #: src/Common/LinuxKernel.vala:842
-#, fuzzy
 msgid "needs update"
 msgstr "потребує оновлення"
 
@@ -136,9 +135,8 @@ msgid "download failed."
 msgstr "не вдалося завантажити."
 
 #: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:552
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Встановити: ядра, які можна встановити, не вказано"
+msgstr "Встановити: ядра які можна встановити не вказано"
 
 #: src/Common/LinuxKernel.vala:1050
 msgid "Uninstalling selected kernels"
@@ -181,7 +179,6 @@ msgid "Continue ?"
 msgstr "Продовжувати ?"
 
 #: src/Common/LinuxKernel.vala:1151
-#, fuzzy
 msgid "No updates"
 msgstr "Немає оновлень"
 
@@ -192,19 +189,19 @@ msgstr "Встановити Ядро Версії %s ? (так/ні): "
 
 #: src/Common/Main.vala:157
 msgid "Missing Thread support in Glib."
-msgstr ""
+msgstr "Відсутня підтримка Thread у Glib."
 
 #: src/Common/Main.vala:241
 msgid "Wrote config file"
-msgstr ""
+msgstr "Написав файл конфігурації"
 
 #: src/Common/Main.vala:260
 msgid "No config file"
-msgstr ""
+msgstr "Немає файлу конфігурації"
 
 #: src/Common/Main.vala:319
 msgid "Loaded config file"
-msgstr ""
+msgstr "Завантажено конфігураційний файл"
 
 #: src/Common/Main.vala:339
 msgid "Called from"
@@ -476,7 +473,6 @@ msgid "available"
 msgstr "доступний"
 
 #: src/Gtk/MainWindow.vala:546
-#, fuzzy
 msgid "is already installed"
 msgstr "вже встановлено"
 
