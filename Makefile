@@ -2,7 +2,26 @@
 
 SHELL := /bin/bash
 CFLAGS := -O2
-VALACFLAGS := # -D LOCK_TOGGLES_IN_KERNEL_COLUMN
+VALACFLAGS :=
+
+# compile-time options
+#VALACFLAGS += -D LOCK_TOGGLES_IN_KERNEL_COLUMN
+#    Put the lock/unlock checkboxes inside the kernel version column instead of
+#    in their own column. The display is neater, but you can't sort by locked
+#    status to gather all the locked kernels together by clicking the header.
+#    TODO customized checkbox lock icon since there is no "Lock" column header label
+#    TODO cycle sorting between version number and locked status every 2nd time header is clicked
+#         version-up -> version-dn -> locked-up -> locked-dn -> repeat
+VALACFLAGS += -D SPLIT_VERSION_STRING_V2
+#    New code for parsing the version strings, trying to prepare the way
+#    for eventually supporting kernel flavors other than "-generic".
+#    Initially just aims to be more correct and preserve more info.
+#    For example, the old version strips all non-numerical text like "-dontuse"
+#    while the new one retains it and puts it into the version_extra field.
+#    It may be slightly slower since it does a little more work.
+#VALACFLAGS += -D DISPLAY_VERSION_SORT
+#    Use the internally constructed version_sort string for display.
+#    Default is version_main which from the mainline-ppa index.html.
 
 prefix := /usr
 bindir := $(prefix)/bin
