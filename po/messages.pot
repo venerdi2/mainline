@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-11 03:08-0400\n"
+"POT-Creation-Date: 2023-06-11 03:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -367,7 +367,7 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:160
 msgid "Close"
 msgstr ""
 
@@ -568,7 +568,7 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/TerminalWindow.vala:150
 msgid "Cancel"
 msgstr ""
 

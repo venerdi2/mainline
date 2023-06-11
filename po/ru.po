@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 03:23-0400\n"
+"POT-Creation-Date: 2023-06-11 03:41-0400\n"
 "PO-Revision-Date: 2023-06-05 23:29+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -367,7 +367,7 @@ msgstr "Предварительно уведомлено"
 msgid "Credits"
 msgstr "Создатели"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:160
 msgid "Close"
 msgstr "Закрыть"
 
@@ -568,7 +568,7 @@ msgstr "Команда авторизации"
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/TerminalWindow.vala:150
 msgid "Cancel"
 msgstr "Отмена"
 

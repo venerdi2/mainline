@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 03:23-0400\n"
+"POT-Creation-Date: 2023-06-11 03:41-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -364,7 +364,7 @@ msgstr "Попередньо повідомлено"
 msgid "Credits"
 msgstr "Творці"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:160
 msgid "Close"
 msgstr "Закрити"
 
@@ -565,7 +565,7 @@ msgstr "Команда авторизації"
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/TerminalWindow.vala:150
 msgid "Cancel"
 msgstr "Відміна"
 

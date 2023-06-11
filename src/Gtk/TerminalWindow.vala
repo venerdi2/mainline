@@ -187,9 +187,9 @@ public class TerminalWindow : Gtk.Window {
 		string[] argv = {"sh", f};
 		string[] env = Environ.get();
 		term.child_exited.connect(script_has_exited);
+		is_running = true;
 
 #if VALA_0_50 // vte 0.66 or so
-		is_running = true;
 		term.spawn_async(
 			Vte.PtyFlags.DEFAULT, // pty_flags
 			d, // working_directory
@@ -204,7 +204,6 @@ public class TerminalWindow : Gtk.Window {
 #else
 		Pid p = 0;
 		try {
-			is_running = true;
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, // pty_flags
 				d, // working_directory

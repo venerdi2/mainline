@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 03:23-0400\n"
+"POT-Creation-Date: 2023-06-11 03:41-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -383,7 +383,7 @@ msgstr "Notificato in precedenza"
 msgid "Credits"
 msgstr "Crediti"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:161
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:160
 msgid "Close"
 msgstr "Chiudi"
 
@@ -586,7 +586,7 @@ msgstr "Comandi"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:151
+#: src/Gtk/TerminalWindow.vala:150
 msgid "Cancel"
 msgstr "Cancella"
 
