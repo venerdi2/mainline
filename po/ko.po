@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-11 19:22-0400\n"
+"POT-Creation-Date: 2023-06-11 19:32-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -392,7 +392,7 @@ msgstr "이전에 통보됨"
 msgid "Credits"
 msgstr "제작자"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:154
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:152
 msgid "Close"
 msgstr "닫기"
 
@@ -590,7 +590,7 @@ msgstr "명령어"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:144
+#: src/Gtk/TerminalWindow.vala:142
 msgid "Cancel"
 msgstr "취소"
 

@@ -551,7 +551,7 @@ public class MainWindow : Window {
 		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
 
 		bool did_update_cache = false;
-		var term = new TerminalWindow.with_parent(this, false, true);
+		var term = new TerminalWindow.with_parent(this, true);
 
 		term.cmd_complete.connect(()=>{
 			term.present();
@@ -574,7 +574,7 @@ public class MainWindow : Window {
 		if (klist==null || klist.size<1) return;
 
 		bool did_update_cache = false;
-		var term = new TerminalWindow.with_parent(this, false, true);
+		var term = new TerminalWindow.with_parent(this, true);
 
 		term.cmd_complete.connect(()=>{
 			term.present();
@@ -598,7 +598,7 @@ public class MainWindow : Window {
 
 	public void uninstall_old () {
 		bool did_update_cache = false;
-		var term = new TerminalWindow.with_parent(this, false, true);
+		var term = new TerminalWindow.with_parent(this, true);
 
 		term.cmd_complete.connect(()=>{
 			term.present();

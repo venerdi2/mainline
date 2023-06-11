@@ -51,7 +51,7 @@ public class TerminalWindow : Gtk.Window {
 
 	// init
 
-	public TerminalWindow.with_parent(Gtk.Window? parent, bool fullscreen = false, bool show_cancel_button = false) {
+	public TerminalWindow.with_parent(Gtk.Window? parent, bool show_cancel_button = false) {
 		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
@@ -64,8 +64,6 @@ public class TerminalWindow : Gtk.Window {
 		delete_event.connect(cancel_window_close);
 
 		set_modal(true);
-
-		if (fullscreen) this.fullscreen();
 
 		init_window();
 
