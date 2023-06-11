@@ -2,6 +2,7 @@
  * TerminalWindow.vala
  *
  * Copyright 2015 Tony George <teejee2008@gmail.com>
+ * 2023 Brian K. White
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +37,7 @@ public class TerminalWindow : Gtk.Window {
 	public bool cancelled = false;
 	public bool is_running = false;
 
-	public signal void script_complete();
+	public signal void cmd_complete();
 
 	enum SIG {
 #if VALA_0_40
@@ -76,10 +77,7 @@ public class TerminalWindow : Gtk.Window {
 		if (show_cancel_button) allow_cancel();
 	}
 
-	public bool cancel_window_close() {
-		// do not allow window to close
-		return true;
-	}
+	public bool cancel_window_close() { return true; }
 
 	public void init_window () {
 
@@ -120,17 +118,13 @@ public class TerminalWindow : Gtk.Window {
 
 		term.scroll_on_keystroke = true;
 		term.scroll_on_output = true;
-		term.scrollback_lines = 100000;
 
 		// colors -----------------------------
-		// why override the users desktop preference?
 		//var color = Gdk.RGBA();
 		//color.parse("#FFFFFF");
 		//term.set_color_foreground(color);
 		//color.parse("#404040");
 		//term.set_color_background(color);
-
-		// grab focus ----------------
 
 		term.grab_focus();
 
@@ -195,23 +189,20 @@ public class TerminalWindow : Gtk.Window {
 	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
 		vprint("child_pid="+p.to_string(),4);
 		if (p>1) { child_pid = p; t.watch_child(p); }
-		else script_has_exited(e.code);
+		else child_has_exited(e.code);
 		if (e!=null) errmsg(e.message);
 	}
 
-	public void execute_script(string f, string d) {
-		vprint("TerminalWindow execute_script("+f+","+d+")",3);
-		string[] argv = {"sh", f};
-		string[] env = Environ.get();
-		term.child_exited.connect(script_has_exited);
+	public void execute_cmd(string[] argv) {
+		vprint("TerminalWindow execute_cmd("+string.joinv(" ",argv)+")",3);
+		term.child_exited.connect(child_has_exited);
 		is_running = true;
-
 #if VALA_0_50 // vte 0.66 or so
 		term.spawn_async(
 			Vte.PtyFlags.DEFAULT, // pty_flags
-			d, // working_directory
+			null, // working_directory
 			argv, // argv
-			env, // env
+			null, // env
 			GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
 			null, // child_setup() func
 			-1, // timeout
@@ -224,9 +215,9 @@ public class TerminalWindow : Gtk.Window {
 		try {
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, // pty_flags
-				d, // working_directory
+				null, // working_directory
 				argv, // argv
-				env, // env
+				null, // env
 				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
 				null, // child_setup() func
 				out p, // child pid written here
@@ -237,12 +228,12 @@ public class TerminalWindow : Gtk.Window {
 #endif
 	}
 
-	public void script_has_exited(int status) {
-		vprint("TerminalWindow script_has_exited("+status.to_string()+")",3);
+	public void child_has_exited(int status) {
+		vprint("TerminalWindow child_has_exited("+status.to_string()+")",3);
 		is_running = false;
 		allow_cancel(false);
 		btn_close.visible = true;
-		script_complete();
+		cmd_complete();
 	}
 
 	public void allow_window_close(bool allow = true) {

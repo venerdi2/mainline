@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-11 03:41-0400\n"
+"POT-Creation-Date: 2023-06-11 19:22-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -53,136 +53,147 @@ msgstr "Добре"
 msgid "FAILED"
 msgstr "НЕ ВДАЛОСЯ"
 
-#: src/Common/LinuxKernel.vala:386
+#: src/Common/LinuxKernel.vala:428
 msgid "Found installed"
 msgstr "Знайдено встановленим"
 
-#: src/Common/LinuxKernel.vala:387
+#: src/Common/LinuxKernel.vala:429
 msgid "locked"
 msgstr "заблокований"
 
-#: src/Common/LinuxKernel.vala:470 src/Common/LinuxKernel.vala:1023
-#: src/Common/LinuxKernel.vala:1114
+#: src/Common/LinuxKernel.vala:430
+#, fuzzy
+msgid "running"
+msgstr "Використовується"
+
+#: src/Common/LinuxKernel.vala:467 src/Common/LinuxKernel.vala:1020
+#: src/Common/LinuxKernel.vala:1105
 msgid "is locked."
 msgstr "заблоковано."
 
-#: src/Common/LinuxKernel.vala:689 src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:525
 msgid "Running"
 msgstr "Використовується"
 
-#: src/Common/LinuxKernel.vala:690
+#: src/Common/LinuxKernel.vala:687
 msgid "Installed"
 msgstr "Встановлено"
 
-#: src/Common/LinuxKernel.vala:691
+#: src/Common/LinuxKernel.vala:688
 msgid "Invalid"
 msgstr "Недійсний"
 
-#: src/Common/LinuxKernel.vala:784
+#: src/Common/LinuxKernel.vala:781
 msgid "Packages Available"
 msgstr "Доступні пакети"
 
-#: src/Common/LinuxKernel.vala:790
+#: src/Common/LinuxKernel.vala:787
 msgid "Packages Installed"
 msgstr "Встановлені пакети"
 
-#: src/Common/LinuxKernel.vala:815 src/lib/TeeJee.FileSystem.vala:94
+#: src/Common/LinuxKernel.vala:812 src/lib/TeeJee.FileSystem.vala:94
 msgid "File not found"
 msgstr "Файл не знайдено"
 
-#: src/Common/LinuxKernel.vala:842
+#: src/Common/LinuxKernel.vala:839
 msgid "needs update"
 msgstr "потребує оновлення"
 
-#: src/Common/LinuxKernel.vala:909
+#: src/Common/LinuxKernel.vala:906
 msgid "Available Kernels"
 msgstr "Доступні ядра"
 
-#: src/Common/LinuxKernel.vala:943 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:135
 msgid "Kernel"
 msgstr "Ядро"
 
-#: src/Common/LinuxKernel.vala:943
+#: src/Common/LinuxKernel.vala:940
 msgid "not found"
 msgstr "не знайдено"
 
-#: src/Common/LinuxKernel.vala:950
+#: src/Common/LinuxKernel.vala:947
 msgid "Download: no downloadable kernels specified"
 msgstr "Завантажити: ядра для завантаження не вказано"
 
-#: src/Common/LinuxKernel.vala:966
+#: src/Common/LinuxKernel.vala:963
 msgid "enabled"
 msgstr "увімкнено"
 
-#: src/Common/LinuxKernel.vala:991
+#: src/Common/LinuxKernel.vala:988
 msgid "Downloading"
 msgstr "Завантаження"
 
-#: src/Common/LinuxKernel.vala:1009
+#: src/Common/LinuxKernel.vala:1006
 msgid "Installing selected kernels"
 msgstr "Встановлення обраних ядер"
 
-#: src/Common/LinuxKernel.vala:1015 src/Common/LinuxKernel.vala:1054
+#: src/Common/LinuxKernel.vala:1012 src/Common/LinuxKernel.vala:1050
 msgid "Requested"
 msgstr "Запитуваний"
 
-#: src/Common/LinuxKernel.vala:1018
+#: src/Common/LinuxKernel.vala:1015
 msgid "is already installed."
 msgstr "вже встановлено."
 
-#: src/Common/LinuxKernel.vala:1028
+#: src/Common/LinuxKernel.vala:1025
 msgid "download failed."
 msgstr "не вдалося завантажити."
 
-#: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:552
+#: src/Common/LinuxKernel.vala:1032 src/Gtk/MainWindow.vala:551
 msgid "Install: no installable kernels specified"
 msgstr "Встановити: ядра які можна встановити не вказано"
 
-#: src/Common/LinuxKernel.vala:1050
+#: src/Common/LinuxKernel.vala:1040 src/Common/LinuxKernel.vala:1075
+#: src/Common/LinuxKernel.vala:1119 src/Common/LinuxKernel.vala:1150
+msgid "done"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:1046
 msgid "Uninstalling selected kernels"
 msgstr "Видаліть конкретні ядра"
 
-#: src/Common/LinuxKernel.vala:1057
+#: src/Common/LinuxKernel.vala:1053
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не видалення поточного запущеного ядра"
 
-#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:547
+#: src/Common/LinuxKernel.vala:1058 src/Gtk/MainWindow.vala:547
 msgid "is locked"
 msgstr "заблоковано"
 
-#: src/Common/LinuxKernel.vala:1070
+#: src/Common/LinuxKernel.vala:1066
 msgid "found"
 msgstr "знайдено"
 
-#: src/Common/LinuxKernel.vala:1074
+#: src/Common/LinuxKernel.vala:1070
 msgid "Uninstall: no uninstallable packages found"
 msgstr "Видалити: пакетів, які можна видалити, не знайдено"
 
-#: src/Common/LinuxKernel.vala:1110
+#: src/Common/LinuxKernel.vala:1101
 msgid "is the highest installed version."
 msgstr "є найвищою встановленою версією."
 
-#: src/Common/LinuxKernel.vala:1123
+#: src/Common/LinuxKernel.vala:1113
 msgid "Could not find running kernel in list"
 msgstr "Не вдалося знайти запущене ядро у списку!"
 
-#: src/Common/LinuxKernel.vala:1128
-msgid "Could not find any kernels to uninstall"
+#: src/Common/LinuxKernel.vala:1118
+#, fuzzy
+msgid "No old kernels to uninstall"
 msgstr "Не вдалося знайти жодне ядро для вилучення"
 
-#: src/Common/LinuxKernel.vala:1133
+#: src/Common/LinuxKernel.vala:1124
 msgid "The following kernels will be uninstalled"
 msgstr "Наступні ядра будуть видалені"
 
-#: src/Common/LinuxKernel.vala:1135
+#: src/Common/LinuxKernel.vala:1126
 msgid "Continue ?"
 msgstr "Продовжувати ?"
 
-#: src/Common/LinuxKernel.vala:1151
+#: src/Common/LinuxKernel.vala:1142
 msgid "No updates"
 msgstr "Немає оновлень"
 
-#: src/Common/LinuxKernel.vala:1157
+#: src/Common/LinuxKernel.vala:1148
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Встановити Ядро Версії %s ? (так/ні): "
@@ -364,7 +375,7 @@ msgstr "Попередньо повідомлено"
 msgid "Credits"
 msgstr "Творці"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:160
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:154
 msgid "Close"
 msgstr "Закрити"
 
@@ -480,11 +491,6 @@ msgstr "вже встановлено"
 msgid "adding"
 msgstr "додавання"
 
-#: src/Gtk/MainWindow.vala:574 src/Gtk/MainWindow.vala:608
-#: src/Gtk/MainWindow.vala:636
-msgid "DONE"
-msgstr "ГОТОВО"
-
 #: src/Gtk/SettingsDialog.vala:50
 msgid "Notification"
 msgstr "Повідомлення"
@@ -565,7 +571,7 @@ msgstr "Команда авторизації"
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:150
+#: src/Gtk/TerminalWindow.vala:144
 msgid "Cancel"
 msgstr "Відміна"
 

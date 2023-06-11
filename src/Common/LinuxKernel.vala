@@ -381,11 +381,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// temp kernel object for current pkg
 			var pk = new LinuxKernel(p.version);
+			pk.kname = p.pname;
+			pk.is_installed = true;
 			pk.set_pkg_list(); // find assosciated packages
-
-			msg = _("Found installed")+": "+p.pname;
-			if (pk.is_locked) msg += " (" + _("locked") +")";
-			vprint(msg);
 
 			// search the mainline list for matching package name
 			// fill k.pkg_list list of associated pkgs
@@ -403,35 +401,35 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			// installed package was not found in the mainline list
-			// so it's a distro kernel, add to kernel_list
+			// add to kernel_list as a distro kernel
 			if (!found) {
-				pk.kname = p.pname;
 				pk.is_mainline = false;
-				pk.is_installed = true;
 				if (file_exists(pk.notes_file)) pk.notes = file_read(pk.notes_file);
 				vprint("kernel_list.add("+pk.version_main+" "+pk.kname+" "+pk.kver+")",2);
 				kernel_list.add(pk);
 			}
 		}
 
-		// finding the running kernel reliably is hard, because uname
-		// output does not relaibly match any of the other available
-		// strings: pkg name, pkg version, ppa site version string
+		// finding the running kernel reliably is hard
 		// https://github.com/bkw777/mainline/issues/91
-		// uname 6.3.4-060304-generic
-		// version_main sometimes 6.3.4-060304.202305241735
-		// version_main othertimes 6.3.4
-		// kname linux-image-unsigned-6.3.4-060304-generic
-		// kver 6.3.4-060304.202305241735
-		//t = k.kver[0:k.kver.last_index_of(".")]; // 6.3.4-060304
+		// RUNNING_KERNEL = uname -r      =                      6.3.4-060304-generic
+		// kname          = dpkg pkg name = linux-image-unsigned-6.3.4-060304-generic
 
-		// kernel_list should contain both mainline and distro kernels now
+		// kernel_list contains both mainline and installed distro kernels now
+		// get the running kernel
 		foreach (var k in kernel_list) {
-			if (!k.kname.has_suffix(RUNNING_KERNEL)) continue;
-			k.is_running = true;
-			k.is_installed = true;
-			kernel_active = k;
-			break;
+			bool r = false;
+			if (!r && k.kname.has_suffix(RUNNING_KERNEL)) {
+				k.is_running = true;
+				kernel_active = k;
+				r = true;
+			}
+			if (k.is_installed) {
+				msg = _("Found installed")+": "+k.kname;
+				if (k.is_locked) msg += " (" + _("locked") +")";
+				if (k.is_running) msg += " (" + _("running") +")";
+				vprint(msg);
+			}
 		}
 
 		// sort, reverse
@@ -441,16 +439,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_latest_installed = new LinuxKernel();
 		kernel_oldest_installed = kernel_latest_installed;
 		foreach(var k in kernel_list) {
-			//if (k.is_installed && k.is_mainline) {
 			if (k.is_installed) {
 				if (kernel_latest_installed.version_major==0) kernel_latest_installed = k;
 				kernel_oldest_installed = k;
 			}
 		}
 
-//		vprint("latest_available: "+kernel_latest_available.version_main,2);
-		vprint("latest_installed: "+kernel_latest_installed.version_main,2);
 		vprint("oldest_installed: "+kernel_oldest_installed.version_main,2);
+		vprint("latest_installed: "+kernel_latest_installed.version_main,2);
+//		vprint("latest_available: "+kernel_latest_available.version_main,2);
 	}
 
 	// scan kernel_list for versions newer than latest installed
@@ -1034,14 +1031,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (flist.length==0) { vprint(_("Install: no installable kernels specified")); return 1; }
 
-		// full paths instead of env -C
-		// https://github.com/bkw777/mainline/issues/128
 		string cmd = "";
 		foreach (string f in flist) { cmd += " '"+f+"'"; }
 		cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --install "+cmd);
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
 		foreach (string f in flist) delete_r(f);
+		if (r!=0) vprint(_("done"));
 		return r;
 	}
 
@@ -1075,7 +1071,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --purge "+pnames);
 		vprint(cmd,2);
-		return Posix.system(cmd);
+		var r = Posix.system(cmd);
+		vprint(_("done"));
+		return r;
 	}
 
 	public static int kunin_old(bool confirm) {
@@ -1086,16 +1084,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		load_index();
 		check_installed();
 
-		//vprint("kernel_oldest_installed: "+kernel_oldest_installed.version_main,2);
-		//vprint("kernel_latest_installed: "+kernel_latest_installed.version_main,2);
-		//vprint("kernel_latest_available: "+kernel_latest_available.version_main,2);
-
 		var klist = new Gee.ArrayList<LinuxKernel>();
 
 		bool found_running_kernel = false;
-
-		//vprint("latest_installed: "+kernel_latest_installed.version_main,4);
-		//vprint("running_kernel: "+kern_running.version_main,4);
 
 		foreach(var k in kernel_list) {
 			if (k.is_invalid) continue;
@@ -1115,7 +1106,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
-			//vprint(k.version_main+" < "+kernel_latest_installed.version_main+" -> delete",4);
 			klist.add(k);
 		}
 
@@ -1125,7 +1115,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		if (klist.size == 0){
-			vprint(_("Could not find any kernels to uninstall"),2);
+			vprint(_("No old kernels to uninstall"));
+			vprint(_("done"));
 			return 0;
 		}
 
@@ -1135,7 +1126,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			message += "\n%s (y/n): ".printf(_("Continue ?"));
 			vprint(message,0);
 			int ch = stdin.getc();
-			if (ch != 'y') return 1;
+			if (ch != 'y') { vprint("done"); return 1; }
 		}
 
 		// uninstall --------------------------------
@@ -1156,7 +1147,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (confirm) {
 			vprint("\n" + _("Install Kernel Version %s ? (y/n): ").printf(k.version_main),0);
 			int ch = stdin.getc();
-			if (ch != 'y') return 1;
+			if (ch != 'y') { vprint(_("done")); return 1; }
 		}
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		klist.add(k);

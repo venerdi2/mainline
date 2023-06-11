@@ -532,50 +532,42 @@ public class MainWindow : Window {
 	}
 
 	public void do_install(Gee.ArrayList<LinuxKernel> klist) {
-		string vlist="";
+		string[] vlist = {};
 		if (Main.VERBOSE>2) {
-			foreach (var k in klist) vlist += k.version_main+" ";
-			vprint("do_install("+vlist.strip()+")");
+			foreach (var k in klist) vlist += k.version_main;
+			vprint("do_install("+string.joinv(" ",vlist)+")");
 		}
 
 		// if we jumped directly here from a notification, switch to normal interactive mode after this
 		if (App.command == "install") App.command = "list";
 
-		vlist = "";
+		vlist = {};
 		foreach (var k in klist) {
 			if (k.is_installed) { vprint(k.version_main+" "+_("is already installed")); continue; }
 			if (k.is_locked) { vprint(k.version_main+" "+_("is locked")); continue; }
 			vprint(_("adding")+" "+k.version_main);
-			vlist += " "+k.version_main;
+			vlist += k.version_main;
 		}
-		vlist = vlist.strip();
-		if (vlist=="") { vprint(_("Install: no installable kernels specified")); return; }
+		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
 
 		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir)+".sh";
 
-		term.script_complete.connect(()=>{
+		term.cmd_complete.connect(()=>{
 			term.present();
 			term.allow_window_close();
 			did_update_cache = true;
 			update_cache();
 		});
 
-		term.destroy.connect(()=>{
-			delete_r(t_dir);
-			if (!did_update_cache) update_cache();
-		});
+		term.destroy.connect(()=>{ if (!did_update_cache) update_cache(); });
 
-		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += " --install \""+vlist+"\"\n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
+		string[] cmd = { BRANDING_SHORTNAME };
+		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		cmd += "--install";
+		cmd += string.joinv(",",vlist);
 
-		save_bash_script_temp(sh,t_file);
-		term.execute_script(t_file,t_dir);
+		term.execute_cmd(cmd);
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
@@ -583,61 +575,44 @@ public class MainWindow : Window {
 
 		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir)+".sh";
 
-		term.script_complete.connect(()=>{
+		term.cmd_complete.connect(()=>{
 			term.present();
 			term.allow_window_close();
 			did_update_cache = true;
 			update_cache();
 		});
 
-		term.destroy.connect(() => {
-			delete_r(t_dir);
-			if (!did_update_cache) update_cache();
-		});
+		term.destroy.connect(() => { if (!did_update_cache) update_cache(); });
 
-		string vlist = "";
-		foreach(var k in klist) vlist += " "+k.version_main;
-		vlist = vlist.strip();
+		string[] vlist = {};
+		foreach(var k in klist) vlist += k.version_main;
 
-		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += " --uninstall \""+vlist+"\"\n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
+		string[] cmd = { BRANDING_SHORTNAME };
+		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		cmd += "--uninstall";
+		cmd += string.joinv(",",vlist);
 
-		save_bash_script_temp(sh,t_file);
-		term.execute_script(t_file,t_dir);
+		term.execute_cmd(cmd);
 	}
 
 	public void uninstall_old () {
 		bool did_update_cache = false;
 		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir)+".sh";
 
-		term.script_complete.connect(()=>{
+		term.cmd_complete.connect(()=>{
 			term.present();
 			term.allow_window_close();
 			did_update_cache = true;
 			update_cache();
 		});
 
-		term.destroy.connect(()=>{
-			delete_r(t_dir);
-			if (!did_update_cache) update_cache();
-		});
+		term.destroy.connect(()=>{ if (!did_update_cache) update_cache(); });
 
-		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME+" --uninstall-old";
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += "\n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
+		string[] cmd = { BRANDING_SHORTNAME, "--uninstall-old" };
+		if (App.index_is_fresh) cmd += "--index-is-fresh";
 
-		save_bash_script_temp(sh,t_file);
-		term.execute_script(t_file,t_dir);
+		term.execute_cmd(cmd);
 	}
 
 }
