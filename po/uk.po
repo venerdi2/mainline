@@ -76,7 +76,7 @@ msgstr "Встановлено"
 
 #: src/Common/LinuxKernel.vala:691
 msgid "Invalid"
-msgstr "Інвалід"
+msgstr "Недійсний"
 
 #: src/Common/LinuxKernel.vala:784
 msgid "Packages Available"
