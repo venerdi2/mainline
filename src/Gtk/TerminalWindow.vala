@@ -30,7 +30,7 @@ public class TerminalWindow : Gtk.Window {
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
 
-	private Pid child_pid;
+	private Pid child_pid = -1;
 	private Gtk.Window parent_win = null;
 
 	public bool cancelled = false;
@@ -153,7 +153,7 @@ public class TerminalWindow : Gtk.Window {
 		
 		btn_cancel.clicked.connect(()=>{
 			cancelled = true;
-			Posix.kill(child_pid,SIG.HUP);
+			if (child_pid>1) Posix.kill(child_pid,SIG.HUP);
 		});
 
 		// btn_close
@@ -175,11 +175,28 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
-	public void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
-		if (e != null) { vprint(e.message,1,stderr); return; }
+	void errmsg(string msg) {
+		vprint(msg,1,stderr);
+		var dlg = new Gtk.MessageDialog(this,
+			Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
+			Gtk.MessageType.ERROR,
+			Gtk.ButtonsType.OK,
+			msg);
+#if VALA_0_48
+		dlg.destroy.connect(destroy);
+		dlg.response.connect(dlg.destroy);
+#else
+		dlg.destroy.connect(() => { destroy(); });
+		dlg.response.connect(() => { dlg.destroy(); });
+#endif
+		dlg.show();
+	}
+
+	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
 		vprint("child_pid="+p.to_string(),4);
-		child_pid = p;
-		t.watch_child(child_pid);
+		if (p>1) { child_pid = p; t.watch_child(p); }
+		else script_has_exited(e.code);
+		if (e!=null) errmsg(e.message);
 	}
 
 	public void execute_script(string f, string d) {
@@ -202,7 +219,8 @@ public class TerminalWindow : Gtk.Window {
 			spawn_cb // callback
 		);
 #else
-		Pid p = 0;
+		Pid p = -1;
+		Error e = null;
 		try {
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, // pty_flags
@@ -214,9 +232,8 @@ public class TerminalWindow : Gtk.Window {
 				out p, // child pid written here
 				null // cancellable
 			);
-			if (p>1) spawn_cb(term,p,null);
-		}
-		catch (Error e) { spawn_cb(term,p,e); }
+		} catch (Error _e) { e = _e; }
+		spawn_cb(term,p,e);
 #endif
 	}
 
