@@ -38,7 +38,6 @@ public class TerminalWindow : Gtk.Window {
 
 	public signal void script_complete();
 
-	// annoying
 	enum SIG {
 #if VALA_0_40
 		HUP = Posix.Signal.HUP,
@@ -176,20 +175,18 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
-#if VALA_0_50
-	public void async_cb(Vte.Terminal terminal, Pid pid, Error? error) {
-		if (error != null) { vprint("Error setting up terminal: "+error.message,1,stderr); return; }
-		vprint("TerminalWindow: child_pid="+pid.to_string(),3);
-		child_pid = pid;
-		term.watch_child(child_pid);
-		term.child_exited.connect(script_has_exited);
+	public void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
+		if (e != null) { vprint(e.message,1,stderr); return; }
+		vprint("child_pid="+p.to_string(),4);
+		child_pid = p;
+		t.watch_child(child_pid);
 	}
-#endif
 
 	public void execute_script(string f, string d) {
-		vprint("TerminalWindow: execute_script("+f+","+d+")",3);
+		vprint("TerminalWindow execute_script("+f+","+d+")",3);
 		string[] argv = {"sh", f};
 		string[] env = Environ.get();
+		term.child_exited.connect(script_has_exited);
 
 #if VALA_0_50 // vte 0.66 or so
 		is_running = true;
@@ -202,9 +199,10 @@ public class TerminalWindow : Gtk.Window {
 			null, // child_setup() func
 			-1, // timeout
 			null, // cancellable
-			async_cb // callback
+			spawn_cb // callback
 		);
 #else
+		Pid p = 0;
 		try {
 			is_running = true;
 			term.spawn_sync(
@@ -214,18 +212,17 @@ public class TerminalWindow : Gtk.Window {
 				env, // env
 				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
 				null, // child_setup() func
-				out child_pid, // child pid written here
+				out p, // child pid written here
 				null // cancellable
 			);
-			term.child_exited.connect(script_has_exited);
-			term.watch_child(child_pid);
+			if (p>1) spawn_cb(term,p,null);
 		}
-		catch (Error e) { vprint(e.message,1,stderr); }
+		catch (Error e) { spawn_cb(term,p,e); }
 #endif
 	}
 
 	public void script_has_exited(int status) {
-		vprint("TerminalWindow: script_has_exited("+status.to_string()+")",3);
+		vprint("TerminalWindow script_has_exited("+status.to_string()+")",3);
 		is_running = false;
 		allow_cancel(false);
 		btn_close.visible = true;
