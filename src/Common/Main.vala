@@ -48,21 +48,22 @@ const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
 // .h files are a pain in the ass in vala so dump these here
 
 // network
-const string	DEFAULT_PPA_URI					= "https://kernel.ubuntu.com/~kernel-ppa/mainline/";
-const string	DEFAULT_ALL_PROXY				= ""		;
-const int		DEFAULT_CONNECT_TIMEOUT_SECONDS	= 15		;
-const int		DEFAULT_CONCURRENT_DOWNLOADS	= 1			;
+const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/~kernel-ppa/mainline/";
+const string   DEFAULT_ALL_PROXY               = ""    ;
+const int      DEFAULT_CONNECT_TIMEOUT_SECONDS = 15    ;
+const int      DEFAULT_CONCURRENT_DOWNLOADS    = 1     ;
 // filters
-const bool		DEFAULT_HIDE_UNSTABLE			= true		;
-const int		DEFAULT_PREVIOUS_MAJORS			= 0			;
+const bool     DEFAULT_HIDE_UNSTABLE           = true  ;
+const int      DEFAULT_PREVIOUS_MAJORS         = 0     ;
 // notifications
-const bool		DEFAULT_NOTIFY_MAJOR			= false		;
-const bool		DEFAULT_NOTIFY_MINOR			= false		;
-const int		DEFAULT_NOTIFY_INTERVAL_VALUE	= 4			;  // FIXME
-const int		DEFAULT_NOTIFY_INTERVAL_UNIT	= 0			;  // use enum
+const bool     DEFAULT_NOTIFY_MAJOR            = false ;
+const bool     DEFAULT_NOTIFY_MINOR            = false ;
+const int      DEFAULT_NOTIFY_INTERVAL_VALUE   = 4     ;
+const int      DEFAULT_NOTIFY_INTERVAL_UNIT    = 0     ;
 // other
-const bool		DEFAULT_VERIFY_CHECKSUMS		= false		;
-const string[]	DEFAULT_AUTH_CMDS = {
+const bool     DEFAULT_VERIFY_CHECKSUMS        = false ;
+const bool     DEFAULT_KEEP_DOWNLOADS          = false ;
+const string[] DEFAULT_AUTH_CMDS = {
 	"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}",
 	"sudo",
 	"su -c \"%s\"",
@@ -72,14 +73,14 @@ const string[]	DEFAULT_AUTH_CMDS = {
 	"pbrun"
 	};
 // window sizes
-const int		DEFAULT_WINDOW_WIDTH			= 800		;
-const int		DEFAULT_WINDOW_HEIGHT			= 600		;
-const int		DEFAULT_WINDOW_X				= -1		;
-const int		DEFAULT_WINDOW_Y				= -1		;
-const int		DEFAULT_TERM_WIDTH				= 1100		;
-const int		DEFAULT_TERM_HEIGHT				= 600		;
-const int		DEFAULT_TERM_X					= -1		;
-const int		DEFAULT_TERM_Y					= -1		;
+const int      DEFAULT_WINDOW_WIDTH            = 800   ;
+const int      DEFAULT_WINDOW_HEIGHT           = 600   ;
+const int      DEFAULT_WINDOW_X                = -1    ;
+const int      DEFAULT_WINDOW_Y                = -1    ;
+const int      DEFAULT_TERM_WIDTH              = 1100  ;
+const int      DEFAULT_TERM_HEIGHT             = 600   ;
+const int      DEFAULT_TERM_X                  = -1    ;
+const int      DEFAULT_TERM_Y                  = -1    ;
 
 extern void exit(int exit_code);
 
@@ -125,6 +126,7 @@ public class Main : GLib.Object {
 	public int notify_interval_unit = DEFAULT_NOTIFY_INTERVAL_UNIT;
 	public int notify_interval_value = DEFAULT_NOTIFY_INTERVAL_VALUE;
 	public bool verify_checksums = DEFAULT_VERIFY_CHECKSUMS;
+	public bool keep_downloads = DEFAULT_KEEP_DOWNLOADS;
 	public string auth_cmd = DEFAULT_AUTH_CMDS[0];
 
 	// save & restore window size & position
@@ -217,6 +219,7 @@ public class Main : GLib.Object {
 		config.set_int_member(     "notify_interval_unit",    notify_interval_unit    );
 		config.set_int_member(     "notify_interval_value",   notify_interval_value   );
 		config.set_boolean_member( "verify_checksums",        verify_checksums        );
+		config.set_boolean_member( "keep_downloads",          keep_downloads          );
 		config.set_string_member(  "auth_cmd",                auth_cmd                );
 		config.set_int_member(     "window_width",            window_width            );
 		config.set_int_member(     "window_height",           window_height           );
@@ -278,6 +281,7 @@ public class Main : GLib.Object {
 		notify_interval_unit    = (int) config.get_int_member_with_default(     "notify_interval_unit",    DEFAULT_NOTIFY_INTERVAL_UNIT    );
 		notify_interval_value   = (int) config.get_int_member_with_default(     "notify_interval_value",   DEFAULT_NOTIFY_INTERVAL_VALUE   );
 		verify_checksums        =       config.get_boolean_member_with_default( "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
+		keep_downloads          =       config.get_boolean_member_with_default( "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
 		auth_cmd                =       config.get_string_member_with_default(  "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
 		window_width            = (int) config.get_int_member_with_default(     "window_width",            DEFAULT_WINDOW_WIDTH            );
 		window_height           = (int) config.get_int_member_with_default(     "window_height",           DEFAULT_WINDOW_HEIGHT           );
@@ -299,6 +303,7 @@ public class Main : GLib.Object {
 		notify_interval_unit    = json_get_int(    config, "notify_interval_unit",    DEFAULT_NOTIFY_INTERVAL_UNIT    );
 		notify_interval_value   = json_get_int(    config, "notify_interval_value",   DEFAULT_NOTIFY_INTERVAL_VALUE   );
 		verify_checksums        = json_get_bool(   config, "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
+		keep_downloads          = json_get_bool(   config, "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
 		auth_cmd                = json_get_string( config, "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
 		window_width            = json_get_int(    config, "window_width",            DEFAULT_WINDOW_WIDTH            );
 		window_height           = json_get_int(    config, "window_height",           DEFAULT_WINDOW_HEIGHT           );

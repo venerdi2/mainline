@@ -953,52 +953,56 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// dep: aria2c
 	public bool download_packages() {
 		vprint("download_packages("+version_main+")",2);
-		bool ok = true;
+		bool r = true;
 		int MB = 1024 * 1024;
+		string[] flist = {};
+
+		foreach (string f in deb_url_list.keys) if (!App.keep_downloads || !file_exists(cache_subdir+"/"+f)) flist += f;
 
 		// CHECKSUMS
-		deb_checksum_list.clear();
-		foreach (string f in deb_url_list.keys) deb_checksum_list[f] = "";
-		if (App.verify_checksums) {
-			vprint("CHECKSUMS "+_("enabled"),2);
+		if (flist.length>0) {
+			deb_checksum_list.clear();
+			if (App.verify_checksums) {
+				vprint("CHECKSUMS "+_("enabled"),2);
 
-			if (!file_exists(cached_checksums_file)) {
-				var dt = new DownloadTask();
-				dt.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
-				dt.execute();
-				while (dt.is_running()) sleep(100);
+				// download the CHECKSUMS file
+				if (!file_exists(cached_checksums_file)) {
+					var dt = new DownloadTask();
+					dt.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
+					dt.execute();
+					while (dt.is_running()) sleep(100);
+				}
+
+				// parse the CHECKSUMS file
+				// extract the sha256 hashes and save in aria2c format
+				// 52e8d02b2975920e7cc9a9d57843fcb8049addf53f1894073afce02d0e7351b2  linux-image-unsigned-6.2.9-060209-generic_6.2.9-060209.202303301133_amd64.deb
+				// deb_checksum_list[filename]="sha-256=...hash..."
+				// deb_checksum_list["linux-image-unsigned-6.2.9-060209-generic_6.2.9-060209.202303301133_amd64.deb"]="sha-256=52e8d02b2975920e7cc9a9d57843fcb8049addf53f1894073afce02d0e7351b2"
+				// aria2c -h#checksum  ;aria2c -v |grep "^Hash Algorithms:"
+				// FIXME assumption: if 1st word is 64 bytes then it is a sha256 hash
+				// FIXME assumption: there will always be exactly 2 spaces between hash & filename
+				foreach (string l in file_read(cached_checksums_file).split("\n")) {
+					var w = l.split(" ");
+					if (w.length==3 && w[0].length==64) deb_checksum_list[w[2]] = "sha-256="+w[0];
+				}
 			}
 
-			// extract the sha256 hashes and save in aria2c format
-			// 52e8d02b2975920e7cc9a9d57843fcb8049addf53f1894073afce02d0e7351b2  linux-image-unsigned-6.2.9-060209-generic_6.2.9-060209.202303301133_amd64.deb
-			// deb_checksum_list[filename]="sha-256=...hash..."
-			// deb_checksum_list["linux-image-unsigned-6.2.9-060209-generic_6.2.9-060209.202303301133_amd64.deb"]="sha-256=52e8d02b2975920e7cc9a9d57843fcb8049addf53f1894073afce02d0e7351b2"
-			// aria2c -h#checksum  ;aria2c -v |grep "^Hash Algorithms:"
-			// FIXME assumption: if 1st word is 64 bytes then it is a sha256 hash
-			// FIXME assumption: there will always be exactly 2 spaces between hash & filename
-			foreach (string l in file_read(cached_checksums_file).split("\n")) {
-				var w = l.split(" ");
-				if (w.length==3 && w[0].length==64) deb_checksum_list[w[2]] = "sha-256="+w[0];
+			var mgr = new DownloadTask();
+			foreach (string f in flist) mgr.add_to_queue(new DownloadItem(deb_url_list[f],cache_subdir,f,deb_checksum_list[f]));
+			vprint(_("Downloading")+" "+version_main);
+			mgr.execute();
+
+			string[] stat = {"","",""};
+			while (mgr.is_running()) {
+				stat = mgr.status_line.split_set(" /");
+				if (stat[1]!=null && stat[2]!=null) pbar(int64.parse(stat[1])/MB,int64.parse(stat[2])/MB,"MB - file "+(mgr.prg_count+1).to_string()+"/"+deb_url_list.size.to_string());
+				sleep(250);
 			}
-		}
+			pbar(0,0);
+		} else vprint(_("Cached"));
 
-		var mgr = new DownloadTask();
-		foreach (string file_name in deb_url_list.keys) mgr.add_to_queue(new DownloadItem(deb_url_list[file_name],cache_subdir,file_name,deb_checksum_list[file_name]));
-
-		vprint(_("Downloading")+" "+version_main);
-		mgr.execute();
-
-		string[] stat = {"","",""};
-		while (mgr.is_running()) {
-			stat = mgr.status_line.split_set(" /");
-			if (stat[1]!=null && stat[2]!=null) pbar(int64.parse(stat[1])/MB,int64.parse(stat[2])/MB,"MB - file "+(mgr.prg_count+1).to_string()+"/"+deb_url_list.size.to_string());
-			sleep(250);
-		}
-		pbar(0,0);
-
-		foreach (string f in deb_url_list.keys) if (!file_exists(cache_subdir+"/"+f)) ok = false;
-
-		return ok;
+		foreach (string f in deb_url_list.keys) if (!file_exists(cache_subdir+"/"+f)) r = false;
+		return r;
 	}
 
 	// dep: dpkg
@@ -1036,7 +1040,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --install "+cmd);
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
-		foreach (string f in flist) delete_r(f);
+		if (!App.keep_downloads) foreach (string f in flist) delete_r(f);
 		if (r!=0) vprint(_("done"));
 		return r;
 	}
