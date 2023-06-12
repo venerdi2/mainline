@@ -1,3 +1,9 @@
+mainline (1.3.14) UNRELEASED; urgency=medium
+
+  * fix downloading without checksums
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Mon, 12 Jun 2023 07:20:58 -0400
+
 mainline (1.3.13) unstable; urgency=medium
 
   * improve error handling in TerminalWindow
