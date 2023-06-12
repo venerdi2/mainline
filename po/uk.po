@@ -62,9 +62,8 @@ msgid "locked"
 msgstr "заблокований"
 
 #: src/Common/LinuxKernel.vala:430
-#, fuzzy
 msgid "running"
-msgstr "Використовується"
+msgstr "виконується"
 
 #: src/Common/LinuxKernel.vala:467 src/Common/LinuxKernel.vala:1024
 #: src/Common/LinuxKernel.vala:1109
@@ -125,7 +124,7 @@ msgstr "Завантаження"
 
 #: src/Common/LinuxKernel.vala:1002
 msgid "Cached"
-msgstr ""
+msgstr "Кешовано"
 
 #: src/Common/LinuxKernel.vala:1010
 msgid "Installing selected kernels"
@@ -150,7 +149,7 @@ msgstr "Встановити: ядра які можна встановити н
 #: src/Common/LinuxKernel.vala:1044 src/Common/LinuxKernel.vala:1079
 #: src/Common/LinuxKernel.vala:1123 src/Common/LinuxKernel.vala:1154
 msgid "done"
-msgstr ""
+msgstr "готово"
 
 #: src/Common/LinuxKernel.vala:1050
 msgid "Uninstalling selected kernels"
@@ -181,9 +180,8 @@ msgid "Could not find running kernel in list"
 msgstr "Не вдалося знайти запущене ядро у списку!"
 
 #: src/Common/LinuxKernel.vala:1122
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "Не вдалося знайти жодне ядро для вилучення"
+msgstr "Немає старих ядер для видалення"
 
 #: src/Common/LinuxKernel.vala:1128
 msgid "The following kernels will be uninstalled"
@@ -560,9 +558,8 @@ msgid "Max concurrent downloads"
 msgstr "Максимальна кількість завантажень"
 
 #: src/Gtk/SettingsDialog.vala:191
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "Перевірка Контрольні суми за допомогою файлів CHECKSUMS"
+msgstr "Перевірте завантаження за допомогою файлів CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:194
 msgid ""
@@ -571,9 +568,8 @@ msgid ""
 msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:199
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Завантаження"
+msgstr "Зберегти Завантаження"
 
 #: src/Gtk/SettingsDialog.vala:201
 msgid ""
@@ -591,6 +587,19 @@ msgid ""
 "html are also still deleted along with the associated per-kernel index.html "
 "as normal, so even cached kernels are still kept current."
 msgstr ""
+«Зберігати завантажені файли .deb після встановлення.\n»
+«Повторно використовуйте їх для подальшого видалення/перевстановлення.\n»
+"\n"
+«Це дозволяє видаляти та перевстановлювати ядра без необхідності їх завантажувати»
+"кілька разів.\n"
+"\n"
+"Ядра, старіші за параметр \"Показати N попередніх основних версій\" "
+"вище все ще видаляються як зазвичай, тому кеш все одно не буде рости"
+"назавжди.\n"
+"\n"
+«Ядра, які застаріли на основі позначок дати з головного індексу».
+"HTML також усе ще видаляються разом із пов'язаним для кожного ядра index.html "
+"як зазвичай, тому навіть кешовані ядра залишаються актуальними."
 
 #: src/Gtk/SettingsDialog.vala:207
 msgid "Proxy"
@@ -601,7 +610,7 @@ msgid "Auth Command"
 msgstr "Команда авторизації"
 
 #: src/Gtk/SettingsDialog.vala:269
-msgid "Done"
+msgid "DONE"
 msgstr "Готово"
 
 #: src/Gtk/TerminalWindow.vala:133
