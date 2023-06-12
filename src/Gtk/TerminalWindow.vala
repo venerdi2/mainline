@@ -51,43 +51,34 @@ public class TerminalWindow : Gtk.Window {
 
 	// init
 
-	public TerminalWindow.with_parent(Gtk.Window? parent, bool show_cancel_button = false) {
+	public TerminalWindow.with_parent(Gtk.Window? parent) {
 		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
 			window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 		}
 
-		set_default_size(App.term_width,App.term_height);
-		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
-
-		delete_event.connect(cancel_window_close);
-
-		set_modal(true);
-
 		init_window();
-
 		show_all();
-
-		btn_cancel.visible = false;
-		btn_close.visible = false;
-
-		if (show_cancel_button) allow_cancel();
+		allow_close(false);
+		cmd_complete.connect(()=>{ present(); allow_close(true); });
 	}
 
 	public bool cancel_window_close() { return true; }
 
 	public void init_window () {
+		set_modal(true);
 
 		App._term_width = App.term_width;
 		App._term_height = App.term_height;
 		App._term_x = App.term_x;
 		App._term_y = App.term_y;
+		set_default_size(App.term_width,App.term_height);
+		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
 		resizable = true;
-		deletable = false;
 
 		// vbox_main ---------------
 
@@ -97,7 +88,6 @@ public class TerminalWindow : Gtk.Window {
 		// terminal ----------------------
 
 		term = new Vte.Terminal();
-
 		term.expand = true;
 
 		// sw_ppa
@@ -164,7 +154,6 @@ public class TerminalWindow : Gtk.Window {
 
 		label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
-
 	}
 
 	void errmsg(string msg) {
@@ -229,28 +218,16 @@ public class TerminalWindow : Gtk.Window {
 	public void child_has_exited(int status) {
 		vprint("TerminalWindow child_has_exited("+status.to_string()+")",3);
 		is_running = false;
-		allow_cancel(false);
-		btn_close.visible = true;
 		cmd_complete();
 	}
 
-	public void allow_window_close(bool allow = true) {
-		if (allow) {
-			delete_event.disconnect(cancel_window_close);
-			deletable = true;
-		} else {
-			delete_event.connect(cancel_window_close);
-			deletable = false;
-		}
-	}
-
-	public void allow_cancel(bool allow = true) {
-		if (allow) {
-			btn_cancel.visible = true;
-			btn_cancel.sensitive = true;
-		} else {
-			btn_cancel.visible = false;
-			btn_cancel.sensitive = false;
-		}
+	public void allow_close(bool allow) {
+		if (allow) delete_event.disconnect(cancel_window_close);
+		else delete_event.connect(cancel_window_close);
+		deletable = allow;
+		btn_close.sensitive = allow;
+		btn_close.visible = allow;
+		btn_cancel.sensitive = !allow;
+		btn_cancel.visible = !allow;
 	}
 }

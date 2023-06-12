@@ -550,17 +550,10 @@ public class MainWindow : Window {
 		}
 		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
 
-		bool did_update_cache = false;
-		var term = new TerminalWindow.with_parent(this, true);
-
-		term.cmd_complete.connect(()=>{
-			term.present();
-			term.allow_window_close();
-			did_update_cache = true;
-			update_cache();
-		});
-
-		term.destroy.connect(()=>{ if (!did_update_cache) update_cache(); });
+		bool c = false;
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
+		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
 		string[] cmd = { BRANDING_SHORTNAME };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
@@ -573,17 +566,10 @@ public class MainWindow : Window {
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
 		if (klist==null || klist.size<1) return;
 
-		bool did_update_cache = false;
-		var term = new TerminalWindow.with_parent(this, true);
-
-		term.cmd_complete.connect(()=>{
-			term.present();
-			term.allow_window_close();
-			did_update_cache = true;
-			update_cache();
-		});
-
-		term.destroy.connect(() => { if (!did_update_cache) update_cache(); });
+		bool c = false;
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
+		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
 		string[] vlist = {};
 		foreach(var k in klist) vlist += k.version_main;
@@ -597,17 +583,10 @@ public class MainWindow : Window {
 	}
 
 	public void uninstall_old () {
-		bool did_update_cache = false;
-		var term = new TerminalWindow.with_parent(this, true);
-
-		term.cmd_complete.connect(()=>{
-			term.present();
-			term.allow_window_close();
-			did_update_cache = true;
-			update_cache();
-		});
-
-		term.destroy.connect(()=>{ if (!did_update_cache) update_cache(); });
+		bool c = false;
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
+		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
 		string[] cmd = { BRANDING_SHORTNAME, "--uninstall-old" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";

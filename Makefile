@@ -3,6 +3,7 @@
 SHELL := /bin/bash
 CFLAGS := -O2
 VALACFLAGS :=
+VALACFLAGS += -g
 
 # compile-time options
 #VALACFLAGS += -D LOCK_TOGGLES_IN_KERNEL_COLUMN
