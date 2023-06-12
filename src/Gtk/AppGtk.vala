@@ -30,23 +30,21 @@ public Main App;
 public class AppGtk : GLib.Object {
 
 	public static int main (string[] args) {
+
 		X.init_threads();
 		Gtk.init(ref args);
 		App = new Main(args, true);
 		parse_arguments(args);
 
+		App._window_width = App.window_width;
+		App._window_height = App.window_height;
+		App._window_x = App.window_x;
+		App._window_y = App.window_y;
+
 		// create main window --------------------------------------
 		var appwin = new MainWindow();
 
-		appwin.destroy.connect (Gtk.main_quit);
-
-		appwin.configure_event.connect ((event) => {
-			App.window_width = event.width;
-			App.window_height = event.height;
-			App.window_x = event.x;
-			App.window_y = event.y;
-			return false;
-		});
+		appwin.destroy.connect(Gtk.main_quit);
 
 		appwin.show_all();
 

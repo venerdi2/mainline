@@ -26,7 +26,6 @@ using Gtk;
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
 using l.gtk;
-using TeeJee.Misc;
 using l.misc;
 
 public class MainWindow : Window {
@@ -62,6 +61,16 @@ public class MainWindow : Window {
 	}
 
 	public MainWindow() {
+		set_default_size(App.window_width,App.window_height);
+		if (App.window_x>=0 && App.window_y>=0) move(App.window_x,App.window_y);
+
+		configure_event.connect ((event) => {
+			App.window_width = event.width;
+			App.window_height = event.height;
+			App.window_x = event.x;
+			App.window_y = event.y;
+			return false;
+		});
 
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
@@ -69,9 +78,7 @@ public class MainWindow : Window {
 		// vbox_main
 		vbox_main = new Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
-		vbox_main.set_size_request(App._window_width,App._window_height);
-		App._window_width = App.window_width;
-		App._window_height = App.window_height;
+
 		add(vbox_main);
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
@@ -109,7 +116,7 @@ public class MainWindow : Window {
 		// add treeview
 		tv.get_selection().mode = SelectionMode.MULTIPLE;
 		tv.headers_visible = true;
-		tv.set_grid_lines(BOTH);
+		tv.set_grid_lines(TreeViewGridLines.BOTH);
 		tv.expand = true;
 
 		tv.row_activated.connect(tv_row_activated);
@@ -240,7 +247,7 @@ public class MainWindow : Window {
 
 			if (!k.is_installed) { // don't hide anything that's installed
 				if (k.is_invalid) continue; // hide invalid
-				if (k.version_rc>=0 && App.hide_unstable) continue; // hide unstable if settings say to
+				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
 				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide versions older than settings threshold
 			}
 
@@ -251,11 +258,15 @@ public class MainWindow : Window {
 			tm.set(iter, TM.KERN, k);
 
 			p = pix_mainline;
-			if (k.version_rc>=0) p = pix_mainline_rc;
+			if (k.is_unstable) p = pix_mainline_rc;
 			if (!k.is_mainline) p = pix_ubuntu;
 			tm.set(iter, TM.ICON, p);
 
+#if DISPLAY_VERSION_SORT
+			tm.set(iter, TM.VERSION, k.version_sort);
+#else
 			tm.set(iter, TM.VERSION, k.version_main);
+#endif
 
 			tm.set(iter, TM.LOCKED, k.is_locked);
 
@@ -351,8 +362,10 @@ public class MainWindow : Window {
 	}
 
 	private void do_settings () {
+		// settings that change the selection set -> trigger cache update
 		var old_previous_majors = App.previous_majors;
 		var old_hide_unstable = App.hide_unstable;
+		// settings that change the notification behavior -> trigger notify script update
 		var old_notify_interval_unit = App.notify_interval_unit;
 		var old_notify_interval_value = App.notify_interval_value;
 		var old_notify_major = App.notify_major;
@@ -364,23 +377,21 @@ public class MainWindow : Window {
 
 		App.save_app_config();
 
-		// if no notifications settings changed, don't (re)run the script
+		// By default the notify script will be flagged to (re)run itself
+		// simply because settings were saved at all. It is not run immediately,
+		// only flagged to be run at the end of cache update.
+
+		// If no notifications settings changed, un-flag the notify script update.
 		if (App.notify_interval_unit == old_notify_interval_unit &&
 			App.notify_interval_value == old_notify_interval_value &&
 			App.notify_major == old_notify_major &&
 			App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
 
-		// if the selection set didn't change,
-		//    then don't trigger cache update
-		//    do run the notify script now
-		// if the selection set changed
-		//    don't run the notify script now
-		//    update the cache
-		//    the notify script will run if needed at the end of cache update
+		// If the selection set didn't change, then don't update cache.
+		// If we don't update cache, then we have to do the notify script now.
 		if (App.previous_majors == old_previous_majors &&
 			App.hide_unstable == old_hide_unstable) App.run_notify_script();
 		else update_cache();
-
 	}
 
 	private void do_about () {
@@ -479,7 +490,7 @@ public class MainWindow : Window {
 		}
 
 		Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
-			if (updating) set_infobar("%s %d/%d".printf(message, App.progress_count, App.progress_total));
+			if (updating) set_infobar("%s: %d/%d".printf(message, App.progress_count, App.progress_total));
 			return false;
 		});
 	}
@@ -521,103 +532,66 @@ public class MainWindow : Window {
 	}
 
 	public void do_install(Gee.ArrayList<LinuxKernel> klist) {
-		string vlist="";
+		string[] vlist = {};
 		if (Main.VERBOSE>2) {
-			foreach (var k in klist) vlist += k.version_main+" ";
-			vprint("do_install("+vlist.strip()+")");
+			foreach (var k in klist) vlist += k.version_main;
+			vprint("do_install("+string.joinv(" ",vlist)+")");
 		}
 
 		// if we jumped directly here from a notification, switch to normal interactive mode after this
 		if (App.command == "install") App.command = "list";
 
-		vlist = "";
+		vlist = {};
 		foreach (var k in klist) {
-			if (k.is_installed) { vprint(k.version_main+" is already installed"); continue; }
-			if (k.is_locked) { vprint(k.version_main+" is locked"); continue; }
-			vprint("adding "+k.version_main);
-			vlist += " "+k.version_main;
+			if (k.is_installed) { vprint(k.version_main+" "+_("is already installed")); continue; }
+			if (k.is_locked) { vprint(k.version_main+" "+_("is locked")); continue; }
+			vprint(_("adding")+" "+k.version_main);
+			vlist += k.version_main;
 		}
-		vlist = vlist.strip();
-		if (vlist=="") { vprint("Install: no installable kernels specified"); return; }
+		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
 
-		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir)+".sh";
+		bool c = false;
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
+		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
-		term.script_complete.connect(()=>{
-			term.present();
-			term.allow_window_close();
-		});
+		string[] cmd = { BRANDING_SHORTNAME };
+		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		cmd += "--install";
+		cmd += string.joinv(",",vlist);
 
-		term.destroy.connect(()=>{
-			delete_r(t_dir);
-			update_cache();
-		});
-
-		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += " --install \""+vlist+"\"\n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
-
-		save_bash_script_temp(sh,t_file);
-		term.execute_script(t_file,t_dir);
+		term.execute_cmd(cmd);
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
 		if (klist==null || klist.size<1) return;
 
-		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir)+".sh";
+		bool c = false;
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
+		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
-		term.script_complete.connect(()=>{
-			term.present();
-			term.allow_window_close();
-		});
+		string[] vlist = {};
+		foreach(var k in klist) vlist += k.version_main;
 
-		term.destroy.connect(() => {
-			delete_r(t_dir);
-			update_cache();
-		});
+		string[] cmd = { BRANDING_SHORTNAME };
+		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		cmd += "--uninstall";
+		cmd += string.joinv(",",vlist);
 
-		string vlist = "";
-		foreach(var k in klist) vlist += " "+k.version_main;
-		vlist = vlist.strip();
-
-		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME;
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += " --uninstall \""+vlist+"\"\n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
-
-		save_bash_script_temp(sh,t_file);
-		term.execute_script(t_file,t_dir);
+		term.execute_cmd(cmd);
 	}
 
 	public void uninstall_old () {
-		var term = new TerminalWindow.with_parent(this, false, true);
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir)+".sh";
+		bool c = false;
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
+		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
-		term.script_complete.connect(()=>{
-			term.present();
-			term.allow_window_close();
-		});
+		string[] cmd = { BRANDING_SHORTNAME, "--uninstall-old" };
+		if (App.index_is_fresh) cmd += "--index-is-fresh";
 
-		term.destroy.connect(()=>{
-			delete_r(t_dir);
-			update_cache();
-		});
-
-		string sh = "VERBOSE="+Main.VERBOSE.to_string()+" "+BRANDING_SHORTNAME+" --uninstall-old";
-			if (App.index_is_fresh) sh += " --index-is-fresh";
-			sh += "\n"
-			+ "echo '"+_("DONE")+"'\n"
-			;
-
-		save_bash_script_temp(sh,t_file);
-		term.execute_script(t_file,t_dir);
+		term.execute_cmd(cmd);
 	}
 
 }

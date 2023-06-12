@@ -2,7 +2,20 @@
 
 SHELL := /bin/bash
 CFLAGS := -O2
-VALACFLAGS := #-D LOCK_TOGGLES_IN_KERNEL_COLUMN
+VALACFLAGS :=
+#VALACFLAGS += -g
+
+# compile-time options
+#VALACFLAGS += -D LOCK_TOGGLES_IN_KERNEL_COLUMN
+#    Put the lock/unlock checkboxes inside the kernel version column instead of
+#    in their own column. The display is neater, but you can't sort by locked
+#    status to gather all the locked kernels together by clicking the header.
+#    TODO customized checkbox lock icon since there is no "Lock" column header label
+#    TODO cycle sorting between version number and locked status every 2nd time header is clicked
+#         version-up -> version-dn -> locked-up -> locked-dn -> repeat
+#VALACFLAGS += -D DISPLAY_VERSION_SORT
+#    Use the internally constructed version_sort string for display.
+#    Default is version_main which from the mainline-ppa index.html.
 
 prefix := /usr
 bindir := $(prefix)/bin
@@ -21,10 +34,9 @@ gtk+ := gtk+-3.0
 json-glib := json-glib-1.0
 gee := gee-0.8
 
-x != pkg-config $(json-glib) --atleast-version=1.6.0
-ifeq ($(.SHELLSTATUS),0)
-VALACFLAGS += -D GLIB_JSON_1_6
-endif
+#VALACFLAGS += $(shell pkg-config $(json-glib) --atleast-version=1.6 && echo " -D HAVE_GLIB_JSON_1_6")
+#VALACFLAGS += $(shell pkg-config $(vte) --atleast-version=0.66 && echo " -D HAVE_VTE_0_66")
+VALACFLAGS += $(shell pkg-config $(glib) --atleast-version=2.56 || echo " --target-glib 2.32")
 
 include BRANDING.mak
 BRANDING_VERSION := $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_MICRO)
@@ -51,27 +63,34 @@ gui_vala_files := src/Gtk/*.vala
 po_files := po/*.po
 pot_file := po/messages.pot
 
-include .deb_build_number.mak
+DEB_BUILD_NUMBER := 0000
+DEB_PKG_VERSION := $(BRANDING_VERSION)
+-include .deb_build_number.mak
+
 host_dist := $(shell lsb_release -sc)
 host_arch := $(shell dpkg --print-architecture)
 pkg_version = $(shell dpkg-parsechangelog -S Version)
 dsc_file = release/deb-src/$(BRANDING_SHORTNAME)_$(pkg_version).dsc
-deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_$(host_arch).deb
+deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_$(host_dist)_$(host_arch).deb
 
 ################################################################################
 
 .PHONY: all
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
 
-$(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) translations
-	valac $(VALACFLAGS) -X -w $(build_symbols) --Xcc="-lm" \
-		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) --pkg x11 \
-		$(common_vala_files) $(gui_vala_files) -o $(@)
-
-$(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) translations
+$(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) TRANSLATORS
+	valac --version
+	pkg-config $(glib) --modversion
+	pkg-config $(vte) --modversion
+	pkg-config $(json-glib) --modversion
 	valac $(VALACFLAGS) -X -w $(build_symbols) --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
+
+$(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) TRANSLATORS
+	valac $(VALACFLAGS) -X -w $(build_symbols) --Xcc="-lm" \
+		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) --pkg x11 \
+		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(misc_files): %: %.src BRANDING.mak
 	sed -e 's/BRANDING_SHORTNAME/$(BRANDING_SHORTNAME)/g' \
@@ -139,10 +158,39 @@ uninstall:
 	rm -f $(DESTDIR)/home/*/.config/$(BRANDING_SHORTNAME)/$(BRANDING_SHORTNAME)-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/$(BRANDING_SHORTNAME).desktop
 
+
+## deb build stuff
+##
+## optionally add "host_dist=foo" to build for dist "foo"
+## optionally add "host_arch=foo" to build for arch "foo"
+##
+## To create the deb build environment, run one time only.
+##   make deb_env_create
+##
+## To update the build environment, run as needed.
+##   make deb_env_update
+##
+## To (re)build a deb without incrementing build number or doing clean.
+##   make deb
+##
+## To build a deb for release. Increments build number and does clean before build.
+##   make release_deb
+##
+## Example for bionic on i386.
+##   make deb_env_create host_dist=bionic host_arch=i386
+##   make release_deb host_dist=bionic host_arch=i386
+
+.PHONY: pbuilder-dist
+pbuilder-dist:
+	@which pbuilder-dist >/dev/null || { echo "Missing pbuilder-dist. apt install ubuntu-dev-tools" ;false ; }
+
 .PHONY: deb-src
 deb-src: $(dsc_file)
 
-$(dsc_file): debian/changelog $(misc_files) $(po_files)
+.PHONY: dsc
+dsc: $(dsc_file)
+
+$(dsc_file): debian/changelog $(misc_files) $(common_vala_files) $(gui_vala_files) TRANSLATORS
 	@[[ "$(pkg_version)" == "$(BRANDING_VERSION)" ]] || { echo -e "Version number in debian/changelog ($(pkg_version)) does not match BRANDING.mak ($(BRANDING_VERSION)).\n(Maybe need to run \"dch\"?)" >&2 ; exit 1 ; }
 	$(MAKE) clean
 	dpkg-source --build .
@@ -154,15 +202,17 @@ $(dsc_file): debian/changelog $(misc_files) $(po_files)
 .PHONY: deb
 deb: $(deb_file)
 
-# To create the deb build env
-# "pbuilder-dist" provided by "ubuntu-dev-tools"
-#sudo apt intsall ubuntu-dev-tools
-#pbuilder-dist `lsb_release -sc` create
-# To update the deb build env
-#pbuilder-dist `lsb_release -sc` update
-$(deb_file): $(dsc_file)
+.PHONY: deb_env_create
+deb_env_create: pbuilder-dist
+	pbuilder-dist $(host_dist) $(host_arch) create
+
+.PHONY: deb_env_update
+deb_env_update: pbuilder-dist
+	pbuilder-dist $(host_dist) $(host_arch) update
+
+$(deb_file): $(dsc_file) pbuilder-dist
 	mkdir -pv release/deb
-	pbuilder-dist $(host_dist) build $(dsc_file) --buildresult release/deb
+	pbuilder-dist $(host_dist) $(host_arch) build $(dsc_file) --buildresult release/deb
 	mv -fv release/deb/$(BRANDING_SHORTNAME)_$(pkg_version)_$(host_arch).deb $(@)
 	ls -lv release/deb
 
@@ -183,9 +233,8 @@ debian/changelog: $(misc_files)
 # PHONY to force it to always run
 .PHONY: deb_build_number
 deb_build_number: debian/changelog
-	{ printf -v n "%04u" $$((10#$(DEB_BUILD_NUMBER)+1)) ; \
-	[[ "_$(DEB_PKG_VERSION)" == "_$(pkg_version)" ]] || n="0000" ; \
-	echo -e "# This file is generated by Makefile \"make $(@)\"\nDEB_PKG_VERSION := $(pkg_version)\nDEB_BUILD_NUMBER := $${n}" > .$(@).mak ; }
+	{ typeset -i n=$(DEB_BUILD_NUMBER) ;((n++)) ;[[ "_$(DEB_PKG_VERSION)" == "_$(pkg_version)" ]] || n=0 ; \
+	printf '# This file is generated by Makefile "make $(@)"\nDEB_PKG_VERSION = $(pkg_version)\nDEB_BUILD_NUMBER = %04u\n' $$n > .$(@).mak ; }
 
 # child process to re-load .deb_build_number.mak after updating it
 .PHONY: release_deb

@@ -2,6 +2,7 @@
  * TerminalWindow.vala
  *
  * Copyright 2015 Tony George <teejee2008@gmail.com>
+ * 2023 Brian K. White
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,13 +20,7 @@
  * MA 02110-1301, USA.
  */
 
-using Gtk;
-using Gee;
-
-using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.gtk;
-using TeeJee.Misc;
 using l.misc;
 
 public class TerminalWindow : Gtk.Window {
@@ -36,76 +31,59 @@ public class TerminalWindow : Gtk.Window {
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
 
-	//private int def_width = 1100;
-	//private int def_height = 600;
-
-	private Pid child_pid;
+	private Pid child_pid = -1;
 	private Gtk.Window parent_win = null;
 
 	public bool cancelled = false;
 	public bool is_running = false;
 
-	public signal void script_complete();
+	public signal void cmd_complete();
+
+	enum SIG {
+#if VALA_0_40
+		HUP = Posix.Signal.HUP,
+		TERM = Posix.Signal.TERM
+#else
+		HUP = Posix.SIGHUP,
+		TERM = Posix.SIGTERM
+#endif
+	}
 
 	// init
 
-	public TerminalWindow.with_parent(Gtk.Window? parent, bool fullscreen = false, bool show_cancel_button = false) {
+	public TerminalWindow.with_parent(Gtk.Window? parent) {
 		if (parent != null) {
 			set_transient_for(parent);
 			parent_win = parent;
-			window_position = WindowPosition.CENTER_ON_PARENT;
+			window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 		}
 
-		configure_event.connect ((event) => {
-			//vprint("term resize: %dx%d@%dx%d".printf(event.width,event.height,event.x,event.y),2);
-			App.term_width = event.width;
-			App.term_height = event.height;
-			App.term_x = event.x;
-			App.term_y = event.y;
-			return false;
-		});
-
-		delete_event.connect(cancel_window_close);
-
-		set_modal(true);
-
-		if (fullscreen) this.fullscreen();
-
 		init_window();
-
 		show_all();
-
-		resize(App.term_width,App.term_height);
-		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
-
-		btn_cancel.visible = false;
-		btn_close.visible = false;
-
-		if (show_cancel_button) allow_cancel();
+		allow_close(false);
+		cmd_complete.connect(()=>{ present(); allow_close(true); });
 	}
 
-	public bool cancel_window_close() {
-		// do not allow window to close
-		return true;
-	}
+	public bool cancel_window_close() { return true; }
 
 	public void init_window () {
+		set_modal(true);
 
-		title = BRANDING_LONGNAME;
-		icon = get_app_icon(16);
-		resizable = true;
-		deletable = false;
-
-		// vbox_main ---------------
-
-		vbox_main = new Gtk.Box(Orientation.VERTICAL, 0);
-		//vbox_main.set_size_request(def_width,def_height);
 		App._term_width = App.term_width;
 		App._term_height = App.term_height;
 		App._term_x = App.term_x;
 		App._term_y = App.term_y;
+		set_default_size(App.term_width,App.term_height);
+		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
-		add (vbox_main);
+		title = BRANDING_LONGNAME;
+		icon = get_app_icon(16);
+		resizable = true;
+
+		// vbox_main ---------------
+
+		vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+		add(vbox_main);
 
 		// terminal ----------------------
 
@@ -114,133 +92,142 @@ public class TerminalWindow : Gtk.Window {
 
 		// sw_ppa
 		scroll_win = new Gtk.ScrolledWindow(null, null);
-		scroll_win.set_shadow_type (ShadowType.ETCHED_IN);
+		scroll_win.set_shadow_type (Gtk.ShadowType.ETCHED_IN);
 		scroll_win.add (term);
 		scroll_win.expand = true;
-		scroll_win.hscrollbar_policy = PolicyType.AUTOMATIC;
-		scroll_win.vscrollbar_policy = PolicyType.AUTOMATIC;
+		scroll_win.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
+		scroll_win.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
 		vbox_main.add(scroll_win);
 
 		term.input_enabled = true;
 		term.backspace_binding = Vte.EraseBinding.AUTO;
 		term.cursor_blink_mode = Vte.CursorBlinkMode.SYSTEM;
 		term.cursor_shape = Vte.CursorShape.UNDERLINE;
-		
+
 		term.scroll_on_keystroke = true;
 		term.scroll_on_output = true;
-		term.scrollback_lines = 100000;
+		if (Main.VERBOSE>1) term.scrollback_lines = 1000000;
 
 		// colors -----------------------------
-
-		var color = Gdk.RGBA();
-		color.parse("#FFFFFF");
-		term.set_color_foreground(color);
-
-		color.parse("#404040");
-		term.set_color_background(color);
-
-		// grab focus ----------------
+		//var color = Gdk.RGBA();
+		//color.parse("#FFFFFF");
+		//term.set_color_foreground(color);
+		//color.parse("#404040");
+		//term.set_color_background(color);
 
 		term.grab_focus();
 
 		// add cancel button --------------
 
-		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
-		vbox_main.add (hbox);
+		vbox_main.add(hbox);
 
 		var label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
-		
+		hbox.pack_start(label, true, true, 0);
+
 		label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
-		
-		//btn_cancel
+		hbox.pack_start(label, true, true, 0);
+
+		// btn_cancel
 		var button = new Gtk.Button.with_label (_("Cancel"));
-		hbox.pack_start (button, true, true, 0);
+		hbox.pack_start(button, true, true, 0);
 		btn_cancel = button;
-		
+
 		btn_cancel.clicked.connect(()=>{
 			cancelled = true;
-			terminate_child();
+			if (child_pid>1) Posix.kill(child_pid,SIG.HUP);
 		});
 
-		//btn_close
+		// btn_close
 		button = new Gtk.Button.with_label (_("Close"));
-		hbox.pack_start (button, true, true, 0);
+		hbox.pack_start(button, true, true, 0);
 		btn_close = button;
-		
+
 		btn_close.clicked.connect(()=>{
-			this.destroy();
+			get_size(out App.term_width, out App.term_height);
+			get_position(out App.term_x, out App.term_y);
+			destroy();
 		});
 
 		label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
+		hbox.pack_start(label, true, true, 0);
 
 		label = new Gtk.Label("");
-		hbox.pack_start (label, true, true, 0);
+		hbox.pack_start(label, true, true, 0);
 	}
 
-	public void terminate_child() {
-		btn_cancel.sensitive = false;
-		process_quit(child_pid);
+	void errmsg(string msg) {
+		vprint(msg,1,stderr);
+		var dlg = new Gtk.MessageDialog(this,
+			Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
+			Gtk.MessageType.ERROR,
+			Gtk.ButtonsType.OK,
+			msg);
+#if VALA_0_50
+		dlg.destroy.connect(destroy);
+		dlg.response.connect(dlg.destroy);
+#else
+		dlg.destroy.connect(() => { destroy(); });
+		dlg.response.connect(() => { dlg.destroy(); });
+#endif
+		dlg.show();
 	}
 
-	public void execute_script(string f, string d) {
-		string[] argv = {"sh", f};
+	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
+		vprint("child_pid="+p.to_string(),4);
+		if (p>1) { child_pid = p; t.watch_child(p); }
+		else child_has_exited(e.code);
+		if (e!=null) errmsg(e.message);
+	}
 
-		string[] env = Environ.get();
-
+	public void execute_cmd(string[] argv) {
+		vprint("TerminalWindow execute_cmd("+string.joinv(" ",argv)+")",3);
+		term.child_exited.connect(child_has_exited);
+		is_running = true;
+#if VALA_0_50 // vte 0.66 or so
+		term.spawn_async(
+			Vte.PtyFlags.DEFAULT, // pty_flags
+			null, // working_directory
+			argv, // argv
+			null, // env
+			GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
+			null, // child_setup() func
+			-1, // timeout
+			null, // cancellable
+			spawn_cb // callback
+		);
+#else
+		Pid p = -1; Error e = null;
 		try {
-
-			is_running = true;
-
-			term.spawn_sync (
-				Vte.PtyFlags.DEFAULT, //pty_flags
-				d, //working_directory
-				argv, //argv
-				env, //env
-				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-				null, //child_setup
-				out child_pid,
-				null
+			term.spawn_sync(
+				Vte.PtyFlags.DEFAULT, // pty_flags
+				null, // working_directory
+				argv, // argv
+				null, // env
+				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
+				null, // child_setup() func
+				out p, // child pid written here
+				null // cancellable
 			);
-
-			term.watch_child(child_pid);
-
-			term.child_exited.connect(script_exit);
-		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
+		} catch (Error _e) { e = _e; }
+		spawn_cb(term,p,e);
+#endif
 	}
 
-	public void script_exit(int status) {
+	public void child_has_exited(int status) {
+		vprint("TerminalWindow child_has_exited("+status.to_string()+")",3);
 		is_running = false;
-		btn_cancel.visible = false;
-		btn_close.visible = true;
-		script_complete();
+		cmd_complete();
 	}
 
-	public void allow_window_close(bool allow = true) {
-		if (allow) {
-			this.delete_event.disconnect(cancel_window_close);
-			this.deletable = true;
-		} else {
-			this.delete_event.connect(cancel_window_close);
-			this.deletable = false;
-		}
-	}
-
-	public void allow_cancel(bool allow = true) {
-		if (allow) {
-			btn_cancel.visible = true;
-			btn_cancel.sensitive = true;
-			vbox_main.margin = 3;
-		} else {
-			btn_cancel.visible = false;
-			btn_cancel.sensitive = false;
-			vbox_main.margin = 3;
-		}
+	public void allow_close(bool allow) {
+		if (allow) delete_event.disconnect(cancel_window_close);
+		else delete_event.connect(cancel_window_close);
+		deletable = allow;
+		btn_close.sensitive = allow;
+		btn_close.visible = allow;
+		btn_cancel.sensitive = !allow;
+		btn_cancel.visible = !allow;
 	}
 }
