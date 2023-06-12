@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 06:00-0400\n"
+"POT-Creation-Date: 2023-06-12 12:14-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -399,7 +399,7 @@ msgstr "Έχει ήδη κοινοποιηθεί"
 msgid "Credits"
 msgstr "Μνεία"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:143
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:156
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -626,7 +626,11 @@ msgstr "Εντολές"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:133
+#: src/Gtk/TerminalWindow.vala:128
+msgid "Copy All"
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:148
 msgid "Cancel"
 msgstr "Άκυρο"
 

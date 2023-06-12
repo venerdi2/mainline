@@ -25,14 +25,14 @@ using l.misc;
 
 public class TerminalWindow : Gtk.Window {
 
-	private Gtk.Box vbox_main;
-	private Vte.Terminal term;
-	private Gtk.Button btn_cancel;
-	private Gtk.Button btn_close;
-	private Gtk.ScrolledWindow scroll_win;
-
-	private Pid child_pid = -1;
-	private Gtk.Window parent_win = null;
+	Vte.Terminal term;
+	Pid child_pid = -1;
+	Gtk.Window parent_win = null;
+	Gtk.Button btn_close;
+	Gtk.Button btn_cancel;
+#if TEST_VTE_COPY
+	Gtk.Button btn_copy;
+#endif
 
 	public bool cancelled = false;
 	public bool is_running = false;
@@ -82,7 +82,7 @@ public class TerminalWindow : Gtk.Window {
 
 		// vbox_main ---------------
 
-		vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+		var vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 		add(vbox_main);
 
 		// terminal ----------------------
@@ -91,7 +91,7 @@ public class TerminalWindow : Gtk.Window {
 		term.expand = true;
 
 		// sw_ppa
-		scroll_win = new Gtk.ScrolledWindow(null, null);
+		var scroll_win = new Gtk.ScrolledWindow(null, null);
 		scroll_win.set_shadow_type (Gtk.ShadowType.ETCHED_IN);
 		scroll_win.add (term);
 		scroll_win.expand = true;
@@ -106,7 +106,7 @@ public class TerminalWindow : Gtk.Window {
 
 		term.scroll_on_keystroke = true;
 		term.scroll_on_output = true;
-		if (Main.VERBOSE>1) term.scrollback_lines = 1000000;
+		term.scrollback_lines = -1;
 
 		// colors -----------------------------
 		//var color = Gdk.RGBA();
@@ -123,32 +123,43 @@ public class TerminalWindow : Gtk.Window {
 		hbox.homogeneous = true;
 		vbox_main.add(hbox);
 
+#if TEST_VTE_COPY
+		// btn_copy
+		btn_copy = new Gtk.Button.with_label(_("Copy All"));
+		btn_copy.clicked.connect(()=>{
+			string? buf = term.get_text_range(0, 0, term.get_column_count(), -1, null, null);
+			//vprint("scrollback: "+term.get_row_count().to_string());
+			vprint("\f============================================================");
+			vprint(buf);
+			vprint("============================================================");
+		});
+		hbox.pack_start(btn_copy, true, true, 0);
+#endif
+
 		var label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
 
+#if !TEST_VTE_COPY
 		label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
+#endif
 
 		// btn_cancel
-		var button = new Gtk.Button.with_label (_("Cancel"));
-		hbox.pack_start(button, true, true, 0);
-		btn_cancel = button;
-
+		btn_cancel = new Gtk.Button.with_label(_("Cancel"));
 		btn_cancel.clicked.connect(()=>{
 			cancelled = true;
 			if (child_pid>1) Posix.kill(child_pid,SIG.HUP);
 		});
+		hbox.pack_start(btn_cancel, true, true, 0);
 
 		// btn_close
-		button = new Gtk.Button.with_label (_("Close"));
-		hbox.pack_start(button, true, true, 0);
-		btn_close = button;
-
+		btn_close = new Gtk.Button.with_label(_("Close"));
 		btn_close.clicked.connect(()=>{
 			get_size(out App.term_width, out App.term_height);
 			get_position(out App.term_x, out App.term_y);
 			destroy();
 		});
+		hbox.pack_start(btn_close, true, true, 0);
 
 		label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);

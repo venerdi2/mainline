@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 06:00-0400\n"
+"POT-Creation-Date: 2023-06-12 12:14-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -398,7 +398,7 @@ msgstr "Daha önce bildirilmiş"
 msgid "Credits"
 msgstr "Hazırlayanlar"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:143
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:156
 msgid "Close"
 msgstr "Kapat"
 
@@ -625,7 +625,11 @@ msgstr "Komutlar"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:133
+#: src/Gtk/TerminalWindow.vala:128
+msgid "Copy All"
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:148
 msgid "Cancel"
 msgstr "İptal Et"
 

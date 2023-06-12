@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 06:00-0400\n"
+"POT-Creation-Date: 2023-06-12 12:14-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -377,7 +377,7 @@ msgstr "Попередньо повідомлено"
 msgid "Credits"
 msgstr "Творці"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:143
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:156
 msgid "Close"
 msgstr "Закрити"
 
@@ -590,16 +590,15 @@ msgstr ""
 "Зберігати завантажені файли .deb після встановлення.\n"
 "Повторно використовуйте їх для подальшого видалення/перевстановлення.\n"
 "\n"
-"Це дозволяє видаляти та перевстановлювати ядра без необхідності їх завантажувати"
-"кілька разів.\n"
+"Це дозволяє видаляти та перевстановлювати ядра без необхідності їх "
+"завантажуватикілька разів.\n"
 "\n"
-"Ядра, старіші за параметр \"Показати N попередніх основних версій\" "
-"вище все ще видаляються як зазвичай, тому кеш все одно не буде рости"
-"назавжди.\n"
+"Ядра, старіші за параметр \"Показати N попередніх основних версій\" вище все "
+"ще видаляються як зазвичай, тому кеш все одно не буде ростиназавжди.\n"
 "\n"
-"Ядра, які застаріли на основі позначок дати з головного індексу."
-"HTML також усе ще видаляються разом із пов'язаним для кожного ядра index.html "
-"як зазвичай, тому навіть кешовані ядра залишаються актуальними."
+"Ядра, які застаріли на основі позначок дати з головного індексу.HTML також "
+"усе ще видаляються разом із пов'язаним для кожного ядра index.html як "
+"зазвичай, тому навіть кешовані ядра залишаються актуальними."
 
 #: src/Gtk/SettingsDialog.vala:207
 msgid "Proxy"
@@ -610,10 +609,14 @@ msgid "Auth Command"
 msgstr "Команда авторизації"
 
 #: src/Gtk/SettingsDialog.vala:269
-msgid "DONE"
-msgstr "Готово"
+msgid "Done"
+msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:133
+#: src/Gtk/TerminalWindow.vala:128
+msgid "Copy All"
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:148
 msgid "Cancel"
 msgstr "Відміна"
 
