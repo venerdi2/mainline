@@ -125,15 +125,15 @@ public class TerminalWindow : Gtk.Window {
 
 		var label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
-		
+
 		label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
-		
+
 		// btn_cancel
 		var button = new Gtk.Button.with_label (_("Cancel"));
 		hbox.pack_start(button, true, true, 0);
 		btn_cancel = button;
-		
+
 		btn_cancel.clicked.connect(()=>{
 			cancelled = true;
 			if (child_pid>1) Posix.kill(child_pid,SIG.HUP);
@@ -143,7 +143,7 @@ public class TerminalWindow : Gtk.Window {
 		button = new Gtk.Button.with_label (_("Close"));
 		hbox.pack_start(button, true, true, 0);
 		btn_close = button;
-		
+
 		btn_close.clicked.connect(()=>{
 			get_size(out App.term_width, out App.term_height);
 			get_position(out App.term_x, out App.term_y);
@@ -198,8 +198,7 @@ public class TerminalWindow : Gtk.Window {
 			spawn_cb // callback
 		);
 #else
-		Pid p = -1;
-		Error e = null;
+		Pid p = -1; Error e = null;
 		try {
 			term.spawn_sync(
 				Vte.PtyFlags.DEFAULT, // pty_flags
