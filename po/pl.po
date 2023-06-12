@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 06:00-0400\n"
-"PO-Revision-Date: 2023-06-03 14:24+0200\n"
+"POT-Creation-Date: 2023-06-12 07:16-0400\n"
+"PO-Revision-Date: 2023-06-12 14:47+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -61,9 +61,8 @@ msgid "locked"
 msgstr "zablokowane"
 
 #: src/Common/LinuxKernel.vala:430
-#, fuzzy
 msgid "running"
-msgstr "Uruchomione"
+msgstr "uruchomione"
 
 #: src/Common/LinuxKernel.vala:467 src/Common/LinuxKernel.vala:1024
 #: src/Common/LinuxKernel.vala:1109
@@ -95,9 +94,8 @@ msgid "File not found"
 msgstr "Nie odnaleziono pliku"
 
 #: src/Common/LinuxKernel.vala:839
-#, fuzzy
 msgid "needs update"
-msgstr "Najnowsza aktualizacja"
+msgstr "wymaga aktualizacji"
 
 #: src/Common/LinuxKernel.vala:906
 msgid "Available Kernels"
@@ -125,7 +123,7 @@ msgstr "Pobieranie"
 
 #: src/Common/LinuxKernel.vala:1002
 msgid "Cached"
-msgstr ""
+msgstr "Buforowane"
 
 #: src/Common/LinuxKernel.vala:1010
 msgid "Installing selected kernels"
@@ -144,14 +142,13 @@ msgid "download failed."
 msgstr "pobieranie nie powiodło się."
 
 #: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:551
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Instalowanie: nie określono jąder do zainstalowania"
+msgstr "Instalowanie: nie określono jądra do zainstalowania"
 
 #: src/Common/LinuxKernel.vala:1044 src/Common/LinuxKernel.vala:1079
 #: src/Common/LinuxKernel.vala:1123 src/Common/LinuxKernel.vala:1154
 msgid "done"
-msgstr ""
+msgstr "gotowe"
 
 #: src/Common/LinuxKernel.vala:1050
 msgid "Uninstalling selected kernels"
@@ -182,9 +179,8 @@ msgid "Could not find running kernel in list"
 msgstr "Nie można znaleźć uruchomionego jądra na liście"
 
 #: src/Common/LinuxKernel.vala:1122
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "Nie można znaleźć żadnych jąder do odinstalowania"
+msgstr "Brak starych jąder do odinstalowania"
 
 #: src/Common/LinuxKernel.vala:1128
 msgid "The following kernels will be uninstalled"
@@ -195,9 +191,8 @@ msgid "Continue ?"
 msgstr "Kontynuować?"
 
 #: src/Common/LinuxKernel.vala:1146
-#, fuzzy
 msgid "No updates"
-msgstr "Nie znaleziono aktualizacji"
+msgstr "Brak aktualizacji"
 
 #: src/Common/LinuxKernel.vala:1152
 #, c-format
@@ -206,19 +201,19 @@ msgstr "Zainstalować wersję jądra %s? (t/n): "
 
 #: src/Common/Main.vala:159
 msgid "Missing Thread support in Glib."
-msgstr ""
+msgstr "Brak obsługi wątków w Glib."
 
 #: src/Common/Main.vala:244
 msgid "Wrote config file"
-msgstr ""
+msgstr "Zapisano plik konfiguracyjny"
 
 #: src/Common/Main.vala:263
 msgid "No config file"
-msgstr ""
+msgstr "Brak pliku konfiguracyjnego"
 
 #: src/Common/Main.vala:324
 msgid "Loaded config file"
-msgstr ""
+msgstr "Załadowano plik konfiguracyjny"
 
 #: src/Common/Main.vala:344
 msgid "Called from"
@@ -347,23 +342,20 @@ msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
 #: src/Console/AppConsole.vala:211
-#, fuzzy
 msgid "Notifications disabled"
-msgstr "Powiadomienia są wyłączone"
+msgstr "Wyłączono powiadomienia"
 
 #: src/Console/AppConsole.vala:216
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: src/Console/AppConsole.vala:231
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Powiadom, jeśli pojawi się wersja punktowa"
+msgstr "wyłączono powiadomienia o wersjach punktowych"
 
 #: src/Console/AppConsole.vala:239
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Powiadom, jeśli pojawi się główna wersja"
+msgstr "wyłączono powiadomienia o wersjach głównych"
 
 #: src/Console/AppConsole.vala:244
 #, c-format
@@ -496,13 +488,12 @@ msgid "available"
 msgstr "dostępne"
 
 #: src/Gtk/MainWindow.vala:546
-#, fuzzy
 msgid "is already installed"
-msgstr "jest już zainstalowane."
+msgstr "jest już zainstalowane"
 
 #: src/Gtk/MainWindow.vala:548
 msgid "adding"
-msgstr ""
+msgstr "dodawanie"
 
 #: src/Gtk/SettingsDialog.vala:45
 msgid "Notification"
@@ -569,20 +560,21 @@ msgid "Max concurrent downloads"
 msgstr "Maksymalna liczba jednoczesnych pobrań"
 
 #: src/Gtk/SettingsDialog.vala:191
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "Weryfikowanie sum kontrolnych za pomocą plików CHECKSUMS"
+msgstr "Weryfikuj pobrania za pomocą plików CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:194
 msgid ""
 "Before downloading .deb files, the CHECKSUMS file is downloaded and the "
 "sha-256 hashes are read from it and given to aria2c to verify the downloads."
 msgstr ""
+"Przed pobraniem plików .deb pobierany jest plik CHECKSUMS, z którego "
+"odczytywane są skróty sha-256 i przekazywane do aria2c w celu weryfikacji "
+"pobrań."
 
 #: src/Gtk/SettingsDialog.vala:199
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Pobieranie"
+msgstr "Zachowaj pobrane pliki"
 
 #: src/Gtk/SettingsDialog.vala:201
 msgid ""
@@ -600,15 +592,28 @@ msgid ""
 "html are also still deleted along with the associated per-kernel index.html "
 "as normal, so even cached kernels are still kept current."
 msgstr ""
+"Zachowaj pobrane pliki .deb po instalacji.\n"
+"Użyj ich ponownie do późniejszego odinstalowania/ponownej instalacji.\n"
+"\n"
+"Pozwala to na odinstalowanie i ponowną instalację jąder bez konieczności ich "
+"wielokrotnego pobierania.\n"
+"\n"
+"Jądra starsze niż powyższe ustawienie „Pokaż N poprzednie główne wersje” są "
+"nadal normalnie usuwane, więc pamięć podręczna nie będzie się powiększać w "
+"nieskończoność.\n"
+"\n"
+"Jądra, które są nieaktualne na podstawie sygnatur dat z głównego pliku index."
+"html, są nadal usuwane wraz z powiązanym plikiem index.html dla "
+"poszczególnych jąder, więc nawet jądra w pamięci podręcznej są nadal "
+"aktualne."
 
 #: src/Gtk/SettingsDialog.vala:207
 msgid "Proxy"
 msgstr "Serwer pośredniczący"
 
 #: src/Gtk/SettingsDialog.vala:240
-#, fuzzy
 msgid "Auth Command"
-msgstr "Polecenia"
+msgstr "Polecenie autoryzacji"
 
 #: src/Gtk/SettingsDialog.vala:269
 msgid "Done"
