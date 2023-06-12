@@ -164,7 +164,7 @@ public class TerminalWindow : Gtk.Window {
 			Gtk.MessageType.ERROR,
 			Gtk.ButtonsType.OK,
 			msg);
-#if VALA_0_48
+#if VALA_0_50
 		dlg.destroy.connect(destroy);
 		dlg.response.connect(dlg.destroy);
 #else
