@@ -193,7 +193,8 @@ public class DownloadItem : GLib.Object {
 		}
 	}
 
-	public DownloadItem(string uri = "", string destdir = "", string fname = "", string cksum = "") {
+	public DownloadItem(string uri = "", string destdir = "", string fname = "", string? cksum = "") {
+		if (cksum==null) cksum = "";
 		vprint("DownloadItem("+uri+","+destdir+","+fname+","+cksum+")",3);
 		source_uri = uri;
 		file_name = fname;
