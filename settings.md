@@ -38,7 +38,7 @@ Don't delete the .deb files after installing them. This allows to uninstall & re
 The cache is still kept trimmed even with this option enabled. The cache for any kernels that are older than the "Show N previous major versions" setting are still deleted as normal, so the cache grows but does not grow forever. And the datestamp comparison that detects when already-cached kernels have been changed on the mainline-ppa site, still deletes any out-of-date cached kernels as normal, so the setting does not result in retaining out-of-date kernel packages either. The "Reload" button still deletes everything too.
 
 **Proxy  
-\[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]**  
+\[_________________________________________________\]**  
 proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-all-proxy) setting
 
 **mainline-ppa url  
