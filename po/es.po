@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-11 21:03-0400\n"
+"POT-Creation-Date: 2023-06-12 00:38-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -394,7 +394,7 @@ msgstr "Notificado previamente"
 msgid "Credits"
 msgstr "Créditos"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:142
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:143
 msgid "Close"
 msgstr "Cerrar"
 
@@ -593,7 +593,7 @@ msgstr "Comandos"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:132
+#: src/Gtk/TerminalWindow.vala:133
 msgid "Cancel"
 msgstr "Cancelar"
 
