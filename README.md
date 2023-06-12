@@ -122,7 +122,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * [MainlineBuilds WIKI](https://wiki.ubuntu.com/Kernel/MainlineBuilds)
 
 * General debugging  
-  The `-v` or `-v #` or the environment variable `VERBOSE=#` enables increasing levels of verbosity.  
+  The `-v` or `-v #` option, or the environment variable `VERBOSE=#`, enables increasing levels of verbosity.  
   Example: `$ mainline-gtk -v 3` or `$ VERBOSE=3 mainline-gtk`  
   The -v option may also be used alone or repeated. The default is the same as `-v 1`.  
   Each additional `-v` is like adding 1. ie: `-v -v -v` is like `-v 4` or `VERBOSE=4`  
