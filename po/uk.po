@@ -620,7 +620,7 @@ msgstr "Копія"
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
-«Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну».
+"Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
 
 #: src/Gtk/TerminalWindow.vala:168
 msgid "Cancel"
