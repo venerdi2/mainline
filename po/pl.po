@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 16:30-0400\n"
-"PO-Revision-Date: 2023-06-12 14:47+0200\n"
+"POT-Creation-Date: 2023-06-13 16:32-0400\n"
+"PO-Revision-Date: 2023-06-13 22:50+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -541,12 +541,14 @@ msgstr "Ukryj wydania niestabilne i RC"
 
 #: src/Gtk/SettingsDialog.vala:127
 msgid "Show invalid/failed kernel builds"
-msgstr ""
+msgstr "Pokaż nieprawidłowe/nieudane kompilacje jąder"
 
 #: src/Gtk/SettingsDialog.vala:129
 msgid ""
 "Include the failed builds in the list, even though they can not be installed."
 msgstr ""
+"Uwzględnij nieudane kompilacje na liście, nawet jeśli nie można ich "
+"zainstalować."
 
 #: src/Gtk/SettingsDialog.vala:148
 msgid "previous major versions  ( -1 = all )"
@@ -630,12 +632,12 @@ msgstr "Gotowe"
 
 #: src/Gtk/TerminalWindow.vala:146
 msgid "Copy"
-msgstr ""
+msgstr "Skopiuj"
 
 #: src/Gtk/TerminalWindow.vala:154
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr ""
+msgstr "Kopiuje cały bufor wyjściowy do schowka, w tym przewijanie."
 
 #: src/Gtk/TerminalWindow.vala:161
 msgid "Cancel"
