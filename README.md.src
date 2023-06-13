@@ -137,7 +137,6 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
   Use the normal package manager like apt or synaptic to remove the parent meta-package:  
   ```$ sudo apt remove linux-image-generic```  
   Then **Uninstall Old** should successfully remove everything.  
-  Also you should hit the **Reload** button once after that (or run ```$ BRANDING_SHORTNAME --delete-cache```)  
 
 * Secure Boot  
   Possibly useful, I have not tried:  
