@@ -30,9 +30,9 @@ public class TerminalWindow : Gtk.Window {
 	Gtk.Window parent_win = null;
 	Gtk.Button btn_close;
 	Gtk.Button btn_cancel;
-#if TEST_VTE_COPY
-	Gtk.Button btn_copy;
-#endif
+
+	const double MIN_SCALE = 0.2;
+	const double MAX_SCALE = 5.0;
 
 	public bool cancelled = false;
 	public bool is_running = false;
@@ -89,6 +89,10 @@ public class TerminalWindow : Gtk.Window {
 
 		term = new Vte.Terminal();
 		term.expand = true;
+		//term.font_scale = (double)App.term_font_scale;
+
+		var display = term.get_display ();
+		var clipboard = Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD);
 
 		// sw_ppa
 		var scroll_win = new Gtk.ScrolledWindow(null, null);
@@ -108,6 +112,25 @@ public class TerminalWindow : Gtk.Window {
 		term.scroll_on_output = true;
 		term.scrollback_lines = -1;
 
+#if VALA_0_50
+		// this is rude blasting away the clipboard instead of using a context menu
+		term.selection_changed.connect(() => { term.copy_clipboard_format(Vte.Format.TEXT); });
+#endif
+
+		// ctrl+scroll to zoom font size
+		term.scroll_event.connect((event) => {
+			if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+				int d = 0;
+				if (event.direction == Gdk.ScrollDirection.UP) d = 1;
+				if (event.direction == Gdk.ScrollDirection.DOWN) d = -1;
+				if (event.direction == Gdk.ScrollDirection.SMOOTH) d = (int)event.delta_y;
+				if (d>0) dec_font_scale();
+				if (d<0) inc_font_scale();
+				return Gdk.EVENT_STOP;
+			}
+			return Gdk.EVENT_PROPAGATE;
+		});
+
 		// colors -----------------------------
 		//var color = Gdk.RGBA();
 		//color.parse("#FFFFFF");
@@ -117,32 +140,29 @@ public class TerminalWindow : Gtk.Window {
 
 		term.grab_focus();
 
-		// add cancel button --------------
+		// Bottom bar buttons
 
 		var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
 		vbox_main.add(hbox);
 
-#if TEST_VTE_COPY
-		// btn_copy
-		btn_copy = new Gtk.Button.with_label(_("Copy All"));
+		// copy the entire output & scrollback to clipboard
+		var btn_copy = new Gtk.Button.with_label(_("Copy"));
 		btn_copy.clicked.connect(()=>{
-			string? buf = term.get_text_range(0, 0, term.get_column_count(), -1, null, null);
-			//vprint("scrollback: "+term.get_row_count().to_string());
-			vprint("\f============================================================");
-			vprint(buf);
-			vprint("============================================================");
+			long output_end_col, output_end_row;
+			term.get_cursor_position(out output_end_col, out output_end_row);
+			string? buf = term.get_text_range(0, 0, output_end_row, term.get_column_count(), null, null);
+			clipboard.set_text(buf,-1);
+			msgbox("copied "+output_end_row.to_string()+" lines to clipboard");
 		});
+		btn_copy.set_tooltip_text(_("Copies the entire output buffer, including scrollback, to the clipboard."));
 		hbox.pack_start(btn_copy, true, true, 0);
-#endif
 
 		var label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
 
-#if !TEST_VTE_COPY
-		label = new Gtk.Label("");
-		hbox.pack_start(label, true, true, 0);
-#endif
+		//label = new Gtk.Label("");
+		//hbox.pack_start(label, true, true, 0);
 
 		// btn_cancel
 		btn_cancel = new Gtk.Button.with_label(_("Cancel"));
@@ -157,6 +177,7 @@ public class TerminalWindow : Gtk.Window {
 		btn_close.clicked.connect(()=>{
 			get_size(out App.term_width, out App.term_height);
 			get_position(out App.term_x, out App.term_y);
+			//App.term_font_scale = (int)term.font_scale;
 			destroy();
 		});
 		hbox.pack_start(btn_close, true, true, 0);
@@ -164,32 +185,53 @@ public class TerminalWindow : Gtk.Window {
 		label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
 
-		label = new Gtk.Label("");
-		hbox.pack_start(label, true, true, 0);
+		//label = new Gtk.Label("");
+		//hbox.pack_start(label, true, true, 0);
+
+		// font +/-
+		var fhbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
+		//
+		var btn_minus = new Gtk.Button.with_label("-");
+		btn_minus.clicked.connect(dec_font_scale);
+		fhbox.pack_start(btn_minus, true, true, 0);
+		//
+		var btn_plus = new Gtk.Button.with_label("+");
+		btn_plus.clicked.connect(inc_font_scale);
+		fhbox.pack_start(btn_plus, true, true, 0);
+		//
+		hbox.pack_start(fhbox, true, true, 0);
+
 	}
 
-	void errmsg(string msg) {
-		vprint(msg,1,stderr);
+	void msgbox(string msg, Gtk.MessageType? type = Gtk.MessageType.INFO) {
+		if (type==null) type = Gtk.MessageType.INFO;
 		var dlg = new Gtk.MessageDialog(this,
 			Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
-			Gtk.MessageType.ERROR,
+			type,
 			Gtk.ButtonsType.OK,
 			msg);
-#if VALA_0_50
-		dlg.destroy.connect(destroy);
-		dlg.response.connect(dlg.destroy);
-#else
-		dlg.destroy.connect(() => { destroy(); });
 		dlg.response.connect(() => { dlg.destroy(); });
-#endif
+		if (type==Gtk.MessageType.ERROR) {
+			vprint(msg,1,stderr);
+			dlg.destroy.connect(() => { destroy(); });
+		}
+		else vprint(msg,3);
 		dlg.show();
+	}
+
+	public void inc_font_scale() {
+		term.font_scale = (term.font_scale + 0.1).clamp (MIN_SCALE, MAX_SCALE);
+	}
+
+	public void dec_font_scale() {
+		term.font_scale = (term.font_scale - 0.1).clamp (MIN_SCALE, MAX_SCALE);
 	}
 
 	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
 		vprint("child_pid="+p.to_string(),4);
 		if (p>1) { child_pid = p; t.watch_child(p); }
 		else child_has_exited(e.code);
-		if (e!=null) errmsg(e.message);
+		if (e!=null) msgbox(e.message,Gtk.MessageType.ERROR);
 	}
 
 	public void execute_cmd(string[] argv) {
@@ -241,4 +283,5 @@ public class TerminalWindow : Gtk.Window {
 		btn_cancel.sensitive = !allow;
 		btn_cancel.visible = !allow;
 	}
+
 }

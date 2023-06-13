@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 12:14-0400\n"
+"POT-Creation-Date: 2023-06-13 05:22-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -211,36 +211,36 @@ msgstr "업데이트를 찾을 수 없습니다"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/Main.vala:159
+#: src/Common/Main.vala:162
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:244
+#: src/Common/Main.vala:248
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:263
+#: src/Common/Main.vala:267
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:324
+#: src/Common/Main.vala:330
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:350
 msgid "Called from"
 msgstr "에서 호출"
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:350
 msgid "at logon"
 msgstr "로그온 시"
 
-#: src/Common/Main.vala:345
+#: src/Common/Main.vala:351
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행됩니다."
 
-#: src/Common/Main.vala:377
+#: src/Common/Main.vala:383
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
@@ -396,7 +396,7 @@ msgstr "이전에 통보됨"
 msgid "Credits"
 msgstr "제작자"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:176
 msgid "Close"
 msgstr "닫기"
 
@@ -623,11 +623,16 @@ msgstr "명령어"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:128
-msgid "Copy All"
+#: src/Gtk/TerminalWindow.vala:150
+msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:148
+#: src/Gtk/TerminalWindow.vala:158
+msgid ""
+"Copies the entire output buffer, including scrollback, to the clipboard."
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:168
 msgid "Cancel"
 msgstr "취소"
 

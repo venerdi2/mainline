@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 12:14-0400\n"
+"POT-Creation-Date: 2023-06-13 05:22-0400\n"
 "PO-Revision-Date: 2023-06-05 23:29+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -204,37 +204,37 @@ msgstr "Нет обнолений"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Установить версию ядра %s ? (y/n): "
 
-#: src/Common/Main.vala:159
+#: src/Common/Main.vala:162
 msgid "Missing Thread support in Glib."
 msgstr "Отсутствие поддержки потоков в Glib."
 
-#: src/Common/Main.vala:244
+#: src/Common/Main.vala:248
 msgid "Wrote config file"
 msgstr "Записан файл конфигурации"
 
-#: src/Common/Main.vala:263
+#: src/Common/Main.vala:267
 msgid "No config file"
 msgstr "Нет файла конфигурации"
 
-#: src/Common/Main.vala:324
+#: src/Common/Main.vala:330
 msgid "Loaded config file"
 msgstr "Загружен файл конфигурации"
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:350
 msgid "Called from"
 msgstr "Вызван из"
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:350
 msgid "at logon"
 msgstr "при запуске"
 
-#: src/Common/Main.vala:345
+#: src/Common/Main.vala:351
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Этот файл перезаписывается и выполняется снова при сохранении настроек в"
 
-#: src/Common/Main.vala:377
+#: src/Common/Main.vala:383
 msgid "Notifications are disabled"
 msgstr "Уведомления отключены"
 
@@ -382,7 +382,7 @@ msgstr "Предварительно уведомлено"
 msgid "Credits"
 msgstr "Создатели"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:176
 msgid "Close"
 msgstr "Закрыть"
 
@@ -607,11 +607,16 @@ msgstr "Команда авторизации"
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:128
-msgid "Copy All"
+#: src/Gtk/TerminalWindow.vala:150
+msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:148
+#: src/Gtk/TerminalWindow.vala:158
+msgid ""
+"Copies the entire output buffer, including scrollback, to the clipboard."
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:168
 msgid "Cancel"
 msgstr "Отмена"
 

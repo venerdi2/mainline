@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 12:14-0400\n"
+"POT-Creation-Date: 2023-06-13 05:22-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -211,37 +211,37 @@ msgstr "Nema pronađenih nadopuna"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Instaliraj kernel inačice %s ? (d/n): "
 
-#: src/Common/Main.vala:159
+#: src/Common/Main.vala:162
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:244
+#: src/Common/Main.vala:248
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:263
+#: src/Common/Main.vala:267
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:324
+#: src/Common/Main.vala:330
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:350
 msgid "Called from"
 msgstr "Pozvano od"
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:350
 msgid "at logon"
 msgstr "indításkor"
 
-#: src/Common/Main.vala:345
+#: src/Common/Main.vala:351
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ova se datoteka prepisuje i ponovno izvršava kad god se postavke spremaju u"
 
-#: src/Common/Main.vala:377
+#: src/Common/Main.vala:383
 msgid "Notifications are disabled"
 msgstr "Obavijesti su onemogućene"
 
@@ -397,7 +397,7 @@ msgstr "Prethodno prijavljeno"
 msgid "Credits"
 msgstr "Zasluge"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:176
 msgid "Close"
 msgstr "Zatvori"
 
@@ -624,11 +624,16 @@ msgstr "Naredbe"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:128
-msgid "Copy All"
+#: src/Gtk/TerminalWindow.vala:150
+msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:148
+#: src/Gtk/TerminalWindow.vala:158
+msgid ""
+"Copies the entire output buffer, including scrollback, to the clipboard."
+msgstr ""
+
+#: src/Gtk/TerminalWindow.vala:168
 msgid "Cancel"
 msgstr "Odustani"
 

@@ -81,6 +81,7 @@ const int      DEFAULT_TERM_WIDTH              = 1100  ;
 const int      DEFAULT_TERM_HEIGHT             = 600   ;
 const int      DEFAULT_TERM_X                  = -1    ;
 const int      DEFAULT_TERM_Y                  = -1    ;
+const int      DEFAULT_TERM_FONT_SCALE         = 1     ;
 
 extern void exit(int exit_code);
 
@@ -146,6 +147,8 @@ public class Main : GLib.Object {
 	public int term_y = DEFAULT_TERM_Y;
 	public int _term_x = DEFAULT_TERM_X;
 	public int _term_y = DEFAULT_TERM_Y;
+	//public int term_font_scale = DEFAULT_TERM_FONT_SCALE;
+	public int _term_font_scale = DEFAULT_TERM_FONT_SCALE;
 
 	public bool confirm = true;
 
@@ -229,6 +232,7 @@ public class Main : GLib.Object {
 		config.set_int_member(     "term_height",             term_height             );
 		config.set_int_member(     "term_x",                  term_x                  );
 		config.set_int_member(     "term_y",                  term_y                  );
+		//config.set_int_member(     "term_font_scale",         term_font_scale         );
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -291,6 +295,7 @@ public class Main : GLib.Object {
 		term_height             = (int) config.get_int_member_with_default(     "term_height",             DEFAULT_TERM_HEIGHT             );
 		term_x                  = (int) config.get_int_member_with_default(     "term_x",                  DEFAULT_TERM_X                  );
 		term_y                  = (int) config.get_int_member_with_default(     "term_y",                  DEFAULT_TERM_Y                  );
+		//term_font_scale         = (int) config.get_int_member_with_default(     "term_font_scale",         DEFAULT_TERM_FONT_SCALE         );
 #else
 		ppa_uri                 = json_get_string( config, "ppa_uri",                 DEFAULT_PPA_URI                 );
 		all_proxy               = json_get_string( config, "all_proxy",               DEFAULT_ALL_PROXY               );
@@ -313,6 +318,7 @@ public class Main : GLib.Object {
 		term_height             = json_get_int(    config, "term_height",             DEFAULT_TERM_HEIGHT             );
 		term_x                  = json_get_int(    config, "term_x",                  DEFAULT_TERM_X                  );
 		term_y                  = json_get_int(    config, "term_y",                  DEFAULT_TERM_Y                  );
+		//term_font_scale         = json_get_int(    config, "term_font_scale",         DEFAULT_TERM_FONT_SCALE         );
 #endif
 
 		bool resave = false;
