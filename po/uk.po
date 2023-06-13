@@ -610,16 +610,17 @@ msgstr "Команда авторизації"
 
 #: src/Gtk/SettingsDialog.vala:269
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: src/Gtk/TerminalWindow.vala:150
 msgid "Copy"
-msgstr ""
+msgstr "Копія"
 
 #: src/Gtk/TerminalWindow.vala:158
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
+«Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну».
 
 #: src/Gtk/TerminalWindow.vala:168
 msgid "Cancel"
