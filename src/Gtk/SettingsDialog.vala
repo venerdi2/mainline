@@ -123,6 +123,14 @@ public class SettingsDialog : Gtk.Dialog {
 		chk_hide_unstable.toggled.connect(()=>{ App.hide_unstable = chk_hide_unstable.active; });
 		vbox_main.add(chk_hide_unstable);
 
+		// chk_show_invalid
+		var chk_show_invalid = new Gtk.CheckButton.with_label(_("Show invalid/failed kernel builds"));
+		chk_show_invalid.margin_start = 6;
+		chk_show_invalid.set_tooltip_text(_("Include the failed builds in the list, even though they can not be installed."));
+		chk_show_invalid.active = App.show_invalid;
+		chk_show_invalid.toggled.connect(()=>{ App.show_invalid = chk_show_invalid.active; });
+		vbox_main.add(chk_show_invalid);
+
 		// kernel version threshold
 		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		vbox_main.add(hbox);

@@ -244,7 +244,7 @@ public class MainWindow : Window {
 		foreach (var k in LinuxKernel.kernel_list) {
 
 			if (!k.is_installed) { // don't hide anything that's installed
-				if (k.is_invalid) continue; // hide invalid
+				if (k.is_invalid && !App.show_invalid) continue; // hide invalid
 				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
 				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide versions older than settings threshold
 			}
@@ -296,6 +296,7 @@ public class MainWindow : Window {
 
 		if (selected_kernels.size > 0) {
 			foreach (var k in selected_kernels) {
+				if (k.is_invalid) continue;
 				if (k.is_locked || k.is_running) continue;
 				if (k.is_installed) btn_uninstall.sensitive = true;
 				else btn_install.sensitive = true;
@@ -363,6 +364,7 @@ public class MainWindow : Window {
 		// settings that change the selection set -> trigger cache update
 		var old_previous_majors = App.previous_majors;
 		var old_hide_unstable = App.hide_unstable;
+		var old_show_invalid = App.show_invalid;
 		// settings that change the notification behavior -> trigger notify script update
 		var old_notify_interval_unit = App.notify_interval_unit;
 		var old_notify_interval_value = App.notify_interval_value;
@@ -385,11 +387,13 @@ public class MainWindow : Window {
 			App.notify_major == old_notify_major &&
 			App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
 
-		// If the selection set didn't change, then don't update cache.
-		// If we don't update cache, then we have to do the notify script now.
-		if (App.previous_majors == old_previous_majors &&
-			App.hide_unstable == old_hide_unstable) App.run_notify_script();
-		else update_cache();
+		// if the selection set changed, update the cache
+		// if the installable subset changed, run the notify script
+		bool x = false;
+		if (App.previous_majors != old_previous_majors ||
+			App.hide_unstable != old_hide_unstable) x = true; // installable selection set changed
+		if (x || App.show_invalid != old_show_invalid) update_cache(); // full selection set changed
+		if (x) App.run_notify_script();
 	}
 
 	private void do_about () {

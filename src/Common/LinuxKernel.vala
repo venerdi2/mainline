@@ -222,7 +222,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.load_cached_page()) continue;
 			}
 
-			if (k.is_invalid) continue;
+			if (k.is_invalid && !App.show_invalid) continue;
 
 			// don't try to filter here yet
 			// we don't have is_installed yet until after check_installed()
@@ -908,7 +908,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		int nl = 16; // name length
 		foreach(var k in kernel_list) {
-			if (k.is_invalid) continue;
+			if (k.is_invalid && !App.show_invalid) continue;
 
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
@@ -1093,7 +1093,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		bool found_running_kernel = false;
 
 		foreach(var k in kernel_list) {
-			if (k.is_invalid) continue;
+			//if (k.is_invalid) continue; // even if we think it's invalid, it could still be installed
 			if (!k.is_installed) continue;
 
 			if (k.is_running) {
