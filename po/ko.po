@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 12:20-0400\n"
+"POT-Creation-Date: 2023-06-13 15:25-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -249,7 +249,7 @@ msgstr "알림이 비활성화 되었습니다"
 msgid "File not found: %s"
 msgstr "파일을 찾을 수 없음: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
 msgid "Syntax"
 msgstr "문법"
 
@@ -305,7 +305,7 @@ msgstr "지정한 커널 다운로드"
 msgid "Delete cached info about available kernels"
 msgstr "사용 가능한 커널에 대한 캐시된 정보 삭제"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:65
 msgid "Options"
 msgstr "옵션"
 
@@ -340,7 +340,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "현재 실행중인 커널은 항상 무시됩니다"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:98
+#: src/Gtk/AppGtk.vala:97
 msgid "Unknown option"
 msgstr "알 수 없는 옵션"
 
@@ -428,15 +428,15 @@ msgstr "문서작성"
 msgid "Third Party Inclusions"
 msgstr "서드파티 포함"
 
-#: src/Gtk/AppGtk.vala:64
+#: src/Gtk/AppGtk.vala:63
 msgid "options"
 msgstr "옵션"
 
-#: src/Gtk/AppGtk.vala:68
+#: src/Gtk/AppGtk.vala:67
 msgid "Print debug information"
 msgstr "디버그 정보 출력"
 
-#: src/Gtk/AppGtk.vala:69
+#: src/Gtk/AppGtk.vala:68
 msgid "Show all options"
 msgstr "모든 옵션 보기"
 

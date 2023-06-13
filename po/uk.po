@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 12:20-0400\n"
+"POT-Creation-Date: 2023-06-13 15:25-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -239,7 +239,7 @@ msgstr "Повідомлення вимкнено"
 msgid "File not found: %s"
 msgstr "Файл не знайдено: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
 msgid "Syntax"
 msgstr "Синтаксис"
 
@@ -291,7 +291,7 @@ msgstr "Завантажте конкретні ядра"
 msgid "Delete cached info about available kernels"
 msgstr "Видалити кешовану інформацію про доступні ядра"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:65
 msgid "Options"
 msgstr "Параметри"
 
@@ -324,7 +324,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Заблоковані ядра та поточне запущене ядро ігноруються"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:98
+#: src/Gtk/AppGtk.vala:97
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
@@ -409,15 +409,15 @@ msgstr "Документатори"
 msgid "Third Party Inclusions"
 msgstr "Включення третіх осіб"
 
-#: src/Gtk/AppGtk.vala:64
+#: src/Gtk/AppGtk.vala:63
 msgid "options"
 msgstr "параметри"
 
-#: src/Gtk/AppGtk.vala:68
+#: src/Gtk/AppGtk.vala:67
 msgid "Print debug information"
 msgstr "Роздрукувати зневадження"
 
-#: src/Gtk/AppGtk.vala:69
+#: src/Gtk/AppGtk.vala:68
 msgid "Show all options"
 msgstr "Показати усі параметри"
 
@@ -619,8 +619,7 @@ msgstr "Копія"
 #: src/Gtk/TerminalWindow.vala:154
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr ""
-"Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
+msgstr "Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
 
 #: src/Gtk/TerminalWindow.vala:161
 msgid "Cancel"

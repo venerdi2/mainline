@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 12:20-0400\n"
+"POT-Creation-Date: 2023-06-13 15:25-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -250,7 +250,7 @@ msgstr "Bildirimler devre dışı bırakılmış"
 msgid "File not found: %s"
 msgstr "Dosya bulunamadı: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
 msgid "Syntax"
 msgstr "Sözdizimi"
 
@@ -306,7 +306,7 @@ msgstr "Belirtilen çekirdekleri indir"
 msgid "Delete cached info about available kernels"
 msgstr "Kullanılabilir çekirdekler hakkında önbelleğe alınmış bilgileri silme"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:65
 msgid "Options"
 msgstr "Seçenekler"
 
@@ -341,7 +341,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Şu anda çalışan çekirdek her zaman yoksayılır"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:98
+#: src/Gtk/AppGtk.vala:97
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
@@ -430,15 +430,15 @@ msgstr "Belgelendirenler"
 msgid "Third Party Inclusions"
 msgstr "Üçüncü Taraf Eklemeler"
 
-#: src/Gtk/AppGtk.vala:64
+#: src/Gtk/AppGtk.vala:63
 msgid "options"
 msgstr "seçenekler"
 
-#: src/Gtk/AppGtk.vala:68
+#: src/Gtk/AppGtk.vala:67
 msgid "Print debug information"
 msgstr "Hata ayıklama bilgisini yazdır"
 
-#: src/Gtk/AppGtk.vala:69
+#: src/Gtk/AppGtk.vala:68
 msgid "Show all options"
 msgstr "Tüm seçenekleri göster"
 

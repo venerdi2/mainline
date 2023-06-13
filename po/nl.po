@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 12:20-0400\n"
+"POT-Creation-Date: 2023-06-13 15:25-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -251,7 +251,7 @@ msgstr "Meldingen zijn uitgeschakeld"
 msgid "File not found: %s"
 msgstr "Bestand niet gevonden: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
 msgid "Syntax"
 msgstr "Syntaxis"
 
@@ -307,7 +307,7 @@ msgstr "Opgegeven kernels downloaden"
 msgid "Delete cached info about available kernels"
 msgstr "Informatie over beschikbare kernels in de cache verwijderen"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:65
 msgid "Options"
 msgstr "Opties"
 
@@ -342,7 +342,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "De momenteel actieve kernel wordt altijd genegeerd"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:98
+#: src/Gtk/AppGtk.vala:97
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
@@ -430,15 +430,15 @@ msgstr "Documenteerders"
 msgid "Third Party Inclusions"
 msgstr "Externe code"
 
-#: src/Gtk/AppGtk.vala:64
+#: src/Gtk/AppGtk.vala:63
 msgid "options"
 msgstr "opties"
 
-#: src/Gtk/AppGtk.vala:68
+#: src/Gtk/AppGtk.vala:67
 msgid "Print debug information"
 msgstr "Foutopsporingsinformatie tonen"
 
-#: src/Gtk/AppGtk.vala:69
+#: src/Gtk/AppGtk.vala:68
 msgid "Show all options"
 msgstr "Alle opties tonen"
 
