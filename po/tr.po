@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 05:22-0400\n"
+"POT-Creation-Date: 2023-06-13 12:20-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -71,7 +71,7 @@ msgstr "Çalışıyor"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:523
 msgid "Running"
 msgstr "Çalışıyor"
 
@@ -104,7 +104,7 @@ msgstr "Son güncelleme"
 msgid "Available Kernels"
 msgstr "Mevcut Çekirdekler"
 
-#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:133
 msgid "Kernel"
 msgstr "Çekirdek"
 
@@ -148,7 +148,7 @@ msgstr "zaten yüklü."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:551
+#: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:549
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Komut belirtilmedi"
@@ -167,7 +167,7 @@ msgstr "Seçili çekirdekleri kaldırma"
 msgid "Not uninstalling the currently running kernel"
 msgstr "çalışmakta olan çekirdeğin kaldırılmaması"
 
-#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:547
+#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:545
 msgid "is locked"
 msgstr ""
 
@@ -211,37 +211,37 @@ msgstr "Güncelleme bulunamadı"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
 
-#: src/Common/Main.vala:162
+#: src/Common/Main.vala:152
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:248
+#: src/Common/Main.vala:238
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:267
+#: src/Common/Main.vala:257
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:330
+#: src/Common/Main.vala:320
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:340
 msgid "Called from"
 msgstr "Çağrı konumu"
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:340
 msgid "at logon"
 msgstr "başlangıçta"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:341
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Bu dosyanın üzerine yazılır ve ayarlar her kaydedildiğinde yeniden yürütülür"
 
-#: src/Common/Main.vala:383
+#: src/Common/Main.vala:373
 msgid "Notifications are disabled"
 msgstr "Bildirimler devre dışı bırakılmış"
 
@@ -250,7 +250,7 @@ msgstr "Bildirimler devre dışı bırakılmış"
 msgid "File not found: %s"
 msgstr "Dosya bulunamadı: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:75
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
 msgid "Syntax"
 msgstr "Sözdizimi"
 
@@ -294,7 +294,7 @@ msgstr "Belirtilen çekirdeğini kaldır"
 msgid "Uninstall specified kernels"
 msgstr "Belirtilen çekirdeğini kaldır"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:337
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:335
 msgid "Uninstall all but the highest installed version"
 msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
@@ -306,7 +306,7 @@ msgstr "Belirtilen çekirdekleri indir"
 msgid "Delete cached info about available kernels"
 msgstr "Kullanılabilir çekirdekler hakkında önbelleğe alınmış bilgileri silme"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:77
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
 msgid "Options"
 msgstr "Seçenekler"
 
@@ -341,7 +341,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Şu anda çalışan çekirdek her zaman yoksayılır"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:109
+#: src/Gtk/AppGtk.vala:98
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
@@ -386,7 +386,7 @@ msgstr "Çekirdek %s Kullanılabilir"
 msgid "Show"
 msgstr "Göster"
 
-#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:316
+#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:314
 msgid "Install"
 msgstr "Kur"
 
@@ -398,7 +398,7 @@ msgstr "Daha önce bildirilmiş"
 msgid "Credits"
 msgstr "Hazırlayanlar"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:176
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:169
 msgid "Close"
 msgstr "Kapat"
 
@@ -430,88 +430,88 @@ msgstr "Belgelendirenler"
 msgid "Third Party Inclusions"
 msgstr "Üçüncü Taraf Eklemeler"
 
-#: src/Gtk/AppGtk.vala:75
+#: src/Gtk/AppGtk.vala:64
 msgid "options"
 msgstr "seçenekler"
 
-#: src/Gtk/AppGtk.vala:79
+#: src/Gtk/AppGtk.vala:68
 msgid "Print debug information"
 msgstr "Hata ayıklama bilgisini yazdır"
 
-#: src/Gtk/AppGtk.vala:80
+#: src/Gtk/AppGtk.vala:69
 msgid "Show all options"
 msgstr "Tüm seçenekleri göster"
 
-#: src/Gtk/MainWindow.vala:159
+#: src/Gtk/MainWindow.vala:157
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:176
+#: src/Gtk/MainWindow.vala:174
 msgid "Status"
 msgstr "Durum"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:186
 msgid "Notes"
 msgstr "Notlar"
 
-#: src/Gtk/MainWindow.vala:321
+#: src/Gtk/MainWindow.vala:319
 msgid "Uninstall"
 msgstr "Kaldır"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:325
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:336
+#: src/Gtk/MainWindow.vala:334
 msgid "Uninstall Old"
 msgstr "Eskileri Kaldır"
 
-#: src/Gtk/MainWindow.vala:342
+#: src/Gtk/MainWindow.vala:340
 msgid "Reload"
 msgstr "Arjantin"
 
-#: src/Gtk/MainWindow.vala:343
+#: src/Gtk/MainWindow.vala:341
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/SettingsDialog.vala:36
+#: src/Gtk/MainWindow.vala:346 src/Gtk/SettingsDialog.vala:36
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/Gtk/MainWindow.vala:353
+#: src/Gtk/MainWindow.vala:351
 msgid "About"
 msgstr "Hakkında"
 
-#: src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:356
 msgid "Exit"
 msgstr "Çıkış"
 
-#: src/Gtk/MainWindow.vala:439
+#: src/Gtk/MainWindow.vala:437
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:438
 msgid "Forked"
 msgstr "Çatallandı"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:438
 msgid "Original"
 msgstr "Özgün"
 
-#: src/Gtk/MainWindow.vala:469
+#: src/Gtk/MainWindow.vala:467
 msgid "Updating kernels"
 msgstr "Çekirdekleri güncelleme"
 
-#: src/Gtk/MainWindow.vala:529
+#: src/Gtk/MainWindow.vala:527
 msgid "available"
 msgstr "mevcut"
 
-#: src/Gtk/MainWindow.vala:546
+#: src/Gtk/MainWindow.vala:544
 #, fuzzy
 msgid "is already installed"
 msgstr "zaten yüklü."
 
-#: src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:546
 msgid "adding"
 msgstr ""
 
@@ -625,16 +625,16 @@ msgstr "Komutlar"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:150
+#: src/Gtk/TerminalWindow.vala:146
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:158
+#: src/Gtk/TerminalWindow.vala:154
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/TerminalWindow.vala:161
 msgid "Cancel"
 msgstr "İptal Et"
 

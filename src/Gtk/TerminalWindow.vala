@@ -31,8 +31,8 @@ public class TerminalWindow : Gtk.Window {
 	Gtk.Button btn_close;
 	Gtk.Button btn_cancel;
 
-	const double MIN_SCALE = 0.2;
-	const double MAX_SCALE = 5.0;
+	const double MIN_SCALE = 0.25;
+	const double MAX_SCALE = 4.0;
 
 	public bool cancelled = false;
 	public bool is_running = false;
@@ -69,10 +69,6 @@ public class TerminalWindow : Gtk.Window {
 	public void init_window () {
 		set_modal(true);
 
-		App._term_width = App.term_width;
-		App._term_height = App.term_height;
-		App._term_x = App.term_x;
-		App._term_y = App.term_y;
 		set_default_size(App.term_width,App.term_height);
 		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
@@ -89,7 +85,7 @@ public class TerminalWindow : Gtk.Window {
 
 		term = new Vte.Terminal();
 		term.expand = true;
-		//term.font_scale = (double)App.term_font_scale;
+		term.font_scale = App.term_font_scale;
 
 		var display = term.get_display ();
 		var clipboard = Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD);
@@ -161,9 +157,6 @@ public class TerminalWindow : Gtk.Window {
 		var label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
 
-		//label = new Gtk.Label("");
-		//hbox.pack_start(label, true, true, 0);
-
 		// btn_cancel
 		btn_cancel = new Gtk.Button.with_label(_("Cancel"));
 		btn_cancel.clicked.connect(()=>{
@@ -177,7 +170,7 @@ public class TerminalWindow : Gtk.Window {
 		btn_close.clicked.connect(()=>{
 			get_size(out App.term_width, out App.term_height);
 			get_position(out App.term_x, out App.term_y);
-			//App.term_font_scale = (int)term.font_scale;
+			App.term_font_scale = term.font_scale;
 			destroy();
 		});
 		hbox.pack_start(btn_close, true, true, 0);
@@ -185,10 +178,8 @@ public class TerminalWindow : Gtk.Window {
 		label = new Gtk.Label("");
 		hbox.pack_start(label, true, true, 0);
 
-		//label = new Gtk.Label("");
-		//hbox.pack_start(label, true, true, 0);
-
 		// font +/-
+		// box within box to make these 2 buttons take the same space as the other single buttons.
 		var fhbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		//
 		var btn_minus = new Gtk.Button.with_label("-");
@@ -203,6 +194,9 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
+	// display a message both on the console and in a popup
+	// for error, write to stderr at default vebosity, and close the terminal along with the popup
+	// for not-error, write to stdout only if verbose>3, and do not close the terminal
 	void msgbox(string msg, Gtk.MessageType? type = Gtk.MessageType.INFO) {
 		if (type==null) type = Gtk.MessageType.INFO;
 		var dlg = new Gtk.MessageDialog(this,
@@ -214,17 +208,16 @@ public class TerminalWindow : Gtk.Window {
 		if (type==Gtk.MessageType.ERROR) {
 			vprint(msg,1,stderr);
 			dlg.destroy.connect(() => { destroy(); });
-		}
-		else vprint(msg,3);
+		} else vprint(msg,3);
 		dlg.show();
 	}
 
 	public void inc_font_scale() {
-		term.font_scale = (term.font_scale + 0.1).clamp (MIN_SCALE, MAX_SCALE);
+		term.font_scale = (term.font_scale + 0.125).clamp(MIN_SCALE, MAX_SCALE);
 	}
 
 	public void dec_font_scale() {
-		term.font_scale = (term.font_scale - 0.1).clamp (MIN_SCALE, MAX_SCALE);
+		term.font_scale = (term.font_scale - 0.125).clamp(MIN_SCALE, MAX_SCALE);
 	}
 
 	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {

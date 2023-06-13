@@ -36,11 +36,6 @@ public class AppGtk : GLib.Object {
 		App = new Main(args, true);
 		parse_arguments(args);
 
-		App._window_width = App.window_width;
-		App._window_height = App.window_height;
-		App._window_x = App.window_x;
-		App._window_y = App.window_y;
-
 		// create main window --------------------------------------
 		var appwin = new MainWindow();
 
@@ -50,19 +45,12 @@ public class AppGtk : GLib.Object {
 
 		Gtk.main();
 
-		// save the window size if it changed
-		if (
-				App.window_width  + App.window_height  + App.window_x  + App.window_y  + App.term_width  + App.term_height
-				!=
-				App._window_width + App._window_height + App._window_x + App._window_y + App._term_width + App._term_height
-			) {
-				var x = App.RUN_NOTIFY_SCRIPT;
-				App.save_app_config();
-				App.RUN_NOTIFY_SCRIPT = x;
-			}
-
-		// just in case it was missed earlier
-		App.run_notify_script();
+		// window size basically always changes slightly even if you don't touch anything,
+		// so don't bother detecting changes, just always re-write the config file on exit
+		var x = App.RUN_NOTIFY_SCRIPT; // save whether run_notify was already pending
+		App.save_app_config();         // this sets run_notify blindly but we don't need that just for window size change
+		App.RUN_NOTIFY_SCRIPT = x;     // restore the original pending/not-pending state
+		App.run_notify_script();       // in case it was pending and somehow missed along the way
 
 		return 0;
 	}

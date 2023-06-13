@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 05:22-0400\n"
+"POT-Creation-Date: 2023-06-13 12:20-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -71,7 +71,7 @@ msgstr "구동 중"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:523
 msgid "Running"
 msgstr "구동 중"
 
@@ -104,7 +104,7 @@ msgstr "최신 업데이트"
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
 
-#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:133
 msgid "Kernel"
 msgstr "커널"
 
@@ -148,7 +148,7 @@ msgstr "가 이미 설치되어 있습니다"
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:551
+#: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:549
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "지정한 명령어가 없습니다"
@@ -167,7 +167,7 @@ msgstr "선택한 커널 제거"
 msgid "Not uninstalling the currently running kernel"
 msgstr "현재 실행 중인 커널을 제거하지 않음"
 
-#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:547
+#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:545
 msgid "is locked"
 msgstr ""
 
@@ -211,36 +211,36 @@ msgstr "업데이트를 찾을 수 없습니다"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
 
-#: src/Common/Main.vala:162
+#: src/Common/Main.vala:152
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:248
+#: src/Common/Main.vala:238
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:267
+#: src/Common/Main.vala:257
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:330
+#: src/Common/Main.vala:320
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:340
 msgid "Called from"
 msgstr "에서 호출"
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:340
 msgid "at logon"
 msgstr "로그온 시"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:341
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행됩니다."
 
-#: src/Common/Main.vala:383
+#: src/Common/Main.vala:373
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
@@ -249,7 +249,7 @@ msgstr "알림이 비활성화 되었습니다"
 msgid "File not found: %s"
 msgstr "파일을 찾을 수 없음: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:75
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
 msgid "Syntax"
 msgstr "문법"
 
@@ -293,7 +293,7 @@ msgstr "지정한 커널 삭제"
 msgid "Uninstall specified kernels"
 msgstr "지정한 커널 삭제"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:337
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:335
 msgid "Uninstall all but the highest installed version"
 msgstr "설치된 가장 높은 버전을 제외한 모든 버전을 제거합니다"
 
@@ -305,7 +305,7 @@ msgstr "지정한 커널 다운로드"
 msgid "Delete cached info about available kernels"
 msgstr "사용 가능한 커널에 대한 캐시된 정보 삭제"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:77
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
 msgid "Options"
 msgstr "옵션"
 
@@ -340,7 +340,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "현재 실행중인 커널은 항상 무시됩니다"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:109
+#: src/Gtk/AppGtk.vala:98
 msgid "Unknown option"
 msgstr "알 수 없는 옵션"
 
@@ -384,7 +384,7 @@ msgstr "커널 %s 사용 가능"
 msgid "Show"
 msgstr "보이기"
 
-#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:316
+#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:314
 msgid "Install"
 msgstr "설치"
 
@@ -396,7 +396,7 @@ msgstr "이전에 통보됨"
 msgid "Credits"
 msgstr "제작자"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:176
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:169
 msgid "Close"
 msgstr "닫기"
 
@@ -428,88 +428,88 @@ msgstr "문서작성"
 msgid "Third Party Inclusions"
 msgstr "서드파티 포함"
 
-#: src/Gtk/AppGtk.vala:75
+#: src/Gtk/AppGtk.vala:64
 msgid "options"
 msgstr "옵션"
 
-#: src/Gtk/AppGtk.vala:79
+#: src/Gtk/AppGtk.vala:68
 msgid "Print debug information"
 msgstr "디버그 정보 출력"
 
-#: src/Gtk/AppGtk.vala:80
+#: src/Gtk/AppGtk.vala:69
 msgid "Show all options"
 msgstr "모든 옵션 보기"
 
-#: src/Gtk/MainWindow.vala:159
+#: src/Gtk/MainWindow.vala:157
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:176
+#: src/Gtk/MainWindow.vala:174
 msgid "Status"
 msgstr "상태"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:186
 msgid "Notes"
 msgstr "노트"
 
-#: src/Gtk/MainWindow.vala:321
+#: src/Gtk/MainWindow.vala:319
 msgid "Uninstall"
 msgstr "삭제"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:325
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:336
+#: src/Gtk/MainWindow.vala:334
 msgid "Uninstall Old"
 msgstr "오래된 커널 제거"
 
-#: src/Gtk/MainWindow.vala:342
+#: src/Gtk/MainWindow.vala:340
 msgid "Reload"
 msgstr "새로고침"
 
-#: src/Gtk/MainWindow.vala:343
+#: src/Gtk/MainWindow.vala:341
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/SettingsDialog.vala:36
+#: src/Gtk/MainWindow.vala:346 src/Gtk/SettingsDialog.vala:36
 msgid "Settings"
 msgstr "설정"
 
-#: src/Gtk/MainWindow.vala:353
+#: src/Gtk/MainWindow.vala:351
 msgid "About"
 msgstr "정보"
 
-#: src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:356
 msgid "Exit"
 msgstr "출구"
 
-#: src/Gtk/MainWindow.vala:439
+#: src/Gtk/MainWindow.vala:437
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "우분투 기반 배포판의 커널 업그레이드 도구"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:438
 msgid "Forked"
 msgstr "가랑이진"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:438
 msgid "Original"
 msgstr "원문 언어"
 
-#: src/Gtk/MainWindow.vala:469
+#: src/Gtk/MainWindow.vala:467
 msgid "Updating kernels"
 msgstr "커널 업데이트"
 
-#: src/Gtk/MainWindow.vala:529
+#: src/Gtk/MainWindow.vala:527
 msgid "available"
 msgstr "사용가능"
 
-#: src/Gtk/MainWindow.vala:546
+#: src/Gtk/MainWindow.vala:544
 #, fuzzy
 msgid "is already installed"
 msgstr "가 이미 설치되어 있습니다"
 
-#: src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:546
 msgid "adding"
 msgstr ""
 
@@ -623,16 +623,16 @@ msgstr "명령어"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:150
+#: src/Gtk/TerminalWindow.vala:146
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:158
+#: src/Gtk/TerminalWindow.vala:154
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/TerminalWindow.vala:161
 msgid "Cancel"
 msgstr "취소"
 

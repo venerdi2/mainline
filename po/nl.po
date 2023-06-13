@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 05:22-0400\n"
+"POT-Creation-Date: 2023-06-13 12:20-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -71,7 +71,7 @@ msgstr "In gebruik"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:525
+#: src/Common/LinuxKernel.vala:686 src/Gtk/MainWindow.vala:523
 msgid "Running"
 msgstr "In gebruik"
 
@@ -104,7 +104,7 @@ msgstr "Recentste update"
 msgid "Available Kernels"
 msgstr "Beschikbare kernels"
 
-#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:135
+#: src/Common/LinuxKernel.vala:940 src/Gtk/MainWindow.vala:133
 msgid "Kernel"
 msgstr "Kernel"
 
@@ -148,7 +148,7 @@ msgstr "is al geïnstalleerd."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:551
+#: src/Common/LinuxKernel.vala:1036 src/Gtk/MainWindow.vala:549
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Geen opdracht opgegeven"
@@ -167,7 +167,7 @@ msgstr "Geselecteerde kernels verwijderen"
 msgid "Not uninstalling the currently running kernel"
 msgstr "de momenteel actieve kernel niet verwijderen"
 
-#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:547
+#: src/Common/LinuxKernel.vala:1062 src/Gtk/MainWindow.vala:545
 msgid "is locked"
 msgstr ""
 
@@ -211,38 +211,38 @@ msgstr "Geen updates gevonden"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Wilt u versie %s installeren? (j/n): "
 
-#: src/Common/Main.vala:162
+#: src/Common/Main.vala:152
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:248
+#: src/Common/Main.vala:238
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:267
+#: src/Common/Main.vala:257
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:330
+#: src/Common/Main.vala:320
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:340
 msgid "Called from"
 msgstr "Aangeroepen door"
 
-#: src/Common/Main.vala:350
+#: src/Common/Main.vala:340
 msgid "at logon"
 msgstr "bij het opstarten"
 
-#: src/Common/Main.vala:351
+#: src/Common/Main.vala:341
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Dit bestand wordt overschreven en opnieuw uitgevoerd wanneer instellingen "
 "worden opgeslagen in"
 
-#: src/Common/Main.vala:383
+#: src/Common/Main.vala:373
 msgid "Notifications are disabled"
 msgstr "Meldingen zijn uitgeschakeld"
 
@@ -251,7 +251,7 @@ msgstr "Meldingen zijn uitgeschakeld"
 msgid "File not found: %s"
 msgstr "Bestand niet gevonden: %s"
 
-#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:75
+#: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:64
 msgid "Syntax"
 msgstr "Syntaxis"
 
@@ -295,7 +295,7 @@ msgstr "Opgegeven kernel verwijderen"
 msgid "Uninstall specified kernels"
 msgstr "Opgegeven kernel verwijderen"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:337
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:335
 msgid "Uninstall all but the highest installed version"
 msgstr "Verwijder alle behalve de hoogst geïnstalleerde versie"
 
@@ -307,7 +307,7 @@ msgstr "Opgegeven kernels downloaden"
 msgid "Delete cached info about available kernels"
 msgstr "Informatie over beschikbare kernels in de cache verwijderen"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:77
+#: src/Console/AppConsole.vala:55 src/Gtk/AppGtk.vala:66
 msgid "Options"
 msgstr "Opties"
 
@@ -342,7 +342,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "De momenteel actieve kernel wordt altijd genegeerd"
 
 #: src/Console/AppConsole.vala:139 src/Console/AppConsole.vala:190
-#: src/Gtk/AppGtk.vala:109
+#: src/Gtk/AppGtk.vala:98
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
@@ -386,7 +386,7 @@ msgstr "Kernel %s is beschikbaar"
 msgid "Show"
 msgstr "Tonen"
 
-#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:316
+#: src/Console/AppConsole.vala:249 src/Gtk/MainWindow.vala:314
 msgid "Install"
 msgstr "Installeren"
 
@@ -398,7 +398,7 @@ msgstr "Eerder gemeld"
 msgid "Credits"
 msgstr "Met dank aan"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:176
+#: src/Gtk/AboutWindow.vala:33 src/Gtk/TerminalWindow.vala:169
 msgid "Close"
 msgstr "Sluiten"
 
@@ -430,88 +430,88 @@ msgstr "Documenteerders"
 msgid "Third Party Inclusions"
 msgstr "Externe code"
 
-#: src/Gtk/AppGtk.vala:75
+#: src/Gtk/AppGtk.vala:64
 msgid "options"
 msgstr "opties"
 
-#: src/Gtk/AppGtk.vala:79
+#: src/Gtk/AppGtk.vala:68
 msgid "Print debug information"
 msgstr "Foutopsporingsinformatie tonen"
 
-#: src/Gtk/AppGtk.vala:80
+#: src/Gtk/AppGtk.vala:69
 msgid "Show all options"
 msgstr "Alle opties tonen"
 
-#: src/Gtk/MainWindow.vala:159
+#: src/Gtk/MainWindow.vala:157
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:176
+#: src/Gtk/MainWindow.vala:174
 msgid "Status"
 msgstr "Status"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:186
 msgid "Notes"
 msgstr "Notities"
 
-#: src/Gtk/MainWindow.vala:321
+#: src/Gtk/MainWindow.vala:319
 msgid "Uninstall"
 msgstr "Deïnstalleren"
 
-#: src/Gtk/MainWindow.vala:327
+#: src/Gtk/MainWindow.vala:325
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:336
+#: src/Gtk/MainWindow.vala:334
 msgid "Uninstall Old"
 msgstr "Verwijder Oude"
 
-#: src/Gtk/MainWindow.vala:342
+#: src/Gtk/MainWindow.vala:340
 msgid "Reload"
 msgstr "Herladen"
 
-#: src/Gtk/MainWindow.vala:343
+#: src/Gtk/MainWindow.vala:341
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:348 src/Gtk/SettingsDialog.vala:36
+#: src/Gtk/MainWindow.vala:346 src/Gtk/SettingsDialog.vala:36
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Gtk/MainWindow.vala:353
+#: src/Gtk/MainWindow.vala:351
 msgid "About"
 msgstr "Over"
 
-#: src/Gtk/MainWindow.vala:358
+#: src/Gtk/MainWindow.vala:356
 msgid "Exit"
 msgstr "Afsluiten"
 
-#: src/Gtk/MainWindow.vala:439
+#: src/Gtk/MainWindow.vala:437
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Een kernelupgradehulpmiddel voor op Ubuntu gebaseerde distributies"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:438
 msgid "Forked"
 msgstr "Geforkt"
 
-#: src/Gtk/MainWindow.vala:440
+#: src/Gtk/MainWindow.vala:438
 msgid "Original"
 msgstr "Origineel"
 
-#: src/Gtk/MainWindow.vala:469
+#: src/Gtk/MainWindow.vala:467
 msgid "Updating kernels"
 msgstr "Kernels bijwerken"
 
-#: src/Gtk/MainWindow.vala:529
+#: src/Gtk/MainWindow.vala:527
 msgid "available"
 msgstr "beschikbaar"
 
-#: src/Gtk/MainWindow.vala:546
+#: src/Gtk/MainWindow.vala:544
 #, fuzzy
 msgid "is already installed"
 msgstr "is al geïnstalleerd."
 
-#: src/Gtk/MainWindow.vala:548
+#: src/Gtk/MainWindow.vala:546
 msgid "adding"
 msgstr ""
 
@@ -625,16 +625,16 @@ msgstr "Opdrachten"
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:150
+#: src/Gtk/TerminalWindow.vala:146
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:158
+#: src/Gtk/TerminalWindow.vala:154
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/TerminalWindow.vala:161
 msgid "Cancel"
 msgstr "Annuleren"
 

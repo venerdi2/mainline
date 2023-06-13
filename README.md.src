@@ -124,7 +124,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * General debugging  
   The `-v` or `-v #` option, or the environment variable `VERBOSE=#`, enables increasing levels of verbosity.  
   Example: `$ BRANDING_SHORTNAME-gtk -v 3` or `$ VERBOSE=3 mainline-gtk`  
-  The -v option may also be used alone or repeated. The default is the same as `-v 1`.  
+  The -v option may also be used alone or repeated. The default with no `-v` is the same as `-v 1`.  
   Each additional `-v` is like adding 1. ie: `-v -v -v` is like `-v 4` or `VERBOSE=4`  
   0 = silence all output  
   1 = normal output (default)  

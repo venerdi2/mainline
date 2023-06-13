@@ -103,8 +103,6 @@ public class MainWindow : Window {
 
 		this.resize(App.window_width,App.window_height);
 		if (App.window_x >=0 && App.window_y >= 0) this.move(App.window_x,App.window_y);
-		App._window_x = App.window_x;
-		App._window_y = App.window_y;
 	}
 
 	private void init_treeview() {
