@@ -47,10 +47,10 @@ public class AppGtk : GLib.Object {
 
 		// window size basically always changes slightly even if you don't touch anything,
 		// so don't bother detecting changes, just always re-write the config file on exit
-		var x = App.RUN_NOTIFY_SCRIPT; // save whether run_notify was already pending
-		App.save_app_config();         // this sets run_notify blindly but we don't need that just for window size change
-		App.RUN_NOTIFY_SCRIPT = x;     // restore the original pending/not-pending state
-		App.run_notify_script();       // in case it was pending and somehow missed along the way
+		var x = App.RUN_NOTIFY_SCRIPT;  // save whether run_notify was already pending
+		App.save_app_config();          // this sets run_notify blindly but we don't need that just for window size change
+		App.RUN_NOTIFY_SCRIPT = x;      // restore the original pending/not-pending state
+		App.run_notify_script_if_due(); // in case it was pending and somehow missed along the way
 
 		return 0;
 	}

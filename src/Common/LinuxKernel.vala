@@ -222,7 +222,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (k.load_cached_page()) continue;
 			}
 
-			if (k.is_invalid && !App.show_invalid) continue;
+			if (k.is_invalid && App.hide_invalid) continue;
 
 			// don't try to filter here yet
 			// we don't have is_installed yet until after check_installed()
@@ -276,8 +276,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// This is here because it had to be delayed from whenever settings
 		// changed until now, so that the notify script instance of ourself
-		// doesn't do mk_kernel_list() at the same time while we still are.
-		App.run_notify_script();
+		// doesn't do it's own mk_kernel_list() at the same time while we still are.
+		App.run_notify_script_if_due();
 
 		timer_elapsed(timer, true);
 		if (notifier != null) notifier(timer, ref count, true);
@@ -908,7 +908,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		int nl = 16; // name length
 		foreach(var k in kernel_list) {
-			if (k.is_invalid && !App.show_invalid) continue;
+			if (k.is_invalid && App.hide_invalid) continue;
 
 			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {

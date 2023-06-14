@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 16:30-0400\n"
+"POT-Creation-Date: 2023-06-14 18:57-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -211,37 +211,37 @@ msgstr "Nema pronađenih nadopuna"
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Instaliraj kernel inačice %s ? (d/n): "
 
-#: src/Common/Main.vala:154
+#: src/Common/Main.vala:155
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:241
+#: src/Common/Main.vala:242
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:260
+#: src/Common/Main.vala:261
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:325
+#: src/Common/Main.vala:326
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:345
+#: src/Common/Main.vala:346
 msgid "Called from"
 msgstr "Pozvano od"
 
-#: src/Common/Main.vala:345
+#: src/Common/Main.vala:346
 msgid "at logon"
 msgstr "indításkor"
 
-#: src/Common/Main.vala:346
+#: src/Common/Main.vala:347
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ova se datoteka prepisuje i ponovno izvršava kad god se postavke spremaju u"
 
-#: src/Common/Main.vala:378
+#: src/Common/Main.vala:379
 msgid "Notifications are disabled"
 msgstr "Obavijesti su onemogućene"
 
@@ -381,7 +381,7 @@ msgstr "Obavijesti kada je glavno izdanje dostupno"
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:248 src/Gtk/SettingsDialog.vala:137
+#: src/Console/AppConsole.vala:248 src/Gtk/SettingsDialog.vala:122
 msgid "Show"
 msgstr "Prikaži"
 
@@ -473,7 +473,7 @@ msgstr "Ponovno učitati"
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:347 src/Gtk/SettingsDialog.vala:36
+#: src/Gtk/MainWindow.vala:347 src/Gtk/SettingsDialog.vala:37
 msgid "Settings"
 msgstr "Postavke"
 
@@ -514,122 +514,119 @@ msgstr "je već instaliran."
 msgid "adding"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:45
+#: src/Gtk/SettingsDialog.vala:44
 msgid "Notification"
 msgstr "Obavijesti"
 
-#: src/Gtk/SettingsDialog.vala:52
+#: src/Gtk/SettingsDialog.vala:49
 msgid "Notify if a major release is available"
 msgstr "Obavijesti kada je glavno izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:59
+#: src/Gtk/SettingsDialog.vala:55
 msgid "Notify if a point release is available"
 msgstr "Obavijesti kada je pojedino izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:67
+#: src/Gtk/SettingsDialog.vala:62
 msgid "Seconds interval enabled for debugging"
 msgstr "Interval sekundi omogućen za ispravljanje pogrešaka"
 
-#: src/Gtk/SettingsDialog.vala:87
+#: src/Gtk/SettingsDialog.vala:81
 msgid "Check every"
 msgstr "Provjeri svaka"
 
-#: src/Gtk/SettingsDialog.vala:100
+#: src/Gtk/SettingsDialog.vala:90
 msgid "Hours"
 msgstr "Sati"
 
-#: src/Gtk/SettingsDialog.vala:101
+#: src/Gtk/SettingsDialog.vala:91
 msgid "Days"
 msgstr "Dani"
 
-#: src/Gtk/SettingsDialog.vala:102
+#: src/Gtk/SettingsDialog.vala:92
 msgid "Weeks"
 msgstr "Tjedna"
 
-#: src/Gtk/SettingsDialog.vala:103
+#: src/Gtk/SettingsDialog.vala:93
 msgid "Seconds"
 msgstr "Sekunde"
 
-#: src/Gtk/SettingsDialog.vala:111
+#: src/Gtk/SettingsDialog.vala:101
 msgid "Filters"
 msgstr "Filteri"
 
-#: src/Gtk/SettingsDialog.vala:119
+#: src/Gtk/SettingsDialog.vala:106
 msgid "Hide unstable and RC releases"
 msgstr "Sakrij nestabilna i RC izdanja"
 
-#: src/Gtk/SettingsDialog.vala:127
-msgid "Show invalid/failed kernel builds"
+#: src/Gtk/SettingsDialog.vala:113
+msgid "Hide failed or incomplete builds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:129
+#: src/Gtk/SettingsDialog.vala:114
 msgid ""
-"Include the failed builds in the list, even though they can not be installed."
+"If a kernel version exists on the mainline-ppa site, but is an incomplete or "
+"failed build for your arch ("
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:148
+#: src/Gtk/SettingsDialog.vala:130
 msgid "previous major versions  ( -1 = all )"
 msgstr "prethodne glavne verzije  ( -1 = sve )"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:136
 msgid "Network"
 msgstr "Mreža"
 
-#: src/Gtk/SettingsDialog.vala:165
+#: src/Gtk/SettingsDialog.vala:144
 msgid "Internet connection timeout in"
 msgstr "Prekoračenje vremena internetske veze u"
 
-#: src/Gtk/SettingsDialog.vala:176
+#: src/Gtk/SettingsDialog.vala:152
 msgid "seconds"
 msgstr "sekunde"
 
-#: src/Gtk/SettingsDialog.vala:185
+#: src/Gtk/SettingsDialog.vala:161
 msgid "Max concurrent downloads"
 msgstr "Najviše istodobnih preuzimanja"
 
-#: src/Gtk/SettingsDialog.vala:199
+#: src/Gtk/SettingsDialog.vala:172
 #, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Provjera kontrolnih zbrojeva pomoću CHECKSUMS datoteka"
 
-#: src/Gtk/SettingsDialog.vala:202
+#: src/Gtk/SettingsDialog.vala:174
 msgid ""
-"Before downloading .deb files, the CHECKSUMS file is downloaded and the "
-"sha-256 hashes are read from it and given to aria2c to verify the downloads."
+"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"downloads."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:207
+#: src/Gtk/SettingsDialog.vala:179
 #, fuzzy
 msgid "Keep Downloads"
 msgstr "Učitavanje"
 
-#: src/Gtk/SettingsDialog.vala:209
+#: src/Gtk/SettingsDialog.vala:180
 msgid ""
-"Keep downloaded .deb files after install.\n"
-"Re-use them for subsequent uninstall/reinstall.\n"
+"Retain downloaded .deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again.\n"
 "\n"
-"This allows to uninstall & reinstall kernels without having to download them "
-"multiple times.\n"
-"\n"
-"Kernels that are older than the \"Show N previous major versions\" setting "
-"above are still deleted as normal, so the cache will still not grow "
-"forever.\n"
-"\n"
-"Kernels that are out of date based on the datestamps from the main index."
-"html are also still deleted along with the associated per-kernel index.html "
-"as normal, so even cached kernels are still kept current."
+"They are still deleted once they become older than the \"Show previous major "
+"versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:215
+#: src/Gtk/SettingsDialog.vala:186
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/Gtk/SettingsDialog.vala:248
+#: src/Gtk/SettingsDialog.vala:215
 #, fuzzy
 msgid "Auth Command"
 msgstr "Naredbe"
 
-#: src/Gtk/SettingsDialog.vala:277
+#: src/Gtk/SettingsDialog.vala:235
+msgid "Command used to run dpkg with root permissions"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:239
 msgid "Done"
 msgstr ""
 
