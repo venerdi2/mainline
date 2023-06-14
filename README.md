@@ -156,8 +156,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Move the notification/dbus code from the current shell script into the app and make an "applet" mode  
 * Combine the gtk and cli apps into one, or, make the gtk app into a pure front-end for the cli app, either way  
 * Replace the commandline parser  
-* Toggle display of invalid kernels so you could at least see they aren't simply missing, and use the "PPA" button too  
-* UI quick toggle for show/hide unstable/-rc kernels instead of going to settings  
+* Toggles to show/hide the rc or invalid kernels in the main ui instead of going to settings  
 * Right-click menu for more functions for a given kernel, such as reloading the cache just for a single kernel to check for new build status etc, without adding 18 buttons all over the ui.  
 * Support all installable kernel variants, not just "-generic"  
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
