@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 22:25-0400\n"
-"PO-Revision-Date: 2023-06-13 22:50+0200\n"
+"POT-Creation-Date: 2023-06-14 22:29-0400\n"
+"PO-Revision-Date: 2023-06-15 16:35+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -541,7 +541,7 @@ msgstr "Ukryj wydania niestabilne i RC"
 
 #: src/Gtk/SettingsDialog.vala:113
 msgid "Hide failed or incomplete builds"
-msgstr ""
+msgstr "Ukryj nieudane lub niekompletne kompilacje"
 
 #: src/Gtk/SettingsDialog.vala:114
 #, c-format
@@ -549,6 +549,9 @@ msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
+"Jeśli wersja jądra istnieje w witrynie mainline-ppa, ale jest to "
+"niekompletna lub nieudana kompilacja dla Twojej architektury (%s), nie "
+"pokazuj jej na liście."
 
 #: src/Gtk/SettingsDialog.vala:130
 msgid "previous major versions  ( -1 = all )"
@@ -579,6 +582,7 @@ msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
+"Użyj skrótów sha-256 z pliku CHECKSUMS, aby zweryfikować pobrane pliki .deb."
 
 #: src/Gtk/SettingsDialog.vala:179
 msgid "Keep Downloads"
@@ -592,6 +596,11 @@ msgid ""
 "They are still deleted once they become older than the \"Show previous major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"Zachowaj pobrane pliki .deb po instalacji i użyj ich ponownie do "
+"odinstalowania/ponownej instalacji zamiast ponownego pobierania.\n"
+"\n"
+"Są nadal usuwane, gdy staną się starsze niż ustawienie „Pokaż poprzednie "
+"główne wersje” lub jeśli zostały zaktualizowane w witrynie mainline-ppa."
 
 #: src/Gtk/SettingsDialog.vala:186
 msgid "Proxy"
@@ -603,7 +612,7 @@ msgstr "Polecenie autoryzacji"
 
 #: src/Gtk/SettingsDialog.vala:235
 msgid "Command used to run dpkg with root permissions"
-msgstr ""
+msgstr "Polecenie używane do uruchamiania dpkg z uprawnieniami roota"
 
 #: src/Gtk/SettingsDialog.vala:239
 msgid "Done"
