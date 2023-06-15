@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-15 17:15-0400\n"
+"POT-Creation-Date: 2023-06-15 18:27-0400\n"
 "PO-Revision-Date: 2023-06-05 23:29+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -71,7 +71,7 @@ msgstr "Используется"
 msgid "is locked."
 msgstr "заблокирован."
 
-#: src/Common/LinuxKernel.vala:706 src/Gtk/MainWindow.vala:511
+#: src/Common/LinuxKernel.vala:706 src/Gtk/MainWindow.vala:510
 msgid "Running"
 msgstr "Используется"
 
@@ -104,7 +104,7 @@ msgstr "требуется обновление"
 msgid "Available Kernels"
 msgstr "Доступные ядра"
 
-#: src/Common/LinuxKernel.vala:960 src/Gtk/MainWindow.vala:140
+#: src/Common/LinuxKernel.vala:960 src/Gtk/MainWindow.vala:139
 msgid "Kernel"
 msgstr "Ядро"
 
@@ -144,7 +144,7 @@ msgstr "уже установлен."
 msgid "download failed."
 msgstr "загрузка не удалась."
 
-#: src/Common/LinuxKernel.vala:1056 src/Gtk/MainWindow.vala:537
+#: src/Common/LinuxKernel.vala:1056 src/Gtk/MainWindow.vala:536
 msgid "Install: no installable kernels specified"
 msgstr "Команда не указана"
 
@@ -161,7 +161,7 @@ msgstr "Удаление выбранных ядер"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не удалять запущенное в данный момент ядро"
 
-#: src/Common/LinuxKernel.vala:1082 src/Gtk/MainWindow.vala:533
+#: src/Common/LinuxKernel.vala:1082 src/Gtk/MainWindow.vala:532
 msgid "is locked"
 msgstr "заблокирован"
 
@@ -283,7 +283,7 @@ msgstr "Установить указанные ядра"
 msgid "Uninstall specified kernels"
 msgstr "Удалить указанные ядра"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Удаление всех установленных версий, кроме самой высокой"
 
@@ -378,7 +378,7 @@ msgstr "Доступно ядро %s"
 msgid "Show"
 msgstr "Показать"
 
-#: src/Console/AppConsole.vala:251 src/Gtk/MainWindow.vala:320
+#: src/Console/AppConsole.vala:251 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Установить"
 
@@ -434,75 +434,75 @@ msgstr "Распечатать отладочную информацию"
 msgid "Show all options"
 msgstr "Показать все параметры"
 
-#: src/Gtk/MainWindow.vala:163
+#: src/Gtk/MainWindow.vala:162
 msgid "Lock"
 msgstr "Блокировка"
 
-#: src/Gtk/MainWindow.vala:180
+#: src/Gtk/MainWindow.vala:179
 msgid "Status"
 msgstr "Состояние"
 
-#: src/Gtk/MainWindow.vala:191
+#: src/Gtk/MainWindow.vala:190
 msgid "Notes"
 msgstr "Примечания"
 
-#: src/Gtk/MainWindow.vala:325
+#: src/Gtk/MainWindow.vala:324
 msgid "Uninstall"
 msgstr "Удалить"
 
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:330
 msgid "Changelog, build status, etc"
 msgstr "Список изменений, статус сборки и т.д"
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
 msgstr "Удалить старые"
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:345
 msgid "Reload"
 msgstr "Перезагрузить"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:346
 msgid "Delete and reload all cached kernel info"
 msgstr "Удалить и перезагрузить всю кэшированную информацию о ядре"
 
-#: src/Gtk/MainWindow.vala:352 src/Gtk/SettingsDialog.vala:37
+#: src/Gtk/MainWindow.vala:351 src/Gtk/SettingsDialog.vala:37
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:356
 msgid "About"
 msgstr "О программе"
 
-#: src/Gtk/MainWindow.vala:362
+#: src/Gtk/MainWindow.vala:361
 msgid "Exit"
 msgstr "Выход"
 
-#: src/Gtk/MainWindow.vala:445
+#: src/Gtk/MainWindow.vala:444
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Программа обновления ядра для дистрибутивов на базе Ubuntu"
 
-#: src/Gtk/MainWindow.vala:446
+#: src/Gtk/MainWindow.vala:445
 msgid "Forked"
 msgstr "Форк"
 
-#: src/Gtk/MainWindow.vala:446
+#: src/Gtk/MainWindow.vala:445
 msgid "Original"
 msgstr "Оригинал"
 
-#: src/Gtk/MainWindow.vala:473
+#: src/Gtk/MainWindow.vala:472
 msgid "Updating kernels"
 msgstr "Обновление ядер"
 
-#: src/Gtk/MainWindow.vala:515
+#: src/Gtk/MainWindow.vala:514
 msgid "available"
 msgstr "доступно"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:531
 msgid "is already installed"
 msgstr "уже установлен"
 
-#: src/Gtk/MainWindow.vala:534
+#: src/Gtk/MainWindow.vala:533
 msgid "adding"
 msgstr "добавление"
 

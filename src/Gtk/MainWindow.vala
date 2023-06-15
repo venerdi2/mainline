@@ -129,7 +129,6 @@ public class MainWindow : Window {
 
 		var scrollwin = new ScrolledWindow(((Scrollable) tv).get_hadjustment(), ((Scrollable) tv).get_vadjustment());
 		scrollwin.set_shadow_type(ShadowType.ETCHED_IN);
-		scrollwin.set_propagate_natural_width(true);
 		scrollwin.add (tv);
 		hbox_list.add(scrollwin);
 

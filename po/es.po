@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-15 17:15-0400\n"
+"POT-Creation-Date: 2023-06-15 18:27-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -71,7 +71,7 @@ msgstr "En ejecución"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:706 src/Gtk/MainWindow.vala:511
+#: src/Common/LinuxKernel.vala:706 src/Gtk/MainWindow.vala:510
 msgid "Running"
 msgstr "En ejecución"
 
@@ -104,7 +104,7 @@ msgstr "Última actualización"
 msgid "Available Kernels"
 msgstr "Núcleos disponibles"
 
-#: src/Common/LinuxKernel.vala:960 src/Gtk/MainWindow.vala:140
+#: src/Common/LinuxKernel.vala:960 src/Gtk/MainWindow.vala:139
 msgid "Kernel"
 msgstr "Núcleo"
 
@@ -148,7 +148,7 @@ msgstr "ya está instalado."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1056 src/Gtk/MainWindow.vala:537
+#: src/Common/LinuxKernel.vala:1056 src/Gtk/MainWindow.vala:536
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Coomand no especificado"
@@ -167,7 +167,7 @@ msgstr "Desinstalación de kernels seleccionados"
 msgid "Not uninstalling the currently running kernel"
 msgstr "No desinstalará el kernel que se está ejecutando actualmente"
 
-#: src/Common/LinuxKernel.vala:1082 src/Gtk/MainWindow.vala:533
+#: src/Common/LinuxKernel.vala:1082 src/Gtk/MainWindow.vala:532
 msgid "is locked"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgstr "Desinstalar el kernel especificado"
 msgid "Uninstall specified kernels"
 msgstr "Desinstalar el kernel especificado"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:51 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Desinstale todas las versiones instaladas excepto la más alta"
 
@@ -394,7 +394,7 @@ msgstr "Kernel %s Disponible"
 msgid "Show"
 msgstr "Mostrar"
 
-#: src/Console/AppConsole.vala:251 src/Gtk/MainWindow.vala:320
+#: src/Console/AppConsole.vala:251 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Instalar"
 
@@ -450,77 +450,77 @@ msgstr "Mostrar información de depuración"
 msgid "Show all options"
 msgstr "Mostrar todas las opciones"
 
-#: src/Gtk/MainWindow.vala:163
+#: src/Gtk/MainWindow.vala:162
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:180
+#: src/Gtk/MainWindow.vala:179
 msgid "Status"
 msgstr "Estado"
 
-#: src/Gtk/MainWindow.vala:191
+#: src/Gtk/MainWindow.vala:190
 msgid "Notes"
 msgstr "Notas"
 
-#: src/Gtk/MainWindow.vala:325
+#: src/Gtk/MainWindow.vala:324
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:330
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
 msgstr "Desinstalar Antiguo"
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:345
 msgid "Reload"
 msgstr "Recargar"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:346
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:352 src/Gtk/SettingsDialog.vala:37
+#: src/Gtk/MainWindow.vala:351 src/Gtk/SettingsDialog.vala:37
 msgid "Settings"
 msgstr "Configuración"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:356
 msgid "About"
 msgstr "Acerca de"
 
-#: src/Gtk/MainWindow.vala:362
+#: src/Gtk/MainWindow.vala:361
 msgid "Exit"
 msgstr "Salida"
 
-#: src/Gtk/MainWindow.vala:445
+#: src/Gtk/MainWindow.vala:444
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 "Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
 
-#: src/Gtk/MainWindow.vala:446
+#: src/Gtk/MainWindow.vala:445
 msgid "Forked"
 msgstr "Bifurcada"
 
-#: src/Gtk/MainWindow.vala:446
+#: src/Gtk/MainWindow.vala:445
 msgid "Original"
 msgstr "Original"
 
-#: src/Gtk/MainWindow.vala:473
+#: src/Gtk/MainWindow.vala:472
 msgid "Updating kernels"
 msgstr "Actualización de kernels"
 
-#: src/Gtk/MainWindow.vala:515
+#: src/Gtk/MainWindow.vala:514
 msgid "available"
 msgstr "disponibles"
 
-#: src/Gtk/MainWindow.vala:532
+#: src/Gtk/MainWindow.vala:531
 #, fuzzy
 msgid "is already installed"
 msgstr "ya está instalado."
 
-#: src/Gtk/MainWindow.vala:534
+#: src/Gtk/MainWindow.vala:533
 msgid "adding"
 msgstr ""
 
