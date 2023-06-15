@@ -62,7 +62,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Regex rex_image_extra = null;
 	public static Regex rex_modules = null;
 
-	// global progress  ------------
+	// constructor
+	public LinuxKernel(string s="") {
+		vprint("LinuxKernel("+s+")",4);
+		split_version_string(s);
+	}
 
 	// class initialize
 	public static void initialize() {
@@ -163,14 +167,32 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void delete_cache() {
 		vprint("delete_cache()",2);
 		kernel_list.clear();
-		delete_r(App.CACHE_DIR);
+		rm(App.CACHE_DIR);
 	}
 
-	// constructor
-	public LinuxKernel(string s="") {
-		vprint("LinuxKernel("+s+")",4);
-		split_version_string(s);
+	// Doesn't really sanitize much, just escapes any %* except
+	// a single "%s" to reduce the chance of ugly crash from printf.
+	//
+	// This is still user-supplied data fed to printf and then to a shell.
+	//
+	// Find the first "%s", ignore "%%", replace all other "%" with "%%".
+	//
+	// TODO: Working, but maybe there is a less confusing more state-machine way?
+	static string sanitize_auth_cmd(string cmd) {
+		string s = cmd.strip();
+		int p = 0;
+		while (p>=0 && p<s.length) {
+			p = s.index_of("%s",p);
+			if (p<1) break;
+			if (s.substring(p-1,1)=="%") p++;
+			else break;
+		}
+		string a = s.substring(0,p); if (a.index_of("%")>=0) a = a.replace("%","%%");
+		string b = ""; if (p<0 || p>s.length-2) a = a.strip()+" ";
+		else { b = s.substring(p+2); if (b.index_of("%")>=0) b = b.replace("%","%%"); }
+		return a + "%s" + b;
 	}
+
 
 	// static
 
@@ -184,7 +206,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		} catch (Error e) { vprint(e.message,1,stderr); }
 	}
 
-	private static bool mk_kernel_list_worker(owned Notifier? notifier) {
+	static bool mk_kernel_list_worker(owned Notifier? notifier) {
 		vprint("mk_kernel_list_worker()",2);
 
 		kernel_list.clear();
@@ -286,7 +308,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// download the main index.html listing all mainline kernels
-	private static bool download_index() {
+	static bool download_index() {
 		vprint("download_index()",2);
 
 		string cif = main_index_file();
@@ -321,7 +343,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// read the main index.html listing all kernels
-	private static void load_index() {
+	static void load_index() {
 		vprint("load_index()",2);
 		if (THRESHOLD_MAJOR<0) find_thresholds(true);
 		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
@@ -497,13 +519,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	}
 
-	public static void trim_cache() {
+	static void trim_cache() {
 		foreach (var k in kall) {
 			if (k.is_installed) continue;
 			// don't bother removing any cached rc above the major threshold
 			// because they just end up having to get downloaded anyway on every refresh
 			//if (k.version_major<THRESHOLD_MAJOR || (k.is_unstable && App.hide_unstable)) {
-			if (k.version_major<THRESHOLD_MAJOR && File.parse_name(k.cache_subdir).query_exists()) delete_r(k.cache_subdir);
+			if (k.version_major<THRESHOLD_MAJOR && File.parse_name(k.cache_subdir).query_exists()) rm(k.cache_subdir);
 		}
 	}
 
@@ -529,7 +551,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// use that here and along the way delete the unwanted items from kernel_list[]
 	// then mk_kernel_list() can just process that kernel_list[]
 	// 
-	public static void find_thresholds(bool up=false) {
+	static void find_thresholds(bool up=false) {
 		vprint("find_thresholds()",2);
 
 		if (up || Package.dpkg_list.size<1) Package.mk_dpkg_list();
@@ -570,7 +592,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	//    6.3.6-060306.202306050836     mainline package
 	//    4.6.0-040600rc1.201603261930  sigh, rc without a delimiter...
 
-	public void split_version_string(string s="") {
+	void split_version_string(string s="") {
 		//vprint("\n-new-: "+s);
 		version_major = 0;
 		version_minor = 0;
@@ -652,7 +674,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return 0;                                       // left & right identical the whole way
 	}
 
-	public void set_pkg_list() {
+	void set_pkg_list() {
 		vprint("set_pkg_list("+kver+")",2);
 		foreach(var p in Package.dpkg_list) {
 			if (p.version == kver) {
@@ -690,7 +712,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	private void set_ppa_dirs_ver() {
+	void set_ppa_dirs_ver() {
 		if (ppa_dirs_ver>0) return;
 		ppa_dirs_ver = 1;
 		var k = kernel_last_stable_ppa_dirs_v1;                // Which threshold,
@@ -778,20 +800,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		string list = "";
 		foreach (string deb in deb_url_list.keys) list += "\n"+deb;
 
-		if (list.length > 0) txt += "<b>"+_("Packages Available")+"</b>\n"+list;
+		if (list.length > 0) txt += "<b>"+_("Packages Available")+"</b>"+list;
 
 		list = "";
 		foreach (string deb in pkg_list.keys) list += "\n"+deb;
 
 		if (txt.length > 0 && list.length > 0) txt += "\n\n";
-		if (list.length > 0) txt += "<b>"+_("Packages Installed")+"</b>\n"+list;
+		if (list.length > 0) txt += "<b>"+_("Packages Installed")+"</b>"+list;
 
 		return txt;
 	}
 
 	// return false if we don't have the cached page or if it's out of date
 	// return true if we have a valid cached page, whether the kernel itself is a valid build or not
-	private bool load_cached_page() {
+	bool load_cached_page() {
 		vprint("load_cached_page("+cached_page+")",2);
 
 		string txt = "";
@@ -837,7 +859,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// delete the cache, return false. it will get downloaded in the next stage.
 		if (ppa_datetime>d_max) {
 			vprint(version_main+": ppa:"+ppa_datetime.to_string()+" > cache:"+d_max.to_string()+" : "+_("needs update"));
-			delete_r(cache_subdir);
+			rm(cache_subdir);
 			return false;
 		}
 
@@ -1040,7 +1062,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --install "+cmd);
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
-		if (!App.keep_downloads) foreach (string f in flist) delete_r(f);
+		if (!App.keep_downloads) foreach (string f in flist) rm(f);
 		if (r!=0) vprint(_("done"));
 		return r;
 	}

@@ -23,29 +23,6 @@ namespace l.misc {
 		catch (Error e) { warning("Unable to launch %s",s); }
 	}
 
-	// Doesn't really sanitize much, just escapes any %* except
-	// a single "%s" to reduce the chance of ugly crash from printf.
-	//
-	// This is still user-supplied data fed to printf and then to a shell.
-	//
-	// Find the first "%s", ignore "%%", replace all other "%" with "%%".
-	//
-	// TODO: Working, but maybe there is a less confusing more state-machine way?
-	public string sanitize_auth_cmd(string cmd) {
-		string s = cmd.strip();
-		int p = 0;
-		while (p>=0 && p<s.length) {
-			p = s.index_of("%s",p);
-			if (p<1) break;
-			if (s.substring(p-1,1)=="%") p++;
-			else break;
-		}
-		string a = s.substring(0,p); if (a.index_of("%")>=0) a = a.replace("%","%%");
-		string b = ""; if (p<0 || p>s.length-2) a = a.strip()+" ";
-		else { b = s.substring(p+2); if (b.index_of("%")>=0) b = b.replace("%","%%"); }
-		return a + "%s" + b;
-	}
-
 	private static void pbar(int64 part=0,int64 whole=100,string units="") {
 		if (Main.VERBOSE<1) return;
 		int l = 79; // bar length
@@ -151,9 +128,13 @@ namespace l.misc {
 		Thread.usleep((ulong) milliseconds * 1000);
 	}
 
-	public bool delete_r(string dir_path) {
-		vprint("delete_r("+dir_path+")",3);
-		File p = File.new_for_path(dir_path);
+	// delete file or directory
+	// doesn't care if it's a file or directory
+	// doesn't care if directory is empty or not
+	// if directory, deletes recursive
+	public bool rm(string path) {
+		vprint("rm("+path+")",3);
+		File p = File.new_for_path(path);
 		if (!p.query_exists()) return true;
 		if (p.query_file_type(FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.DIRECTORY) try {
 			FileEnumerator en = p.enumerate_children ("standard::*",FileQueryInfoFlags.NOFOLLOW_SYMLINKS,null);
@@ -161,7 +142,7 @@ namespace l.misc {
 			while (((i = en.next_file(null)) != null)) {
 				n = p.resolve_relative_path(i.get_name());
 				s = n.get_path();
-				if (i.get_file_type() == FileType.DIRECTORY) delete_r(s);
+				if (i.get_file_type() == FileType.DIRECTORY) rm(s);
 				else n.delete();
 			}
 		} catch (Error e) { print ("Error: %s\n", e.message); }

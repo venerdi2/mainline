@@ -61,6 +61,6 @@ public class Package : GLib.Object {
 		catch (Error e) {
 			vprint(e.message,1,stderr);
 		}
-		delete_r(t_dir);
+		rm(t_dir);
 	}
 }

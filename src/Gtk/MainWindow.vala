@@ -164,7 +164,7 @@ public class MainWindow : Window {
 			tm.get_iter_from_string(out iter, path);
 			LinuxKernel k;
 			tm.get(iter, TM.KERN, out k, -1);
-			if (toggle.active) delete_r(k.locked_file);
+			if (toggle.active) rm(k.locked_file);
 			else file_write(k.locked_file, "");
 			tm.set(iter, TM.LOCKED, k.is_locked);
 		});
@@ -202,7 +202,7 @@ public class MainWindow : Window {
 			var t_new = data.strip();
 			if (t_old != t_new) {
 				k.notes = t_new;
-				if (t_new=="") delete_r(k.notes_file);
+				if (t_new=="") rm(k.notes_file);
 				else file_write(k.notes_file, t_new);
 				tm.set(i, TM.NOTES, t_new, -1);
 			}

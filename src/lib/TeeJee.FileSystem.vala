@@ -48,7 +48,7 @@ namespace TeeJee.FileSystem {
 		string txt = "";
 		size_t size;
 
-		try { GLib.FileUtils.get_contents(file_path, out txt, out size); }
+		try { FileUtils.get_contents(file_path, out txt, out size); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 
 		return txt;

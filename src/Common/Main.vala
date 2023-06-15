@@ -393,7 +393,7 @@ public class Main : GLib.Object {
 				;
 			file_write(STARTUP_DESKTOP_FILE,s);
 		} else {
-			delete_r(STARTUP_DESKTOP_FILE);
+			rm(STARTUP_DESKTOP_FILE);
 		}
 	}
 
