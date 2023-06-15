@@ -111,7 +111,7 @@ public class SettingsDialog : Gtk.Dialog {
 
 		// hide invalid
 		var chk_hide_invalid = new Gtk.CheckButton.with_label(_("Hide failed or incomplete builds"));
-		chk_hide_invalid.set_tooltip_text(_("If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch ("+LinuxKernel.NATIVE_ARCH+"), then don't show it in the list."));
+		chk_hide_invalid.set_tooltip_text(_("If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list.").printf(LinuxKernel.NATIVE_ARCH));
 		chk_hide_invalid.active = App.hide_invalid;
 		chk_hide_invalid.toggled.connect(()=>{ App.hide_invalid = chk_hide_invalid.active; });
 		vbox_main.add(chk_hide_invalid);

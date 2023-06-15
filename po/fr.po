@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 18:57-0400\n"
+"POT-Creation-Date: 2023-06-14 21:41-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -566,9 +566,10 @@ msgid "Hide failed or incomplete builds"
 msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:114
+#, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
-"failed build for your arch ("
+"failed build for your arch (%s), then don't show it in the list."
 msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:130
