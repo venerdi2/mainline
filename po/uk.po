@@ -594,11 +594,11 @@ msgid ""
 "They are still deleted once they become older than the \"Show previous major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-«Зберігайте завантажені файли .deb після встановлення та повторно використовуйте їх для видалення/»
+"Зберігайте завантажені файли .deb після встановлення та повторно використовуйте їх для видалення/"
 "встановіть повторно замість завантаження знову.\n"
 "\n"
 "Вони все одно видаляються, коли стають старшими за \"Показати попередній основний "
-параметр "версії\", або якщо вони були оновлені на сайті mainline-ppa."
+"параметр версії\", або якщо вони були оновлені на сайті mainline-ppa."
 
 #: src/Gtk/SettingsDialog.vala:186
 msgid "Proxy"
