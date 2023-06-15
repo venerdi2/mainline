@@ -62,7 +62,7 @@ const bool     DEFAULT_NOTIFY_MINOR            = false ;
 const int      DEFAULT_NOTIFY_INTERVAL_VALUE   = 4     ;
 const int      DEFAULT_NOTIFY_INTERVAL_UNIT    = 0     ;
 // other
-const bool     DEFAULT_VERIFY_CHECKSUMS        = false ;
+const bool     DEFAULT_VERIFY_CHECKSUMS        = true  ;
 const bool     DEFAULT_KEEP_DOWNLOADS          = false ;
 const string[] DEFAULT_AUTH_CMDS = {
 	//"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}", // only needed for gui apps

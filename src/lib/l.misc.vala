@@ -25,9 +25,9 @@ namespace l.misc {
 
 	private static void pbar(int64 part=0,int64 whole=100,string units="") {
 		if (Main.VERBOSE<1) return;
-		int l = 79; // bar length
+		int l = 80; // bar length
 		if (whole<1) { vprint("\r%*.s\r".printf(l,""),1,stdout,false); return; }
-		int64 c = 0, plen = 0, wlen = 40;
+		int64 c = 0, plen = 0, wlen = l/2;
 		string b = "", u = units;
 		if (whole>0) { c=(part*100/whole); plen=(part*wlen/whole); }
 		else { c=100; plen=wlen; }
@@ -36,30 +36,12 @@ namespace l.misc {
 		vprint("\r%*.s\r%s %d%% %s ".printf(l,"",b,(int)c,u),1,stdout,false);
 	}
 
-/*
-	// segfault
-	// write to both stdout and to App.status_line
-	private static void pbar(int64 part=0,int64 whole=100,string units="") {
-		int l = 79; // bar length
-		if (whole<1) App.status_line = "";
-		else {
-			int64 c = 0, plen = 0, wlen = 40;
-			string b = "", u = units;
-			if (whole>0) { c = (part*100/whole); plen = (part*wlen/whole); }
-			else { c = 100; plen = wlen; }
-			for (int i = 0;i<wlen;i++) { if (i<plen) b += "▓"; else b += "░"; }
-			if (u.length>0) u = " "+part.to_string()+"/"+whole.to_string()+" "+u;
-			App.status_line="%s %d%% %s".printf(b,(int)c,u);
-		}
-		vprint("\r%*.s\r%s %d%% %s ".printf(l,"",App.status_line),1,stdout,false);
-	}
-*/
-
 	public bool try_ppa() {
 		vprint("try_ppa()",4);
 		if (App.ppa_tried) return App.ppa_up;
 
 		string std_err, std_out;
+
 		string cmd = "aria2c"
 		+ " --no-netrc"
 		+ " --no-conf"
@@ -68,11 +50,8 @@ namespace l.misc {
 		+ " --max-tries=3"
 		+ " --dry-run"
 		+ " --quiet";
-
 		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string();
-
 		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
-
 		cmd += " '"+App.ppa_uri+"'";
 
 		vprint(cmd,3);
@@ -89,49 +68,22 @@ namespace l.misc {
 		return App.ppa_up;
 	}
 
-	// execute command synchronously
+	// returns waitpid() status not exit() value
 	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
 		vprint("exec_sync("+cmd+")",2);
-		try {
-			int status;
-			Process.spawn_command_line_sync(cmd, out std_out, out std_err, out status);
-			return status;
-		} catch (SpawnError e) {
-			vprint(e.message,1,stderr);
-			return -1;
-	    }
+		int wait_status = -1;
+		try { Process.spawn_command_line_sync(cmd, out std_out, out std_err, out wait_status); }
+		catch (SpawnError e) { vprint(e.message,1,stderr); }
+		return wait_status;
 	}
 
-	// 20200510 bkw - execute command without waiting
 	public void exec_async(string cmd) {
 		vprint("exec_async("+cmd+")",2);
 		try { Process.spawn_command_line_async(cmd); }
 		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}
 
-	public GLib.Timer timer_start() {
-		var timer = new GLib.Timer();
-		timer.start();
-		return timer;
-	}
-
-	public ulong timer_elapsed(GLib.Timer timer, bool stop = true) {
-		ulong microseconds;
-		double seconds;
-		seconds = timer.elapsed (out microseconds);
-		if (stop) timer.stop();
-
-		return (ulong)((seconds * 1000 ) + (microseconds / 1000));
-	}
-
-	public void sleep(int milliseconds) {
-		Thread.usleep((ulong) milliseconds * 1000);
-	}
-
-	// delete file or directory
-	// doesn't care if it's a file or directory
-	// doesn't care if directory is empty or not
-	// if directory, deletes recursive
+	// delete file or directory, recursive, empty or not
 	public bool rm(string path) {
 		vprint("rm("+path+")",3);
 		File p = File.new_for_path(path);

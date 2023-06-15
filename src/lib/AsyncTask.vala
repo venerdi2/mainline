@@ -56,7 +56,6 @@ public abstract class AsyncTask : GLib.Object {
 	public string status_line = "";
 	public int exit_code = 0;
 	public string error_msg = "";
-	public GLib.Timer timer;
 	public double progress = 0.0;
 	public double percent = 0.0;
 	public int prg_count = 0;
@@ -94,10 +93,6 @@ public abstract class AsyncTask : GLib.Object {
 		vprint("working_dir: '"+working_dir+"'",2);
 
 		try {
-			// start timer
-			timer = new GLib.Timer();
-			timer.start();
-
 			// execute script file
 			Process.spawn_async_with_pipes(
 				working_dir, // working dir
@@ -263,7 +258,6 @@ public abstract class AsyncTask : GLib.Object {
 		err_line = "";
 		out_line = "";
 
-		timer.stop();
 		rm(working_dir);
 		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) status = AppStatus.FINISHED;
 

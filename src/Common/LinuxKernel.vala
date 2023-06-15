@@ -196,7 +196,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// static
 
-	public delegate void Notifier(GLib.Timer timer, ref int count, bool last = false);
+	public delegate void Notifier(ref int count, bool last = false);
 
 	public static void mk_kernel_list(bool wait = true, owned Notifier? notifier = null) {
 		vprint("mk_kernel_list()",2);
@@ -214,7 +214,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		App.progress_count = 0;
 		App.cancelled = false;
 
-		var timer = timer_start();
 		int count = 0;
 
 		// find the oldest major version to include
@@ -258,7 +257,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// add kernel to update list
 			kernels_to_update.add(k);
 
-			if (notifier != null) notifier(timer, ref count);
+			if (notifier != null) notifier(ref count);
 		}
 
 		// process the download list
@@ -278,8 +277,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			while (mgr.is_running()) {
 				App.progress_count = mgr.prg_count;
 				pbar(App.progress_count,App.progress_total);
-				sleep(250);
-				if (notifier != null) notifier(timer, ref count);
+				Thread.usleep(250000);
+				if (notifier != null) notifier(ref count);
 			}
 			pbar(0,0);
 
@@ -289,7 +288,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				k.load_cached_page();
 			}
 
-			if (notifier != null) notifier(timer, ref count);
+			if (notifier != null) notifier(ref count);
 		}
 
 		check_installed();
@@ -301,8 +300,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// doesn't do it's own mk_kernel_list() at the same time while we still are.
 		App.run_notify_script_if_due();
 
-		timer_elapsed(timer, true);
-		if (notifier != null) notifier(timer, ref count, true);
+		if (notifier != null) notifier(ref count, true);
 
 		return true;
 	}
@@ -329,7 +327,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(_("Updating from")+": '"+App.ppa_uri+"'");
 		mgr.execute();
 
-		while (mgr.is_running()) sleep(500);
+		while (mgr.is_running()) Thread.usleep(250000);
 
 		if (file_exists(tfn)) {
 			file_move(tfn,cif);
@@ -992,7 +990,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					var dt = new DownloadTask();
 					dt.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
 					dt.execute();
-					while (dt.is_running()) sleep(100);
+					while (dt.is_running()) Thread.usleep(100000);
 				}
 
 				// parse the CHECKSUMS file
@@ -1018,7 +1016,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			while (mgr.is_running()) {
 				stat = mgr.status_line.split_set(" /");
 				if (stat[1]!=null && stat[2]!=null) pbar(int64.parse(stat[1])/MB,int64.parse(stat[2])/MB,"MB - file "+(mgr.prg_count+1).to_string()+"/"+deb_url_list.size.to_string());
-				sleep(250);
+				Thread.usleep(250000);
 			}
 			pbar(0,0);
 		} else vprint(_("Cached"));

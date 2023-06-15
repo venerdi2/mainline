@@ -30,27 +30,29 @@ using l.misc;
 
 public class MainWindow : Window {
 
-	private Box vbox_main;
-	private Box hbox_list;
+	const int SPACING = 6;
 
-	private Button btn_install;
-	private Button btn_uninstall;
-	private Button btn_uninstall_old;
-	private Button btn_reload;
-	private Label lbl_info;
-	private bool updating;
+	Box vbox_main;
+	Box hbox_list;
 
-	private Gee.ArrayList<LinuxKernel> selected_kernels;
-	private Gtk.ListStore tm;
-	private TreeView tv;
+	Button btn_install;
+	Button btn_uninstall;
+	Button btn_uninstall_old;
+	Button btn_reload;
+	Label lbl_info;
+	bool updating;
 
-	private Gdk.Pixbuf pix_ubuntu;
-	private Gdk.Pixbuf pix_mainline;
-	private Gdk.Pixbuf pix_mainline_rc;
+	Gee.ArrayList<LinuxKernel> selected_kernels;
+	Gtk.ListStore tm;
+	TreeView tv;
+
+	Gdk.Pixbuf pix_ubuntu;
+	Gdk.Pixbuf pix_mainline;
+	Gdk.Pixbuf pix_mainline_rc;
 
 	enum TM {
 		INDEX,
-		KERN,
+		KOBJ,
 		ICON,
 		VERSION,
 		LOCKED,
@@ -75,14 +77,17 @@ public class MainWindow : Window {
 		title = BRANDING_LONGNAME;
 		icon = get_app_icon(16);
 
-		// vbox_main
-		vbox_main = new Box(Orientation.VERTICAL, 6);
-		vbox_main.margin = 6;
-
-		add(vbox_main);
-
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
-		tm = new Gtk.ListStore(TM.N_COLS, typeof(int), typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(string), typeof(bool), typeof(string), typeof(string), typeof(string));
+		tm = new Gtk.ListStore(TM.N_COLS,
+			typeof(int),         // TM.INDEX
+			typeof(LinuxKernel), // TM.KOBJ
+			typeof(Gdk.Pixbuf),  // TM.ICON
+			typeof(string),      // TM.VERSION
+			typeof(bool),        // TM.LOCKED
+			typeof(string),      // TM.STATUS
+			typeof(string),      // TM.NOTES
+			typeof(string)       // TM.TOOLTIP
+		);
 		tv = new TreeView.with_model(tm);
 
 		try {
@@ -90,6 +95,11 @@ public class MainWindow : Window {
 			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
 			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
 		} catch (Error e) { vprint(e.message,1,stderr); }
+
+		vbox_main = new Box(Orientation.VERTICAL, SPACING);
+		vbox_main.margin = SPACING;
+
+		add(vbox_main);
 
 		init_ui();
 		if (App.command == "install") do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
@@ -100,15 +110,11 @@ public class MainWindow : Window {
 		init_treeview();
 		init_actions();
 		init_infobar();
-
-		this.resize(App.window_width,App.window_height);
-		if (App.window_x >=0 && App.window_y >= 0) this.move(App.window_x,App.window_y);
 	}
 
 	private void init_treeview() {
 
-		// hbox
-		hbox_list = new Box(Orientation.HORIZONTAL, 6);
+		hbox_list = new Box(Orientation.HORIZONTAL, SPACING);
 		vbox_main.add(hbox_list);
 
 		// add treeview
@@ -123,6 +129,7 @@ public class MainWindow : Window {
 
 		var scrollwin = new ScrolledWindow(((Scrollable) tv).get_hadjustment(), ((Scrollable) tv).get_vadjustment());
 		scrollwin.set_shadow_type(ShadowType.ETCHED_IN);
+		scrollwin.set_propagate_natural_width(true);
 		scrollwin.add (tv);
 		hbox_list.add(scrollwin);
 
@@ -133,12 +140,11 @@ public class MainWindow : Window {
 		col.title = _("Kernel");
 		col.resizable = true;
 		col.set_sort_column_id(TM.INDEX);
-		col.min_width = 180;
+		col.min_width = 200;
 		tv.append_column(col);
 
 		var k_version_icon = new CellRendererPixbuf();
-		k_version_icon.xpad = 4;
-		k_version_icon.ypad = 6;
+		k_version_icon.xpad = SPACING;
 		col.pack_start(k_version_icon, false);
 		col.add_attribute(k_version_icon, "pixbuf", TM.ICON);
 
@@ -151,7 +157,7 @@ public class MainWindow : Window {
 		var k_lock_toggle = new CellRendererToggle();
 #if LOCK_TOGGLES_IN_KERNEL_COLUMN  // not sortable
 		col.pack_end(k_lock_toggle, false);
-#else  // sortable
+#else                              // sortable
 		col = new TreeViewColumn();
 		col.set_sort_column_id(TM.LOCKED);
 		col.title = _("Lock");
@@ -163,7 +169,7 @@ public class MainWindow : Window {
 			TreeIter iter;
 			tm.get_iter_from_string(out iter, path);
 			LinuxKernel k;
-			tm.get(iter, TM.KERN, out k, -1);
+			tm.get(iter, TM.KOBJ, out k, -1);
 			if (toggle.active) rm(k.locked_file);
 			else file_write(k.locked_file, "");
 			tm.set(iter, TM.LOCKED, k.is_locked);
@@ -174,11 +180,10 @@ public class MainWindow : Window {
 		col.title = _("Status");
 		col.set_sort_column_id(TM.STATUS);
 		col.resizable = true;
-		col.min_width = 100;
 		tv.append_column(col);
 		var k_status_text = new CellRendererText();
 		k_status_text.ellipsize = Pango.EllipsizeMode.END;
-		col.pack_start(k_status_text, true);
+		col.pack_start(k_status_text, false);
 		col.add_attribute(k_status_text, "text", TM.STATUS); // text from column 4
 
 		// notes
@@ -186,18 +191,18 @@ public class MainWindow : Window {
 		col.title = _("Notes");
 		col.set_sort_column_id(TM.NOTES);
 		col.resizable = true;
-		col.min_width = 100;
+		col.min_width = 200;
 		tv.append_column(col);
 		var k_notes_text = new CellRendererText();
 		k_notes_text.ellipsize = Pango.EllipsizeMode.END;
-		col.pack_start (k_notes_text, true);
+		col.pack_start (k_notes_text, false);
 		col.add_attribute(k_notes_text, "text", TM.NOTES); // text from column 5
 		k_notes_text.editable = true;
 		k_notes_text.edited.connect((path, data) => {
 			TreeIter i;
 			LinuxKernel k;
 			tm.get_iter_from_string(out i, path);
-			tm.get(i, TM.KERN, out k, -1);
+			tm.get(i, TM.KOBJ, out k, -1);
 			var t_old = k.notes.strip();
 			var t_new = data.strip();
 			if (t_old != t_new) {
@@ -244,16 +249,16 @@ public class MainWindow : Window {
 		foreach (var k in LinuxKernel.kernel_list) {
 
 			if (!k.is_installed) { // don't hide anything that's installed
-				if (k.is_invalid && App.hide_invalid) continue; // hide invalid
+				if (k.is_invalid && App.hide_invalid) continue; // hide invalid if settings say to
 				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
-				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide versions older than settings threshold
+				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide below show_previous setting
 			}
 
-			tm.append(out iter); // add row
+			tm.append(out iter);
 
-			tm.set(iter, TM.INDEX, ++i); // saves the special version number sorting built by compare_to()
+			tm.set(iter, TM.INDEX, ++i); // saves the special sort built by compare_to()
 
-			tm.set(iter, TM.KERN, k);
+			tm.set(iter, TM.KOBJ, k);
 
 			p = pix_mainline;
 			if (k.is_unstable) p = pix_mainline_rc;
@@ -308,7 +313,7 @@ public class MainWindow : Window {
 
 		Button button;
 
-		var hbox = new Box(Orientation.VERTICAL, 6);
+		var hbox = new Box(Orientation.VERTICAL, SPACING);
 		hbox_list.add (hbox);
 
 		// install
@@ -401,13 +406,12 @@ public class MainWindow : Window {
 		var dialog = new AboutWindow();
 		dialog.set_transient_for (this);
 
-		// FIXME - this should come from the AUTHORS file, or from git
 		dialog.authors = {
 			"Tony George <teejeetech@gmail.com>",
 			BRANDING_AUTHORNAME+" <"+BRANDING_AUTHOREMAIL+">"
 		};
 
-		// FIXME - generate this list from the .po files
+		// TODO generate this list from the .po files
 		/*
 		dialog.translators = {
 			"name",
@@ -448,8 +452,6 @@ public class MainWindow : Window {
 		dialog.website_label = BRANDING_WEBSITE;
 
 		dialog.third_party = {
-			"Elementary project (various icons):github.com/elementary/icons",
-			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project",
 			"notify-send.sh:github.com/bkw777/notify-send.sh"
 		};
 
@@ -476,53 +478,35 @@ public class MainWindow : Window {
 		updating = true;
 		set_button_state();
 		set_infobar(msg);
-		LinuxKernel.mk_kernel_list(false, (timer, ref count, last) => {
-			update_status_line(msg, timer, ref count, last);
-		});
+		LinuxKernel.mk_kernel_list(false, (ref count, last) => { update_status_line(msg, ref count, last); });
 	}
 
-	private void update_status_line(string message, GLib.Timer timer, ref int count, bool last = false) {
+	private void update_status_line(string message, ref int count, bool last = false) {
 		count++;
 		if (last) {
 			Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
 				tv_refresh();
 				return false;
 			});
-			timer_elapsed(timer, true);
 		}
 
 		Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
-			if (updating) set_infobar("%s: %d/%d".printf(message, App.progress_count, App.progress_total));
+			if (updating) set_infobar("%s: %s %d/%d".printf(message, App.status_line, App.progress_count, App.progress_total));
 			return false;
 		});
 	}
 
 	private void init_infobar() {
-
-		// scrolled
-		var scrolled = new ScrolledWindow(null, null);
-		scrolled.set_shadow_type (ShadowType.ETCHED_IN);
-		//scrolled.margin = 6;
-		scrolled.margin_top = 0;
-		scrolled.hscrollbar_policy = PolicyType.NEVER;
-		scrolled.vscrollbar_policy = PolicyType.NEVER;
-		vbox_main.add(scrolled);
-
-		// hbox
-		var hbox = new Box(Orientation.HORIZONTAL, 6);
-		//hbox.margin = 6;
-		scrolled.add(hbox);
-
+		var hbox = new Box(Orientation.HORIZONTAL, SPACING);
+		vbox_main.add(hbox);
 		lbl_info = new Label("");
-		lbl_info.margin = 6;
 		lbl_info.set_use_markup(true);
-		lbl_info.set_single_line_mode(true);
 		lbl_info.selectable = false;
 		hbox.add(lbl_info);
 	}
 
-	private void set_infobar(string s="") {
-		if (s!="") { lbl_info.set_label(s); return; }
+	private void set_infobar(string? s=null) {
+		if (s!=null) { lbl_info.set_label(s); return; }
 
 		string l = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
 		if (LinuxKernel.kernel_active.is_mainline) l += " (mainline)";

@@ -98,8 +98,9 @@ public class SettingsDialog : Gtk.Dialog {
 		//hbox.set_tooltip_text(_("...notification interval tooltip text..."));
 
 		// filters
-		label = new Gtk.Label("\n<b>" + _("Filters") + "</b>");
+		label = new Gtk.Label("<b>" + _("Filters") + "</b>");
 		label.set_use_markup(true);
+		label.margin_top = SPACING;
 		vbox_main.add(label);
 
 		// hide unstable
@@ -133,7 +134,8 @@ public class SettingsDialog : Gtk.Dialog {
 		//hbox.set_tooltip_text(_("...show previous majors tooltip text..."));
 
 		// network
-		label = new Gtk.Label("\n<b>" + _("Network") + "</b>");
+		label = new Gtk.Label("<b>" + _("Network") + "</b>");
+		label.margin_top = SPACING;
 		label.set_use_markup(true);
 		vbox_main.add(label);
 
@@ -212,8 +214,9 @@ public class SettingsDialog : Gtk.Dialog {
 		vbox_main.add(ent_ppa_uri);
 
 		// auth command
-		label = new Gtk.Label("\n<b>"+_("Auth Command")+"</b>");
+		label = new Gtk.Label("<b>"+_("Auth Command")+"</b>");
 		label.set_use_markup(true);
+		label.margin_top = SPACING;
 		vbox_main.add(label);
 
 		var cbt_auth_cmd = new Gtk.ComboBoxText.with_entry();

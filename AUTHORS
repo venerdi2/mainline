@@ -1,9 +1,8 @@
-Brian K. White		forked "ukuu" to "mainline" 2019-present
-Tony George		"ukuu" original author
-shg8@github		net connection check
-cloyce@github		rc kernels option
-sylt@github		better lowest displayed version scheme
-LucasChollet@github	better thread & child process handling
+Brian K. White      forked "ukuu" to "mainline" 2019-present
+Tony George         "ukuu" original author
+shg8@github         net connection check
+cloyce@github       rc kernels option
+LucasChollet@github improve thread management
 
 Inclusions:
 	notify-send.sh https://github.com/bkw777/notify-send.sh

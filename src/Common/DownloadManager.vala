@@ -99,7 +99,7 @@ public class DownloadTask : AsyncTask {
 			+ " --retry-wait=2"
 			+ " --show-console-readout=false"
 			+ " --human-readable=false"
-			//+ " --max-download-limit=256K"  // force slow download to debug progress display
+			//+ " --max-download-limit=256K"  // force slow download for debugging
 			;
 
 		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string();

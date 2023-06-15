@@ -25,19 +25,9 @@ using l.misc;
 
 public class TerminalWindow : Gtk.Window {
 
-	Vte.Terminal term;
-	Pid child_pid = -1;
-	Gtk.Window parent_win = null;
-	Gtk.Button btn_close;
-	Gtk.Button btn_cancel;
-
-	const double MIN_SCALE = 0.25;
-	const double MAX_SCALE = 4.0;
-
-	public bool cancelled = false;
-	public bool is_running = false;
-
-	public signal void cmd_complete();
+	const double FONT_SCALE_MIN = 0.25;
+	const double FONT_SCALE_MAX = 4.0;
+	const double FONT_SCALE_STEP = 0.125; // exactly expressable with type double keeps the math results neat
 
 	enum SIG {
 #if VALA_0_40
@@ -49,7 +39,16 @@ public class TerminalWindow : Gtk.Window {
 #endif
 	}
 
-	// init
+	Vte.Terminal term;
+	Pid child_pid = -1;
+	Gtk.Window parent_win = null;
+	Gtk.Button btn_close;
+	Gtk.Button btn_cancel;
+
+	public bool cancelled = false;
+	public bool is_running = false;
+
+	public signal void cmd_complete();
 
 	public TerminalWindow.with_parent(Gtk.Window? parent) {
 		if (parent != null) {
@@ -109,7 +108,7 @@ public class TerminalWindow : Gtk.Window {
 		term.scrollback_lines = -1;
 
 #if VALA_0_50
-		// this is rude blasting away the clipboard instead of using a context menu
+		// rude blasting away the clipboard instead of using a context menu
 		term.selection_changed.connect(() => { term.copy_clipboard_format(Vte.Format.TEXT); });
 #endif
 
@@ -147,9 +146,9 @@ public class TerminalWindow : Gtk.Window {
 		btn_copy.clicked.connect(()=>{
 			long output_end_col, output_end_row;
 			term.get_cursor_position(out output_end_col, out output_end_row);
-			string? buf = term.get_text_range(0, 0, output_end_row, term.get_column_count(), null, null);
+			string? buf = term.get_text_range(0, 0, output_end_row, -1, null, null);
 			clipboard.set_text(buf,-1);
-			msgbox("copied "+output_end_row.to_string()+" lines to clipboard");
+			alert("copied "+output_end_row.to_string()+" lines to clipboard");
 		});
 		btn_copy.set_tooltip_text(_("Copies the entire output buffer, including scrollback, to the clipboard."));
 		hbox.pack_start(btn_copy, true, true, 0);
@@ -179,12 +178,16 @@ public class TerminalWindow : Gtk.Window {
 		hbox.pack_start(label, true, true, 0);
 
 		// font +/-
-		// box within box to make these 2 buttons take the same space as the other single buttons.
+		// box within box to make these buttons together take the same space as one of the other buttons.
 		var fhbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		//
 		var btn_minus = new Gtk.Button.with_label("-");
 		btn_minus.clicked.connect(dec_font_scale);
 		fhbox.pack_start(btn_minus, true, true, 0);
+		//
+		var btn_zero = new Gtk.Button.with_label("0");
+		btn_zero.clicked.connect(() => { term.font_scale = 1; });
+		fhbox.pack_start(btn_zero, true, true, 0);
 		//
 		var btn_plus = new Gtk.Button.with_label("+");
 		btn_plus.clicked.connect(inc_font_scale);
@@ -197,7 +200,7 @@ public class TerminalWindow : Gtk.Window {
 	// display a message both on the console and in a popup
 	// for error, write to stderr at default vebosity, and close the terminal along with the popup
 	// for not-error, write to stdout only if verbose>3, and do not close the terminal
-	void msgbox(string msg, Gtk.MessageType? type = Gtk.MessageType.INFO) {
+	void alert(string msg, Gtk.MessageType? type = Gtk.MessageType.INFO) {
 		if (type==null) type = Gtk.MessageType.INFO;
 		var dlg = new Gtk.MessageDialog(this,
 			Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
@@ -213,18 +216,18 @@ public class TerminalWindow : Gtk.Window {
 	}
 
 	public void inc_font_scale() {
-		term.font_scale = (term.font_scale + 0.125).clamp(MIN_SCALE, MAX_SCALE);
+		term.font_scale = (term.font_scale + FONT_SCALE_STEP).clamp(FONT_SCALE_MIN, FONT_SCALE_MAX);
 	}
 
 	public void dec_font_scale() {
-		term.font_scale = (term.font_scale - 0.125).clamp(MIN_SCALE, MAX_SCALE);
+		term.font_scale = (term.font_scale - FONT_SCALE_STEP).clamp(FONT_SCALE_MIN, FONT_SCALE_MAX);
 	}
 
 	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
 		vprint("child_pid="+p.to_string(),4);
 		if (p>1) { child_pid = p; t.watch_child(p); }
 		else child_has_exited(e.code);
-		if (e!=null) msgbox(e.message,Gtk.MessageType.ERROR);
+		if (e!=null) alert(e.message,Gtk.MessageType.ERROR);
 	}
 
 	public void execute_cmd(string[] argv) {
