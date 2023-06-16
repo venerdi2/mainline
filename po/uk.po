@@ -330,11 +330,11 @@ msgstr "Невідомий параметр"
 
 #: src/Console/AppConsole.vala:178
 msgid "Deleted"
-msgstr ""
+msgstr "Видалено"
 
 #: src/Console/AppConsole.vala:179
 msgid "Error deleting"
-msgstr ""
+msgstr "Помилка видалення"
 
 #: src/Console/AppConsole.vala:204
 msgid "Latest update"
@@ -588,7 +588,7 @@ msgid ""
 "downloads."
 msgstr ""
 "Використовуйте хеші sha-256 із файлу CHECKSUMS, щоб перевірити файл ."
-"debзавантаження."
+"deb завантаження."
 
 #: src/Gtk/SettingsDialog.vala:181
 msgid "Keep Downloads"
@@ -633,7 +633,8 @@ msgstr "Копія"
 #: src/Gtk/TerminalWindow.vala:153
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr "Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
+msgstr ""
+"Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
 
 #: src/Gtk/TerminalWindow.vala:160
 msgid "Cancel"
