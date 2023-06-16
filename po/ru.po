@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-15 18:27-0400\n"
-"PO-Revision-Date: 2023-06-05 23:29+0300\n"
-"Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
+"PO-Revision-Date: 2023-06-16 17:07+0300\n"
+"Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
+"<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: src/Common/LinuxKernel.vala:108
 msgid "Distribution"
@@ -62,9 +63,8 @@ msgid "locked"
 msgstr "заблокирован"
 
 #: src/Common/LinuxKernel.vala:450
-#, fuzzy
 msgid "running"
-msgstr "Используется"
+msgstr "запущено"
 
 #: src/Common/LinuxKernel.vala:487 src/Common/LinuxKernel.vala:1044
 #: src/Common/LinuxKernel.vala:1129
@@ -96,7 +96,6 @@ msgid "File not found"
 msgstr "Файл не найден"
 
 #: src/Common/LinuxKernel.vala:859
-#, fuzzy
 msgid "needs update"
 msgstr "требуется обновление"
 
@@ -126,7 +125,7 @@ msgstr "Загрузки"
 
 #: src/Common/LinuxKernel.vala:1022
 msgid "Cached"
-msgstr ""
+msgstr "Кэшировано"
 
 #: src/Common/LinuxKernel.vala:1030
 msgid "Installing selected kernels"
@@ -151,7 +150,7 @@ msgstr "Команда не указана"
 #: src/Common/LinuxKernel.vala:1064 src/Common/LinuxKernel.vala:1099
 #: src/Common/LinuxKernel.vala:1143 src/Common/LinuxKernel.vala:1174
 msgid "done"
-msgstr ""
+msgstr "готово"
 
 #: src/Common/LinuxKernel.vala:1070
 msgid "Uninstalling selected kernels"
@@ -182,9 +181,8 @@ msgid "Could not find running kernel in list"
 msgstr "Could not find running kernel in list"
 
 #: src/Common/LinuxKernel.vala:1142
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "Не удалось найти ядра для деинсталляции"
+msgstr "Нет старых ядер для деинсталяции"
 
 #: src/Common/LinuxKernel.vala:1148
 msgid "The following kernels will be uninstalled"
@@ -195,7 +193,6 @@ msgid "Continue ?"
 msgstr "Продолжить ?"
 
 #: src/Common/LinuxKernel.vala:1166
-#, fuzzy
 msgid "No updates"
 msgstr "Нет обнолений"
 
@@ -335,11 +332,11 @@ msgstr "Неизвестный параметр"
 
 #: src/Console/AppConsole.vala:178
 msgid "Deleted"
-msgstr ""
+msgstr "Удалено"
 
 #: src/Console/AppConsole.vala:179
 msgid "Error deleting"
-msgstr ""
+msgstr "Ошибка удаления"
 
 #: src/Console/AppConsole.vala:204
 msgid "Latest update"
@@ -552,7 +549,7 @@ msgstr "Скрыть нестабильные и релиз-кандидат в�
 
 #: src/Gtk/SettingsDialog.vala:114
 msgid "Hide failed or incomplete builds"
-msgstr ""
+msgstr "Скрыть неудачные или незавершенные сборки"
 
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
@@ -560,6 +557,8 @@ msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
+"Если версия ядра существует на сайте mainline-ppa, но является неполной или "
+"неудачной сборкой для вашей архитектуры (%s), то не показывать ее в списке."
 
 #: src/Gtk/SettingsDialog.vala:131
 msgid "previous major versions  ( -1 = all )"
@@ -582,20 +581,20 @@ msgid "Max concurrent downloads"
 msgstr "Максимальное количество одновременных загрузок"
 
 #: src/Gtk/SettingsDialog.vala:174
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "Проверка контрольных сумм с помощью файлов CHECKSUMS"
+msgstr "Проверка загрузок с помощью файлов CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:176
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
+"Использовать хэши sha-256 из файла CHECKSUMS для проверки загруженных "
+"файлов .deb."
 
 #: src/Gtk/SettingsDialog.vala:181
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Загрузки"
+msgstr "Сохранять загрузки"
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid ""
@@ -605,6 +604,12 @@ msgid ""
 "They are still deleted once they become older than the \"Show previous major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"Сохранять загруженные .deb-файлы после установки и использовать их повторно "
+"для удаления/переустановки вместо повторной загрузки.\n"
+"\n"
+"Они удаляются, если их версия становится старше чем в параметре \"Показывать "
+"предыдущие основные версии\", или если они были обновлены на сайте mainline-"
+"ppa."
 
 #: src/Gtk/SettingsDialog.vala:188
 msgid "Proxy"
@@ -616,7 +621,7 @@ msgstr "Команда авторизации"
 
 #: src/Gtk/SettingsDialog.vala:238
 msgid "Command used to run dpkg with root permissions"
-msgstr ""
+msgstr "Команда, используемая для запуска dpkg с правами root"
 
 #: src/Gtk/SettingsDialog.vala:242
 msgid "Done"
@@ -624,12 +629,12 @@ msgstr "Готово"
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Copy"
-msgstr ""
+msgstr "Копировать"
 
 #: src/Gtk/TerminalWindow.vala:153
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr ""
+msgstr "Копирует весь буфер вывода, включая прокрутку, в буфер обмена."
 
 #: src/Gtk/TerminalWindow.vala:160
 msgid "Cancel"
