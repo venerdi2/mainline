@@ -24,7 +24,6 @@
 
 namespace TeeJee.ProcessHelper {
 	using TeeJee.FileSystem;
-	using TeeJee.Misc;
 	using l.misc;
 
 	// temp files -------------------------------------

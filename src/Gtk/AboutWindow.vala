@@ -24,7 +24,6 @@
 using Gtk;
 
 using l.gtk;
-using TeeJee.Misc;
 using l.misc;
 
 public class AboutWindow : Dialog {
@@ -168,37 +167,37 @@ public class AboutWindow : Dialog {
 		lbl_copyright.label = "<span>%s</span>".printf(copyright);
 
 		if (authors.length > 0){
-			add_header("<b>%s</b>".printf(_("Authors")));
-			foreach(string name in authors) { add_line("%s".printf(name)); }
+			add_line("<b>%s</b>".printf(_("Authors")));
+			foreach(string name in authors) { add_line("%s".printf(name),true); }
 			add_line("");
 		}
 
 		if (contributors.length > 0){
-			add_header("<b>%s</b>".printf(_("Contributions")));
+			add_line("<b>%s</b>".printf(_("Contributions")));
 			foreach(string name in contributors) { add_line("%s".printf(name)); }
 			add_line("");
 		}
 
 		if (artists.length > 0){
-			add_header("<b>%s</b>".printf(_("Artists")));
+			add_line("<b>%s</b>".printf(_("Artists")));
 			foreach(string name in artists) { add_line("%s".printf(name)); }
 			add_line("");
 		}
 
 		if (translators.length > 0){
-			add_header("<b>%s</b>".printf(_("Translators")));
+			add_line("<b>%s</b>".printf(_("Translators")));
 			foreach(string name in translators) { add_line("%s".printf(name),true,false,true); }
 			add_line("");
 		}
 
 		if (documenters.length > 0){
-			add_header("<b>%s</b>".printf(_("Documenters")));
+			add_line("<b>%s</b>".printf(_("Documenters")));
 			foreach(string name in documenters) { add_line("%s".printf(name)); }
 			add_line("");
 		}
 
 		if (third_party.length > 0){
-			add_header("<b>%s</b>".printf(_("Third Party Inclusions")));
+			add_line("<b>%s</b>".printf(_("Third Party Inclusions")));
 			foreach(string name in third_party) { add_line("%s".printf(name)); }
 			add_line("");
 		}
@@ -208,10 +207,10 @@ public class AboutWindow : Dialog {
 		}
 	}
 
-	public void add_line(string text, bool escape_html_chars = true, bool parse = true, bool left = false) {
+	public void add_line(string text, bool escape_html = false, bool parse = true, bool left = false) {
 
 		if (text.split(":").length >= 2 && parse) {
-			var link = new LinkButton(escape_html(text.split(":")[0]));
+			var link = new LinkButton(Markup.escape_text(text.split(":")[0]));
 			vbox_lines.add(link);
 			string val = text[text.index_of(":") + 1:text.length];
 			if (val.contains("@")) link.uri = "mailto:" + val;
@@ -221,7 +220,7 @@ public class AboutWindow : Dialog {
 			link.activate_link.connect(() => { uri_open(link.uri); return true; });
 		} else {
 			var txt = text;
-			if (escape_html_chars) txt = escape_html(text);
+			if (escape_html) txt = Markup.escape_text(text);
 			var lbl = new Label(txt);
 			lbl.set_use_markup(true);
 			if (left) lbl.halign = Align.START;
@@ -229,9 +228,5 @@ public class AboutWindow : Dialog {
 			lbl.wrap_mode = Pango.WrapMode.WORD;
 			vbox_lines.add(lbl);
 		}
-	}
-
-	public void add_header(string text) {
-		add_line(text, false);
 	}
 }

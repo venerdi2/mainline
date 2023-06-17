@@ -26,7 +26,6 @@ using Json;
 
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
-using TeeJee.Misc;
 using l.misc;
 #if !VALA_0_50
 using l.json;

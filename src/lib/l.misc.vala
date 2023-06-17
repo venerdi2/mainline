@@ -101,4 +101,10 @@ namespace l.misc {
 		try { p.delete(); } catch (Error e) { print ("Error: %s\n", e.message); }
 		return !p.query_exists();
 	}
+
+	public string random_string(int len = 8, string set = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") {
+		string o = ""; int l = set.length;
+		for(int i=0;i<len;i++) o += set[Random.int_range(0,l)].to_string();
+		return o;
+	}
 }

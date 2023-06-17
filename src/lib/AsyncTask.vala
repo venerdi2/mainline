@@ -23,7 +23,6 @@
 
 using TeeJee.FileSystem;
 using TeeJee.ProcessHelper;
-using TeeJee.Misc;
 using l.misc;
 
 public abstract class AsyncTask : GLib.Object {
