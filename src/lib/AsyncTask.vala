@@ -29,24 +29,20 @@ public abstract class AsyncTask : GLib.Object {
 
 	private string err_line = "";
 	private string out_line = "";
-	//private DataOutputStream dos_in;
 	private DataInputStream dis_out;
 	private DataInputStream dis_err;
-	protected DataOutputStream dos_log;
 	protected bool is_terminated = false;
 
 	private bool stdout_is_open = false;
 	private bool stderr_is_open = false;
 
 	protected Pid child_pid;
-	//private int input_fd;
 	private int output_fd;
 	private int error_fd;
 	private bool finish_called = false;
 
 	protected string script_file = "";
 	protected string working_dir = "";
-	protected string log_file = "";
 
 	public bool background_mode = false;
 
@@ -67,10 +63,7 @@ public abstract class AsyncTask : GLib.Object {
 
 	protected AsyncTask() {
 		working_dir = create_tmp_dir();
-		script_file = working_dir+"/script.sh";
-		log_file = working_dir+"/task.log";
-
-		//regex = new Gee.HashMap<string,Regex>(); // needs to be initialized again in instance constructor
+		script_file = working_dir+"script.sh";
 	}
 
 	public bool begin() {
@@ -85,8 +78,7 @@ public abstract class AsyncTask : GLib.Object {
 		prg_count = 0;
 		error_msg = "";
 
-		string[] spawn_args = {"sh", script_file};
-		string[] spawn_env = Environ.get();
+		string[] spawn_args = {"bash",script_file};
 
 		vprint("AsyncTask begin()",2);
 		vprint("working_dir: '"+working_dir+"'",2);
@@ -96,7 +88,7 @@ public abstract class AsyncTask : GLib.Object {
 			Process.spawn_async_with_pipes(
 				working_dir, // working dir
 				spawn_args,  // argv
-				spawn_env,   // environment
+				null,        // environment
 				SpawnFlags.SEARCH_PATH,
 				null,        // child_setup()
 				out child_pid,
@@ -105,22 +97,12 @@ public abstract class AsyncTask : GLib.Object {
 				out error_fd);
 
 			// create stream readers
-			//UnixOutputStream uos_in = new UnixOutputStream(input_fd, false);
 			UnixInputStream uis_out = new UnixInputStream(output_fd, false);
 			UnixInputStream uis_err = new UnixInputStream(error_fd, false);
-			//dos_in = new DataOutputStream(uos_in);
 			dis_out = new DataInputStream(uis_out);
 			dis_err = new DataInputStream(uis_err);
 			dis_out.newline_type = DataStreamNewlineType.ANY;
 			dis_err.newline_type = DataStreamNewlineType.ANY;
-
-			// create log file
-			if (log_file.length > 0) {
-				var file = File.new_for_path(log_file);
-				if (file.query_exists()) file.delete();
-				var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
-				dos_log = new DataOutputStream (file_stream);
-			}
 
 			// read stdout & stderr
 			new Thread<bool> (null,read_stdout);
@@ -204,23 +186,6 @@ public abstract class AsyncTask : GLib.Object {
 		return true;
 	}
 
-/*
-	public void write_stdin(string line) {
-		try {
-			if (status == AppStatus.RUNNING){
-				dos_in.put_string(line + "\n");
-			}
-			else {
-				log_error("AsyncTask.write_stdin(): NOT RUNNING");
-			}
-		}
-		catch (Error e){
-			log_error("AsyncTask.write_stdin(): %s".printf(line));
-			log_error(e.message);
-		}
-	}
-*/
-
 	protected abstract void parse_stdout_line(string out_line);
 
 	protected abstract void parse_stderr_line(string err_line);
@@ -229,30 +194,6 @@ public abstract class AsyncTask : GLib.Object {
 		// finish() gets called by 2 threads but should be executed only once
 		if (finish_called) return;
 		finish_called = true;
-
-		// dispose stdin
-		//try {
-		//	if ((dos_in != null) && !dos_in.is_closed() && !dos_in.is_closing()) dos_in.close();
-		//}
-		//catch (Error e){
-			// ignore
-			//log_error("AsyncTask.finish(): dos_in.close()");
-			//log_error(e.message);
-		//}
-
-		//dos_in = null;
-		//GLib.FileUtils.close(input_fd);
-
-		try {
-			// dispose log
-			if ((dos_log != null) && !dos_log.is_closed() && !dos_log.is_closing()) dos_log.close();
-			dos_log = null;
-		}
-		catch (Error e) {
-			// error can be ignored
-			// dos_log is closed automatically when the last reference is set to null
-			// there may be pending operations which may throw an error
-		}
 
 		err_line = "";
 		out_line = "";

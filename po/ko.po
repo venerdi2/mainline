@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-17 15:30-0400\n"
+"POT-Creation-Date: 2023-06-17 17:09-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -243,11 +243,6 @@ msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행�
 #: src/Common/Main.vala:378
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
-
-#: src/Common/Package.vala:58
-#, c-format
-msgid "File not found: %s"
-msgstr "파일을 찾을 수 없음: %s"
 
 #: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
 msgid "Syntax"

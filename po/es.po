@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-17 15:30-0400\n"
+"POT-Creation-Date: 2023-06-17 17:09-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -245,11 +245,6 @@ msgstr ""
 #: src/Common/Main.vala:378
 msgid "Notifications are disabled"
 msgstr "Las notificaciones están deshabilitadas"
-
-#: src/Common/Package.vala:58
-#, c-format
-msgid "File not found: %s"
-msgstr "Archivo no encontrado: %s"
 
 #: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
 msgid "Syntax"

@@ -392,8 +392,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string msg = "";
 
-		if (Package.dpkg_list.size<1) { vprint("dpkg_list empty!"); exit(1); }
-		if (kernel_list.size<1) { vprint("kernel_list empty!"); exit(1); }
+		if (Package.dpkg_list.size<1) vprint("!!! dpkg_list empty!");
+		if (kernel_list.size<1) vprint("!!! kernel_list empty!");
 
 		foreach (var p in Package.dpkg_list) {
 			if (!p.pname.has_prefix("linux-image-")) continue;

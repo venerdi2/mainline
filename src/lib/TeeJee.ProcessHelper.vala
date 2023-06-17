@@ -31,35 +31,27 @@ namespace TeeJee.ProcessHelper {
 	// create a unique temp dir rooted at App.TMP_PREFIX
 	// return full path to created dir
 	public string create_tmp_dir() {
-		string d = App.TMP_PREFIX+"."+random_string();
+		string d = App.TMP_PREFIX+"."+rand_str()+"/";
 		dir_create(d);
 		return d;
 	}
 
 	// TODO replace with mkstemp
 	public string get_temp_file_path(string d) {
-		return d + "/" + "%ld".printf((long) time_t()) + (new Rand()).next_int().to_string();
+		return d + "/" + rand_str();
+	}
+
+	public string rand_str() {
+		return "%ld".printf((long) time_t()) + (new Rand()).next_int().to_string();
 	}
 
 	// create a temporary bash script
 	// return the script file path
-	public string? save_bash_script_temp (string cmds, string? file = null) {
-
+	public string? save_bash_script_temp(string cmds, string file = "") {
 		string f = file;
-		if ((file == null) || (file.length == 0)) {
-			string t_dir = create_tmp_dir();
-			f = get_temp_file_path(t_dir) + ".sh";
-		}
-
+		if (f=="") f = create_tmp_dir() + "script.sh";
 		vprint("save_bash_script_temp("+file+"):"+f,3);
-
-		string s = "#!/bin/bash\n"
-		+ cmds + "\n";
-
-		if (file_write(f,s)) {
-			GLib.FileUtils.chmod (f, 0755);
-			return f;
-		}
+		if (file_write(f,cmds)) return f;
 		return null;
 	}
 

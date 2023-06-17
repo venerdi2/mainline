@@ -69,7 +69,7 @@ public class DownloadTask : AsyncTask {
 		vprint("build_script():",2);
 		vprint("working_dir: '"+working_dir+"'",2);
 		string list = "";
-		string list_file = working_dir+"/download.list";
+		string list_file = working_dir+"download.list";
 
 		foreach (var item in downloads) {
 			list += item.source_uri + "\n"

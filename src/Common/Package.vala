@@ -19,48 +19,29 @@ public class Package : GLib.Object {
 		pname = s;
 	}
 
+	// get installed packages from dpkg
 	public static void mk_dpkg_list() {
 		vprint("mk_dpkg_list()",2);
-		// get installed packages from dpkg --------------
-
-		string t_dir = create_tmp_dir();
-		string t_file = get_temp_file_path(t_dir);
+		dpkg_list.clear();
 		string std_out, std_err;
 		exec_sync("dpkg-query -f '${Package}|${Version}|${Architecture}|${db:Status-Abbrev}\n' -W 'linux-image-*' 'linux-modules-*' 'linux-headers-*'", out std_out, out std_err);
-		file_write(t_file, std_out);
+		if (std_out!=null) foreach (string line in std_out.split("\n")) {
+			string[] arr = line.split("|");
+			if (arr.length != 4) continue;
+			if (arr[3].substring(1,1) != "i" ) continue;
 
-		// parse ------------------------
+			string name = arr[0].strip();
+			string vers = arr[1].strip();
+			string arch = arr[2].strip();
 
-		try {
-			string line;
-			var file = File.new_for_path(t_file);
-			if (file.query_exists()) {
-				var dis = new DataInputStream(file.read());
-				dpkg_list.clear();
-				while ((line = dis.read_line(null)) != null) {
-					string[] arr = line.split("|");
-					if (arr.length != 4) continue;
-					if (arr[3].substring(1,1) != "i" ) continue;
+			if (arch != LinuxKernel.NATIVE_ARCH && arch != "all" && arch != "any") continue;
 
-					string name = arr[0].strip();
-					string vers = arr[1].strip();
-					string arch = arr[2].strip();
-
-					if (arch != LinuxKernel.NATIVE_ARCH && arch != "all" && arch != "any") continue;
-
-					var p = new Package(name);
-					p.version = vers;
-					p.arch = arch;
-					dpkg_list.add(p);
-					vprint("dpkg_list.add("+p.pname+")  version:"+p.version+"  arch:"+p.arch,2);
-				}
-			} else {
-				vprint(_("File not found: %s").printf(t_file),1,stderr);
-			}
+			var p = new Package(name);
+			p.version = vers;
+			p.arch = arch;
+			dpkg_list.add(p);
+			vprint("dpkg_list.add("+p.pname+")  version:"+p.version+"  arch:"+p.arch,2);
 		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
-		rm(t_dir);
+		if (dpkg_list.size<1) vprint("!!! Error running dpkg-query: \n"+std_err,1,stderr);
 	}
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.17\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-17 15:30-0400\n"
+"POT-Creation-Date: 2023-06-17 17:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,11 +235,6 @@ msgstr ""
 
 #: src/Common/Main.vala:378
 msgid "Notifications are disabled"
-msgstr ""
-
-#: src/Common/Package.vala:58
-#, c-format
-msgid "File not found: %s"
 msgstr ""
 
 #: src/Console/AppConsole.vala:39 src/Gtk/AppGtk.vala:63
