@@ -189,9 +189,8 @@ msgid "The following kernels will be uninstalled"
 msgstr "Наступні ядра будуть видалені"
 
 #: src/Common/LinuxKernel.vala:1147
-#, fuzzy
 msgid "Continue ?"
-msgstr "Продовжувати ?"
+msgstr "Продовжити ?"
 
 #: src/Common/LinuxKernel.vala:1162
 msgid "No updates"
@@ -630,7 +629,8 @@ msgstr "Копія"
 #: src/Gtk/TerminalWindow.vala:153
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr "Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
+msgstr ""
+"Копіює весь вихідний буфер, включаючи прокручування, до буфера обміну."
 
 #: src/Gtk/TerminalWindow.vala:160
 msgid "Cancel"
