@@ -1,6 +1,5 @@
 
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.misc;
 
 public class DownloadTask : AsyncTask {
@@ -8,10 +7,10 @@ public class DownloadTask : AsyncTask {
 	// settings
 	public int timeout_secs = 60;
 
-	// download lists
-	private Gee.ArrayList<DownloadItem> downloads;
-	private Gee.HashMap<string, DownloadItem> map;
-	private Gee.HashMap<string,Regex> regex = null;
+	// item lists
+	Gee.ArrayList<DownloadItem> downloads;
+	Gee.HashMap<string, DownloadItem> map;
+	Gee.HashMap<string,Regex> regex = null;
 
 	public DownloadTask() {
 
@@ -42,10 +41,12 @@ public class DownloadTask : AsyncTask {
 	public void add_to_queue(DownloadItem item) {
 		item.task = this;
 		downloads.add(item);
-
-		do { item.gid = random_string(16,"0123456789abcdef"); }
+		// https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-gid
+		// gid must be lower-case and the first 6 characters must be unique.
+		// Only the first 6 chars are shown in the progress output, and they
+		// are shown in lower case even if they were supplied in upper case.
+		do { item.gid = "%8.8x%8.8x".printf(Main.rnd.next_int(),Main.rnd.next_int()); }
 		while (map.has_key(item.gid_key));
-
 		map[item.gid_key] = item;
 	}
 
@@ -61,58 +62,49 @@ public class DownloadTask : AsyncTask {
 	}
 
 	public void prepare() {
-		save_bash_script_temp(build_script(), script_file);
-	}
-
-	private string build_script() {
-
-		vprint("build_script():",2);
-		vprint("working_dir: '"+working_dir+"'",2);
-		string list = "";
-		string list_file = working_dir+"download.list";
+		vprint("prepare():",2);
+		stdin_data = "";
 
 		foreach (var item in downloads) {
-			list += item.source_uri + "\n"
+			stdin_data += item.source_uri + "\n"
 				+ " gid="+item.gid+"\n"
 				+ " dir="+item.download_dir+"\n"
 				+ " out="+item.file_name+"\n"
 				;
-			if (item.checksum.length>0) list += ""
+			if (item.checksum.length>0) stdin_data += ""
 				+ " checksum="+item.checksum+"\n"
 				+ " check-integrity=true\n"
 				;
 		}
-		file_write(list_file, list);
-		vprint(list_file+":\n"+list,3);
 
-		string cmd = "aria2c"
-			+ " --input-file='"+list_file+"'"
-			+ " --no-netrc=true"
-			+ " --no-conf=true"
-			+ " --summary-interval=1"
-			+ " --auto-save-interval=1"
-			+ " --enable-color=false"
-			+ " --allow-overwrite"
-			+ " --timeout=600"
-			+ " --max-file-not-found=3"
-			+ " --retry-wait=2"
-			+ " --show-console-readout=false"
-			+ " --human-readable=false"
-			//+ " --max-download-limit=256K"  // force slow download for debugging
-			;
+		string[] cmd = {
+			"aria2c",
+			//"--max-download-limit=256K",  // force slow download for debugging
+			"--input-file=-",
+			"--no-netrc=true",
+			"--no-conf=true",
+			"--summary-interval=1",
+			"--auto-save-interval=1",
+			"--enable-color=false",
+			"--allow-overwrite",
+			"--timeout=600",
+			"--max-file-not-found=3",
+			"--retry-wait=2",
+			"--show-console-readout=false",
+			"--download-result=full",
+			"--human-readable=false"
+		};
 
-		if (App.connect_timeout_seconds>0) cmd += " --connect-timeout="+App.connect_timeout_seconds.to_string();
+		if (App.connect_timeout_seconds>0) cmd += "--connect-timeout="+App.connect_timeout_seconds.to_string();
 
-		if (App.concurrent_downloads>0) cmd += ""
-			+ " --max-concurrent-downloads="+App.concurrent_downloads.to_string()
-			+ " --max-connection-per-server="+App.concurrent_downloads.to_string()
-			;
+		if (App.concurrent_downloads>0) {
+			cmd += "--max-concurrent-downloads="+App.concurrent_downloads.to_string();
+			cmd += "--max-connection-per-server="+App.concurrent_downloads.to_string();
+		}
 
-		if (App.all_proxy.length>0) cmd += " --all-proxy='"+App.all_proxy+"'";
+		if (App.all_proxy.length>0) cmd += "--all-proxy='"+App.all_proxy+"'";
 
-		vprint(cmd,2);
-
-		return cmd;
+		spawn_args = cmd;
 	}
 
 	public override void parse_stdout_line(string out_line) {
@@ -186,6 +178,7 @@ public class DownloadItem : GLib.Object {
 
 	public DownloadTask task = null;
 
+	// only the first 6 chars of gid are shown in the progress output
 	public string gid_key {
 		owned get {
 			return gid.substring(0,6);

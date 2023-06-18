@@ -23,10 +23,9 @@
 
 using Gtk;
 
-using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.gtk;
 using l.misc;
+using TeeJee.FileSystem;
 
 public class MainWindow : Window {
 

@@ -1,0 +1,24 @@
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.3.6/amd64/linux-headers-6.3.6-060306-generic_6.3.6-060306.202306050836_amd64.deb
+ gid=ABCDEF38352A9801
+ dir=/home/bkw/.cache/mainline/6.3.6
+ out=linux-headers-6.3.6-060306-generic_6.3.6-060306.202306050836_amd64.deb
+ checksum=sha-256=e8f71d5adeeceafb5638d45d3ef9589b0b0057fc0dcaabbed3842b7f3bec581e
+ check-integrity=true
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.3.6/amd64/linux-modules-6.3.6-060306-generic_6.3.6-060306.202306050836_amd64.deb
+ gid=FDECBAD9AFAEB4B6
+ dir=/home/bkw/.cache/mainline/6.3.6
+ out=linux-modules-6.3.6-060306-generic_6.3.6-060306.202306050836_amd64.deb
+ checksum=sha-256=3674c72c6076678bb3c3c1a7fbfa71e9bd1a8ce469ee341e82d2426a1e073b82
+ check-integrity=true
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.3.6/amd64/linux-image-unsigned-6.3.6-060306-generic_6.3.6-060306.202306050836_amd64.deb
+ gid=DFECAB14FD57ACE4
+ dir=/home/bkw/.cache/mainline/6.3.6
+ out=linux-image-unsigned-6.3.6-060306-generic_6.3.6-060306.202306050836_amd64.deb
+ checksum=sha-256=82f63ad6d3ff02a69de4bb1a1289dd26fbc9f26a259a61ac596438aa432fffda
+ check-integrity=true
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.3.6/amd64/linux-headers-6.3.6-060306_6.3.6-060306.202306050836_all.deb
+ gid=DEADBEEF6C29E896
+ dir=/home/bkw/.cache/mainline/6.3.6
+ out=linux-headers-6.3.6-060306_6.3.6-060306.202306050836_all.deb
+ checksum=sha-256=04ce50776b5a3056cc18fb824da0f8f3b956ea7206d756e7fca9d98cd7551054
+ check-integrity=true

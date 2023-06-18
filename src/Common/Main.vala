@@ -25,7 +25,6 @@ using GLib;
 using Json;
 
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.misc;
 #if !VALA_0_50
 using l.json;
@@ -144,6 +143,8 @@ public class Main : GLib.Object {
 
 	public bool confirm = true;
 
+	public static Rand rnd;
+
 	// constructors ------------
 
 	public Main(string[] arg0, bool _gui_mode) {
@@ -152,6 +153,7 @@ public class Main : GLib.Object {
 		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
 		if (!Thread.supported()) { vprint(_("Missing Thread support in Glib."),1,stderr); exit(1); }
+		rnd = new Rand();
 		init_paths();
 		load_app_config();
 		Package.initialize();
@@ -234,7 +236,7 @@ public class Main : GLib.Object {
 		node.set_object(config);
 		json.set_root(node);
 
-		dir_create(CONFIG_DIR);
+		mkdir(CONFIG_DIR);
 		try { json.to_file(APP_CONFIG_FILE); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 

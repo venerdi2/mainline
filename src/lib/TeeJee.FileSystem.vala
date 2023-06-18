@@ -58,7 +58,7 @@ namespace TeeJee.FileSystem {
 		vprint("file_write("+path+")",3);
 
 		try {
-			dir_create(file_parent(path));
+			mkdir(file_parent(path));
 			var file = File.new_for_path(path);
 			var file_stream = file.replace(null, false, FileCreateFlags.REPLACE_DESTINATION);
 			var data_stream = new DataOutputStream(file_stream);
@@ -95,8 +95,7 @@ namespace TeeJee.FileSystem {
 				return;
 			}
 
-			dir_create(file_parent(dest_file));
-
+			mkdir(file_parent(dest_file));
 			var file_src = File.new_for_path(src_file);
 			var file_dest = File.new_for_path(dest_file);
 			if (file_exists(dest_file)) file_dest.delete();
@@ -104,18 +103,6 @@ namespace TeeJee.FileSystem {
 
 		}
 		catch (Error e) { vprint(e.message,1,stderr); }
-	}
-
-	public bool dir_create(string d) {
-		vprint("dir_create("+d+")",3);
-		try {
-			var dir = File.parse_name(d);
-			if (!dir.query_exists()) dir.make_directory_with_parents();
-			return true;
-		} catch (Error e) {
-			vprint(e.message,1,stderr);
-			return false;
-		}
 	}
 
 }

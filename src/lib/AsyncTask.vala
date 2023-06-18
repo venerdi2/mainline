@@ -22,32 +22,31 @@
  */
 
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.misc;
 
 public abstract class AsyncTask : GLib.Object {
 
-	private string err_line = "";
-	private string out_line = "";
-	private DataInputStream dis_out;
-	private DataInputStream dis_err;
+	string err_line = "";
+	string out_line = "";
+	DataInputStream dis_out;
+	DataInputStream dis_err;
 	protected bool is_terminated = false;
 
-	private bool stdout_is_open = false;
-	private bool stderr_is_open = false;
+	bool stdout_is_open = false;
+	bool stderr_is_open = false;
 
 	protected Pid child_pid;
-	private int output_fd;
-	private int error_fd;
-	private bool finish_called = false;
-
-	protected string script_file = "";
-	protected string working_dir = "";
+	int stdin_fd;
+	int stdout_fd;
+	int stderr_fd;
+	bool finish_called = false;
 
 	public bool background_mode = false;
 
 	// public
 	public AppStatus status;
+	public string[] spawn_args = {};
+	public string stdin_data = "";
 	public string status_line = "";
 	public int exit_code = 0;
 	public string error_msg = "";
@@ -62,8 +61,6 @@ public abstract class AsyncTask : GLib.Object {
 	public signal void task_complete();
 
 	protected AsyncTask() {
-		working_dir = create_tmp_dir();
-		script_file = working_dir+"script.sh";
 	}
 
 	public bool begin() {
@@ -78,27 +75,27 @@ public abstract class AsyncTask : GLib.Object {
 		prg_count = 0;
 		error_msg = "";
 
-		string[] spawn_args = {"bash",script_file};
-
-		vprint("AsyncTask begin()",2);
-		vprint("working_dir: '"+working_dir+"'",2);
+		if (Main.VERBOSE>2) {
+			vprint("AsyncTask.begin()");
+			vprint("spawn_args: "+string.joinv(" ",spawn_args));
+			vprint("stdin_data: ---begin---\n"+stdin_data+"\nstdin_data: ---end---");
+		}
 
 		try {
-			// execute script file
 			Process.spawn_async_with_pipes(
-				working_dir, // working dir
+				null, //working_dir, // working dir
 				spawn_args,  // argv
 				null,        // environment
 				SpawnFlags.SEARCH_PATH,
 				null,        // child_setup()
 				out child_pid,
-				null,        //out input_fd,
-				out output_fd,
-				out error_fd);
+				out stdin_fd,
+				out stdout_fd,
+				out stderr_fd);
 
 			// create stream readers
-			UnixInputStream uis_out = new UnixInputStream(output_fd, false);
-			UnixInputStream uis_err = new UnixInputStream(error_fd, false);
+			UnixInputStream uis_out = new UnixInputStream(stdout_fd, false);
+			UnixInputStream uis_err = new UnixInputStream(stderr_fd, false);
 			dis_out = new DataInputStream(uis_out);
 			dis_err = new DataInputStream(uis_err);
 			dis_out.newline_type = DataStreamNewlineType.ANY;
@@ -107,6 +104,10 @@ public abstract class AsyncTask : GLib.Object {
 			// read stdout & stderr
 			new Thread<bool> (null,read_stdout);
 			new Thread<bool> (null,read_stderr);
+
+			// stdin
+			FileStream stdin_pipe = FileStream.fdopen(stdin_fd,"w");
+			stdin_pipe.puts(stdin_data);
 
 		}
 		catch (Error e) {
@@ -138,10 +139,10 @@ public abstract class AsyncTask : GLib.Object {
 
 			// dis_out.close();
 			dis_out = null;
-			GLib.FileUtils.close(output_fd);
+			FileUtils.close(stdout_fd);
 
 			// check if complete
-			if (!stdout_is_open && !stderr_is_open) finish();
+			if (!stdout_is_open) finish();
 
 		}
 		catch (Error e) {
@@ -172,10 +173,10 @@ public abstract class AsyncTask : GLib.Object {
 
 			// dis_err.close();
 			dis_err = null;
-			GLib.FileUtils.close(error_fd);
+			FileUtils.close(stderr_fd);
 
 			// check if complete
-			if (!stdout_is_open && !stderr_is_open) finish();
+			if (!stderr_is_open) finish();
 
 		}
 		catch (Error e) {
@@ -191,14 +192,13 @@ public abstract class AsyncTask : GLib.Object {
 	protected abstract void parse_stderr_line(string err_line);
 
 	private void finish() {
-		// finish() gets called by 2 threads but should be executed only once
+		if (stdout_is_open || stderr_is_open) return;
 		if (finish_called) return;
 		finish_called = true;
 
 		err_line = "";
 		out_line = "";
 
-		rm(working_dir);
 		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) status = AppStatus.FINISHED;
 
 		task_complete(); //signal

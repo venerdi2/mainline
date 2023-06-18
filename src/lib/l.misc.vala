@@ -83,7 +83,7 @@ namespace l.misc {
 		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}
 
-	// delete file or directory, recursive, empty or not
+	// rm -rf
 	public bool rm(string path) {
 		vprint("rm("+path+")",3);
 		File p = File.new_for_path(path);
@@ -102,9 +102,10 @@ namespace l.misc {
 		return !p.query_exists();
 	}
 
-	public string random_string(int len = 8, string set = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") {
-		string o = ""; int l = set.length;
-		for(int i=0;i<len;i++) o += set[Random.int_range(0,l)].to_string();
-		return o;
+	// mkdir -p
+	public bool mkdir(string d) {
+		vprint("mkdir("+d+")",3);
+		return (DirUtils.create_with_parents(d,0775)==0);
 	}
+
 }

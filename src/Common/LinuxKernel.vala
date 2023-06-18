@@ -1,6 +1,5 @@
 
 using TeeJee.FileSystem;
-using TeeJee.ProcessHelper;
 using l.misc;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
@@ -313,10 +312,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (App.index_is_fresh) return true;
 		if (!try_ppa()) return false;
 
-		dir_create(App.CACHE_DIR);
+		mkdir(App.CACHE_DIR);
 
 		// preserve the old index in case the dl fails
-		string tbn = random_string();
+		string tbn = "%8.8X".printf(Main.rnd.next_int());
 		string tfn = App.CACHE_DIR+"/"+tbn;
 		vprint("+ DownloadItem("+App.ppa_uri+","+App.CACHE_DIR+","+tbn+")",4);
 		var item = new DownloadItem(App.ppa_uri, App.CACHE_DIR, tbn);
@@ -1060,7 +1059,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
 		if (!App.keep_downloads) foreach (string f in flist) rm(f);
-		if (r!=0) vprint(_("done"));
+		vprint(_("done"));
 		return r;
 	}
 

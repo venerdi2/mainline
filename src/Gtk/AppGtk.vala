@@ -22,7 +22,6 @@
 using GLib;
 using X;
 
-using TeeJee.ProcessHelper;
 using l.misc;
 
 public Main App;
