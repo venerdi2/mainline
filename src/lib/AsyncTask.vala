@@ -21,7 +21,6 @@
  *
  */
 
-using TeeJee.FileSystem;
 using l.misc;
 
 public abstract class AsyncTask : GLib.Object {

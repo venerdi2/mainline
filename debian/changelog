@@ -1,3 +1,13 @@
+mainline (1.3.18) unstable; urgency=medium
+
+  * remove all temp dirs, temp files, temp bash scripts
+    exec_sync/exec_async commands are run directly instead of building a temp bash script
+    download job list is piped to aria2c stdin instead of writing a temp file,
+    dpkg list is read from dpkg_query stdout instead of a temp file, etc
+  * remove TeeJee.ProcessHelper.vala & TeeJee.FileSystem.vala, the last remaining TeeJee library code
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 18 Jun 2023 08:05:46 -0400
+
 mainline (1.3.17) unstable; urgency=medium
 
   * enable checksums by default

@@ -21,10 +21,8 @@
  *
  */
 
-using GLib;
 using Json;
 
-using TeeJee.FileSystem;
 using l.misc;
 #if !VALA_0_50
 using l.json;
@@ -91,7 +89,6 @@ public class Main : GLib.Object {
 	public string CONFIG_DIR = "";
 	public string CACHE_DIR = "";
 	public string DATA_DIR = "";
-	public string TMP_PREFIX = "";
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
@@ -192,7 +189,6 @@ public class Main : GLib.Object {
 		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
 		DATA_DIR = Environment.get_user_data_dir() + "/" + BRANDING_SHORTNAME;
 		CACHE_DIR = Environment.get_user_cache_dir() + "/" + BRANDING_SHORTNAME;
-		TMP_PREFIX = Environment.get_tmp_dir() + "/." + BRANDING_SHORTNAME;
 		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
 		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
 		STARTUP_DESKTOP_FILE = CONFIG_DIR + "/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
@@ -381,7 +377,7 @@ public class Main : GLib.Object {
 			+ "exit 0\n";
 		}
 
-		file_write(STARTUP_SCRIPT_FILE,s);
+		fwrite(STARTUP_SCRIPT_FILE,s);
 		RUN_NOTIFY_SCRIPT = true;
 	}
 
@@ -392,7 +388,7 @@ public class Main : GLib.Object {
 			string s = "[Desktop Entry]\n"
 				+ "Exec=bash \""+STARTUP_SCRIPT_FILE+"\" --autostart\n"
 				;
-			file_write(STARTUP_DESKTOP_FILE,s);
+			fwrite(STARTUP_DESKTOP_FILE,s);
 		} else {
 			rm(STARTUP_DESKTOP_FILE);
 		}

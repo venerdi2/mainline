@@ -19,7 +19,6 @@
  * MA 02110-1301, USA.
  */
 
-using TeeJee.FileSystem;
 using l.misc;
 
 public Main App;
@@ -228,16 +227,16 @@ public class AppConsole : GLib.Object {
 		if (App.notify_minor) {
 			var k = LinuxKernel.kernel_update_minor;
 			if (k!=null && k.version_main!="") available = k.version_main;
-			if (file_exists(App.MINOR_SEEN_FILE)) seen = file_read(App.MINOR_SEEN_FILE).strip();
-			if (seen!=available) file_write(App.MINOR_SEEN_FILE,available);
+			if (exists(App.MINOR_SEEN_FILE)) seen = fread(App.MINOR_SEEN_FILE).strip();
+			if (seen!=available) fwrite(App.MINOR_SEEN_FILE,available);
 		} else vprint(_("notify point releases disabled"),2);
 
 		// if notify_major enabled and there is one, simply overwrite available
 		if (App.notify_major) {
 			var k = LinuxKernel.kernel_update_major;
 			if (k!=null && k.version_main!="") available = k.version_main;
-			if (file_exists(App.MAJOR_SEEN_FILE)) seen = file_read(App.MAJOR_SEEN_FILE).strip();
-			if (seen!=available) file_write(App.MAJOR_SEEN_FILE,available);
+			if (exists(App.MAJOR_SEEN_FILE)) seen = fread(App.MAJOR_SEEN_FILE).strip();
+			if (seen!=available) fwrite(App.MAJOR_SEEN_FILE,available);
 		} else vprint(_("notify major releases disabled"),2);
 
 		if (seen==available) available = "";

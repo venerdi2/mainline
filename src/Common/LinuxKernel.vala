@@ -1,5 +1,4 @@
 
-using TeeJee.FileSystem;
 using l.misc;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
@@ -250,7 +249,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			// add index.html to download list
 			vprint(_("queuing download")+" "+k.version_main,3);
-			downloads.add(new DownloadItem(k.cached_page_uri, file_parent(k.cached_page), file_basename(k.cached_page)));
+			downloads.add(new DownloadItem(k.cached_page_uri, Path.get_dirname(k.cached_page), Path.get_basename(k.cached_page)));
 
 			// add kernel to update list
 			kernels_to_update.add(k);
@@ -308,7 +307,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint("download_index()",2);
 
 		string cif = main_index_file();
-		if (!file_exists(cif)) App.index_is_fresh=false;
+		if (!exists(cif)) App.index_is_fresh=false;
 		if (App.index_is_fresh) return true;
 		if (!try_ppa()) return false;
 
@@ -327,8 +326,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		while (mgr.is_running()) Thread.usleep(250000);
 
-		if (file_exists(tfn)) {
-			file_move(tfn,cif);
+		if (exists(tfn)) {
+			FileUtils.rename(tfn,cif);
 			App.index_is_fresh=true;
 			vprint(_("OK"),2);
 			return true;
@@ -345,8 +344,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
 
 		string cif = main_index_file();
-		if (!file_exists(cif)) return;
-		string txt = file_read(cif);
+		if (!exists(cif)) return;
+		string txt = fread(cif);
 		kernel_list.clear();
 		kall.clear();
 
@@ -422,7 +421,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// add to kernel_list as a distro kernel
 			if (!found) {
 				pk.is_mainline = false;
-				if (file_exists(pk.notes_file)) pk.notes = file_read(pk.notes_file);
+				if (exists(pk.notes_file)) pk.notes = fread(pk.notes_file);
 				vprint("kernel_list.add("+pk.version_main+" "+pk.kname+" "+pk.kver+")",2);
 				kernel_list.add(pk);
 			}
@@ -681,20 +680,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public void mark_invalid() {
-		file_write(cached_status_file,"");
+		fwrite(cached_status_file,"");
 	}
 
 	// properties
 
 	public bool is_invalid {
 		get {
-			return file_exists(cached_status_file);
+			return exists(cached_status_file);
 		}
 	}
 
 	public bool is_locked {
 		get {
-			return file_exists(locked_file);
+			return exists(locked_file);
 		}
 	}
 
@@ -786,7 +785,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public bool cached_page_exists {
 		get {
-			return file_exists(cached_page);
+			return exists(cached_page);
 		}
 	}
 
@@ -824,15 +823,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		notes = "";
 
 		// load locally generated data regardless of the state of the cached index
-		if (file_exists(notes_file)) notes = file_read(notes_file).strip();
+		if (exists(notes_file)) notes = fread(notes_file).strip();
 
-		if (!file_exists(cached_page)) {
+		if (!exists(cached_page)) {
 			vprint("load_cached_page(): " + _("File not found") + ": "+cached_page,1,stderr);
 			return false;
 		}
 
 		// parse index.html --------------------------
-		txt = file_read(cached_page);
+		txt = fread(cached_page);
 
 		// find the highest datetime anywhere in the cached index
 		//<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="HEADER.html">HEADER.html</a></td><td align="right">2023-05-11 23:21  </td><td align="right">5.6K</td><td>&nbsp;</td></tr>
@@ -975,7 +974,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		int MB = 1024 * 1024;
 		string[] flist = {};
 
-		foreach (string f in deb_url_list.keys) if (!App.keep_downloads || !file_exists(cache_subdir+"/"+f)) flist += f;
+		foreach (string f in deb_url_list.keys) if (!App.keep_downloads || !exists(cache_subdir+"/"+f)) flist += f;
 
 		// CHECKSUMS
 		if (flist.length>0) {
@@ -984,7 +983,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				vprint("CHECKSUMS "+_("enabled"),2);
 
 				// download the CHECKSUMS file
-				if (!file_exists(cached_checksums_file)) {
+				if (!exists(cached_checksums_file)) {
 					var dt = new DownloadTask();
 					dt.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
 					dt.execute();
@@ -999,7 +998,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				// aria2c -h#checksum  ;aria2c -v |grep "^Hash Algorithms:"
 				// FIXME assumption: if 1st word is 64 bytes then it is a sha256 hash
 				// FIXME assumption: there will always be exactly 2 spaces between hash & filename
-				foreach (string l in file_read(cached_checksums_file).split("\n")) {
+				foreach (string l in fread(cached_checksums_file).split("\n")) {
 					var w = l.split(" ");
 					if (w.length==3 && w[0].length==64) deb_checksum_list[w[2]] = "sha-256="+w[0];
 				}
@@ -1019,7 +1018,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			pbar(0,0);
 		} else vprint(_("Cached"));
 
-		foreach (string f in deb_url_list.keys) if (!file_exists(cache_subdir+"/"+f)) r = false;
+		foreach (string f in deb_url_list.keys) if (!exists(cache_subdir+"/"+f)) r = false;
 		return r;
 	}
 
@@ -1138,17 +1137,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (klist.size == 0){
 			vprint(_("No old kernels to uninstall"));
-			vprint(_("done"));
+			vprint(_("done")); // seperate line to re-use the translation
 			return 0;
 		}
 
 		if (confirm) {
 			var message = "\n"+_("The following kernels will be uninstalled")+"\n";
 			foreach (var k in klist) message += " ▰ %s\n".printf(k.version_main);
-			message += "\n%s (y/n): ".printf(_("Continue ?"));
+			message += "\n"+_("Continue ?")+" (y/n): ";
 			vprint(message,0);
-			int ch = stdin.getc();
-			if (ch != 'y') { vprint("done"); return 1; }
+			if (stdin.getc() != 'y') { vprint(_("done")); return 1; }
 		}
 
 		// uninstall --------------------------------
@@ -1168,8 +1166,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int kinst_update(LinuxKernel k, bool confirm) {
 		if (confirm) {
 			vprint("\n" + _("Install Kernel Version %s ? (y/n): ").printf(k.version_main),0);
-			int ch = stdin.getc();
-			if (ch != 'y') { vprint(_("done")); return 1; }
+			if (stdin.getc() != 'y') { vprint(_("done")); return 1; }
 		}
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		klist.add(k);

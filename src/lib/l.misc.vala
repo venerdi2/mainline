@@ -103,9 +103,30 @@ namespace l.misc {
 	}
 
 	// mkdir -p
-	public bool mkdir(string d) {
-		vprint("mkdir("+d+")",3);
-		return (DirUtils.create_with_parents(d,0775)==0);
+	public bool mkdir(string path) {
+		vprint("mkdir("+path+")",3);
+		return (DirUtils.create_with_parents(path,0775)==0);
+	}
+
+	public string? fread(string fname) {
+		vprint("fread("+fname+")",3);
+		string fdata = "";
+		try { FileUtils.get_contents(fname, out fdata); }
+		catch (Error e) { vprint(e.message,1,stderr); }
+		return fdata;
+	}
+
+	public bool fwrite(string fname, string fdata) {
+		vprint("fwrite("+fname+")",3);
+		mkdir(Path.get_dirname(fname));
+		try { FileUtils.set_contents(fname,fdata); return true;}
+		catch (Error e) { vprint(e.message,1,stderr); return false; }
+	}
+
+	public bool exists(string path) {
+		var t = FileTest.IS_REGULAR;
+		if (path.has_suffix("/")) t = FileTest.IS_DIR;
+		return (FileUtils.test(path, t));
 	}
 
 }

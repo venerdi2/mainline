@@ -1,5 +1,4 @@
 
-using TeeJee.FileSystem;
 using l.misc;
 
 public class DownloadTask : AsyncTask {
@@ -136,7 +135,14 @@ public class DownloadTask : AsyncTask {
 			//int64 rate = int64.parse(match.fetch(3).strip());
 			//string file = match.fetch(4).strip();
 
-			if (map.has_key(gid_key)) map[gid_key].status = status;
+			if (map.has_key(gid_key)) {
+				var item = map[gid_key];
+				item.status = status;
+				//if (status=="OK") {
+				//	item.bytes_received = item.bytes_total;
+				//	status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
+				//}
+			}
 
 		} else if (regex["file-progress"].match(line, 0, out match)) {
 

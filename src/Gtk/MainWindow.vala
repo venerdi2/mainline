@@ -25,7 +25,6 @@ using Gtk;
 
 using l.gtk;
 using l.misc;
-using TeeJee.FileSystem;
 
 public class MainWindow : Window {
 
@@ -169,7 +168,7 @@ public class MainWindow : Window {
 			LinuxKernel k;
 			tm.get(iter, TM.KOBJ, out k, -1);
 			if (toggle.active) rm(k.locked_file);
-			else file_write(k.locked_file, "");
+			else fwrite(k.locked_file, "");
 			tm.set(iter, TM.LOCKED, k.is_locked);
 		});
 
@@ -206,7 +205,7 @@ public class MainWindow : Window {
 			if (t_old != t_new) {
 				k.notes = t_new;
 				if (t_new=="") rm(k.notes_file);
-				else file_write(k.notes_file, t_new);
+				else fwrite(k.notes_file, t_new);
 				tm.set(i, TM.NOTES, t_new, -1);
 			}
 		});
