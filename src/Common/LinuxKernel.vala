@@ -272,7 +272,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			vprint(_("Fetching individual kernel indexes")+"...");
 
 			// while downloading
-			while (mgr.is_running()) {
+			while (mgr.is_running) {
 				App.progress_count = mgr.prg_count;
 				pbar(App.progress_count,App.progress_total);
 				Thread.usleep(250000);
@@ -325,7 +325,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(_("Updating from")+": '"+App.ppa_uri+"'");
 		mgr.execute();
 
-		while (mgr.is_running()) Thread.usleep(250000);
+		while (mgr.is_running) Thread.usleep(250000);
 
 		if (exists(tfn)) {
 			FileUtils.rename(tfn,cif);
@@ -988,7 +988,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					var dt = new DownloadTask();
 					dt.add_to_queue(new DownloadItem(checksums_file_uri,cache_subdir,"CHECKSUMS"));
 					dt.execute();
-					while (dt.is_running()) Thread.usleep(100000);
+					while (dt.is_running) Thread.usleep(100000);
 				}
 
 				// parse the CHECKSUMS file
@@ -1011,7 +1011,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			mgr.execute();
 
 			string[] stat = {"","",""};
-			while (mgr.is_running()) {
+			while (mgr.is_running) {
 				stat = mgr.status_line.split_set(" /");
 				if (stat[1]!=null && stat[2]!=null) pbar(int64.parse(stat[1])/MB,int64.parse(stat[2])/MB,"MB - file "+(mgr.prg_count+1).to_string()+"/"+deb_url_list.size.to_string());
 				Thread.usleep(250000);

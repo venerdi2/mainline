@@ -49,15 +49,9 @@ public class DownloadTask : AsyncTask {
 		map[item.gid_key] = item;
 	}
 
-	public void clear_queue() {
-		downloads.clear();
-		map.clear();
-	}
-
 	public void execute() {
 		prepare();
 		begin();
-		if (status == AppStatus.RUNNING) {}
 	}
 
 	public void prepare() {
@@ -106,13 +100,8 @@ public class DownloadTask : AsyncTask {
 		spawn_args = cmd;
 	}
 
-	public override void parse_stdout_line(string out_line) {
-		if (is_terminated) return;
-		update_progress_parse_console_output(out_line);
-	}
-
-	public bool update_progress_parse_console_output (string line) {
-		if ((line == null) || (line.length == 0)) return true;
+	public override void parse_stdout_line(string line) {
+		if ((line == null) || (line.length == 0)) return;
 
 		//vprint(line,2);
 
@@ -152,15 +141,11 @@ public class DownloadTask : AsyncTask {
 				var item = map[gid_key];
 				item.bytes_received = received;
 				if (item.bytes_total == 0) item.bytes_total = total;
-				item.status = "RUNNING";
 				status_line = item.file_name+" "+received.to_string()+"/"+total.to_string();
 			}
-
-		} else {
-			//vprint("unmatched: '%s'".printf(line),2);
 		}
 
-		return true;
+		return;
 	}
 }
 
