@@ -28,7 +28,7 @@ public class DownloadTask : AsyncTask {
 
 			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
 			//bea740|OK  |        n/a|/home/teejee/.cache/ukuu/v4.0.9-wily/CHANGES
-			regex["file-status"] = new Regex("""^([0-9A-Za-z]+)\|(OK|ERR)[ ]*\|[ ]*(n\/a|[0-9.]+[A-Za-z\/]+)\|(.*)""");
+			regex["file-result"] = new Regex("""^([0-9A-Za-z]+)\|(OK|ERR)[ ]*\|[ ]*(n\/a|[0-9.]+[A-Za-z\/]+)\|(.*)""");
 		}
 		catch (Error e) {
 			vprint(e.message,1,stderr);
@@ -112,19 +112,18 @@ public class DownloadTask : AsyncTask {
 		if (regex["file-complete"].match(l, 0, out match)) {
 			//vprint("match: file-complete: " + line,2);
 			prg_count++;
-		} else if (regex["file-status"].match(l, 0, out match)) {
+		} else if (regex["file-result"].match(l, 0, out match)) {
 
 			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
 
 			string gid_key = match.fetch(1).strip();
-			string status = match.fetch(2).strip();
+			string result = match.fetch(2).strip();
 			//int64 rate = int64.parse(match.fetch(3).strip());
 			//string file = match.fetch(4).strip();
 
 			if (map.has_key(gid_key)) {
 				var item = map[gid_key];
-				//item.status = status;
-				if (status=="OK") {
+				if (result=="OK") {
 					item.bytes_received = item.bytes_total;
 					status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
 				}
