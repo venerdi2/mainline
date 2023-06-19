@@ -73,7 +73,7 @@ public class MainWindow : Window {
 		});
 
 		title = BRANDING_LONGNAME;
-		icon = get_app_icon(16);
+		icon = ld_icon(BRANDING_SHORTNAME,16).pixbuf;
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
 		tm = new Gtk.ListStore(TM.N_COLS,
@@ -440,9 +440,9 @@ public class MainWindow : Window {
 
 		dialog.program_name = BRANDING_LONGNAME;
 		dialog.comments = _("Kernel upgrade utility for Ubuntu-based distributions");
-		dialog.copyright = _("Original")+": \"ukuu\" © 2015-18 Tony George\n"+_("Forked")+": \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME+" ("+BRANDING_AUTHOREMAIL+")";
+		dialog.copyright = _("Original")+": \"ukuu\" © 2015-18 Tony George\n"+_("Forked")+": \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME;
 		dialog.version = BRANDING_VERSION;
-		dialog.logo = get_app_icon(128);
+		dialog.logo = ld_icon(BRANDING_SHORTNAME,128).pixbuf;
 
 		dialog.license = "This program is free for personal and commercial use and comes with absolutely no warranty. You use this program entirely at your own risk. The author will not be liable for any damages arising from the use of this program.";
 		dialog.website = BRANDING_WEBSITE;

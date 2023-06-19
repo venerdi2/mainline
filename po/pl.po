@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-18 09:19-0400\n"
+"POT-Creation-Date: 2023-06-18 20:34-0400\n"
 "PO-Revision-Date: 2023-06-16 17:04+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Notifications are disabled"
 msgstr "Powiadomienia są wyłączone"
 
-#: src/Console/AppConsole.vala:38 src/Gtk/AppGtk.vala:62
+#: src/Console/AppConsole.vala:38 src/Gtk/AppGtk.vala:63
 msgid "Syntax"
 msgstr "Składnia"
 
@@ -288,7 +288,7 @@ msgstr "Pobierz wybrane jądra"
 msgid "Delete cached info about available kernels"
 msgstr "Usuń informacje z pamięci podręcznej o dostępnych jądrach"
 
-#: src/Console/AppConsole.vala:54 src/Gtk/AppGtk.vala:64
+#: src/Console/AppConsole.vala:54 src/Gtk/AppGtk.vala:65
 msgid "Options"
 msgstr "Opcje"
 
@@ -322,7 +322,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Zablokowane jądra i aktualnie uruchomione jądro są ignorowane"
 
 #: src/Console/AppConsole.vala:138 src/Console/AppConsole.vala:191
-#: src/Gtk/AppGtk.vala:96
+#: src/Gtk/AppGtk.vala:97
 msgid "Unknown option"
 msgstr "Nieznana opcja"
 
@@ -367,7 +367,7 @@ msgstr "wyłączono powiadomienia o wersjach głównych"
 msgid "Kernel %s Available"
 msgstr "Dostępne %s jądra"
 
-#: src/Console/AppConsole.vala:249 src/Gtk/SettingsDialog.vala:123
+#: src/Console/AppConsole.vala:249 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Pokaż"
 
@@ -391,39 +391,39 @@ msgstr "Zamknij"
 msgid "Back"
 msgstr "Wstecz"
 
-#: src/Gtk/AboutWindow.vala:170
+#: src/Gtk/AboutWindow.vala:171
 msgid "Authors"
 msgstr "Аutorzy"
 
-#: src/Gtk/AboutWindow.vala:176
+#: src/Gtk/AboutWindow.vala:177
 msgid "Contributions"
 msgstr "Wkład"
 
-#: src/Gtk/AboutWindow.vala:182
+#: src/Gtk/AboutWindow.vala:183
 msgid "Artists"
 msgstr "Artyści"
 
-#: src/Gtk/AboutWindow.vala:188
+#: src/Gtk/AboutWindow.vala:189
 msgid "Translators"
 msgstr "Tłumacze"
 
-#: src/Gtk/AboutWindow.vala:194
+#: src/Gtk/AboutWindow.vala:195
 msgid "Documenters"
 msgstr "Dokumentujący"
 
-#: src/Gtk/AboutWindow.vala:200
+#: src/Gtk/AboutWindow.vala:201
 msgid "Third Party Inclusions"
 msgstr "Włączenia stron trzecich"
 
-#: src/Gtk/AppGtk.vala:62
+#: src/Gtk/AppGtk.vala:63
 msgid "options"
 msgstr "opcje"
 
-#: src/Gtk/AppGtk.vala:66
+#: src/Gtk/AppGtk.vala:67
 msgid "Print debug information"
 msgstr "Wypisz informacje debugujące"
 
-#: src/Gtk/AppGtk.vala:67
+#: src/Gtk/AppGtk.vala:68
 msgid "Show all options"
 msgstr "Pokaż wszystkie opcje"
 
@@ -485,6 +485,7 @@ msgid "Original"
 msgstr "Oryginalne"
 
 #: src/Gtk/MainWindow.vala:470
+#, fuzzy
 msgid "Updating kernels"
 msgstr "Aktualizowanie jąder"
 
@@ -500,55 +501,55 @@ msgstr "jest już zainstalowane"
 msgid "adding"
 msgstr "dodawanie"
 
-#: src/Gtk/SettingsDialog.vala:44
+#: src/Gtk/SettingsDialog.vala:45
 msgid "Notification"
 msgstr "Powiadomienia"
 
-#: src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/SettingsDialog.vala:50
 msgid "Notify if a major release is available"
 msgstr "Powiadom, jeśli pojawi się główna wersja"
 
-#: src/Gtk/SettingsDialog.vala:55
+#: src/Gtk/SettingsDialog.vala:56
 msgid "Notify if a point release is available"
 msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 
-#: src/Gtk/SettingsDialog.vala:62
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Seconds interval enabled for debugging"
 msgstr "Interwał w sekundach włączony do debugowania"
 
-#: src/Gtk/SettingsDialog.vala:81
+#: src/Gtk/SettingsDialog.vala:82
 msgid "Check every"
 msgstr "Sprawdzaj co"
 
-#: src/Gtk/SettingsDialog.vala:90
+#: src/Gtk/SettingsDialog.vala:91
 msgid "Hours"
 msgstr "godziny"
 
-#: src/Gtk/SettingsDialog.vala:91
+#: src/Gtk/SettingsDialog.vala:92
 msgid "Days"
 msgstr "dni"
 
-#: src/Gtk/SettingsDialog.vala:92
+#: src/Gtk/SettingsDialog.vala:93
 msgid "Weeks"
 msgstr "tygodnie"
 
-#: src/Gtk/SettingsDialog.vala:93
+#: src/Gtk/SettingsDialog.vala:94
 msgid "Seconds"
 msgstr "sekundy"
 
-#: src/Gtk/SettingsDialog.vala:101
+#: src/Gtk/SettingsDialog.vala:102
 msgid "Filters"
 msgstr "Filtry"
 
-#: src/Gtk/SettingsDialog.vala:107
+#: src/Gtk/SettingsDialog.vala:108
 msgid "Hide unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
 
-#: src/Gtk/SettingsDialog.vala:114
+#: src/Gtk/SettingsDialog.vala:115
 msgid "Hide failed or incomplete builds"
 msgstr "Ukryj nieudane lub niekompletne kompilacje"
 
-#: src/Gtk/SettingsDialog.vala:115
+#: src/Gtk/SettingsDialog.vala:116
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -558,42 +559,42 @@ msgstr ""
 "niekompletna lub nieudana kompilacja dla Twojej architektury (%s), nie "
 "pokazuj jej na liście."
 
-#: src/Gtk/SettingsDialog.vala:131
+#: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
 msgstr "poprzednie główne wersje  ( -1 = wszystkie )"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsDialog.vala:138
 msgid "Network"
 msgstr "Sieć"
 
-#: src/Gtk/SettingsDialog.vala:146
+#: src/Gtk/SettingsDialog.vala:147
 msgid "Internet connection timeout in"
 msgstr "Limit czasu połączenia internetowego po"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:155
 msgid "seconds"
 msgstr "sekundy"
 
-#: src/Gtk/SettingsDialog.vala:163
+#: src/Gtk/SettingsDialog.vala:164
 msgid "Max concurrent downloads"
 msgstr "Maksymalna liczba jednoczesnych pobrań"
 
-#: src/Gtk/SettingsDialog.vala:174
+#: src/Gtk/SettingsDialog.vala:175
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Weryfikuj pobrania za pomocą plików CHECKSUMS"
 
-#: src/Gtk/SettingsDialog.vala:176
+#: src/Gtk/SettingsDialog.vala:177
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
 "Użyj skrótów sha-256 z pliku CHECKSUMS, aby zweryfikować pobrane pliki .deb."
 
-#: src/Gtk/SettingsDialog.vala:181
+#: src/Gtk/SettingsDialog.vala:182
 msgid "Keep Downloads"
 msgstr "Zachowaj pobrane pliki"
 
-#: src/Gtk/SettingsDialog.vala:182
+#: src/Gtk/SettingsDialog.vala:183
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -607,19 +608,19 @@ msgstr ""
 "Są nadal usuwane, gdy staną się starsze niż ustawienie „Pokaż poprzednie "
 "główne wersje” lub jeśli zostały zaktualizowane w witrynie mainline-ppa."
 
-#: src/Gtk/SettingsDialog.vala:188
+#: src/Gtk/SettingsDialog.vala:189
 msgid "Proxy"
 msgstr "Serwer pośredniczący"
 
-#: src/Gtk/SettingsDialog.vala:217
+#: src/Gtk/SettingsDialog.vala:218
 msgid "Auth Command"
 msgstr "Polecenie autoryzacji"
 
-#: src/Gtk/SettingsDialog.vala:238
+#: src/Gtk/SettingsDialog.vala:239
 msgid "Command used to run dpkg with root permissions"
 msgstr "Polecenie używane do uruchamiania dpkg z uprawnieniami roota"
 
-#: src/Gtk/SettingsDialog.vala:242
+#: src/Gtk/SettingsDialog.vala:243
 msgid "Done"
 msgstr "Gotowe"
 

@@ -159,6 +159,7 @@ public class AboutWindow : Dialog {
 	public void initialize() {
 		title = program_name;
 		img_logo.pixbuf = logo.scale_simple(128,128,Gdk.InterpType.HYPER);
+
 		lbl_program_name.label = "<span size='larger'>%s</span>".printf(program_name);
 		lbl_version.label = "%s".printf(version);
 		lbl_comments.label = "%s".printf(comments);

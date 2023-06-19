@@ -28,13 +28,14 @@ public class SettingsDialog : Gtk.Dialog {
 
 	public SettingsDialog.with_parent(Gtk.Window parent) {
 
-		int SPACING = 6;
+		const int SPACING = 6;
 
 		set_transient_for(parent);
 		set_modal(true);
 		window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-		icon = get_app_icon(16);
+
 		title = BRANDING_LONGNAME + " " + _("Settings");
+		icon = ld_icon(BRANDING_SHORTNAME,16).pixbuf;
 
 		var vbox_main = get_content_area();
 		vbox_main.spacing = SPACING;

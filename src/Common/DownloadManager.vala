@@ -41,9 +41,9 @@ public class DownloadTask : AsyncTask {
 		item.task = this;
 		downloads.add(item);
 		// https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-gid
-		// gid must be lower-case and the first 6 characters must be unique.
-		// Only the first 6 chars are shown in the progress output, and they
+		// Only the first 6 chars of gid are shown in the progress output, and they
 		// are shown in lower case even if they were supplied in upper case.
+		// So gid must be lower-case and the first 6 characters must be unique.
 		do { item.gid = "%8.8x%8.8x".printf(Main.rnd.next_int(),Main.rnd.next_int()); }
 		while (map.has_key(item.gid_key));
 		map[item.gid_key] = item;

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-18 09:19-0400\n"
+"POT-Creation-Date: 2023-06-18 20:34-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Notifications are disabled"
 msgstr "Obavijesti su onemogućene"
 
-#: src/Console/AppConsole.vala:38 src/Gtk/AppGtk.vala:62
+#: src/Console/AppConsole.vala:38 src/Gtk/AppGtk.vala:63
 msgid "Syntax"
 msgstr "Sintaksa"
 
@@ -303,7 +303,7 @@ msgstr "Preuzmi određene kernele"
 msgid "Delete cached info about available kernels"
 msgstr "Brisanje predmemoriranih podataka o dostupnim jezgrama"
 
-#: src/Console/AppConsole.vala:54 src/Gtk/AppGtk.vala:64
+#: src/Console/AppConsole.vala:54 src/Gtk/AppGtk.vala:65
 msgid "Options"
 msgstr "Mogućnosti"
 
@@ -338,7 +338,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Trenutno pokrenuta jezgra uvijek će se zanemariti"
 
 #: src/Console/AppConsole.vala:138 src/Console/AppConsole.vala:191
-#: src/Gtk/AppGtk.vala:96
+#: src/Gtk/AppGtk.vala:97
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
@@ -386,7 +386,7 @@ msgstr "Obavijesti kada je glavno izdanje dostupno"
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:249 src/Gtk/SettingsDialog.vala:123
+#: src/Console/AppConsole.vala:249 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Prikaži"
 
@@ -410,39 +410,39 @@ msgstr "Zatvori"
 msgid "Back"
 msgstr "Natrag"
 
-#: src/Gtk/AboutWindow.vala:170
+#: src/Gtk/AboutWindow.vala:171
 msgid "Authors"
 msgstr "Autori"
 
-#: src/Gtk/AboutWindow.vala:176
+#: src/Gtk/AboutWindow.vala:177
 msgid "Contributions"
 msgstr "Prilozi"
 
-#: src/Gtk/AboutWindow.vala:182
+#: src/Gtk/AboutWindow.vala:183
 msgid "Artists"
 msgstr "Dizajneri"
 
-#: src/Gtk/AboutWindow.vala:188
+#: src/Gtk/AboutWindow.vala:189
 msgid "Translators"
 msgstr "Prevoditelji"
 
-#: src/Gtk/AboutWindow.vala:194
+#: src/Gtk/AboutWindow.vala:195
 msgid "Documenters"
 msgstr "Autori dokumentacije"
 
-#: src/Gtk/AboutWindow.vala:200
+#: src/Gtk/AboutWindow.vala:201
 msgid "Third Party Inclusions"
 msgstr "Uključene treće strane"
 
-#: src/Gtk/AppGtk.vala:62
+#: src/Gtk/AppGtk.vala:63
 msgid "options"
 msgstr "mogućnosti"
 
-#: src/Gtk/AppGtk.vala:66
+#: src/Gtk/AppGtk.vala:67
 msgid "Print debug information"
 msgstr "Ispiši informacije otklanjanja grešaka"
 
-#: src/Gtk/AppGtk.vala:67
+#: src/Gtk/AppGtk.vala:68
 msgid "Show all options"
 msgstr "Prikaži sve mogućnosti"
 
@@ -503,6 +503,7 @@ msgid "Original"
 msgstr "Izvornik"
 
 #: src/Gtk/MainWindow.vala:470
+#, fuzzy
 msgid "Updating kernels"
 msgstr "Ažuriranje jezgri"
 
@@ -519,98 +520,98 @@ msgstr "je već instaliran."
 msgid "adding"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:44
+#: src/Gtk/SettingsDialog.vala:45
 msgid "Notification"
 msgstr "Obavijesti"
 
-#: src/Gtk/SettingsDialog.vala:49
+#: src/Gtk/SettingsDialog.vala:50
 msgid "Notify if a major release is available"
 msgstr "Obavijesti kada je glavno izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:55
+#: src/Gtk/SettingsDialog.vala:56
 msgid "Notify if a point release is available"
 msgstr "Obavijesti kada je pojedino izdanje dostupno"
 
-#: src/Gtk/SettingsDialog.vala:62
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Seconds interval enabled for debugging"
 msgstr "Interval sekundi omogućen za ispravljanje pogrešaka"
 
-#: src/Gtk/SettingsDialog.vala:81
+#: src/Gtk/SettingsDialog.vala:82
 msgid "Check every"
 msgstr "Provjeri svaka"
 
-#: src/Gtk/SettingsDialog.vala:90
+#: src/Gtk/SettingsDialog.vala:91
 msgid "Hours"
 msgstr "Sati"
 
-#: src/Gtk/SettingsDialog.vala:91
+#: src/Gtk/SettingsDialog.vala:92
 msgid "Days"
 msgstr "Dani"
 
-#: src/Gtk/SettingsDialog.vala:92
+#: src/Gtk/SettingsDialog.vala:93
 msgid "Weeks"
 msgstr "Tjedna"
 
-#: src/Gtk/SettingsDialog.vala:93
+#: src/Gtk/SettingsDialog.vala:94
 msgid "Seconds"
 msgstr "Sekunde"
 
-#: src/Gtk/SettingsDialog.vala:101
+#: src/Gtk/SettingsDialog.vala:102
 msgid "Filters"
 msgstr "Filteri"
 
-#: src/Gtk/SettingsDialog.vala:107
+#: src/Gtk/SettingsDialog.vala:108
 msgid "Hide unstable and RC releases"
 msgstr "Sakrij nestabilna i RC izdanja"
 
-#: src/Gtk/SettingsDialog.vala:114
+#: src/Gtk/SettingsDialog.vala:115
 msgid "Hide failed or incomplete builds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:115
+#: src/Gtk/SettingsDialog.vala:116
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:131
+#: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
 msgstr "prethodne glavne verzije  ( -1 = sve )"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsDialog.vala:138
 msgid "Network"
 msgstr "Mreža"
 
-#: src/Gtk/SettingsDialog.vala:146
+#: src/Gtk/SettingsDialog.vala:147
 msgid "Internet connection timeout in"
 msgstr "Prekoračenje vremena internetske veze u"
 
-#: src/Gtk/SettingsDialog.vala:154
+#: src/Gtk/SettingsDialog.vala:155
 msgid "seconds"
 msgstr "sekunde"
 
-#: src/Gtk/SettingsDialog.vala:163
+#: src/Gtk/SettingsDialog.vala:164
 msgid "Max concurrent downloads"
 msgstr "Najviše istodobnih preuzimanja"
 
-#: src/Gtk/SettingsDialog.vala:174
+#: src/Gtk/SettingsDialog.vala:175
 #, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Provjera kontrolnih zbrojeva pomoću CHECKSUMS datoteka"
 
-#: src/Gtk/SettingsDialog.vala:176
+#: src/Gtk/SettingsDialog.vala:177
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:181
+#: src/Gtk/SettingsDialog.vala:182
 #, fuzzy
 msgid "Keep Downloads"
 msgstr "Učitavanje"
 
-#: src/Gtk/SettingsDialog.vala:182
+#: src/Gtk/SettingsDialog.vala:183
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -619,20 +620,20 @@ msgid ""
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:188
+#: src/Gtk/SettingsDialog.vala:189
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/Gtk/SettingsDialog.vala:217
+#: src/Gtk/SettingsDialog.vala:218
 #, fuzzy
 msgid "Auth Command"
 msgstr "Naredbe"
 
-#: src/Gtk/SettingsDialog.vala:238
+#: src/Gtk/SettingsDialog.vala:239
 msgid "Command used to run dpkg with root permissions"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:242
+#: src/Gtk/SettingsDialog.vala:243
 msgid "Done"
 msgstr ""
 

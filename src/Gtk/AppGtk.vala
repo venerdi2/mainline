@@ -19,10 +19,8 @@
  * MA 02110-1301, USA.
  */
 
-using GLib;
-using X;
-
 using l.misc;
+using l.gtk;
 
 public Main App;
 
@@ -34,6 +32,9 @@ public class AppGtk : GLib.Object {
 		Gtk.init(ref args);
 		App = new Main(args, true);
 		parse_arguments(args);
+
+		//public Gdk.Pixbuf icon_sm = get_shared_icon(BRANDING_SHORTNAME ,16).pixbuf;
+		//public Gdk.Pixbuf icon_lg = get_shared_icon(BRANDING_SHORTNAME ,128).pixbuf;
 
 		// create main window --------------------------------------
 		var appwin = new MainWindow();
