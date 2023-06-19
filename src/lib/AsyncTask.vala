@@ -92,19 +92,19 @@ public abstract class AsyncTask : GLib.Object {
 				out stdout_fd,
 				out stderr_fd);
 
-			// create stream readers
+			// stdout reader
 			UnixInputStream uis_out = new UnixInputStream(stdout_fd, false);
-			UnixInputStream uis_err = new UnixInputStream(stderr_fd, false);
 			dis_out = new DataInputStream(uis_out);
-			dis_err = new DataInputStream(uis_err);
 			dis_out.newline_type = DataStreamNewlineType.ANY;
-			dis_err.newline_type = DataStreamNewlineType.ANY;
-
-			// read stdout & stderr
 			new Thread<bool> (null,read_stdout);
+
+			// stderr reader
+			UnixInputStream uis_err = new UnixInputStream(stderr_fd, false);
+			dis_err = new DataInputStream(uis_err);
+			dis_err.newline_type = DataStreamNewlineType.ANY;
 			new Thread<bool> (null,read_stderr);
 
-			// stdin
+			// write stdin
 			FileStream stdin_pipe = FileStream.fdopen(stdin_fd,"w");
 			stdin_pipe.puts(stdin_data);
 
@@ -155,14 +155,14 @@ public abstract class AsyncTask : GLib.Object {
 	private bool read_stderr() {
 		try {
 			stderr_is_open = true;
-			err_line = dis_err.read_line (null);
+			err_line = dis_err.read_line(null);
 			while (err_line != null) {
 				if (!is_terminated && (err_line.length > 0)) {
 				//	error_msg += "%s\n".printf(err_line);
 					parse_stderr_line(err_line);
 					stderr_line_read(err_line); //signal
 				}
-				err_line = dis_err.read_line (null); //read next
+				err_line = dis_err.read_line(null); //read next
 			}
 
 			stderr_is_open = false;
@@ -198,7 +198,7 @@ public abstract class AsyncTask : GLib.Object {
 		err_line = "";
 		out_line = "";
 
-		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) status = AppStatus.FINISHED;
+		if (status != AppStatus.CANCELLED) status = AppStatus.FINISHED;
 
 		task_complete(); //signal
 
@@ -210,10 +210,7 @@ public abstract class AsyncTask : GLib.Object {
 }
 
 public enum AppStatus {
-	NOT_STARTED,
 	RUNNING,
-	PAUSED,
 	FINISHED,
-	CANCELLED,
-	PASSWORD_REQUIRED
+	CANCELLED
 }

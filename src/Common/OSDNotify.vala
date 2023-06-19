@@ -23,6 +23,7 @@
  */
 
 using l.misc;
+using l.exec;
 
 public class OSDNotify : GLib.Object {
 

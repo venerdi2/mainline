@@ -1,5 +1,6 @@
 
 using l.misc;
+using l.exec;
 
 public class Package : GLib.Object {
 	public string pname = "";

@@ -24,6 +24,7 @@
 using Json;
 
 using l.misc;
+using l.exec;
 #if !VALA_0_50
 using l.json;
 #endif
@@ -398,6 +399,38 @@ public class Main : GLib.Object {
 		if (!RUN_NOTIFY_SCRIPT) return;
 		RUN_NOTIFY_SCRIPT = false;
 		exec_async("bash "+STARTUP_SCRIPT_FILE);
+	}
+
+	public bool try_ppa() {
+		vprint("try_ppa()",4);
+		if (ppa_tried) return ppa_up;
+
+		string std_err, std_out;
+
+		string cmd = "aria2c"
+		+ " --no-netrc"
+		+ " --no-conf"
+		+ " --max-file-not-found=3"
+		+ " --retry-wait=2"
+		+ " --max-tries=3"
+		+ " --dry-run"
+		+ " --quiet";
+		if (connect_timeout_seconds>0) cmd += " --connect-timeout="+connect_timeout_seconds.to_string();
+		if (all_proxy.length>0) cmd += " --all-proxy='"+all_proxy+"'";
+		cmd += " '"+ppa_uri+"'";
+
+		vprint(cmd,3);
+
+		int status = exec_sync(cmd, out std_out, out std_err);
+		if (std_err.length > 0) vprint(std_err,1,stderr);
+
+		ppa_tried = true;
+		ppa_up = false;
+		if (status == 0) ppa_up = true;
+		else vprint(_("Can not reach site")+": \""+ppa_uri+"\"",1,stderr);
+
+		ppa_up = true;
+		return ppa_up;
 	}
 
 }

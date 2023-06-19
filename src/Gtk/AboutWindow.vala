@@ -25,6 +25,7 @@ using Gtk;
 
 using l.gtk;
 using l.misc;
+using l.exec;
 
 public class AboutWindow : Dialog {
 

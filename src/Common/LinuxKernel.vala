@@ -1,5 +1,6 @@
 
 using l.misc;
+using l.exec;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
@@ -309,7 +310,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		string cif = main_index_file();
 		if (!exists(cif)) App.index_is_fresh=false;
 		if (App.index_is_fresh) return true;
-		if (!try_ppa()) return false;
+		if (!App.try_ppa()) return false;
 
 		mkdir(App.CACHE_DIR);
 
@@ -1026,7 +1027,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int install_klist(Gee.ArrayList<LinuxKernel> klist) {
 		vprint(_("Installing selected kernels")+":");
 
-		if (!try_ppa()) return 1;
+		if (!App.try_ppa()) return 1;
 
 		string[] flist = {};
 		foreach (var k in klist) {

@@ -25,6 +25,7 @@ using Gtk;
 
 using l.gtk;
 using l.misc;
+using l.exec;
 
 public class MainWindow : Window {
 
@@ -470,7 +471,7 @@ public class MainWindow : Window {
 		string msg = _("Updating kernels");
 		vprint(msg);
 
-		if (!try_ppa()) return;
+		if (!App.try_ppa()) return;
 
 		updating = true;
 		set_button_state();

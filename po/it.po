@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-18 20:34-0400\n"
+"POT-Creation-Date: 2023-06-18 22:45-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -11,242 +11,246 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Common/LinuxKernel.vala:105
+#: src/Common/LinuxKernel.vala:106
 msgid "Distribution"
 msgstr "Distribuzione"
 
-#: src/Common/LinuxKernel.vala:120
+#: src/Common/LinuxKernel.vala:121
 msgid "Architecture"
 msgstr "Architettura"
 
-#: src/Common/LinuxKernel.vala:135
+#: src/Common/LinuxKernel.vala:136
 msgid "Running kernel"
 msgstr "Kernel in esecuzione"
 
-#: src/Common/LinuxKernel.vala:239
+#: src/Common/LinuxKernel.vala:240
 msgid "loading cached"
 msgstr "Caricamento file della cache"
 
-#: src/Common/LinuxKernel.vala:251
+#: src/Common/LinuxKernel.vala:252
 msgid "queuing download"
 msgstr "download in coda"
 
-#: src/Common/LinuxKernel.vala:271
+#: src/Common/LinuxKernel.vala:272
 msgid "Fetching individual kernel indexes"
 msgstr "Recupero dei singoli indici del kernel"
 
-#: src/Common/LinuxKernel.vala:284
+#: src/Common/LinuxKernel.vala:285
 msgid "loading downloaded"
 msgstr "caricamento dei file scaricati"
 
-#: src/Common/LinuxKernel.vala:324
+#: src/Common/LinuxKernel.vala:325
 msgid "Updating from"
 msgstr "Aggiornamento da"
 
-#: src/Common/LinuxKernel.vala:332
+#: src/Common/LinuxKernel.vala:333
 msgid "OK"
 msgstr "OK"
 
-#: src/Common/LinuxKernel.vala:335
+#: src/Common/LinuxKernel.vala:336
 msgid "FAILED"
 msgstr "FALLITO"
 
-#: src/Common/LinuxKernel.vala:445
+#: src/Common/LinuxKernel.vala:446
 msgid "Found installed"
 msgstr "Trovato installato"
 
-#: src/Common/LinuxKernel.vala:446
+#: src/Common/LinuxKernel.vala:447
 msgid "locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:447
+#: src/Common/LinuxKernel.vala:448
 #, fuzzy
 msgid "running"
 msgstr "In esecuzione"
 
-#: src/Common/LinuxKernel.vala:484 src/Common/LinuxKernel.vala:1041
-#: src/Common/LinuxKernel.vala:1126
+#: src/Common/LinuxKernel.vala:485 src/Common/LinuxKernel.vala:1042
+#: src/Common/LinuxKernel.vala:1127
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:703 src/Gtk/MainWindow.vala:508
+#: src/Common/LinuxKernel.vala:704 src/Gtk/MainWindow.vala:509
 msgid "Running"
 msgstr "In esecuzione"
 
-#: src/Common/LinuxKernel.vala:704
+#: src/Common/LinuxKernel.vala:705
 msgid "Installed"
 msgstr "Installato"
 
-#: src/Common/LinuxKernel.vala:705
+#: src/Common/LinuxKernel.vala:706
 msgid "Invalid"
 msgstr "Non valido"
 
-#: src/Common/LinuxKernel.vala:798
+#: src/Common/LinuxKernel.vala:799
 msgid "Packages Available"
 msgstr "Pacchetti disponibili"
 
-#: src/Common/LinuxKernel.vala:804
+#: src/Common/LinuxKernel.vala:805
 msgid "Packages Installed"
 msgstr "Pacchetti installati"
 
-#: src/Common/LinuxKernel.vala:829
+#: src/Common/LinuxKernel.vala:830
 msgid "File not found"
 msgstr "File non trovato"
 
-#: src/Common/LinuxKernel.vala:856
+#: src/Common/LinuxKernel.vala:857
 #, fuzzy
 msgid "needs update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Common/LinuxKernel.vala:923
+#: src/Common/LinuxKernel.vala:924
 msgid "Available Kernels"
 msgstr "Kernel disponibili"
 
-#: src/Common/LinuxKernel.vala:957 src/Gtk/MainWindow.vala:137
+#: src/Common/LinuxKernel.vala:958 src/Gtk/MainWindow.vala:138
 msgid "Kernel"
 msgstr "Kernel"
 
-#: src/Common/LinuxKernel.vala:957
+#: src/Common/LinuxKernel.vala:958
 #, fuzzy
 msgid "not found"
 msgstr "File non trovato"
 
-#: src/Common/LinuxKernel.vala:964
+#: src/Common/LinuxKernel.vala:965
 #, fuzzy
 msgid "Download: no downloadable kernels specified"
 msgstr "Comando non specificato"
 
-#: src/Common/LinuxKernel.vala:983
+#: src/Common/LinuxKernel.vala:984
 msgid "enabled"
 msgstr "abilitato"
 
-#: src/Common/LinuxKernel.vala:1009
+#: src/Common/LinuxKernel.vala:1010
 msgid "Downloading"
 msgstr "Scaricamento"
 
-#: src/Common/LinuxKernel.vala:1019
+#: src/Common/LinuxKernel.vala:1020
 msgid "Cached"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1027
+#: src/Common/LinuxKernel.vala:1028
 #, fuzzy
 msgid "Installing selected kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Common/LinuxKernel.vala:1033 src/Common/LinuxKernel.vala:1071
+#: src/Common/LinuxKernel.vala:1034 src/Common/LinuxKernel.vala:1072
 #, fuzzy
 msgid "Requested"
 msgstr "richiesto"
 
-#: src/Common/LinuxKernel.vala:1036
+#: src/Common/LinuxKernel.vala:1037
 msgid "is already installed."
 msgstr "è già installato."
 
-#: src/Common/LinuxKernel.vala:1046
+#: src/Common/LinuxKernel.vala:1047
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1053 src/Gtk/MainWindow.vala:534
+#: src/Common/LinuxKernel.vala:1054 src/Gtk/MainWindow.vala:535
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Comando non specificato"
 
-#: src/Common/LinuxKernel.vala:1061 src/Common/LinuxKernel.vala:1096
-#: src/Common/LinuxKernel.vala:1140 src/Common/LinuxKernel.vala:1149
-#: src/Common/LinuxKernel.vala:1169
+#: src/Common/LinuxKernel.vala:1062 src/Common/LinuxKernel.vala:1097
+#: src/Common/LinuxKernel.vala:1141 src/Common/LinuxKernel.vala:1150
+#: src/Common/LinuxKernel.vala:1170
 msgid "done"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1067
+#: src/Common/LinuxKernel.vala:1068
 msgid "Uninstalling selected kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Common/LinuxKernel.vala:1074
+#: src/Common/LinuxKernel.vala:1075
 #, fuzzy
 msgid "Not uninstalling the currently running kernel"
 msgstr "non disinstallare il kernel attualmente in esecuzione"
 
-#: src/Common/LinuxKernel.vala:1079 src/Gtk/MainWindow.vala:530
+#: src/Common/LinuxKernel.vala:1080 src/Gtk/MainWindow.vala:531
 msgid "is locked"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1087
+#: src/Common/LinuxKernel.vala:1088
 msgid "found"
 msgstr "trovato"
 
-#: src/Common/LinuxKernel.vala:1091
+#: src/Common/LinuxKernel.vala:1092
 msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1122
+#: src/Common/LinuxKernel.vala:1123
 #, fuzzy
 msgid "is the highest installed version."
 msgstr "Disinstallare tutti tranne la versione più recente installata"
 
-#: src/Common/LinuxKernel.vala:1134
+#: src/Common/LinuxKernel.vala:1135
 msgid "Could not find running kernel in list"
 msgstr "Impossibile trovare il kernel in esecuzione nell'elenco"
 
-#: src/Common/LinuxKernel.vala:1139
+#: src/Common/LinuxKernel.vala:1140
 #, fuzzy
 msgid "No old kernels to uninstall"
 msgstr "Impossibile trovare alcun kernel da rimuovere"
 
-#: src/Common/LinuxKernel.vala:1145
+#: src/Common/LinuxKernel.vala:1146
 msgid "The following kernels will be uninstalled"
 msgstr "I seguenti kernel saranno rimossi"
 
-#: src/Common/LinuxKernel.vala:1147
+#: src/Common/LinuxKernel.vala:1148
 #, fuzzy
 msgid "Continue ?"
 msgstr "Continuare ?"
 
-#: src/Common/LinuxKernel.vala:1162
+#: src/Common/LinuxKernel.vala:1163
 #, fuzzy
 msgid "No updates"
 msgstr "Nessun aggiornamento trovato"
 
-#: src/Common/LinuxKernel.vala:1168
+#: src/Common/LinuxKernel.vala:1169
 #, c-format
 msgid "Install Kernel Version %s ? (y/n): "
 msgstr "Installare la versione del kernel %s ? (y/n): "
 
-#: src/Common/Main.vala:152
+#: src/Common/Main.vala:153
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:239
+#: src/Common/Main.vala:240
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:258
+#: src/Common/Main.vala:259
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:323
+#: src/Common/Main.vala:324
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:343
+#: src/Common/Main.vala:344
 msgid "Called from"
 msgstr "Chiamato da"
 
-#: src/Common/Main.vala:343
+#: src/Common/Main.vala:344
 msgid "at logon"
 msgstr "all'avvio"
 
-#: src/Common/Main.vala:344
+#: src/Common/Main.vala:345
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Questo file viene sovrascritto ed eseguito nuovamente ogni volta che vengono "
 "salvate le impostazioni"
 
-#: src/Common/Main.vala:376
+#: src/Common/Main.vala:377
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Console/AppConsole.vala:38 src/Gtk/AppGtk.vala:63
+#: src/Common/Main.vala:430
+msgid "Can not reach site"
+msgstr "Impossibile raggiungere il sito"
+
+#: src/Console/AppConsole.vala:38 src/Gtk/AppGtk.vala:57
 msgid "Syntax"
 msgstr "Sintassi"
 
@@ -292,7 +296,7 @@ msgstr "Disinstalla i kernel specificati"
 msgid "Uninstall specified kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Console/AppConsole.vala:50 src/Gtk/MainWindow.vala:338
+#: src/Console/AppConsole.vala:50 src/Gtk/MainWindow.vala:339
 msgid "Uninstall all but the highest installed version"
 msgstr "Disinstallare tutti tranne la versione più recente installata"
 
@@ -304,7 +308,7 @@ msgstr "Scarica i kernel specificati"
 msgid "Delete cached info about available kernels"
 msgstr "Elimina le informazioni sui kernel disponibili dalla cache "
 
-#: src/Console/AppConsole.vala:54 src/Gtk/AppGtk.vala:65
+#: src/Console/AppConsole.vala:54 src/Gtk/AppGtk.vala:59
 msgid "Options"
 msgstr "Opzioni"
 
@@ -339,7 +343,7 @@ msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Il kernel attualmente in esecuzione sarà sempre ignorato"
 
 #: src/Console/AppConsole.vala:138 src/Console/AppConsole.vala:191
-#: src/Gtk/AppGtk.vala:97
+#: src/Gtk/AppGtk.vala:91
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
 
@@ -391,7 +395,7 @@ msgstr "Kernel %s Disponibile"
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:250 src/Gtk/MainWindow.vala:317
+#: src/Console/AppConsole.vala:250 src/Gtk/MainWindow.vala:318
 msgid "Install"
 msgstr "Installa"
 
@@ -399,125 +403,125 @@ msgstr "Installa"
 msgid "Previously notified"
 msgstr "Notificato in precedenza"
 
-#: src/Gtk/AboutWindow.vala:33 src/Gtk/AboutWindow.vala:150
+#: src/Gtk/AboutWindow.vala:34 src/Gtk/AboutWindow.vala:151
 msgid "Credits"
 msgstr "Crediti"
 
-#: src/Gtk/AboutWindow.vala:34 src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:168
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/Gtk/AboutWindow.vala:149
+#: src/Gtk/AboutWindow.vala:150
 msgid "Back"
 msgstr "Indietro"
 
-#: src/Gtk/AboutWindow.vala:171
+#: src/Gtk/AboutWindow.vala:172
 msgid "Authors"
 msgstr "Autori"
 
-#: src/Gtk/AboutWindow.vala:177
+#: src/Gtk/AboutWindow.vala:178
 msgid "Contributions"
 msgstr "Contributori"
 
-#: src/Gtk/AboutWindow.vala:183
+#: src/Gtk/AboutWindow.vala:184
 msgid "Artists"
 msgstr "Artisti"
 
-#: src/Gtk/AboutWindow.vala:189
+#: src/Gtk/AboutWindow.vala:190
 msgid "Translators"
 msgstr "Traduttori"
 
-#: src/Gtk/AboutWindow.vala:195
+#: src/Gtk/AboutWindow.vala:196
 msgid "Documenters"
 msgstr "Documentatori"
 
-#: src/Gtk/AboutWindow.vala:201
+#: src/Gtk/AboutWindow.vala:202
 msgid "Third Party Inclusions"
 msgstr "Inclusioni di terze parti"
 
-#: src/Gtk/AppGtk.vala:63
+#: src/Gtk/AppGtk.vala:57
 msgid "options"
 msgstr "opzioni"
 
-#: src/Gtk/AppGtk.vala:67
+#: src/Gtk/AppGtk.vala:61
 msgid "Print debug information"
 msgstr "Stampa le informazioni di debug"
 
-#: src/Gtk/AppGtk.vala:68
+#: src/Gtk/AppGtk.vala:62
 msgid "Show all options"
 msgstr "Mostra tutte le opzioni"
 
-#: src/Gtk/MainWindow.vala:160
+#: src/Gtk/MainWindow.vala:161
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:177
+#: src/Gtk/MainWindow.vala:178
 msgid "Status"
 msgstr "Stato"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:189
 msgid "Notes"
 msgstr "Note"
 
-#: src/Gtk/MainWindow.vala:322
+#: src/Gtk/MainWindow.vala:323
 msgid "Uninstall"
 msgstr "Disinstalla"
 
-#: src/Gtk/MainWindow.vala:328
+#: src/Gtk/MainWindow.vala:329
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:337
+#: src/Gtk/MainWindow.vala:338
 msgid "Uninstall Old"
 msgstr "Disinstalla i vecchi"
 
-#: src/Gtk/MainWindow.vala:343
+#: src/Gtk/MainWindow.vala:344
 msgid "Reload"
 msgstr "Ricarica"
 
-#: src/Gtk/MainWindow.vala:344
+#: src/Gtk/MainWindow.vala:345
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:349 src/Gtk/SettingsDialog.vala:37
+#: src/Gtk/MainWindow.vala:350 src/Gtk/SettingsDialog.vala:37
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: src/Gtk/MainWindow.vala:354
+#: src/Gtk/MainWindow.vala:355
 msgid "About"
 msgstr "Informazioni"
 
-#: src/Gtk/MainWindow.vala:359
+#: src/Gtk/MainWindow.vala:360
 msgid "Exit"
 msgstr "Chiudi"
 
-#: src/Gtk/MainWindow.vala:442
+#: src/Gtk/MainWindow.vala:443
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Utilità di aggiornamento del kernel per distribuzioni basate su Ubuntu"
 
-#: src/Gtk/MainWindow.vala:443
+#: src/Gtk/MainWindow.vala:444
 msgid "Forked"
 msgstr "Forked"
 
-#: src/Gtk/MainWindow.vala:443
+#: src/Gtk/MainWindow.vala:444
 msgid "Original"
 msgstr "Originale"
 
-#: src/Gtk/MainWindow.vala:470
+#: src/Gtk/MainWindow.vala:471
 #, fuzzy
 msgid "Updating kernels"
 msgstr "Aggiornamento dei kernel"
 
-#: src/Gtk/MainWindow.vala:512
+#: src/Gtk/MainWindow.vala:513
 msgid "available"
 msgstr "disponibile"
 
-#: src/Gtk/MainWindow.vala:529
+#: src/Gtk/MainWindow.vala:530
 #, fuzzy
 msgid "is already installed"
 msgstr "è già installato."
 
-#: src/Gtk/MainWindow.vala:531
+#: src/Gtk/MainWindow.vala:532
 msgid "adding"
 msgstr ""
 
@@ -650,7 +654,3 @@ msgstr ""
 #: src/Gtk/TerminalWindow.vala:160
 msgid "Cancel"
 msgstr "Cancella"
-
-#: src/lib/l.misc.vala:65
-msgid "Can not reach site"
-msgstr "Impossibile raggiungere il sito"
