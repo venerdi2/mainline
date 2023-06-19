@@ -100,17 +100,19 @@ public class DownloadTask : AsyncTask {
 		spawn_args = cmd;
 	}
 
-	public override void parse_stdout_line(string line) {
-		if ((line == null) || (line.length == 0)) return;
+	public override void process_line(string? line) {
+		if (line==null) return;
+		var l = line.strip();
+		if (l.length<1) return;
 
-		//vprint(line,2);
+		//vprint(l,2);
 
 		MatchInfo match;
 
-		if (regex["file-complete"].match(line, 0, out match)) {
+		if (regex["file-complete"].match(l, 0, out match)) {
 			//vprint("match: file-complete: " + line,2);
 			prg_count++;
-		} else if (regex["file-status"].match(line, 0, out match)) {
+		} else if (regex["file-status"].match(l, 0, out match)) {
 
 			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
 
@@ -121,14 +123,14 @@ public class DownloadTask : AsyncTask {
 
 			if (map.has_key(gid_key)) {
 				var item = map[gid_key];
-				item.status = status;
-				//if (status=="OK") {
-				//	item.bytes_received = item.bytes_total;
-				//	status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
-				//}
+				//item.status = status;
+				if (status=="OK") {
+					item.bytes_received = item.bytes_total;
+					status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
+				}
 			}
 
-		} else if (regex["file-progress"].match(line, 0, out match)) {
+		} else if (regex["file-progress"].match(l, 0, out match)) {
 
 			var gid_key = match.fetch(1).strip();
 			var received = int64.parse(match.fetch(2).strip());
@@ -160,7 +162,6 @@ public class DownloadItem : GLib.Object {
 	public string gid = ""; // ID
 	public int64 bytes_total = 0;
 	public int64 bytes_received = 0;
-	public string status = "";
 
 	public DownloadTask task = null;
 
