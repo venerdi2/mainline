@@ -111,11 +111,6 @@ public class DownloadTask : AsyncTask {
 		update_progress_parse_console_output(out_line);
 	}
 
-	public override void parse_stderr_line(string err_line) {
-		if (is_terminated) return;
-		update_progress_parse_console_output(err_line);
-	}
-
 	public bool update_progress_parse_console_output (string line) {
 		if ((line == null) || (line.length == 0)) return true;
 
