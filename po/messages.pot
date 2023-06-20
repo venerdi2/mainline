@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-20 04:03-0400\n"
+"POT-Creation-Date: 2023-06-20 05:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -388,7 +388,7 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
-#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:167
 msgid "Close"
 msgstr ""
 
@@ -618,15 +618,15 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:145
+#: src/Gtk/TerminalWindow.vala:144
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:153
+#: src/Gtk/TerminalWindow.vala:152
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:160
+#: src/Gtk/TerminalWindow.vala:159
 msgid "Cancel"
 msgstr ""

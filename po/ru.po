@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-20 03:42-0400\n"
+"POT-Creation-Date: 2023-06-20 05:54-0400\n"
 "PO-Revision-Date: 2023-06-16 17:07+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -387,7 +387,7 @@ msgstr "Предварительно уведомлено"
 msgid "Credits"
 msgstr "Создатели"
 
-#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:167
 msgid "Close"
 msgstr "Закрыть"
 
@@ -628,15 +628,15 @@ msgstr "Команда, используемая для запуска dpkg с �
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:145
+#: src/Gtk/TerminalWindow.vala:144
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/Gtk/TerminalWindow.vala:153
+#: src/Gtk/TerminalWindow.vala:152
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr "Копирует весь буфер вывода, включая прокрутку, в буфер обмена."
 
-#: src/Gtk/TerminalWindow.vala:160
+#: src/Gtk/TerminalWindow.vala:159
 msgid "Cancel"
 msgstr "Отмена"

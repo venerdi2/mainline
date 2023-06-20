@@ -62,4 +62,7 @@ One of the built-in default options shows an example: `su -c "%s"` it needs the 
 
 To write a custom entry, just click on the field and start writing. You can start with the blank entry or any of the built-in ones. Your edited version is saved as a new custom entry. The built-in defaults are not changed, so it's safe to pick one to start from and edit it. It's also possible to leave the field blank, in which case no sudo-like command will be used. You might use this option if you run mainline itself as root, though that is not advised.
 
-If you are opertaing entirely from the command line, and so can not access the Settings gui, you can manually edit auth_cmd in ~/.config/mainline/config.json
+If you are operating entirely from the command line, and so can not access the Settings gui, you can manually edit auth_cmd in ~/.config/mainline/config.json
+
+For a crazy example of what's possible, try this:  
+`pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} xterm -T dpkg -e "%s ;read -p press\ enter\ to\ close\ "`

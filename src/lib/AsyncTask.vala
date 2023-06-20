@@ -7,8 +7,6 @@ public abstract class AsyncTask : GLib.Object {
 	int stdout_fd;
 	DataInputStream stdout_s;
 
-	public bool background_mode = false;
-
 	// public
 	public string[] spawn_args = {};
 	public string stdin_data = "";
@@ -61,7 +59,6 @@ public abstract class AsyncTask : GLib.Object {
 		}
 		catch (Error e) {
 			is_running = false;
-			vprint("AsyncTask.begin()",1,stderr);
 			vprint(e.message,1,stderr);
 		}
 

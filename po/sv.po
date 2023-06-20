@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-20 03:42-0400\n"
+"POT-Creation-Date: 2023-06-20 05:54-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -405,7 +405,7 @@ msgstr "Tidigare anmält"
 msgid "Credits"
 msgstr "Tack"
 
-#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:167
 msgid "Close"
 msgstr "Stäng"
 
@@ -640,15 +640,15 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:145
+#: src/Gtk/TerminalWindow.vala:144
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:153
+#: src/Gtk/TerminalWindow.vala:152
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:160
+#: src/Gtk/TerminalWindow.vala:159
 msgid "Cancel"
 msgstr "Avbryt"

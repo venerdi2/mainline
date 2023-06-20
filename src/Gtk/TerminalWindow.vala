@@ -89,7 +89,6 @@ public class TerminalWindow : Gtk.Window {
 		var display = term.get_display ();
 		var clipboard = Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD);
 
-		// sw_ppa
 		var scroll_win = new Gtk.ScrolledWindow(null, null);
 		scroll_win.set_shadow_type (Gtk.ShadowType.ETCHED_IN);
 		scroll_win.add (term);
@@ -197,11 +196,10 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
-	// display a message both on the console and in a popup
-	// for error, write to stderr at default vebosity, and close the terminal along with the popup
-	// for not-error, write to stdout only if verbose>3, and do not close the terminal
-	void alert(string msg, Gtk.MessageType? type = Gtk.MessageType.INFO) {
-		if (type==null) type = Gtk.MessageType.INFO;
+	// Display a message both on the console and in a popup.
+	// For error: write to stderr, if verbose>0, close the terminal along with the popup
+	// For not-error: write to stdout, if verbose>3, do not close the terminal
+	void alert(string msg, Gtk.MessageType type = Gtk.MessageType.INFO) {
 		var dlg = new Gtk.MessageDialog(this,
 			Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
 			type,
@@ -236,28 +234,28 @@ public class TerminalWindow : Gtk.Window {
 		is_running = true;
 #if VALA_0_50 // vte 0.66 or so
 		term.spawn_async(
-			Vte.PtyFlags.DEFAULT, // pty_flags
-			null, // working_directory
-			argv, // argv
-			null, // env
-			GLib.SpawnFlags.SEARCH_PATH, //spawn_flags
-			null, // child_setup() func
-			-1, // timeout
-			null, // cancellable
-			spawn_cb // callback
+			Vte.PtyFlags.DEFAULT,        // pty_flags
+			null,                        // working directory
+			argv,                        // argv
+			null,                        // env
+			GLib.SpawnFlags.SEARCH_PATH, // spawn flags
+			null,                        // child_setup()
+			-1,                          // timeout
+			null,                        // cancellable
+			spawn_cb                     // spawn callback
 		);
 #else
 		Pid p = -1; Error e = null;
 		try {
 			term.spawn_sync(
-				Vte.PtyFlags.DEFAULT, // pty_flags
-				null, // working_directory
-				argv, // argv
-				null, // env
-				GLib.SpawnFlags.SEARCH_PATH, // spawn_flags
-				null, // child_setup() func
-				out p, // child pid written here
-				null // cancellable
+				Vte.PtyFlags.DEFAULT,        // pty flags
+				null,                        // working directory
+				argv,                        // argv
+				null,                        // env
+				GLib.SpawnFlags.SEARCH_PATH, // spawn flags
+				null,                        // child_setup()
+				out p,                       // child pid out
+				null                         // cancellable
 			);
 		} catch (Error _e) { e = _e; }
 		spawn_cb(term,p,e);

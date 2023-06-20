@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-20 03:42-0400\n"
+"POT-Creation-Date: 2023-06-20 05:54-0400\n"
 "PO-Revision-Date: 2023-06-16 17:04+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -387,7 +387,7 @@ msgstr "Wcześniej powiadomiono"
 msgid "Credits"
 msgstr "Zasługi"
 
-#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:168
+#: src/Gtk/AboutWindow.vala:35 src/Gtk/TerminalWindow.vala:167
 msgid "Close"
 msgstr "Zamknij"
 
@@ -628,15 +628,15 @@ msgstr "Polecenie używane do uruchamiania dpkg z uprawnieniami roota"
 msgid "Done"
 msgstr "Gotowe"
 
-#: src/Gtk/TerminalWindow.vala:145
+#: src/Gtk/TerminalWindow.vala:144
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: src/Gtk/TerminalWindow.vala:153
+#: src/Gtk/TerminalWindow.vala:152
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr "Kopiuje cały bufor wyjściowy do schowka, w tym przewijanie."
 
-#: src/Gtk/TerminalWindow.vala:160
+#: src/Gtk/TerminalWindow.vala:159
 msgid "Cancel"
 msgstr "Anuluj"
