@@ -73,9 +73,9 @@ public abstract class AsyncTask : GLib.Object {
 		while (l!=null) {
 			try { l = stdout_s.read_line(null); }
 			catch (Error e) { vprint(e.message,1,stderr); }
-			if (l==null) is_running = false;
-			else process_line(l);
+			process_line(l);
 		}
+		is_running = false;
 		return true;
 	}
 

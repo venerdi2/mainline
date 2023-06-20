@@ -2,7 +2,7 @@
 
 namespace l.misc {
 
-	private static void set_locale() {
+	public void set_locale() {
 		Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
 		Intl.textdomain(BRANDING_SHORTNAME);
 		Intl.bind_textdomain_codeset(BRANDING_SHORTNAME,"utf-8");
@@ -18,7 +18,7 @@ namespace l.misc {
 		f.flush();
 	}
 
-	private static void pbar(int64 part=0,int64 whole=100,string units="") {
+	public void pbar(int64 part=0,int64 whole=100,string units="") {
 		if (Main.VERBOSE<1) return;
 		int l = 80; // bar length
 		if (whole<1) { vprint("\r%*.s\r".printf(l,""),1,stdout,false); return; }

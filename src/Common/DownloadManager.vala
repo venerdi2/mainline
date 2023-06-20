@@ -3,32 +3,24 @@ using l.misc;
 
 public class DownloadTask : AsyncTask {
 
-	// settings
-	public int timeout_secs = 60;
-
 	// item lists
 	Gee.ArrayList<DownloadItem> downloads;
-	Gee.HashMap<string, DownloadItem> map;
-	Gee.HashMap<string,Regex> regex = null;
+	Gee.HashMap<string,DownloadItem> map;
+	Regex rex_progress = null;
+	Regex rex_complete = null;
 
 	public DownloadTask() {
 
-		base();
-
 		downloads = new Gee.ArrayList<DownloadItem>();
-		map = new Gee.HashMap<string, DownloadItem>();
-		regex = new Gee.HashMap<string,Regex>();
+		map = new Gee.HashMap<string,DownloadItem>();
 
 		try {
-			//[#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
-			regex["file-progress"] = new Regex("""^\[#(.+) (.+)B\/(.+)B""");
+			// [#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
+			// [#c47ded 7986B/0B CN:1 DL:7984B]  // no total bytes for index.html
+			rex_progress = new Regex("""^\[#(.+) (.+)B\/(.+)B""");
 
-			//12/03 21:15:33 [NOTICE] Download complete: /home/teejee/.cache/ukuu/v4.7.8/CHANGES
-			regex["file-complete"] = new Regex("""^.+\[NOTICE\] Download complete\: (.+)""");
-
-			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
-			//bea740|OK  |        n/a|/home/teejee/.cache/ukuu/v4.0.9-wily/CHANGES
-			regex["file-result"] = new Regex("""^(.+)\|(OK|ERR) +\|.+\|(.+)""");
+			// 12/03 21:15:33 [NOTICE] Download complete: /home/teejee/.cache/ukuu/v4.7.8/CHANGES
+			rex_complete = new Regex("""^.+\[NOTICE\] Download complete\: (.+)$""");
 		}
 		catch (Error e) {
 			vprint(e.message,1,stderr);
@@ -75,7 +67,6 @@ public class DownloadTask : AsyncTask {
 			"--auto-save-interval=1",
 			"--enable-color=false",
 			"--allow-overwrite",
-			"--timeout=600",
 			"--max-file-not-found=3",
 			"--retry-wait=2",
 			"--show-console-readout=false",
@@ -104,29 +95,28 @@ public class DownloadTask : AsyncTask {
 
 		MatchInfo match;
 
-		if (regex["file-progress"].match(l, 0, out match)) {
-			//vprint("match file-progress",2);
+		if (rex_progress.match(l, 0, out match)) {
 			var gid = match.fetch(1).strip();
+			//vprint("match file-progress "+gid,2);
 			if (map.has_key(gid)) {
 				var item = map[gid];
-				item.bytes_received = int64.parse(match.fetch(2).strip());
-				if (item.bytes_total == 0) item.bytes_total = int64.parse(match.fetch(3).strip());
+				item.bytes_received = int64.parse(match.fetch(2));
+				if (item.bytes_total<0) item.bytes_total = int64.parse(match.fetch(3));
 				status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
 			}
-		} else if (regex["file-complete"].match(l, 0, out match)) {
-			//vprint("match file-complete",2);
-			prg_count++;
-		} else if (regex["file-result"].match(l, 0, out match)) {
-			//vprint("match file-result",2);
-			var gid = match.fetch(1).strip();
-			//string fname = match.fetch(3).strip();
-			if (map.has_key(gid)) {
+		} else if (rex_complete.match(l, 0, out match)) {
+			var df = match.fetch(1);
+			//vprint("match file-complete "+df,2);
+			foreach (var gid in map.keys) {
 				var item = map[gid];
-				if (match.fetch(2)=="OK") {
-					item.bytes_received = item.bytes_total;
-					status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
-				}
+				if (item.download_dir+"/"+item.file_name!=df) continue;
+				if (item.bytes_total>item.bytes_received) item.bytes_received = item.bytes_total;
+				else item.bytes_total = item.bytes_received;
+				status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
+				break;
 			}
+
+			prg_count++;
 		}
 
 		return;
@@ -142,7 +132,7 @@ public class DownloadItem : GLib.Object {
 	public string checksum = "";		// "sha-256=4a90d708984d6a8fab68411710be09aa2614fe1be5b5e054a872b155d15faab6"
 
 	public string gid = ""; // first 6 bytes of gid
-	public int64 bytes_total = 0;
+	public int64 bytes_total = -1; // allow total=0 b/c server doesn't supply total for index.html
 	public int64 bytes_received = 0;
 
 	public DownloadTask task = null;

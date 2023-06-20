@@ -194,7 +194,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// static
 
-	public delegate void Notifier(ref int count, bool last = false);
+	public delegate void Notifier(bool last = false);
 
 	public static void mk_kernel_list(bool wait = true, owned Notifier? notifier = null) {
 		vprint("mk_kernel_list()",2);
@@ -211,8 +211,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		App.progress_total = 0;
 		App.progress_count = 0;
 		App.cancelled = false;
-
-		int count = 0;
 
 		// find the oldest major version to include
 		find_thresholds(true);
@@ -255,7 +253,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// add kernel to update list
 			kernels_to_update.add(k);
 
-			if (notifier != null) notifier(ref count);
+			if (notifier != null) notifier();
 		}
 
 		// process the download list
@@ -276,7 +274,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				App.progress_count = mgr.prg_count;
 				pbar(App.progress_count,App.progress_total);
 				Thread.usleep(250000);
-				if (notifier != null) notifier(ref count);
+				if (notifier != null) notifier();
 			}
 			pbar(0,0);
 
@@ -286,7 +284,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				k.load_cached_page();
 			}
 
-			if (notifier != null) notifier(ref count);
+			if (notifier != null) notifier();
 		}
 
 		check_installed();
@@ -298,8 +296,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// doesn't do it's own mk_kernel_list() at the same time while we still are.
 		App.run_notify_script_if_due();
 
-		if (notifier != null) notifier(ref count, true);
-
+		if (notifier != null) notifier(true);
 		return true;
 	}
 

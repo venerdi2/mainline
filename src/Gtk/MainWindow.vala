@@ -105,13 +105,13 @@ public class MainWindow : Window {
 		update_cache();
 	}
 
-	private void init_ui() {
+	void init_ui() {
 		init_treeview();
 		init_actions();
 		init_infobar();
 	}
 
-	private void init_treeview() {
+	void init_treeview() {
 
 		hbox_list = new Box(Orientation.HORIZONTAL, SPACING);
 		vbox_main.add(hbox_list);
@@ -216,11 +216,11 @@ public class MainWindow : Window {
 
 	}
 
-	private void tv_row_activated(TreePath path, TreeViewColumn column) {
+	void tv_row_activated(TreePath path, TreeViewColumn column) {
 		set_button_state();
 	}
 
-	private void tv_selection_changed() {
+	void tv_selection_changed() {
 		TreeModel model;
 		TreeIter iter;
 		var sel = tv.get_selection();
@@ -237,7 +237,7 @@ public class MainWindow : Window {
 		set_button_state();
 	}
 
-	private void tv_refresh() {
+	void tv_refresh() {
 		vprint("tv_refresh()",2);
 
 		int i = -1;
@@ -284,7 +284,7 @@ public class MainWindow : Window {
 		set_button_state();
 	}
 
-	private void set_button_state() {
+	void set_button_state() {
 		btn_install.sensitive = false;
 		btn_uninstall.sensitive = false;
 
@@ -307,7 +307,7 @@ public class MainWindow : Window {
 		}
 	}
 
-	private void init_actions() {
+	void init_actions() {
 
 		Button button;
 
@@ -363,7 +363,7 @@ public class MainWindow : Window {
 
 	}
 
-	private void do_settings () {
+	void do_settings () {
 		// settings that change the selection set -> trigger cache update
 		var old_previous_majors = App.previous_majors;
 		var old_hide_unstable = App.hide_unstable;
@@ -399,7 +399,7 @@ public class MainWindow : Window {
 		if (x) App.run_notify_script_if_due();
 	}
 
-	private void do_about () {
+	void do_about () {
 
 		var dialog = new AboutWindow();
 		dialog.set_transient_for (this);
@@ -458,7 +458,7 @@ public class MainWindow : Window {
 	}
 
 	// Full re-load. Delete cache and clear session state and start over.
-	private void reload_cache() {
+	void reload_cache() {
 		vprint("reload_cache()",2);
 		LinuxKernel.delete_cache();
 		App.ppa_tried = false;
@@ -466,7 +466,7 @@ public class MainWindow : Window {
 	}
 
 	// Update the cache as optimally as possible.
-	private void update_cache() {
+	void update_cache() {
 		vprint("update_cache()",2);
 		string msg = _("Updating kernels");
 		vprint(msg);
@@ -476,11 +476,11 @@ public class MainWindow : Window {
 		updating = true;
 		set_button_state();
 		set_infobar(msg);
-		LinuxKernel.mk_kernel_list(false, (ref count, last) => { update_status_line(msg, ref count, last); });
+		LinuxKernel.mk_kernel_list(false, (last) => { update_status_line(msg, last); });
 	}
 
-	private void update_status_line(string message, ref int count, bool last = false) {
-		count++;
+	void update_status_line(string message, bool last = false) {
+		//vprint("update_status_line("+message+","+last.to_string()+")");
 		if (last) {
 			Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
 				tv_refresh();
@@ -494,7 +494,7 @@ public class MainWindow : Window {
 		});
 	}
 
-	private void init_infobar() {
+	void init_infobar() {
 		var hbox = new Box(Orientation.HORIZONTAL, SPACING);
 		vbox_main.add(hbox);
 		lbl_info = new Label("");
@@ -503,7 +503,7 @@ public class MainWindow : Window {
 		hbox.add(lbl_info);
 	}
 
-	private void set_infobar(string? s=null) {
+	void set_infobar(string? s=null) {
 		if (s!=null) { lbl_info.set_label(s); return; }
 
 		string l = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
