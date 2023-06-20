@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-20 08:25-0400\n"
-"PO-Revision-Date: 2023-06-16 17:04+0200\n"
+"PO-Revision-Date: 2023-06-21 01:02+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -188,7 +188,6 @@ msgid "The following kernels will be uninstalled"
 msgstr "Następujące jądra zostaną odinstalowane"
 
 #: src/Common/LinuxKernel.vala:1136
-#, fuzzy
 msgid "Continue ?"
 msgstr "Kontynuować?"
 
@@ -489,7 +488,6 @@ msgid "Original"
 msgstr "Oryginalne"
 
 #: src/Gtk/MainWindow.vala:471
-#, fuzzy
 msgid "Updating kernels"
 msgstr "Aktualizowanie jąder"
 
