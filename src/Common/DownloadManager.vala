@@ -21,14 +21,14 @@ public class DownloadTask : AsyncTask {
 
 		try {
 			//[#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
-			regex["file-progress"] = new Regex("""^\[#([^ \t]+)[ \t]+([0-9]+)B\/([0-9]+)B\(([0-9]+)%\)[ \t]+[^ \t]+[ \t]+DL\:([0-9]+)B[ \t]+ETA\:([^ \]]+)\]""");
+			regex["file-progress"] = new Regex("""^\[#(.+) (.+)B\/(.+)B""");
 
 			//12/03 21:15:33 [NOTICE] Download complete: /home/teejee/.cache/ukuu/v4.7.8/CHANGES
-			regex["file-complete"] = new Regex("""[0-9A-Z\/: ]*\[NOTICE\] Download complete\: (.*)""");
+			regex["file-complete"] = new Regex("""^.+\[NOTICE\] Download complete\: (.+)""");
 
 			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
 			//bea740|OK  |        n/a|/home/teejee/.cache/ukuu/v4.0.9-wily/CHANGES
-			regex["file-result"] = new Regex("""^([0-9A-Za-z]+)\|(OK|ERR)[ ]*\|[ ]*(n\/a|[0-9.]+[A-Za-z\/]+)\|(.*)""");
+			regex["file-result"] = new Regex("""^(.+)\|(OK|ERR) +\|.+\|(.+)""");
 		}
 		catch (Error e) {
 			vprint(e.message,1,stderr);
@@ -39,14 +39,9 @@ public class DownloadTask : AsyncTask {
 
 	public void add_to_queue(DownloadItem item) {
 		item.task = this;
+		item.gid = "%06x".printf(Main.rnd.int_range(0,0xffffff));
+		map[item.gid] = item;
 		downloads.add(item);
-		// https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-gid
-		// Only the first 6 chars of gid are shown in the progress output, and they
-		// are shown in lower case even if they were supplied in upper case.
-		// So gid must be lower-case and the first 6 characters must be unique.
-		do { item.gid = "%8.8x%8.8x".printf(Main.rnd.next_int(),Main.rnd.next_int()); }
-		while (map.has_key(item.gid_key));
-		map[item.gid_key] = item;
 	}
 
 	public void execute() {
@@ -60,7 +55,7 @@ public class DownloadTask : AsyncTask {
 
 		foreach (var item in downloads) {
 			stdin_data += item.source_uri + "\n"
-				+ " gid="+item.gid+"\n"
+				+ " gid="+item.gid+"0000000000\n"
 				+ " dir="+item.download_dir+"\n"
 				+ " out="+item.file_name+"\n"
 				;
@@ -109,40 +104,28 @@ public class DownloadTask : AsyncTask {
 
 		MatchInfo match;
 
-		if (regex["file-complete"].match(l, 0, out match)) {
-			//vprint("match: file-complete: " + line,2);
+		if (regex["file-progress"].match(l, 0, out match)) {
+			//vprint("match file-progress",2);
+			var gid = match.fetch(1).strip();
+			if (map.has_key(gid)) {
+				var item = map[gid];
+				item.bytes_received = int64.parse(match.fetch(2).strip());
+				if (item.bytes_total == 0) item.bytes_total = int64.parse(match.fetch(3).strip());
+				status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
+			}
+		} else if (regex["file-complete"].match(l, 0, out match)) {
+			//vprint("match file-complete",2);
 			prg_count++;
 		} else if (regex["file-result"].match(l, 0, out match)) {
-
-			//8ae3a3|OK  |    16KiB/s|/home/teejee/.cache/ukuu/v4.0.7-wily/index.html
-
-			string gid_key = match.fetch(1).strip();
-			string result = match.fetch(2).strip();
-			//int64 rate = int64.parse(match.fetch(3).strip());
-			//string file = match.fetch(4).strip();
-
-			if (map.has_key(gid_key)) {
-				var item = map[gid_key];
-				if (result=="OK") {
+			//vprint("match file-result",2);
+			var gid = match.fetch(1).strip();
+			//string fname = match.fetch(3).strip();
+			if (map.has_key(gid)) {
+				var item = map[gid];
+				if (match.fetch(2)=="OK") {
 					item.bytes_received = item.bytes_total;
 					status_line = item.file_name+" "+item.bytes_received.to_string()+"/"+item.bytes_total.to_string();
 				}
-			}
-
-		} else if (regex["file-progress"].match(l, 0, out match)) {
-
-			var gid_key = match.fetch(1).strip();
-			var received = int64.parse(match.fetch(2).strip());
-			var total = int64.parse(match.fetch(3).strip());
-			//var percent = double.parse(match.fetch(4).strip());
-			//var rate = int64.parse(match.fetch(5).strip());
-			//var eta = match.fetch(6).strip();
-
-			if (map.has_key(gid_key)) {
-				var item = map[gid_key];
-				item.bytes_received = received;
-				if (item.bytes_total == 0) item.bytes_total = total;
-				status_line = item.file_name+" "+received.to_string()+"/"+total.to_string();
 			}
 		}
 
@@ -158,18 +141,11 @@ public class DownloadItem : GLib.Object {
 	public string file_name = "";		// "linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
 	public string checksum = "";		// "sha-256=4a90d708984d6a8fab68411710be09aa2614fe1be5b5e054a872b155d15faab6"
 
-	public string gid = ""; // ID
+	public string gid = ""; // first 6 bytes of gid
 	public int64 bytes_total = 0;
 	public int64 bytes_received = 0;
 
 	public DownloadTask task = null;
-
-	// only the first 6 chars of gid are shown in the progress output
-	public string gid_key {
-		owned get {
-			return gid.substring(0,6);
-		}
-	}
 
 	public DownloadItem(string uri = "", string destdir = "", string fname = "", string? cksum = "") {
 		if (cksum==null) cksum = "";
