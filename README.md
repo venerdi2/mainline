@@ -1,4 +1,4 @@
-# Ubuntu Mainline Kernel Installer
+# Mainline Kernels
 A tool for installing [Ubuntu Mainline Kernel Builds](https://wiki.ubuntu.com/Kernel/MainlineBuilds) onto debian-based distributions.
 
 ![Main window screenshot](main_window.png)
@@ -57,7 +57,7 @@ sudo make install
 ```
 
 # Usage
-Look for System -> Ubuntu Mainline Kernel Installer in your desktop's Applications/Start menu.
+Look for System -> Mainline Kernels in your desktop's Applications/Start menu.
 
 Otherwise:  
 CLI
