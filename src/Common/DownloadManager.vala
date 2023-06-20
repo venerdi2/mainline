@@ -3,34 +3,24 @@ using l.misc;
 
 public class DownloadTask : AsyncTask {
 
-	// item lists
 	Gee.ArrayList<DownloadItem> downloads;
 	Gee.HashMap<string,DownloadItem> map;
 	Regex rex_progress = null;
 	Regex rex_complete = null;
 
 	public DownloadTask() {
-
 		downloads = new Gee.ArrayList<DownloadItem>();
 		map = new Gee.HashMap<string,DownloadItem>();
-
 		try {
 			// [#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
 			// [#c47ded 7986B/0B CN:1 DL:7984B]  // no total bytes for index.html
 			rex_progress = new Regex("""^\[#(.+) (.+)B\/(.+)B""");
-
 			// 12/03 21:15:33 [NOTICE] Download complete: /home/teejee/.cache/ukuu/v4.7.8/CHANGES
 			rex_complete = new Regex("""^.+\[NOTICE\] Download complete\: (.+)$""");
-		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
+		} catch (Error e) { vprint(e.message,1,stderr); }
 	}
 
-	// execution ----------------------------
-
 	public void add_to_queue(DownloadItem item) {
-		item.task = this;
 		item.gid = "%06x".printf(Main.rnd.int_range(0,0xffffff));
 		map[item.gid] = item;
 		downloads.add(item);
@@ -124,18 +114,14 @@ public class DownloadTask : AsyncTask {
 }
 
 public class DownloadItem : GLib.Object {
-	// File is saved as 'file_name' in 'download_dir', not the source file name.
+	public string source_uri = "";   // "https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.2.7/amd64/linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
+	public string download_dir = ""; // "/home/bkw/.cache/mainline/6.2.7/amd64"
+	public string file_name = "";    // "linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
+	public string checksum = "";     // "sha-256=4a90d708984d6a8fab68411710be09aa2614fe1be5b5e054a872b155d15faab6"
 
-	public string source_uri = "";		// "https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.2.7/amd64/linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
-	public string download_dir = "";	// "/home/bkw/.cache/mainline/6.2.7/amd64"
-	public string file_name = "";		// "linux-headers-6.2.7-060207-generic_6.2.7-060207.202303170542_amd64.deb"
-	public string checksum = "";		// "sha-256=4a90d708984d6a8fab68411710be09aa2614fe1be5b5e054a872b155d15faab6"
-
-	public string gid = ""; // first 6 bytes of gid
-	public int64 bytes_total = -1; // allow total=0 b/c server doesn't supply total for index.html
+	public string gid = "";          // first 6 bytes of gid
+	public int64 bytes_total = -1;   // allow total=0 b/c server doesn't supply total for index.html
 	public int64 bytes_received = 0;
-
-	public DownloadTask task = null;
 
 	public DownloadItem(string uri = "", string destdir = "", string fname = "", string? cksum = "") {
 		if (cksum==null) cksum = "";

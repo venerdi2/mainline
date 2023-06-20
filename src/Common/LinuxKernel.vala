@@ -258,18 +258,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// process the download list
 		if (downloads.size>0 && App.ppa_up) {
+			vprint(_("Fetching individual kernel indexes")+"...");
 			App.progress_total = downloads.size;
 			var mgr = new DownloadTask();
-
-			// add download list to queue
 			foreach (var item in downloads) mgr.add_to_queue(item);
-
-			// start downloading
 			mgr.execute();
-
-			vprint(_("Fetching individual kernel indexes")+"...");
-
-			// while downloading
 			while (mgr.is_running) {
 				App.progress_count = mgr.prg_count;
 				pbar(App.progress_count,App.progress_total);
@@ -321,7 +314,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		vprint(_("Updating from")+": '"+App.ppa_uri+"'");
 		mgr.execute();
-
 		while (mgr.is_running) Thread.usleep(250000);
 
 		if (exists(tfn)) {
@@ -1006,7 +998,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			foreach (string f in flist) mgr.add_to_queue(new DownloadItem(deb_url_list[f],cache_subdir,f,deb_checksum_list[f]));
 			vprint(_("Downloading")+" "+version_main);
 			mgr.execute();
-
 			string[] stat = {"","",""};
 			while (mgr.is_running) {
 				stat = mgr.status_line.split_set(" /");
