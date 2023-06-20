@@ -486,7 +486,6 @@ msgid "Original"
 msgstr "Оригінал"
 
 #: src/Gtk/MainWindow.vala:471
-#, fuzzy
 msgid "Updating kernels"
 msgstr "Оновлення ядер"
 
