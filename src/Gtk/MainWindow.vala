@@ -23,7 +23,6 @@
 
 using Gtk;
 
-using l.gtk;
 using l.misc;
 using l.exec;
 
@@ -74,7 +73,9 @@ public class MainWindow : Window {
 		});
 
 		title = BRANDING_LONGNAME;
-		icon = ld_icon(BRANDING_SHORTNAME,16).pixbuf;
+		set_default_icon_name(BRANDING_SHORTNAME);
+		try { set_default_icon(IconTheme.get_default().load_icon(BRANDING_SHORTNAME,48,0)); }
+		catch (Error e) { vprint(e.message,1,stderr); }
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
 		tm = new Gtk.ListStore(TM.N_COLS,
@@ -90,9 +91,9 @@ public class MainWindow : Window {
 		tv = new TreeView.with_model(tm);
 
 		try {
-			pix_ubuntu = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
-			pix_mainline = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
-			pix_mainline_rc = new Gdk.Pixbuf.from_file (INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
+			pix_ubuntu = new Gdk.Pixbuf.from_file(INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/ubuntu-logo.png");
+			pix_mainline = new Gdk.Pixbuf.from_file(INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux.png");
+			pix_mainline_rc = new Gdk.Pixbuf.from_file(INSTALL_PREFIX + "/share/pixmaps/" + BRANDING_SHORTNAME + "/tux-red.png");
 		} catch (Error e) { vprint(e.message,1,stderr); }
 
 		vbox_main = new Box(Orientation.VERTICAL, SPACING);
@@ -399,62 +400,40 @@ public class MainWindow : Window {
 		if (x) App.run_notify_script_if_due();
 	}
 
-	void do_about () {
+	void do_about() {
 
-		var dialog = new AboutWindow();
-		dialog.set_transient_for (this);
-
-		dialog.authors = {
+		const string[] authors = {
 			"Tony George <teejeetech@gmail.com>",
 			BRANDING_AUTHORNAME+" <"+BRANDING_AUTHOREMAIL+">"
 		};
 
-		// TODO generate this list from the .po files
-		/*
-		dialog.translators = {
-			"name",
-			"name",
-			"name"
-		};
-		*/
-		// For now, run "make TRANSLATORS"
-		// then cut & paste from generated TRANSLATORS file
-		// and add the quotes & commas
-		dialog.translators = {
-			"de: Marvin Meysel <marvin@meysel.net>",
-			"el: Vasilis Kosmidis <skyhirules@gmail.com>",
-			"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>",
-			"fr: Yolateng0 <yo@yo.nohost.me>",
-			"hr: gogo <trebelnik2@gmail.com>",
-			"it: Demetrio Mendozzi",
-			"ko: Kevin Kim <root@hamonikr.org>",
-			"nl: Heimen Stoffels <vistausss@outlook.com>",
-			"pl: Matthaiks",
-			"ru: Danik2343 <krutalevex@mail.ru>",
-			"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>",
-			"tr: Sabri Ünal <libreajans@gmail.com>",
-			"uk: Serhii Golovko <cappelikan@gmail.com>"
-		};
-
-		dialog.documenters = null;
-		dialog.artists = null;
-
-		dialog.program_name = BRANDING_LONGNAME;
-		dialog.comments = _("Kernel upgrade utility for Ubuntu-based distributions");
-		dialog.copyright = _("Original")+": \"ukuu\" © 2015-18 Tony George\n"+_("Forked")+": \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME;
-		dialog.version = BRANDING_VERSION;
-		dialog.logo = ld_icon(BRANDING_SHORTNAME,128).pixbuf;
-
-		dialog.license = "This program is free for personal and commercial use and comes with absolutely no warranty. You use this program entirely at your own risk. The author will not be liable for any damages arising from the use of this program.";
-		dialog.website = BRANDING_WEBSITE;
-		dialog.website_label = BRANDING_WEBSITE;
-
-		dialog.third_party = {
-			"notify-send.sh:github.com/bkw777/notify-send.sh"
-		};
-
-		dialog.initialize();
-		dialog.show_all();
+		show_about_dialog(this,
+			program_name:BRANDING_LONGNAME,
+			logo_icon_name:BRANDING_SHORTNAME,
+			version:BRANDING_VERSION,
+			website:BRANDING_WEBSITE,
+			website_label:BRANDING_WEBSITE,
+			comments:_("A tool for installing kernel packages\nfrom the Ubuntu Mainline Kernels PPA"),
+			copyright:
+				_("Original")+": \"ukuu\" © 2015-18 Tony George\n" +
+				_("Forked")+": \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME,
+			authors:authors,
+			translator_credits:
+				"de: Marvin Meysel <marvin@meysel.net>\n" +
+				"el: Vasilis Kosmidis <skyhirules@gmail.com>\n" +
+				"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n" +
+				"fr: Yolateng0 <yo@yo.nohost.me>\n" +
+				"hr: gogo <trebelnik2@gmail.com>\n" +
+				"it: Demetrio Mendozzi\n" +
+				"ko: Kevin Kim <root@hamonikr.org>\n" +
+				"nl: Heimen Stoffels <vistausss@outlook.com>\n" +
+				"pl: Matthaiks\n" +
+				"ru: Danik2343 <krutalevex@mail.ru>\n" +
+				"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>\n" +
+				"tr: Sabri Ünal <libreajans@gmail.com>\n" +
+				"uk: Serhii Golovko <cappelikan@gmail.com>",
+			license_type:License.GPL_3_0
+		);
 	}
 
 	// Full re-load. Delete cache and clear session state and start over.

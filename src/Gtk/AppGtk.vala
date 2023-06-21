@@ -19,7 +19,6 @@
  * MA 02110-1301, USA.
  */
 
-using l.gtk;
 using l.misc;
 
 public Main App;

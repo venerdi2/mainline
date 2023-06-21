@@ -21,7 +21,6 @@
  *
  */
 
-using l.gtk;
 using l.misc;
 
 public class SettingsDialog : Gtk.Dialog {
@@ -34,8 +33,7 @@ public class SettingsDialog : Gtk.Dialog {
 		set_modal(true);
 		window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 
-		title = BRANDING_LONGNAME + " " + _("Settings");
-		icon = ld_icon(BRANDING_SHORTNAME,16).pixbuf;
+		title = BRANDING_LONGNAME;
 
 		var vbox_main = get_content_area();
 		vbox_main.spacing = SPACING;

@@ -31,7 +31,7 @@ public abstract class AsyncTask : GLib.Object {
 
 		try {
 			Process.spawn_async_with_pipes(
-				null, //working_dir, // working dir
+				null,        // working dir
 				spawn_args,  // argv
 				null,        // environment
 				SpawnFlags.SEARCH_PATH,

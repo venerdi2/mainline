@@ -654,8 +654,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (x>0) return 1;                          // only left is numerical>0, left is greater
 			return -1;                                  // only right is numerical>0, right is greater
 		}
-		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // left is longer { {left is numerical>0) left is greater else right is greater }
-		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // right is longer { {right is numerical>0) right is greater else left is greater }
+		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // if left is longer: (if left is numerical>0, left is greater else right is greater)
+		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // if right is longer: (if right is numerical>0, right is greater else left is greater)
 		return 0;                                       // left & right identical the whole way
 	}
 

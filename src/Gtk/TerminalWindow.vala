@@ -20,7 +20,6 @@
  * MA 02110-1301, USA.
  */
 
-using l.gtk;
 using l.misc;
 
 public class TerminalWindow : Gtk.Window {
@@ -72,8 +71,6 @@ public class TerminalWindow : Gtk.Window {
 		if (App.term_x>=0 && App.term_y>=0) move(App.term_x,App.term_y);
 
 		title = BRANDING_LONGNAME;
-		icon = ld_icon(BRANDING_SHORTNAME,16).pixbuf;
-		resizable = true;
 
 		// vbox_main ---------------
 
