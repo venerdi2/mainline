@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-21 03:26-0400\n"
+"POT-Creation-Date: 2023-06-22 16:04-0400\n"
 "PO-Revision-Date: 2023-06-21 01:02+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -69,7 +69,7 @@ msgstr "uruchomione"
 msgid "is locked."
 msgstr "jest zablokowane."
 
-#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:488
+#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:485
 msgid "Running"
 msgstr "Uruchomione"
 
@@ -141,7 +141,7 @@ msgstr "jest już zainstalowane."
 msgid "download failed."
 msgstr "pobieranie nie powiodło się."
 
-#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:514
+#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:511
 msgid "Install: no installable kernels specified"
 msgstr "Instalowanie: nie określono jądra do zainstalowania"
 
@@ -159,7 +159,7 @@ msgstr "Odinstalowanie wybranych jąder"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Bez odinstalowywania aktualnie uruchomionego jądra"
 
-#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:510
+#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:507
 msgid "is locked"
 msgstr "jest zablokowane"
 
@@ -439,33 +439,33 @@ msgstr "O programie"
 msgid "Exit"
 msgstr "Wyjdź"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:413
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:415
 msgid "Original"
 msgstr "Oryginalne"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:416
 msgid "Forked"
 msgstr "Sforkowane"
 
-#: src/Gtk/MainWindow.vala:450
+#: src/Gtk/MainWindow.vala:447
 msgid "Updating kernels"
 msgstr "Aktualizowanie jąder"
 
-#: src/Gtk/MainWindow.vala:492
+#: src/Gtk/MainWindow.vala:489
 msgid "available"
 msgstr "dostępne"
 
-#: src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:506
 msgid "is already installed"
 msgstr "jest już zainstalowane"
 
-#: src/Gtk/MainWindow.vala:511
+#: src/Gtk/MainWindow.vala:508
 msgid "adding"
 msgstr "dodawanie"
 
@@ -592,19 +592,19 @@ msgstr "Polecenie używane do uruchamiania dpkg z uprawnieniami roota"
 msgid "Done"
 msgstr "Gotowe"
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:140
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/TerminalWindow.vala:148
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr "Kopiuje cały bufor wyjściowy do schowka, w tym przewijanie."
 
-#: src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/TerminalWindow.vala:155
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/Gtk/TerminalWindow.vala:164
+#: src/Gtk/TerminalWindow.vala:163
 msgid "Close"
 msgstr "Zamknij"

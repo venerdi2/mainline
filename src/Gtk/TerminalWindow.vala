@@ -59,7 +59,6 @@ public class TerminalWindow : Gtk.Window {
 		init_window();
 		show_all();
 		allow_close(false);
-		cmd_complete.connect(()=>{ present(); allow_close(true); });
 	}
 
 	public bool cancel_window_close() { return true; }
@@ -227,6 +226,7 @@ public class TerminalWindow : Gtk.Window {
 
 	public void execute_cmd(string[] argv) {
 		vprint("TerminalWindow execute_cmd("+string.joinv(" ",argv)+")",3);
+		cmd_complete.connect(()=>{ present(); allow_close(true); });
 		term.child_exited.connect(child_has_exited);
 		is_running = true;
 #if VALA_0_50 // vte 0.66 or so

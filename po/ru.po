@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-21 02:39-0400\n"
+"POT-Creation-Date: 2023-06-22 16:04-0400\n"
 "PO-Revision-Date: 2023-06-16 17:07+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -70,7 +70,7 @@ msgstr "запущено"
 msgid "is locked."
 msgstr "заблокирован."
 
-#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:488
+#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:485
 msgid "Running"
 msgstr "Используется"
 
@@ -142,7 +142,7 @@ msgstr "уже установлен."
 msgid "download failed."
 msgstr "загрузка не удалась."
 
-#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:514
+#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:511
 msgid "Install: no installable kernels specified"
 msgstr "Команда не указана"
 
@@ -160,7 +160,7 @@ msgstr "Удаление выбранных ядер"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не удалять запущенное в данный момент ядро"
 
-#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:510
+#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:507
 msgid "is locked"
 msgstr "заблокирован"
 
@@ -439,34 +439,34 @@ msgstr "О программе"
 msgid "Exit"
 msgstr "Выход"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:413
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:415
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:416
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:450
+#: src/Gtk/MainWindow.vala:447
 #, fuzzy
 msgid "Updating kernels"
 msgstr "Обновление ядер"
 
-#: src/Gtk/MainWindow.vala:492
+#: src/Gtk/MainWindow.vala:489
 msgid "available"
 msgstr "доступно"
 
-#: src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:506
 msgid "is already installed"
 msgstr "уже установлен"
 
-#: src/Gtk/MainWindow.vala:511
+#: src/Gtk/MainWindow.vala:508
 msgid "adding"
 msgstr "добавление"
 
@@ -594,19 +594,19 @@ msgstr "Команда, используемая для запуска dpkg с �
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:140
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/TerminalWindow.vala:148
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr "Копирует весь буфер вывода, включая прокрутку, в буфер обмена."
 
-#: src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/TerminalWindow.vala:155
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/Gtk/TerminalWindow.vala:164
+#: src/Gtk/TerminalWindow.vala:163
 msgid "Close"
 msgstr "Закрыть"

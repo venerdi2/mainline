@@ -365,6 +365,7 @@ public class MainWindow : Window {
 	}
 
 	void do_settings () {
+		// capture some settings before to detect if they change
 		// settings that change the selection set -> trigger cache update
 		var old_previous_majors = App.previous_majors;
 		var old_hide_unstable = App.hide_unstable;
@@ -379,25 +380,21 @@ public class MainWindow : Window {
 		dlg.run();
 		dlg.destroy();
 
-		App.save_app_config();
+		App.save_app_config(); // blindly sets RUN_NOTIFY_SCRIPT = true;
 
-		// By default the notify script will be flagged to (re)run itself
-		// simply because settings were saved at all. It is not run immediately,
-		// only flagged to be run at the end of cache update.
-
-		// If no notifications settings changed, un-flag the notify script update.
-		if (App.notify_interval_unit == old_notify_interval_unit &&
-			App.notify_interval_value == old_notify_interval_value &&
+		// if no notify settings changed, then un-flag the automatic notify script update
+		if (App.notify_interval_value == old_notify_interval_value &&
+			App.notify_interval_unit == old_notify_interval_unit &&
 			App.notify_major == old_notify_major &&
 			App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
 
-		// if the selection set changed, update the cache
-		// if the installable subset changed, run the notify script if pending
-		bool x = false;
+		// if the selection set changed, then update cache
 		if (App.previous_majors != old_previous_majors ||
-			App.hide_unstable != old_hide_unstable) x = true; // installable selection set changed
-		if (x || App.hide_invalid != old_hide_invalid) update_cache(); // visible selection set changed
-		if (x) App.run_notify_script_if_due();
+			App.hide_unstable != old_hide_unstable ||
+			App.hide_invalid != old_hide_invalid) update_cache();
+
+		// in case it was due but we didn't run update_cache()
+		App.run_notify_script_if_due();
 	}
 
 	void do_about() {
@@ -513,26 +510,15 @@ public class MainWindow : Window {
 		}
 		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
 
-		bool c = false;
-		var term = new TerminalWindow.with_parent(this);
-		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
-		term.destroy.connect(()=>{ if (!c) update_cache(); });
-
 		string[] cmd = { BRANDING_SHORTNAME };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		cmd += "--install";
 		cmd += string.joinv(",",vlist);
-
-		term.execute_cmd(cmd);
+		exec_in_term(cmd);
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
 		if (klist==null || klist.size<1) return;
-
-		bool c = false;
-		var term = new TerminalWindow.with_parent(this);
-		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
-		term.destroy.connect(()=>{ if (!c) update_cache(); });
 
 		string[] vlist = {};
 		foreach(var k in klist) vlist += k.version_main;
@@ -541,20 +527,18 @@ public class MainWindow : Window {
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		cmd += "--uninstall";
 		cmd += string.joinv(",",vlist);
-
-		term.execute_cmd(cmd);
+		exec_in_term(cmd);
 	}
 
 	public void uninstall_old () {
-		bool c = false;
-		var term = new TerminalWindow.with_parent(this);
-		term.cmd_complete.connect(()=>{ c = true; update_cache(); });
-		term.destroy.connect(()=>{ if (!c) update_cache(); });
-
 		string[] cmd = { BRANDING_SHORTNAME, "--uninstall-old" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
-
-		term.execute_cmd(cmd);
+		exec_in_term(cmd);
 	}
 
+	public void exec_in_term(string[] cmd) {
+		var term = new TerminalWindow.with_parent(this);
+		term.cmd_complete.connect(update_cache);
+		term.execute_cmd(cmd);
+	}
 }

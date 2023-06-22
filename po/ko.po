@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-21 02:39-0400\n"
+"POT-Creation-Date: 2023-06-22 16:04-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -71,7 +71,7 @@ msgstr "구동 중"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:488
+#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:485
 msgid "Running"
 msgstr "구동 중"
 
@@ -148,7 +148,7 @@ msgstr "가 이미 설치되어 있습니다"
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:514
+#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:511
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "지정한 명령어가 없습니다"
@@ -168,7 +168,7 @@ msgstr "선택한 커널 제거"
 msgid "Not uninstalling the currently running kernel"
 msgstr "현재 실행 중인 커널을 제거하지 않음"
 
-#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:510
+#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:507
 msgid "is locked"
 msgstr ""
 
@@ -457,35 +457,35 @@ msgstr "정보"
 msgid "Exit"
 msgstr "출구"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:413
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:415
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:416
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:450
+#: src/Gtk/MainWindow.vala:447
 #, fuzzy
 msgid "Updating kernels"
 msgstr "커널 업데이트"
 
-#: src/Gtk/MainWindow.vala:492
+#: src/Gtk/MainWindow.vala:489
 msgid "available"
 msgstr "사용가능"
 
-#: src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:506
 #, fuzzy
 msgid "is already installed"
 msgstr "가 이미 설치되어 있습니다"
 
-#: src/Gtk/MainWindow.vala:511
+#: src/Gtk/MainWindow.vala:508
 msgid "adding"
 msgstr ""
 
@@ -606,19 +606,19 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:140
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/TerminalWindow.vala:148
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/TerminalWindow.vala:155
 msgid "Cancel"
 msgstr "취소"
 
-#: src/Gtk/TerminalWindow.vala:164
+#: src/Gtk/TerminalWindow.vala:163
 msgid "Close"
 msgstr "닫기"

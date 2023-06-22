@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-21 02:39-0400\n"
+"POT-Creation-Date: 2023-06-22 16:04-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -71,7 +71,7 @@ msgstr "Ενεργός"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:488
+#: src/Common/LinuxKernel.vala:693 src/Gtk/MainWindow.vala:485
 msgid "Running"
 msgstr "Ενεργός"
 
@@ -148,7 +148,7 @@ msgstr "είναι ήδη εγκατεστημένο."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:514
+#: src/Common/LinuxKernel.vala:1042 src/Gtk/MainWindow.vala:511
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Η εντολή δεν προσδιορίστηκε"
@@ -168,7 +168,7 @@ msgstr "Απεγκατάσταση επιλεγμένων πυρήνων"
 msgid "Not uninstalling the currently running kernel"
 msgstr "δεν θα απεγκαταστήσει τον πυρήνα που εκτελείται αυτήν τη στιγμή"
 
-#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:510
+#: src/Common/LinuxKernel.vala:1068 src/Gtk/MainWindow.vala:507
 msgid "is locked"
 msgstr ""
 
@@ -460,35 +460,35 @@ msgstr "Σχετικά"
 msgid "Exit"
 msgstr "Έξοδος"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:413
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:415
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:416
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:450
+#: src/Gtk/MainWindow.vala:447
 #, fuzzy
 msgid "Updating kernels"
 msgstr "Ενημέρωση πυρήνων"
 
-#: src/Gtk/MainWindow.vala:492
+#: src/Gtk/MainWindow.vala:489
 msgid "available"
 msgstr "διαθέσιμος"
 
-#: src/Gtk/MainWindow.vala:509
+#: src/Gtk/MainWindow.vala:506
 #, fuzzy
 msgid "is already installed"
 msgstr "είναι ήδη εγκατεστημένο."
 
-#: src/Gtk/MainWindow.vala:511
+#: src/Gtk/MainWindow.vala:508
 msgid "adding"
 msgstr ""
 
@@ -609,19 +609,19 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:141
+#: src/Gtk/TerminalWindow.vala:140
 msgid "Copy"
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:149
+#: src/Gtk/TerminalWindow.vala:148
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
 
-#: src/Gtk/TerminalWindow.vala:156
+#: src/Gtk/TerminalWindow.vala:155
 msgid "Cancel"
 msgstr "Άκυρο"
 
-#: src/Gtk/TerminalWindow.vala:164
+#: src/Gtk/TerminalWindow.vala:163
 msgid "Close"
 msgstr "Κλείσιμο"
