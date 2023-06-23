@@ -67,10 +67,38 @@ const string[] DEFAULT_AUTH_CMDS = {
 	"sudo",
 	"su -c \"%s\"",
 	"doas",
+	"lxsudo",
+	"lxsu",
+	"lxdoas",
 	"gksudo",
 	"gksu --su-mode",
 	"pbrun"
 	};
+#if XTERM_SUPPORT
+const string[] DEFAULT_TERM_CMDS = {
+	"[internal-vte]",
+	"x-terminal-emulator -e",
+	"gnome-terminal --",
+	"konsole -e",
+	"cool-retro-term -e",
+	"termit -e",
+	"kitty",
+	"sakura -e",
+	"urxvt -e",
+	"xfce4-terminal -e \"%s\"",
+	"lxterminal -e",
+	"mate-terminal -e \"%s\"",
+	"qterminal -e",
+	"lilyterm -e",  // crashes
+	"Eterm -e",
+	"mlterm -e",
+	"pangoterm -e",
+	"pterm -e",
+	"exo-open --launch TerminalEmulator",
+	"stterm -e",
+	"xterm -e"
+	};
+#endif
 // window sizes
 const int      DEFAULT_WINDOW_WIDTH            = 800   ;
 const int      DEFAULT_WINDOW_HEIGHT           = 600   ;
@@ -82,9 +110,22 @@ const int      DEFAULT_TERM_X                  = -1    ;
 const int      DEFAULT_TERM_Y                  = -1    ;
 const double   DEFAULT_TERM_FONT_SCALE         = 1     ;
 
+enum SIG {
+#if VALA_0_40
+	HUP = Posix.Signal.HUP,
+	INT = Posix.Signal.INT,
+	TERM = Posix.Signal.TERM
+#else
+	HUP = Posix.SIGHUP,
+	INT = Posix.SIGINT,
+	TERM = Posix.SIGTERM
+#endif
+}
+
 extern void exit(int exit_code);
 
 public class Main : GLib.Object {
+//public class Main : Application {
 
 	// constants ----------
 	public string CONFIG_DIR = "";
@@ -105,13 +146,13 @@ public class Main : GLib.Object {
 
 	// state flags ----------
 	public static int VERBOSE = 1;
-	public bool GUI_MODE = false;
 	public string command = "list";
 	public string requested_versions = "";
 	public bool ppa_tried = false;
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;
 	public bool RUN_NOTIFY_SCRIPT = false;
+	public bool yes = false;
 
 	// config
 	public string ppa_uri              = DEFAULT_PPA_URI;
@@ -128,6 +169,9 @@ public class Main : GLib.Object {
 	public bool verify_checksums       = DEFAULT_VERIFY_CHECKSUMS;
 	public bool keep_downloads         = DEFAULT_KEEP_DOWNLOADS;
 	public string auth_cmd             = DEFAULT_AUTH_CMDS[0];
+#if XTERM_SUPPORT
+	public string term_cmd             = DEFAULT_TERM_CMDS[0];
+#endif
 	// save & restore window size & position
 	public int    window_width         = DEFAULT_WINDOW_WIDTH;
 	public int    window_height        = DEFAULT_WINDOW_HEIGHT;
@@ -139,14 +183,9 @@ public class Main : GLib.Object {
 	public int    term_y               = DEFAULT_TERM_Y;
 	public double term_font_scale      = DEFAULT_TERM_FONT_SCALE;
 
-	public bool confirm = true;
-
 	public static Rand rnd;
 
-	// constructors ------------
-
-	public Main(string[] arg0, bool _gui_mode) {
-		GUI_MODE = _gui_mode;
+	public Main() {
 		get_env();
 		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
@@ -158,11 +197,16 @@ public class Main : GLib.Object {
 		LinuxKernel.initialize();
 	}
 
-	// helpers ------------
-
 	public void get_env() {
 		var s = Environment.get_variable("VERBOSE");
 		if (s != null) set_verbose(s.down().strip()); // don't do VERBOSE++
+
+		s = Environment.get_variable("TERM");
+		string[] tlist = { "xterm", "linux", "ansi", "vt" };
+		foreach (var t in tlist) if (s.contains(t)) {
+			vprint("\033]0;"+BRANDING_LONGNAME+"\007",1,stdout,false);
+			break;
+		}
 	}
 
 	public bool set_verbose(string? s) {
@@ -216,6 +260,9 @@ public class Main : GLib.Object {
 		config.set_boolean_member( "verify_checksums",        verify_checksums        );
 		config.set_boolean_member( "keep_downloads",          keep_downloads          );
 		config.set_string_member(  "auth_cmd",                auth_cmd                );
+#if XTERM_SUPPORT
+		config.set_string_member(  "term_cmd",                term_cmd                );
+#endif
 		config.set_int_member(     "window_width",            window_width            );
 		config.set_int_member(     "window_height",           window_height           );
 		config.set_int_member(     "window_x",                window_x                );
@@ -280,6 +327,9 @@ public class Main : GLib.Object {
 		verify_checksums        =       config.get_boolean_member_with_default( "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
 		keep_downloads          =       config.get_boolean_member_with_default( "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
 		auth_cmd                =       config.get_string_member_with_default(  "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
+#if XTERM_SUPPORT
+		term_cmd                =       config.get_string_member_with_default(  "term_cmd",                DEFAULT_TERM_CMDS[0]            );
+#endif
 		window_width            = (int) config.get_int_member_with_default(     "window_width",            DEFAULT_WINDOW_WIDTH            );
 		window_height           = (int) config.get_int_member_with_default(     "window_height",           DEFAULT_WINDOW_HEIGHT           );
 		window_x                = (int) config.get_int_member_with_default(     "window_x",                DEFAULT_WINDOW_X                );
@@ -304,6 +354,9 @@ public class Main : GLib.Object {
 		verify_checksums        = json_get_bool(   config, "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
 		keep_downloads          = json_get_bool(   config, "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
 		auth_cmd                = json_get_string( config, "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
+#if XTERM_SUPPORT
+		term_cmd                = json_get_string( config, "term_cmd",                DEFAULT_TERM_CMDS[0]            );
+#endif
 		window_width            = json_get_int(    config, "window_width",            DEFAULT_WINDOW_WIDTH            );
 		window_height           = json_get_int(    config, "window_height",           DEFAULT_WINDOW_HEIGHT           );
 		window_x                = json_get_int(    config, "window_x",                DEFAULT_WINDOW_X                );

@@ -168,30 +168,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		rm(App.CACHE_DIR);
 	}
 
-	// Doesn't really sanitize much, just escapes any %* except
-	// a single "%s" to reduce the chance of ugly crash from printf.
-	//
-	// This is still user-supplied data fed to printf and then to a shell.
-	//
-	// Find the first "%s", ignore "%%", replace all other "%" with "%%".
-	//
-	// TODO: Working, but maybe there is a less confusing more state-machine way?
-	static string sanitize_auth_cmd(string cmd) {
-		string s = cmd.strip();
-		int p = 0;
-		while (p>=0 && p<s.length) {
-			p = s.index_of("%s",p);
-			if (p<1) break;
-			if (s.substring(p-1,1)=="%") p++;
-			else break;
-		}
-		string a = s.substring(0,p); if (a.index_of("%")>=0) a = a.replace("%","%%");
-		string b = ""; if (p<0 || p>s.length-2) a = a.strip()+" ";
-		else { b = s.substring(p+2); if (b.index_of("%")>=0) b = b.replace("%","%%"); }
-		return a + "%s" + b;
-	}
-
-
 	// static
 
 	public delegate void Notifier(bool last = false);
@@ -1043,11 +1019,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string cmd = "";
 		foreach (string f in flist) { cmd += " '"+f+"'"; }
-		cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --install "+cmd);
+		cmd = sanitize_cmd(App.auth_cmd).printf("dpkg --install "+cmd);
 		vprint(cmd,2);
 		int r = Posix.system(cmd);
 		if (!App.keep_downloads) foreach (string f in flist) rm(f);
-		vprint(_("done"));
 		return r;
 	}
 
@@ -1079,14 +1054,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		pnames = pnames.strip();
 		if (pnames=="") { vprint(_("Uninstall: no uninstallable packages found"),1,stderr); return 1; }
 
-		string cmd = sanitize_auth_cmd(App.auth_cmd).printf("dpkg --purge "+pnames);
+		string cmd = sanitize_cmd(App.auth_cmd).printf("dpkg --purge "+pnames);
 		vprint(cmd,2);
-		var r = Posix.system(cmd);
-		vprint(_("done"));
-		return r;
+		return Posix.system(cmd);
 	}
 
-	public static int kunin_old(bool confirm) {
+	public static int kunin_old() {
 		vprint("kunin_old()",2);
 
 		find_thresholds(true);
@@ -1130,33 +1103,27 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return 0;
 		}
 
-		if (confirm) {
-			var message = "\n"+_("The following kernels will be uninstalled")+"\n";
-			foreach (var k in klist) message += " ▰ %s\n".printf(k.version_main);
-			message += "\n"+_("Continue ?")+" (y/n): ";
-			vprint(message,0);
-			if (stdin.getc() != 'y') { vprint(_("done")); return 1; }
+		if (!App.yes) {
+			var prompt = "\n"+_("The following kernels will be uninstalled")+"\n";
+			foreach (var k in klist) prompt += " ▰ %s\n".printf(k.version_main);
+			prompt += "\n"+_("Continue? (y/N): ");
+			if (!ask(prompt)) return 1;
 		}
-
-		// uninstall --------------------------------
 		return uninstall_klist(klist);
 	}
 
-	public static int kinst_latest(bool point_only = false, bool confirm = true) {
+	public static int kinst_latest(bool point_only = false) {
 		vprint("kinst_latest()",2);
+
 		mk_kernel_list(true);
+
 		var k = LinuxKernel.kernel_update_minor;
 		if (!point_only && LinuxKernel.kernel_update_major!=null) k = LinuxKernel.kernel_update_major;
-		if (k!=null) return kinst_update(k, confirm);
-		vprint(_("No updates"));
-		return 1;
-	}
 
-	public static int kinst_update(LinuxKernel k, bool confirm) {
-		if (confirm) {
-			vprint("\n" + _("Install Kernel Version %s ? (y/n): ").printf(k.version_main),0);
-			if (stdin.getc() != 'y') { vprint(_("done")); return 1; }
-		}
+		if (k==null) { vprint(_("No updates")); return 1; }
+
+		if (!ask("\n"+_("Install Kernel Version %s ? (y/N): ").printf(k.version_main))) return 1;
+
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		klist.add(k);
 		return install_klist(klist);

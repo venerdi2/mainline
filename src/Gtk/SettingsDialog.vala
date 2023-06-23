@@ -212,12 +212,23 @@ public class SettingsDialog : Gtk.Dialog {
 		});
 		vbox_main.add(ent_ppa_uri);
 
-		// auth command
-		label = new Gtk.Label("<b>"+_("Auth Command")+"</b>");
+
+#if XTERM_SUPPORT
+		label = new Gtk.Label("<b>"+_("External Commands")+"</b>");
 		label.set_use_markup(true);
 		label.margin_top = SPACING;
 		vbox_main.add(label);
 
+		// auth command
+		label = new Gtk.Label("auth command");
+		label.xalign = 0;
+		vbox_main.add(label);
+#else
+		label = new Gtk.Label("<b>"+_("Auth Command")+"</b>");
+		label.set_use_markup(true);
+		label.margin_top = SPACING;
+		vbox_main.add(label);
+#endif
 		var cbt_auth_cmd = new Gtk.ComboBoxText.with_entry();
 		cbt_auth_cmd.active = -1;
 		for (int i=0;i<DEFAULT_AUTH_CMDS.length;i++) {
@@ -236,6 +247,32 @@ public class SettingsDialog : Gtk.Dialog {
 		});
 		cbt_auth_cmd.set_tooltip_text(_("Command used to run dpkg with root permissions"));
 		vbox_main.add(cbt_auth_cmd);
+
+#if XTERM_SUPPORT
+		// xterm command
+		label = new Gtk.Label("terminal window");
+		label.xalign = 0;
+		vbox_main.add(label);
+
+		var cbt_term_cmd = new Gtk.ComboBoxText.with_entry();
+		cbt_term_cmd.active = -1;
+		for (int i=0;i<DEFAULT_TERM_CMDS.length;i++) {
+			cbt_term_cmd.append_text(DEFAULT_TERM_CMDS[i]);
+			if (App.term_cmd == DEFAULT_TERM_CMDS[i]) cbt_term_cmd.active = i;
+		}
+		if (cbt_term_cmd.active<0) {
+			cbt_term_cmd.append_text(App.term_cmd);
+			cbt_term_cmd.active = DEFAULT_TERM_CMDS.length;
+		} else {
+			cbt_term_cmd.append_text("");
+		}
+		cbt_term_cmd.changed.connect(() => {
+			string s = cbt_term_cmd.get_active_text().strip();
+			if (s != App.term_cmd) App.term_cmd = s;
+		});
+		cbt_term_cmd.set_tooltip_text(_("Terminal command used to run dpkg"));
+		vbox_main.add(cbt_term_cmd);
+#endif
 
 		// close button
 		var btn_done = (Gtk.Button)add_button(_("Done"), Gtk.ResponseType.ACCEPT);

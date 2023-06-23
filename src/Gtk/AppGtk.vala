@@ -25,13 +25,11 @@ public Main App;
 
 public class AppGtk : GLib.Object {
 
-	public static int main (string[] args) {
-
+	public static int main (string[] argv) {
 		X.init_threads();
-		Gtk.init(ref args);
-		App = new Main(args, true);
-		parse_arguments(args);
-
+		Gtk.init(ref argv);
+		App = new Main();
+		parse_arguments(argv);
 		var appwin = new MainWindow();
 		appwin.destroy.connect(Gtk.main_quit);
 		appwin.show_all();
@@ -82,6 +80,7 @@ public class AppGtk : GLib.Object {
 			case "-?":
 			case "-h":
 			case "--help":
+			case "--version":
 				vprint(help,0);
 				exit(0);
 				break;

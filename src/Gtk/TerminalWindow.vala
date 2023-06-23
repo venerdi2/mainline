@@ -28,16 +28,6 @@ public class TerminalWindow : Gtk.Window {
 	const double FONT_SCALE_MAX = 4.0;
 	const double FONT_SCALE_STEP = 0.125; // exactly expressable with type double keeps the math results neat
 
-	enum SIG {
-#if VALA_0_40
-		HUP = Posix.Signal.HUP,
-		TERM = Posix.Signal.TERM
-#else
-		HUP = Posix.SIGHUP,
-		TERM = Posix.SIGTERM
-#endif
-	}
-
 	Vte.Terminal term;
 	Pid child_pid = -1;
 	Gtk.Window parent_win = null;

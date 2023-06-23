@@ -25,10 +25,15 @@ public Main App;
 
 public class AppConsole : GLib.Object {
 
-	public static int main (string[] args) {
-		App = new Main(args, false);
+	static bool hold_on_exit = false;
+
+	public static int main (string[] argv) {
+		App = new Main();
 		var console = new AppConsole();
-		return console.parse_arguments(args);
+		var r = console.parse_arguments(argv);
+		vprint(argv[0]+": done");
+		if (hold_on_exit) ask("(press Enter to close)");
+		return r;
 	}
 
 	public int parse_arguments(string[] args) {
@@ -89,7 +94,12 @@ public class AppConsole : GLib.Object {
 
 				case "-y":
 				case "--yes":
-					App.confirm = false;
+					App.yes = true;
+					break;
+
+				case "--hold":
+				case "--pause":
+					hold_on_exit = true;
 					break;
 
 				// used by gui front-end
@@ -131,6 +141,7 @@ public class AppConsole : GLib.Object {
 				case "-?":
 				case "-h":
 				case "--help":
+				case "--version":
 					vprint(help,0);
 					return 0;
 
@@ -162,16 +173,16 @@ public class AppConsole : GLib.Object {
 				return notify_user();
 
 			case "--install-latest":
-				return LinuxKernel.kinst_latest(false, App.confirm);
+				return LinuxKernel.kinst_latest(false);
 
 			case "--install-point":
-				return LinuxKernel.kinst_latest(true, App.confirm);
+				return LinuxKernel.kinst_latest(true);
 
-			case "--purge-old-kernels":	// back compat
+			case "--purge-old-kernels":
 			case "--uninstall-old":
-				return LinuxKernel.kunin_old(App.confirm);
+				return LinuxKernel.kunin_old();
 
-			case "--clean-cache": // back compat
+			case "--clean-cache":
 			case "--delete-cache":
 				int r = 1;
 				if (rm(App.CACHE_DIR)) { r = 0; vprint(_("Deleted")+" "+App.CACHE_DIR); }

@@ -9,6 +9,19 @@ namespace l.misc {
 		Intl.bindtextdomain(BRANDING_SHORTNAME,LOCALE_DIR);
 	}
 
+	public bool ask(string prompt = "\n"+_("Proceed? (y/N): "), bool def = false) {
+		if (App.yes) return true;
+		vprint(prompt,0,stdout,false);
+		var c = stdin.getc();
+		switch (c) {
+			case 'y':
+			case 'Y': return true;
+			case 'n':
+			case 'N': return false;
+			default: return def;
+		}
+	}
+
 	public void vprint(string s,int v=1,FileStream f=stdout,bool n=true) {
 		if (v>Main.VERBOSE) return;
 		string o = s;
@@ -20,7 +33,7 @@ namespace l.misc {
 
 	public void pbar(int64 part=0,int64 whole=100,string units="") {
 		if (Main.VERBOSE<1) return;
-		int l = 80; // bar length
+		int l = 70; // cool-retro-term defaults to 70 wide
 		if (whole<1) { vprint("\r%*.s\r".printf(l,""),1,stdout,false); return; }
 		int64 c = 0, plen = 0, wlen = l/2;
 		string b = "", u = units;
@@ -29,6 +42,29 @@ namespace l.misc {
 		for (int i=0;i<wlen;i++) { if (i<plen) b+="▓"; else b+="░"; }
 		if (u.length>0) u = " "+part.to_string()+"/"+whole.to_string()+" "+u;
 		vprint("\r%*.s\r%s %d%% %s ".printf(l,"",b,(int)c,u),1,stdout,false);
+	}
+
+	// Doesn't really sanitize much, just escapes any %* except
+	// a single "%s" to reduce the chance of ugly crash from printf.
+	//
+	// This is still user-supplied data fed to printf and then to a shell.
+	//
+	// Find the first "%s", ignore "%%", replace all other "%" with "%%".
+	//
+	// TODO: Working, but maybe there is a less confusing more state-machine way?
+	static string sanitize_cmd(string cmd) {
+		string s = cmd.strip();
+		int p = 0;
+		while (p>=0 && p<s.length) {
+			p = s.index_of("%s",p);
+			if (p<1) break;
+			if (s.substring(p-1,1)=="%") p++;
+			else break;
+		}
+		string a = s.substring(0,p); if (a.index_of("%")>=0) a = a.replace("%","%%");
+		string b = ""; if (p<0 || p>s.length-2) a = a.strip()+" ";
+		else { b = s.substring(p+2); if (b.index_of("%")>=0) b = b.replace("%","%%"); }
+		return a + "%s" + b;
 	}
 
 	// rm -rf
