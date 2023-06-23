@@ -187,18 +187,17 @@ msgid "The following kernels will be uninstalled"
 msgstr "Наступні ядра будуть видалені"
 
 #: src/Common/LinuxKernel.vala:1109
-#, fuzzy
 msgid "Continue? (y/N): "
-msgstr "Продовжити ?"
+msgstr "Продовжити? (так/Ні): "
 
 #: src/Common/LinuxKernel.vala:1123
 msgid "No updates"
 msgstr "Немає оновлень"
 
 #: src/Common/LinuxKernel.vala:1125
-#, fuzzy, c-format
+#, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Встановити Ядро Версії %s ? (так/ні): "
+msgstr "Встановити Ядро Версії %s ? (так/Ні): "
 
 #: src/Common/Main.vala:192
 msgid "Missing Thread support in Glib."
@@ -441,6 +440,8 @@ msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
+"Інструмент для встановлення пакетів ядра\n"
+"з Ubuntu Mainline Kernels PPA"
 
 #: src/Gtk/MainWindow.vala:415
 msgid "Original"
@@ -580,14 +581,12 @@ msgid "Proxy"
 msgstr "Проксі"
 
 #: src/Gtk/SettingsDialog.vala:217
-#, fuzzy
 msgid "External Commands"
-msgstr "Команди"
+msgstr "Зовнішні Команди"
 
 #: src/Gtk/SettingsDialog.vala:227
-#, fuzzy
 msgid "Auth Command"
-msgstr "Команди"
+msgstr "Команда авторизації"
 
 #: src/Gtk/SettingsDialog.vala:248
 msgid "Command used to run dpkg with root permissions"
@@ -595,7 +594,7 @@ msgstr "Команда, яка використовується для запу�
 
 #: src/Gtk/SettingsDialog.vala:273
 msgid "Terminal command used to run dpkg"
-msgstr ""
+msgstr "Команда терміналу, яка використовується для запуску dpkg"
 
 #: src/Gtk/SettingsDialog.vala:278
 msgid "Done"
@@ -620,4 +619,4 @@ msgstr "Закрити"
 
 #: src/lib/l.misc.vala:12
 msgid "Proceed? (y/N): "
-msgstr ""
+msgstr "Продовжити? (так/Ні):"
