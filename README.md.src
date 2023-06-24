@@ -171,14 +171,14 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
 
 # hints  
-* The `--install-latest` and `--yes` options could be used in a cron job to always have the latest kernel installed.
-```
+* The `--install-latest` and `--yes` options could be used in a cron job to always have the latest kernel installed.  
+`
 $ sudo -i
 # cat >/etc/cron.d/mainline <<-%EOF
 	# Check for new kernels on kernel.ubuntu.com every 4 hours
 	* */4 * * * root VERBOSE=0 ;BRANDING_SHORTNAME --install-latest --yes && BRANDING_SHORTNAME --uninstall-old --yes
 %EOF
-```
+`
 
 * `sudo apt install cool-retro-term`  
 
