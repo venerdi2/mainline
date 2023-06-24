@@ -6,7 +6,7 @@ namespace l.exec {
 		catch (Error e) { warning("Unable to launch %s",s); }
 	}
 
-	// blocking exec - returns waitpid() status not exit() value
+	// blocking exec
 	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
 		vprint("exec_sync("+cmd+")",2);
 		int r = 0;

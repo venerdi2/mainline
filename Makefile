@@ -6,13 +6,6 @@ VALACFLAGS :=
 #VALACFLAGS += -g
 
 # compile-time options
-#VALACFLAGS += -D XTERM_SUPPORT
-#    option to run the install/uninstall commands in an external xterm
-#    instead of the built-in vte.
-#    Mostly working but does not block while in the terminal,
-#    so the list doesn't update after the install/uninstall.
-#    And there is a problem with the --pause on exit, it's getting
-#    unexpected data on stdin which satisfies ask() immediately.
 #VALACFLAGS += -D LOCK_TOGGLES_IN_KERNEL_COLUMN
 #    Put the lock/unlock checkboxes inside the kernel version column instead of
 #    in their own column. The display is neater, but you can't sort by locked

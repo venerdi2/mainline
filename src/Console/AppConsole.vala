@@ -25,20 +25,7 @@ public Main App;
 
 public class AppConsole : GLib.Object {
 
-	static bool hold_on_exit = false;
-
-	public static int main (string[] argv) {
-		App = new Main();
-		var console = new AppConsole();
-		var r = console.parse_arguments(argv);
-		vprint(argv[0]+": done");
-		if (hold_on_exit) ask("(press Enter to close)");
-		return r;
-	}
-
-	public int parse_arguments(string[] args) {
-
-		string help = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
+	string help = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
 		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
 		+ "\n"
@@ -55,6 +42,7 @@ public class AppConsole : GLib.Object {
 		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(2)\n"
 		+ "  --download <names>  " + _("Download specified kernels") + "(1)\n"
 		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
+		+ "  -h|--help           " + _("This help") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
@@ -62,12 +50,33 @@ public class AppConsole : GLib.Object {
 		+ "  --exclude-unstable  " + _("Exclude unstable and RC releases") + "\n"
 		+ "  -v|--verbose [n]    " + _("Verbosity. Set to n if given, or increment.") + "\n"
 		+ "  -y|--yes            " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
+		+ "  --pause             " + _("Pause for keypress before exiting (for external terminal)") + "\n"
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
 		+ "    " +_("comma, pipe, or colon-seperated, or quoted space seperated") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
+
+	static bool hold_on_exit = false;
+	static bool help_shown = false;
+
+	public static int main (string[] argv) {
+		App = new Main();
+		var console = new AppConsole();
+		var r = console.parse_arguments(argv);
+		vprint(BRANDING_SHORTNAME+": done");
+		if (hold_on_exit) ask("(press Enter to close)");
+		return r;
+	}
+
+	void show_help() {
+		if (help_shown) return;
+		help_shown = true;
+		vprint(help,0);
+	}
+
+	public int parse_arguments(string[] args) {
 
 		// check argument count -----------------
 
@@ -142,12 +151,12 @@ public class AppConsole : GLib.Object {
 				case "-h":
 				case "--help":
 				case "--version":
-					vprint(help,0);
-					return 0;
+					show_help();
+					break;
 
 				default:
+					show_help();
 					vprint(_("Unknown option") + ": \"%s\"".printf(args[i]),1,stderr);
-					vprint(help,0);
 					return 1;
 			}
 		}
@@ -199,8 +208,8 @@ public class AppConsole : GLib.Object {
 				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
 			default:
-				vprint(_("Unknown option") + ": \""+cmd+"\"",1,stderr);
-				vprint(help,0);
+				show_help();
+				vprint(_("Unknown command") + ": \""+cmd+"\"",1,stderr);
 				return 1;
 		}
 

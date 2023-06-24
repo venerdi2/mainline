@@ -53,7 +53,7 @@ public class TerminalWindow : Gtk.Window {
 
 	public bool cancel_window_close() { return true; }
 
-	public void init_window () {
+	public void init_window() {
 		set_modal(true);
 
 		set_default_size(App.term_width,App.term_height);
@@ -72,12 +72,12 @@ public class TerminalWindow : Gtk.Window {
 		term.expand = true;
 		term.font_scale = App.term_font_scale;
 
-		var display = term.get_display ();
+		var display = term.get_display();
 		var clipboard = Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD);
 
 		var scroll_win = new Gtk.ScrolledWindow(null, null);
 		scroll_win.set_shadow_type (Gtk.ShadowType.ETCHED_IN);
-		scroll_win.add (term);
+		scroll_win.add(term);
 		scroll_win.expand = true;
 		scroll_win.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
 		scroll_win.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;

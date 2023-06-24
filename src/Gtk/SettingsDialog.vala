@@ -111,7 +111,9 @@ public class SettingsDialog : Gtk.Dialog {
 
 		// hide invalid
 		var chk_hide_invalid = new Gtk.CheckButton.with_label(_("Hide failed or incomplete builds"));
-		chk_hide_invalid.set_tooltip_text(_("If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list.").printf(LinuxKernel.NATIVE_ARCH));
+		chk_hide_invalid.set_tooltip_text(
+			_("If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list.").printf(LinuxKernel.NATIVE_ARCH)
+		);
 		chk_hide_invalid.active = App.hide_invalid;
 		chk_hide_invalid.toggled.connect(()=>{ App.hide_invalid = chk_hide_invalid.active; });
 		vbox_main.add(chk_hide_invalid);
@@ -178,7 +180,11 @@ public class SettingsDialog : Gtk.Dialog {
 
 		// keep downloads
 		var chk_keep_downloads = new Gtk.CheckButton.with_label(_("Keep Downloads"));
-		chk_keep_downloads.set_tooltip_text(_("Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n\nThey are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."));
+		chk_keep_downloads.set_tooltip_text(_(
+			"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
+			+ "\n"
+			+ "They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
+		));
 		chk_keep_downloads.active = App.keep_downloads;
 		chk_keep_downloads.toggled.connect(()=>{ App.keep_downloads = chk_keep_downloads.active; });
 		vbox_main.add(chk_keep_downloads);
@@ -213,7 +219,6 @@ public class SettingsDialog : Gtk.Dialog {
 		vbox_main.add(ent_ppa_uri);
 
 
-#if XTERM_SUPPORT
 		label = new Gtk.Label("<b>"+_("External Commands")+"</b>");
 		label.set_use_markup(true);
 		label.margin_top = SPACING;
@@ -223,12 +228,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label = new Gtk.Label("auth command");
 		label.xalign = 0;
 		vbox_main.add(label);
-#else
-		label = new Gtk.Label("<b>"+_("Auth Command")+"</b>");
-		label.set_use_markup(true);
-		label.margin_top = SPACING;
-		vbox_main.add(label);
-#endif
+
 		var cbt_auth_cmd = new Gtk.ComboBoxText.with_entry();
 		cbt_auth_cmd.active = -1;
 		for (int i=0;i<DEFAULT_AUTH_CMDS.length;i++) {
@@ -245,10 +245,15 @@ public class SettingsDialog : Gtk.Dialog {
 			string s = cbt_auth_cmd.get_active_text().strip();
 			if (s != App.auth_cmd) App.auth_cmd = s;
 		});
-		cbt_auth_cmd.set_tooltip_text(_("Command used to run dpkg with root permissions"));
+		cbt_auth_cmd.set_tooltip_text(_(
+			"Command used to run dpkg with root permissions.\n"
+			+ "\n"
+			+ "If the auth programs commandline syntax requires the execute command to be enclosed in quotes rather than merely appended to the end of the command line, you can include a single %s in the string, and it will be replaced with the dpkg command, otherwise it will be appended to the end.\n"
+			+ "See \"su -c\" in the drop down list for an example of that.\n"
+		));
 		vbox_main.add(cbt_auth_cmd);
 
-#if XTERM_SUPPORT
+
 		// xterm command
 		label = new Gtk.Label("terminal window");
 		label.xalign = 0;
@@ -270,9 +275,25 @@ public class SettingsDialog : Gtk.Dialog {
 			string s = cbt_term_cmd.get_active_text().strip();
 			if (s != App.term_cmd) App.term_cmd = s;
 		});
-		cbt_term_cmd.set_tooltip_text(_("Terminal command used to run dpkg"));
+		cbt_term_cmd.set_tooltip_text(
+			_("Terminal command used to run")+" \""+BRANDING_SHORTNAME+" --install ...\"\n"
+			+ _("Example")+": \"xterm -e\" "+_("will result in")+" \"xterm -e "+BRANDING_SHORTNAME+" --pause --install 6.3.7\"\n"
+			+ "\n"
+			+ _("If the terminal programs commandline syntax requires the execute command to be enclosed in quotes rather than merely appended to the end of the command line, you can include a single %s in the string, and it will be replaced with the install command, otherwise it will be appended to the end.\n"
+			+ "See mate-terminal in the drop down list for an example of that.\n"
+			+ "\n"
+			+ "You may write any commandline you want, but the specified program must stay in the foreground and block while the command is running, not fork and return immediately.\n"
+			+ "Most terminal programs work fine by default, but some require special command line flags, and some are not usable at all.\n"
+			+ "\n"
+			+ "Examples:\n"
+			+ "gnome-terminal can be made to block by using it's --wait option.\n"
+			+ "xfce4-terminal can not be made to block.\n"
+			+ "\n"
+			+ "Edit the command to customize the appearance of the terminal.")
+		);
+
 		vbox_main.add(cbt_term_cmd);
-#endif
+
 
 		// close button
 		var btn_done = (Gtk.Button)add_button(_("Done"), Gtk.ResponseType.ACCEPT);

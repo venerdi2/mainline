@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-23 08:19-0400\n"
+"POT-Creation-Date: 2023-06-24 02:38-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -211,194 +211,206 @@ msgstr "Δεν βρέθηκαν ενημερώσεις"
 msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Εγκατάσταση του πυρήνα έκδοσης %s ; (ν/ό):"
 
-#: src/Common/Main.vala:192
+#: src/Common/Main.vala:197
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:287
+#: src/Common/Main.vala:290
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:306
+#: src/Common/Main.vala:309
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:377
+#: src/Common/Main.vala:376
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:397
+#: src/Common/Main.vala:396
 msgid "Called from"
 msgstr "Κλήθηκε από"
 
-#: src/Common/Main.vala:397
+#: src/Common/Main.vala:396
 msgid "at logon"
 msgstr "κατά την εκκίνηση"
 
-#: src/Common/Main.vala:398
+#: src/Common/Main.vala:397
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Αυτό το αρχείο αντικαθίσταται και εκτελείται ξανά κάθε φορά που "
 "αποθηκεύονται οι ρυθμίσεις στο"
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:429
 msgid "Notifications are disabled"
 msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες"
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:482
 msgid "Can not reach site"
 msgstr "Αποτυχία ανάγνωσης του αρχείου"
 
-#: src/Console/AppConsole.vala:43 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:30 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Σύνταξη"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:32
 msgid "Commands"
 msgstr "Εντολές"
 
-#: src/Console/AppConsole.vala:47
+#: src/Console/AppConsole.vala:34
 msgid "Check for kernel updates"
 msgstr "Έλεγχος για ενημερώσεις πυρήνα"
 
-#: src/Console/AppConsole.vala:48
+#: src/Console/AppConsole.vala:35
 msgid "Check for kernel updates and notify current user"
 msgstr "Έλεγχος για ενημερώσεις πυρήνα και ειδοποίηση τρέχοντα χρήστη"
 
-#: src/Console/AppConsole.vala:49
+#: src/Console/AppConsole.vala:36
 #, fuzzy
 msgid "List available mainline kernels"
 msgstr "Εμφάνιση όλων των διαθέσιμων πυρήνων mainline"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:37
 msgid "List installed kernels"
 msgstr "Εμφάνιση εγκατεστημένων πυρήνων"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:38
 msgid "Install latest mainline kernel"
 msgstr "Εγκατάσταση του πιο πρόσφατου πυρήνα mainline"
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:39
 #, fuzzy
 msgid "Install latest point update in the current major version"
 msgstr "Εγκαταστήστε την τελευταία ενημέρωση συντήρησης για την τρέχουσα σειρά"
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:40
 #, fuzzy
 msgid "Install specified kernels"
 msgstr "Απεγκατάσταση του καθορισμένου πυρήνα"
 
-#: src/Console/AppConsole.vala:54
+#: src/Console/AppConsole.vala:41
 #, fuzzy
 msgid "Uninstall specified kernels"
 msgstr "Απεγκατάσταση του καθορισμένου πυρήνα"
 
-#: src/Console/AppConsole.vala:55 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:42 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Απεγκαταστήστε όλες εκτός από την υψηλότερη εγκατεστημένη έκδοση"
 
-#: src/Console/AppConsole.vala:56
+#: src/Console/AppConsole.vala:43
 msgid "Download specified kernels"
 msgstr "Λήψη των καθορισμένων πυρήνων"
 
-#: src/Console/AppConsole.vala:57
+#: src/Console/AppConsole.vala:44
 msgid "Delete cached info about available kernels"
 msgstr ""
 "Διαγραφή προσωρινά αποθηκευμένων πληροφοριών σχετικά με διαθέσιμους πυρήνες"
 
-#: src/Console/AppConsole.vala:59 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:45
+msgid "This help"
+msgstr ""
+
+#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Επιλογές"
 
-#: src/Console/AppConsole.vala:61
+#: src/Console/AppConsole.vala:49
 msgid "Include unstable and RC releases"
 msgstr "Συμπεριλάβετε ασταθείς και RC εκδόσεις"
 
-#: src/Console/AppConsole.vala:62
+#: src/Console/AppConsole.vala:50
 msgid "Exclude unstable and RC releases"
 msgstr "Εξαίρεση ασταθών και RC εκδόσεων"
 
-#: src/Console/AppConsole.vala:63
+#: src/Console/AppConsole.vala:51
 msgid "Verbosity. Set to n if given, or increment."
 msgstr ""
 
-#: src/Console/AppConsole.vala:64
+#: src/Console/AppConsole.vala:52
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Υποθέστε Ναι για όλα τα μηνύματα (μη διαδραστική λειτουργία)"
 
-#: src/Console/AppConsole.vala:67
+#: src/Console/AppConsole.vala:53
+msgid "Pause for keypress before exiting (for external terminal)"
+msgstr ""
+
+#: src/Console/AppConsole.vala:56
 #, fuzzy
 msgid "One or more version strings taken from the output of --list"
 msgstr "Μια συμβολοσειρά έκδοσης που λαμβάνεται από την έξοδο του --list"
 
-#: src/Console/AppConsole.vala:68
+#: src/Console/AppConsole.vala:57
 msgid "comma, pipe, or colon-seperated, or quoted space seperated"
 msgstr ""
 
-#: src/Console/AppConsole.vala:69
+#: src/Console/AppConsole.vala:58
 #, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Αυτός ο πυρήνας είναι ήδη εγκατεστημένος."
 
-#: src/Console/AppConsole.vala:149 src/Console/AppConsole.vala:202
-#: src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:159 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Άγνωστη επιλογή"
 
-#: src/Console/AppConsole.vala:188
+#: src/Console/AppConsole.vala:197
 msgid "Deleted"
 msgstr ""
 
-#: src/Console/AppConsole.vala:189
+#: src/Console/AppConsole.vala:198
 msgid "Error deleting"
 msgstr ""
 
-#: src/Console/AppConsole.vala:214
+#: src/Console/AppConsole.vala:212
+#, fuzzy
+msgid "Unknown command"
+msgstr "Άγνωστη επιλογή"
+
+#: src/Console/AppConsole.vala:223
 msgid "Latest update"
 msgstr "Τελευταία αναβάθμιση"
 
-#: src/Console/AppConsole.vala:215
+#: src/Console/AppConsole.vala:224
 msgid "Latest point update"
 msgstr "Τελευταία ενημέρωση συντήρησης"
 
-#: src/Console/AppConsole.vala:216 src/Console/AppConsole.vala:234
+#: src/Console/AppConsole.vala:225 src/Console/AppConsole.vala:243
 msgid "No updates found"
 msgstr "Δεν βρέθηκαν ενημερώσεις"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:232
 #, fuzzy
 msgid "Notifications disabled"
 msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες"
 
-#: src/Console/AppConsole.vala:228
+#: src/Console/AppConsole.vala:237
 msgid "No"
 msgstr ""
 
-#: src/Console/AppConsole.vala:243
+#: src/Console/AppConsole.vala:252
 #, fuzzy
 msgid "notify point releases disabled"
 msgstr "Ειδοποίηση αν είναι διαθέσιμη έκδοση συντήρησης"
 
-#: src/Console/AppConsole.vala:251
+#: src/Console/AppConsole.vala:260
 #, fuzzy
 msgid "notify major releases disabled"
 msgstr "Ειδοποίηση αν είναι διαθέσιμη κύρια έκδοση"
 
-#: src/Console/AppConsole.vala:256
+#: src/Console/AppConsole.vala:265
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Πυρήνας %s διαθέσιμος"
 
-#: src/Console/AppConsole.vala:260 src/Gtk/SettingsDialog.vala:122
+#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Προβολή"
 
-#: src/Console/AppConsole.vala:261 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Εγκατάσταση"
 
-#: src/Console/AppConsole.vala:264
+#: src/Console/AppConsole.vala:273
 msgid "Previously notified"
 msgstr "Έχει ήδη κοινοποιηθεί"
 
@@ -538,50 +550,50 @@ msgstr "Απόκρυψη ασταθών και RC εκδόσεων"
 msgid "Hide failed or incomplete builds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:114
+#: src/Gtk/SettingsDialog.vala:115
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:130
+#: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
 msgstr "προηγούμενες κύριες εκδόσεις ( -1 = όλες )"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsDialog.vala:138
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: src/Gtk/SettingsDialog.vala:145
+#: src/Gtk/SettingsDialog.vala:147
 msgid "Internet connection timeout in"
 msgstr "Λήξη χρονικού ορίου σύνδεσης στο διαδίκτυο "
 
-#: src/Gtk/SettingsDialog.vala:153
+#: src/Gtk/SettingsDialog.vala:155
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#: src/Gtk/SettingsDialog.vala:162
+#: src/Gtk/SettingsDialog.vala:164
 msgid "Max concurrent downloads"
 msgstr "Μέγιστες ταυτόχρονες λήψεις"
 
-#: src/Gtk/SettingsDialog.vala:173
+#: src/Gtk/SettingsDialog.vala:175
 #, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Επαλήθευση αθροισμάτων ελέγχου με τα αρχεία CHECKSUMS"
 
-#: src/Gtk/SettingsDialog.vala:175
+#: src/Gtk/SettingsDialog.vala:177
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:180
+#: src/Gtk/SettingsDialog.vala:182
 #, fuzzy
 msgid "Keep Downloads"
 msgstr "Κατέβασμα"
 
-#: src/Gtk/SettingsDialog.vala:181
+#: src/Gtk/SettingsDialog.vala:184
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -590,29 +602,62 @@ msgid ""
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:187
+#: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
 msgstr "Διακομιστής"
 
-#: src/Gtk/SettingsDialog.vala:217
+#: src/Gtk/SettingsDialog.vala:222
 #, fuzzy
 msgid "External Commands"
 msgstr "Εντολές"
 
-#: src/Gtk/SettingsDialog.vala:227
-#, fuzzy
-msgid "Auth Command"
-msgstr "Εντολές"
-
-#: src/Gtk/SettingsDialog.vala:248
-msgid "Command used to run dpkg with root permissions"
+#: src/Gtk/SettingsDialog.vala:249
+#, c-format
+msgid ""
+"Command used to run dpkg with root permissions.\n"
+"\n"
+"If the auth programs commandline syntax requires the execute command to be "
+"enclosed in quotes rather than merely appended to the end of the command "
+"line, you can include a single %s in the string, and it will be replaced "
+"with the dpkg command, otherwise it will be appended to the end.\n"
+"See \"su -c\" in the drop down list for an example of that.\n"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:273
-msgid "Terminal command used to run dpkg"
+#: src/Gtk/SettingsDialog.vala:279
+msgid "Terminal command used to run"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:278
+#: src/Gtk/SettingsDialog.vala:280
+msgid "Example"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:280
+msgid "will result in"
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:282
+#, c-format
+msgid ""
+"If the terminal programs commandline syntax requires the execute command to "
+"be enclosed in quotes rather than merely appended to the end of the command "
+"line, you can include a single %s in the string, and it will be replaced "
+"with the install command, otherwise it will be appended to the end.\n"
+"See mate-terminal in the drop down list for an example of that.\n"
+"\n"
+"You may write any commandline you want, but the specified program must stay "
+"in the foreground and block while the command is running, not fork and "
+"return immediately.\n"
+"Most terminal programs work fine by default, but some require special "
+"command line flags, and some are not usable at all.\n"
+"\n"
+"Examples:\n"
+"gnome-terminal can be made to block by using it's --wait option.\n"
+"xfce4-terminal can not be made to block.\n"
+"\n"
+"Edit the command to customize the appearance of the terminal."
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
 msgstr ""
 

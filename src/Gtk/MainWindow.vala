@@ -512,9 +512,7 @@ public class MainWindow : Window {
 
 		string[] cmd = { BRANDING_SHORTNAME };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
-#if XTERM_SUPPORT
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
-#endif
 		cmd += "--install";
 		cmd += string.joinv(",",vlist);
 		exec_in_term(cmd);
@@ -528,27 +526,22 @@ public class MainWindow : Window {
 
 		string[] cmd = { BRANDING_SHORTNAME };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
-#if XTERM_SUPPORT
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
-#endif
 		cmd += "--uninstall";
 		cmd += string.joinv(",",vlist);
 		exec_in_term(cmd);
 	}
 
-	public void uninstall_old () {
+	public void uninstall_old() {
 		string[] cmd = { BRANDING_SHORTNAME };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
-#if XTERM_SUPPORT
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
-#endif
 		cmd += "--uninstall-old";
-		vprint("cmd: "+string.joinv(" ",cmd));
 		exec_in_term(cmd);
 	}
 
 	public void exec_in_term(string[] argv) {
-#if XTERM_SUPPORT
+
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) {
 			var cmd = sanitize_cmd(App.term_cmd).printf(string.joinv(" ",argv));
 			vprint(cmd);
@@ -556,7 +549,7 @@ public class MainWindow : Window {
 			update_cache();
 			return;
 		}
-#endif
+
 		var term = new TerminalWindow.with_parent(this);
 		term.cmd_complete.connect(update_cache);
 		term.execute_cmd(argv);

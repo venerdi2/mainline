@@ -12,7 +12,8 @@ namespace l.misc {
 	public bool ask(string prompt = "\n"+_("Proceed? (y/N): "), bool def = false) {
 		if (App.yes) return true;
 		vprint(prompt,0,stdout,false);
-		var c = stdin.getc();
+		var l = stdin.read_line().strip();
+		var c = l[0];
 		switch (c) {
 			case 'y':
 			case 'Y': return true;

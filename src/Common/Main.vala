@@ -48,7 +48,7 @@ const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
 const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/~kernel-ppa/mainline/";
 const string   DEFAULT_ALL_PROXY               = ""    ;
 const int      DEFAULT_CONNECT_TIMEOUT_SECONDS = 15    ;
-const int      DEFAULT_CONCURRENT_DOWNLOADS    = 1     ;
+const int      DEFAULT_CONCURRENT_DOWNLOADS    = 4     ;
 // filters
 const bool     DEFAULT_HIDE_UNSTABLE           = true  ;
 const bool     DEFAULT_HIDE_INVALID            = true  ;
@@ -74,31 +74,38 @@ const string[] DEFAULT_AUTH_CMDS = {
 	"gksu --su-mode",
 	"pbrun"
 	};
-#if XTERM_SUPPORT
+
+// Terminal command must stay foreground and block, not fork and return immediately.
+// Most like xterm block naturally.
+// Some like gnome-terminal have a special commandline option to make them block.
+// Some like xfce4-terminal do not block no matter what you do, and can not be used.
+// so not all terminals are usable
 const string[] DEFAULT_TERM_CMDS = {
 	"[internal-vte]",
-	"x-terminal-emulator -e",
-	"gnome-terminal --",
-	"konsole -e",
+	"gnome-terminal --wait --",
+	"konsole --no-fork -e", // hoping --no-fork does what it says
+	"mate-terminal -e \"%s\"",
+	"lxterminal -e",
+	"Eterm -e",
 	"cool-retro-term -e",
+	"urxvt -e",
+	"sakura -e",
 	"termit -e",
 	"kitty",
-	"sakura -e",
-	"urxvt -e",
-	"xfce4-terminal -e \"%s\"",
-	"lxterminal -e",
-	"mate-terminal -e \"%s\"",
 	"qterminal -e",
-	"lilyterm -e",  // crashes
-	"Eterm -e",
 	"mlterm -e",
 	"pangoterm -e",
-	"pterm -e",
-	"exo-open --launch TerminalEmulator",
 	"stterm -e",
+	"pterm -e",
 	"xterm -e"
 	};
-#endif
+	// It's a shame, x-terminal-emulator would be the perfect thing to use,
+	// automatic most-likely terminal for most users.
+	// But since it might point to xfce terminal, we can't use it.
+	//"x-terminal-emulator -e",             // might point to xfce
+	//"xfce4-terminal -e \"%s\"",           // xfce4-terminal refuses to block
+	//"exo-open --launch TerminalEmulator", // might point to xfce
+
 // window sizes
 const int      DEFAULT_WINDOW_WIDTH            = 800   ;
 const int      DEFAULT_WINDOW_HEIGHT           = 600   ;
@@ -169,9 +176,7 @@ public class Main : GLib.Object {
 	public bool verify_checksums       = DEFAULT_VERIFY_CHECKSUMS;
 	public bool keep_downloads         = DEFAULT_KEEP_DOWNLOADS;
 	public string auth_cmd             = DEFAULT_AUTH_CMDS[0];
-#if XTERM_SUPPORT
 	public string term_cmd             = DEFAULT_TERM_CMDS[0];
-#endif
 	// save & restore window size & position
 	public int    window_width         = DEFAULT_WINDOW_WIDTH;
 	public int    window_height        = DEFAULT_WINDOW_HEIGHT;
@@ -260,9 +265,7 @@ public class Main : GLib.Object {
 		config.set_boolean_member( "verify_checksums",        verify_checksums        );
 		config.set_boolean_member( "keep_downloads",          keep_downloads          );
 		config.set_string_member(  "auth_cmd",                auth_cmd                );
-#if XTERM_SUPPORT
 		config.set_string_member(  "term_cmd",                term_cmd                );
-#endif
 		config.set_int_member(     "window_width",            window_width            );
 		config.set_int_member(     "window_height",           window_height           );
 		config.set_int_member(     "window_x",                window_x                );
@@ -327,9 +330,7 @@ public class Main : GLib.Object {
 		verify_checksums        =       config.get_boolean_member_with_default( "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
 		keep_downloads          =       config.get_boolean_member_with_default( "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
 		auth_cmd                =       config.get_string_member_with_default(  "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
-#if XTERM_SUPPORT
 		term_cmd                =       config.get_string_member_with_default(  "term_cmd",                DEFAULT_TERM_CMDS[0]            );
-#endif
 		window_width            = (int) config.get_int_member_with_default(     "window_width",            DEFAULT_WINDOW_WIDTH            );
 		window_height           = (int) config.get_int_member_with_default(     "window_height",           DEFAULT_WINDOW_HEIGHT           );
 		window_x                = (int) config.get_int_member_with_default(     "window_x",                DEFAULT_WINDOW_X                );
@@ -354,9 +355,7 @@ public class Main : GLib.Object {
 		verify_checksums        = json_get_bool(   config, "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
 		keep_downloads          = json_get_bool(   config, "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
 		auth_cmd                = json_get_string( config, "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
-#if XTERM_SUPPORT
 		term_cmd                = json_get_string( config, "term_cmd",                DEFAULT_TERM_CMDS[0]            );
-#endif
 		window_width            = json_get_int(    config, "window_width",            DEFAULT_WINDOW_WIDTH            );
 		window_height           = json_get_int(    config, "window_height",           DEFAULT_WINDOW_HEIGHT           );
 		window_x                = json_get_int(    config, "window_x",                DEFAULT_WINDOW_X                );
