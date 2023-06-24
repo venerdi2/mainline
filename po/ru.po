@@ -3,8 +3,9 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-24 02:38-0400\n"
-"PO-Revision-Date: 2023-06-16 17:07+0300\n"
-"Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
+"PO-Revision-Date: 2023-06-24 16:38+0300\n"
+"Last-Translator: Faust3000 (Original) | Danik2343 (Update Transaltion) "
+"<slavusik1988@gmail.com | krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -187,18 +188,17 @@ msgid "The following kernels will be uninstalled"
 msgstr "Следующие ядра будут удалены"
 
 #: src/Common/LinuxKernel.vala:1109
-#, fuzzy
 msgid "Continue? (y/N): "
-msgstr "Продолжить ?"
+msgstr "Продолжить? (y/N): "
 
 #: src/Common/LinuxKernel.vala:1123
 msgid "No updates"
 msgstr "Нет обнолений"
 
 #: src/Common/LinuxKernel.vala:1125
-#, fuzzy, c-format
+#, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Установить версию ядра %s ? (y/n): "
+msgstr "Установить версию ядра %s ? (y/N): "
 
 #: src/Common/Main.vala:197
 msgid "Missing Thread support in Glib."
@@ -292,7 +292,7 @@ msgstr "Удаление кэшированной информации о дос
 
 #: src/Console/AppConsole.vala:45
 msgid "This help"
-msgstr ""
+msgstr "Это справка"
 
 #: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:56
 msgid "Options"
@@ -316,7 +316,7 @@ msgstr "Предполагать \"Да\" для всех запросов (не
 
 #: src/Console/AppConsole.vala:53
 msgid "Pause for keypress before exiting (for external terminal)"
-msgstr ""
+msgstr "Приостановить нажатия клавиш перед выходом (для внешнего терминала)"
 
 #: src/Console/AppConsole.vala:56
 msgid "One or more version strings taken from the output of --list"
@@ -344,9 +344,8 @@ msgid "Error deleting"
 msgstr "Ошибка удаления"
 
 #: src/Console/AppConsole.vala:212
-#, fuzzy
 msgid "Unknown command"
-msgstr "Неизвестный параметр"
+msgstr "Неизвестная команда"
 
 #: src/Console/AppConsole.vala:223
 msgid "Latest update"
@@ -454,17 +453,18 @@ msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
+"Инструмент для установки пакетов ядра\n"
+"из пакета Ubuntu Mainline Kernels PPA"
 
 #: src/Gtk/MainWindow.vala:415
 msgid "Original"
-msgstr ""
+msgstr "Оригинал"
 
 #: src/Gtk/MainWindow.vala:416
 msgid "Forked"
-msgstr ""
+msgstr "Форк"
 
 #: src/Gtk/MainWindow.vala:447
-#, fuzzy
 msgid "Updating kernels"
 msgstr "Обновление ядер"
 
@@ -593,9 +593,8 @@ msgid "Proxy"
 msgstr "Доверенность"
 
 #: src/Gtk/SettingsDialog.vala:222
-#, fuzzy
 msgid "External Commands"
-msgstr "Комманды"
+msgstr "Внешние команды"
 
 #: src/Gtk/SettingsDialog.vala:249
 #, c-format
@@ -608,18 +607,25 @@ msgid ""
 "with the dpkg command, otherwise it will be appended to the end.\n"
 "See \"su -c\" in the drop down list for an example of that.\n"
 msgstr ""
+"Команда, используемая для запуска dpkg с правами root.\n"
+"\n"
+"Если синтаксис командной строки программ auth требует, чтобы команда execute "
+"была заключена в кавычки, а не просто добавлена в конец командной строки, вы "
+"можете включить в строку %s, и он будет заменен командой dpkg, в противном "
+"случае он будет добавлен в конец.\n"
+"Пример этого см. в выпадающем списке \"su -c\".\n"
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
-msgstr ""
+msgstr "Команда терминала, используемая для запуска"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "Example"
-msgstr ""
+msgstr "Пример"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "will result in"
-msgstr ""
+msgstr "приведет к"
 
 #: src/Gtk/SettingsDialog.vala:282
 #, c-format
@@ -642,6 +648,24 @@ msgid ""
 "\n"
 "Edit the command to customize the appearance of the terminal."
 msgstr ""
+"Если синтаксис командной строки терминальных программ требует, чтобы команда "
+"execute была заключена в кавычки, а не просто добавлена в конец командной "
+"строки, вы можете включить в строку %s, и он будет заменен командой install, "
+"в противном случае он будет добавлен в конец.\n"
+"Пример этого см. в выпадающем списке мат-терминал.\n"
+"\n"
+"Вы можете написать любую командную строку, какую хотите, но указанная "
+"программа должна оставаться на переднем плане и блокировать выполнение "
+"команды, а не форкать и возвращаться немедленно.\n"
+"Большинство терминальных программ по умолчанию работают нормально, но "
+"некоторые требуют специальных флагов командной строки, а некоторые вообще не "
+"могут быть использованы.\n"
+"\n"
+"Примеры:\n"
+"gnome-terminal можно заставить блокироваться, используя опцию --wait.\n"
+"xfce4-terminal не может быть заблокирован.\n"
+"\n"
+"Отредактируйте команду, чтобы настроить внешний вид терминала."
 
 #: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
@@ -666,4 +690,4 @@ msgstr "Закрыть"
 
 #: src/lib/l.misc.vala:12
 msgid "Proceed? (y/N): "
-msgstr ""
+msgstr "Приступить? (y/N): "
