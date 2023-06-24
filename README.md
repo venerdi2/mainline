@@ -172,13 +172,13 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 
 # hints  
 * The `--install-latest` and `--yes` options could be used in a cron job to always have the latest kernel installed.  
-`
+```
 $ sudo -i
 # cat >/etc/cron.d/mainline <<-%EOF
 	# Check for new kernels on kernel.ubuntu.com every 4 hours
 	* */4 * * * root VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes
 %EOF
-`
+```
 
 * `sudo apt install cool-retro-term`  
 
