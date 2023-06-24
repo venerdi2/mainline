@@ -19,24 +19,41 @@ mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 * Changed name from "ukuu" to "mainline"
 * Removed all GRUB / bootloader options
 * Removed all donate buttons, links, dialogs
-* Removed un-related/un-used code
-* Better temp and cache management
-* Better desktop notification behavior
-* Reduced dependencies (ex: no longer uses aptitude)
-* Per-Kernel User Notes
-* Pinning/Locking Kernels
+* Removed all unused & unrelated code
+* Removed all TeeJee lib code
+* Better cache management
+* Rewrote all exec() commands not to use temp files, temp bash scripts, and temp directories
+* Rewrote the desktop notification scripts to be more reliable
+* Reduced dependencies
+* Per-kernel user notes
+* Pinning/locking kernels
 * Verify .deb file downloads with the sha256 hashes in the CHECKSUMS files
-* Slow but ongoing re-writes of most parts
+* Customizable external commands for the terminal window and for root access
 
 ## Features
 * Download the list of available kernels from the [Ubuntu Mainline PPA](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
-* Display, install, uninstall, available and installed kernels conveniently, gui and cli
-* For each kernel, the related headers & modules packages are automatically grouped and installed or uninstalled at the same time
+* Display, install, and uninstall mainline-ppa kernels conveniently, gui and cli
+* For each kernel the associated headers & modules packages are downloaded, installed, or uninstalled together
 * .deb file downloads are verified with the sha256 hashes from the CHECKSUMS files
 * Optionally monitor and send desktop notifications when new kernels become available
 
 ## Not Features
-* Care if the kernels run or boot or are compatible with your system beyond the basic plaform arch and whatever dependencies the .deb packages declare and dpkg enforces. The mainline-ppa kernel deb packages are produced with no warranty. When they work, great, when they don't, don't use them. This app intentionally does not even touch a single grub or bootloader file itself. All it does is download .deb packages that the ubuntu kernel team authors, and runs dpkg to install them the same way you would manually.
+* Care if the kernels run or boot or work well or are compatible with your system. The kernel deb packages are produced by someone else, and with no warranty. When they work, great, when they don't, don't use them. This app intentionally does not even touch a single grub or bootloader file itself. All it does is download .deb packages that the ubuntu kernel team produces, and runs dpkg to install them the same way you would manually.
+
+See the comment by "setuid" here: https://ubuntuhandbook.org/index.php/2020/08/mainline-install-latest-kernel-ubuntu-linux-mint/
+> Note that these kernel packages are missing quite a bit that would be needed on most systems, and many dkms modules and other tools won’t work with them (NVIDIA drivers, VMware modules, etc.).
+> 
+> These packages also will not install nor boot on ARM64 (RPi4 for example), despite being spun for those architectures because they lack DTBs and correctly aligned headers.
+> 
+> On AMD64, you’ll find that the cloud tools and tools packages are missing, and installing them would try to bring in libssl3 and an incompatible libc6 from a newer release of Ubuntu, which will most-certainly break userland.
+> 
+> You have been warned.
+
+This is all true.
+
+The libssl & libc were transient issues that naturally passed as time went on and most users systems caught up, but new examples of the same kind of issue are bound to appear again from time to time as the kernel.ubuntu.com team updates their build environment.
+
+That said, I have been running these daily for several years. I just don't need any nvidia or vmware kernel modules nor do I use secure boot.
 
 # Install
 The [PPA](https://code.launchpad.net/~cappelikan/+archive/ubuntu/ppa) is kindly maintained by [cappelikan](https://github.com/cappelikan)  
@@ -171,7 +188,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
 
 # hints  
-* The `--install-latest` and `--yes` options could be used in a cron job to always have the latest kernel installed.  
+* The `--install-latest` and `--yes` options can be used in a cron job to always have the latest kernel installed.  
 ```
 $ sudo -i
 # cat >/etc/cron.d/mainline <<-%EOF
