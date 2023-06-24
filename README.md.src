@@ -164,6 +164,8 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
 
 # hint  
-`sudo apt install cool-retro-term` then select it under "terminal window" in settings.  
-![settings](settings.jpg)  
+`sudo apt install cool-retro-term` then select it under "terminal window" in settings.
+
+![settings](settings.jpg)
+
 ![cool-retro-term](cool-retro-term.jpg)
