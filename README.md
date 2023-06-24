@@ -40,7 +40,7 @@ mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 ## Not Features
 * Care if the kernels run or boot or work well or are compatible with your system. The kernel deb packages are produced by someone else, and with no warranty. When they work, great, when they don't, don't use them. This app intentionally does not even touch a single grub or bootloader file itself. All it does is download .deb packages that the ubuntu kernel team produces, and runs dpkg to install them the same way you would manually.
 
-See the comment by "setuid" here: https://ubuntuhandbook.org/index.php/2020/08/mainline-install-latest-kernel-ubuntu-linux-mint/
+See the [comment by "setuid"](https://ubuntuhandbook.org/index.php/2020/08/mainline-install-latest-kernel-ubuntu-linux-mint/):  
 > Note that these kernel packages are missing quite a bit that would be needed on most systems, and many dkms modules and other tools won’t work with them (NVIDIA drivers, VMware modules, etc.).
 > 
 > These packages also will not install nor boot on ARM64 (RPi4 for example), despite being spun for those architectures because they lack DTBs and correctly aligned headers.
