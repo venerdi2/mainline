@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 02:38-0400\n"
+"POT-Creation-Date: 2023-06-24 16:28-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -248,168 +248,175 @@ msgstr "Le notifiche sono disabilitate"
 msgid "Can not reach site"
 msgstr "Impossibile raggiungere il sito"
 
-#: src/Console/AppConsole.vala:30 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:29
+msgid "install kernel packages from kernel.ubuntu.com"
+msgstr ""
+
+#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Sintassi"
 
-#: src/Console/AppConsole.vala:32
+#: src/Console/AppConsole.vala:33
 msgid "Commands"
 msgstr "Comandi"
 
-#: src/Console/AppConsole.vala:34
+#: src/Console/AppConsole.vala:35
 msgid "Check for kernel updates"
 msgstr "Verifica aggiornamenti del kernel"
 
-#: src/Console/AppConsole.vala:35
-msgid "Check for kernel updates and notify current user"
+#: src/Console/AppConsole.vala:36
+#, fuzzy
+msgid "Check for kernel updates and send a desktop notification"
 msgstr ""
 "Verifica la disponibilità di aggiornamenti del kerneled avvisa l'utente "
 "corrente"
 
-#: src/Console/AppConsole.vala:36
+#: src/Console/AppConsole.vala:37
 #, fuzzy
-msgid "List available mainline kernels"
+msgid "List available kernels"
 msgstr "Elenca tutti i kernel mainline disponibili"
 
-#: src/Console/AppConsole.vala:37
+#: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
 msgstr "Elenca i kernel installati"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "Install latest mainline kernel"
 msgstr "Installa l'ultimo kernel mainline"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 #, fuzzy
 msgid "Install latest point update in the current major version"
 msgstr "installa l'ultimo rilascio parziale per le serie attuali"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 #, fuzzy
 msgid "Install specified kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 #, fuzzy
 msgid "Uninstall specified kernels"
 msgstr "Disinstalla i kernel specificati"
 
-#: src/Console/AppConsole.vala:42 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Disinstallare tutti tranne la versione più recente installata"
 
-#: src/Console/AppConsole.vala:43
+#: src/Console/AppConsole.vala:44
 msgid "Download specified kernels"
 msgstr "Scarica i kernel specificati"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Delete cached info about available kernels"
 msgstr "Elimina le informazioni sui kernel disponibili dalla cache "
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "This help"
 msgstr ""
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Opzioni"
 
-#: src/Console/AppConsole.vala:49
+#: src/Console/AppConsole.vala:50
 msgid "Include unstable and RC releases"
 msgstr "Includi versioni instabili e rilasci RC"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Exclude unstable and RC releases"
 msgstr "Escludi versioni instabili e rilasci RC"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
 msgstr ""
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Imposta Sì per tutte le richieste (modalità non interattiva)"
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:56
+#: src/Console/AppConsole.vala:57
 #, fuzzy
 msgid "One or more version strings taken from the output of --list"
 msgstr "Una stringa di versione presa dall'output di --list"
 
-#: src/Console/AppConsole.vala:57
-msgid "comma, pipe, or colon-seperated, or quoted space seperated"
+#: src/Console/AppConsole.vala:58
+msgid ""
+"comma, pipe, colon, or space seperated. (space requires quotes or "
+"backslashes)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:58
+#: src/Console/AppConsole.vala:59
 #, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Il kernel attualmente in esecuzione sarà sempre ignorato"
 
-#: src/Console/AppConsole.vala:159 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
 
-#: src/Console/AppConsole.vala:197
+#: src/Console/AppConsole.vala:199
 msgid "Deleted"
 msgstr ""
 
-#: src/Console/AppConsole.vala:198
+#: src/Console/AppConsole.vala:200
 msgid "Error deleting"
 msgstr ""
 
-#: src/Console/AppConsole.vala:212
+#: src/Console/AppConsole.vala:214
 #, fuzzy
 msgid "Unknown command"
 msgstr "Opzione sconosciuta"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:225
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Console/AppConsole.vala:224
+#: src/Console/AppConsole.vala:226
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del rilascio parziale"
 
-#: src/Console/AppConsole.vala:225 src/Console/AppConsole.vala:243
+#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
-#: src/Console/AppConsole.vala:232
+#: src/Console/AppConsole.vala:234
 #, fuzzy
 msgid "Notifications disabled"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Console/AppConsole.vala:237
+#: src/Console/AppConsole.vala:239
 msgid "No"
 msgstr ""
 
-#: src/Console/AppConsole.vala:252
+#: src/Console/AppConsole.vala:254
 #, fuzzy
 msgid "notify point releases disabled"
 msgstr "Avvisa se è disponibile un rilascio parziale"
 
-#: src/Console/AppConsole.vala:260
+#: src/Console/AppConsole.vala:262
 #, fuzzy
 msgid "notify major releases disabled"
 msgstr "Avvisa se è disponibile una versione principale"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Installa"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:275
 msgid "Previously notified"
 msgstr "Notificato in precedenza"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 02:38-0400\n"
+"POT-Creation-Date: 2023-06-24 16:28-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -249,166 +249,173 @@ msgstr "Obavijesti su onemogućene"
 msgid "Can not reach site"
 msgstr "Nije moguće doći do web-mjesta"
 
-#: src/Console/AppConsole.vala:30 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:29
+msgid "install kernel packages from kernel.ubuntu.com"
+msgstr ""
+
+#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Sintaksa"
 
-#: src/Console/AppConsole.vala:32
+#: src/Console/AppConsole.vala:33
 msgid "Commands"
 msgstr "Naredbe"
 
-#: src/Console/AppConsole.vala:34
+#: src/Console/AppConsole.vala:35
 msgid "Check for kernel updates"
 msgstr "Provjeri nadopune kernela"
 
-#: src/Console/AppConsole.vala:35
-msgid "Check for kernel updates and notify current user"
-msgstr "Provjeri nadopune kernela i obavijesti trenutnog korisnika"
-
 #: src/Console/AppConsole.vala:36
 #, fuzzy
-msgid "List available mainline kernels"
-msgstr "Prikaži sve mainline kernele"
+msgid "Check for kernel updates and send a desktop notification"
+msgstr "Provjeri nadopune kernela i obavijesti trenutnog korisnika"
 
 #: src/Console/AppConsole.vala:37
+#, fuzzy
+msgid "List available kernels"
+msgstr "Prikaži sve mainline kernele"
+
+#: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
 msgstr "Prikaži instalirane kernele"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "Install latest mainline kernel"
 msgstr "Instaliraj najnoviji mainline kernel"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 #, fuzzy
 msgid "Install latest point update in the current major version"
 msgstr "Instaliraj najnoviju ciljanu nadopunu za trenutnu seriju"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 #, fuzzy
 msgid "Install specified kernels"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 #, fuzzy
 msgid "Uninstall specified kernels"
 msgstr "Deinstaliraj određene kernele"
 
-#: src/Console/AppConsole.vala:42 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
 
-#: src/Console/AppConsole.vala:43
+#: src/Console/AppConsole.vala:44
 msgid "Download specified kernels"
 msgstr "Preuzmi određene kernele"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Delete cached info about available kernels"
 msgstr "Brisanje predmemoriranih podataka o dostupnim jezgrama"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "This help"
 msgstr ""
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Mogućnosti"
 
-#: src/Console/AppConsole.vala:49
+#: src/Console/AppConsole.vala:50
 msgid "Include unstable and RC releases"
 msgstr "Uključivati nestabilne i RC kernele"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Exclude unstable and RC releases"
 msgstr "Isključivati nestabilne i RC izdanja"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
 msgstr ""
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Pretpostavi Da za sve upite (neinteraktivan način rada)"
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:56
+#: src/Console/AppConsole.vala:57
 #, fuzzy
 msgid "One or more version strings taken from the output of --list"
 msgstr "Izraz inačice uzet iz zapisa --list"
 
-#: src/Console/AppConsole.vala:57
-msgid "comma, pipe, or colon-seperated, or quoted space seperated"
+#: src/Console/AppConsole.vala:58
+msgid ""
+"comma, pipe, colon, or space seperated. (space requires quotes or "
+"backslashes)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:58
+#: src/Console/AppConsole.vala:59
 #, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Trenutno pokrenuta jezgra uvijek će se zanemariti"
 
-#: src/Console/AppConsole.vala:159 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:197
+#: src/Console/AppConsole.vala:199
 msgid "Deleted"
 msgstr ""
 
-#: src/Console/AppConsole.vala:198
+#: src/Console/AppConsole.vala:200
 msgid "Error deleting"
 msgstr ""
 
-#: src/Console/AppConsole.vala:212
+#: src/Console/AppConsole.vala:214
 #, fuzzy
 msgid "Unknown command"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:225
 msgid "Latest update"
 msgstr "Najnovija nadopuna"
 
-#: src/Console/AppConsole.vala:224
+#: src/Console/AppConsole.vala:226
 msgid "Latest point update"
 msgstr "Najnovija ciljana nadopuna"
 
-#: src/Console/AppConsole.vala:225 src/Console/AppConsole.vala:243
+#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
-#: src/Console/AppConsole.vala:232
+#: src/Console/AppConsole.vala:234
 #, fuzzy
 msgid "Notifications disabled"
 msgstr "Obavijesti su onemogućene"
 
-#: src/Console/AppConsole.vala:237
+#: src/Console/AppConsole.vala:239
 msgid "No"
 msgstr ""
 
-#: src/Console/AppConsole.vala:252
+#: src/Console/AppConsole.vala:254
 #, fuzzy
 msgid "notify point releases disabled"
 msgstr "Obavijesti kada je pojedino izdanje dostupno"
 
-#: src/Console/AppConsole.vala:260
+#: src/Console/AppConsole.vala:262
 #, fuzzy
 msgid "notify major releases disabled"
 msgstr "Obavijesti kada je glavno izdanje dostupno"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Instaliraj"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:275
 msgid "Previously notified"
 msgstr "Prethodno prijavljeno"
 

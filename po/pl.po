@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 02:38-0400\n"
+"POT-Creation-Date: 2023-06-24 16:28-0400\n"
 "PO-Revision-Date: 2023-06-21 01:02+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -238,158 +238,167 @@ msgstr "Powiadomienia są wyłączone"
 msgid "Can not reach site"
 msgstr "Nie można dotrzeć do witryny"
 
-#: src/Console/AppConsole.vala:30 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:29
+msgid "install kernel packages from kernel.ubuntu.com"
+msgstr ""
+
+#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Składnia"
 
-#: src/Console/AppConsole.vala:32
+#: src/Console/AppConsole.vala:33
 msgid "Commands"
 msgstr "Polecenia"
 
-#: src/Console/AppConsole.vala:34
+#: src/Console/AppConsole.vala:35
 msgid "Check for kernel updates"
 msgstr "Sprawdź nowe wersje jądra"
 
-#: src/Console/AppConsole.vala:35
-msgid "Check for kernel updates and notify current user"
+#: src/Console/AppConsole.vala:36
+#, fuzzy
+msgid "Check for kernel updates and send a desktop notification"
 msgstr "Sprawdź nowe wersje jądra i powiadom bieżącego użytkownika"
 
-#: src/Console/AppConsole.vala:36
-msgid "List available mainline kernels"
+#: src/Console/AppConsole.vala:37
+#, fuzzy
+msgid "List available kernels"
 msgstr "Wyświetl listę dostępnych głównych jąder"
 
-#: src/Console/AppConsole.vala:37
+#: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
 msgstr "Wyświetl listę zainstalowanych jąder"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "Install latest mainline kernel"
 msgstr "Zainstaluj najnowsze jądro"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 msgid "Install latest point update in the current major version"
 msgstr "Zainstaluj najnowszą aktualizację punktową bieżącej wersji głównej"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 msgid "Install specified kernels"
 msgstr "Zainstaluj wybrane jądra"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 msgid "Uninstall specified kernels"
 msgstr "Odinstaluj wybrane jądra"
 
-#: src/Console/AppConsole.vala:42 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Odinstaluj wszystkie oprócz najwyższej zainstalowanej wersji"
 
-#: src/Console/AppConsole.vala:43
+#: src/Console/AppConsole.vala:44
 msgid "Download specified kernels"
 msgstr "Pobierz wybrane jądra"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Delete cached info about available kernels"
 msgstr "Usuń informacje z pamięci podręcznej o dostępnych jądrach"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "This help"
 msgstr ""
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Opcje"
 
-#: src/Console/AppConsole.vala:49
+#: src/Console/AppConsole.vala:50
 msgid "Include unstable and RC releases"
 msgstr "Uwzględnij wydania niestabilne i RC"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Exclude unstable and RC releases"
 msgstr "Wyklucz wersje niestabilne i RC"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
 msgstr "Opisowość. Ustaw na n, jeśli podano, lub zwiększ."
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Przyjmij Tak dla wszystkich monitów (tryb nieinteraktywny)"
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:56
+#: src/Console/AppConsole.vala:57
 msgid "One or more version strings taken from the output of --list"
 msgstr "Jeden lub więcej ciągów wersji pobranych z danych wyjściowych --list"
 
-#: src/Console/AppConsole.vala:57
-msgid "comma, pipe, or colon-seperated, or quoted space seperated"
+#: src/Console/AppConsole.vala:58
+#, fuzzy
+msgid ""
+"comma, pipe, colon, or space seperated. (space requires quotes or "
+"backslashes)"
 msgstr ""
 "oddzielone przecinkiem, kreską pionową, dwukropkiem lub spacją w cudzysłowie"
 
-#: src/Console/AppConsole.vala:58
+#: src/Console/AppConsole.vala:59
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Zablokowane jądra i aktualnie uruchomione jądro są ignorowane"
 
-#: src/Console/AppConsole.vala:159 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Nieznana opcja"
 
-#: src/Console/AppConsole.vala:197
+#: src/Console/AppConsole.vala:199
 msgid "Deleted"
 msgstr "Usunięto"
 
-#: src/Console/AppConsole.vala:198
+#: src/Console/AppConsole.vala:200
 msgid "Error deleting"
 msgstr "Błąd podczas usuwania"
 
-#: src/Console/AppConsole.vala:212
+#: src/Console/AppConsole.vala:214
 #, fuzzy
 msgid "Unknown command"
 msgstr "Nieznana opcja"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:225
 msgid "Latest update"
 msgstr "Najnowsza aktualizacja"
 
-#: src/Console/AppConsole.vala:224
+#: src/Console/AppConsole.vala:226
 msgid "Latest point update"
 msgstr "Najnowsza aktualizacja punktowa"
 
-#: src/Console/AppConsole.vala:225 src/Console/AppConsole.vala:243
+#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
 msgid "No updates found"
 msgstr "Nie znaleziono aktualizacji"
 
-#: src/Console/AppConsole.vala:232
+#: src/Console/AppConsole.vala:234
 msgid "Notifications disabled"
 msgstr "Wyłączono powiadomienia"
 
-#: src/Console/AppConsole.vala:237
+#: src/Console/AppConsole.vala:239
 msgid "No"
 msgstr "Nie"
 
-#: src/Console/AppConsole.vala:252
+#: src/Console/AppConsole.vala:254
 msgid "notify point releases disabled"
 msgstr "wyłączono powiadomienia o wersjach punktowych"
 
-#: src/Console/AppConsole.vala:260
+#: src/Console/AppConsole.vala:262
 msgid "notify major releases disabled"
 msgstr "wyłączono powiadomienia o wersjach głównych"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Dostępne %s jądra"
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Pokaż"
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Zainstaluj"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:275
 msgid "Previously notified"
 msgstr "Wcześniej powiadomiono"
 

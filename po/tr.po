@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 02:38-0400\n"
+"POT-Creation-Date: 2023-06-24 16:28-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -249,167 +249,174 @@ msgstr "Bildirimler devre dışı bırakılmış"
 msgid "Can not reach site"
 msgstr "Siteye ulaşılamıyor"
 
-#: src/Console/AppConsole.vala:30 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:29
+msgid "install kernel packages from kernel.ubuntu.com"
+msgstr ""
+
+#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Sözdizimi"
 
-#: src/Console/AppConsole.vala:32
+#: src/Console/AppConsole.vala:33
 msgid "Commands"
 msgstr "Komutlar"
 
-#: src/Console/AppConsole.vala:34
+#: src/Console/AppConsole.vala:35
 msgid "Check for kernel updates"
 msgstr "Çekirdek güncellemelerini kontrol et"
 
-#: src/Console/AppConsole.vala:35
-msgid "Check for kernel updates and notify current user"
-msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
-
 #: src/Console/AppConsole.vala:36
 #, fuzzy
-msgid "List available mainline kernels"
-msgstr "Tüm mainline çekirdeklerini listele"
+msgid "Check for kernel updates and send a desktop notification"
+msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 
 #: src/Console/AppConsole.vala:37
+#, fuzzy
+msgid "List available kernels"
+msgstr "Tüm mainline çekirdeklerini listele"
+
+#: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
 msgstr "Kurulu çekirdekleri listele"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "Install latest mainline kernel"
 msgstr "En son mainline çekirdeğini kur"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 #, fuzzy
 msgid "Install latest point update in the current major version"
 msgstr "Mevcut çekirdek serisi için en son nokta güncellemesini kur"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 #, fuzzy
 msgid "Install specified kernels"
 msgstr "Belirtilen çekirdeğini kaldır"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 #, fuzzy
 msgid "Uninstall specified kernels"
 msgstr "Belirtilen çekirdeğini kaldır"
 
-#: src/Console/AppConsole.vala:42 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
-#: src/Console/AppConsole.vala:43
+#: src/Console/AppConsole.vala:44
 msgid "Download specified kernels"
 msgstr "Belirtilen çekirdekleri indir"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Delete cached info about available kernels"
 msgstr "Kullanılabilir çekirdekler hakkında önbelleğe alınmış bilgileri silme"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "This help"
 msgstr ""
 
-#: src/Console/AppConsole.vala:47 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/Console/AppConsole.vala:49
+#: src/Console/AppConsole.vala:50
 msgid "Include unstable and RC releases"
 msgstr "Kararsız ve RC sürümleri dahil et"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Exclude unstable and RC releases"
 msgstr "Kararsız ve RC sürümlerini hariç tutma"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
 msgstr ""
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Tüm istemler için Evet'i kabul edin (etkileşimsiz kip)"
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:56
+#: src/Console/AppConsole.vala:57
 #, fuzzy
 msgid "One or more version strings taken from the output of --list"
 msgstr "--list çıktısından alınan sürüm dizgesi"
 
-#: src/Console/AppConsole.vala:57
-msgid "comma, pipe, or colon-seperated, or quoted space seperated"
+#: src/Console/AppConsole.vala:58
+msgid ""
+"comma, pipe, colon, or space seperated. (space requires quotes or "
+"backslashes)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:58
+#: src/Console/AppConsole.vala:59
 #, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Şu anda çalışan çekirdek her zaman yoksayılır"
 
-#: src/Console/AppConsole.vala:159 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Bilinmeyen seçenek"
 
-#: src/Console/AppConsole.vala:197
+#: src/Console/AppConsole.vala:199
 msgid "Deleted"
 msgstr ""
 
-#: src/Console/AppConsole.vala:198
+#: src/Console/AppConsole.vala:200
 msgid "Error deleting"
 msgstr ""
 
-#: src/Console/AppConsole.vala:212
+#: src/Console/AppConsole.vala:214
 #, fuzzy
 msgid "Unknown command"
 msgstr "Bilinmeyen seçenek"
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:225
 msgid "Latest update"
 msgstr "Son güncelleme"
 
 # Point burada point release anlamında kullanılıyor. Örneğin 5.10.x sayısının en sonundaki x rakamı point release/nokta sürüm oluyor.
-#: src/Console/AppConsole.vala:224
+#: src/Console/AppConsole.vala:226
 msgid "Latest point update"
 msgstr "Son nokta güncellemesi"
 
-#: src/Console/AppConsole.vala:225 src/Console/AppConsole.vala:243
+#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
 msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
-#: src/Console/AppConsole.vala:232
+#: src/Console/AppConsole.vala:234
 #, fuzzy
 msgid "Notifications disabled"
 msgstr "Bildirimler devre dışı bırakılmış"
 
-#: src/Console/AppConsole.vala:237
+#: src/Console/AppConsole.vala:239
 msgid "No"
 msgstr ""
 
-#: src/Console/AppConsole.vala:252
+#: src/Console/AppConsole.vala:254
 #, fuzzy
 msgid "notify point releases disabled"
 msgstr "Nokta sürüm mevcutsa bildir"
 
-#: src/Console/AppConsole.vala:260
+#: src/Console/AppConsole.vala:262
 #, fuzzy
 msgid "notify major releases disabled"
 msgstr "Ana sürüm mevcutsa bildir"
 
-#: src/Console/AppConsole.vala:265
+#: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Çekirdek %s Kullanılabilir"
 
-#: src/Console/AppConsole.vala:269 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Göster"
 
-#: src/Console/AppConsole.vala:270 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Kur"
 
-#: src/Console/AppConsole.vala:273
+#: src/Console/AppConsole.vala:275
 msgid "Previously notified"
 msgstr "Daha önce bildirilmiş"
 

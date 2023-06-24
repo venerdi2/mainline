@@ -134,10 +134,17 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
   3 = more verbose  
   4 = even more  
   5+ mostly just for uncommenting things in the code and recompiling, not really useful in the release builds
+  
+  A few lines of output are printed before the commandline has been parsed, so `-v 0` doesn't silence them.  
+  The environment variable is read earlier in the process and can silence all output.  
+  `VERBOSE=0 mainline --install-latest --yes`
+
+  The exit value is also meaningful.  
+  `VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes`  
 
 * If **Uninstall Old** doesn't remove some distribution kernel packages  
-  Use the normal package manager like apt or synaptic to remove the parent meta-package:  
-  ```$ sudo apt remove linux-image-generic```  
+  Use your normal package manager like apt or synaptic to remove the parent meta-package:  
+  `$ sudo apt remove linux-image-generic`  
   Then **Uninstall Old** should successfully remove everything.  
 
 * Secure Boot  
@@ -163,9 +170,16 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Support all installable kernel variants, not just "-generic"  
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
 
-# hint  
-`sudo apt install cool-retro-term`  
-then select it under "terminal window" in settings.
+# hints  
+* The `--install-latest` and `--yes` options could be used in a cron job to always have the latest kernel installed.
+```
+$ sudo cat >/etc/cron.d/mainline <<%EOF
+# Check for new kernels on kernel.ubuntu.com every 4 hours
+* */4 * * * root VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes
+%EOF
+```
+
+* `sudo apt install cool-retro-term`  
 
 ![settings](settings.jpg)
 

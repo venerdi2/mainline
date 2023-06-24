@@ -25,15 +25,16 @@ public Main App;
 
 public class AppConsole : GLib.Object {
 
-	string help = "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
+	string help = "\n"
+		+ BRANDING_LONGNAME + " " + BRANDING_VERSION + " - " + _("install kernel packages from kernel.ubuntu.com") + "\n"
 		+ "\n"
 		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
 		+ "\n"
 		+ _("Commands") + ":\n"
 		+ "\n"
 		+ "  --check             " + _("Check for kernel updates") + "\n"
-		+ "  --notify            " + _("Check for kernel updates and notify current user") + "\n"
-		+ "  --list              " + _("List available mainline kernels") + "\n"
+		+ "  --notify            " + _("Check for kernel updates and send a desktop notification") + "\n"
+		+ "  --list              " + _("List available kernels") + "\n"
 		+ "  --list-installed    " + _("List installed kernels") + "\n"
 		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
 		+ "  --install-point     " + _("Install latest point update in the current major version") + "\n"
@@ -54,7 +55,7 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
-		+ "    " +_("comma, pipe, or colon-seperated, or quoted space seperated") + "\n"
+		+ "    " +_("comma, pipe, colon, or space seperated. (space requires quotes or backslashes)") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
 
@@ -106,6 +107,7 @@ public class AppConsole : GLib.Object {
 					App.yes = true;
 					break;
 
+				// used by gui with external terminal
 				case "--hold":
 				case "--pause":
 					hold_on_exit = true;
@@ -116,11 +118,11 @@ public class AppConsole : GLib.Object {
 					App.index_is_fresh = true;
 					break;
 
-				case "--show-unstable":		// back compat
+				case "--show-unstable": // back compat
 				case "--include-unstable":
 					App.hide_unstable = false;
 					break;
-				case "--hide-unstable":		// back compat
+				case "--hide-unstable": // back compat
 				case "--exclude-unstable":
 					App.hide_unstable = true;
 					break;
@@ -131,9 +133,9 @@ public class AppConsole : GLib.Object {
 				case "--notify":
 				case "--install-latest":
 				case "--install-point":
-				case "--purge-old-kernels":	// back compat
+				case "--purge-old-kernels": // back compat
 				case "--uninstall-old":
-				case "--clean-cache":	// back compat
+				case "--clean-cache": // back compat
 				case "--delete-cache":
 					cmd = a;
 					break;
