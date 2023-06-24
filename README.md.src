@@ -162,4 +162,8 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Right-click menu for more functions for a given kernel, such as reloading the cache just for a single kernel to check for new build status etc, without adding 18 buttons all over the ui.  
 * Support all installable kernel variants, not just "-generic"  
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
-* Option to run dpkg in an external terminal app instead of the built-in minimal vte terminal.
+
+# hint  
+`sudo apt install cool-retro-term` then select it under "terminal window" in settings.  
+![settings](settings.jpg)  
+![cool-retro-term](cool-retro-term.jpg)

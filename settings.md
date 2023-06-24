@@ -47,7 +47,8 @@ proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/ar
 **mainline-ppa url  
 \[https://kernel.ubuntu.com/~kernel-ppa/mainline/  \]**  
 
-## Auth Command
+## External Commands  
+auth command  
 **\[pkexec_________________________________________\]**  
 sudo-equivalent command used to run `dpkg` as root.
 
@@ -64,5 +65,12 @@ To write a custom entry, just click on the field and start writing. You can star
 
 If you are operating entirely from the command line, and so can not access the Settings gui, you can manually edit auth_cmd in ~/.config/mainline/config.json
 
-For a crazy example of what's possible, try this:  
-`pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} xterm -T dpkg -e "%s ;read -p press\ enter\ to\ close\ "`
+terminal window  
+**\[\[internal-vte\]_________________________________\]**  
+xterm-equivalent command used to run `BRANDING_SHORTNAME --install/--uninstall` in.
+
+You can specify almost any terminal program, but one limitation is the program must stay in the foreground and block while the command is running.  
+Most do this by default, but some will fork and return immediately by default, but have a command line flag you can use to control that, and some just always fork and have no way to tell them not to.  
+This is why xfce4-terminal is not in the built-in list of supported terminal apps, and gnome-terminal is, but only because it has a --wait option.
+
+After selecting a command (other than the default \[internal-vte\])), you can edit it to customize the terminal's appearance.
