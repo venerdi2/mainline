@@ -51,7 +51,9 @@ See the [comment by "setuid"](https://ubuntuhandbook.org/index.php/2020/08/mainl
 
 This is all true.
 
-The libssl & libc were transient issues that naturally passed as time went on and most users systems caught up, but new examples of the same kind of issue are bound to appear again from time to time as the kernel.ubuntu.com team updates their build environment.
+Additionally the kernels are unsigned, and so they won't boot on a system with secure boot enabled.
+
+The libssl & libc issue they mention were transient issues that naturally passed as time went on and most users systems caught up, but new examples of the same kind of issue are bound to appear again from time to time as the kernel.ubuntu.com team updates their build environment ahead of most users.
 
 That said, I have been running these daily for several years. I just don't need any nvidia or vmware kernel modules nor do I use secure boot.
 
