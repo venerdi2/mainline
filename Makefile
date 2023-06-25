@@ -154,28 +154,6 @@ uninstall:
 	rm -f $(DESTDIR)/home/*/.config/$(BRANDING_SHORTNAME)/$(BRANDING_SHORTNAME)-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/$(BRANDING_SHORTNAME).desktop
 
-
-## deb build stuff
-##
-## optionally add "host_dist=foo" to build for dist "foo"
-## optionally add "host_arch=foo" to build for arch "foo"
-##
-## To create the deb build environment, run one time only.
-##   make deb_env_create
-##
-## To update the build environment, run as needed.
-##   make deb_env_update
-##
-## To (re)build a deb without incrementing build number or doing clean.
-##   make deb
-##
-## To build a deb for release. Increments build number and does clean before build.
-##   make release_deb
-##
-## Example for bionic on i386.
-##   make deb_env_create host_dist=bionic host_arch=i386
-##   make release_deb host_dist=bionic host_arch=i386
-
 .PHONY: pbuilder-dist
 pbuilder-dist:
 	@which pbuilder-dist >/dev/null || { echo "Missing pbuilder-dist. apt install ubuntu-dev-tools" ;false ; }
