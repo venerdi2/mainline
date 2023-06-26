@@ -9,7 +9,7 @@ namespace l.misc {
 		Intl.bindtextdomain(BRANDING_SHORTNAME,LOCALE_DIR);
 	}
 
-	public bool ask(string prompt = "\n"+_("Proceed? (y/N): "), bool def = false) {
+	public bool ask(string prompt = "\n"+_("Continue? (y/N): "), bool def = false) {
 		if (App.yes) return true;
 		vprint(prompt,0,stdout,false);
 		var l = stdin.read_line().strip();
@@ -46,17 +46,12 @@ namespace l.misc {
 	}
 
 	// Doesn't really sanitize much, just escapes any %* except
-	// a single "%s" to reduce the chance of ugly crash from printf.
-	//
-	// This is still user-supplied data fed to printf and then to a shell.
-	//
-	// Find the first "%s", ignore "%%", replace all other "%" with "%%".
-	//
-	// TODO: Working, but maybe there is a less confusing more state-machine way?
+	// a single %s to reduce the chance of ugly crash from printf.
+	// It's still user-supplied data fed to printf and then to a shell.
 	static string sanitize_cmd(string cmd) {
 		string s = cmd.strip();
 		int p = 0;
-		while (p>=0 && p<s.length) {
+		while (p<s.length) {
 			p = s.index_of("%s",p);
 			if (p<1) break;
 			if (s.substring(p-1,1)=="%") p++;

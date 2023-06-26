@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 16:28-0400\n"
+"POT-Creation-Date: 2023-06-26 02:02-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -71,7 +71,7 @@ msgstr "Çalışıyor"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:485
+#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:472
 msgid "Running"
 msgstr "Çalışıyor"
 
@@ -148,7 +148,7 @@ msgstr "zaten yüklü."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:511
+#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:498
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Komut belirtilmedi"
@@ -162,7 +162,7 @@ msgstr "Seçili çekirdekleri kaldırma"
 msgid "Not uninstalling the currently running kernel"
 msgstr "çalışmakta olan çekirdeğin kaldırılmaması"
 
-#: src/Common/LinuxKernel.vala:1043 src/Gtk/MainWindow.vala:507
+#: src/Common/LinuxKernel.vala:1043 src/Gtk/MainWindow.vala:494
 msgid "is locked"
 msgstr ""
 
@@ -196,7 +196,7 @@ msgstr ""
 msgid "The following kernels will be uninstalled"
 msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1109 src/lib/l.misc.vala:12
 #, fuzzy
 msgid "Continue? (y/N): "
 msgstr "Devam edilsin mi?"
@@ -211,41 +211,41 @@ msgstr "Güncelleme bulunamadı"
 msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
 
-#: src/Common/Main.vala:197
+#: src/Common/Main.vala:198
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:290
+#: src/Common/Main.vala:291
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:309
+#: src/Common/Main.vala:310
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:376
+#: src/Common/Main.vala:377
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:396
+#: src/Common/Main.vala:397
 msgid "Called from"
 msgstr "Çağrı konumu"
 
-#: src/Common/Main.vala:396
+#: src/Common/Main.vala:397
 msgid "at logon"
 msgstr "başlangıçta"
 
-#: src/Common/Main.vala:397
+#: src/Common/Main.vala:398
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Bu dosyanın üzerine yazılır ve ayarlar her kaydedildiğinde yeniden yürütülür"
 
-#: src/Common/Main.vala:429
+#: src/Common/Main.vala:430
 msgid "Notifications are disabled"
 msgstr "Bildirimler devre dışı bırakılmış"
 
-#: src/Common/Main.vala:482
+#: src/Common/Main.vala:483
 msgid "Can not reach site"
 msgstr "Siteye ulaşılamıyor"
 
@@ -490,21 +490,21 @@ msgstr ""
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:447
+#: src/Gtk/MainWindow.vala:434
 #, fuzzy
 msgid "Updating kernels"
 msgstr "Çekirdekleri güncelleme"
 
-#: src/Gtk/MainWindow.vala:489
+#: src/Gtk/MainWindow.vala:476
 msgid "available"
 msgstr "mevcut"
 
-#: src/Gtk/MainWindow.vala:506
+#: src/Gtk/MainWindow.vala:493
 #, fuzzy
 msgid "is already installed"
 msgstr "zaten yüklü."
 
-#: src/Gtk/MainWindow.vala:508
+#: src/Gtk/MainWindow.vala:495
 msgid "adding"
 msgstr ""
 
@@ -683,7 +683,3 @@ msgstr "İptal Et"
 #: src/Gtk/TerminalWindow.vala:153
 msgid "Close"
 msgstr "Kapat"
-
-#: src/lib/l.misc.vala:12
-msgid "Proceed? (y/N): "
-msgstr ""

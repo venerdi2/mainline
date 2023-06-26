@@ -399,7 +399,7 @@ public class MainWindow : Window {
 
 	void do_about() {
 
-		const string[] authors = {
+		string[] authors = {
 			"Tony George <teejeetech@gmail.com>",
 			BRANDING_AUTHORNAME+" <"+BRANDING_AUTHOREMAIL+">"
 		};
@@ -415,20 +415,7 @@ public class MainWindow : Window {
 				_("Original")+": \"ukuu\" © 2015-18 Tony George\n" +
 				_("Forked")+": \""+BRANDING_SHORTNAME+"\" 2019 "+BRANDING_AUTHORNAME,
 			authors:authors,
-			translator_credits:
-				"de: Marvin Meysel <marvin@meysel.net>\n" +
-				"el: Vasilis Kosmidis <skyhirules@gmail.com>\n" +
-				"es: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n" +
-				"fr: Yolateng0 <yo@yo.nohost.me>\n" +
-				"hr: gogo <trebelnik2@gmail.com>\n" +
-				"it: Demetrio Mendozzi\n" +
-				"ko: Kevin Kim <root@hamonikr.org>\n" +
-				"nl: Heimen Stoffels <vistausss@outlook.com>\n" +
-				"pl: Matthaiks\n" +
-				"ru: Danik2343 <krutalevex@mail.ru>\n" +
-				"sv: Åke Engelbrektson <eson@svenskasprakfiler.se>\n" +
-				"tr: Sabri Ünal <libreajans@gmail.com>\n" +
-				"uk: Serhii Golovko <cappelikan@gmail.com>",
+			translator_credits:TRANSLATORS,
 			license_type:License.GPL_3_0
 		);
 	}

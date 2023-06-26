@@ -36,6 +36,7 @@ using l.json;
 [CCode(cname="BRANDING_AUTHOREMAIL")] extern const string BRANDING_AUTHOREMAIL;
 [CCode(cname="BRANDING_WEBSITE")] extern const string BRANDING_WEBSITE;
 [CCode(cname="INSTALL_PREFIX")] extern const string INSTALL_PREFIX;
+[CCode(cname="TRANSLATORS")] extern const string TRANSLATORS;
 
 const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
 const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;

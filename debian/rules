@@ -1,20 +1,5 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
-
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
-# debhelper>9 uses make -jN by default, which fails on vala projects
-# https://github.com/bkw777/mainline/issues/74
-# unless you do
-# https://wiki.gnome.org/Projects/Vala/Documentation/ParallelBuilds
-# which is ridiculous nonsense
-# add --no-parallel to prevent debhelper>9 from using make -jN
+#DH_VERBOSE = 1
 
 %:
-	dh $@ --no-parallel
+	dh $@

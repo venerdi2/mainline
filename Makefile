@@ -50,7 +50,6 @@ build_symbols := -X -D'INSTALL_PREFIX="$(prefix)"' \
 	-X -D'GETTEXT_PACKAGE="$(BRANDING_SHORTNAME)"'
 
 misc_files := README.md \
-	INSTALL \
 	$(BRANDING_SHORTNAME).desktop \
 	debian/control \
 	debian/copyright \
@@ -67,13 +66,18 @@ DEB_BUILD_NUMBER := 0000
 DEB_PKG_VERSION := $(BRANDING_VERSION)
 -include .deb_build_number.mak
 
-host_dist := $(shell lsb_release -sc)
-host_arch := $(shell dpkg --print-architecture)
+dist := $(shell lsb_release -sc)
+arch := $(shell dpkg --print-architecture)
 pkg_version = $(shell dpkg-parsechangelog -S Version)
 dsc_file = release/deb-src/$(BRANDING_SHORTNAME)_$(pkg_version).dsc
-deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_$(host_dist)_$(host_arch).deb
+deb_file = release/deb/$(BRANDING_SHORTNAME)_$(pkg_version).$(DEB_BUILD_NUMBER)_$(dist)_$(arch).deb
 
 ################################################################################
+
+# Override debhelper>9 using make -jN in "make deb", which breaks vala unless you do
+# https://wiki.gnome.org/Projects/Vala/Documentation/ParallelBuilds
+# which is ridiculous nonsense
+.NOTPARALLEL:
 
 .PHONY: all
 all: $(BRANDING_SHORTNAME) $(BRANDING_SHORTNAME)-gtk
@@ -83,19 +87,22 @@ $(BRANDING_SHORTNAME): $(misc_files) $(common_vala_files) $(tui_vala_files) TRAN
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) \
 		$(common_vala_files) $(tui_vala_files) -o $(@)
 
+# Override debhelper setting LANG=C & LC_ALL=C in "make deb"
+# which causes valac to die on the non-ascii in -D'TRANSLATORS=...'
 $(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) TRANSLATORS
-	valac $(VALACFLAGS) -X -w $(build_symbols) --Xcc="-lm" \
+	LANG=C.UTF-8;LC_ALL=$${LANG};LANGUAGE=$${LANG};T=;while read t;do T+="$$t\n";done<TRANSLATORS;set -x; \
+		valac $(VALACFLAGS) -X -w $(build_symbols) -X -D'TRANSLATORS="'"$${T:0:-2}"'"' --Xcc="-lm" \
 		--pkg $(glib) --pkg $(gio-unix) --pkg posix --pkg $(gee) --pkg $(json-glib) --pkg $(gtk+) --pkg $(vte) --pkg x11 \
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(misc_files): %: %.src BRANDING.mak
-	sed -e 's/BRANDING_SHORTNAME/$(BRANDING_SHORTNAME)/g' \
-		-e ';s/BRANDING_LONGNAME/$(BRANDING_LONGNAME)/g' \
-		-e ';s/BRANDING_AUTHORNAME/$(BRANDING_AUTHORNAME)/g' \
-		-e ';s/BRANDING_AUTHOREMAIL/$(BRANDING_AUTHOREMAIL)/g' \
-		-e ';s|BRANDING_WEBSITE|$(BRANDING_WEBSITE)|g' \
-		-e ';s/BRANDING_VERSION/$(BRANDING_VERSION)/g' \
-		-e ';s|BRANDING_GITREPO|$(BRANDING_GITREPO)|g' \
+	sed 's|BRANDING_SHORTNAME|$(BRANDING_SHORTNAME)|g' \
+		';s|BRANDING_LONGNAME|$(BRANDING_LONGNAME)|g' \
+		';s|BRANDING_AUTHORNAME|$(BRANDING_AUTHORNAME)|g' \
+		';s|BRANDING_AUTHOREMAIL|$(BRANDING_AUTHOREMAIL)|g' \
+		';s|BRANDING_WEBSITE|$(BRANDING_WEBSITE)|g' \
+		';s|BRANDING_VERSION|$(BRANDING_VERSION)|g' \
+		';s|BRANDING_GITREPO|$(BRANDING_GITREPO)|g' \
 		$(@).src >$(@)
 
 $(pot_file): $(common_vala_files) $(tui_vala_files) $(gui_vala_files)
@@ -164,7 +171,7 @@ deb-src: $(dsc_file)
 .PHONY: dsc
 dsc: $(dsc_file)
 
-$(dsc_file): debian/changelog $(misc_files) $(common_vala_files) $(gui_vala_files) TRANSLATORS
+$(dsc_file): debian/changelog debian/compat debian/rules $(misc_files) $(common_vala_files) $(gui_vala_files) AUTHORS INSTALL settings.md Makefile BRANDING.mak
 	@[[ "$(pkg_version)" == "$(BRANDING_VERSION)" ]] || { echo -e "Version number in debian/changelog ($(pkg_version)) does not match BRANDING.mak ($(BRANDING_VERSION)).\n(Maybe need to run \"dch\"?)" >&2 ; exit 1 ; }
 	$(MAKE) clean
 	dpkg-source --build .
@@ -178,16 +185,16 @@ deb: $(deb_file)
 
 .PHONY: deb_env_create
 deb_env_create: pbuilder-dist
-	pbuilder-dist $(host_dist) $(host_arch) create
+	pbuilder-dist $(dist) $(arch) create
 
 .PHONY: deb_env_update
 deb_env_update: pbuilder-dist
-	pbuilder-dist $(host_dist) $(host_arch) update
+	pbuilder-dist $(dist) $(arch) update
 
 $(deb_file): $(dsc_file) pbuilder-dist
 	mkdir -pv release/deb
-	pbuilder-dist $(host_dist) $(host_arch) build $(dsc_file) --buildresult release/deb
-	mv -fv release/deb/$(BRANDING_SHORTNAME)_$(pkg_version)_$(host_arch).deb $(@)
+	pbuilder-dist $(dist) $(arch) build $(dsc_file) --buildresult release/deb
+	mv -fv release/deb/$(BRANDING_SHORTNAME)_$(pkg_version)_$(arch).deb $(@)
 	ls -lv release/deb
 
 .PHONY: install-deb

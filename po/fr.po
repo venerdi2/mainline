@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 16:28-0400\n"
+"POT-Creation-Date: 2023-06-26 02:02-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -71,7 +71,7 @@ msgstr "Actuel"
 msgid "is locked."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:485
+#: src/Common/LinuxKernel.vala:669 src/Gtk/MainWindow.vala:472
 msgid "Running"
 msgstr "Actuel"
 
@@ -148,7 +148,7 @@ msgstr "est déjà installé."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:511
+#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:498
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Pas de commande fournie"
@@ -162,7 +162,7 @@ msgstr "Désinstallation des noyaux sélectionnés"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Ne pas désinstaller le noyau en cours d'exécution"
 
-#: src/Common/LinuxKernel.vala:1043 src/Gtk/MainWindow.vala:507
+#: src/Common/LinuxKernel.vala:1043 src/Gtk/MainWindow.vala:494
 msgid "is locked"
 msgstr ""
 
@@ -196,7 +196,7 @@ msgstr ""
 msgid "The following kernels will be uninstalled"
 msgstr "Les noyaux suivants seront désinstallés"
 
-#: src/Common/LinuxKernel.vala:1109
+#: src/Common/LinuxKernel.vala:1109 src/lib/l.misc.vala:12
 #, fuzzy
 msgid "Continue? (y/N): "
 msgstr "Reprendre ?"
@@ -211,42 +211,42 @@ msgstr "Aucune mise à jour disponible"
 msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Installer le noyau en version %s ? (y/n): "
 
-#: src/Common/Main.vala:197
+#: src/Common/Main.vala:198
 msgid "Missing Thread support in Glib."
 msgstr ""
 
-#: src/Common/Main.vala:290
+#: src/Common/Main.vala:291
 msgid "Wrote config file"
 msgstr ""
 
-#: src/Common/Main.vala:309
+#: src/Common/Main.vala:310
 msgid "No config file"
 msgstr ""
 
-#: src/Common/Main.vala:376
+#: src/Common/Main.vala:377
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:396
+#: src/Common/Main.vala:397
 msgid "Called from"
 msgstr "Appelé à partir de"
 
-#: src/Common/Main.vala:396
+#: src/Common/Main.vala:397
 msgid "at logon"
 msgstr "au démarrage"
 
-#: src/Common/Main.vala:397
+#: src/Common/Main.vala:398
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ce fichier est écrasé et exécuté à nouveau chaque fois que les paramètres "
 "sont enregistrés dans"
 
-#: src/Common/Main.vala:429
+#: src/Common/Main.vala:430
 msgid "Notifications are disabled"
 msgstr "Les notifications sont désactivées"
 
-#: src/Common/Main.vala:482
+#: src/Common/Main.vala:483
 msgid "Can not reach site"
 msgstr "No se puede llegar al sitio"
 
@@ -490,21 +490,21 @@ msgstr ""
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:447
+#: src/Gtk/MainWindow.vala:434
 #, fuzzy
 msgid "Updating kernels"
 msgstr "Mise à jour des noyaux"
 
-#: src/Gtk/MainWindow.vala:489
+#: src/Gtk/MainWindow.vala:476
 msgid "available"
 msgstr "disponible"
 
-#: src/Gtk/MainWindow.vala:506
+#: src/Gtk/MainWindow.vala:493
 #, fuzzy
 msgid "is already installed"
 msgstr "est déjà installé."
 
-#: src/Gtk/MainWindow.vala:508
+#: src/Gtk/MainWindow.vala:495
 msgid "adding"
 msgstr ""
 
@@ -683,7 +683,3 @@ msgstr "Annuler"
 #: src/Gtk/TerminalWindow.vala:153
 msgid "Close"
 msgstr "Fermer"
-
-#: src/lib/l.misc.vala:12
-msgid "Proceed? (y/N): "
-msgstr ""
