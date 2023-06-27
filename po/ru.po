@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-27 05:46-0400\n"
-"PO-Revision-Date: 2023-06-24 16:38+0300\n"
+"PO-Revision-Date: 2023-06-28 00:07+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -239,7 +239,7 @@ msgstr "Не удается связаться с сайтом"
 
 #: src/Console/AppConsole.vala:29
 msgid "install kernel packages from kernel.ubuntu.com"
-msgstr ""
+msgstr "установить пакеты ядра с kernel.ubuntu.com"
 
 #: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
@@ -254,14 +254,12 @@ msgid "Check for kernel updates"
 msgstr "Проверить обновления ядра"
 
 #: src/Console/AppConsole.vala:36
-#, fuzzy
 msgid "Check for kernel updates and send a desktop notification"
-msgstr "Проверить обновления ядра и уведомить текущего пользователя"
+msgstr "Проверка обновлений ядра и отправка уведомления на рабочий стол"
 
 #: src/Console/AppConsole.vala:37
-#, fuzzy
 msgid "List available kernels"
-msgstr "Список доступных основных ядер"
+msgstr "Список доступных ядер"
 
 #: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
@@ -328,12 +326,12 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Одна или несколько строк версии, взятых из вывода --list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space seperated. (space requires quotes or "
 "backslashes)"
 msgstr ""
-"через запятую, вертикальную черту или двоеточие или через пробел в кавычках"
+"через запятую, трубку, двоеточие или пробел. (пробел требует кавычек или "
+"обратного слеша)"
 
 #: src/Console/AppConsole.vala:59
 msgid "Locked kernels and the currently running kernel are ignored"
