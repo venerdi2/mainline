@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 02:02-0400\n"
+"POT-Creation-Date: 2023-06-27 05:46-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -240,11 +240,11 @@ msgstr ""
 "Questo file viene sovrascritto ed eseguito nuovamente ogni volta che vengono "
 "salvate le impostazioni"
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:431
 msgid "Notifications are disabled"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:484
 msgid "Can not reach site"
 msgstr "Impossibile raggiungere il sito"
 

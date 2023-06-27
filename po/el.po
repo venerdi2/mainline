@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 02:02-0400\n"
+"POT-Creation-Date: 2023-06-27 05:46-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -242,11 +242,11 @@ msgstr ""
 "Αυτό το αρχείο αντικαθίσταται και εκτελείται ξανά κάθε φορά που "
 "αποθηκεύονται οι ρυθμίσεις στο"
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:431
 msgid "Notifications are disabled"
 msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες"
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:484
 msgid "Can not reach site"
 msgstr "Αποτυχία ανάγνωσης του αρχείου"
 

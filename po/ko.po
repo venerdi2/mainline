@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 02:02-0400\n"
+"POT-Creation-Date: 2023-06-27 05:46-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -240,11 +240,11 @@ msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "이 파일은 덮어쓰고 설정이 저장될 때마다 다시 실행됩니다."
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:431
 msgid "Notifications are disabled"
 msgstr "알림이 비활성화 되었습니다"
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:484
 msgid "Can not reach site"
 msgstr "사이트에 도달 할 수 없습니다"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 02:02-0400\n"
+"POT-Creation-Date: 2023-06-27 05:46-0400\n"
 "PO-Revision-Date: 2023-06-21 01:02+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -230,11 +230,11 @@ msgstr ""
 "Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy "
 "ustawienia są zapisywane w"
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:431
 msgid "Notifications are disabled"
 msgstr "Powiadomienia są wyłączone"
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:484
 msgid "Can not reach site"
 msgstr "Nie można dotrzeć do witryny"
 

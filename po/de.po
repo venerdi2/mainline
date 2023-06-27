@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 02:02-0400\n"
+"POT-Creation-Date: 2023-06-27 05:46-0400\n"
 "PO-Revision-Date: 2023-02-20 18:40+0100\n"
 "Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
@@ -241,11 +241,11 @@ msgid ""
 msgstr ""
 "Diese Datei wird überschrieben und erneut ausgeführt, wenn Einstellungen in"
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:431
 msgid "Notifications are disabled"
 msgstr "Benachrichtigungen sind deaktiviert"
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:484
 msgid "Can not reach site"
 msgstr "Fehler beim lesen der Datei"
 

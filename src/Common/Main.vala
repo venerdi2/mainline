@@ -419,8 +419,9 @@ public class Main : GLib.Object {
 			+ "\n"
 			+ "# run whatever the new state should be\n";
 		if (notify_minor || notify_major) {
-			s += "while [[ -f $F ]] ;do\n"
-			+ "\tVERBOSE=0 "+BRANDING_SHORTNAME+" --notify 2>&- >&- || exit\n"
+			s += "VERBOSE=0\n"
+			+ "while [[ -f $F ]] ;do\n"
+			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&- || exit\n"
 			+ "\tsleep %d%s &\n".printf(n,u)
 			+ "\tc=$!\n"
 			+ "\techo $c >>${F}_\n"

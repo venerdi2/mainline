@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.20\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 04:08-0400\n"
+"POT-Creation-Date: 2023-06-27 05:57-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,11 +232,11 @@ msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:430
+#: src/Common/Main.vala:431
 msgid "Notifications are disabled"
 msgstr ""
 
-#: src/Common/Main.vala:483
+#: src/Common/Main.vala:484
 msgid "Can not reach site"
 msgstr ""
 

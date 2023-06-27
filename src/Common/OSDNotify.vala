@@ -44,26 +44,22 @@ public class OSDNotify : GLib.Object {
 
 		if (seconds > MIN_NOTIFICATION_INTERVAL) {
 
-			string s =
-				APP_LIB_DIR+"/notify_send/notify-send.sh"
-				+ " -R "+App.NOTIFICATION_ID_FILE
-				+ " -u low"
-				+ " -c info"
-				+ " -a "+BRANDING_SHORTNAME
-				+ " -i "+BRANDING_SHORTNAME
-				+ " -t 0"
-				+ " -f "
-				;
+			string s = APP_LIB_DIR+"/notify_send/notify-send.sh"
+				+ " --replace-file=\""+App.NOTIFICATION_ID_FILE+"\""
+				+ " --urgency=low"
+				+ " --category=info"
+				+ " --app-name="+BRANDING_SHORTNAME
+				+ " --icon="+BRANDING_SHORTNAME
+				+ " --expire-time=0"
+				+ " --force-expire"
+			;
 
-			if (close_action != "") s += " -l \""+close_action+"\"";
+			if (close_action != "") s += " --close-action=\""+close_action+"\"";
 
-			foreach (string a in actions) s += " -o \""+a+"\"";
+			foreach (string a in actions) s += " --action=\""+a+"\"";
 
-				s += " \""+summary+"\""
-				+ " \""+body+"\""
-				;
+			s += " \""+summary+"\" \""+body+"\"";
 
-			vprint(s,2);
 			exec_async(s);
 
 			dt_last_notification = new DateTime.now_local();
