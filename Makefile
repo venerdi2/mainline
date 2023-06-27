@@ -96,13 +96,13 @@ $(BRANDING_SHORTNAME)-gtk: $(misc_files) $(common_vala_files) $(gui_vala_files) 
 		$(common_vala_files) $(gui_vala_files) -o $(@)
 
 $(misc_files): %: %.src BRANDING.mak
-	sed 's|BRANDING_SHORTNAME|$(BRANDING_SHORTNAME)|g' \
-		';s|BRANDING_LONGNAME|$(BRANDING_LONGNAME)|g' \
-		';s|BRANDING_AUTHORNAME|$(BRANDING_AUTHORNAME)|g' \
-		';s|BRANDING_AUTHOREMAIL|$(BRANDING_AUTHOREMAIL)|g' \
-		';s|BRANDING_WEBSITE|$(BRANDING_WEBSITE)|g' \
-		';s|BRANDING_VERSION|$(BRANDING_VERSION)|g' \
-		';s|BRANDING_GITREPO|$(BRANDING_GITREPO)|g' \
+	sed -e 's|BRANDING_SHORTNAME|$(BRANDING_SHORTNAME)|g' \
+		-e 's|BRANDING_LONGNAME|$(BRANDING_LONGNAME)|g' \
+		-e 's|BRANDING_AUTHORNAME|$(BRANDING_AUTHORNAME)|g' \
+		-e 's|BRANDING_AUTHOREMAIL|$(BRANDING_AUTHOREMAIL)|g' \
+		-e 's|BRANDING_WEBSITE|$(BRANDING_WEBSITE)|g' \
+		-e 's|BRANDING_VERSION|$(BRANDING_VERSION)|g' \
+		-e 's|BRANDING_GITREPO|$(BRANDING_GITREPO)|g' \
 		$(@).src >$(@)
 
 $(pot_file): $(common_vala_files) $(tui_vala_files) $(gui_vala_files)

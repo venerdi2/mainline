@@ -163,7 +163,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 
   Debugging notifications:  
   `DEBUG_NOTIFY_SEND=true VERBOSE=3 BRANDING_SHORTNAME --notify`  
-  Then `ls -l ${XDG_RUNTIME_DIR:-/tmp}/*.e`
+  Then find the logs here `ls -al ${XDG_RUNTIME_DIR:-/tmp}/.*.e`
 
 * If **Uninstall Old** doesn't remove some distribution kernel packages  
   Use your normal package manager like apt or synaptic to remove the parent meta-package:  
