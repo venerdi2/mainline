@@ -139,7 +139,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public static void initialize_regex() {
-		//log_debug("initialize_regex()");
 		try {
 
 			//linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
