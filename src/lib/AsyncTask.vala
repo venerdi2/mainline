@@ -7,7 +7,6 @@ public abstract class AsyncTask : GLib.Object {
 	int stdout_fd;
 	DataInputStream stdout_s;
 
-	// public
 	public string[] spawn_args = {};
 	public string stdin_data = "";
 	public string status_line = "";
@@ -18,7 +17,6 @@ public abstract class AsyncTask : GLib.Object {
 	}
 
 	public bool begin() {
-
 		is_running = true;
 		status_line = "";
 		prg_count = 0;
@@ -29,6 +27,12 @@ public abstract class AsyncTask : GLib.Object {
 			vprint("stdin_data: ---begin---\n"+stdin_data+"\nstdin_data: ---end---");
 		}
 
+		// This is set up to detect both process-ended and process-failed-to-start
+		// by read_stdout() failing to read, so this only works for commands that open stdout.
+		// No SpawnFlags.DO_NOT_REAP_CHILD, no ChildWatch.add(), no Close_pid().
+		// Do not try to add any of those without adding all three.
+		// (Either take over all responsibility, or don't touch child_pid at all)
+
 		try {
 			Process.spawn_async_with_pipes(
 				null,        // working dir
@@ -36,7 +40,7 @@ public abstract class AsyncTask : GLib.Object {
 				null,        // environment
 				SpawnFlags.SEARCH_PATH,
 				null,        // child_setup()
-				out child_pid,
+				out child_pid, // not used by us but must exist
 				out stdin_fd,
 				out stdout_fd,
 				null         //out stderr_fd
@@ -50,11 +54,6 @@ public abstract class AsyncTask : GLib.Object {
 			// write stdin
 			FileStream stdin_pipe = FileStream.fdopen(stdin_fd,"w");
 			stdin_pipe.puts(stdin_data);
-
-			ChildWatch.add(child_pid, (pid, status) => {
-				Process.close_pid(pid);
-				is_running = false;
-			});
 
 		}
 		catch (Error e) {
