@@ -54,6 +54,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
 	public static Gee.ArrayList<LinuxKernel> kall = new Gee.ArrayList<LinuxKernel>();
 
+	public static Regex rex_pageuri = null;
+	public static Regex rex_datetime = null;
+	public static Regex rex_fileuri = null;
 	public static Regex rex_header = null;
 	public static Regex rex_header_all = null;
 	public static Regex rex_image = null;
@@ -141,19 +144,37 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void initialize_regex() {
 		try {
 
-			//linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
+			// uri to a kernel page and it's datetime, in the main index.html
+			// <tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="v2.6.27.61/">v2.6.27.61/</a></td><td align="right">2018-05-13 20:40  </td><td align="right">  - </td><td>&nbsp;</td></tr>
+			//                                                                                 ###########                                        #### ## ## ## ##
+			//                                                                                 fetch(1)                                           2    3  4  5  6
+			rex_pageuri     = new Regex("""href="(v.+/)".+>[\t ]*([0-9]{4})-([0-9]{2})-([0-9]{2})[\t ]+([0-9]{2}):([0-9]{2})[\t ]*<""");
+
+			// date & time for any uri in a per-kernel page
+			// <tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="HEADER.html">HEADER.html</a></td><td align="right">2023-05-11 23:21  </td><td align="right">5.6K</td><td>&nbsp;</td></tr>
+			// <tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="amd64/">amd64/</a></td><td align="right">2023-05-11 22:30  </td><td align="right">  - </td><td>&nbsp;</td></tr>
+			//                                                                                                                          #### ## ## ## ##
+			//                                                                                                                          1    2  3  4  5
+			rex_datetime    = new Regex(""">[\t ]*([0-9]{4})-([0-9]{2})-([0-9]{2})[\t ]+([0-9]{2}):([0-9]{2})[\t ]*<""");
+
+			// uri to any .deb file in a per-kernel page
+			// <a href="linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb">//same deb name//</a>
+			//          ############################################################################
+			rex_fileuri     = new Regex("""href="(.+\.deb)"""");
+
+			// linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
 			rex_header      = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-.+-generic_.+_"""     + NATIVE_ARCH + ".deb");
 
-			//linux-headers-3.4.75-030475_3.4.75-030475.201312201255_all.deb
+			// linux-headers-3.4.75-030475_3.4.75-030475.201312201255_all.deb
 			rex_header_all  = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-headers-.+_all.deb""");
 
-			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
+			// linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
 			rex_image       = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-.+-generic_.+_"""       + NATIVE_ARCH + ".deb");
 
-			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
+			// linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
 			rex_image_extra = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-image-extra-.+-generic_.+_""" + NATIVE_ARCH + ".deb");
 
-			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
+			// linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
 			rex_modules     = new Regex("(?:" + NATIVE_ARCH + """/|>)?linux-modules-.+-generic_.+_"""     + NATIVE_ARCH + ".deb");
 
 		} catch (Error e) {
@@ -314,40 +335,29 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_list.clear();
 		kall.clear();
 
-		try {
-			var rex = new Regex("""href="(v.+/)".+>[\t ]*([0-9]{4})-([0-9]{2})-([0-9]{2})[\t ]+([0-9]{2}):([0-9]{2})[\t ]*<""");
-			// <tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="v2.6.27.61/">v2.6.27.61/</a></td><td align="right">2018-05-13 20:40  </td><td align="right">  - </td><td>&nbsp;</td></tr>
-			//                                                                                 ###########                                        #### ## ## ## ##
-			//                                                                                 fetch(1)                                           2    3  4  5  6
+		MatchInfo mi;
+		foreach (string l in txt.split("\n")) {
+			if (!rex_pageuri.match(l, 0, out mi)) continue;
+			var v = mi.fetch(1);
+			var k = new LinuxKernel(v);
 
-			MatchInfo mi;
-			string v;
-			foreach (string l in txt.split("\n")) {
-				if (!rex.match(l, 0, out mi)) continue;
-				v = mi.fetch(1);
-				var k = new LinuxKernel(v);
+			// Don't try to exclude unstable here, just k.version_major<THRESHOLD_MAJOR.
+			// They all need to exist in kernel_list at least long enough for check_installed()
+			// to recognize any already-installed even if they would otherwise be hidden.
 
-				// Don't try to exclude unstable here, just k.version_major<THRESHOLD_MAJOR.
-				// They all need to exist in kernel_list at least long enough for check_installed()
-				// to recognize any already-installed rc even if rc are hidden now.
-
-				k.page_uri = App.ppa_uri + v;
-				k.is_mainline = true;
-				if (k.version_major>=THRESHOLD_MAJOR) {
-					k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
-					vprint("kernel_list.add("+k.version_main+") "+k.ppa_datetime.to_string(),2);
-					kernel_list.add(k); // the active list
-				}
-				kall.add(k); // a seperate full list we don't trim
+			k.page_uri = App.ppa_uri + v;
+			k.is_mainline = true;
+			if (k.version_major>=THRESHOLD_MAJOR) {
+				k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
+				vprint("kernel_list.add("+k.version_main+") "+k.ppa_datetime.to_string(),2);
+				kernel_list.add(k); // the active list
 			}
-
-			// sort the list, highest first
-			kernel_list.sort((a,b) => { return b.compare_to(a); });
-
+			kall.add(k); // a seperate full list that we don't trim
 		}
-		catch (Error e) {
-			vprint(e.message,1,stderr);
-		}
+
+		// sort the list, highest first
+		kernel_list.sort((a,b) => { return b.compare_to(a); });
+
 	}
 
 	public static void check_installed() {
@@ -482,9 +492,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	static void trim_cache() {
 		foreach (var k in kall) {
 			if (k.is_installed) continue;
-			// don't bother removing any cached rc above the major threshold
-			// because they just end up having to get downloaded anyway on every refresh
-			//if (k.version_major<THRESHOLD_MAJOR || (k.is_unstable && App.hide_unstable)) {
+			// don't remove anything >= threshold_major even if hidden
 			if (k.version_major<THRESHOLD_MAJOR && File.parse_name(k.cache_subdir).query_exists()) rm(k.cache_subdir);
 		}
 	}
@@ -493,23 +501,23 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// (1) Ideally we want to know THRESHOLD_MAJOR before running mk_kernel_list(),
 	//     so mk_kernel_list() can use it to set bounds on the size of it's job,
 	//     instead of processing all kernels since the beginning of time, every time.
-	// (2) Ideally we want is_mainline while finding THRESHOLD_MAJOR, to ignore non-mainline kernels
-	//     so that an installed distro kernel doesn't pull THRESHOLD_MAJOR down a whole generation.
+	// (2) Ideally we want to use is_mainline while finding THRESHOLD_MAJOR,
+	//     to prevent non-mainline kernels from pulling THRESHOLD_MAJOR down.
 	// (3) The only way to find out is_mainline for real is to scan kernel_list[],
 	//     and see if a given installed package matches one of those.
 	// (4) But we don't have kernel_list[] yet, and we can't get it yet, because GOTO (1)
 	// 
-	// So for this early task, we rely on a weak is_mainline that was made
+	// So for this early task, we rely on a weak is_mainline assertion that was made
 	// from an unsafe assumption in split_version_string(), when mk_dpkg_list()
 	// generates some kernel objects from the installed package info from dpkg.
 	// The version field from dpkg for mainline kernels includes a 12-byte
 	// date/time stamp that distro packages don't have.
 	//
-	// TODO maybe... get a full kernel_list from a preliminary pass with load_index()
-	// before runing mk_dpkg_list(). have mk_dpkg_list() use that
-	// to fill in a real actual is_mainline for each item in dpkg_list[]
-	// use that here and along the way delete the unwanted items from kernel_list[]
-	// then mk_kernel_list() can just process that kernel_list[]
+	// TODO maybe...
+	// Get a full kernel_list from a preliminary pass with load_index() before runing mk_dpkg_list().
+	// Have mk_dpkg_list() use that to fill in a real actual is_mainline for each item in dpkg_list[].
+	// Use that here, and along the way delete the unwanted items from kernel_list[].
+	// Then mk_kernel_list() can just process that kernel_list[].
 	// 
 	static void find_thresholds(bool up=false) {
 		vprint("find_thresholds()",2);
@@ -526,6 +534,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.version_major < kernel_oldest_installed.version_major && k.is_mainline) kernel_oldest_installed = k;
 		}
 
+		// threshold is whichever is lower: latest_available - show_N_previous_majors, or oldest installed mainline.
 		THRESHOLD_MAJOR = kernel_latest_available.version_major - App.previous_majors;
 		if (kernel_oldest_installed.is_mainline && kernel_oldest_installed.version_major < THRESHOLD_MAJOR) THRESHOLD_MAJOR = kernel_oldest_installed.version_major;
 	}
@@ -578,7 +587,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (chunk.length<1) continue;
 			if (chunk.has_prefix("rc")) { version_rc = int.parse(chunk.substring(2)); continue; }
 			n = int.parse(chunk);
-			if (n>0 || chunk=="0") switch (i) {  // would fail on "00"  or "000" etc
+			if (n>0 || chunk=="0") switch (i) {  // weakness, would still fail on "00"  or "000" etc
 				case 1: version_major = n; continue;
 				case 2: version_minor = n; continue;
 				case 3: version_micro = n; continue;
@@ -605,9 +614,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 // complicated comparison logic for kernel version strings
 // * individual fields tested numerically if possible
 //   so that 1.12.0 is higher than 1.2.0
-// * 1.2.3-rc5 is higher than 1.2.3-rc4    normal, but...
-//   1.2.3 is higher than 1.2.3-rc5        <-- the weird one
-// like strcmp(), but l & r are LinuxKernel objects
+// * 1.2.3-rc5 is higher than 1.2.3-rc4    normal
+//   1.2.3 is higher than 1.2.3-rc5        special
+// like strcmp(l,r), but l & r are LinuxKernel objects
 // l.compare_to(r)   name & interface to please Gee.Comparable
 //  l<r  return -1
 //  l==r return 0
@@ -629,8 +638,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (x>0) return 1;                          // only left is numerical>0, left is greater
 			return -1;                                  // only right is numerical>0, right is greater
 		}
-		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // if left is longer: (if left is numerical>0, left is greater else right is greater)
-		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // if right is longer: (if right is numerical>0, right is greater else left is greater)
+		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // only if left is longer: if left is numerical>0, left is greater else right is greater
+		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // only if right is longer: if right is numerical>0, right is greater else left is greater
 		return 0;                                       // left & right identical the whole way
 	}
 
@@ -678,7 +687,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var k = kernel_last_stable_ppa_dirs_v1;                // Which threshold,
 		if (is_unstable) k = kernel_last_unstable_ppa_dirs_v1; // stable or unstable?
 		if (compare_to(k)>0) ppa_dirs_ver = 2;                 // Do we exceed it?
-		// and in the future if the ppa site changes again,
+		// in the future if the ppa site changes again,
 		// add more copies of these 3 lines
 		//k = kernel_last_stable_ppa_dirs_v2;
 		//if (is_unstable) k = kernel_last_unstable_ppa_dirs_v2;
@@ -771,8 +780,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return txt;
 	}
 
-	// return false if we don't have the cached page or if it's out of date
-	// return true if we have a valid cached page, whether the kernel itself is a valid build or not
+	// return false if we don't have the cached page
+	//   or if it's older than its timestamp in the main index.html
+	// return true if we have a valid cached page,
+	//   whether the kernel itself is a valid build or not
 	bool load_cached_page() {
 		vprint("load_cached_page("+cached_page+")",2);
 
@@ -787,7 +798,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_url_list.clear();
 		notes = "";
 
-		// load locally generated data regardless of the state of the cached index
+		// load local data regardless of the state of the cached page or the build
 		if (exists(notes_file)) notes = fread(notes_file).strip();
 
 		if (!exists(cached_page)) {
@@ -795,30 +806,22 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return false;
 		}
 
-		// parse index.html --------------------------
+		// read cached page
 		txt = fread(cached_page);
 
-		// find the highest datetime anywhere in the cached index
-		//<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="HEADER.html">HEADER.html</a></td><td align="right">2023-05-11 23:21  </td><td align="right">5.6K</td><td>&nbsp;</td></tr>
-		//<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="amd64/">amd64/</a></td><td align="right">2023-05-11 22:30  </td><td align="right">  - </td><td>&nbsp;</td></tr>
-		try {
-			var rex = new Regex(""">[\t ]*([0-9]{4})-([0-9]{2})-([0-9]{2})[\t ]+([0-9]{2}):([0-9]{2})[\t ]*<""");
-			MatchInfo mi;
-			foreach (string l in txt.split("\n")) {
-				if (rex.match(l, 0, out mi)) {
-					d_this = int64.parse(mi.fetch(1)+mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5));
-					if (d_this>d_max) d_max = d_this;
-					//vprint(d_this.to_string()+"  "+d_max.to_string());
-				}
+		// find the highest datetime anywhere in the cached page
+		MatchInfo mi;
+		foreach (string l in txt.split("\n")) {
+			if (rex_datetime.match(l, 0, out mi)) {
+				d_this = int64.parse(mi.fetch(1)+mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5));
+				if (d_this>d_max) d_max = d_this;
 			}
-		} catch (Error e) {
-			vprint(e.message,1,stderr);
 		}
 
 		// if datetime from main index is later than the latest cached datetime,
-		// delete the cache, return false. it will get downloaded in the next stage.
+		// delete the cache, return false. it will get downloaded and loaded in the next stage of mk_kernel_list()
 		if (ppa_datetime>d_max) {
-			vprint(version_main+": ppa:"+ppa_datetime.to_string()+" > cache:"+d_max.to_string()+" : "+_("needs update"));
+			vprint(version_main+": ppa:"+ppa_datetime.to_string()+" > cache:"+d_max.to_string()+" : "+_("needs update"),2);
 			rm(cache_subdir);
 			return false;
 		}
@@ -827,55 +830,45 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (is_invalid) return true;
 
 		// scan for urls to .deb files
-		try {
-			//<a href="linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb">//same deb name//</a>
-			var rex = new Regex("""href="(.+\.deb)"""");
-			MatchInfo mi;
-			foreach (string l in txt.split("\n")) {
-				if (rex.match(l, 0, out mi)) {
+		foreach (string l in txt.split("\n")) {
+			if (!rex_fileuri.match(l, 0, out mi)) continue;
+			string file_uri = page_uri + mi.fetch(1);
+			string file_name = Path.get_basename(file_uri);
+			if (deb_url_list.has_key(file_name)) continue;
 
-					string file_uri = page_uri + mi.fetch(1);
-					//vprint("file_uri:"+file_uri);
-					string file_name = Path.get_basename(file_uri);
-					//vprint("file_name:"+file_name);
-					if (deb_url_list.has_key(file_name)) continue;
+			bool add = false;
 
-					bool add = false;
-
-					if (rex_header.match(file_name, 0, out mi)) {
-						deb_header = file_name;
-						add = true;
-					}
-
-					if (rex_header_all.match(file_name, 0, out mi)) {
-						deb_header_all = file_name;
-						add = true;
-					}
-
-					if (rex_image.match(file_name, 0, out mi)) {
-						deb_image = file_name;
-						add = true;
-						// linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb
-						var p = file_name.split("_");
-						if (p[0]!="") kname = p[0];
-						if (p[1]!="") kver = p[1];
-					}
-
-					if (rex_image_extra.match(file_name, 0, out mi)) {
-						deb_image_extra = file_name;
-						add = true;
-					}
-
-					if (rex_modules.match(file_name, 0, out mi)) {
-						deb_modules = file_name;
-						add = true;
-					}
-
-					if (add) deb_url_list[file_name] = file_uri;
-				}
+			if (rex_header.match(file_name, 0, out mi)) {
+				deb_header = file_name;
+				add = true;
 			}
-		} catch (Error e) {
-			vprint(e.message,1,stderr);
+
+			if (rex_header_all.match(file_name, 0, out mi)) {
+				deb_header_all = file_name;
+				add = true;
+			}
+
+			if (rex_image.match(file_name, 0, out mi)) {
+				deb_image = file_name;
+				add = true;
+				// linux-headers-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb
+				var p = file_name.split("_");
+				if (p[0]!="") kname = p[0];
+				if (p[1]!="") kver = p[1];
+			}
+
+			if (rex_image_extra.match(file_name, 0, out mi)) {
+				deb_image_extra = file_name;
+				add = true;
+			}
+
+			if (rex_modules.match(file_name, 0, out mi)) {
+				deb_modules = file_name;
+				add = true;
+			}
+
+			if (add) deb_url_list[file_name] = file_uri;
+
 		}
 		if (deb_image.length<1 || deb_url_list.size<1) mark_invalid();
 		return true;

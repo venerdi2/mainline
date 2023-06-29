@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# notify-send.sh - replacement for notify-send with more features
+# notify-send.sh - replacement for notify-send
 # Copyright (C) 2015-2023 notify-send.sh authors (see AUTHORS file)
 # https://github.com/bkw777/notify-send.sh
 
