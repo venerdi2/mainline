@@ -1,6 +1,8 @@
 # Mainline Kernels
 A tool for installing [Ubuntu Mainline Kernel Builds](https://wiki.ubuntu.com/Kernel/MainlineBuilds) onto debian-based distributions.
 
+![Main window screenshot](6.4_boot_hang_note.jpg)
+
 ![Main window screenshot](main_window.png)
 
 Sort by the Lock column to collect all the locked kernels together
