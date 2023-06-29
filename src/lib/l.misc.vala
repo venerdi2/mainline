@@ -12,15 +12,10 @@ namespace l.misc {
 	public bool ask(string prompt = "\n"+_("Continue? (y/N): "), bool def = false) {
 		if (App.yes) return true;
 		vprint(prompt,0,stdout,false);
-		var l = stdin.read_line().strip();
-		var c = l[0];
-		switch (c) {
-			case 'y':
-			case 'Y': return true;
-			case 'n':
-			case 'N': return false;
-			default: return def;
-		}
+		var a = stdin.read_line().strip().down();
+		if (a.has_prefix(_("y"))) return true;
+		if (a.has_prefix(_("n"))) return false;
+		return def;
 	}
 
 	public void vprint(string s,int v=1,FileStream f=stdout,bool n=true) {

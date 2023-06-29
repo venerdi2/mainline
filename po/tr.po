@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:18-0400\n"
+"POT-Creation-Date: 2023-06-28 20:41-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -683,3 +683,11 @@ msgstr "İptal Et"
 #: src/Gtk/TerminalWindow.vala:153
 msgid "Close"
 msgstr "Kapat"
+
+#: src/lib/l.misc.vala:16
+msgid "y"
+msgstr ""
+
+#: src/lib/l.misc.vala:17
+msgid "n"
+msgstr ""

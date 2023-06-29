@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:18-0400\n"
+"POT-Creation-Date: 2023-06-28 20:41-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -683,3 +683,11 @@ msgstr "Cancelar"
 #: src/Gtk/TerminalWindow.vala:153
 msgid "Close"
 msgstr "Cerrar"
+
+#: src/lib/l.misc.vala:16
+msgid "y"
+msgstr ""
+
+#: src/lib/l.misc.vala:17
+msgid "n"
+msgstr ""

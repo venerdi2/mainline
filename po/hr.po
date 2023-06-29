@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:18-0400\n"
+"POT-Creation-Date: 2023-06-28 20:41-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -682,3 +682,11 @@ msgstr "Odustani"
 #: src/Gtk/TerminalWindow.vala:153
 msgid "Close"
 msgstr "Zatvori"
+
+#: src/lib/l.misc.vala:16
+msgid "y"
+msgstr ""
+
+#: src/lib/l.misc.vala:17
+msgid "n"
+msgstr ""

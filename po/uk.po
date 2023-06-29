@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:18-0400\n"
+"POT-Creation-Date: 2023-06-28 20:41-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -695,3 +695,11 @@ msgstr "Відміна"
 #: src/Gtk/TerminalWindow.vala:153
 msgid "Close"
 msgstr "Закрити"
+
+#: src/lib/l.misc.vala:16
+msgid "y"
+msgstr ""
+
+#: src/lib/l.misc.vala:17
+msgid "n"
+msgstr ""
