@@ -1,6 +1,6 @@
-// REMOVE this file after bionic no longer supported
+// Remove this file after bionic no longer supported.
 // These are not as bulletproof as Json.get_*_member_with_default(),
-// but those don't exist before json-glib-1.0 1.6
+// but those don't exist before json-glib 1.6
 using Json;
 
 namespace l.json {

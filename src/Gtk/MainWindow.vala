@@ -332,7 +332,7 @@ public class MainWindow : Window {
 		button.clicked.connect(() => {
 			string uri = App.ppa_uri;
 			if (selected_kernels.size==1 && selected_kernels[0].is_mainline) uri=selected_kernels[0].page_uri;
-			uri_open(uri);
+			if (!uri_open(uri)) AppGtk.alert(this,_("Unable to launch")+" "+uri,Gtk.MessageType.ERROR);
 		});
 
 		// uninstall-old
@@ -541,4 +541,5 @@ public class MainWindow : Window {
 		term.cmd_complete.connect(update_cache);
 		term.execute_cmd(argv);
 	}
+
 }

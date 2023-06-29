@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:41-0400\n"
+"POT-Creation-Date: 2023-06-29 07:58-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -196,7 +196,7 @@ msgstr ""
 msgid "The following kernels will be uninstalled"
 msgstr "De volgende kernels worden verwijderd"
 
-#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:12
+#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 #, fuzzy
 msgid "Continue? (y/N): "
 msgstr "Wilt u doorgaan?"
@@ -452,6 +452,10 @@ msgstr "Deïnstalleren"
 msgid "Changelog, build status, etc"
 msgstr ""
 
+#: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
+msgid "Unable to launch"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
 msgstr "Verwijder Oude"
@@ -684,10 +688,10 @@ msgstr "Annuleren"
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr ""
 
-#: src/lib/l.misc.vala:17
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr ""

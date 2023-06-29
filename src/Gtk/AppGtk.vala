@@ -96,4 +96,15 @@ public class AppGtk : GLib.Object {
 
 		return true;
 	}
+
+	public static void alert(Gtk.Window win, string msg, Gtk.MessageType type = Gtk.MessageType.INFO) {
+		var dlg = new Gtk.MessageDialog(win,
+			Gtk.DialogFlags.MODAL,
+			type,
+			Gtk.ButtonsType.OK,
+			msg);
+		dlg.response.connect(() => { dlg.destroy(); });
+		dlg.show();
+	}
+
 }

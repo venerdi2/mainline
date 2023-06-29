@@ -1,5 +1,3 @@
-// misc lib
-
 namespace l.misc {
 
 	public void set_locale() {

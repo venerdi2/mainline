@@ -1,9 +1,11 @@
 using l.misc;
 
 namespace l.exec {
-	public void uri_open(string s) {
+	public bool uri_open(string s) {
+		bool r = true;
 		try { AppInfo.launch_default_for_uri(s,null); }
-		catch (Error e) { warning("Unable to launch %s",s); }
+		catch (Error e) { r = false; vprint(_("Unable to launch")+" "+s,1,stderr); }
+		return r;
 	}
 
 	// blocking exec

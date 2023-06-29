@@ -133,7 +133,7 @@ public class TerminalWindow : Gtk.Window {
 			term.get_cursor_position(out output_end_col, out output_end_row);
 			string? buf = term.get_text_range(0, 0, output_end_row, -1, null, null);
 			clipboard.set_text(buf,-1);
-			alert("copied "+output_end_row.to_string()+" lines to clipboard");
+			AppGtk.alert(this, "copied "+output_end_row.to_string()+" lines to clipboard");
 		});
 		btn_copy.set_tooltip_text(_("Copies the entire output buffer, including scrollback, to the clipboard."));
 		hbox.pack_start(btn_copy, true, true, 0);
@@ -182,23 +182,6 @@ public class TerminalWindow : Gtk.Window {
 
 	}
 
-	// Display a message both on the console and in a popup.
-	// For error: write to stderr, if verbose>0, close the terminal along with the popup
-	// For not-error: write to stdout, if verbose>3, do not close the terminal
-	void alert(string msg, Gtk.MessageType type = Gtk.MessageType.INFO) {
-		var dlg = new Gtk.MessageDialog(this,
-			Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
-			type,
-			Gtk.ButtonsType.OK,
-			msg);
-		dlg.response.connect(() => { dlg.destroy(); });
-		if (type==Gtk.MessageType.ERROR) {
-			vprint(msg,1,stderr);
-			dlg.destroy.connect(() => { destroy(); });
-		} else vprint(msg,3);
-		dlg.show();
-	}
-
 	public void inc_font_scale() {
 		term.font_scale = (term.font_scale + FONT_SCALE_STEP).clamp(FONT_SCALE_MIN, FONT_SCALE_MAX);
 	}
@@ -211,7 +194,7 @@ public class TerminalWindow : Gtk.Window {
 		vprint("child_pid="+p.to_string(),4);
 		if (p>1) { child_pid = p; t.watch_child(p); }
 		else child_has_exited(e.code);
-		if (e!=null) alert(e.message,Gtk.MessageType.ERROR);
+		if (e!=null) term.feed((uint8[])e.message);
 	}
 
 	public void execute_cmd(string[] argv) {

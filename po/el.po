@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:41-0400\n"
+"POT-Creation-Date: 2023-06-29 07:58-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -196,7 +196,7 @@ msgstr ""
 msgid "The following kernels will be uninstalled"
 msgstr "Θα καταργηθεί η εγκατάσταση των ακόλουθων πυρήνων"
 
-#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:12
+#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 #, fuzzy
 msgid "Continue? (y/N): "
 msgstr "Συνέχεια;"
@@ -453,6 +453,10 @@ msgstr "Απεγκατάσταση"
 msgid "Changelog, build status, etc"
 msgstr ""
 
+#: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
+msgid "Unable to launch"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
 msgstr "Απεγκατάσταση παλαιών"
@@ -685,10 +689,10 @@ msgstr "Άκυρο"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr ""
 
-#: src/lib/l.misc.vala:17
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr ""

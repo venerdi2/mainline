@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.3.22\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:45-0400\n"
+"POT-Creation-Date: 2023-06-29 07:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,7 +190,7 @@ msgstr ""
 msgid "The following kernels will be uninstalled"
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:12
+#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
 msgstr ""
 
@@ -431,6 +431,10 @@ msgstr ""
 msgid "Changelog, build status, etc"
 msgstr ""
 
+#: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
+msgid "Unable to launch"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
 msgstr ""
@@ -658,10 +662,10 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr ""
 
-#: src/lib/l.misc.vala:17
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr ""
