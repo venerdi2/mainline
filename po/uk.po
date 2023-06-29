@@ -433,7 +433,7 @@ msgstr "Журнал змін, статус збірки тощо"
 
 #: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
 msgid "Unable to launch"
-msgstr ""
+msgstr "Неможливо запустити"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
@@ -702,8 +702,8 @@ msgstr "Закрити"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "так"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "ні"
