@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-29 08:10-0400\n"
-"PO-Revision-Date: 2023-06-29 07:19+0200\n"
+"PO-Revision-Date: 2023-06-29 14:57+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -433,7 +433,7 @@ msgstr "Dziennik zmian, status kompilacji itd."
 
 #: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
 msgid "Unable to launch"
-msgstr ""
+msgstr "Nie można uruchomić"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
