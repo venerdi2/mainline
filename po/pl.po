@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 20:45-0400\n"
+"POT-Creation-Date: 2023-06-29 08:10-0400\n"
 "PO-Revision-Date: 2023-06-29 07:19+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -185,7 +185,7 @@ msgstr "gotowe"
 msgid "The following kernels will be uninstalled"
 msgstr "Następujące jądra zostaną odinstalowane"
 
-#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:12
+#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
 msgstr "Kontynuować? (t/N): "
 
@@ -430,6 +430,10 @@ msgstr "Odinstaluj"
 #: src/Gtk/MainWindow.vala:330
 msgid "Changelog, build status, etc"
 msgstr "Dziennik zmian, status kompilacji itd."
+
+#: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
+msgid "Unable to launch"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
@@ -695,10 +699,10 @@ msgstr "Anuluj"
 msgid "Close"
 msgstr "Zamknij"
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr "t"
 
-#: src/lib/l.misc.vala:17
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr "n"
