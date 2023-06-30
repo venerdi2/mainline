@@ -188,7 +188,7 @@ msgstr "Наступні ядра будуть видалені"
 
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
-msgstr "Продовжити? (так/Ні): "
+msgstr "Продовжити? (т/Н): "
 
 #: src/Common/LinuxKernel.vala:1115
 msgid "No updates"
@@ -197,7 +197,7 @@ msgstr "Немає оновлень"
 #: src/Common/LinuxKernel.vala:1117
 #, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Встановити Ядро Версії %s ? (так/Ні): "
+msgstr "Встановити Ядро Версії %s ? (т/Н): "
 
 #: src/Common/Main.vala:198
 msgid "Missing Thread support in Glib."
@@ -702,8 +702,8 @@ msgstr "Закрити"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr "так"
+msgstr "т"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr "ні"
+msgstr "н"
