@@ -200,7 +200,6 @@ msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Встановити Ядро Версії %s ? (т/Н): "
 
 #: src/Common/Main.vala:198
-#, fuzzy
 msgid "Missing Thread support in GLib."
 msgstr "Відсутня підтримка Thread у Glib."
 
@@ -328,7 +327,6 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Один або кілька рядків версій, взятих із результату --list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
