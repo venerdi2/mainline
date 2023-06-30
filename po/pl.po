@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-30 05:19-0400\n"
-"PO-Revision-Date: 2023-06-29 14:57+0200\n"
+"PO-Revision-Date: 2023-06-30 20:07+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -199,9 +199,8 @@ msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Zainstalować wersję jądra %s? (t/N): "
 
 #: src/Common/Main.vala:198
-#, fuzzy
 msgid "Missing Thread support in GLib."
-msgstr "Brak obsługi wątków w Glib."
+msgstr "Brak obsługi wątków w GLib."
 
 #: src/Common/Main.vala:291
 msgid "Wrote config file"
@@ -328,7 +327,6 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Jeden lub więcej ciągów wersji pobranych z danych wyjściowych --list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
