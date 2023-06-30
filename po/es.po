@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 07:58-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -59,17 +59,16 @@ msgstr "Encontrado instalado"
 
 #: src/Common/LinuxKernel.vala:421
 msgid "locked"
-msgstr ""
+msgstr "bloqueado"
 
 #: src/Common/LinuxKernel.vala:422
-#, fuzzy
 msgid "running"
 msgstr "En ejecución"
 
 #: src/Common/LinuxKernel.vala:459 src/Common/LinuxKernel.vala:998
 #: src/Common/LinuxKernel.vala:1080
 msgid "is locked."
-msgstr ""
+msgstr "está bloqueado"
 
 #: src/Common/LinuxKernel.vala:677 src/Gtk/MainWindow.vala:472
 msgid "Running"
@@ -96,9 +95,8 @@ msgid "File not found"
 msgstr "No se encontró el archivo"
 
 #: src/Common/LinuxKernel.vala:824
-#, fuzzy
 msgid "needs update"
-msgstr "Última actualización"
+msgstr "necesita actualización"
 
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
@@ -109,14 +107,12 @@ msgid "Kernel"
 msgstr "Núcleo"
 
 #: src/Common/LinuxKernel.vala:915
-#, fuzzy
 msgid "not found"
-msgstr "No se encontró el archivo"
+msgstr "no encontrado"
 
 #: src/Common/LinuxKernel.vala:922
-#, fuzzy
 msgid "Download: no downloadable kernels specified"
-msgstr "Coomand no especificado"
+msgstr "Descargar: no se especifican núcleos descargables"
 
 #: src/Common/LinuxKernel.vala:941
 msgid "enabled"
@@ -128,17 +124,15 @@ msgstr "Descargar"
 
 #: src/Common/LinuxKernel.vala:976
 msgid "Cached"
-msgstr ""
+msgstr "En caché"
 
 #: src/Common/LinuxKernel.vala:984
-#, fuzzy
 msgid "Installing selected kernels"
-msgstr "Desinstalación de kernels seleccionados"
+msgstr "Instalando de kernels seleccionados"
 
 #: src/Common/LinuxKernel.vala:990 src/Common/LinuxKernel.vala:1027
-#, fuzzy
 msgid "Requested"
-msgstr "solicitado"
+msgstr "Solicitado"
 
 #: src/Common/LinuxKernel.vala:993
 msgid "is already installed."
@@ -146,25 +140,23 @@ msgstr "ya está instalado."
 
 #: src/Common/LinuxKernel.vala:1003
 msgid "download failed."
-msgstr ""
+msgstr "descarga falló."
 
 #: src/Common/LinuxKernel.vala:1010 src/Gtk/MainWindow.vala:498
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Coomand no especificado"
+msgstr "Instalar: no se especifican núcleos instalables"
 
 #: src/Common/LinuxKernel.vala:1023
 msgid "Uninstalling selected kernels"
 msgstr "Desinstalación de kernels seleccionados"
 
 #: src/Common/LinuxKernel.vala:1030
-#, fuzzy
 msgid "Not uninstalling the currently running kernel"
 msgstr "No desinstalará el kernel que se está ejecutando actualmente"
 
 #: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:494
 msgid "is locked"
-msgstr ""
+msgstr "está bloqueado"
 
 #: src/Common/LinuxKernel.vala:1043
 msgid "found"
@@ -172,60 +164,56 @@ msgstr "fundar"
 
 #: src/Common/LinuxKernel.vala:1047
 msgid "Uninstall: no uninstallable packages found"
-msgstr ""
+msgstr "Desinstalar: no se encontraron paquetes desinstalables"
 
 #: src/Common/LinuxKernel.vala:1076
-#, fuzzy
 msgid "is the highest installed version."
-msgstr "Desinstale todas las versiones instaladas excepto la más alta"
+msgstr "es la versión instalada más alta."
 
 #: src/Common/LinuxKernel.vala:1088
 msgid "Could not find running kernel in list"
 msgstr "No se pudo encontrar el kernel en ejecución en la lista"
 
 #: src/Common/LinuxKernel.vala:1093
-#, fuzzy
 msgid "No old kernels to uninstall"
 msgstr "No se pudo encontrar ningún kernel para desinstalar"
 
 #: src/Common/LinuxKernel.vala:1094
 msgid "done"
-msgstr ""
+msgstr "terminado"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "The following kernels will be uninstalled"
 msgstr "Se desinstalarán los siguientes kernels"
 
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
-#, fuzzy
 msgid "Continue? (y/N): "
-msgstr "¿Continuar?"
+msgstr "¿Continuar? (t/N): "
 
 #: src/Common/LinuxKernel.vala:1115
-#, fuzzy
 msgid "No updates"
-msgstr "No se encontró ninguna actualización"
+msgstr "Sin actualizaciones"
 
 #: src/Common/LinuxKernel.vala:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Instalar la versión del kernel %s? (s/n): "
+msgstr "Instalar la versión del kernel %s ? (t/N): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
-msgstr ""
+msgid "Missing Thread support in GLib."
+msgstr "Falta soporte de subprocesos en GLib."
 
 #: src/Common/Main.vala:291
 msgid "Wrote config file"
-msgstr ""
+msgstr "Escribió el archivo de configuración"
 
 #: src/Common/Main.vala:310
 msgid "No config file"
-msgstr ""
+msgstr "Sin archivo de configuración"
 
 #: src/Common/Main.vala:377
 msgid "Loaded config file"
-msgstr ""
+msgstr "Archivo de configuración cargado"
 
 #: src/Common/Main.vala:397
 msgid "Called from"
@@ -252,7 +240,7 @@ msgstr "No se puede llegar al sitio"
 
 #: src/Console/AppConsole.vala:29
 msgid "install kernel packages from kernel.ubuntu.com"
-msgstr ""
+msgstr "instalar paquetes de kernel desde kernel.ubuntu.com"
 
 #: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
@@ -267,35 +255,30 @@ msgid "Check for kernel updates"
 msgstr "Buscar actualizaciones del núcleo"
 
 #: src/Console/AppConsole.vala:36
-#, fuzzy
 msgid "Check for kernel updates and send a desktop notification"
 msgstr "Compruebe las actualizaciones del kernel y notifique al usuario actual"
 
 #: src/Console/AppConsole.vala:37
-#, fuzzy
 msgid "List available kernels"
-msgstr "Mostrar todos los núcleos troncales disponibles"
+msgstr "Enumere los kernels disponibles"
 
 #: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
-msgstr "Mostrar kernels disponibles"
+msgstr "Enumere los núcleos instalados"
 
 #: src/Console/AppConsole.vala:39
 msgid "Install latest mainline kernel"
 msgstr "Instalar kernel troncal especificado"
 
 #: src/Console/AppConsole.vala:40
-#, fuzzy
 msgid "Install latest point update in the current major version"
 msgstr "Instalar la actualización de punto más reciente para la serie actual"
 
 #: src/Console/AppConsole.vala:41
-#, fuzzy
 msgid "Install specified kernels"
-msgstr "Desinstalar el kernel especificado"
+msgstr "Instalar kernels especificados"
 
 #: src/Console/AppConsole.vala:42
-#, fuzzy
 msgid "Uninstall specified kernels"
 msgstr "Desinstalar el kernel especificado"
 
@@ -313,7 +296,7 @@ msgstr "Eliminar información almacenada en caché sobre los kernels disponibles
 
 #: src/Console/AppConsole.vala:46
 msgid "This help"
-msgstr ""
+msgstr "Esta ayuda"
 
 #: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
@@ -329,7 +312,7 @@ msgstr "Excluir versiones inestables y RC"
 
 #: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
-msgstr ""
+msgstr "Verbosidad. Establézcalo en n si se da, o incremente."
 
 #: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
@@ -337,23 +320,26 @@ msgstr "Asumir Sí para todas las solicitudes (modo no interactivo)"
 
 #: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
-msgstr ""
+msgstr "Pausa para pulsación de tecla antes de salir (para terminal externo)"
 
 #: src/Console/AppConsole.vala:57
-#, fuzzy
 msgid "One or more version strings taken from the output of --list"
 msgstr "Una cadena de versión tomada de la salida de --list"
 
 #: src/Console/AppConsole.vala:58
+#, fuzzy
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
+"coma, tubo, dos puntos o espacio separados. (el espacio requiere comillas o "
+"barras invertidas)"
 
 #: src/Console/AppConsole.vala:59
-#, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "El kernel que se está ejecutando actualmente siempre será ignorado"
+msgstr ""
+"Los núcleos bloqueados y el núcleo que se está ejecutando actualmente se "
+"ignoran"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
@@ -361,16 +347,15 @@ msgstr "Opción desconocida"
 
 #: src/Console/AppConsole.vala:199
 msgid "Deleted"
-msgstr ""
+msgstr "Eliminado"
 
 #: src/Console/AppConsole.vala:200
 msgid "Error deleting"
-msgstr ""
+msgstr "Error al eliminar"
 
 #: src/Console/AppConsole.vala:214
-#, fuzzy
 msgid "Unknown command"
-msgstr "Opción desconocida"
+msgstr "Comando desconocido"
 
 #: src/Console/AppConsole.vala:225
 msgid "Latest update"
@@ -387,21 +372,19 @@ msgstr "No se encontró ninguna actualización"
 #: src/Console/AppConsole.vala:234
 #, fuzzy
 msgid "Notifications disabled"
-msgstr "Las notificaciones están deshabilitadas"
+msgstr "Notificaciones deshabilitadas"
 
 #: src/Console/AppConsole.vala:239
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: src/Console/AppConsole.vala:254
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Notificar si hay una versión puntual disponible"
+msgstr "notificar lanzamientos menores deshabilitado"
 
 #: src/Console/AppConsole.vala:262
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Notificar si hay una versión importante disponible"
+msgstr "notificar lanzamientos principales deshabilitado"
 
 #: src/Console/AppConsole.vala:267
 #, c-format
@@ -450,11 +433,11 @@ msgstr "Desinstalar"
 
 #: src/Gtk/MainWindow.vala:330
 msgid "Changelog, build status, etc"
-msgstr ""
+msgstr "Registro de cambios, estado de construcción, etc."
 
 #: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
 msgid "Unable to launch"
-msgstr ""
+msgstr "Incapaz de lanzar"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
@@ -466,7 +449,7 @@ msgstr "Recargar"
 
 #: src/Gtk/MainWindow.vala:346
 msgid "Delete and reload all cached kernel info"
-msgstr ""
+msgstr "Elimine y vuelva a cargar toda la información del kernel en caché"
 
 #: src/Gtk/MainWindow.vala:351
 msgid "Settings"
@@ -485,17 +468,18 @@ msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
+"Una herramienta para instalar paquetes de kernel\n"
+"desde Ubuntu Mainline Kernels PPA"
 
 #: src/Gtk/MainWindow.vala:415
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: src/Gtk/MainWindow.vala:416
 msgid "Forked"
-msgstr ""
+msgstr "bifurcado"
 
 #: src/Gtk/MainWindow.vala:434
-#, fuzzy
 msgid "Updating kernels"
 msgstr "Actualización de kernels"
 
@@ -504,13 +488,12 @@ msgid "available"
 msgstr "disponibles"
 
 #: src/Gtk/MainWindow.vala:493
-#, fuzzy
 msgid "is already installed"
 msgstr "ya está instalado."
 
 #: src/Gtk/MainWindow.vala:495
 msgid "adding"
-msgstr ""
+msgstr "agregando"
 
 #: src/Gtk/SettingsDialog.vala:43
 msgid "Notification"
@@ -558,7 +541,7 @@ msgstr "Ocultar versiones inestables y RC"
 
 #: src/Gtk/SettingsDialog.vala:113
 msgid "Hide failed or incomplete builds"
-msgstr ""
+msgstr "Ocultar compilaciones fallidas o incompletas"
 
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
@@ -566,6 +549,9 @@ msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
+"Si existe una versión del kernel en el sitio mainline-ppa, pero es una "
+"compilación incompleta o fallida para su arquitectura (%s), no la muestre en "
+"la lista."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -588,7 +574,6 @@ msgid "Max concurrent downloads"
 msgstr "Descargas máximas de la competencia"
 
 #: src/Gtk/SettingsDialog.vala:175
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Verificar sumas de comprobación con los archivos CHECKSUMS"
 
@@ -597,11 +582,12 @@ msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
+"Utilice los hash sha-256 desde archivo CHECKSUMS para verificar las "
+"descargas del archivo .deb."
 
 #: src/Gtk/SettingsDialog.vala:182
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Descargar"
+msgstr "Mantener Descargas"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
@@ -611,15 +597,21 @@ msgid ""
 "They are still deleted once they become older than the \"Show previous major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"Conserve los archivos .deb descargados después de la instalación y "
+"reutilícelos para desinstalarlos/reinstalarlos en lugar de volver a "
+"descargarlos.\n"
+"\n"
+"Todavía se eliminan una vez que se vuelven más antiguos que la configuración "
+"\"Mostrar versiones principales anteriores\", o si se han actualizado en el "
+"sitio de la línea principal-ppa."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
 msgstr "Proxy"
 
 #: src/Gtk/SettingsDialog.vala:222
-#, fuzzy
 msgid "External Commands"
-msgstr "Comandos"
+msgstr "Comandos Externos"
 
 #: src/Gtk/SettingsDialog.vala:249
 #, c-format
@@ -630,20 +622,28 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
+"Comando usado para ejecutar dpkg con permisos de root.\n"
+"\n"
+"Si la sintaxis de la línea de comando de los programas de autenticación "
+"requiere que el comando de ejecución se incluya entre comillas en lugar de "
+"simplemente agregarlo al final de la línea de comando, puede incluir un solo "
+"%s en la cadena y se reemplazará con el comando dpkg; de lo contrario , se "
+"agregará al final.\n"
+"Vea \"su -c\" en la lista desplegable para ver un ejemplo de eso."
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
-msgstr ""
+msgstr "Comando de terminal utilizado para ejecutar"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "will result in"
-msgstr ""
+msgstr "resultará en"
 
 #: src/Gtk/SettingsDialog.vala:282
 #, c-format
@@ -666,19 +666,39 @@ msgid ""
 "\n"
 "Edit the command to customize the appearance of the terminal."
 msgstr ""
+"Si la sintaxis de la línea de comandos de los programas de terminal requiere "
+"que el comando execute estar entre comillas en lugar de simplemente anexarse "
+"al final del comando línea, puede incluir un solo %s en la cadena, y será "
+"reemplazado con el comando install, de lo contrario se anexará al final.\n"
+"Ver mate-terminal en la lista desplegable para un ejemplo de eso.\n"
+"\n"
+"Puede escribir cualquier línea de comandos que desee, pero el programa "
+"especificado debe permaneceren primer plano y bloquear mientras se ejecuta "
+"el comando, no bifurcar y Devolver inmediatamente.\n"
+"La mayoría de los programas de terminal funcionan bien por defecto, pero "
+"algunos requieren especial Indicadores de línea de comandos, y algunos no se "
+"pueden usar en absoluto.\n"
+"\n"
+"Ejemplos:\n"
+"Se puede hacer que gnome-terminal se bloquee usando su opción --wait.\n"
+"No se puede hacer que el terminal xfce4 se bloquee.\n"
+"\n"
+"Edite el comando para personalizar la apariencia del terminal."
 
 #: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
-msgstr ""
+msgstr "Terminado"
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
 #: src/Gtk/TerminalWindow.vala:138
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
 msgstr ""
+"Copia todo el búfer de salida, incluido el desplazamiento hacia atrás, al "
+"portapapeles."
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Cancel"
@@ -690,8 +710,8 @@ msgstr "Cerrar"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "t"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "n"

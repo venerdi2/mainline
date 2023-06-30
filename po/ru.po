@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 07:58-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2023-06-28 00:07+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -188,7 +188,7 @@ msgstr "Следующие ядра будут удалены"
 
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
-msgstr "Продолжить? (y/N): "
+msgstr "Продолжить? (д/Н): "
 
 #: src/Common/LinuxKernel.vala:1115
 msgid "No updates"
@@ -197,11 +197,11 @@ msgstr "Нет обнолений"
 #: src/Common/LinuxKernel.vala:1117
 #, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Установить версию ядра %s ? (y/N): "
+msgstr "Установить версию ядра %s ? (д/Н): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
-msgstr "Отсутствие поддержки потоков в Glib."
+msgid "Missing Thread support in GLib."
+msgstr "Отсутствие поддержки потоков в GLib."
 
 #: src/Common/Main.vala:291
 msgid "Wrote config file"
@@ -326,8 +326,9 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Одна или несколько строк версии, взятых из вывода --list"
 
 #: src/Console/AppConsole.vala:58
+#, fuzzy
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
 "через запятую, трубку, двоеточие или пробел. (пробел требует кавычек или "
@@ -432,7 +433,7 @@ msgstr "Список изменений, статус сборки и т.д"
 
 #: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
 msgid "Unable to launch"
-msgstr ""
+msgstr "Невозможно запустить"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
@@ -615,7 +616,7 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
 "Команда, используемая для запуска dpkg с правами root.\n"
 "\n"
@@ -623,7 +624,7 @@ msgstr ""
 "была заключена в кавычки, а не просто добавлена в конец командной строки, вы "
 "можете включить в строку %s, и он будет заменен командой dpkg, в противном "
 "случае он будет добавлен в конец.\n"
-"Пример этого см. в выпадающем списке \"su -c\".\n"
+"Пример этого см. в выпадающем списке \"su -c\"."
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
@@ -700,8 +701,8 @@ msgstr "Закрыть"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "д"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "н"

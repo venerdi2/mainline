@@ -55,7 +55,7 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
-		+ "    " +_("comma, pipe, colon, or space seperated. (space requires quotes or backslashes)") + "\n"
+		+ "    " +_("comma, pipe, colon, or space separated. (space requires quotes or backslashes)") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
 

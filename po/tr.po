@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 07:58-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -59,7 +59,7 @@ msgstr "Yüklü bulundu"
 
 #: src/Common/LinuxKernel.vala:421
 msgid "locked"
-msgstr ""
+msgstr "kilitli"
 
 #: src/Common/LinuxKernel.vala:422
 #, fuzzy
@@ -69,7 +69,7 @@ msgstr "Çalışıyor"
 #: src/Common/LinuxKernel.vala:459 src/Common/LinuxKernel.vala:998
 #: src/Common/LinuxKernel.vala:1080
 msgid "is locked."
-msgstr ""
+msgstr "kilitli"
 
 #: src/Common/LinuxKernel.vala:677 src/Gtk/MainWindow.vala:472
 msgid "Running"
@@ -128,7 +128,7 @@ msgstr "Indiriyor"
 
 #: src/Common/LinuxKernel.vala:976
 msgid "Cached"
-msgstr ""
+msgstr "Önbelleğe alındı"
 
 #: src/Common/LinuxKernel.vala:984
 #, fuzzy
@@ -199,7 +199,7 @@ msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 #, fuzzy
 msgid "Continue? (y/N): "
-msgstr "Devam edilsin mi?"
+msgstr "Devam et? (e/H): "
 
 #: src/Common/LinuxKernel.vala:1115
 #, fuzzy
@@ -209,10 +209,10 @@ msgstr "Güncelleme bulunamadı"
 #: src/Common/LinuxKernel.vala:1117
 #, fuzzy, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/h): "
+msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/H): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
+msgid "Missing Thread support in GLib."
 msgstr ""
 
 #: src/Common/Main.vala:291
@@ -312,7 +312,7 @@ msgstr "Kullanılabilir çekirdekler hakkında önbelleğe alınmış bilgileri 
 
 #: src/Console/AppConsole.vala:46
 msgid "This help"
-msgstr ""
+msgstr "Bu yardım"
 
 #: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
@@ -328,7 +328,7 @@ msgstr "Kararsız ve RC sürümlerini hariç tutma"
 
 #: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
-msgstr ""
+msgstr "Ayrıntı düzeyini n olarak ayarlayın veya 1 artırın."
 
 #: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
@@ -336,23 +336,24 @@ msgstr "Tüm istemler için Evet'i kabul edin (etkileşimsiz kip)"
 
 #: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
-msgstr ""
+msgstr "Çıkmadan önce tuşa basmak için duraklat (harici terminal için)"
 
 #: src/Console/AppConsole.vala:57
-#, fuzzy
 msgid "One or more version strings taken from the output of --list"
-msgstr "--list çıktısından alınan sürüm dizgesi"
+msgstr "--list çıktısından alınan bir veya daha fazla sürüm dizesi"
 
 #: src/Console/AppConsole.vala:58
+#, fuzzy
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
+"virgül, dikey çizgi, iki nokta üst üste veya boşlukla ayrılmış. (boşluklar "
+"tırnak veya ters eğik çizgi gerektirir)"
 
 #: src/Console/AppConsole.vala:59
-#, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "Şu anda çalışan çekirdek her zaman yoksayılır"
+msgstr "Kilitli çekirdekler ve şu anda çalışan çekirdek yoksayılır"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
@@ -360,11 +361,11 @@ msgstr "Bilinmeyen seçenek"
 
 #: src/Console/AppConsole.vala:199
 msgid "Deleted"
-msgstr ""
+msgstr "Silinmiş"
 
 #: src/Console/AppConsole.vala:200
 msgid "Error deleting"
-msgstr ""
+msgstr "Silinirken hata oluştu"
 
 #: src/Console/AppConsole.vala:214
 #, fuzzy
@@ -391,7 +392,7 @@ msgstr "Bildirimler devre dışı bırakılmış"
 
 #: src/Console/AppConsole.vala:239
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #: src/Console/AppConsole.vala:254
 #, fuzzy
@@ -434,7 +435,7 @@ msgstr "Tüm seçenekleri göster"
 
 #: src/Gtk/MainWindow.vala:162
 msgid "Lock"
-msgstr ""
+msgstr "Kilit"
 
 #: src/Gtk/MainWindow.vala:179
 msgid "Status"
@@ -485,17 +486,18 @@ msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
+"Çekirdek paketlerini yüklemek için bir araç\n"
+"Ubuntu Mainline Kernels PPA'sından"
 
 #: src/Gtk/MainWindow.vala:415
 msgid "Original"
-msgstr ""
+msgstr "orijinal"
 
 #: src/Gtk/MainWindow.vala:416
 msgid "Forked"
-msgstr ""
+msgstr "çatallı"
 
 #: src/Gtk/MainWindow.vala:434
-#, fuzzy
 msgid "Updating kernels"
 msgstr "Çekirdekleri güncelleme"
 
@@ -504,13 +506,12 @@ msgid "available"
 msgstr "mevcut"
 
 #: src/Gtk/MainWindow.vala:493
-#, fuzzy
 msgid "is already installed"
-msgstr "zaten yüklü."
+msgstr "zaten yüklü"
 
 #: src/Gtk/MainWindow.vala:495
 msgid "adding"
-msgstr ""
+msgstr "ekleme"
 
 #: src/Gtk/SettingsDialog.vala:43
 msgid "Notification"
@@ -558,7 +559,7 @@ msgstr "Kararsız ve RC sürümleri gizle"
 
 #: src/Gtk/SettingsDialog.vala:113
 msgid "Hide failed or incomplete builds"
-msgstr ""
+msgstr "Başarısız veya tamamlanmamış yapıları gizle"
 
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
@@ -566,6 +567,8 @@ msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
+"Mainline-ppa sitesinde bir çekirdek sürümü varsa, ancak mimariniz için "
+"tamamlanmamış veya başarısız bir derlemeyse (%s), listede göstermeyin."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -588,7 +591,6 @@ msgid "Max concurrent downloads"
 msgstr "Azami eşzamanlı indirme"
 
 #: src/Gtk/SettingsDialog.vala:175
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Sağlama toplamlarını CHECKSUMS dosyalarıyla doğrulama"
 
@@ -597,11 +599,12 @@ msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
+".deb dosyası indirmelerini doğrulamak için CHECKSUMS dosyasındaki sha-256 "
+"karmalarını kullanın."
 
 #: src/Gtk/SettingsDialog.vala:182
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Indiriyor"
+msgstr "İndirmeleri Sakla"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
@@ -617,9 +620,8 @@ msgid "Proxy"
 msgstr "Proxy"
 
 #: src/Gtk/SettingsDialog.vala:222
-#, fuzzy
 msgid "External Commands"
-msgstr "Komutlar"
+msgstr "Harici Komutlar"
 
 #: src/Gtk/SettingsDialog.vala:249
 #, c-format
@@ -630,20 +632,27 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
+"dpkg'yi root izinleriyle çalıştırmak için kullanılan komut.\n"
+"\n"
+"Auth programları komut satırı sözdizimi, yürütme komutunun yalnızca komut "
+"satırının sonuna eklenmesi yerine tırnak içine alınmasını gerektiriyorsa, "
+"dizeye tek bir %s ekleyebilirsiniz ve bu, dpkg komutuyla değiştirilir, aksi "
+"takdirde sonuna eklenir.\n"
+"Bunun bir örneği için açılır listedeki \"su -c\"ye bakın."
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
-msgstr ""
+msgstr "Çalıştırmak için kullanılan terminal komutu"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "Example"
-msgstr ""
+msgstr "Örnek"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "will result in"
-msgstr ""
+msgstr "sonuçlanacak"
 
 #: src/Gtk/SettingsDialog.vala:282
 #, c-format
@@ -666,19 +675,36 @@ msgid ""
 "\n"
 "Edit the command to customize the appearance of the terminal."
 msgstr ""
+"Terminal programları komut satırı sözdizimi execute komutunu gerektiriyorsa "
+"sadece komutun sonuna eklenmek yerine tırnak içine alınmalıdırsatırı, dizeye "
+"tek bir %s ekleyebilirsiniz ve değiştirilecektir install komutuyla, aksi "
+"takdirde sonuna eklenir.\n"
+"Bunun bir örneği için açılır listedeki mate-terminal'e bakın.\n"
+"\n"
+"İstediğiniz komut satırını yazabilirsiniz, ancak belirtilen program "
+"kalmalıdırkomut çalışırken ön planda ve blokta, çatal değil Hemen geri dön.\n"
+"Çoğu terminal programı varsayılan olarak iyi çalışır, ancak bazıları özel "
+"gerektirirkomut satırı bayrakları ve bazıları hiç kullanılamaz.\n"
+"\n"
+"Örnekler:\n"
+"gnome-terminal, --wait seçeneği kullanılarak bloke edilebilir hale "
+"getirilebilir.\n"
+"xfce4-terminal bloke etmek için yapılamaz.\n"
+"\n"
+"Terminalin görünümünü özelleştirmek için komutu düzenleyin."
 
 #: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
-msgstr ""
+msgstr "Kapat"
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
-msgstr ""
+msgstr "Kopyalamak"
 
 #: src/Gtk/TerminalWindow.vala:138
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr ""
+msgstr "Geri kaydırma dahil tüm çıktı arabelleğini panoya kopyalar."
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Cancel"
@@ -690,8 +716,8 @@ msgstr "Kapat"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "e"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "h"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 07:58-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -200,7 +200,8 @@ msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Встановити Ядро Версії %s ? (т/Н): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
+#, fuzzy
+msgid "Missing Thread support in GLib."
 msgstr "Відсутня підтримка Thread у Glib."
 
 #: src/Common/Main.vala:291
@@ -327,8 +328,9 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Один або кілька рядків версій, взятих із результату --list"
 
 #: src/Console/AppConsole.vala:58
+#, fuzzy
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
 "кома, вертикальна лінія, двокрапка або пробіл. (пробіл вимагає лапок або "
@@ -617,7 +619,7 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
 "Команда, яка використовується для запуску dpkg із правами root.\n"
 "\n"
@@ -625,7 +627,7 @@ msgstr ""
 "виконання була береться в лапки, а не просто додається в кінці командирядок, "
 "ви можете включити один %s у рядок, і він буде замінений за допомогою "
 "команди dpkg, інакше її буде додано в кінець.\n"
-"Див. \"su -c\" у розкривному списку для прикладу цього.\n"
+"Див. \"su -c\" у розкривному списку для прикладу цього."
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"

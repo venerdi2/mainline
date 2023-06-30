@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 07:58-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -199,7 +199,7 @@ msgstr "De volgende kernels worden verwijderd"
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 #, fuzzy
 msgid "Continue? (y/N): "
-msgstr "Wilt u doorgaan?"
+msgstr "Voortzetten? (j/N)"
 
 #: src/Common/LinuxKernel.vala:1115
 #, fuzzy
@@ -209,10 +209,10 @@ msgstr "Geen updates gevonden"
 #: src/Common/LinuxKernel.vala:1117
 #, fuzzy, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Wilt u versie %s installeren? (j/n): "
+msgstr "Wilt u versie %s installeren? (j/N): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
+msgid "Missing Thread support in GLib."
 msgstr ""
 
 #: src/Common/Main.vala:291
@@ -346,7 +346,7 @@ msgstr "Een versietekenreeks uit de uitvoer van --list"
 
 #: src/Console/AppConsole.vala:58
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
 
@@ -630,8 +630,16 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
+"Opdracht uitgevoerd om dpkg uit te voeren met rootrechten.\n"
+"\n"
+"Als de opdrachtregelsyntaxis van auth-programma's vereist dat de opdracht "
+"execute tussen aanhalingstekens wordt geplaatst in plaats van alleen aan het "
+"einde van de opdrachtregel te worden toegevoegd, kunt u een enkele %s in de "
+"tekenreeks opnemen en wordt deze vervangen door de opdracht dpkg, anders het "
+"wordt aan het einde toegevoegd.\n"
+"Zie \"su -c\" in de vervolgkeuzelijst voor een voorbeeld daarvan."
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
@@ -666,6 +674,25 @@ msgid ""
 "\n"
 "Edit the command to customize the appearance of the terminal."
 msgstr ""
+"Als de opdrachtregelsyntaxis van de terminalprogramma's de opdracht execute "
+"vereist: tussen aanhalingstekens worden geplaatst in plaats van alleen aan "
+"het einde van de opdracht te worden toegevoegdlijn, u kunt een enkele %s in "
+"de tekenreeks opnemen en deze wordt vervangenmet de opdracht installeren, "
+"anders wordt deze aan het einde toegevoegd.\n"
+"Zie mate-terminal in de vervolgkeuzelijst voor een voorbeeld daarvan.\n"
+"\n"
+"U kunt elke gewenste opdrachtregel schrijven, maar het opgegeven programma "
+"moet blijvenop de voorgrond en blok terwijl het commando loopt, niet fork en "
+"onmiddellijk terugkeren.\n"
+"De meeste terminalprogramma's werken standaard prima, maar sommige vereisen "
+"speciale command line vlaggen, en sommige zijn helemaal niet bruikbaar.\n"
+"\n"
+"Voorbeelden:\n"
+"gnome-terminal kan worden gemaakt om te blokkeren met behulp van de --wait "
+"optie.\n"
+"xfce4-terminal kan niet worden gemaakt om te blokkeren.\n"
+"\n"
+"Bewerk de opdracht om het uiterlijk van de terminal aan te passen."
 
 #: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
@@ -690,8 +717,8 @@ msgstr "Sluiten"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "j"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "n"

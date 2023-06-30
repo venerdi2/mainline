@@ -195,7 +195,7 @@ public class Main : GLib.Object {
 		get_env();
 		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
-		if (!Thread.supported()) { vprint(_("Missing Thread support in Glib."),1,stderr); exit(1); }
+		if (!Thread.supported()) { vprint(_("Missing Thread support in GLib."),1,stderr); exit(1); }
 		rnd = new Rand();
 		init_paths();
 		load_app_config();

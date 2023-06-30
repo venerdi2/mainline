@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 08:10-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2023-06-29 14:57+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -199,7 +199,8 @@ msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Zainstalować wersję jądra %s? (t/N): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
+#, fuzzy
+msgid "Missing Thread support in GLib."
 msgstr "Brak obsługi wątków w Glib."
 
 #: src/Common/Main.vala:291
@@ -327,8 +328,9 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Jeden lub więcej ciągów wersji pobranych z danych wyjściowych --list"
 
 #: src/Console/AppConsole.vala:58
+#, fuzzy
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
 "oddzielone przecinkiem, kreską pionową, dwukropkiem lub spacją. (spacja "
@@ -616,7 +618,7 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
 "Polecenie używane do uruchamiania dpkg z uprawnieniami roota.\n"
 "\n"
@@ -624,7 +626,7 @@ msgstr ""
 "polecenie wykonania było ujęte w cudzysłowy, a nie tylko dodawane na końcu "
 "wiersza poleceń, możesz umieścić pojedynczy %s w łańcuchu, a zostanie on "
 "zastąpiony poleceniem dpkg, w przeciwnym razie zostanie dołączony na końcu.\n"
-"Sprawdź „su -c” na rozwijanej liście, aby zobaczyć przykład.\n"
+"Sprawdź „su -c” na rozwijanej liście, aby zobaczyć przykład."
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"

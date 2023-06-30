@@ -249,7 +249,7 @@ public class SettingsDialog : Gtk.Dialog {
 			"Command used to run dpkg with root permissions.\n"
 			+ "\n"
 			+ "If the auth programs commandline syntax requires the execute command to be enclosed in quotes rather than merely appended to the end of the command line, you can include a single %s in the string, and it will be replaced with the dpkg command, otherwise it will be appended to the end.\n"
-			+ "See \"su -c\" in the drop down list for an example of that.\n"
+			+ "See \"su -c\" in the drop down list for an example of that."
 		));
 		vbox_main.add(cbt_auth_cmd);
 

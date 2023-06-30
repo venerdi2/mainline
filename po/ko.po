@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 07:58-0400\n"
+"POT-Creation-Date: 2023-06-30 05:19-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -199,7 +199,7 @@ msgstr "풀이"
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
 #, fuzzy
 msgid "Continue? (y/N): "
-msgstr "계속하시겠습니까?"
+msgstr "계속하시겠습니까? (예/아): "
 
 #: src/Common/LinuxKernel.vala:1115
 #, fuzzy
@@ -209,10 +209,10 @@ msgstr "업데이트를 찾을 수 없습니다"
 #: src/Common/LinuxKernel.vala:1117
 #, fuzzy, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "커널 %s 버전을 설치하시겠습니까? (y/n): "
+msgstr "커널 %s 버전을 설치하시겠습니까? (예/아): "
 
 #: src/Common/Main.vala:198
-msgid "Missing Thread support in Glib."
+msgid "Missing Thread support in GLib."
 msgstr ""
 
 #: src/Common/Main.vala:291
@@ -344,7 +344,7 @@ msgstr "--list 의 출력에서 가져온 버전 문자열"
 
 #: src/Console/AppConsole.vala:58
 msgid ""
-"comma, pipe, colon, or space seperated. (space requires quotes or "
+"comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
 msgstr ""
 
@@ -556,7 +556,7 @@ msgstr "목록에서 unstable, RC 버전 포함"
 
 #: src/Gtk/SettingsDialog.vala:113
 msgid "Hide failed or incomplete builds"
-msgstr ""
+msgstr "실패하거나 불완전한 빌드 숨기기"
 
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
@@ -564,6 +564,8 @@ msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
+"커널 버전이 mainline-ppa 사이트에 있지만 아키텍처(%s)에 대해 불완전하거나 실"
+"패한 빌드인 경우 목록에 표시하지 마십시오."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -586,7 +588,6 @@ msgid "Max concurrent downloads"
 msgstr "동시 다운로드 최대 수"
 
 #: src/Gtk/SettingsDialog.vala:175
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "CHECKSUMS 파일로 체크섬 확인"
 
@@ -595,11 +596,11 @@ msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
+"CHECKSUMS 파일에서 sha-256 해시를 사용하여 .deb 파일 다운로드를 확인하십시오."
 
 #: src/Gtk/SettingsDialog.vala:182
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "다운로드"
+msgstr "다운로드한 .deb 파일 유지"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
@@ -609,18 +610,22 @@ msgid ""
 "They are still deleted once they become older than the \"Show previous major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"설치 후 다운로드한 .deb 파일을 유지하고 다시 다운로드하는 대신 제거/재설치에 "
+"다시 사용하십시오.\n"
+"\n"
+"\"이전 주 버전 표시\" 설정보다 오래되었거나 mainline-ppa 사이트에서 업데이트"
+"된 경우 여전히 삭제됩니다."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
 msgstr "대리"
 
 #: src/Gtk/SettingsDialog.vala:222
-#, fuzzy
 msgid "External Commands"
-msgstr "명령어"
+msgstr "외부 명령"
 
 #: src/Gtk/SettingsDialog.vala:249
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Command used to run dpkg with root permissions.\n"
 "\n"
@@ -628,20 +633,26 @@ msgid ""
 "enclosed in quotes rather than merely appended to the end of the command "
 "line, you can include a single %s in the string, and it will be replaced "
 "with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that.\n"
+"See \"su -c\" in the drop down list for an example of that."
 msgstr ""
+"루트 권한으로 dpkg를 실행하는 데 사용되는 명령입니다.\n"
+"\n"
+"인증 프로그램 명령줄 구문에서 실행 명령을 단순히 명령줄 끝에 추가하는 대신 따"
+"옴표로 묶어야 하는 경우 문자열에 단일 %s를 포함할 수 있으며 dpkg 명령으로 대"
+"체됩니다. 그렇지 않으면 끝에 추가됩니다.\n"
+"예를 보려면 드롭다운 목록에서 \"su -c\"를 참조하세요.\n"
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
-msgstr ""
+msgstr "실행에 사용되는 터미널 명령"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "Example"
-msgstr ""
+msgstr "예"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "will result in"
-msgstr ""
+msgstr "결과는"
 
 #: src/Gtk/SettingsDialog.vala:282
 #, c-format
@@ -664,19 +675,34 @@ msgid ""
 "\n"
 "Edit the command to customize the appearance of the terminal."
 msgstr ""
+"터미널 프로그램 명령줄 구문에 execute 명령이 필요한 경우 명령 끝에 단순히 추"
+"가되는 것이 아니라 따옴표로 묶어야 합니다.line, 문자열에 단일 %s를 포함할 수 "
+"있으며 대체됩니다.install 명령을 사용하지 않으면 끝에 추가됩니다.\n"
+"예를 보려면 드롭다운 목록의 mate-terminal을 참조하십시오.\n"
+"\n"
+"원하는 명령 줄을 작성할 수 있지만 지정된 프로그램은 명령이 실행되는 동안 포그"
+"라운드에서 차단하고 포크 및 즉시 돌아오십시오.\n"
+"대부분의 터미널 프로그램은 기본적으로 잘 작동하지만 일부는 특별한 명령줄 플래"
+"그 및 일부는 전혀 사용할 수 없습니다.\n"
+"\n"
+"예:\n"
+"gnome-terminal은 --wait 옵션을 사용하여 차단할 수 있습니다.\n"
+"xfce4-terminal을 차단할 수 없습니다.\n"
+"\n"
+"명령을 편집하여 터미널의 모양을 사용자 정의하십시오."
 
 #: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
-msgstr ""
+msgstr "끝난"
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
-msgstr ""
+msgstr "복사"
 
 #: src/Gtk/TerminalWindow.vala:138
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr ""
+msgstr "스크롤백을 포함한 전체 출력 버퍼를 클립보드에 복사합니다."
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Cancel"
@@ -688,8 +714,8 @@ msgstr "닫기"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "예"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "아"
