@@ -59,21 +59,20 @@ msgstr "Hittade installerat"
 
 #: src/Common/LinuxKernel.vala:421
 msgid "locked"
-msgstr ""
+msgstr "låst"
 
 #: src/Common/LinuxKernel.vala:422
-#, fuzzy
 msgid "running"
-msgstr "Körs"
+msgstr "pågående"
 
 #: src/Common/LinuxKernel.vala:459 src/Common/LinuxKernel.vala:998
 #: src/Common/LinuxKernel.vala:1080
 msgid "is locked."
-msgstr ""
+msgstr "är låst."
 
 #: src/Common/LinuxKernel.vala:677 src/Gtk/MainWindow.vala:472
 msgid "Running"
-msgstr "Körs"
+msgstr "Pågående"
 
 #: src/Common/LinuxKernel.vala:678
 msgid "Installed"
@@ -96,9 +95,8 @@ msgid "File not found"
 msgstr "Filen kan inte hittas"
 
 #: src/Common/LinuxKernel.vala:824
-#, fuzzy
 msgid "needs update"
-msgstr "Senaste uppdatering"
+msgstr "behöver uppdateras"
 
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
@@ -109,14 +107,12 @@ msgid "Kernel"
 msgstr "Kärna"
 
 #: src/Common/LinuxKernel.vala:915
-#, fuzzy
 msgid "not found"
-msgstr "Filen kan inte hittas"
+msgstr "hittades inte"
 
 #: src/Common/LinuxKernel.vala:922
-#, fuzzy
 msgid "Download: no downloadable kernels specified"
-msgstr "Kommandot har inte angetts"
+msgstr "Ladda ner: inga nedladdningsbara kärnor har angetts"
 
 #: src/Common/LinuxKernel.vala:941
 msgid "enabled"
@@ -128,17 +124,15 @@ msgstr "Ladda ner"
 
 #: src/Common/LinuxKernel.vala:976
 msgid "Cached"
-msgstr ""
+msgstr "Cachad"
 
 #: src/Common/LinuxKernel.vala:984
-#, fuzzy
 msgid "Installing selected kernels"
-msgstr "Avinstallera valda kärnor"
+msgstr "Installerar valda kärnor"
 
 #: src/Common/LinuxKernel.vala:990 src/Common/LinuxKernel.vala:1027
-#, fuzzy
 msgid "Requested"
-msgstr "begärd"
+msgstr "Begärda"
 
 #: src/Common/LinuxKernel.vala:993
 msgid "is already installed."
@@ -146,25 +140,23 @@ msgstr "är redan installerat."
 
 #: src/Common/LinuxKernel.vala:1003
 msgid "download failed."
-msgstr ""
+msgstr "nedladdning misslyckad."
 
 #: src/Common/LinuxKernel.vala:1010 src/Gtk/MainWindow.vala:498
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Kommandot har inte angetts"
+msgstr "Installera: inga installerade kärnor har angetts"
 
 #: src/Common/LinuxKernel.vala:1023
 msgid "Uninstalling selected kernels"
 msgstr "Avinstallera valda kärnor"
 
 #: src/Common/LinuxKernel.vala:1030
-#, fuzzy
 msgid "Not uninstalling the currently running kernel"
-msgstr "Avinstallera inte den kärna som körs, för närvarande"
+msgstr "Avinstallerar inte kärnan som körs för närvarande"
 
 #: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:494
 msgid "is locked"
-msgstr ""
+msgstr "är låst"
 
 #: src/Common/LinuxKernel.vala:1043
 msgid "found"
@@ -172,60 +164,56 @@ msgstr "grunda"
 
 #: src/Common/LinuxKernel.vala:1047
 msgid "Uninstall: no uninstallable packages found"
-msgstr ""
+msgstr "Avinstallera: inga avinstallerbara paket hittades"
 
 #: src/Common/LinuxKernel.vala:1076
-#, fuzzy
 msgid "is the highest installed version."
-msgstr "Avinstallera alla utom den högsta installerade versionen"
+msgstr "är den högst installerade versionen."
 
 #: src/Common/LinuxKernel.vala:1088
 msgid "Could not find running kernel in list"
 msgstr "Det gick inte att hitta kernel som körs i listan"
 
 #: src/Common/LinuxKernel.vala:1093
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "Det gick inte att hitta några kärnor att avinstallera"
+msgstr "Inga gamla kärnor att avinstallera"
 
 #: src/Common/LinuxKernel.vala:1094
 msgid "done"
-msgstr ""
+msgstr "klart"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
-#, fuzzy
 msgid "Continue? (y/N): "
-msgstr "Fortsätta?"
+msgstr "Fortsätta? (j/N):"
 
 #: src/Common/LinuxKernel.vala:1115
-#, fuzzy
 msgid "No updates"
-msgstr "Inga uppdateringar hittades"
+msgstr "Inga uppdateringar"
 
 #: src/Common/LinuxKernel.vala:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Installera kärnversion %s ? (j/n):"
+msgstr "Installera kärnversion %s ? (j/N):"
 
 #: src/Common/Main.vala:198
 msgid "Missing Thread support in GLib."
-msgstr ""
+msgstr "Saknat trådstöd i GLib."
 
 #: src/Common/Main.vala:291
 msgid "Wrote config file"
-msgstr ""
+msgstr "Skrev konfigurationsfil"
 
 #: src/Common/Main.vala:310
 msgid "No config file"
-msgstr ""
+msgstr "Ingen konfigurationsfil"
 
 #: src/Common/Main.vala:377
 msgid "Loaded config file"
-msgstr ""
+msgstr "Laddad konfigurationsfil"
 
 #: src/Common/Main.vala:397
 msgid "Called from"
@@ -250,7 +238,7 @@ msgstr "Kan inte nå webbplatsen"
 
 #: src/Console/AppConsole.vala:29
 msgid "install kernel packages from kernel.ubuntu.com"
-msgstr ""
+msgstr "installera kärnpaket från kernel.ubuntu.com"
 
 #: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
@@ -265,14 +253,12 @@ msgid "Check for kernel updates"
 msgstr "Sök efter kärnuppdateringar"
 
 #: src/Console/AppConsole.vala:36
-#, fuzzy
 msgid "Check for kernel updates and send a desktop notification"
-msgstr "Sök efter kärnuppdateringar och meddela aktuell användare"
+msgstr "Sök efter kärnuppdateringar och skicka ett skrivbordsmeddelande"
 
 #: src/Console/AppConsole.vala:37
-#, fuzzy
 msgid "List available kernels"
-msgstr "Lista alla tillgängliga kärnor"
+msgstr "Lista tillgängliga kärnor"
 
 #: src/Console/AppConsole.vala:38
 msgid "List installed kernels"
@@ -283,17 +269,14 @@ msgid "Install latest mainline kernel"
 msgstr "Installera senaste mainline-kärnan"
 
 #: src/Console/AppConsole.vala:40
-#, fuzzy
 msgid "Install latest point update in the current major version"
-msgstr "Installera senaste punktuppdateringen för aktuella serier"
+msgstr "Installera den senaste punktuppdateringen i den aktuella huvudversionen"
 
 #: src/Console/AppConsole.vala:41
-#, fuzzy
 msgid "Install specified kernels"
-msgstr "Avinstallera angiven kärna"
+msgstr "Installera angivna kärnor"
 
 #: src/Console/AppConsole.vala:42
-#, fuzzy
 msgid "Uninstall specified kernels"
 msgstr "Avinstallera angiven kärna"
 
@@ -311,7 +294,7 @@ msgstr "Ta bort cachelagrad information om tillgängliga kärnor"
 
 #: src/Console/AppConsole.vala:46
 msgid "This help"
-msgstr ""
+msgstr "Denna hjälp"
 
 #: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
 msgid "Options"
@@ -327,7 +310,7 @@ msgstr "Exkludera instabila utgåvor och RC-utgåvor"
 
 #: src/Console/AppConsole.vala:52
 msgid "Verbosity. Set to n if given, or increment."
-msgstr ""
+msgstr "Ordrikedom. Ställ in på n om det ges, eller inkrementera."
 
 #: src/Console/AppConsole.vala:53
 msgid "Assume Yes for all prompts (non-interactive mode)"
@@ -335,23 +318,19 @@ msgstr "Antag Ja för alla prompter (icke-interaktivt läge)"
 
 #: src/Console/AppConsole.vala:54
 msgid "Pause for keypress before exiting (for external terminal)"
-msgstr ""
+msgstr "Pausa för knapptryckning innan du avslutar (för extern terminal)"
 
 #: src/Console/AppConsole.vala:57
-#, fuzzy
 msgid "One or more version strings taken from the output of --list"
 msgstr "En versionssträng som hämtas från utdata från --list"
 
 #: src/Console/AppConsole.vala:58
-msgid ""
-"comma, pipe, colon, or space separated. (space requires quotes or "
-"backslashes)"
-msgstr ""
+msgid "comma, pipe, colon, or space separated. (space requires quotes or backslashes)"
+msgstr "kommatecken, pipa, kolon eller mellanslag separerade. (mellanslag kräver citattecken eller snedstreck)"
 
 #: src/Console/AppConsole.vala:59
-#, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "Den kärna som för närvarande körs ignoreras alltid"
+msgstr "Låsta kärnor och den aktuella kärnan ignoreras"
 
 #: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
@@ -359,16 +338,15 @@ msgstr "Okänt alternativ"
 
 #: src/Console/AppConsole.vala:199
 msgid "Deleted"
-msgstr ""
+msgstr "Raderad"
 
 #: src/Console/AppConsole.vala:200
 msgid "Error deleting"
-msgstr ""
+msgstr "Fel vid borttagning"
 
 #: src/Console/AppConsole.vala:214
-#, fuzzy
 msgid "Unknown command"
-msgstr "Okänt alternativ"
+msgstr "Okänt kommando"
 
 #: src/Console/AppConsole.vala:225
 msgid "Latest update"
@@ -383,23 +361,20 @@ msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
 #: src/Console/AppConsole.vala:234
-#, fuzzy
 msgid "Notifications disabled"
-msgstr "Meddelanden är inaktiverade"
+msgstr "Aviseringar inaktiverade"
 
 #: src/Console/AppConsole.vala:239
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: src/Console/AppConsole.vala:254
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Meddela om en punktrelease är tillgänglig"
+msgstr "aviseringar för punktversioner inaktiverade"
 
 #: src/Console/AppConsole.vala:262
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Meddela om en större version är tillgänglig"
+msgstr "aviseringar för större versioner inaktiverade"
 
 #: src/Console/AppConsole.vala:267
 #, c-format
@@ -432,7 +407,7 @@ msgstr "Visa alla alternativ"
 
 #: src/Gtk/MainWindow.vala:162
 msgid "Lock"
-msgstr ""
+msgstr "Låsa"
 
 #: src/Gtk/MainWindow.vala:179
 msgid "Status"
@@ -448,11 +423,11 @@ msgstr "Avinstallera"
 
 #: src/Gtk/MainWindow.vala:330
 msgid "Changelog, build status, etc"
-msgstr ""
+msgstr "Ändringslogg, byggstatus, etc"
 
 #: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
 msgid "Unable to launch"
-msgstr ""
+msgstr "Oförmögen att starta"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
@@ -464,7 +439,7 @@ msgstr "Reload"
 
 #: src/Gtk/MainWindow.vala:346
 msgid "Delete and reload all cached kernel info"
-msgstr ""
+msgstr "Ta bort och ladda om all cachad kärninformation"
 
 #: src/Gtk/MainWindow.vala:351
 msgid "Settings"
@@ -483,17 +458,18 @@ msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
+"Ett verktyg för att installera kärnpaket\n"
+"från Ubuntu Mainline Kernels PPA"
 
 #: src/Gtk/MainWindow.vala:415
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: src/Gtk/MainWindow.vala:416
 msgid "Forked"
-msgstr ""
+msgstr "Forked"
 
 #: src/Gtk/MainWindow.vala:434
-#, fuzzy
 msgid "Updating kernels"
 msgstr "Uppdatera kärnor"
 
@@ -502,13 +478,12 @@ msgid "available"
 msgstr "tillgänglig"
 
 #: src/Gtk/MainWindow.vala:493
-#, fuzzy
 msgid "is already installed"
 msgstr "är redan installerat."
 
 #: src/Gtk/MainWindow.vala:495
 msgid "adding"
-msgstr ""
+msgstr "lägga till"
 
 #: src/Gtk/SettingsDialog.vala:43
 msgid "Notification"
@@ -556,14 +531,14 @@ msgstr "Dölj instabila- och RC-publiceringar"
 
 #: src/Gtk/SettingsDialog.vala:113
 msgid "Hide failed or incomplete builds"
-msgstr ""
+msgstr "Dölj misslyckade eller ofullständiga builds"
 
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
 msgid ""
-"If a kernel version exists on the mainline-ppa site, but is an incomplete or "
-"failed build for your arch (%s), then don't show it in the list."
+"If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list."
 msgstr ""
+"Om en kärnversion finns på mainline-ppa-webbplatsen, men är en ofullständig eller misslyckad konstruktion för din båge (%s), visa den inte i listan."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -586,38 +561,35 @@ msgid "Max concurrent downloads"
 msgstr "Max antal nedladdningar av konkurrenter"
 
 #: src/Gtk/SettingsDialog.vala:175
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Verifiera kontrollsummor med CHECKSUMS-filerna"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
-"downloads."
-msgstr ""
+"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file downloads."
+msgstr "Använd sha-256-hasharna från CHECKSUMS-filen för att verifiera nedladdningarna av .deb-filen."
 
 #: src/Gtk/SettingsDialog.vala:182
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Ladda ner"
+msgstr "Behåll Nedladdningar"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/"
-"reinstall instead of downloading again.\n"
+"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major "
-"versions\" setting, or if they have been updated on the mainline-ppa site."
+"They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"Behåll nedladdade .deb-filer efter installationen och återanvänd dem för avinstallation/ominstallation istället för att ladda ner igen.\n"
+"\n"
+"De raderas fortfarande när de blir äldre än inställningen \"Visa tidigare huvudversioner\" eller om de har uppdaterats på mainline-ppa-webbplatsen."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
 msgstr "Proxyserver"
 
 #: src/Gtk/SettingsDialog.vala:222
-#, fuzzy
 msgid "External Commands"
-msgstr "Kommandon"
+msgstr "Externa Kommandon"
 
 #: src/Gtk/SettingsDialog.vala:249
 #, c-format
@@ -640,15 +612,15 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:279
 msgid "Terminal command used to run"
-msgstr ""
+msgstr "Terminalkommando som används för att köra"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "Example"
-msgstr ""
+msgstr "Exempel"
 
 #: src/Gtk/SettingsDialog.vala:280
 msgid "will result in"
-msgstr ""
+msgstr "kommer att resultera i"
 
 #: src/Gtk/SettingsDialog.vala:282
 #, c-format
@@ -691,16 +663,16 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:299
 msgid "Done"
-msgstr ""
+msgstr "Gjort"
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
-msgstr ""
+msgstr "Kopiera"
 
 #: src/Gtk/TerminalWindow.vala:138
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr ""
+msgstr "Kopierar hela utdatabufferten, inklusive scrollback, till urklipp."
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Cancel"
@@ -712,8 +684,8 @@ msgstr "Stäng"
 
 #: src/lib/l.misc.vala:14
 msgid "y"
-msgstr ""
+msgstr "j"
 
 #: src/lib/l.misc.vala:15
 msgid "n"
-msgstr ""
+msgstr "n"
