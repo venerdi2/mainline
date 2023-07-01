@@ -62,9 +62,8 @@ msgid "locked"
 msgstr "kilitli"
 
 #: src/Common/LinuxKernel.vala:422
-#, fuzzy
 msgid "running"
-msgstr "Çalışıyor"
+msgstr "işleyen"
 
 #: src/Common/LinuxKernel.vala:459 src/Common/LinuxKernel.vala:998
 #: src/Common/LinuxKernel.vala:1080
@@ -96,9 +95,8 @@ msgid "File not found"
 msgstr "Dosya bulunamadı"
 
 #: src/Common/LinuxKernel.vala:824
-#, fuzzy
 msgid "needs update"
-msgstr "Son güncelleme"
+msgstr "güncellemeye ihtiyacı var"
 
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
@@ -109,14 +107,12 @@ msgid "Kernel"
 msgstr "Çekirdek"
 
 #: src/Common/LinuxKernel.vala:915
-#, fuzzy
 msgid "not found"
-msgstr "Dosya bulunamadı"
+msgstr "bulunamadı"
 
 #: src/Common/LinuxKernel.vala:922
-#, fuzzy
 msgid "Download: no downloadable kernels specified"
-msgstr "Komut belirtilmedi"
+msgstr "İndir: indirilebilir çekirdek belirtilmedi"
 
 #: src/Common/LinuxKernel.vala:941
 msgid "enabled"
@@ -131,14 +127,12 @@ msgid "Cached"
 msgstr "Önbelleğe alındı"
 
 #: src/Common/LinuxKernel.vala:984
-#, fuzzy
 msgid "Installing selected kernels"
-msgstr "Seçili çekirdekleri kaldırma"
+msgstr "Seçilen çekirdekleri yükleme"
 
 #: src/Common/LinuxKernel.vala:990 src/Common/LinuxKernel.vala:1027
-#, fuzzy
 msgid "Requested"
-msgstr "istenen"
+msgstr "Talep edilen"
 
 #: src/Common/LinuxKernel.vala:993
 msgid "is already installed."
@@ -146,25 +140,23 @@ msgstr "zaten yüklü."
 
 #: src/Common/LinuxKernel.vala:1003
 msgid "download failed."
-msgstr ""
+msgstr "yükleme başarısız."
 
 #: src/Common/LinuxKernel.vala:1010 src/Gtk/MainWindow.vala:498
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Komut belirtilmedi"
+msgstr "Yükle: yüklenebilir çekirdek belirtilmedi"
 
 #: src/Common/LinuxKernel.vala:1023
 msgid "Uninstalling selected kernels"
 msgstr "Seçili çekirdekleri kaldırma"
 
 #: src/Common/LinuxKernel.vala:1030
-#, fuzzy
 msgid "Not uninstalling the currently running kernel"
-msgstr "çalışmakta olan çekirdeğin kaldırılmaması"
+msgstr "Şu anda çalışan çekirdeği kaldırmıyor"
 
 #: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:494
 msgid "is locked"
-msgstr ""
+msgstr "kilitli"
 
 #: src/Common/LinuxKernel.vala:1043
 msgid "found"
@@ -172,60 +164,56 @@ msgstr "kurmak"
 
 #: src/Common/LinuxKernel.vala:1047
 msgid "Uninstall: no uninstallable packages found"
-msgstr ""
+msgstr "Kaldırma: kaldırılabilir paket bulunamadı"
 
 #: src/Common/LinuxKernel.vala:1076
-#, fuzzy
 msgid "is the highest installed version."
-msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
+msgstr "en yüksek yüklü sürümdür."
 
 #: src/Common/LinuxKernel.vala:1088
 msgid "Could not find running kernel in list"
 msgstr "Listede çalışan çekirdek bulunamadı"
 
 #: src/Common/LinuxKernel.vala:1093
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "Kaldırılacak çekirdek bulunamadı"
+msgstr "Kaldırmak için eski çekirdekler yok"
 
 #: src/Common/LinuxKernel.vala:1094
 msgid "done"
-msgstr ""
+msgstr "tamam"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "The following kernels will be uninstalled"
 msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
-#, fuzzy
 msgid "Continue? (y/N): "
 msgstr "Devam et? (e/H): "
 
 #: src/Common/LinuxKernel.vala:1115
-#, fuzzy
 msgid "No updates"
-msgstr "Güncelleme bulunamadı"
+msgstr "Güncelleme yok"
 
 #: src/Common/LinuxKernel.vala:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Install Kernel Version %s ? (y/N): "
-msgstr "Linux Çekirdek Sürümü %s Kurulsun mu? (e/H): "
+msgstr "Çekirdek Sürümü %s Yüklensin mi? (e/H): "
 
 #: src/Common/Main.vala:198
 msgid "Missing Thread support in GLib."
-msgstr ""
+msgstr "GLib'de Eksik Konu desteği."
 
 #: src/Common/Main.vala:291
 msgid "Wrote config file"
-msgstr ""
+msgstr "Yapılandırma dosyasını yazdı"
 
 #: src/Common/Main.vala:310
 msgid "No config file"
-msgstr ""
+msgstr "Yapılandırma dosyası yok"
 
 #: src/Common/Main.vala:377
 msgid "Loaded config file"
-msgstr ""
+msgstr "Yapılandırma dosyası yüklendi"
 
 #: src/Common/Main.vala:397
 msgid "Called from"
@@ -251,7 +239,7 @@ msgstr "Siteye ulaşılamıyor"
 
 #: src/Console/AppConsole.vala:29
 msgid "install kernel packages from kernel.ubuntu.com"
-msgstr ""
+msgstr "kernel.ubuntu.com adresinden çekirdek paketlerini kurun"
 
 #: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
@@ -266,12 +254,10 @@ msgid "Check for kernel updates"
 msgstr "Çekirdek güncellemelerini kontrol et"
 
 #: src/Console/AppConsole.vala:36
-#, fuzzy
 msgid "Check for kernel updates and send a desktop notification"
 msgstr "Çekirdek güncellemelerini kontrol et ve mevcut kullanıcıyı uyar"
 
 #: src/Console/AppConsole.vala:37
-#, fuzzy
 msgid "List available kernels"
 msgstr "Tüm mainline çekirdeklerini listele"
 
@@ -284,19 +270,16 @@ msgid "Install latest mainline kernel"
 msgstr "En son mainline çekirdeğini kur"
 
 #: src/Console/AppConsole.vala:40
-#, fuzzy
 msgid "Install latest point update in the current major version"
 msgstr "Mevcut çekirdek serisi için en son nokta güncellemesini kur"
 
 #: src/Console/AppConsole.vala:41
-#, fuzzy
 msgid "Install specified kernels"
-msgstr "Belirtilen çekirdeğini kaldır"
+msgstr "Belirtilen çekirdekleri yükleyin"
 
 #: src/Console/AppConsole.vala:42
-#, fuzzy
 msgid "Uninstall specified kernels"
-msgstr "Belirtilen çekirdeğini kaldır"
+msgstr "Belirtilen çekirdekleri kaldır"
 
 #: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
@@ -343,7 +326,6 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "--list çıktısından alınan bir veya daha fazla sürüm dizesi"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
@@ -368,9 +350,8 @@ msgid "Error deleting"
 msgstr "Silinirken hata oluştu"
 
 #: src/Console/AppConsole.vala:214
-#, fuzzy
 msgid "Unknown command"
-msgstr "Bilinmeyen seçenek"
+msgstr "Bilinmeyen komut"
 
 #: src/Console/AppConsole.vala:225
 msgid "Latest update"
@@ -386,7 +367,6 @@ msgid "No updates found"
 msgstr "Güncelleme bulunamadı"
 
 #: src/Console/AppConsole.vala:234
-#, fuzzy
 msgid "Notifications disabled"
 msgstr "Bildirimler devre dışı bırakılmış"
 
@@ -395,14 +375,12 @@ msgid "No"
 msgstr "Hayır"
 
 #: src/Console/AppConsole.vala:254
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Nokta sürüm mevcutsa bildir"
+msgstr "nokta sürümleri için bildirimler devre dışı bırakıldı"
 
 #: src/Console/AppConsole.vala:262
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Ana sürüm mevcutsa bildir"
+msgstr "ana sürümler için bildirimler devre dışı bırakıldı"
 
 #: src/Console/AppConsole.vala:267
 #, c-format
@@ -451,11 +429,11 @@ msgstr "Kaldır"
 
 #: src/Gtk/MainWindow.vala:330
 msgid "Changelog, build status, etc"
-msgstr ""
+msgstr "Değişiklik günlüğü, derleme durumu vb."
 
 #: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
 msgid "Unable to launch"
-msgstr ""
+msgstr "Başlatılamadı"
 
 #: src/Gtk/MainWindow.vala:339
 msgid "Uninstall Old"
@@ -467,7 +445,7 @@ msgstr "Arjantin"
 
 #: src/Gtk/MainWindow.vala:346
 msgid "Delete and reload all cached kernel info"
-msgstr ""
+msgstr "Önbelleğe alınmış tüm çekirdek bilgilerini silin ve yeniden oluşturun"
 
 #: src/Gtk/MainWindow.vala:351
 msgid "Settings"
@@ -608,12 +586,13 @@ msgstr "İndirmeleri Sakla"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/"
-"reinstall instead of downloading again.\n"
+"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major "
-"versions\" setting, or if they have been updated on the mainline-ppa site."
+"They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"Yüklemeden sonra indirilen .deb dosyalarını saklayın ve yeniden indirmek yerine kaldırma/yeniden yükleme için yeniden kullanın.\n"
+"\n"
+"\"Önceki ana sürümleri göster\" ayarından daha eski hale geldiklerinde veya mainline-ppa sitesinde güncellendiklerinde silinmeye devam ederler."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
