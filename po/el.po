@@ -333,7 +333,6 @@ msgstr ""
 "list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"

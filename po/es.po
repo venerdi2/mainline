@@ -327,7 +327,6 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Una cadena de versión tomada de la salida de --list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
@@ -370,7 +369,6 @@ msgid "No updates found"
 msgstr "No se encontró ninguna actualización"
 
 #: src/Console/AppConsole.vala:234
-#, fuzzy
 msgid "Notifications disabled"
 msgstr "Notificaciones deshabilitadas"
 
@@ -417,7 +415,7 @@ msgstr "Mostrar todas las opciones"
 
 #: src/Gtk/MainWindow.vala:162
 msgid "Lock"
-msgstr ""
+msgstr "Bloquear"
 
 #: src/Gtk/MainWindow.vala:179
 msgid "Status"

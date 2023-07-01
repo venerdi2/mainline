@@ -89,7 +89,7 @@ const string[] DEFAULT_TERM_CMDS = {
 	"lxterminal -e",
 	"Eterm -e",
 	"cool-retro-term -e",
-	"urxvt -e",
+	"urxvt -name "+BRANDING_SHORTNAME+" -bg black -fg white -sr -e",
 	"sakura -e",
 	"termit -e",
 	"kitty",

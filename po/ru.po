@@ -326,7 +326,6 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Одна или несколько строк версии, взятых из вывода --list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"

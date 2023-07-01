@@ -143,7 +143,6 @@ msgid "download failed."
 msgstr "download fehlgeschlagen."
 
 #: src/Common/LinuxKernel.vala:1010 src/Gtk/MainWindow.vala:498
-#, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Installieren: keine installierbaren Kernel angegeben"
 
@@ -328,7 +327,6 @@ msgid "One or more version strings taken from the output of --list"
 msgstr "Eine oder mehrere Versionszeichenketten aus der Ausgabe von --list"
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
@@ -573,7 +571,6 @@ msgid "Max concurrent downloads"
 msgstr "Maximale Anzahl gleichzeitiger Downloads"
 
 #: src/Gtk/SettingsDialog.vala:175
-#, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Überprüfen Sie Downloads mit den CHECKSUMS-Dateien"
 
