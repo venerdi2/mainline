@@ -196,7 +196,8 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
 
 # hints  
-* The `--install-latest` and `--yes` options can be used in a cron job to always have the latest kernel installed.  
+* cron job to always have the latest kernel installed.  
+  If you install this, you should disable the notifications in settings.
 ```
 $ sudo -i
 # cat >/etc/cron.d/mainline <<-%EOF
