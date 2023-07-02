@@ -206,7 +206,9 @@ $ sudo -i
 %EOF
 ```
 
-* `sudo apt install cool-retro-term`  
+* external terminal app
+
+`sudo apt install cool-retro-term`  
 
 ![settings](settings.jpg)
 
