@@ -201,7 +201,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 $ sudo -i
 # cat >/etc/cron.d/mainline <<-%EOF
 	# Check for new kernels on kernel.ubuntu.com every 4 hours
-	* */4 * * * root VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes
+	* */4 * * * root VERBOSE=0 ;mainline --install-latest --yes && { mainline --uninstall-old --yes ;for a in /home/*/.Xauthority ;do echo [[ -s $a ]] && DISPLAY=:0.0 XAUTHORITY=$a notify-send -t 0 -a mainline -i mainline "Mainline Kernels" "New kernel installed" ;done ; }
 %EOF
 ```
 

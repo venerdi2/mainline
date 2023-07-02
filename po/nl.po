@@ -197,7 +197,6 @@ msgid "The following kernels will be uninstalled"
 msgstr "De volgende kernels worden verwijderd"
 
 #: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
-#, fuzzy
 msgid "Continue? (y/N): "
 msgstr "Voortzetten? (j/N)"
 
