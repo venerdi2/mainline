@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-30 05:19-0400\n"
+"POT-Creation-Date: 2023-07-08 11:51-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -236,143 +236,148 @@ msgstr "Meddelanden är inaktiverade"
 msgid "Can not reach site"
 msgstr "Kan inte nå webbplatsen"
 
-#: src/Console/AppConsole.vala:29
+#: src/Console/AppConsole.vala:30
 msgid "install kernel packages from kernel.ubuntu.com"
 msgstr "installera kärnpaket från kernel.ubuntu.com"
 
-#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:32 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Syntax"
 
-#: src/Console/AppConsole.vala:33
+#: src/Console/AppConsole.vala:34
 msgid "Commands"
 msgstr "Kommandon"
 
-#: src/Console/AppConsole.vala:35
+#: src/Console/AppConsole.vala:36
 msgid "Check for kernel updates"
 msgstr "Sök efter kärnuppdateringar"
 
-#: src/Console/AppConsole.vala:36
+#: src/Console/AppConsole.vala:37
 msgid "Check for kernel updates and send a desktop notification"
 msgstr "Sök efter kärnuppdateringar och skicka ett skrivbordsmeddelande"
 
-#: src/Console/AppConsole.vala:37
+#: src/Console/AppConsole.vala:38
 msgid "List available kernels"
 msgstr "Lista tillgängliga kärnor"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "List installed kernels"
 msgstr "Lista installerade kärnor"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 msgid "Install latest mainline kernel"
 msgstr "Installera senaste mainline-kärnan"
 
-#: src/Console/AppConsole.vala:40
-msgid "Install latest point update in the current major version"
-msgstr "Installera den senaste punktuppdateringen i den aktuella huvudversionen"
-
 #: src/Console/AppConsole.vala:41
+msgid "Install latest point update in the current major version"
+msgstr ""
+"Installera den senaste punktuppdateringen i den aktuella huvudversionen"
+
+#: src/Console/AppConsole.vala:42
 msgid "Install specified kernels"
 msgstr "Installera angivna kärnor"
 
-#: src/Console/AppConsole.vala:42
+#: src/Console/AppConsole.vala:43
 msgid "Uninstall specified kernels"
 msgstr "Avinstallera angiven kärna"
 
-#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Avinstallera alla utom den högsta installerade versionen"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Download specified kernels"
 msgstr "Ladda ner angivna kärnor"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "Delete cached info about available kernels"
 msgstr "Ta bort cachelagrad information om tillgängliga kärnor"
 
-#: src/Console/AppConsole.vala:46
+#: src/Console/AppConsole.vala:47
 msgid "This help"
 msgstr "Denna hjälp"
 
-#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:49 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Alternativ"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Include unstable and RC releases"
 msgstr "Inkludera instabila utgåvor och RC-utgåvor"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Exclude unstable and RC releases"
 msgstr "Exkludera instabila utgåvor och RC-utgåvor"
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Verbosity. Set to n if given, or increment."
 msgstr "Ordrikedom. Ställ in på n om det ges, eller inkrementera."
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Antag Ja för alla prompter (icke-interaktivt läge)"
 
-#: src/Console/AppConsole.vala:54
+#: src/Console/AppConsole.vala:55
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr "Pausa för knapptryckning innan du avslutar (för extern terminal)"
 
-#: src/Console/AppConsole.vala:57
+#: src/Console/AppConsole.vala:58
 msgid "One or more version strings taken from the output of --list"
 msgstr "En versionssträng som hämtas från utdata från --list"
 
-#: src/Console/AppConsole.vala:58
-msgid "comma, pipe, colon, or space separated. (space requires quotes or backslashes)"
-msgstr "kommatecken, pipa, kolon eller mellanslag separerade. (mellanslag kräver citattecken eller snedstreck)"
-
 #: src/Console/AppConsole.vala:59
+msgid ""
+"comma, pipe, colon, or space separated. (space requires quotes or "
+"backslashes)"
+msgstr ""
+"kommatecken, pipa, kolon eller mellanslag separerade. (mellanslag kräver "
+"citattecken eller snedstreck)"
+
+#: src/Console/AppConsole.vala:60
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Låsta kärnor och den aktuella kärnan ignoreras"
 
-#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Okänt alternativ"
 
-#: src/Console/AppConsole.vala:199
+#: src/Console/AppConsole.vala:200
 msgid "Deleted"
 msgstr "Raderad"
 
-#: src/Console/AppConsole.vala:200
+#: src/Console/AppConsole.vala:201
 msgid "Error deleting"
 msgstr "Fel vid borttagning"
 
-#: src/Console/AppConsole.vala:214
+#: src/Console/AppConsole.vala:215
 msgid "Unknown command"
 msgstr "Okänt kommando"
 
-#: src/Console/AppConsole.vala:225
+#: src/Console/AppConsole.vala:226
 msgid "Latest update"
 msgstr "Senaste uppdatering"
 
-#: src/Console/AppConsole.vala:226
+#: src/Console/AppConsole.vala:227
 msgid "Latest point update"
 msgstr "Senaste punktuppdatering"
 
-#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
+#: src/Console/AppConsole.vala:228 src/Console/AppConsole.vala:246
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Console/AppConsole.vala:234
+#: src/Console/AppConsole.vala:235
 msgid "Notifications disabled"
 msgstr "Aviseringar inaktiverade"
 
-#: src/Console/AppConsole.vala:239
+#: src/Console/AppConsole.vala:240
 msgid "No"
 msgstr "Nej"
 
-#: src/Console/AppConsole.vala:254
+#: src/Console/AppConsole.vala:255
 msgid "notify point releases disabled"
 msgstr "aviseringar för punktversioner inaktiverade"
 
-#: src/Console/AppConsole.vala:262
+#: src/Console/AppConsole.vala:263
 msgid "notify major releases disabled"
 msgstr "aviseringar för större versioner inaktiverade"
 
@@ -381,15 +386,15 @@ msgstr "aviseringar för större versioner inaktiverade"
 msgid "Kernel %s Available"
 msgstr "Kernel %s tillgängliga"
 
-#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:274 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Visa"
 
-#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:275 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Installera"
 
-#: src/Console/AppConsole.vala:275
+#: src/Console/AppConsole.vala:279
 msgid "Previously notified"
 msgstr "Tidigare anmält"
 
@@ -536,9 +541,11 @@ msgstr "Dölj misslyckade eller ofullständiga builds"
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
 msgid ""
-"If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list."
+"If a kernel version exists on the mainline-ppa site, but is an incomplete or "
+"failed build for your arch (%s), then don't show it in the list."
 msgstr ""
-"Om en kärnversion finns på mainline-ppa-webbplatsen, men är en ofullständig eller misslyckad konstruktion för din båge (%s), visa den inte i listan."
+"Om en kärnversion finns på mainline-ppa-webbplatsen, men är en ofullständig "
+"eller misslyckad konstruktion för din båge (%s), visa den inte i listan."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -566,8 +573,11 @@ msgstr "Verifiera kontrollsummor med CHECKSUMS-filerna"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file downloads."
-msgstr "Använd sha-256-hasharna från CHECKSUMS-filen för att verifiera nedladdningarna av .deb-filen."
+"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"downloads."
+msgstr ""
+"Använd sha-256-hasharna från CHECKSUMS-filen för att verifiera "
+"nedladdningarna av .deb-filen."
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Keep Downloads"
@@ -575,13 +585,17 @@ msgstr "Behåll Nedladdningar"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
+"Retain downloaded .deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
+"They are still deleted once they become older than the \"Show previous major "
+"versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-"Behåll nedladdade .deb-filer efter installationen och återanvänd dem för avinstallation/ominstallation istället för att ladda ner igen.\n"
+"Behåll nedladdade .deb-filer efter installationen och återanvänd dem för "
+"avinstallation/ominstallation istället för att ladda ner igen.\n"
 "\n"
-"De raderas fortfarande när de blir äldre än inställningen \"Visa tidigare huvudversioner\" eller om de har uppdaterats på mainline-ppa-webbplatsen."
+"De raderas fortfarande när de blir äldre än inställningen \"Visa tidigare "
+"huvudversioner\" eller om de har uppdaterats på mainline-ppa-webbplatsen."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"

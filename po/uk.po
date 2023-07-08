@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-30 05:19-0400\n"
+"POT-Creation-Date: 2023-07-08 11:51-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -237,96 +237,96 @@ msgstr "Повідомлення вимкнено"
 msgid "Can not reach site"
 msgstr "Не вдається дістатися до сайту"
 
-#: src/Console/AppConsole.vala:29
+#: src/Console/AppConsole.vala:30
 msgid "install kernel packages from kernel.ubuntu.com"
 msgstr "встановити пакети ядра з kernel.ubuntu.com"
 
-#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:32 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Синтаксис"
 
-#: src/Console/AppConsole.vala:33
+#: src/Console/AppConsole.vala:34
 msgid "Commands"
 msgstr "Команди"
 
-#: src/Console/AppConsole.vala:35
+#: src/Console/AppConsole.vala:36
 msgid "Check for kernel updates"
 msgstr "Перевірити оновлення ядра"
 
-#: src/Console/AppConsole.vala:36
+#: src/Console/AppConsole.vala:37
 msgid "Check for kernel updates and send a desktop notification"
 msgstr ""
 "Перевірте наявність оновлень ядра та надішліть сповіщення на робочий стіл"
 
-#: src/Console/AppConsole.vala:37
+#: src/Console/AppConsole.vala:38
 msgid "List available kernels"
 msgstr "Список доступних ядер"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "List installed kernels"
 msgstr "Список встановлених ядер"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 msgid "Install latest mainline kernel"
 msgstr "Встановіть останнє основне ядро"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 msgid "Install latest point update in the current major version"
 msgstr "Установіть останнє оновлення точки в поточній основній версії"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 msgid "Install specified kernels"
 msgstr "Встановити вказані ядра"
 
-#: src/Console/AppConsole.vala:42
+#: src/Console/AppConsole.vala:43
 msgid "Uninstall specified kernels"
 msgstr "Видалити вказані ядра"
 
-#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Видаліть усі, крім найвищої встановленої версії"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Download specified kernels"
 msgstr "Завантажте конкретні ядра"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "Delete cached info about available kernels"
 msgstr "Видалити кешовану інформацію про доступні ядра"
 
-#: src/Console/AppConsole.vala:46
+#: src/Console/AppConsole.vala:47
 msgid "This help"
 msgstr "Ця допомога"
 
-#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:49 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Параметри"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Include unstable and RC releases"
 msgstr "Включення нестабільних і RC-релізів"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Exclude unstable and RC releases"
 msgstr "Виключення нестабільних і RC-релізів"
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Verbosity. Set to n if given, or increment."
 msgstr "Багатослівність. Встановіть значення n, якщо задано, або приріст."
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Так для всіх підказок (неінтерактивний режим)"
 
-#: src/Console/AppConsole.vala:54
+#: src/Console/AppConsole.vala:55
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr "Пауза для натискання клавіші перед виходом (для зовнішнього терміналу)"
 
-#: src/Console/AppConsole.vala:57
+#: src/Console/AppConsole.vala:58
 msgid "One or more version strings taken from the output of --list"
 msgstr "Один або кілька рядків версій, взятих із результату --list"
 
-#: src/Console/AppConsole.vala:58
+#: src/Console/AppConsole.vala:59
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
@@ -334,51 +334,51 @@ msgstr ""
 "кома, вертикальна лінія, двокрапка або пробіл. (пробіл вимагає лапок або "
 "зворотні косі риски)"
 
-#: src/Console/AppConsole.vala:59
+#: src/Console/AppConsole.vala:60
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Заблоковані ядра та поточне запущене ядро ігноруються"
 
-#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Невідомий параметр"
 
-#: src/Console/AppConsole.vala:199
+#: src/Console/AppConsole.vala:200
 msgid "Deleted"
 msgstr "Видалено"
 
-#: src/Console/AppConsole.vala:200
+#: src/Console/AppConsole.vala:201
 msgid "Error deleting"
 msgstr "Помилка видалення"
 
-#: src/Console/AppConsole.vala:214
+#: src/Console/AppConsole.vala:215
 msgid "Unknown command"
 msgstr "Невідома команда"
 
-#: src/Console/AppConsole.vala:225
+#: src/Console/AppConsole.vala:226
 msgid "Latest update"
 msgstr "Останнє оновлення"
 
-#: src/Console/AppConsole.vala:226
+#: src/Console/AppConsole.vala:227
 msgid "Latest point update"
 msgstr "Остання точка оновлення"
 
-#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
+#: src/Console/AppConsole.vala:228 src/Console/AppConsole.vala:246
 msgid "No updates found"
 msgstr "Оновлень не знайдено"
 
-#: src/Console/AppConsole.vala:234
+#: src/Console/AppConsole.vala:235
 msgid "Notifications disabled"
 msgstr "Сповіщення вимкнено"
 
-#: src/Console/AppConsole.vala:239
+#: src/Console/AppConsole.vala:240
 msgid "No"
 msgstr "Ні"
 
-#: src/Console/AppConsole.vala:254
+#: src/Console/AppConsole.vala:255
 msgid "notify point releases disabled"
 msgstr "випуски точки сповіщення вимкнено"
 
-#: src/Console/AppConsole.vala:262
+#: src/Console/AppConsole.vala:263
 msgid "notify major releases disabled"
 msgstr "сповіщення про основні випуски вимкнено"
 
@@ -387,15 +387,15 @@ msgstr "сповіщення про основні випуски вимкнен
 msgid "Kernel %s Available"
 msgstr "Ядро %s Доступне"
 
-#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:274 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Показати"
 
-#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:275 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Встановити"
 
-#: src/Console/AppConsole.vala:275
+#: src/Console/AppConsole.vala:279
 msgid "Previously notified"
 msgstr "Попередньо повідомлено"
 

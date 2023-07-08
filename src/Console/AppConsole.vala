@@ -20,6 +20,7 @@
  */
 
 using l.misc;
+using l.exec;
 
 public Main App;
 
@@ -262,15 +263,18 @@ public class AppConsole : GLib.Object {
 		} else vprint(_("notify major releases disabled"),2);
 
 		if (seen==available) available = "";
-
 		if (available!="") {
 			title = _("Kernel %s Available").printf(available);
-			string close_action = ""; // command to run when user closes notification without pressing any action button
-			string body = ""; // notification message body
-			var alist = new Gee.ArrayList<string> (); // notification action buttons:  "buttonlabel:command line to run"
-			alist.add(_("Show")+":"+BRANDING_SHORTNAME+"-gtk");
-			alist.add(_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+available);
-			OSDNotify.notify_send(title,body,alist,close_action);
+			string s = APP_LIB_DIR+"/notice.sh"
+				+ " --id=\"@"+App.NOTIFICATION_ID_FILE+"\""
+				+ " --app-name=\""+BRANDING_LONGNAME+"\""
+				+ " --icon="+BRANDING_SHORTNAME
+				+ " --expire-time=0"
+				+ " --title=\""+title+"\""
+				+ " --action=\""+_("Show")+":"+BRANDING_SHORTNAME+"-gtk\""
+				+ " --action=\""+_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+available+"\""
+			;
+			exec_async(s);
 		} else {
 			if (seen!="") title = _("Previously notified")+": \""+seen+"\"";
 		}

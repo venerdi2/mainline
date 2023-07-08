@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-30 05:19-0400\n"
+"POT-Creation-Date: 2023-07-08 11:51-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -237,143 +237,149 @@ msgstr "Obavijesti su onemogućene"
 msgid "Can not reach site"
 msgstr "Nije moguće doći do web-mjesta"
 
-#: src/Console/AppConsole.vala:29
+#: src/Console/AppConsole.vala:30
 msgid "install kernel packages from kernel.ubuntu.com"
 msgstr "instalirajte kernel pakete s kernel.ubuntu.com"
 
-#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:32 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Sintaksa"
 
-#: src/Console/AppConsole.vala:33
+#: src/Console/AppConsole.vala:34
 msgid "Commands"
 msgstr "Naredbe"
 
-#: src/Console/AppConsole.vala:35
+#: src/Console/AppConsole.vala:36
 msgid "Check for kernel updates"
 msgstr "Provjeri nadopune kernela"
 
-#: src/Console/AppConsole.vala:36
-msgid "Check for kernel updates and send a desktop notification"
-msgstr "Provjerite postoje li ažuriranja kernela i pošaljite obavijest na radnoj površini"
-
 #: src/Console/AppConsole.vala:37
+msgid "Check for kernel updates and send a desktop notification"
+msgstr ""
+"Provjerite postoje li ažuriranja kernela i pošaljite obavijest na radnoj "
+"površini"
+
+#: src/Console/AppConsole.vala:38
 msgid "List available kernels"
 msgstr "Navedite dostupne kernele"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "List installed kernels"
 msgstr "Prikaži instalirane kernele"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 msgid "Install latest mainline kernel"
 msgstr "Instaliraj najnoviji mainline kernel"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 msgid "Install latest point update in the current major version"
 msgstr "Instalirajte najnovije ažuriranje točke u trenutnoj glavnoj verziji"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 msgid "Install specified kernels"
 msgstr "Instalirajte navedene jezgre"
 
-#: src/Console/AppConsole.vala:42
+#: src/Console/AppConsole.vala:43
 msgid "Uninstall specified kernels"
 msgstr "Deinstalirajte navedene kernele"
 
-#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Download specified kernels"
 msgstr "Preuzmi određene kernele"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "Delete cached info about available kernels"
 msgstr "Brisanje predmemoriranih podataka o dostupnim jezgrama"
 
-#: src/Console/AppConsole.vala:46
+#: src/Console/AppConsole.vala:47
 msgid "This help"
 msgstr "Ova pomoć"
 
-#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:49 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Mogućnosti"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Include unstable and RC releases"
 msgstr "Uključivati nestabilne i RC kernele"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Exclude unstable and RC releases"
 msgstr "Isključivati nestabilne i RC izdanja"
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Verbosity. Set to n if given, or increment."
 msgstr "Preopširnost. Postavite na n ako je dano ili povećajte."
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Pretpostavi Da za sve upite (neinteraktivan način rada)"
 
-#: src/Console/AppConsole.vala:54
+#: src/Console/AppConsole.vala:55
 msgid "Pause for keypress before exiting (for external terminal)"
 msgstr "Pauza za pritisak tipke prije izlaska (za vanjski terminal)"
 
-#: src/Console/AppConsole.vala:57
+#: src/Console/AppConsole.vala:58
 msgid "One or more version strings taken from the output of --list"
 msgstr "Jedan ili više nizova verzija preuzetih iz izlaza --list"
 
-#: src/Console/AppConsole.vala:58
-msgid "comma, pipe, colon, or space separated. (space requires quotes or backslashes)"
-msgstr "odvojeni zarezom, okomitim, dvotočkom ili razmakom. (razmak zahtijeva navodnike ili obrnute kose crte)"
-
 #: src/Console/AppConsole.vala:59
+msgid ""
+"comma, pipe, colon, or space separated. (space requires quotes or "
+"backslashes)"
+msgstr ""
+"odvojeni zarezom, okomitim, dvotočkom ili razmakom. (razmak zahtijeva "
+"navodnike ili obrnute kose crte)"
+
+#: src/Console/AppConsole.vala:60
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Zaključani kerneli i trenutno pokrenuti kernel se zanemaruju"
 
-#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Nepoznata mogućnost"
 
-#: src/Console/AppConsole.vala:199
+#: src/Console/AppConsole.vala:200
 msgid "Deleted"
 msgstr "Izbrisano"
 
-#: src/Console/AppConsole.vala:200
+#: src/Console/AppConsole.vala:201
 msgid "Error deleting"
 msgstr "Greška pri brisanju"
 
-#: src/Console/AppConsole.vala:214
+#: src/Console/AppConsole.vala:215
 msgid "Unknown command"
 msgstr "Nepoznata naredba"
 
-#: src/Console/AppConsole.vala:225
+#: src/Console/AppConsole.vala:226
 msgid "Latest update"
 msgstr "Najnovija nadopuna"
 
-#: src/Console/AppConsole.vala:226
+#: src/Console/AppConsole.vala:227
 msgid "Latest point update"
 msgstr "Najnovija ciljana nadopuna"
 
-#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
+#: src/Console/AppConsole.vala:228 src/Console/AppConsole.vala:246
 msgid "No updates found"
 msgstr "Nema pronađenih nadopuna"
 
-#: src/Console/AppConsole.vala:234
+#: src/Console/AppConsole.vala:235
 msgid "Notifications disabled"
 msgstr "Obavijesti onemogućene"
 
-#: src/Console/AppConsole.vala:239
+#: src/Console/AppConsole.vala:240
 msgid "No"
 msgstr "Nema"
 
-#: src/Console/AppConsole.vala:254
+#: src/Console/AppConsole.vala:255
 msgid "notify point releases disabled"
 msgstr "obavijestiti o izdanjima točaka onemogućeno"
 
-#: src/Console/AppConsole.vala:262
+#: src/Console/AppConsole.vala:263
 msgid "notify major releases disabled"
 msgstr "obavijest o glavnim izdanjima onemogućena"
 
@@ -382,15 +388,15 @@ msgstr "obavijest o glavnim izdanjima onemogućena"
 msgid "Kernel %s Available"
 msgstr "Kernel %s je dostupan"
 
-#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:274 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Prikaži"
 
-#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:275 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Instaliraj"
 
-#: src/Console/AppConsole.vala:275
+#: src/Console/AppConsole.vala:279
 msgid "Previously notified"
 msgstr "Prethodno prijavljeno"
 
@@ -537,9 +543,11 @@ msgstr "Sakrij neuspjele ili nedovršene gradnje"
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
 msgid ""
-"If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list."
+"If a kernel version exists on the mainline-ppa site, but is an incomplete or "
+"failed build for your arch (%s), then don't show it in the list."
 msgstr ""
-"Ako verzija kernela postoji na web-mjestu mainline-ppa, ali je nepotpuna ili neuspjela izgradnja za vaš luk (%s), nemojte je prikazivati na popisu."
+"Ako verzija kernela postoji na web-mjestu mainline-ppa, ali je nepotpuna ili "
+"neuspjela izgradnja za vaš luk (%s), nemojte je prikazivati na popisu."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -567,9 +575,11 @@ msgstr "Provjera kontrolnih zbrojeva pomoću CHECKSUMS datoteka"
 
 #: src/Gtk/SettingsDialog.vala:177
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file downloads."
+"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"downloads."
 msgstr ""
-"Upotrijebite sha-256 hashove iz CHECKSUMS datoteke za provjeru preuzimanja .deb datoteke."
+"Upotrijebite sha-256 hashove iz CHECKSUMS datoteke za provjeru preuzimanja ."
+"deb datoteke."
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Keep Downloads"
@@ -577,13 +587,17 @@ msgstr "Zadrži Preuzimanja"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
+"Retain downloaded .deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
+"They are still deleted once they become older than the \"Show previous major "
+"versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-"Zadrži preuzete .deb datoteke nakon instalacije i ponovno ih upotrijebi za deinstalaciju/ponovnu instalaciju umjesto ponovnog preuzimanja.\n"
+"Zadrži preuzete .deb datoteke nakon instalacije i ponovno ih upotrijebi za "
+"deinstalaciju/ponovnu instalaciju umjesto ponovnog preuzimanja.\n"
 "\n"
-"I dalje se brišu nakon što postanu stariji od postavke \"Prikaži prethodne glavne verzije\" ili ako su ažurirani na web stranici mainline-ppa."
+"I dalje se brišu nakon što postanu stariji od postavke \"Prikaži prethodne "
+"glavne verzije\" ili ako su ažurirani na web stranici mainline-ppa."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
@@ -606,10 +620,10 @@ msgid ""
 msgstr ""
 "Naredba koja se koristi za pokretanje dpkg s root dopuštenjima.\n"
 "\n"
-"Ako sintaksa naredbenog retka auth programa zahtijeva da naredba za izvršavanje bude "
-"okruženo navodnicima, a ne samo dodano na kraj naredbe "
-"redak, možete uključiti jedan %s u niz, i on će biti zamijenjen "
-"naredbom dpkg, inače će biti pridodano na kraj.\n"
+"Ako sintaksa naredbenog retka auth programa zahtijeva da naredba za "
+"izvršavanje bude okruženo navodnicima, a ne samo dodano na kraj naredbe "
+"redak, možete uključiti jedan %s u niz, i on će biti zamijenjen naredbom "
+"dpkg, inače će biti pridodano na kraj.\n"
 "Pogledajte \"su -c\" na padajućem popisu za primjer toga."
 
 #: src/Gtk/SettingsDialog.vala:279
@@ -645,17 +659,18 @@ msgid ""
 "\n"
 "Edit the command to customize the appearance of the terminal."
 msgstr ""
-"Ako sintaksa naredbenog retka programa terminala zahtijeva naredbu izvršavanja za "
-"biti u navodnicima, a ne samo dodati na kraj naredbe"
-"redak, možete uključiti jedan %s u niz, i on će biti zamijenjen "
-"naredbom za instaliranje, inače će biti pridodano na kraj.\n"
+"Ako sintaksa naredbenog retka programa terminala zahtijeva naredbu "
+"izvršavanja za biti u navodnicima, a ne samo dodati na kraj naredberedak, "
+"možete uključiti jedan %s u niz, i on će biti zamijenjen naredbom za "
+"instaliranje, inače će biti pridodano na kraj.\n"
 "Pogledajte mate-terminal na padajućem popisu za primjer toga.\n"
 "\n"
-"Možete napisati bilo koju naredbenu liniju koju želite, ali navedeni program mora ostati"
-"u prvom planu i blokiraj dok se naredba izvodi, a ne račva i "
+"Možete napisati bilo koju naredbenu liniju koju želite, ali navedeni program "
+"mora ostatiu prvom planu i blokiraj dok se naredba izvodi, a ne račva i "
 "vratite se odmah.\n"
-"Većina terminalskih programa radi dobro prema zadanim postavkama, ali neki zahtijevaju posebne "
-"zastavice naredbenog retka, a neke se uopće ne mogu koristiti.\n"
+"Većina terminalskih programa radi dobro prema zadanim postavkama, ali neki "
+"zahtijevaju posebne zastavice naredbenog retka, a neke se uopće ne mogu "
+"koristiti.\n"
 "\n"
 "Primjeri:\n"
 "gnome-terminal se može blokirati korištenjem opcije --wait.\n"
@@ -674,7 +689,9 @@ msgstr "Kopirati"
 #: src/Gtk/TerminalWindow.vala:138
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr "Kopira cijeli izlazni međuspremnik, uključujući pomicanje unazad, u međuspremnik."
+msgstr ""
+"Kopira cijeli izlazni međuspremnik, uključujući pomicanje unazad, u "
+"međuspremnik."
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Cancel"

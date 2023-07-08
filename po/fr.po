@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-30 05:19-0400\n"
+"POT-Creation-Date: 2023-07-08 11:51-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -238,145 +238,148 @@ msgstr "Les notifications sont désactivées"
 msgid "Can not reach site"
 msgstr "No se puede llegar al sitio"
 
-#: src/Console/AppConsole.vala:29
+#: src/Console/AppConsole.vala:30
 msgid "install kernel packages from kernel.ubuntu.com"
 msgstr "installer les packages du noyau à partir de kernel.ubuntu.com"
 
-#: src/Console/AppConsole.vala:31 src/Gtk/AppGtk.vala:54
+#: src/Console/AppConsole.vala:32 src/Gtk/AppGtk.vala:54
 msgid "Syntax"
 msgstr "Syntaxe"
 
-#: src/Console/AppConsole.vala:33
+#: src/Console/AppConsole.vala:34
 msgid "Commands"
 msgstr "Commandes"
 
-#: src/Console/AppConsole.vala:35
+#: src/Console/AppConsole.vala:36
 msgid "Check for kernel updates"
 msgstr "Vérifier les mises à jour de noyau"
 
-#: src/Console/AppConsole.vala:36
+#: src/Console/AppConsole.vala:37
 msgid "Check for kernel updates and send a desktop notification"
 msgstr "Vérifier les mises à jour de noyau et notifier l'utilisateur"
 
-#: src/Console/AppConsole.vala:37
+#: src/Console/AppConsole.vala:38
 msgid "List available kernels"
 msgstr "Lister tous les noyaux disponibles"
 
-#: src/Console/AppConsole.vala:38
+#: src/Console/AppConsole.vala:39
 msgid "List installed kernels"
 msgstr "Lister les noyaux installés"
 
-#: src/Console/AppConsole.vala:39
+#: src/Console/AppConsole.vala:40
 msgid "Install latest mainline kernel"
 msgstr "Installer le dernier noyau mainline"
 
-#: src/Console/AppConsole.vala:40
+#: src/Console/AppConsole.vala:41
 msgid "Install latest point update in the current major version"
 msgstr "Installer la dernière version mineure pour la série courante"
 
-#: src/Console/AppConsole.vala:41
+#: src/Console/AppConsole.vala:42
 msgid "Install specified kernels"
 msgstr "Installer les noyaux spécifiés"
 
-#: src/Console/AppConsole.vala:42
+#: src/Console/AppConsole.vala:43
 msgid "Uninstall specified kernels"
 msgstr "Désinstaller le noyau spécifié"
 
-#: src/Console/AppConsole.vala:43 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:340
 msgid "Uninstall all but the highest installed version"
 msgstr "Désinstallez toutes le version installées, sauf la plus élevée"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:45
 msgid "Download specified kernels"
 msgstr "Télécharger les noyaux spécifiés"
 
-#: src/Console/AppConsole.vala:45
+#: src/Console/AppConsole.vala:46
 msgid "Delete cached info about available kernels"
 msgstr "Supprimer les informations mises en cache sur les noyaux disponibles"
 
-#: src/Console/AppConsole.vala:46
+#: src/Console/AppConsole.vala:47
 msgid "This help"
 msgstr "Cette aide"
 
-#: src/Console/AppConsole.vala:48 src/Gtk/AppGtk.vala:56
+#: src/Console/AppConsole.vala:49 src/Gtk/AppGtk.vala:56
 msgid "Options"
 msgstr "Options"
 
-#: src/Console/AppConsole.vala:50
+#: src/Console/AppConsole.vala:51
 msgid "Include unstable and RC releases"
 msgstr "Inclure les versions instables et RC"
 
-#: src/Console/AppConsole.vala:51
+#: src/Console/AppConsole.vala:52
 msgid "Exclude unstable and RC releases"
 msgstr "Exclure les versions instables et RC"
 
-#: src/Console/AppConsole.vala:52
+#: src/Console/AppConsole.vala:53
 msgid "Verbosity. Set to n if given, or increment."
 msgstr "Verbosité. Fixé à n si donné, ou incrémenté."
 
-#: src/Console/AppConsole.vala:53
+#: src/Console/AppConsole.vala:54
 msgid "Assume Yes for all prompts (non-interactive mode)"
 msgstr "Supposons Oui pour toutes les invites (mode non interactif)"
 
-#: src/Console/AppConsole.vala:54
+#: src/Console/AppConsole.vala:55
 msgid "Pause for keypress before exiting (for external terminal)"
-msgstr "Pause pour appuyer sur une touche avant de quitter (pour un terminal externe)"
+msgstr ""
+"Pause pour appuyer sur une touche avant de quitter (pour un terminal externe)"
 
-#: src/Console/AppConsole.vala:57
+#: src/Console/AppConsole.vala:58
 msgid "One or more version strings taken from the output of --list"
 msgstr "Une version prise du resultat de --list"
 
-#: src/Console/AppConsole.vala:58
-msgid ""
-"comma, pipe, colon, or space separated. (space requires quotes or backslashes)"
-msgstr ""
-"virgule, barre verticale, deux-points ou espace séparé. (l'espace nécessite des guillemets ou des barres obliques inverses)"
-
 #: src/Console/AppConsole.vala:59
+msgid ""
+"comma, pipe, colon, or space separated. (space requires quotes or "
+"backslashes)"
+msgstr ""
+"virgule, barre verticale, deux-points ou espace séparé. (l'espace nécessite "
+"des guillemets ou des barres obliques inverses)"
+
+#: src/Console/AppConsole.vala:60
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Le noyau en cours d'exécution sera toujours ignoré"
 
-#: src/Console/AppConsole.vala:161 src/Gtk/AppGtk.vala:89
+#: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
 msgstr "Option inconnue"
 
-#: src/Console/AppConsole.vala:199
+#: src/Console/AppConsole.vala:200
 msgid "Deleted"
 msgstr "Supprimé"
 
-#: src/Console/AppConsole.vala:200
+#: src/Console/AppConsole.vala:201
 msgid "Error deleting"
 msgstr "Erreur lors de la suppression"
 
-#: src/Console/AppConsole.vala:214
+#: src/Console/AppConsole.vala:215
 msgid "Unknown command"
 msgstr "Commande inconnu"
 
-#: src/Console/AppConsole.vala:225
+#: src/Console/AppConsole.vala:226
 msgid "Latest update"
 msgstr "Dernière mise à jour"
 
-#: src/Console/AppConsole.vala:226
+#: src/Console/AppConsole.vala:227
 msgid "Latest point update"
 msgstr "Dernière mise à jour mineure"
 
-#: src/Console/AppConsole.vala:227 src/Console/AppConsole.vala:245
+#: src/Console/AppConsole.vala:228 src/Console/AppConsole.vala:246
 msgid "No updates found"
 msgstr "Aucune mise à jour disponible"
 
-#: src/Console/AppConsole.vala:234
+#: src/Console/AppConsole.vala:235
 msgid "Notifications disabled"
 msgstr "Les notifications sont désactivées"
 
-#: src/Console/AppConsole.vala:239
+#: src/Console/AppConsole.vala:240
 msgid "No"
 msgstr "Nul"
 
-#: src/Console/AppConsole.vala:254
+#: src/Console/AppConsole.vala:255
 msgid "notify point releases disabled"
 msgstr "Notifier si une version mineure est disponible"
 
-#: src/Console/AppConsole.vala:262
+#: src/Console/AppConsole.vala:263
 msgid "notify major releases disabled"
 msgstr "Notifier si une version majeure est disponible"
 
@@ -385,15 +388,15 @@ msgstr "Notifier si une version majeure est disponible"
 msgid "Kernel %s Available"
 msgstr "Paquet %s disponibles"
 
-#: src/Console/AppConsole.vala:271 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:274 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Montrer"
 
-#: src/Console/AppConsole.vala:272 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:275 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Installer"
 
-#: src/Console/AppConsole.vala:275
+#: src/Console/AppConsole.vala:279
 msgid "Previously notified"
 msgstr "Précédemment notifié"
 
@@ -458,9 +461,11 @@ msgid "Exit"
 msgstr "Sortie"
 
 #: src/Gtk/MainWindow.vala:413
-msgid "A tool for installing kernel packages\n"
+msgid ""
+"A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
-msgstr "Un outil pour installer les packages du noyau\n"
+msgstr ""
+"Un outil pour installer les packages du noyau\n"
 "à partir du PPA des noyaux principaux d'Ubuntu"
 
 #: src/Gtk/MainWindow.vala:415
@@ -537,8 +542,13 @@ msgstr "Masquer les builds échoués ou incomplets"
 
 #: src/Gtk/SettingsDialog.vala:115
 #, c-format
-msgid "If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list."
-msgstr "Si une version du noyau existe sur le site mainline-ppa, mais qu'il s'agit d'une version incomplète ou ayant échoué pour votre arch (%s), ne l'affichez pas dans la liste."
+msgid ""
+"If a kernel version exists on the mainline-ppa site, but is an incomplete or "
+"failed build for your arch (%s), then don't show it in the list."
+msgstr ""
+"Si une version du noyau existe sur le site mainline-ppa, mais qu'il s'agit "
+"d'une version incomplète ou ayant échoué pour votre arch (%s), ne l'affichez "
+"pas dans la liste."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -565,8 +575,12 @@ msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Vérifier les sommes de contrôle avec les fichiers CHECKSUMS"
 
 #: src/Gtk/SettingsDialog.vala:177
-msgid "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file downloads."
-msgstr "Utilisez les hachages sha-256 du fichier CHECKSUMS pour vérifier les téléchargements du fichier .deb."
+msgid ""
+"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"downloads."
+msgstr ""
+"Utilisez les hachages sha-256 du fichier CHECKSUMS pour vérifier les "
+"téléchargements du fichier .deb."
 
 #: src/Gtk/SettingsDialog.vala:182
 msgid "Keep Downloads"
@@ -574,13 +588,19 @@ msgstr "Conserver les Téléchargements"
 
 #: src/Gtk/SettingsDialog.vala:184
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
+"Retain downloaded .deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
+"They are still deleted once they become older than the \"Show previous major "
+"versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-"Conservez les fichiers .deb téléchargés après l'installation et réutilisez-les pour la désinstallation/réinstallation au lieu de les télécharger à nouveau.\n"
+"Conservez les fichiers .deb téléchargés après l'installation et réutilisez-"
+"les pour la désinstallation/réinstallation au lieu de les télécharger à "
+"nouveau.\n"
 "\n"
-"Ils sont toujours supprimés une fois qu'ils sont plus anciens que le paramètre \"Afficher les versions majeures précédentes\", ou s'ils ont été mis à jour sur le site mainline-ppa."
+"Ils sont toujours supprimés une fois qu'ils sont plus anciens que le "
+"paramètre \"Afficher les versions majeures précédentes\", ou s'ils ont été "
+"mis à jour sur le site mainline-ppa."
 
 #: src/Gtk/SettingsDialog.vala:193
 msgid "Proxy"
@@ -674,7 +694,9 @@ msgstr "Copier"
 #: src/Gtk/TerminalWindow.vala:138
 msgid ""
 "Copies the entire output buffer, including scrollback, to the clipboard."
-msgstr "Copie l'intégralité du tampon de sortie, y compris le défilement vers l'arrière, dans le presse-papiers."
+msgstr ""
+"Copie l'intégralité du tampon de sortie, y compris le défilement vers "
+"l'arrière, dans le presse-papiers."
 
 #: src/Gtk/TerminalWindow.vala:145
 msgid "Cancel"
