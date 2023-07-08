@@ -163,10 +163,6 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
   The exit value is also meaningful.  
   `VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes`  
 
-  Debugging notifications:  
-  `DEBUG_NOTIFY_SEND=true VERBOSE=3 mainline --notify`  
-  Then find the logs here `ls -al ${XDG_RUNTIME_DIR:-/tmp}/.*.e`
-
 * If **Uninstall Old** doesn't remove some distribution kernel packages  
   Use your normal package manager like apt or synaptic to remove the parent meta-package:  
   `$ sudo apt remove linux-image-generic`  
