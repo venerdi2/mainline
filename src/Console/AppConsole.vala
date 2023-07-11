@@ -266,13 +266,13 @@ public class AppConsole : GLib.Object {
 		if (available!="") {
 			title = _("Kernel %s Available").printf(available);
 			string s = APP_LIB_DIR+"/notice.sh"
-				+ " --id=\"@"+App.NOTIFICATION_ID_FILE+"\""
-				+ " --app-name=\""+BRANDING_LONGNAME+"\""
-				+ " --icon="+BRANDING_SHORTNAME
-				+ " --expire-time=0"
-				+ " --title=\""+title+"\""
-				+ " --action=\""+_("Show")+":"+BRANDING_SHORTNAME+"-gtk\""
-				+ " --action=\""+_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+available+"\""
+				+ " -i \"@"+App.NOTIFICATION_ID_FILE+"\""
+				+ " -N \""+BRANDING_LONGNAME+"\""
+				+ " -n "+BRANDING_SHORTNAME
+				+ " -t0"
+				+ " -a \""+_("Show")+":"+BRANDING_SHORTNAME+"-gtk\""
+				+ " -a \""+_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+available+"\""
+				+ " -s \""+title+"\""
 			;
 			exec_async(s);
 		} else {
