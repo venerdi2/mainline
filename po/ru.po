@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-08 11:51-0400\n"
+"POT-Creation-Date: 2023-07-11 15:37-0400\n"
 "PO-Revision-Date: 2023-06-28 00:07+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -386,11 +386,11 @@ msgstr "отключено уведомление о крупных релиза
 msgid "Kernel %s Available"
 msgstr "Доступно ядро %s"
 
-#: src/Console/AppConsole.vala:274 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:124
 msgid "Show"
 msgstr "Показать"
 
-#: src/Console/AppConsole.vala:275 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:319
 msgid "Install"
 msgstr "Установить"
 
