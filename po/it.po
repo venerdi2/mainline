@@ -94,7 +94,7 @@ msgstr "File non trovato"
 
 #: src/Common/LinuxKernel.vala:824
 msgid "needs update"
-msgstr "necessita di aggiornamento"
+msgstr "aggiornamento necessario"
 
 #: src/Common/LinuxKernel.vala:881
 msgid "Available Kernels"
@@ -150,7 +150,7 @@ msgstr "Disinstalla i kernel specificati"
 
 #: src/Common/LinuxKernel.vala:1030
 msgid "Not uninstalling the currently running kernel"
-msgstr "Non verrà disinstallato il kernel attualmente in esecuzione"
+msgstr "Il kernel attualmente in esecuzione non sarà disinstallato "
 
 #: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:494
 msgid "is locked"
@@ -203,7 +203,7 @@ msgstr "Supporto thread mancante in GLib."
 
 #: src/Common/Main.vala:291
 msgid "Wrote config file"
-msgstr "Ha scritto il file di configurazione"
+msgstr "File di configurazione scritto"
 
 #: src/Common/Main.vala:310
 msgid "No config file"
@@ -255,7 +255,7 @@ msgstr "Verifica aggiornamenti del kernel"
 #: src/Console/AppConsole.vala:37
 msgid "Check for kernel updates and send a desktop notification"
 msgstr ""
-"Verifica la disponibilità di aggiornamenti del kerneled avvisa l'utente "
+"Verifica la disponibilità di aggiornamenti del kernel ed avvisa l'utente "
 "corrente"
 
 #: src/Console/AppConsole.vala:38
@@ -477,7 +477,7 @@ msgstr "Originale"
 
 #: src/Gtk/MainWindow.vala:416
 msgid "Forked"
-msgstr "Biforcuto"
+msgstr "Derivato"
 
 #: src/Gtk/MainWindow.vala:434
 msgid "Updating kernels"
@@ -550,7 +550,7 @@ msgid ""
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
 "Se una versione del kernel esiste sul sito mainline-ppa, ma è una build "
-"incompleta o fallita per il tuo arch (%s), allora non mostrarla nell'elenco."
+"incompleta o fallita per la tua architettura (%s), allora non mostrarla nell'elenco."
 
 #: src/Gtk/SettingsDialog.vala:132
 msgid "previous major versions  ( -1 = all )"
@@ -599,7 +599,7 @@ msgstr ""
 "Conserva i file .deb scaricati dopo l'installazione e riutilizzali per la "
 "disinstallazione/reinstallazione invece di scaricarli di nuovo.\n"
 "\n"
-"Sono ancora cancellati una volta che diventano più vecchi dell'impostazione "
+"Saranno cancellati quando diventano più vecchi dell'impostazione "
 "\"Mostra versioni principali precedenti\", o se sono stati aggiornati sul "
 "sito mainline-ppa."
 
@@ -627,7 +627,7 @@ msgstr ""
 "Se la sintassi della riga di comando del programma auth richiede che il "
 "comando di esecuzione sia racchiuso tra virgolette anziché semplicemente "
 "aggiunto alla fine della riga di comando, puoi includere un singolo %s nella "
-"stringa, che verrà sostituito con il comando dpkg, altrimenti verrà aggiunto "
+"stringa, che sarà sostituito con il comando dpkg, altrimenti verrà aggiunto "
 "alla fine.\n"
 "Vedi \"su -c\" nell'elenco a discesa per un esempio."
 
@@ -666,21 +666,21 @@ msgid ""
 msgstr ""
 "Se la sintassi della riga di comando dei programmi terminale richiede che il "
 "comando execute sia essere racchiuso tra virgolette piuttosto che "
-"semplicemente aggiunto alla fine del comandoline, è possibile includere una "
-"singola %s nella stringa e verrà sostituita con il comando installa, "
+"semplicemente aggiunto alla fine della linea di comando, è possibile includere una "
+"singola %s nella stringa che sarà sostituita con il comando installa, "
 "altrimenti verrà aggiunto alla fine.\n"
 "Vedere mate-terminal nell'elenco a discesa per un esempio.\n"
 "\n"
 "Puoi scrivere qualsiasi riga di comando che desideri, ma il programma "
-"specificato deve rimanere in primo piano e blocca mentre il comando è in "
-"esecuzione, non fork e Ritorna immediatamente.\n"
-"La maggior parte dei programmi terminale funziona bene per impostazione "
+"specificato deve rimanere in primo piano e bloccato mentre il comando è in "
+"esecuzione, esclusi fork e Ritorna immediatamente.\n"
+"La maggior parte dei programmi terminale funziona bene con l'impostazione "
 "predefinita, ma alcuni richiedono speciali Flag della riga di comando e "
 "alcuni non sono affatto utilizzabili.\n"
 "\n"
 "Esempi:\n"
-"gnome-terminal può essere fatto bloccare usando l'opzione --wait.\n"
-"xfce4-terminal non può essere impostato per bloccare.\n"
+"gnome-terminal può essere bloccato usando l'opzione --wait.\n"
+"xfce4-terminal non può essere impostato per il blocco.\n"
 "\n"
 "Modifica il comando per personalizzare l'aspetto del terminale."
 
