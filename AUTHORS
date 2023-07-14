@@ -5,7 +5,7 @@ cloyce@github       rc kernels option
 LucasChollet@github improve thread management
 
 Inclusions:
-	notify-send.sh https://github.com/bkw777/notify-send.sh
+	notice.sh https://github.com/bkw777/notice.sh
 
 Translators:
 	see file TRANSLATORS
