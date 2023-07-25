@@ -53,6 +53,7 @@ const int      DEFAULT_CONCURRENT_DOWNLOADS    = 4     ;
 // filters
 const bool     DEFAULT_HIDE_UNSTABLE           = true  ;
 const bool     DEFAULT_HIDE_INVALID            = true  ;
+const bool     DEFAULT_HIDE_FLAVORS            = false ;
 const int      DEFAULT_PREVIOUS_MAJORS         = 0     ;
 // notifications
 const bool     DEFAULT_NOTIFY_MAJOR            = false ;
@@ -137,8 +138,8 @@ public class Main : GLib.Object {
 
 	// constants ----------
 	public string CONFIG_DIR = "";
-	public string CACHE_DIR = "";
-	public string DATA_DIR = "";
+	public static string CACHE_DIR = "";
+	public static string DATA_DIR = "";
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
@@ -169,6 +170,7 @@ public class Main : GLib.Object {
 	public int concurrent_downloads    = DEFAULT_CONCURRENT_DOWNLOADS;
 	public bool hide_unstable          = DEFAULT_HIDE_UNSTABLE;
 	public bool hide_invalid           = DEFAULT_HIDE_INVALID;
+	public bool hide_flavors           = DEFAULT_HIDE_FLAVORS;
 	public int previous_majors         = DEFAULT_PREVIOUS_MAJORS;
 	public bool notify_major           = DEFAULT_NOTIFY_MAJOR;
 	public bool notify_minor           = DEFAULT_NOTIFY_MINOR;
@@ -258,6 +260,7 @@ public class Main : GLib.Object {
 		config.set_int_member(     "concurrent_downloads",    concurrent_downloads    );
 		config.set_boolean_member( "hide_unstable",           hide_unstable           );
 		config.set_boolean_member( "hide_invalid",            hide_invalid            );
+		config.set_boolean_member( "hide_flavors",            hide_flavors            );
 		config.set_int_member(     "previous_majors",         previous_majors         );
 		config.set_boolean_member( "notify_major",            notify_major            );
 		config.set_boolean_member( "notify_minor",            notify_minor            );
@@ -323,6 +326,7 @@ public class Main : GLib.Object {
 		concurrent_downloads    = (int) config.get_int_member_with_default(     "concurrent_downloads",    DEFAULT_CONCURRENT_DOWNLOADS    );
 		hide_unstable           =       config.get_boolean_member_with_default( "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
 		hide_invalid            =       config.get_boolean_member_with_default( "hide_invalid",            DEFAULT_HIDE_INVALID            );
+		hide_flavors            =       config.get_boolean_member_with_default( "hide_flavors",            DEFAULT_HIDE_FLAVORS            );
 		previous_majors         = (int) config.get_int_member_with_default(     "previous_majors",         DEFAULT_PREVIOUS_MAJORS         );
 		notify_major            =       config.get_boolean_member_with_default( "notify_major",            DEFAULT_NOTIFY_MAJOR            );
 		notify_minor            =       config.get_boolean_member_with_default( "notify_minor",            DEFAULT_NOTIFY_MINOR            );
@@ -348,6 +352,7 @@ public class Main : GLib.Object {
 		concurrent_downloads    = json_get_int(    config, "concurrent_downloads",    DEFAULT_CONCURRENT_DOWNLOADS    );
 		hide_unstable           = json_get_bool(   config, "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
 		hide_invalid            = json_get_bool(   config, "hide_invalid",            DEFAULT_HIDE_INVALID            );
+		hide_flavors            = json_get_bool(   config, "hide_flavors",            DEFAULT_HIDE_FLAVORS            );
 		previous_majors         = json_get_int(    config, "previous_majors",         DEFAULT_PREVIOUS_MAJORS         );
 		notify_major            = json_get_bool(   config, "notify_major",            DEFAULT_NOTIFY_MAJOR            );
 		notify_minor            = json_get_bool(   config, "notify_minor",            DEFAULT_NOTIFY_MINOR            );

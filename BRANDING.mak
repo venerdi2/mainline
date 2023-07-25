@@ -2,8 +2,8 @@
 # This is the single place where you edit these values manually
 
 VERSION_MAJOR = 1
-VERSION_MINOR = 3
-VERSION_MICRO = 24
+VERSION_MINOR = 4
+VERSION_MICRO = 0
 BRANDING_SHORTNAME = mainline
 BRANDING_LONGNAME = Mainline Kernels
 BRANDING_AUTHORNAME = Brian K. White

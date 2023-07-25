@@ -197,8 +197,8 @@ public class AppConsole : GLib.Object {
 			case "--clean-cache":
 			case "--delete-cache":
 				int r = 1;
-				if (rm(App.CACHE_DIR)) { r = 0; vprint(_("Deleted")+" "+App.CACHE_DIR); }
-				else vprint(_("Error deleting")+" "+App.CACHE_DIR,1,stderr);
+				if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted")+" "+Main.CACHE_DIR); }
+				else vprint(_("Error deleting")+" "+Main.CACHE_DIR,1,stderr);
 				return r;
 
 			case "--download":

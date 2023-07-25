@@ -169,9 +169,9 @@ public class MainWindow : Window {
 			tm.get_iter_from_string(out iter, path);
 			LinuxKernel k;
 			tm.get(iter, TM.KOBJ, out k, -1);
-			if (toggle.active) rm(k.locked_file);
-			else fwrite(k.locked_file, "");
+			k.set_locked(!toggle.active);
 			tm.set(iter, TM.LOCKED, k.is_locked);
+			tm.set(iter, TM.TOOLTIP, k.tooltip_text());
 		});
 
 		// status
@@ -205,10 +205,9 @@ public class MainWindow : Window {
 			var t_old = k.notes.strip();
 			var t_new = data.strip();
 			if (t_old != t_new) {
-				k.notes = t_new;
-				if (t_new=="") rm(k.notes_file);
-				else fwrite(k.notes_file, t_new);
-				tm.set(i, TM.NOTES, t_new, -1);
+				k.set_notes(t_new);
+				tm.set(i, TM.NOTES, t_new);
+				tm.set(i, TM.TOOLTIP, k.tooltip_text());
 			}
 		});
 
@@ -245,11 +244,13 @@ public class MainWindow : Window {
 		Gdk.Pixbuf p;
 		TreeIter iter;
 		tm.clear();
+
 		foreach (var k in LinuxKernel.kernel_list) {
 
 			if (!k.is_installed) { // don't hide anything that's installed
 				if (k.is_invalid && App.hide_invalid) continue; // hide invalid if settings say to
 				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
+				if (k.flavor!="generic" && App.hide_flavors) continue; // hide flavors if settings say to
 				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide below show_previous setting
 			}
 
@@ -370,6 +371,7 @@ public class MainWindow : Window {
 		var old_previous_majors = App.previous_majors;
 		var old_hide_unstable = App.hide_unstable;
 		var old_hide_invalid = App.hide_invalid;
+		var old_hide_flavors = App.hide_flavors;
 		// settings that change the notification behavior -> trigger notify script update
 		var old_notify_interval_unit = App.notify_interval_unit;
 		var old_notify_interval_value = App.notify_interval_value;
@@ -391,7 +393,8 @@ public class MainWindow : Window {
 		// if the selection set changed, then update cache
 		if (App.previous_majors != old_previous_majors ||
 			App.hide_unstable != old_hide_unstable ||
-			App.hide_invalid != old_hide_invalid) update_cache();
+			App.hide_invalid != old_hide_invalid ||
+			App.hide_flavors != old_hide_flavors) update_cache();
 
 		// in case it was due but we didn't run update_cache()
 		App.run_notify_script_if_due();

@@ -118,6 +118,15 @@ public class SettingsDialog : Gtk.Dialog {
 		chk_hide_invalid.toggled.connect(()=>{ App.hide_invalid = chk_hide_invalid.active; });
 		vbox_main.add(chk_hide_invalid);
 
+		// hide flavors
+		var chk_hide_flavors = new Gtk.CheckButton.with_label(_("Hide flavors other than \"generic\""));
+		chk_hide_flavors.set_tooltip_text(
+			_("Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", \"generic-lpae\", \"server\", \"virtual\", etc.")
+		);
+		chk_hide_flavors.active = App.hide_flavors;
+		chk_hide_flavors.toggled.connect(()=>{ App.hide_flavors = chk_hide_flavors.active; });
+		vbox_main.add(chk_hide_flavors);
+
 		// kernel version threshold
 		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, SPACING);
 		vbox_main.add(hbox);

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 15:37-0400\n"
+"POT-Creation-Date: 2023-07-25 03:12-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -13,229 +13,243 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
 "X-Generator: Poedit 2.0.5\n"
 
-#: src/Common/LinuxKernel.vala:109
+#: src/Common/LinuxKernel.vala:141
 msgid "Distribution"
 msgstr "Διανομή"
 
-#: src/Common/LinuxKernel.vala:124
+#: src/Common/LinuxKernel.vala:156
 msgid "Architecture"
 msgstr "Αρχιτεκτονική"
 
-#: src/Common/LinuxKernel.vala:139
+#: src/Common/LinuxKernel.vala:171
 msgid "Running kernel"
 msgstr "Εκτέλεση πυρήνα"
 
-#: src/Common/LinuxKernel.vala:234
-msgid "loading cached"
-msgstr "φόρτωση προσωρινά αποθηκευμένου"
-
-#: src/Common/LinuxKernel.vala:246
-msgid "queuing download"
-msgstr "Προσθήκη λήψης στην ουρά"
-
-#: src/Common/LinuxKernel.vala:257
-msgid "Fetching individual kernel indexes"
-msgstr "Λήψη μεμονωμένων ευρετηρίων πυρήνα"
-
-#: src/Common/LinuxKernel.vala:272
-msgid "loading downloaded"
-msgstr "Φόρτωση λήψης"
-
-#: src/Common/LinuxKernel.vala:311
-msgid "Updating from"
-msgstr "Ενημέρωση από"
-
-#: src/Common/LinuxKernel.vala:318
-msgid "OK"
-msgstr "ΟΚ"
-
-#: src/Common/LinuxKernel.vala:321
-msgid "FAILED"
-msgstr "ΑΠΈΤΥΧΕ"
-
-#: src/Common/LinuxKernel.vala:420
-msgid "Found installed"
-msgstr "Βρέθηκε εγκατεστημένο"
-
-#: src/Common/LinuxKernel.vala:421
-msgid "locked"
-msgstr "κλειδωμένο"
-
-#: src/Common/LinuxKernel.vala:422
-msgid "running"
-msgstr "Ενεργός"
-
-#: src/Common/LinuxKernel.vala:459 src/Common/LinuxKernel.vala:998
-#: src/Common/LinuxKernel.vala:1080
-msgid "is locked."
-msgstr "είναι κλειδωμένο."
-
-#: src/Common/LinuxKernel.vala:677 src/Gtk/MainWindow.vala:472
+#: src/Common/LinuxKernel.vala:256 src/Gtk/MainWindow.vala:475
 msgid "Running"
 msgstr "Ενεργός"
 
-#: src/Common/LinuxKernel.vala:678
+#: src/Common/LinuxKernel.vala:257
 msgid "Installed"
 msgstr "Εγκατεστημένος"
 
-#: src/Common/LinuxKernel.vala:679
+#: src/Common/LinuxKernel.vala:258
 msgid "Invalid"
 msgstr "Άκυρος"
 
-#: src/Common/LinuxKernel.vala:772
+#: src/Common/LinuxKernel.vala:322
+msgid "queuing download"
+msgstr "Προσθήκη λήψης στην ουρά"
+
+#: src/Common/LinuxKernel.vala:335
+msgid "Fetching individual kernel indexes"
+msgstr "Λήψη μεμονωμένων ευρετηρίων πυρήνα"
+
+#: src/Common/LinuxKernel.vala:350
+msgid "loading downloaded"
+msgstr "Φόρτωση λήψης"
+
+#: src/Common/LinuxKernel.vala:389
+msgid "Updating from"
+msgstr "Ενημέρωση από"
+
+#: src/Common/LinuxKernel.vala:396
+msgid "OK"
+msgstr "ΟΚ"
+
+#: src/Common/LinuxKernel.vala:399
+msgid "FAILED"
+msgstr "ΑΠΈΤΥΧΕ"
+
+#: src/Common/LinuxKernel.vala:506
+msgid "Found installed"
+msgstr "Βρέθηκε εγκατεστημένο"
+
+#: src/Common/LinuxKernel.vala:507
+msgid "locked"
+msgstr "κλειδωμένο"
+
+#: src/Common/LinuxKernel.vala:508
+msgid "running"
+msgstr "Ενεργός"
+
+#: src/Common/LinuxKernel.vala:532 src/Common/LinuxKernel.vala:1023
+#: src/Common/LinuxKernel.vala:1105
+msgid "is locked."
+msgstr "είναι κλειδωμένο."
+
+#: src/Common/LinuxKernel.vala:752
 msgid "Packages Available"
 msgstr "Διαθέσιμα πακέτα"
 
-#: src/Common/LinuxKernel.vala:778
+#: src/Common/LinuxKernel.vala:759
 msgid "Packages Installed"
 msgstr "Εγκατεστημένα πακέτα"
 
-#: src/Common/LinuxKernel.vala:805
-msgid "File not found"
-msgstr "Το αρχείο δε βρέθηκε"
+#: src/Common/LinuxKernel.vala:765 src/Gtk/MainWindow.vala:190
+msgid "Notes"
+msgstr "Σημειώσεις"
 
-#: src/Common/LinuxKernel.vala:824
-msgid "needs update"
-msgstr "χρειάζεται ενημέρωση"
+#: src/Common/LinuxKernel.vala:771
+#, fuzzy
+msgid "Locked"
+msgstr "κλειδωμένο"
 
-#: src/Common/LinuxKernel.vala:881
-msgid "Available Kernels"
-msgstr "Διαθέσιμοι πυρήνες"
+#: src/Common/LinuxKernel.vala:772
+#, fuzzy
+msgid "installation"
+msgstr "Απεγκατάσταση"
 
-#: src/Common/LinuxKernel.vala:915 src/Gtk/MainWindow.vala:139
-msgid "Kernel"
-msgstr "Πυρήνας"
+#: src/Common/LinuxKernel.vala:772
+msgid "removal"
+msgstr ""
 
-#: src/Common/LinuxKernel.vala:915
+#: src/Common/LinuxKernel.vala:773
+msgid "prevented"
+msgstr ""
+
+#: src/Common/LinuxKernel.vala:785 src/Common/LinuxKernel.vala:939
 msgid "not found"
 msgstr "χρειάζεται ενημέρωση"
 
-#: src/Common/LinuxKernel.vala:922
+#: src/Common/LinuxKernel.vala:815
+msgid "needs update"
+msgstr "χρειάζεται ενημέρωση"
+
+#: src/Common/LinuxKernel.vala:904
+msgid "Available Kernels"
+msgstr "Διαθέσιμοι πυρήνες"
+
+#: src/Common/LinuxKernel.vala:939 src/Gtk/MainWindow.vala:139
+msgid "Kernel"
+msgstr "Πυρήνας"
+
+#: src/Common/LinuxKernel.vala:946
 msgid "Download: no downloadable kernels specified"
 msgstr "Λήψη: δεν έχουν καθοριστεί πυρήνες με δυνατότητα λήψης"
 
-#: src/Common/LinuxKernel.vala:941
+#: src/Common/LinuxKernel.vala:965
 msgid "enabled"
 msgstr "ενεργοποιημένη"
 
-#: src/Common/LinuxKernel.vala:967
+#: src/Common/LinuxKernel.vala:992
 msgid "Downloading"
 msgstr "Κατέβασμα"
 
-#: src/Common/LinuxKernel.vala:976
+#: src/Common/LinuxKernel.vala:1001
 msgid "Cached"
 msgstr "Αποθηκεύτηκε στην κρυφή μνήμη"
 
-#: src/Common/LinuxKernel.vala:984
+#: src/Common/LinuxKernel.vala:1009
 msgid "Installing selected kernels"
 msgstr "Εγκαθιστώντας επιλεγμένους πυρήνες"
 
-#: src/Common/LinuxKernel.vala:990 src/Common/LinuxKernel.vala:1027
+#: src/Common/LinuxKernel.vala:1015 src/Common/LinuxKernel.vala:1052
 msgid "Requested"
 msgstr "Ζήτησαν"
 
-#: src/Common/LinuxKernel.vala:993
+#: src/Common/LinuxKernel.vala:1018
 msgid "is already installed."
 msgstr "είναι ήδη εγκατεστημένο."
 
-#: src/Common/LinuxKernel.vala:1003
+#: src/Common/LinuxKernel.vala:1028
 msgid "download failed."
 msgstr "η λήψη απέτυχε."
 
-#: src/Common/LinuxKernel.vala:1010 src/Gtk/MainWindow.vala:498
+#: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:501
 msgid "Install: no installable kernels specified"
 msgstr "Εγκατάσταση: δεν έχουν καθοριστεί πυρήνες με δυνατότητα εγκατάστασης"
 
-#: src/Common/LinuxKernel.vala:1023
+#: src/Common/LinuxKernel.vala:1048
 msgid "Uninstalling selected kernels"
 msgstr "Απεγκατάσταση επιλεγμένων πυρήνων"
 
-#: src/Common/LinuxKernel.vala:1030
+#: src/Common/LinuxKernel.vala:1055
 msgid "Not uninstalling the currently running kernel"
 msgstr "Δεν γίνεται απεγκατάσταση του τρέχοντος πυρήνα"
 
-#: src/Common/LinuxKernel.vala:1035 src/Gtk/MainWindow.vala:494
+#: src/Common/LinuxKernel.vala:1060 src/Gtk/MainWindow.vala:497
 msgid "is locked"
 msgstr "είναι κλειδωμένο"
 
-#: src/Common/LinuxKernel.vala:1043
+#: src/Common/LinuxKernel.vala:1068
 msgid "found"
 msgstr "ιδρύω"
 
-#: src/Common/LinuxKernel.vala:1047
+#: src/Common/LinuxKernel.vala:1072
 msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 "Κατάργηση εγκατάστασης: δεν βρέθηκαν πακέτα με δυνατότητα απεγκατάστασης"
 
-#: src/Common/LinuxKernel.vala:1076
+#: src/Common/LinuxKernel.vala:1101
 msgid "is the highest installed version."
 msgstr "Απεγκαταστήστε όλες εκτός από την υψηλότερη εγκατεστημένη έκδοση"
 
-#: src/Common/LinuxKernel.vala:1088
+#: src/Common/LinuxKernel.vala:1113
 msgid "Could not find running kernel in list"
 msgstr "Δεν ήταν δυνατή η εύρεση του πυρήνα που εκτελείται αυτήν τη στιγμή"
 
-#: src/Common/LinuxKernel.vala:1093
+#: src/Common/LinuxKernel.vala:1118
 msgid "No old kernels to uninstall"
 msgstr "Χωρίς παλιούς πυρήνες για απεγκατάσταση"
 
-#: src/Common/LinuxKernel.vala:1094
+#: src/Common/LinuxKernel.vala:1119
 msgid "done"
 msgstr "τελείωσε"
 
-#: src/Common/LinuxKernel.vala:1099
+#: src/Common/LinuxKernel.vala:1124
 msgid "The following kernels will be uninstalled"
 msgstr "Θα καταργηθεί η εγκατάσταση των ακόλουθων πυρήνων"
 
-#: src/Common/LinuxKernel.vala:1101 src/lib/l.misc.vala:10
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
 msgstr "Συνεχίζω? (ν/Ο): "
 
-#: src/Common/LinuxKernel.vala:1115
+#: src/Common/LinuxKernel.vala:1140
 msgid "No updates"
 msgstr "Δεν βρέθηκαν ενημερώσεις"
 
-#: src/Common/LinuxKernel.vala:1117
+#: src/Common/LinuxKernel.vala:1142
 #, c-format
 msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Εγκατάσταση του πυρήνα έκδοσης %s ? (ν/Ο): "
 
-#: src/Common/Main.vala:198
+#: src/Common/Main.vala:200
 msgid "Missing Thread support in GLib."
 msgstr "Λείπει υποστήριξη νήματος στο GLib."
 
-#: src/Common/Main.vala:291
+#: src/Common/Main.vala:294
 msgid "Wrote config file"
 msgstr "Έγραψε αρχείο ρυθμίσεων"
 
-#: src/Common/Main.vala:310
+#: src/Common/Main.vala:313
 msgid "No config file"
 msgstr "Κανένα αρχείο διαμόρφωσης"
 
-#: src/Common/Main.vala:377
+#: src/Common/Main.vala:382
 msgid "Loaded config file"
 msgstr "Φορτωμένο αρχείο διαμόρφωσης"
 
-#: src/Common/Main.vala:397
+#: src/Common/Main.vala:402
 msgid "Called from"
 msgstr "Κλήθηκε από"
 
-#: src/Common/Main.vala:397
+#: src/Common/Main.vala:402
 msgid "at logon"
 msgstr "κατά την εκκίνηση"
 
-#: src/Common/Main.vala:398
+#: src/Common/Main.vala:403
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Αυτό το αρχείο αντικαθίσταται και εκτελείται ξανά κάθε φορά που "
 "αποθηκεύονται οι ρυθμίσεις στο"
 
-#: src/Common/Main.vala:431
+#: src/Common/Main.vala:436
 msgid "Notifications are disabled"
 msgstr "Οι ειδοποιήσεις είναι απενεργοποιημένες"
 
-#: src/Common/Main.vala:484
+#: src/Common/Main.vala:489
 msgid "Can not reach site"
 msgstr "Αποτυχία ανάγνωσης του αρχείου"
 
@@ -285,7 +299,7 @@ msgstr "Εγκαταστήστε καθορισμένους πυρήνες"
 msgid "Uninstall specified kernels"
 msgstr "Απεγκατάσταση καθορισμένων πυρήνων"
 
-#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:340
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
 msgid "Uninstall all but the highest installed version"
 msgstr "Απεγκαταστήστε όλες εκτός από την υψηλότερη εγκατεστημένη έκδοση"
 
@@ -393,11 +407,11 @@ msgstr "ειδοποιήστε τις κύριες εκδόσεις απενερ
 msgid "Kernel %s Available"
 msgstr "Πυρήνας %s διαθέσιμος"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:124
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:133
 msgid "Show"
 msgstr "Προβολή"
 
-#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:319
+#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:320
 msgid "Install"
 msgstr "Εγκατάσταση"
 
@@ -425,49 +439,45 @@ msgstr "κλειδώνω"
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: src/Gtk/MainWindow.vala:190
-msgid "Notes"
-msgstr "Σημειώσεις"
-
-#: src/Gtk/MainWindow.vala:324
+#: src/Gtk/MainWindow.vala:325
 msgid "Uninstall"
 msgstr "Απεγκατάσταση"
 
-#: src/Gtk/MainWindow.vala:330
+#: src/Gtk/MainWindow.vala:331
 msgid "Changelog, build status, etc"
 msgstr "Καταγραφή αλλαγών, κατάσταση κατασκευής κ.λπ"
 
-#: src/Gtk/MainWindow.vala:335 src/lib/l.exec.vala:7
+#: src/Gtk/MainWindow.vala:336 src/lib/l.exec.vala:7
 msgid "Unable to launch"
 msgstr "Δεν είναι δυνατή η εκκίνηση"
 
-#: src/Gtk/MainWindow.vala:339
+#: src/Gtk/MainWindow.vala:340
 msgid "Uninstall Old"
 msgstr "Απεγκατάσταση παλαιών"
 
-#: src/Gtk/MainWindow.vala:345
+#: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Δροσίζω"
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:347
 msgid "Delete and reload all cached kernel info"
 msgstr ""
 "Διαγραφή και επαναφόρτωση όλων των πληροφοριών του πυρήνα που έχουν "
 "αποθηκευτεί στην κρυφή μνήμη"
 
-#: src/Gtk/MainWindow.vala:351
+#: src/Gtk/MainWindow.vala:352
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: src/Gtk/MainWindow.vala:356
+#: src/Gtk/MainWindow.vala:357
 msgid "About"
 msgstr "Σχετικά"
 
-#: src/Gtk/MainWindow.vala:361
+#: src/Gtk/MainWindow.vala:362
 msgid "Exit"
 msgstr "Έξοδος"
 
-#: src/Gtk/MainWindow.vala:413
+#: src/Gtk/MainWindow.vala:416
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -475,27 +485,27 @@ msgstr ""
 "Ένα εργαλείο για την εγκατάσταση πακέτων πυρήνα\n"
 "από το Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:415
+#: src/Gtk/MainWindow.vala:418
 msgid "Original"
 msgstr "Πρωτότυπο"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:419
 msgid "Forked"
 msgstr "Διχαλωτός"
 
-#: src/Gtk/MainWindow.vala:434
+#: src/Gtk/MainWindow.vala:437
 msgid "Updating kernels"
 msgstr "Ενημέρωση πυρήνων"
 
-#: src/Gtk/MainWindow.vala:476
+#: src/Gtk/MainWindow.vala:479
 msgid "available"
 msgstr "διαθέσιμος"
 
-#: src/Gtk/MainWindow.vala:493
+#: src/Gtk/MainWindow.vala:496
 msgid "is already installed"
 msgstr "είναι ήδη εγκατεστημένο."
 
-#: src/Gtk/MainWindow.vala:495
+#: src/Gtk/MainWindow.vala:498
 msgid "adding"
 msgstr "προσθέτωντας"
 
@@ -557,31 +567,41 @@ msgstr ""
 "ημιτελής ή αποτυχία κατασκευής για το τόξο σας (%s), μην το εμφανίσετε στη "
 "λίστα."
 
-#: src/Gtk/SettingsDialog.vala:132
+#: src/Gtk/SettingsDialog.vala:122
+msgid "Hide flavors other than \"generic\""
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:124
+msgid ""
+"Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
+"\"generic-lpae\", \"server\", \"virtual\", etc."
+msgstr ""
+
+#: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
 msgstr "προηγούμενες κύριες εκδόσεις ( -1 = όλες )"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsDialog.vala:147
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: src/Gtk/SettingsDialog.vala:147
+#: src/Gtk/SettingsDialog.vala:156
 msgid "Internet connection timeout in"
 msgstr "Λήξη χρονικού ορίου σύνδεσης στο διαδίκτυο "
 
-#: src/Gtk/SettingsDialog.vala:155
+#: src/Gtk/SettingsDialog.vala:164
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#: src/Gtk/SettingsDialog.vala:164
+#: src/Gtk/SettingsDialog.vala:173
 msgid "Max concurrent downloads"
 msgstr "Μέγιστες ταυτόχρονες λήψεις"
 
-#: src/Gtk/SettingsDialog.vala:175
+#: src/Gtk/SettingsDialog.vala:184
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Επαλήθευση αθροισμάτων ελέγχου με τα αρχεία CHECKSUMS"
 
-#: src/Gtk/SettingsDialog.vala:177
+#: src/Gtk/SettingsDialog.vala:186
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
@@ -589,11 +609,11 @@ msgstr ""
 "Χρησιμοποιήστε τους κατακερματισμούς sha-256 από το αρχείο CHECKSUMS για να "
 "επαληθεύσετε τις λήψεις αρχείων .deb."
 
-#: src/Gtk/SettingsDialog.vala:182
+#: src/Gtk/SettingsDialog.vala:191
 msgid "Keep Downloads"
 msgstr "Διατήρηση λήψεων"
 
-#: src/Gtk/SettingsDialog.vala:184
+#: src/Gtk/SettingsDialog.vala:193
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -608,15 +628,15 @@ msgstr ""
 "\"Εμφάνιση προηγούμενων μεγάλων εκδόσεων\" ή εάν έχουν ενημερωθεί στον "
 "ιστότοπο mainline-ppa."
 
-#: src/Gtk/SettingsDialog.vala:193
+#: src/Gtk/SettingsDialog.vala:202
 msgid "Proxy"
 msgstr "Διακομιστής"
 
-#: src/Gtk/SettingsDialog.vala:222
+#: src/Gtk/SettingsDialog.vala:231
 msgid "External Commands"
 msgstr "Εξωτερικές εντολές"
 
-#: src/Gtk/SettingsDialog.vala:249
+#: src/Gtk/SettingsDialog.vala:258
 #, c-format
 msgid ""
 "Command used to run dpkg with root permissions.\n"
@@ -636,19 +656,19 @@ msgstr ""
 "προστεθεί στο τέλος.\n"
 "Δείτε το \"su -c\" στην αναπτυσσόμενη λίστα για ένα παράδειγμα αυτού."
 
-#: src/Gtk/SettingsDialog.vala:279
+#: src/Gtk/SettingsDialog.vala:288
 msgid "Terminal command used to run"
 msgstr "Εντολή τερματικού που χρησιμοποιείται για εκτέλεση"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:289
 msgid "Example"
 msgstr "Παράδειγμα"
 
-#: src/Gtk/SettingsDialog.vala:280
+#: src/Gtk/SettingsDialog.vala:289
 msgid "will result in"
 msgstr "θα έχει ως αποτέλεσμα"
 
-#: src/Gtk/SettingsDialog.vala:282
+#: src/Gtk/SettingsDialog.vala:291
 #, c-format
 msgid ""
 "If the terminal programs commandline syntax requires the execute command to "
@@ -690,7 +710,7 @@ msgstr ""
 "\n"
 "Επεξεργαστείτε την εντολή για να προσαρμόσετε την εμφάνιση του τερματικού."
 
-#: src/Gtk/SettingsDialog.vala:299
+#: src/Gtk/SettingsDialog.vala:308
 msgid "Done"
 msgstr "Εγινε"
 
