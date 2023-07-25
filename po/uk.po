@@ -91,22 +91,20 @@ msgid "Notes"
 msgstr "Нотатки"
 
 #: src/Common/LinuxKernel.vala:771
-#, fuzzy
 msgid "Locked"
-msgstr "заблокований"
+msgstr "Заблокований"
 
 #: src/Common/LinuxKernel.vala:772
-#, fuzzy
 msgid "installation"
-msgstr "Видалити"
+msgstr "Установка"
 
 #: src/Common/LinuxKernel.vala:772
 msgid "removal"
-msgstr ""
+msgstr "видалення"
 
 #: src/Common/LinuxKernel.vala:773
 msgid "prevented"
-msgstr ""
+msgstr "запобігти"
 
 #: src/Common/LinuxKernel.vala:785 src/Common/LinuxKernel.vala:939
 msgid "not found"
