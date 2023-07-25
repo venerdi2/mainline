@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 03:12-0400\n"
+"POT-Creation-Date: 2023-07-25 16:50-0400\n"
 "PO-Revision-Date: 2018-01-03 02:03-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish\n"
@@ -229,26 +229,26 @@ msgstr "Sin archivo de configuración"
 msgid "Loaded config file"
 msgstr "Archivo de configuración cargado"
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "Called from"
 msgstr "Llamado desde"
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "at logon"
 msgstr "al inicio"
 
-#: src/Common/Main.vala:403
+#: src/Common/Main.vala:404
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Este archivo se sobrescribe y se ejecuta de nuevo cada vez que se guarda la "
 "configuración en"
 
-#: src/Common/Main.vala:436
+#: src/Common/Main.vala:444
 msgid "Notifications are disabled"
 msgstr "Las notificaciones están deshabilitadas"
 
-#: src/Common/Main.vala:489
+#: src/Common/Main.vala:497
 msgid "Can not reach site"
 msgstr "No se puede llegar al sitio"
 

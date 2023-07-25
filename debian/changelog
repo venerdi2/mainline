@@ -1,3 +1,9 @@
+mainline (1.4.1) unstable; urgency=medium
+
+  * Close some gaps in the process management in mainline-notify.sh
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 25 Jul 2023 18:28:39 -0400
+
 mainline (1.4.0) unstable; urgency=medium
 
   * Support the other build flavors besides "generic", like "lowlatency", "generic-64k", "generic-lpae", etc

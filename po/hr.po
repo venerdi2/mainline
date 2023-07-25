@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 03:12-0400\n"
+"POT-Creation-Date: 2023-07-25 16:50-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -229,25 +229,25 @@ msgstr "Nema konfiguracijske datoteke"
 msgid "Loaded config file"
 msgstr "Učitana konfiguracijska datoteka"
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "Called from"
 msgstr "Pozvano od"
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "at logon"
 msgstr "indításkor"
 
-#: src/Common/Main.vala:403
+#: src/Common/Main.vala:404
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ova se datoteka prepisuje i ponovno izvršava kad god se postavke spremaju u"
 
-#: src/Common/Main.vala:436
+#: src/Common/Main.vala:444
 msgid "Notifications are disabled"
 msgstr "Obavijesti su onemogućene"
 
-#: src/Common/Main.vala:489
+#: src/Common/Main.vala:497
 msgid "Can not reach site"
 msgstr "Nije moguće doći do web-mjesta"
 

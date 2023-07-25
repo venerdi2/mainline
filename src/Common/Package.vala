@@ -24,14 +24,14 @@ public class Package : GLib.Object {
 		dpkg_list.clear();
 		string std_out, std_err;
 		exec_sync("dpkg-query -f '${Package}|${Version}|${Architecture}|${db:Status-Abbrev}\n' -W 'linux-image-*' 'linux-modules-*' 'linux-headers-*'", out std_out, out std_err);
-		if (std_out!=null) foreach (string line in std_out.split("\n")) {
-			string[] arr = line.split("|");
-			if (arr.length != 4) continue;
-			if (arr[3].substring(1,1) != "i" ) continue;
+		if (std_out!=null) foreach (var row in std_out.split("\n")) {
+			var cols = row.split("|");
+			if (cols.length != 4) continue;
+			if (cols[3].substring(1,1) != "i" ) continue;
 
-			string name = arr[0].strip();
-			string vers = arr[1].strip();
-			string arch = arr[2].strip();
+			var name = cols[0].strip();
+			var vers = cols[1].strip();
+			var arch = cols[2].strip();
 
 			if (arch != LinuxKernel.NATIVE_ARCH && arch != "all" && arch != "any") continue;
 

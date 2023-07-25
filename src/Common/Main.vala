@@ -396,41 +396,49 @@ public class Main : GLib.Object {
 
 		// TODO, ID file should not assume single DISPLAY
 		//       ID and SEEN should probably be in /var/run ?
-		//       Sleep for days or weeks makes no sense.
-		//       Really needs to compare target with current date/time.
+		//       Sleep for days or weeks makes no sense,
+		//       should really compare target with current date/time
+		//       or run from cron or at or systemd
 		string s = "#!/bin/bash\n"
 			+ "# "+_("Called from")+" "+STARTUP_DESKTOP_FILE+" "+_("at logon")+".\n"
 			+ "# "+_("This file is over-written and executed again whenever settings are saved in")+" "+BRANDING_SHORTNAME+"-gtk\n"
+			+ "\n"
+			+ "# on reboot or login, forget previous showings and show again once\n"
 			+ "[[ $1 == --autostart ]] && rm -f \""+NOTIFICATION_ID_FILE+"\" \""+MAJOR_SEEN_FILE+"\" \""+MINOR_SEEN_FILE+"\"\n"
 			+ "TMP=${XDG_RUNTIME_DIR:-/tmp}\n"
 			+ "N=${0//\\//_}\n"
-			+ "F=\"${TMP}/${N}.${$}.p\"\n"
-			+ "trap '[[ -f ${F}_ ]] && read c < ${F}_ && kill $c ;rm -f ${F}{,_}' 0\n"
-			+ "typeset -i p\n"
-			+ "shopt -s extglob\n"
+			+ "F=\"${TMP}/${N}.${$}.p\" # our pid file\n"
+			+ "G=\"${TMP}/${N}.+([0-9]).p\" # globbing pattern for other pid files (requires extglob)\n"
+			+ "unset p s; typeset -i p s\n"
+			+ "\n"
+			+ "# on exit, kill our child sleep process and delete our pid file\n"
+			+ "trap '((s)) && kill $s ;rm -f $F' 0\n"
 			+ "\n"
 			+ "# clear previous state (kill previous instance)\n"
 			+ "echo -n \"${DISPLAY} ${$}\" > $F\n"
-			+ "for f in ${TMP}/${N}.+([0-9]).p ;do\n"
-			+ "\t[[ -s $f ]] || continue\n"
-			+ "\t[[ $f -ot $F ]] || continue\n"
-			+ "\tread d p x < $f\n"
-			+ "\t[[ $d == ${DISPLAY} ]] || continue\n"
-			+ "\t((p>1)) || continue\n"
-			+ "\trm -f $f\n"
-			+ "\tkill $p\n"
+			+ "shopt -s extglob\n"
+			+ "for f in $G ;do\n"
+			+ "\t[[ -s $f ]] || continue  # no file found\n"
+			+ "\t[[ $f -ot $F ]] || continue  # file is not older than our current one\n"
+			+ "\tread d p x < $f  # read DISPLAY & PID\n"
+			+ "\t[[ $d == ${DISPLAY} ]] || continue  # not our DISPLAY, not our desktop session\n"
+			+ "\t((p>1)) || continue  # PID not sane\n"
+			+ "\t# if we got this far, then we found a previous, now-obsolete instance of ourself\n"
+			+ "\t# that needs to be killed and replaced with ourself\n"
+			+ "\trm -f $f  # delete the other pid file\n"
+			+ "\tkill $p  # kill the other process\n"
 			+ "done\n"
 			+ "unset N f p d x\n"
 			+ "\n"
-			+ "# run whatever the new state should be\n";
+			+ "# run whatever the new state should be\n"
+			+ "# (code below changes depending on notification settings in the app)\n";
 		if (notify_minor || notify_major) {
 			s += "VERBOSE=0\n"
 			+ "while [[ -f $F ]] ;do\n"
-			+ "\t"+BRANDING_SHORTNAME+" --notify 2>&- >&- || exit\n"
+			+ "\t"+BRANDING_SHORTNAME+" --notify >&- 2>&-\n"
 			+ "\tsleep %d%s &\n".printf(n,u)
-			+ "\tc=$!\n"
-			+ "\techo $c >>${F}_\n"
-			+ "\twait $c\n"	// respond to signals during sleep
+			+ "\ts=$!\n"
+			+ "\twait $s  # respond to signals during sleep\n"
 			+ "done\n";
 		} else {
 			s += "# " + _("Notifications are disabled") + "\n"
