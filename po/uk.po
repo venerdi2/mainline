@@ -558,13 +558,15 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:122
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Приховати варіанти, відмінні від \"generic\""
 
 #: src/Gtk/SettingsDialog.vala:124
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Не показувати альтернативні варіанти, такі як \"lowlatency\", \"generic-64k\", "
+"\"generic-lpae\", \"server\", \"virtual\" тощо."
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
