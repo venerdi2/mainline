@@ -91,22 +91,20 @@ msgid "Notes"
 msgstr "Нотатки"
 
 #: src/Common/LinuxKernel.vala:771
-#, fuzzy
 msgid "Locked"
-msgstr "заблокований"
+msgstr "Заблокований"
 
 #: src/Common/LinuxKernel.vala:772
-#, fuzzy
 msgid "installation"
-msgstr "Видалити"
+msgstr "Установка"
 
 #: src/Common/LinuxKernel.vala:772
 msgid "removal"
-msgstr ""
+msgstr "видалення"
 
 #: src/Common/LinuxKernel.vala:773
 msgid "prevented"
-msgstr ""
+msgstr "запобігти"
 
 #: src/Common/LinuxKernel.vala:785 src/Common/LinuxKernel.vala:939
 msgid "not found"
@@ -560,13 +558,15 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:122
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Приховати варіанти, відмінні від \"generic\""
 
 #: src/Gtk/SettingsDialog.vala:124
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Не показувати альтернативні варіанти, такі як \"lowlatency\", \"generic-64k\", "
+"\"generic-lpae\", \"server\", \"virtual\" тощо."
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
