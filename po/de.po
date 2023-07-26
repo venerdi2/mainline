@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
+"POT-Creation-Date: 2023-07-26 00:25-0400\n"
 "PO-Revision-Date: 2023-02-20 18:40+0100\n"
 "Last-Translator: Marvin Meysel <marvin@meysel.net>\n"
 "Language-Team: German\n"
@@ -200,7 +200,7 @@ msgstr "fertig"
 msgid "The following kernels will be uninstalled"
 msgstr "Die folgenden Kernel werden deinstalliert"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
 msgid "Continue? (y/N): "
 msgstr "Fortsetzen? (j/N)"
 
@@ -296,7 +296,7 @@ msgstr "Installieren sie die angegebenen kernel"
 msgid "Uninstall specified kernels"
 msgstr "Deinstallieren sie die angegebenen kernel"
 
-#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstallieren sie alle bis auf die höchste installierte version"
 
@@ -449,12 +449,23 @@ msgstr "Start nicht möglich"
 msgid "Uninstall Old"
 msgstr "Alte deinstallieren"
 
+#: src/Gtk/MainWindow.vala:341
+msgid ""
+"Uninstall everything except:\n"
+"* the highest installed version\n"
+"* the currently running kernel\n"
+"* any kernels that are locked"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Nachladen"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Delete and reload all cached kernel info"
+#, fuzzy
+msgid ""
+"Delete and reload all cached kernel info\n"
+"(the same as \"mainline --delete-cache\")"
 msgstr ""
 "Löschen und erneutes laden aller zwischengespeicherten kernel informationen"
 
@@ -726,10 +737,10 @@ msgstr "Abbrechen"
 msgid "Close"
 msgstr "Schließen"
 
-#: src/lib/l.misc.vala:14
+#: src/lib/l.misc.vala:15
 msgid "y"
 msgstr "j"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:16
 msgid "n"
 msgstr "n"

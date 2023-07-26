@@ -338,13 +338,13 @@ public class MainWindow : Window {
 
 		// uninstall-old
 		btn_uninstall_old = new Button.with_label (_("Uninstall Old"));
-		btn_uninstall_old.set_tooltip_text(_("Uninstall all but the highest installed version"));
+		btn_uninstall_old.set_tooltip_text(_("Uninstall everything except:\n* the highest installed version\n* the currently running kernel\n* any kernels that are locked"));
 		hbox.pack_start (btn_uninstall_old, true, true, 0);
 		btn_uninstall_old.clicked.connect(uninstall_old);
 
 		// reload
 		btn_reload = new Button.with_label (_("Reload"));
-		btn_reload.set_tooltip_text(_("Delete and reload all cached kernel info"));
+		btn_reload.set_tooltip_text(_("Delete and reload all cached kernel info\n(the same as \"mainline --delete-cache\")"));
 		hbox.pack_start (btn_reload, true, true, 0);
 		btn_reload.clicked.connect(reload_cache);
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
+"POT-Creation-Date: 2023-07-26 00:25-0400\n"
 "PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -200,7 +200,7 @@ msgstr "fini"
 msgid "The following kernels will be uninstalled"
 msgstr "Les noyaux suivants seront désinstallés"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
 msgid "Continue? (y/N): "
 msgstr "Continuer? (o/N) : "
 
@@ -296,7 +296,7 @@ msgstr "Installer les noyaux spécifiés"
 msgid "Uninstall specified kernels"
 msgstr "Désinstaller le noyau spécifié"
 
-#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
 msgstr "Désinstallez toutes le version installées, sauf la plus élevée"
 
@@ -450,12 +450,23 @@ msgstr "Impossible de lancer"
 msgid "Uninstall Old"
 msgstr "Désinstaller Ancien"
 
+#: src/Gtk/MainWindow.vala:341
+msgid ""
+"Uninstall everything except:\n"
+"* the highest installed version\n"
+"* the currently running kernel\n"
+"* any kernels that are locked"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Recharger"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Delete and reload all cached kernel info"
+#, fuzzy
+msgid ""
+"Delete and reload all cached kernel info\n"
+"(the same as \"mainline --delete-cache\")"
 msgstr "Supprimer et recharger toutes les informations du noyau en cache"
 
 #: src/Gtk/MainWindow.vala:352
@@ -726,10 +737,10 @@ msgstr "Annuler"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/lib/l.misc.vala:14
+#: src/lib/l.misc.vala:15
 msgid "y"
 msgstr "o"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:16
 msgid "n"
 msgstr "n"

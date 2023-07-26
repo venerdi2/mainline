@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
+"POT-Creation-Date: 2023-07-26 00:25-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -198,7 +198,7 @@ msgstr "готово"
 msgid "The following kernels will be uninstalled"
 msgstr "Наступні ядра будуть видалені"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
 msgid "Continue? (y/N): "
 msgstr "Продовжити? (т/Н): "
 
@@ -294,7 +294,7 @@ msgstr "Встановити вказані ядра"
 msgid "Uninstall specified kernels"
 msgstr "Видалити вказані ядра"
 
-#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
 msgstr "Видаліть усі, крім найвищої встановленої версії"
 
@@ -447,12 +447,23 @@ msgstr "Неможливо запустити"
 msgid "Uninstall Old"
 msgstr "Видалити старе"
 
+#: src/Gtk/MainWindow.vala:341
+msgid ""
+"Uninstall everything except:\n"
+"* the highest installed version\n"
+"* the currently running kernel\n"
+"* any kernels that are locked"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Перезавантажити"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Delete and reload all cached kernel info"
+#, fuzzy
+msgid ""
+"Delete and reload all cached kernel info\n"
+"(the same as \"mainline --delete-cache\")"
 msgstr "Видаліть і перезавантажте всю кешовану інформацію про ядро"
 
 #: src/Gtk/MainWindow.vala:352
@@ -565,8 +576,8 @@ msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
-"Не показувати альтернативні варіанти, такі як \"lowlatency\", \"generic-64k\", "
-"\"generic-lpae\", \"server\", \"virtual\" тощо."
+"Не показувати альтернативні варіанти, такі як \"lowlatency\", "
+"\"generic-64k\", \"generic-lpae\", \"server\", \"virtual\" тощо."
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
@@ -720,10 +731,10 @@ msgstr "Відміна"
 msgid "Close"
 msgstr "Закрити"
 
-#: src/lib/l.misc.vala:14
+#: src/lib/l.misc.vala:15
 msgid "y"
 msgstr "т"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:16
 msgid "n"
 msgstr "н"

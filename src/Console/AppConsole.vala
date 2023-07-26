@@ -229,7 +229,7 @@ public class AppConsole : GLib.Object {
 	}
 
 	private int notify_user() {
-		vprint("notify_user()",2);
+		vprint("notify_user()",3);
 
 		if (!App.notify_major && !App.notify_minor) {
 			vprint(_("Notifications disabled"),2);

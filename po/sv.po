@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
+"POT-Creation-Date: 2023-07-26 00:25-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -200,7 +200,7 @@ msgstr "klart"
 msgid "The following kernels will be uninstalled"
 msgstr "Följande kärnor kommer att avinstalleras"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
 msgid "Continue? (y/N): "
 msgstr "Fortsätta? (j/N):"
 
@@ -295,7 +295,7 @@ msgstr "Installera angivna kärnor"
 msgid "Uninstall specified kernels"
 msgstr "Avinstallera angiven kärna"
 
-#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
 msgstr "Avinstallera alla utom den högsta installerade versionen"
 
@@ -448,12 +448,23 @@ msgstr "Oförmögen att starta"
 msgid "Uninstall Old"
 msgstr "Avinstallera Gamla"
 
+#: src/Gtk/MainWindow.vala:341
+msgid ""
+"Uninstall everything except:\n"
+"* the highest installed version\n"
+"* the currently running kernel\n"
+"* any kernels that are locked"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Reload"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Delete and reload all cached kernel info"
+#, fuzzy
+msgid ""
+"Delete and reload all cached kernel info\n"
+"(the same as \"mainline --delete-cache\")"
 msgstr "Ta bort och ladda om all cachad kärninformation"
 
 #: src/Gtk/MainWindow.vala:352
@@ -716,10 +727,10 @@ msgstr "Avbryt"
 msgid "Close"
 msgstr "Stäng"
 
-#: src/lib/l.misc.vala:14
+#: src/lib/l.misc.vala:15
 msgid "y"
 msgstr "j"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:16
 msgid "n"
 msgstr "n"

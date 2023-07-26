@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
+"POT-Creation-Date: 2023-07-26 00:25-0400\n"
 "PO-Revision-Date: 2023-06-28 00:07+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -200,7 +200,7 @@ msgstr "готово"
 msgid "The following kernels will be uninstalled"
 msgstr "Следующие ядра будут удалены"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
 msgid "Continue? (y/N): "
 msgstr "Продолжить? (д/Н): "
 
@@ -295,7 +295,7 @@ msgstr "Установить указанные ядра"
 msgid "Uninstall specified kernels"
 msgstr "Удалить указанные ядра"
 
-#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
+#: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
 msgstr "Удаление всех установленных версий, кроме самой высокой"
 
@@ -448,12 +448,23 @@ msgstr "Невозможно запустить"
 msgid "Uninstall Old"
 msgstr "Удалить старые"
 
+#: src/Gtk/MainWindow.vala:341
+msgid ""
+"Uninstall everything except:\n"
+"* the highest installed version\n"
+"* the currently running kernel\n"
+"* any kernels that are locked"
+msgstr ""
+
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Перезагрузить"
 
 #: src/Gtk/MainWindow.vala:347
-msgid "Delete and reload all cached kernel info"
+#, fuzzy
+msgid ""
+"Delete and reload all cached kernel info\n"
+"(the same as \"mainline --delete-cache\")"
 msgstr "Удалить и перезагрузить всю кэшированную информацию о ядре"
 
 #: src/Gtk/MainWindow.vala:352
@@ -718,10 +729,10 @@ msgstr "Отмена"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/lib/l.misc.vala:14
+#: src/lib/l.misc.vala:15
 msgid "y"
 msgstr "д"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:16
 msgid "n"
 msgstr "н"
