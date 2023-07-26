@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-25 16:50-0400\n"
-"PO-Revision-Date: 2023-06-28 00:07+0300\n"
+"PO-Revision-Date: 2023-07-26 20:35+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/Common/LinuxKernel.vala:141
 msgid "Distribution"
@@ -35,7 +35,7 @@ msgstr "Установлено"
 
 #: src/Common/LinuxKernel.vala:258
 msgid "Invalid"
-msgstr "Негодный"
+msgstr "Негодно"
 
 #: src/Common/LinuxKernel.vala:322
 msgid "queuing download"
@@ -91,22 +91,20 @@ msgid "Notes"
 msgstr "Примечания"
 
 #: src/Common/LinuxKernel.vala:771
-#, fuzzy
 msgid "Locked"
-msgstr "заблокирован"
+msgstr "Заблокировано"
 
 #: src/Common/LinuxKernel.vala:772
-#, fuzzy
 msgid "installation"
-msgstr "Удалить"
+msgstr "установка"
 
 #: src/Common/LinuxKernel.vala:772
 msgid "removal"
-msgstr ""
+msgstr "удаление"
 
 #: src/Common/LinuxKernel.vala:773
 msgid "prevented"
-msgstr ""
+msgstr "предотвращено"
 
 #: src/Common/LinuxKernel.vala:785 src/Common/LinuxKernel.vala:939
 msgid "not found"
@@ -186,7 +184,7 @@ msgstr "это самая высокая установленная версия
 
 #: src/Common/LinuxKernel.vala:1113
 msgid "Could not find running kernel in list"
-msgstr "Could not find running kernel in list"
+msgstr "Не удалось найти работающее ядро в списке"
 
 #: src/Common/LinuxKernel.vala:1118
 msgid "No old kernels to uninstall"
@@ -559,13 +557,15 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:122
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Скрыть ядра, отличные от \"общих\""
 
 #: src/Gtk/SettingsDialog.vala:124
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Не показывать альтернативные варианты типа \"lowlatency\", \"generic-64k\", "
+"\"generic-lpae\", \"server\", \"virtual\" и т.д."
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
