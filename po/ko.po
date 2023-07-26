@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-26 00:25-0400\n"
+"POT-Creation-Date: 2023-07-25 16:50-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -209,7 +209,7 @@ msgstr ""
 msgid "The following kernels will be uninstalled"
 msgstr "풀이"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
 #, fuzzy
 msgid "Continue? (y/N): "
 msgstr "계속하시겠습니까? (예/아): "
@@ -310,7 +310,7 @@ msgstr "지정한 커널 삭제"
 msgid "Uninstall specified kernels"
 msgstr "지정한 커널 삭제"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
 msgid "Uninstall all but the highest installed version"
 msgstr "설치된 가장 높은 버전을 제외한 모든 버전을 제거합니다"
 
@@ -467,22 +467,12 @@ msgstr ""
 msgid "Uninstall Old"
 msgstr "오래된 커널 제거"
 
-#: src/Gtk/MainWindow.vala:341
-msgid ""
-"Uninstall everything except:\n"
-"* the highest installed version\n"
-"* the currently running kernel\n"
-"* any kernels that are locked"
-msgstr ""
-
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "새로고침"
 
 #: src/Gtk/MainWindow.vala:347
-msgid ""
-"Delete and reload all cached kernel info\n"
-"(the same as \"mainline --delete-cache\")"
+msgid "Delete and reload all cached kernel info"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:352
@@ -741,10 +731,10 @@ msgstr "취소"
 msgid "Close"
 msgstr "닫기"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr "예"
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr "아"

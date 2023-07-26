@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-26 00:25-0400\n"
+"POT-Creation-Date: 2023-07-25 16:50-0400\n"
 "PO-Revision-Date: 2022-09-22 12:13+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -200,7 +200,7 @@ msgstr "učinjeno"
 msgid "The following kernels will be uninstalled"
 msgstr "Deinstalirat će se sljedeće kerneli"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
 msgstr "Nastaviti? (d/N): "
 
@@ -297,7 +297,7 @@ msgstr "Instalirajte navedene jezgre"
 msgid "Uninstall specified kernels"
 msgstr "Deinstalirajte navedene kernele"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
 msgid "Uninstall all but the highest installed version"
 msgstr "Deinstaliraj sve osim najnovije instalirane verzije"
 
@@ -450,23 +450,12 @@ msgstr "Nije moguće pokrenuti"
 msgid "Uninstall Old"
 msgstr "Deinstaliraj Staro"
 
-#: src/Gtk/MainWindow.vala:341
-msgid ""
-"Uninstall everything except:\n"
-"* the highest installed version\n"
-"* the currently running kernel\n"
-"* any kernels that are locked"
-msgstr ""
-
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Ponovno učitati"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
-msgid ""
-"Delete and reload all cached kernel info\n"
-"(the same as \"mainline --delete-cache\")"
+msgid "Delete and reload all cached kernel info"
 msgstr "Izbrišite i ponovno učitajte sve informacije o jezgri u predmemoriju"
 
 #: src/Gtk/MainWindow.vala:352
@@ -732,10 +721,10 @@ msgstr "Odustani"
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr "d"
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr "n"

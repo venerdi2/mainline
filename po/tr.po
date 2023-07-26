@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-26 00:25-0400\n"
+"POT-Creation-Date: 2023-07-25 16:50-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -200,7 +200,7 @@ msgstr "tamam"
 msgid "The following kernels will be uninstalled"
 msgstr "Aşağıdaki çekirdekler kaldırılacaktır"
 
-#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:11
+#: src/Common/LinuxKernel.vala:1126 src/lib/l.misc.vala:10
 msgid "Continue? (y/N): "
 msgstr "Devam et? (e/H): "
 
@@ -295,7 +295,7 @@ msgstr "Belirtilen çekirdekleri yükleyin"
 msgid "Uninstall specified kernels"
 msgstr "Belirtilen çekirdekleri kaldır"
 
-#: src/Console/AppConsole.vala:44
+#: src/Console/AppConsole.vala:44 src/Gtk/MainWindow.vala:341
 msgid "Uninstall all but the highest installed version"
 msgstr "En yüksek yüklü sürüm dışındaki tüm sürümleri kaldırın"
 
@@ -449,23 +449,12 @@ msgstr "Başlatılamadı"
 msgid "Uninstall Old"
 msgstr "Eskileri Kaldır"
 
-#: src/Gtk/MainWindow.vala:341
-msgid ""
-"Uninstall everything except:\n"
-"* the highest installed version\n"
-"* the currently running kernel\n"
-"* any kernels that are locked"
-msgstr ""
-
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Arjantin"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
-msgid ""
-"Delete and reload all cached kernel info\n"
-"(the same as \"mainline --delete-cache\")"
+msgid "Delete and reload all cached kernel info"
 msgstr "Önbelleğe alınmış tüm çekirdek bilgilerini silin ve yeniden oluşturun"
 
 #: src/Gtk/MainWindow.vala:352
@@ -728,10 +717,10 @@ msgstr "İptal Et"
 msgid "Close"
 msgstr "Kapat"
 
-#: src/lib/l.misc.vala:15
+#: src/lib/l.misc.vala:14
 msgid "y"
 msgstr "e"
 
-#: src/lib/l.misc.vala:16
+#: src/lib/l.misc.vala:15
 msgid "n"
 msgstr "h"
