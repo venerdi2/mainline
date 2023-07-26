@@ -77,17 +77,23 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// constructor
 	public LinuxKernel(string s="") {
 		vprint("LinuxKernel("+s+")",4);
+
 		split_version_string(s);
-		CACHE_KDIR = Main.CACHE_DIR+"/"+version_main.split("_")[0];
+
+		// for cache dir, strip off "_flavor"
+		// all flavors come from the same index and checksums files
+		CACHE_KDIR = Main.CACHE_DIR+"/"+version_main.split("_")[0]; // strip off "_flavor"
 		CACHED_PAGE = CACHE_KDIR+"/index.html";
 		CHECKSUMS_FILE = CACHE_KDIR+"/CHECKSUMS";
 		INVALID_FILE = CACHE_KDIR+"/invalid";
+
+		// for data dir, do not strip off "_flavor"
 		DATA_KDIR = Main.DATA_DIR+"/"+version_main;
 		NOTES_FILE = DATA_KDIR+"/notes";
 		LOCKED_FILE = DATA_KDIR+"/locked";
 	}
 
-	// wrap kernel_list.add() to avoid some work unless we're actually going to use it
+	// wrap kernel_list.add(k) to avoid doing some work unless we're actually going to use it
 	public void kernel_list_add() {
 		PPA_DIRS_VER = ppa_dirs_ver();
 		CHECKSUMS_URI = checksums_uri();
@@ -556,9 +562,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (kernel_update_minor != null) kernel_latest_available = kernel_update_minor;
 		if (kernel_update_major != null) kernel_latest_available = kernel_update_major;
 
-		if (kernel_update_minor != null) vprint("minor available: "+kernel_update_minor.version_main,2);
-		if (kernel_update_major != null) vprint("major available: "+kernel_update_major.version_main,2);
-		if (kernel_latest_available != kernel_latest_installed) vprint("latest available: "+kernel_latest_available.version_main,2);
+		if (kernel_update_minor != null) vprint(_("minor available")+": "+kernel_update_minor.version_main,2);
+		if (kernel_update_major != null) vprint(_("major available")+": "+kernel_update_major.version_main,2);
+		if (kernel_latest_available != kernel_latest_installed) vprint(_("latest available")+": "+kernel_latest_available.version_main,2);
 
 	}
 
