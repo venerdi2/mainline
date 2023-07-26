@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
-"PO-Revision-Date: 2023-06-30 20:07+0200\n"
+"POT-Creation-Date: 2023-07-25 03:12-0400\n"
+"PO-Revision-Date: 2023-07-25 18:39+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -90,22 +90,20 @@ msgid "Notes"
 msgstr "Notatki"
 
 #: src/Common/LinuxKernel.vala:771
-#, fuzzy
 msgid "Locked"
-msgstr "zablokowane"
+msgstr "Zablokowane"
 
 #: src/Common/LinuxKernel.vala:772
-#, fuzzy
 msgid "installation"
-msgstr "Odinstaluj"
+msgstr "instalacja"
 
 #: src/Common/LinuxKernel.vala:772
 msgid "removal"
-msgstr ""
+msgstr "usuwanie"
 
 #: src/Common/LinuxKernel.vala:773
 msgid "prevented"
-msgstr ""
+msgstr "uniemożliwione"
 
 #: src/Common/LinuxKernel.vala:785 src/Common/LinuxKernel.vala:939
 msgid "not found"
@@ -562,13 +560,15 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:122
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Ukryj warianty inne niż „generic”"
 
 #: src/Gtk/SettingsDialog.vala:124
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Nie pokazuj innych wariantów, takich jak „lowlatency”, „\"generic-64k”, "
+"„generic-lpae”, „server”, „virtual” itp."
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
