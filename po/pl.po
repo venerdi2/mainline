@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-26 14:57-0400\n"
-"PO-Revision-Date: 2023-06-30 20:07+0200\n"
+"PO-Revision-Date: 2023-07-26 22:39+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -78,19 +78,16 @@ msgid "is locked."
 msgstr "jest zablokowane."
 
 #: src/Common/LinuxKernel.vala:565
-#, fuzzy
 msgid "minor available"
-msgstr "dostępne"
+msgstr "dostępne punktowe"
 
 #: src/Common/LinuxKernel.vala:566
-#, fuzzy
 msgid "major available"
-msgstr "dostępne"
+msgstr "dostępne główne"
 
 #: src/Common/LinuxKernel.vala:567
-#, fuzzy
 msgid "latest available"
-msgstr "dostępne"
+msgstr "dostępne najnowsze"
 
 #: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
@@ -105,22 +102,20 @@ msgid "Notes"
 msgstr "Notatki"
 
 #: src/Common/LinuxKernel.vala:777
-#, fuzzy
 msgid "Locked"
-msgstr "zablokowane"
+msgstr "Zablokowane"
 
 #: src/Common/LinuxKernel.vala:778
-#, fuzzy
 msgid "installation"
-msgstr "Odinstaluj"
+msgstr "Instalacja"
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
-msgstr ""
+msgstr "usuwanie"
 
 #: src/Common/LinuxKernel.vala:779
 msgid "prevented"
-msgstr ""
+msgstr "uniemożliwione"
 
 #: src/Common/LinuxKernel.vala:791 src/Common/LinuxKernel.vala:945
 msgid "not found"
@@ -414,7 +409,7 @@ msgstr "wyłączono powiadomienia o wersjach głównych"
 #: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Kernel %s Available"
-msgstr "Dostępne %s jądra"
+msgstr "Dostępne jądro %s"
 
 #: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:133
 msgid "Show"
@@ -471,18 +466,22 @@ msgid ""
 "* the currently running kernel\n"
 "* any kernels that are locked"
 msgstr ""
+"Odinstaluj wszystko oprócz:\n"
+"* najwyższej zainstalowanej wersji\n"
+"* aktualnie działającego jądra\n"
+"* wszelkich jąder, które są zablokowane"
 
 #: src/Gtk/MainWindow.vala:346
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
 #: src/Gtk/MainWindow.vala:347
-#, fuzzy
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
 msgstr ""
-"Usuń i ponownie załaduj wszystkie informacje o jądrze z pamięci podręcznej"
+"Usuń i wczytaj ponownie wszystkie informacje o jądrze\n"
+"z pamięci podręcznej (to samo co „mainline --delete-cache”)"
 
 #: src/Gtk/MainWindow.vala:352
 msgid "Settings"
@@ -588,13 +587,15 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:122
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Ukryj warianty inne niż „generic”"
 
 #: src/Gtk/SettingsDialog.vala:124
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Nie pokazuj innych wariantów, takich jak „lowlatency”, „generic-64k”, "
+"„generic-lpae”, „server”, „virtual” itp."
 
 #: src/Gtk/SettingsDialog.vala:141
 msgid "previous major versions  ( -1 = all )"
