@@ -226,26 +226,26 @@ msgstr "Brak pliku konfiguracyjnego"
 msgid "Loaded config file"
 msgstr "Załadowano plik konfiguracyjny"
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "Called from"
 msgstr "Wywołano z"
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "at logon"
 msgstr "przy logowaniu"
 
-#: src/Common/Main.vala:403
+#: src/Common/Main.vala:404
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy "
 "ustawienia są zapisywane w"
 
-#: src/Common/Main.vala:436
+#: src/Common/Main.vala:444
 msgid "Notifications are disabled"
 msgstr "Powiadomienia są wyłączone"
 
-#: src/Common/Main.vala:489
+#: src/Common/Main.vala:497
 msgid "Can not reach site"
 msgstr "Nie można dotrzeć do witryny"
 

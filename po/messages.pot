@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mainline 1.4.0\n"
+"Project-Id-Version: mainline 1.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 03:43-0400\n"
+"POT-Creation-Date: 2023-07-25 18:16-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,24 +231,24 @@ msgstr ""
 msgid "Loaded config file"
 msgstr ""
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "Called from"
 msgstr ""
 
-#: src/Common/Main.vala:402
+#: src/Common/Main.vala:403
 msgid "at logon"
 msgstr ""
 
-#: src/Common/Main.vala:403
+#: src/Common/Main.vala:404
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 
-#: src/Common/Main.vala:436
+#: src/Common/Main.vala:444
 msgid "Notifications are disabled"
 msgstr ""
 
-#: src/Common/Main.vala:489
+#: src/Common/Main.vala:497
 msgid "Can not reach site"
 msgstr ""
 
