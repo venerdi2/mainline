@@ -557,7 +557,7 @@ msgstr ""
 
 #: src/Gtk/SettingsDialog.vala:122
 msgid "Hide flavors other than \"generic\""
-msgstr "Скрыть ядра, отличные от \"общих\""
+msgstr "Скрыть варианты, отличные от \"общих(generic)\""
 
 #: src/Gtk/SettingsDialog.vala:124
 msgid ""
