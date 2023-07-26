@@ -67,7 +67,7 @@ public class AppConsole : GLib.Object {
 		App = new Main();
 		var console = new AppConsole();
 		var r = console.parse_arguments(argv);
-		vprint(BRANDING_SHORTNAME+": done");
+		vprint(BRANDING_SHORTNAME+": "+_("done"));
 		if (hold_on_exit) ask("(press Enter to close)");
 		return r;
 	}

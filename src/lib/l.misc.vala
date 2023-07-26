@@ -2,10 +2,11 @@ namespace l.misc {
 
 	public void set_locale() {
 		vprint("set_locale()",3);
-		Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
-		Intl.textdomain(BRANDING_SHORTNAME);
-		Intl.bind_textdomain_codeset(BRANDING_SHORTNAME,"utf-8");
-		Intl.bindtextdomain(BRANDING_SHORTNAME,LOCALE_DIR);
+		Intl.setlocale(LocaleCategory.ALL,"");
+		//Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
+		//Intl.textdomain(BRANDING_SHORTNAME);
+		//Intl.bind_textdomain_codeset(BRANDING_SHORTNAME,"utf-8");
+		//Intl.bindtextdomain(BRANDING_SHORTNAME,LOCALE_DIR);
 	}
 
 	public bool ask(string prompt = "\n"+_("Continue? (y/N): "), bool def = false) {

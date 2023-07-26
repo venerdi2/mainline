@@ -1,3 +1,9 @@
+mainline (1.4.2) unstable; urgency=medium
+
+  * Fix localization of notifications
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Wed, 26 Jul 2023 16:18:10 -0400
+
 mainline (1.4.1) unstable; urgency=medium
 
   * Close some gaps in the process management in mainline-notify.sh
