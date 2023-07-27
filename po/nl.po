@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-26 14:57-0400\n"
+"POT-Creation-Date: 2023-07-27 00:50-0400\n"
 "PO-Revision-Date: 2020-08-23 13:55+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch (Netherlands)\n"
@@ -25,7 +25,7 @@ msgstr "Architectuur"
 msgid "Running kernel"
 msgstr "Kernel uitvoeren"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:475
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
 msgid "Running"
 msgstr "In gebruik"
 
@@ -176,7 +176,7 @@ msgstr "is al geïnstalleerd."
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:501
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "Geen opdracht opgegeven"
@@ -190,7 +190,7 @@ msgstr "Geselecteerde kernels verwijderen"
 msgid "Not uninstalling the currently running kernel"
 msgstr "de momenteel actieve kernel niet verwijderen"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:497
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
 msgid "is locked"
 msgstr ""
 
@@ -435,7 +435,7 @@ msgstr "Melding tonen als er een grote update beschikbaar is"
 msgid "Kernel %s Available"
 msgstr "Kernel %s is beschikbaar"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:133
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
 msgid "Show"
 msgstr "Tonen"
 
@@ -513,140 +513,149 @@ msgstr "Over"
 msgid "Exit"
 msgstr "Afsluiten"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:421
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:423
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:424
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:437
+#: src/Gtk/MainWindow.vala:442
 #, fuzzy
 msgid "Updating kernels"
 msgstr "Kernels bijwerken"
 
-#: src/Gtk/MainWindow.vala:479
+#: src/Gtk/MainWindow.vala:484
 msgid "available"
 msgstr "beschikbaar"
 
-#: src/Gtk/MainWindow.vala:496
+#: src/Gtk/MainWindow.vala:501
 #, fuzzy
 msgid "is already installed"
 msgstr "is al geïnstalleerd."
 
-#: src/Gtk/MainWindow.vala:498
+#: src/Gtk/MainWindow.vala:503
 msgid "adding"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:43
-msgid "Notification"
+#: src/Gtk/SettingsDialog.vala:12
+#, fuzzy
+msgid "Configuration"
 msgstr "Melding"
 
-#: src/Gtk/SettingsDialog.vala:48
-msgid "Notify if a major release is available"
-msgstr "Melding tonen als er een grote update beschikbaar is"
+#: src/Gtk/SettingsDialog.vala:24
+msgid "Done"
+msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:54
-msgid "Notify if a point release is available"
-msgstr "Melding tonen als er een puntupdate beschikbaar is"
-
-#: src/Gtk/SettingsDialog.vala:61
-msgid "Seconds interval enabled for debugging"
-msgstr "Secondeninterval ingeschakeld voor foutopsporing"
-
-#: src/Gtk/SettingsDialog.vala:80
-msgid "Check every"
-msgstr "Controleren, elke"
-
-#: src/Gtk/SettingsDialog.vala:89
-msgid "Hours"
-msgstr "uur"
-
-#: src/Gtk/SettingsDialog.vala:90
-msgid "Days"
-msgstr "dagen"
-
-#: src/Gtk/SettingsDialog.vala:91
-msgid "Weeks"
-msgstr "weken"
-
-#: src/Gtk/SettingsDialog.vala:92
-msgid "Seconds"
-msgstr "seconden"
-
-#: src/Gtk/SettingsDialog.vala:100
+#: src/Gtk/SettingsDialog.vala:40
 msgid "Filters"
 msgstr "Filters"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "Instabiele en rc-uitgaven verbergen"
 
-#: src/Gtk/SettingsDialog.vala:113
+#: src/Gtk/SettingsDialog.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:115
+#: src/Gtk/SettingsDialog.vala:56
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
 "failed build for your arch (%s), then don't show it in the list."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:122
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Hide flavors other than \"generic\""
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:124
+#: src/Gtk/SettingsDialog.vala:65
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:80
 msgid "previous major versions  ( -1 = all )"
 msgstr "vorige hoofdversies ( -1 = alle )"
 
-#: src/Gtk/SettingsDialog.vala:147
+#: src/Gtk/SettingsDialog.vala:88
+msgid "Notification"
+msgstr "Melding"
+
+#: src/Gtk/SettingsDialog.vala:95
+msgid "Notify if a major release is available"
+msgstr "Melding tonen als er een grote update beschikbaar is"
+
+#: src/Gtk/SettingsDialog.vala:101
+msgid "Notify if a point release is available"
+msgstr "Melding tonen als er een puntupdate beschikbaar is"
+
+#: src/Gtk/SettingsDialog.vala:108
+msgid "Seconds interval enabled for debugging"
+msgstr "Secondeninterval ingeschakeld voor foutopsporing"
+
+#: src/Gtk/SettingsDialog.vala:127
+msgid "Check every"
+msgstr "Controleren, elke"
+
+#: src/Gtk/SettingsDialog.vala:136
+msgid "Hours"
+msgstr "uur"
+
+#: src/Gtk/SettingsDialog.vala:137
+msgid "Days"
+msgstr "dagen"
+
+#: src/Gtk/SettingsDialog.vala:138
+msgid "Weeks"
+msgstr "weken"
+
+#: src/Gtk/SettingsDialog.vala:139
+msgid "Seconds"
+msgstr "seconden"
+
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Network"
 msgstr "Netwerk"
 
-#: src/Gtk/SettingsDialog.vala:156
+#: src/Gtk/SettingsDialog.vala:159
 msgid "Internet connection timeout in"
 msgstr "Verbindingstime-out na"
 
-#: src/Gtk/SettingsDialog.vala:164
+#: src/Gtk/SettingsDialog.vala:167
 msgid "seconds"
 msgstr "seconden"
 
-#: src/Gtk/SettingsDialog.vala:173
+#: src/Gtk/SettingsDialog.vala:175
 msgid "Max concurrent downloads"
 msgstr "Max. aantal gelijktijdige downloads"
 
-#: src/Gtk/SettingsDialog.vala:184
+#: src/Gtk/SettingsDialog.vala:185
 #, fuzzy
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Controleer controlesommen met de CHECKSUMS-bestanden"
 
-#: src/Gtk/SettingsDialog.vala:186
+#: src/Gtk/SettingsDialog.vala:187
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:192
 #, fuzzy
 msgid "Keep Downloads"
 msgstr "Downloaden"
 
-#: src/Gtk/SettingsDialog.vala:193
+#: src/Gtk/SettingsDialog.vala:194
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -655,16 +664,16 @@ msgid ""
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:202
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/Gtk/SettingsDialog.vala:231
+#: src/Gtk/SettingsDialog.vala:235
 #, fuzzy
 msgid "External Commands"
 msgstr "Opdrachten"
 
-#: src/Gtk/SettingsDialog.vala:258
+#: src/Gtk/SettingsDialog.vala:263
 #, c-format
 msgid ""
 "Command used to run dpkg with root permissions.\n"
@@ -684,19 +693,19 @@ msgstr ""
 "wordt aan het einde toegevoegd.\n"
 "Zie \"su -c\" in de vervolgkeuzelijst voor een voorbeeld daarvan."
 
-#: src/Gtk/SettingsDialog.vala:288
+#: src/Gtk/SettingsDialog.vala:292
 msgid "Terminal command used to run"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:289
+#: src/Gtk/SettingsDialog.vala:293
 msgid "Example"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:289
+#: src/Gtk/SettingsDialog.vala:293
 msgid "will result in"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:291
+#: src/Gtk/SettingsDialog.vala:295
 #, c-format
 msgid ""
 "If the terminal programs commandline syntax requires the execute command to "
@@ -736,10 +745,6 @@ msgstr ""
 "xfce4-terminal kan niet worden gemaakt om te blokkeren.\n"
 "\n"
 "Bewerk de opdracht om het uiterlijk van de terminal aan te passen."
-
-#: src/Gtk/SettingsDialog.vala:308
-msgid "Done"
-msgstr ""
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

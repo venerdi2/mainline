@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-26 14:57-0400\n"
+"POT-Creation-Date: 2023-07-27 00:50-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -25,7 +25,7 @@ msgstr "Αρχιτεκτονική"
 msgid "Running kernel"
 msgstr "Εκτέλεση πυρήνα"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:475
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
 msgid "Running"
 msgstr "Ενεργός"
 
@@ -171,7 +171,7 @@ msgstr "είναι ήδη εγκατεστημένο."
 msgid "download failed."
 msgstr "η λήψη απέτυχε."
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:501
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
 msgid "Install: no installable kernels specified"
 msgstr "Εγκατάσταση: δεν έχουν καθοριστεί πυρήνες με δυνατότητα εγκατάστασης"
 
@@ -183,7 +183,7 @@ msgstr "Απεγκατάσταση επιλεγμένων πυρήνων"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Δεν γίνεται απεγκατάσταση του τρέχοντος πυρήνα"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:497
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
 msgid "is locked"
 msgstr "είναι κλειδωμένο"
 
@@ -422,7 +422,7 @@ msgstr "ειδοποιήστε τις κύριες εκδόσεις απενερ
 msgid "Kernel %s Available"
 msgstr "Πυρήνας %s διαθέσιμος"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:133
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
 msgid "Show"
 msgstr "Προβολή"
 
@@ -503,7 +503,7 @@ msgstr "Σχετικά"
 msgid "Exit"
 msgstr "Έξοδος"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:421
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -511,79 +511,52 @@ msgstr ""
 "Ένα εργαλείο για την εγκατάσταση πακέτων πυρήνα\n"
 "από το Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:423
 msgid "Original"
 msgstr "Πρωτότυπο"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:424
 msgid "Forked"
 msgstr "Διχαλωτός"
 
-#: src/Gtk/MainWindow.vala:437
+#: src/Gtk/MainWindow.vala:442
 msgid "Updating kernels"
 msgstr "Ενημέρωση πυρήνων"
 
-#: src/Gtk/MainWindow.vala:479
+#: src/Gtk/MainWindow.vala:484
 msgid "available"
 msgstr "διαθέσιμος"
 
-#: src/Gtk/MainWindow.vala:496
+#: src/Gtk/MainWindow.vala:501
 msgid "is already installed"
 msgstr "είναι ήδη εγκατεστημένο."
 
-#: src/Gtk/MainWindow.vala:498
+#: src/Gtk/MainWindow.vala:503
 msgid "adding"
 msgstr "προσθέτωντας"
 
-#: src/Gtk/SettingsDialog.vala:43
-msgid "Notification"
+#: src/Gtk/SettingsDialog.vala:12
+#, fuzzy
+msgid "Configuration"
 msgstr "Ειδοποίηση"
 
-#: src/Gtk/SettingsDialog.vala:48
-msgid "Notify if a major release is available"
-msgstr "Ειδοποίηση αν είναι διαθέσιμη κύρια έκδοση"
+#: src/Gtk/SettingsDialog.vala:24
+msgid "Done"
+msgstr "Εγινε"
 
-#: src/Gtk/SettingsDialog.vala:54
-msgid "Notify if a point release is available"
-msgstr "Ειδοποίηση αν είναι διαθέσιμη έκδοση συντήρησης"
-
-#: src/Gtk/SettingsDialog.vala:61
-msgid "Seconds interval enabled for debugging"
-msgstr "διάστημα δευτερολέπτων είναι ενεργοποιημένο για εντοπισμό σφαλμάτων"
-
-#: src/Gtk/SettingsDialog.vala:80
-msgid "Check every"
-msgstr "Έλεγχος κάθε"
-
-#: src/Gtk/SettingsDialog.vala:89
-msgid "Hours"
-msgstr "Ώρες"
-
-#: src/Gtk/SettingsDialog.vala:90
-msgid "Days"
-msgstr "Ημέρες"
-
-#: src/Gtk/SettingsDialog.vala:91
-msgid "Weeks"
-msgstr "Εβδομάδες"
-
-#: src/Gtk/SettingsDialog.vala:92
-msgid "Seconds"
-msgstr "Δευτερόλεπτα"
-
-#: src/Gtk/SettingsDialog.vala:100
+#: src/Gtk/SettingsDialog.vala:40
 msgid "Filters"
 msgstr "Φίλτρα"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "Απόκρυψη ασταθών και RC εκδόσεων"
 
-#: src/Gtk/SettingsDialog.vala:113
+#: src/Gtk/SettingsDialog.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr "Απόκρυψη αποτυχημένων ή ημιτελών εκδόσεων"
 
-#: src/Gtk/SettingsDialog.vala:115
+#: src/Gtk/SettingsDialog.vala:56
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -593,41 +566,77 @@ msgstr ""
 "ημιτελής ή αποτυχία κατασκευής για το τόξο σας (%s), μην το εμφανίσετε στη "
 "λίστα."
 
-#: src/Gtk/SettingsDialog.vala:122
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Hide flavors other than \"generic\""
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:124
+#: src/Gtk/SettingsDialog.vala:65
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:80
 msgid "previous major versions  ( -1 = all )"
 msgstr "προηγούμενες κύριες εκδόσεις ( -1 = όλες )"
 
-#: src/Gtk/SettingsDialog.vala:147
+#: src/Gtk/SettingsDialog.vala:88
+msgid "Notification"
+msgstr "Ειδοποίηση"
+
+#: src/Gtk/SettingsDialog.vala:95
+msgid "Notify if a major release is available"
+msgstr "Ειδοποίηση αν είναι διαθέσιμη κύρια έκδοση"
+
+#: src/Gtk/SettingsDialog.vala:101
+msgid "Notify if a point release is available"
+msgstr "Ειδοποίηση αν είναι διαθέσιμη έκδοση συντήρησης"
+
+#: src/Gtk/SettingsDialog.vala:108
+msgid "Seconds interval enabled for debugging"
+msgstr "διάστημα δευτερολέπτων είναι ενεργοποιημένο για εντοπισμό σφαλμάτων"
+
+#: src/Gtk/SettingsDialog.vala:127
+msgid "Check every"
+msgstr "Έλεγχος κάθε"
+
+#: src/Gtk/SettingsDialog.vala:136
+msgid "Hours"
+msgstr "Ώρες"
+
+#: src/Gtk/SettingsDialog.vala:137
+msgid "Days"
+msgstr "Ημέρες"
+
+#: src/Gtk/SettingsDialog.vala:138
+msgid "Weeks"
+msgstr "Εβδομάδες"
+
+#: src/Gtk/SettingsDialog.vala:139
+msgid "Seconds"
+msgstr "Δευτερόλεπτα"
+
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: src/Gtk/SettingsDialog.vala:156
+#: src/Gtk/SettingsDialog.vala:159
 msgid "Internet connection timeout in"
 msgstr "Λήξη χρονικού ορίου σύνδεσης στο διαδίκτυο "
 
-#: src/Gtk/SettingsDialog.vala:164
+#: src/Gtk/SettingsDialog.vala:167
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#: src/Gtk/SettingsDialog.vala:173
+#: src/Gtk/SettingsDialog.vala:175
 msgid "Max concurrent downloads"
 msgstr "Μέγιστες ταυτόχρονες λήψεις"
 
-#: src/Gtk/SettingsDialog.vala:184
+#: src/Gtk/SettingsDialog.vala:185
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Επαλήθευση αθροισμάτων ελέγχου με τα αρχεία CHECKSUMS"
 
-#: src/Gtk/SettingsDialog.vala:186
+#: src/Gtk/SettingsDialog.vala:187
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
@@ -635,11 +644,11 @@ msgstr ""
 "Χρησιμοποιήστε τους κατακερματισμούς sha-256 από το αρχείο CHECKSUMS για να "
 "επαληθεύσετε τις λήψεις αρχείων .deb."
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:192
 msgid "Keep Downloads"
 msgstr "Διατήρηση λήψεων"
 
-#: src/Gtk/SettingsDialog.vala:193
+#: src/Gtk/SettingsDialog.vala:194
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -654,15 +663,15 @@ msgstr ""
 "\"Εμφάνιση προηγούμενων μεγάλων εκδόσεων\" ή εάν έχουν ενημερωθεί στον "
 "ιστότοπο mainline-ppa."
 
-#: src/Gtk/SettingsDialog.vala:202
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Proxy"
 msgstr "Διακομιστής"
 
-#: src/Gtk/SettingsDialog.vala:231
+#: src/Gtk/SettingsDialog.vala:235
 msgid "External Commands"
 msgstr "Εξωτερικές εντολές"
 
-#: src/Gtk/SettingsDialog.vala:258
+#: src/Gtk/SettingsDialog.vala:263
 #, c-format
 msgid ""
 "Command used to run dpkg with root permissions.\n"
@@ -682,19 +691,19 @@ msgstr ""
 "προστεθεί στο τέλος.\n"
 "Δείτε το \"su -c\" στην αναπτυσσόμενη λίστα για ένα παράδειγμα αυτού."
 
-#: src/Gtk/SettingsDialog.vala:288
+#: src/Gtk/SettingsDialog.vala:292
 msgid "Terminal command used to run"
 msgstr "Εντολή τερματικού που χρησιμοποιείται για εκτέλεση"
 
-#: src/Gtk/SettingsDialog.vala:289
+#: src/Gtk/SettingsDialog.vala:293
 msgid "Example"
 msgstr "Παράδειγμα"
 
-#: src/Gtk/SettingsDialog.vala:289
+#: src/Gtk/SettingsDialog.vala:293
 msgid "will result in"
 msgstr "θα έχει ως αποτέλεσμα"
 
-#: src/Gtk/SettingsDialog.vala:291
+#: src/Gtk/SettingsDialog.vala:295
 #, c-format
 msgid ""
 "If the terminal programs commandline syntax requires the execute command to "
@@ -735,10 +744,6 @@ msgstr ""
 "XFCE4-τερματικό δεν μπορεί να γίνει για να μπλοκάρει.\n"
 "\n"
 "Επεξεργαστείτε την εντολή για να προσαρμόσετε την εμφάνιση του τερματικού."
-
-#: src/Gtk/SettingsDialog.vala:308
-msgid "Done"
-msgstr "Εγινε"
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

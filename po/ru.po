@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 16:50-0400\n"
+"POT-Creation-Date: 2023-07-27 00:50-0400\n"
 "PO-Revision-Date: 2023-07-26 20:35+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -25,7 +25,7 @@ msgstr "Архитектура"
 msgid "Running kernel"
 msgstr "Запущенное ядро"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:475
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
 msgid "Running"
 msgstr "Используется"
 
@@ -105,11 +105,11 @@ msgstr "Установленные пакеты"
 msgid "Notes"
 msgstr "Примечания"
 
-#: src/Common/LinuxKernel.vala:771
+#: src/Common/LinuxKernel.vala:777
 msgid "Locked"
 msgstr "Заблокировано"
 
-#: src/Common/LinuxKernel.vala:772
+#: src/Common/LinuxKernel.vala:778
 msgid "installation"
 msgstr "установка"
 
@@ -169,7 +169,7 @@ msgstr "уже установлен."
 msgid "download failed."
 msgstr "загрузка не удалась."
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:501
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
 msgid "Install: no installable kernels specified"
 msgstr "Команда не указана"
 
@@ -181,7 +181,7 @@ msgstr "Удаление выбранных ядер"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не удалять запущенное в данный момент ядро"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:497
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
 msgid "is locked"
 msgstr "заблокирован"
 
@@ -413,7 +413,7 @@ msgstr "отключено уведомление о крупных релиза
 msgid "Kernel %s Available"
 msgstr "Доступно ядро %s"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:133
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
 msgid "Show"
 msgstr "Показать"
 
@@ -492,7 +492,7 @@ msgstr "О программе"
 msgid "Exit"
 msgstr "Выход"
 
-#: src/Gtk/MainWindow.vala:416
+#: src/Gtk/MainWindow.vala:421
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -500,79 +500,52 @@ msgstr ""
 "Инструмент для установки пакетов ядра\n"
 "из пакета Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:418
+#: src/Gtk/MainWindow.vala:423
 msgid "Original"
 msgstr "Оригинал"
 
-#: src/Gtk/MainWindow.vala:419
+#: src/Gtk/MainWindow.vala:424
 msgid "Forked"
 msgstr "Форк"
 
-#: src/Gtk/MainWindow.vala:437
+#: src/Gtk/MainWindow.vala:442
 msgid "Updating kernels"
 msgstr "Обновление ядер"
 
-#: src/Gtk/MainWindow.vala:479
+#: src/Gtk/MainWindow.vala:484
 msgid "available"
 msgstr "доступно"
 
-#: src/Gtk/MainWindow.vala:496
+#: src/Gtk/MainWindow.vala:501
 msgid "is already installed"
 msgstr "уже установлен"
 
-#: src/Gtk/MainWindow.vala:498
+#: src/Gtk/MainWindow.vala:503
 msgid "adding"
 msgstr "добавление"
 
-#: src/Gtk/SettingsDialog.vala:43
-msgid "Notification"
+#: src/Gtk/SettingsDialog.vala:12
+#, fuzzy
+msgid "Configuration"
 msgstr "Уведомления"
 
-#: src/Gtk/SettingsDialog.vala:48
-msgid "Notify if a major release is available"
-msgstr "Уведомлять, если доступно крупное обновление"
+#: src/Gtk/SettingsDialog.vala:24
+msgid "Done"
+msgstr "Готово"
 
-#: src/Gtk/SettingsDialog.vala:54
-msgid "Notify if a point release is available"
-msgstr "Уведомлять, если доступно небольшое обновление"
-
-#: src/Gtk/SettingsDialog.vala:61
-msgid "Seconds interval enabled for debugging"
-msgstr "Интервал секунд включен для отладки"
-
-#: src/Gtk/SettingsDialog.vala:80
-msgid "Check every"
-msgstr "Проверять каждые"
-
-#: src/Gtk/SettingsDialog.vala:89
-msgid "Hours"
-msgstr "Часов"
-
-#: src/Gtk/SettingsDialog.vala:90
-msgid "Days"
-msgstr "Дней"
-
-#: src/Gtk/SettingsDialog.vala:91
-msgid "Weeks"
-msgstr "Недель"
-
-#: src/Gtk/SettingsDialog.vala:92
-msgid "Seconds"
-msgstr "Секунд"
-
-#: src/Gtk/SettingsDialog.vala:100
+#: src/Gtk/SettingsDialog.vala:40
 msgid "Filters"
 msgstr "Фильтры"
 
-#: src/Gtk/SettingsDialog.vala:106
+#: src/Gtk/SettingsDialog.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "Скрыть нестабильные и релиз-кандидат версии"
 
-#: src/Gtk/SettingsDialog.vala:113
+#: src/Gtk/SettingsDialog.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr "Скрыть неудачные или незавершенные сборки"
 
-#: src/Gtk/SettingsDialog.vala:115
+#: src/Gtk/SettingsDialog.vala:56
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -581,11 +554,11 @@ msgstr ""
 "Если версия ядра существует на сайте mainline-ppa, но является неполной или "
 "неудачной сборкой для вашей архитектуры (%s), то не показывать ее в списке."
 
-#: src/Gtk/SettingsDialog.vala:122
+#: src/Gtk/SettingsDialog.vala:63
 msgid "Hide flavors other than \"generic\""
 msgstr "Скрыть варианты, отличные от \"общих(generic)\""
 
-#: src/Gtk/SettingsDialog.vala:124
+#: src/Gtk/SettingsDialog.vala:65
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
@@ -593,31 +566,67 @@ msgstr ""
 "Не показывать альтернативные варианты типа \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\" и т.д."
 
-#: src/Gtk/SettingsDialog.vala:141
+#: src/Gtk/SettingsDialog.vala:80
 msgid "previous major versions  ( -1 = all )"
 msgstr "предыдущие основные версии ( -1 = все )"
 
-#: src/Gtk/SettingsDialog.vala:147
+#: src/Gtk/SettingsDialog.vala:88
+msgid "Notification"
+msgstr "Уведомления"
+
+#: src/Gtk/SettingsDialog.vala:95
+msgid "Notify if a major release is available"
+msgstr "Уведомлять, если доступно крупное обновление"
+
+#: src/Gtk/SettingsDialog.vala:101
+msgid "Notify if a point release is available"
+msgstr "Уведомлять, если доступно небольшое обновление"
+
+#: src/Gtk/SettingsDialog.vala:108
+msgid "Seconds interval enabled for debugging"
+msgstr "Интервал секунд включен для отладки"
+
+#: src/Gtk/SettingsDialog.vala:127
+msgid "Check every"
+msgstr "Проверять каждые"
+
+#: src/Gtk/SettingsDialog.vala:136
+msgid "Hours"
+msgstr "Часов"
+
+#: src/Gtk/SettingsDialog.vala:137
+msgid "Days"
+msgstr "Дней"
+
+#: src/Gtk/SettingsDialog.vala:138
+msgid "Weeks"
+msgstr "Недель"
+
+#: src/Gtk/SettingsDialog.vala:139
+msgid "Seconds"
+msgstr "Секунд"
+
+#: src/Gtk/SettingsDialog.vala:149
 msgid "Network"
 msgstr "Сеть"
 
-#: src/Gtk/SettingsDialog.vala:156
+#: src/Gtk/SettingsDialog.vala:159
 msgid "Internet connection timeout in"
 msgstr "Таймаут подключения к Интернету в"
 
-#: src/Gtk/SettingsDialog.vala:164
+#: src/Gtk/SettingsDialog.vala:167
 msgid "seconds"
 msgstr "секунд"
 
-#: src/Gtk/SettingsDialog.vala:173
+#: src/Gtk/SettingsDialog.vala:175
 msgid "Max concurrent downloads"
 msgstr "Максимальное количество одновременных загрузок"
 
-#: src/Gtk/SettingsDialog.vala:184
+#: src/Gtk/SettingsDialog.vala:185
 msgid "Verify Downloads with the CHECKSUMS files"
 msgstr "Проверка загрузок с помощью файлов CHECKSUMS"
 
-#: src/Gtk/SettingsDialog.vala:186
+#: src/Gtk/SettingsDialog.vala:187
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
 "downloads."
@@ -625,11 +634,11 @@ msgstr ""
 "Использовать хэши sha-256 из файла CHECKSUMS для проверки загруженных "
 "файлов .deb."
 
-#: src/Gtk/SettingsDialog.vala:191
+#: src/Gtk/SettingsDialog.vala:192
 msgid "Keep Downloads"
 msgstr "Сохранять загрузки"
 
-#: src/Gtk/SettingsDialog.vala:193
+#: src/Gtk/SettingsDialog.vala:194
 msgid ""
 "Retain downloaded .deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again.\n"
@@ -644,15 +653,15 @@ msgstr ""
 "предыдущие основные версии\", или если они были обновлены на сайте mainline-"
 "ppa."
 
-#: src/Gtk/SettingsDialog.vala:202
+#: src/Gtk/SettingsDialog.vala:203
 msgid "Proxy"
 msgstr "Доверенность"
 
-#: src/Gtk/SettingsDialog.vala:231
+#: src/Gtk/SettingsDialog.vala:235
 msgid "External Commands"
 msgstr "Внешние команды"
 
-#: src/Gtk/SettingsDialog.vala:258
+#: src/Gtk/SettingsDialog.vala:263
 #, c-format
 msgid ""
 "Command used to run dpkg with root permissions.\n"
@@ -671,19 +680,19 @@ msgstr ""
 "случае он будет добавлен в конец.\n"
 "Пример этого см. в выпадающем списке \"su -c\"."
 
-#: src/Gtk/SettingsDialog.vala:288
+#: src/Gtk/SettingsDialog.vala:292
 msgid "Terminal command used to run"
 msgstr "Команда терминала, используемая для запуска"
 
-#: src/Gtk/SettingsDialog.vala:289
+#: src/Gtk/SettingsDialog.vala:293
 msgid "Example"
 msgstr "Пример"
 
-#: src/Gtk/SettingsDialog.vala:289
+#: src/Gtk/SettingsDialog.vala:293
 msgid "will result in"
 msgstr "приведет к"
 
-#: src/Gtk/SettingsDialog.vala:291
+#: src/Gtk/SettingsDialog.vala:295
 #, c-format
 msgid ""
 "If the terminal programs commandline syntax requires the execute command to "
@@ -722,10 +731,6 @@ msgstr ""
 "xfce4-terminal не может быть заблокирован.\n"
 "\n"
 "Отредактируйте команду, чтобы настроить внешний вид терминала."
-
-#: src/Gtk/SettingsDialog.vala:308
-msgid "Done"
-msgstr "Готово"
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

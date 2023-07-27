@@ -1,3 +1,10 @@
+mainline (1.4.3) unstable; urgency=medium
+
+  * Replace the all-on-one-page settings with a Gtk.Notebook with a page for each section
+    Settings window grew too large and this makes it smaller
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Thu, 27 Jul 2023 00:57:14 -0400
+
 mainline (1.4.2) unstable; urgency=medium
 
   * Fix localization of notifications

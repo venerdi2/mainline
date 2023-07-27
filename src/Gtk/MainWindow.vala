@@ -378,26 +378,31 @@ public class MainWindow : Window {
 		var old_notify_major = App.notify_major;
 		var old_notify_minor = App.notify_minor;
 
-		var dlg = new SettingsDialog.with_parent(this);
-		dlg.run();
-		dlg.destroy();
+		var swin = new SettingsWindow(this);
 
-		App.save_app_config(); // blindly sets RUN_NOTIFY_SCRIPT = true;
+		swin.destroy.connect(() => {
 
-		// if no notify settings changed, then un-flag the automatic notify script update
-		if (App.notify_interval_value == old_notify_interval_value &&
-			App.notify_interval_unit == old_notify_interval_unit &&
-			App.notify_major == old_notify_major &&
-			App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
+			App.save_app_config(); // blindly sets RUN_NOTIFY_SCRIPT = true;
 
-		// if the selection set changed, then update cache
-		if (App.previous_majors != old_previous_majors ||
-			App.hide_unstable != old_hide_unstable ||
-			App.hide_invalid != old_hide_invalid ||
-			App.hide_flavors != old_hide_flavors) update_cache();
+			// if no notify settings changed, then un-flag the automatic notify script update
+			if (App.notify_interval_value == old_notify_interval_value &&
+				App.notify_interval_unit == old_notify_interval_unit &&
+				App.notify_major == old_notify_major &&
+				App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
 
-		// in case it was due but we didn't run update_cache()
-		App.run_notify_script_if_due();
+			// if the selection set changed, then update cache
+			if (App.previous_majors != old_previous_majors ||
+				App.hide_unstable != old_hide_unstable ||
+				App.hide_invalid != old_hide_invalid ||
+				App.hide_flavors != old_hide_flavors) update_cache();
+
+			// in case it was due but we didn't run update_cache()
+			App.run_notify_script_if_due();
+
+		});
+
+		swin.show_all();
+
 	}
 
 	void do_about() {
