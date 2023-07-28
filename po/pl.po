@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 00:50-0400\n"
+"POT-Creation-Date: 2023-07-28 05:01-0400\n"
 "PO-Revision-Date: 2023-07-26 22:39+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -24,7 +24,7 @@ msgstr "Architektura"
 msgid "Running kernel"
 msgstr "Uruchomione jądro"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:492
 msgid "Running"
 msgstr "Uruchomione"
 
@@ -97,7 +97,7 @@ msgstr "Dostępne pakiety"
 msgid "Packages Installed"
 msgstr "Pakiety zainstalowane"
 
-#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:190
+#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:192
 msgid "Notes"
 msgstr "Notatki"
 
@@ -129,7 +129,7 @@ msgstr "wymaga aktualizacji"
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
-#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:139
+#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:141
 msgid "Kernel"
 msgstr "Jądro"
 
@@ -165,7 +165,7 @@ msgstr "jest już zainstalowane."
 msgid "download failed."
 msgstr "pobieranie nie powiodło się."
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:519
 msgid "Install: no installable kernels specified"
 msgstr "Instalowanie: nie określono jądra do zainstalowania"
 
@@ -177,7 +177,7 @@ msgstr "Odinstalowanie wybranych jąder"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Bez odinstalowywania aktualnie uruchomionego jądra"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:515
 msgid "is locked"
 msgstr "jest zablokowane"
 
@@ -411,11 +411,11 @@ msgstr "wyłączono powiadomienia o wersjach głównych"
 msgid "Kernel %s Available"
 msgstr "Dostępne jądro %s"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsWindow.vala:74
 msgid "Show"
 msgstr "Pokaż"
 
-#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:320
+#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:322
 msgid "Install"
 msgstr "Zainstaluj"
 
@@ -435,31 +435,31 @@ msgstr "Wypisz informacje debugujące"
 msgid "Show all options"
 msgstr "Pokaż wszystkie opcje"
 
-#: src/Gtk/MainWindow.vala:162
+#: src/Gtk/MainWindow.vala:164
 msgid "Lock"
 msgstr "Zablokuj"
 
-#: src/Gtk/MainWindow.vala:179
+#: src/Gtk/MainWindow.vala:181
 msgid "Status"
 msgstr "Status"
 
-#: src/Gtk/MainWindow.vala:325
+#: src/Gtk/MainWindow.vala:327
 msgid "Uninstall"
 msgstr "Odinstaluj"
 
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Changelog, build status, etc"
 msgstr "Dziennik zmian, status kompilacji itd."
 
-#: src/Gtk/MainWindow.vala:336 src/lib/l.exec.vala:7
+#: src/Gtk/MainWindow.vala:338 src/lib/l.exec.vala:7
 msgid "Unable to launch"
 msgstr "Nie można uruchomić"
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:342
 msgid "Uninstall Old"
 msgstr "Odinstaluj stare"
 
-#: src/Gtk/MainWindow.vala:341
+#: src/Gtk/MainWindow.vala:343
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
@@ -471,11 +471,11 @@ msgstr ""
 "* aktualnie działającego jądra\n"
 "* wszelkich jąder, które są zablokowane"
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:348
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
@@ -483,19 +483,19 @@ msgstr ""
 "Usuń i wczytaj ponownie wszystkie informacje o jądrze\n"
 "z pamięci podręcznej (to samo co „mainline --delete-cache”)"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:354
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:359
 msgid "About"
 msgstr "O programie"
 
-#: src/Gtk/MainWindow.vala:362
+#: src/Gtk/MainWindow.vala:364
 msgid "Exit"
 msgstr "Wyjdź"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:423
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -503,52 +503,53 @@ msgstr ""
 "Narzędzie do instalowania pakietów\n"
 "jąder z Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:425
 msgid "Original"
 msgstr "Oryginalne"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:426
 msgid "Forked"
 msgstr "Sforkowane"
 
-#: src/Gtk/MainWindow.vala:442
+#: src/Gtk/MainWindow.vala:444
 msgid "Updating kernels"
 msgstr "Aktualizowanie jąder"
 
-#: src/Gtk/MainWindow.vala:484
+#: src/Gtk/MainWindow.vala:495
 msgid "available"
 msgstr "dostępne"
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:514
 msgid "is already installed"
 msgstr "jest już zainstalowane"
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:516
 msgid "adding"
 msgstr "dodawanie"
 
-#: src/Gtk/SettingsDialog.vala:12
+#: src/Gtk/SettingsWindow.vala:12
 #, fuzzy
 msgid "Configuration"
 msgstr "Powiadomienia"
 
-#: src/Gtk/SettingsDialog.vala:24
+#: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr "Gotowe"
 
-#: src/Gtk/SettingsDialog.vala:40
-msgid "Filters"
+#: src/Gtk/SettingsWindow.vala:40
+#, fuzzy
+msgid "Filter"
 msgstr "Filtry"
 
-#: src/Gtk/SettingsDialog.vala:47
+#: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "Ukryj wydania niestabilne i RC"
 
-#: src/Gtk/SettingsDialog.vala:54
+#: src/Gtk/SettingsWindow.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr "Ukryj nieudane lub niekompletne kompilacje"
 
-#: src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsWindow.vala:57
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -558,11 +559,11 @@ msgstr ""
 "niekompletna lub nieudana kompilacja dla Twojej architektury (%s), nie "
 "pokazuj jej na liście."
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsWindow.vala:63
 msgid "Hide flavors other than \"generic\""
 msgstr "Ukryj warianty inne niż „generic”"
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsWindow.vala:66
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
@@ -570,83 +571,98 @@ msgstr ""
 "Nie pokazuj innych wariantów, takich jak „lowlatency”, „generic-64k”, "
 "„generic-lpae”, „server”, „virtual” itp."
 
-#: src/Gtk/SettingsDialog.vala:80
-msgid "previous major versions  ( -1 = all )"
+#: src/Gtk/SettingsWindow.vala:80
+#, fuzzy
+msgid "prior major versions  ( -1 = all )"
 msgstr "poprzednie główne wersje  ( -1 = wszystkie )"
 
-#: src/Gtk/SettingsDialog.vala:88
+#: src/Gtk/SettingsWindow.vala:88
 msgid "Notification"
 msgstr "Powiadomienia"
 
-#: src/Gtk/SettingsDialog.vala:95
+#: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
 msgstr "Powiadom, jeśli pojawi się główna wersja"
 
-#: src/Gtk/SettingsDialog.vala:101
-msgid "Notify if a point release is available"
-msgstr "Powiadom, jeśli pojawi się wersja punktowa"
+#: src/Gtk/SettingsWindow.vala:101
+#, fuzzy
+msgid "Notify if a minor release is available"
+msgstr "Powiadom, jeśli pojawi się główna wersja"
 
-#: src/Gtk/SettingsDialog.vala:108
+#: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
 msgstr "Interwał w sekundach włączony do debugowania"
 
-#: src/Gtk/SettingsDialog.vala:127
+#: src/Gtk/SettingsWindow.vala:127
 msgid "Check every"
 msgstr "Sprawdzaj co"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsWindow.vala:137
 msgid "Hours"
 msgstr "godziny"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsWindow.vala:138
 msgid "Days"
 msgstr "dni"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsWindow.vala:139
 msgid "Weeks"
 msgstr "tygodnie"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsWindow.vala:140
 msgid "Seconds"
 msgstr "sekundy"
 
-#: src/Gtk/SettingsDialog.vala:149
+#: src/Gtk/SettingsWindow.vala:149
 msgid "Network"
 msgstr "Sieć"
 
-#: src/Gtk/SettingsDialog.vala:159
-msgid "Internet connection timeout in"
+#: src/Gtk/SettingsWindow.vala:159
+#, fuzzy
+msgid "Connection Timeout:"
 msgstr "Limit czasu połączenia internetowego po"
 
-#: src/Gtk/SettingsDialog.vala:167
+#: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "sekundy"
 
-#: src/Gtk/SettingsDialog.vala:175
-msgid "Max concurrent downloads"
+#: src/Gtk/SettingsWindow.vala:175
+#, fuzzy
+msgid "Concurrent Downloads:"
 msgstr "Maksymalna liczba jednoczesnych pobrań"
 
-#: src/Gtk/SettingsDialog.vala:185
-msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "Weryfikuj pobrania za pomocą plików CHECKSUMS"
+#: src/Gtk/SettingsWindow.vala:185
+msgid "Verify Checksums"
+msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:187
+#: src/Gtk/SettingsWindow.vala:188
+#, fuzzy
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
 "Użyj skrótów sha-256 z pliku CHECKSUMS, aby zweryfikować pobrane pliki .deb."
 
-#: src/Gtk/SettingsDialog.vala:192
+#: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
 msgstr "Zachowaj pobrane pliki"
 
-#: src/Gtk/SettingsDialog.vala:194
+#: src/Gtk/SettingsWindow.vala:195
+#, fuzzy
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/"
-"reinstall instead of downloading again.\n"
+"Retain downloaded *.deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again."
+msgstr ""
+"Zachowaj pobrane pliki .deb po instalacji i użyj ich ponownie do "
+"odinstalowania/ponownej instalacji zamiast ponownego pobierania.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major "
+"Są nadal usuwane, gdy staną się starsze niż ustawienie „Pokaż poprzednie "
+"główne wersje” lub jeśli zostały zaktualizowane w witrynie mainline-ppa."
+
+#: src/Gtk/SettingsWindow.vala:197
+#, fuzzy
+msgid ""
+"They are still deleted once they become older than the \"Show N prior major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 "Zachowaj pobrane pliki .deb po instalacji i użyj ich ponownie do "
@@ -655,84 +671,96 @@ msgstr ""
 "Są nadal usuwane, gdy staną się starsze niż ustawienie „Pokaż poprzednie "
 "główne wersje” lub jeśli zostały zaktualizowane w witrynie mainline-ppa."
 
-#: src/Gtk/SettingsDialog.vala:203
+#: src/Gtk/SettingsWindow.vala:203
 msgid "Proxy"
 msgstr "Serwer pośredniczący"
 
-#: src/Gtk/SettingsDialog.vala:235
+#: src/Gtk/SettingsWindow.vala:215
+msgid "Mainline-PPA URL"
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:235
 msgid "External Commands"
 msgstr "Polecenia zewnętrzne"
 
-#: src/Gtk/SettingsDialog.vala:263
-#, c-format
-msgid ""
-"Command used to run dpkg with root permissions.\n"
-"\n"
-"If the auth programs commandline syntax requires the execute command to be "
-"enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that."
+#: src/Gtk/SettingsWindow.vala:242
+msgid "Superuser Authorization"
 msgstr ""
-"Polecenie używane do uruchamiania dpkg z uprawnieniami roota.\n"
-"\n"
-"Jeśli składnia wiersza poleceń programów uwierzytelniania wymaga, aby "
-"polecenie wykonania było ujęte w cudzysłowy, a nie tylko dodawane na końcu "
-"wiersza poleceń, możesz umieścić pojedynczy %s w łańcuchu, a zostanie on "
-"zastąpiony poleceniem dpkg, w przeciwnym razie zostanie dołączony na końcu.\n"
-"Sprawdź „su -c” na rozwijanej liście, aby zobaczyć przykład."
 
-#: src/Gtk/SettingsDialog.vala:292
+#: src/Gtk/SettingsWindow.vala:264
+msgid "Command used to run dpkg with root permissions."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:266
+#, c-format
+msgid "The dpkg command is appended to the end, unless a %s is present."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:267
+#, c-format
+msgid "If a %s is present, then the %s is replaced with the dpkg command."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:268 src/Gtk/SettingsWindow.vala:301
+msgid "The built-in list contains examples of both."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:270 src/Gtk/SettingsWindow.vala:309
+msgid "You may edit any of the built-in default commands to customize it."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:271 src/Gtk/SettingsWindow.vala:310
+msgid ""
+"The edited command will be saved as a new custom command without changing "
+"the original."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:275
+msgid "Terminal Window"
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:297
 msgid "Terminal command used to run"
 msgstr "Polecenie terminala używane do uruchamiania"
 
-#: src/Gtk/SettingsDialog.vala:293
-msgid "Example"
-msgstr "Przykład"
-
-#: src/Gtk/SettingsDialog.vala:293
-msgid "will result in"
-msgstr "spowoduje"
-
-#: src/Gtk/SettingsDialog.vala:295
+#: src/Gtk/SettingsWindow.vala:299
 #, c-format
 msgid ""
-"If the terminal programs commandline syntax requires the execute command to "
-"be enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the install command, otherwise it will be appended to the end.\n"
-"See mate-terminal in the drop down list for an example of that.\n"
-"\n"
-"You may write any commandline you want, but the specified program must stay "
-"in the foreground and block while the command is running, not fork and "
-"return immediately.\n"
-"Most terminal programs work fine by default, but some require special "
-"command line flags, and some are not usable at all.\n"
-"\n"
-"Examples:\n"
-"gnome-terminal can be made to block by using it's --wait option.\n"
-"xfce4-terminal can not be made to block.\n"
-"\n"
-"Edit the command to customize the appearance of the terminal."
+"The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
-"Jeśli składnia wiersza poleceń programów terminalowych wymaga, aby polecenie "
-"wykonania było ujęte w cudzysłowy, a nie tylko dodawane na końcu wiersza "
-"poleceń, możesz umieścić pojedynczy %s w łańcuchu, a zostanie on zastąpiony "
-"poleceniem install, w przeciwnym razie zostanie dołączony na końcu.\n"
-"Sprawdź mate-terminal na rozwijanej liście, aby zobaczyć przykład.\n"
-"\n"
-"Możesz napisać dowolną linię poleceń, ale określony program musi pozostać na "
-"pierwszym planie i blokować się podczas wykonywania polecenia, a nie "
-"rozwidlać się i natychmiast wracać.\n"
-"Większość programów terminalowych działa domyślnie dobrze, ale niektóre "
-"wymagają specjalnych flag wiersza poleceń, a niektóre w ogóle nie nadają się "
-"do użytku.\n"
-"\n"
-"Przykłady:\n"
-"gnome-terminal można zablokować, używając jego opcji --wait.\n"
-"xfce4-terminal nie może być blokowany.\n"
-"\n"
-"Edytuj polecenie, aby dostosować wygląd terminala."
+
+#: src/Gtk/SettingsWindow.vala:300
+#, c-format
+msgid ""
+"If a %s is present, then the %s is replaced with the install/uninstall "
+"command."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:303
+msgid ""
+"The terminal program must stay in the foreground and block while the command "
+"is running, not fork and return immediately."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:304
+msgid ""
+"Most terminal programs block by default, some don't by default but can be "
+"told to, and some are not usable at all."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:305
+msgid "Examples"
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:306
+msgid ""
+"gnome-terminal is usable because it can be made to block by using it's \"--"
+"wait\" option."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:307
+msgid "xfce4-terminal is not usable because it can not be made to block."
+msgstr ""
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

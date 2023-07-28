@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 00:50-0400\n"
+"POT-Creation-Date: 2023-07-28 05:01-0400\n"
 "PO-Revision-Date: 2022-09-28 11:48+0900\n"
 "Last-Translator: Kevin Kim <root@hamonikr.org>\n"
 "Language-Team: Korean\n"
@@ -25,7 +25,7 @@ msgstr "아키텍처"
 msgid "Running kernel"
 msgstr "현재 실행 중인 커널"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:492
 msgid "Running"
 msgstr "구동 중"
 
@@ -102,7 +102,7 @@ msgstr "설치 가능한 패키지"
 msgid "Packages Installed"
 msgstr "설치된 패키지"
 
-#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:190
+#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:192
 msgid "Notes"
 msgstr "노트"
 
@@ -137,7 +137,7 @@ msgstr "최신 업데이트"
 msgid "Available Kernels"
 msgstr "설치 가능한 커널"
 
-#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:139
+#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:141
 msgid "Kernel"
 msgstr "커널"
 
@@ -176,7 +176,7 @@ msgstr "가 이미 설치되어 있습니다"
 msgid "download failed."
 msgstr ""
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:519
 #, fuzzy
 msgid "Install: no installable kernels specified"
 msgstr "지정한 명령어가 없습니다"
@@ -190,7 +190,7 @@ msgstr "선택한 커널 제거"
 msgid "Not uninstalling the currently running kernel"
 msgstr "현재 실행 중인 커널을 제거하지 않음"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:515
 msgid "is locked"
 msgstr ""
 
@@ -434,11 +434,11 @@ msgstr "메이저 릴리즈가 있으면 알림"
 msgid "Kernel %s Available"
 msgstr "커널 %s 사용 가능"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsWindow.vala:74
 msgid "Show"
 msgstr "보이기"
 
-#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:320
+#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:322
 msgid "Install"
 msgstr "설치"
 
@@ -458,31 +458,31 @@ msgstr "디버그 정보 출력"
 msgid "Show all options"
 msgstr "모든 옵션 보기"
 
-#: src/Gtk/MainWindow.vala:162
+#: src/Gtk/MainWindow.vala:164
 msgid "Lock"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:179
+#: src/Gtk/MainWindow.vala:181
 msgid "Status"
 msgstr "상태"
 
-#: src/Gtk/MainWindow.vala:325
+#: src/Gtk/MainWindow.vala:327
 msgid "Uninstall"
 msgstr "삭제"
 
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Changelog, build status, etc"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:336 src/lib/l.exec.vala:7
+#: src/Gtk/MainWindow.vala:338 src/lib/l.exec.vala:7
 msgid "Unable to launch"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:342
 msgid "Uninstall Old"
 msgstr "오래된 커널 제거"
 
-#: src/Gtk/MainWindow.vala:341
+#: src/Gtk/MainWindow.vala:343
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
@@ -490,82 +490,83 @@ msgid ""
 "* any kernels that are locked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:348
 msgid "Reload"
 msgstr "새로고침"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:354
 msgid "Settings"
 msgstr "설정"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:359
 msgid "About"
 msgstr "정보"
 
-#: src/Gtk/MainWindow.vala:362
+#: src/Gtk/MainWindow.vala:364
 msgid "Exit"
 msgstr "출구"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:423
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:425
 msgid "Original"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:426
 msgid "Forked"
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:442
+#: src/Gtk/MainWindow.vala:444
 #, fuzzy
 msgid "Updating kernels"
 msgstr "커널 업데이트"
 
-#: src/Gtk/MainWindow.vala:484
+#: src/Gtk/MainWindow.vala:495
 msgid "available"
 msgstr "사용가능"
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:514
 #, fuzzy
 msgid "is already installed"
 msgstr "가 이미 설치되어 있습니다"
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:516
 msgid "adding"
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:12
+#: src/Gtk/SettingsWindow.vala:12
 #, fuzzy
 msgid "Configuration"
 msgstr "알림"
 
-#: src/Gtk/SettingsDialog.vala:24
+#: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr "끝난"
 
-#: src/Gtk/SettingsDialog.vala:40
-msgid "Filters"
+#: src/Gtk/SettingsWindow.vala:40
+#, fuzzy
+msgid "Filter"
 msgstr "필터"
 
-#: src/Gtk/SettingsDialog.vala:47
+#: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "목록에서 unstable, RC 버전 포함"
 
-#: src/Gtk/SettingsDialog.vala:54
+#: src/Gtk/SettingsWindow.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr "실패하거나 불완전한 빌드 숨기기"
 
-#: src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsWindow.vala:57
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -574,93 +575,108 @@ msgstr ""
 "커널 버전이 mainline-ppa 사이트에 있지만 아키텍처(%s)에 대해 불완전하거나 실"
 "패한 빌드인 경우 목록에 표시하지 마십시오."
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsWindow.vala:63
 msgid "Hide flavors other than \"generic\""
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsWindow.vala:66
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:80
-msgid "previous major versions  ( -1 = all )"
+#: src/Gtk/SettingsWindow.vala:80
+#, fuzzy
+msgid "prior major versions  ( -1 = all )"
 msgstr "이전 주 버전  ( -1 = 모두 )"
 
-#: src/Gtk/SettingsDialog.vala:88
+#: src/Gtk/SettingsWindow.vala:88
 msgid "Notification"
 msgstr "알림"
 
-#: src/Gtk/SettingsDialog.vala:95
+#: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
 msgstr "메이저 릴리즈가 있으면 알림"
 
-#: src/Gtk/SettingsDialog.vala:101
-msgid "Notify if a point release is available"
-msgstr "포인트 릴리즈가 있으면 알림"
+#: src/Gtk/SettingsWindow.vala:101
+#, fuzzy
+msgid "Notify if a minor release is available"
+msgstr "메이저 릴리즈가 있으면 알림"
 
-#: src/Gtk/SettingsDialog.vala:108
+#: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
 msgstr "디버깅에 사용할 수 있는 초 간격"
 
-#: src/Gtk/SettingsDialog.vala:127
+#: src/Gtk/SettingsWindow.vala:127
 msgid "Check every"
 msgstr "확인 주기"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsWindow.vala:137
 msgid "Hours"
 msgstr "시간"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsWindow.vala:138
 msgid "Days"
 msgstr "일"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsWindow.vala:139
 msgid "Weeks"
 msgstr "주"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsWindow.vala:140
 msgid "Seconds"
 msgstr "초"
 
-#: src/Gtk/SettingsDialog.vala:149
+#: src/Gtk/SettingsWindow.vala:149
 msgid "Network"
 msgstr "네트워크"
 
-#: src/Gtk/SettingsDialog.vala:159
-msgid "Internet connection timeout in"
+#: src/Gtk/SettingsWindow.vala:159
+#, fuzzy
+msgid "Connection Timeout:"
 msgstr "인터넷 연결 시간 초과"
 
-#: src/Gtk/SettingsDialog.vala:167
+#: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "초"
 
-#: src/Gtk/SettingsDialog.vala:175
-msgid "Max concurrent downloads"
+#: src/Gtk/SettingsWindow.vala:175
+#, fuzzy
+msgid "Concurrent Downloads:"
 msgstr "동시 다운로드 최대 수"
 
-#: src/Gtk/SettingsDialog.vala:185
-msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "CHECKSUMS 파일로 체크섬 확인"
+#: src/Gtk/SettingsWindow.vala:185
+msgid "Verify Checksums"
+msgstr ""
 
-#: src/Gtk/SettingsDialog.vala:187
+#: src/Gtk/SettingsWindow.vala:188
+#, fuzzy
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
 "CHECKSUMS 파일에서 sha-256 해시를 사용하여 .deb 파일 다운로드를 확인하십시오."
 
-#: src/Gtk/SettingsDialog.vala:192
+#: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
 msgstr "다운로드한 .deb 파일 유지"
 
-#: src/Gtk/SettingsDialog.vala:194
+#: src/Gtk/SettingsWindow.vala:195
+#, fuzzy
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/"
-"reinstall instead of downloading again.\n"
+"Retain downloaded *.deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again."
+msgstr ""
+"설치 후 다운로드한 .deb 파일을 유지하고 다시 다운로드하는 대신 제거/재설치에 "
+"다시 사용하십시오.\n"
 "\n"
-"They are still deleted once they become older than the \"Show previous major "
+"\"이전 주 버전 표시\" 설정보다 오래되었거나 mainline-ppa 사이트에서 업데이트"
+"된 경우 여전히 삭제됩니다."
+
+#: src/Gtk/SettingsWindow.vala:197
+#, fuzzy
+msgid ""
+"They are still deleted once they become older than the \"Show N prior major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 "설치 후 다운로드한 .deb 파일을 유지하고 다시 다운로드하는 대신 제거/재설치에 "
@@ -669,80 +685,96 @@ msgstr ""
 "\"이전 주 버전 표시\" 설정보다 오래되었거나 mainline-ppa 사이트에서 업데이트"
 "된 경우 여전히 삭제됩니다."
 
-#: src/Gtk/SettingsDialog.vala:203
+#: src/Gtk/SettingsWindow.vala:203
 msgid "Proxy"
 msgstr "대리"
 
-#: src/Gtk/SettingsDialog.vala:235
+#: src/Gtk/SettingsWindow.vala:215
+msgid "Mainline-PPA URL"
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:235
 msgid "External Commands"
 msgstr "외부 명령"
 
-#: src/Gtk/SettingsDialog.vala:263
-#, fuzzy, c-format
-msgid ""
-"Command used to run dpkg with root permissions.\n"
-"\n"
-"If the auth programs commandline syntax requires the execute command to be "
-"enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that."
+#: src/Gtk/SettingsWindow.vala:242
+msgid "Superuser Authorization"
 msgstr ""
-"루트 권한으로 dpkg를 실행하는 데 사용되는 명령입니다.\n"
-"\n"
-"인증 프로그램 명령줄 구문에서 실행 명령을 단순히 명령줄 끝에 추가하는 대신 따"
-"옴표로 묶어야 하는 경우 문자열에 단일 %s를 포함할 수 있으며 dpkg 명령으로 대"
-"체됩니다. 그렇지 않으면 끝에 추가됩니다.\n"
-"예를 보려면 드롭다운 목록에서 \"su -c\"를 참조하세요.\n"
 
-#: src/Gtk/SettingsDialog.vala:292
+#: src/Gtk/SettingsWindow.vala:264
+msgid "Command used to run dpkg with root permissions."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:266
+#, c-format
+msgid "The dpkg command is appended to the end, unless a %s is present."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:267
+#, c-format
+msgid "If a %s is present, then the %s is replaced with the dpkg command."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:268 src/Gtk/SettingsWindow.vala:301
+msgid "The built-in list contains examples of both."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:270 src/Gtk/SettingsWindow.vala:309
+msgid "You may edit any of the built-in default commands to customize it."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:271 src/Gtk/SettingsWindow.vala:310
+msgid ""
+"The edited command will be saved as a new custom command without changing "
+"the original."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:275
+msgid "Terminal Window"
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:297
 msgid "Terminal command used to run"
 msgstr "실행에 사용되는 터미널 명령"
 
-#: src/Gtk/SettingsDialog.vala:293
-msgid "Example"
-msgstr "예"
-
-#: src/Gtk/SettingsDialog.vala:293
-msgid "will result in"
-msgstr "결과는"
-
-#: src/Gtk/SettingsDialog.vala:295
+#: src/Gtk/SettingsWindow.vala:299
 #, c-format
 msgid ""
-"If the terminal programs commandline syntax requires the execute command to "
-"be enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the install command, otherwise it will be appended to the end.\n"
-"See mate-terminal in the drop down list for an example of that.\n"
-"\n"
-"You may write any commandline you want, but the specified program must stay "
-"in the foreground and block while the command is running, not fork and "
-"return immediately.\n"
-"Most terminal programs work fine by default, but some require special "
-"command line flags, and some are not usable at all.\n"
-"\n"
-"Examples:\n"
-"gnome-terminal can be made to block by using it's --wait option.\n"
-"xfce4-terminal can not be made to block.\n"
-"\n"
-"Edit the command to customize the appearance of the terminal."
+"The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
-"터미널 프로그램 명령줄 구문에 execute 명령이 필요한 경우 명령 끝에 단순히 추"
-"가되는 것이 아니라 따옴표로 묶어야 합니다.line, 문자열에 단일 %s를 포함할 수 "
-"있으며 대체됩니다.install 명령을 사용하지 않으면 끝에 추가됩니다.\n"
-"예를 보려면 드롭다운 목록의 mate-terminal을 참조하십시오.\n"
-"\n"
-"원하는 명령 줄을 작성할 수 있지만 지정된 프로그램은 명령이 실행되는 동안 포그"
-"라운드에서 차단하고 포크 및 즉시 돌아오십시오.\n"
-"대부분의 터미널 프로그램은 기본적으로 잘 작동하지만 일부는 특별한 명령줄 플래"
-"그 및 일부는 전혀 사용할 수 없습니다.\n"
-"\n"
-"예:\n"
-"gnome-terminal은 --wait 옵션을 사용하여 차단할 수 있습니다.\n"
-"xfce4-terminal을 차단할 수 없습니다.\n"
-"\n"
-"명령을 편집하여 터미널의 모양을 사용자 정의하십시오."
+
+#: src/Gtk/SettingsWindow.vala:300
+#, c-format
+msgid ""
+"If a %s is present, then the %s is replaced with the install/uninstall "
+"command."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:303
+msgid ""
+"The terminal program must stay in the foreground and block while the command "
+"is running, not fork and return immediately."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:304
+msgid ""
+"Most terminal programs block by default, some don't by default but can be "
+"told to, and some are not usable at all."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:305
+msgid "Examples"
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:306
+msgid ""
+"gnome-terminal is usable because it can be made to block by using it's \"--"
+"wait\" option."
+msgstr ""
+
+#: src/Gtk/SettingsWindow.vala:307
+msgid "xfce4-terminal is not usable because it can not be made to block."
+msgstr ""
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

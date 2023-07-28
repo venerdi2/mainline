@@ -13,17 +13,17 @@ public class SettingsWindow : Gtk.Window {
 		this.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 
 		// vbox_main holds the notebook and the close button
-		var vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL,SPACING);
+		var vbox_main = new Gtk.Box(Gtk.Orientation.VERTICAL,0);
 		this.add(vbox_main);
 
 		// notebook holds a page for each settings section
 		var notebook = new Gtk.Notebook();
 		vbox_main.add(notebook);
 
-		// close button
+		// close button outside of notebook always visible
 		var btn_close = new Gtk.Button.with_label(_("Done"));
-		btn_close.clicked.connect(()=>{ close(); });
 		vbox_main.add(btn_close);
+		btn_close.clicked.connect(close);
 
 		// fill the notebook pages
 		Gtk.Box pgbox;
@@ -37,7 +37,7 @@ public class SettingsWindow : Gtk.Window {
 
 		//pgtitle = new Gtk.Label("<b>" + _("Filters") + "</b>");
 		//pgtitle.set_use_markup(true);
-		pgtitle = new Gtk.Label(_("Filters"));
+		pgtitle = new Gtk.Label(_("Filter"));
 		pgbox = new Gtk.Box(Gtk.Orientation.VERTICAL,SPACING);
 		notebook.append_page(pgbox,pgtitle);
 		pgbox.spacing = SPACING;
@@ -45,39 +45,39 @@ public class SettingsWindow : Gtk.Window {
 
 		// hide unstable
 		var chk_hide_rc = new Gtk.CheckButton.with_label(_("Hide unstable and RC releases"));
+		pgbox.add(chk_hide_rc);
 		//chk_hide_rc.set_tooltip_text(_("..."));
 		chk_hide_rc.active = App.hide_unstable;
 		chk_hide_rc.toggled.connect(()=>{ App.hide_unstable = chk_hide_rc.active; });
-		pgbox.add(chk_hide_rc);
 
 		// hide invalid
 		var chk_hide_invalid = new Gtk.CheckButton.with_label(_("Hide failed or incomplete builds"));
+		pgbox.add(chk_hide_invalid);
 		chk_hide_invalid.set_tooltip_text(
 			_("If a kernel version exists on the mainline-ppa site, but is an incomplete or failed build for your arch (%s), then don't show it in the list.").printf(LinuxKernel.NATIVE_ARCH)
 		);
 		chk_hide_invalid.active = App.hide_invalid;
 		chk_hide_invalid.toggled.connect(()=>{ App.hide_invalid = chk_hide_invalid.active; });
-		pgbox.add(chk_hide_invalid);
 
 		// hide flavors
 		var chk_hide_flavors = new Gtk.CheckButton.with_label(_("Hide flavors other than \"generic\""));
+		pgbox.add(chk_hide_flavors);
 		chk_hide_flavors.set_tooltip_text(
 			_("Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", \"generic-lpae\", \"server\", \"virtual\", etc.")
 		);
 		chk_hide_flavors.active = App.hide_flavors;
 		chk_hide_flavors.toggled.connect(()=>{ App.hide_flavors = chk_hide_flavors.active; });
-		pgbox.add(chk_hide_flavors);
 
-		// kernel version threshold
+		// show prior versions
 		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, SPACING);
 		pgbox.add(hbox);
 		label = new Gtk.Label(_("Show"));
 		hbox.add(label);
-		var adj_prevm = new Gtk.Adjustment(App.previous_majors, -1, LinuxKernel.kernel_latest_available.version_major , 1, 1, 0);
-		var spn_prevm = new Gtk.SpinButton (adj_prevm, 1, 0);
-		spn_prevm.changed.connect(()=>{ App.previous_majors = (int)spn_prevm.get_value(); });
-		hbox.add(spn_prevm);
-		label = new Gtk.Label(_("previous major versions  ( -1 = all )"));
+		var adj_show_prior = new Gtk.Adjustment(App.previous_majors, -1, LinuxKernel.kernel_latest_available.version_major , 1, 1, 0);
+		var spn_show_prior = new Gtk.SpinButton (adj_show_prior, 1, 0);
+		hbox.add(spn_show_prior);
+		spn_show_prior.changed.connect(()=>{ App.previous_majors = (int)spn_show_prior.get_value(); });
+		label = new Gtk.Label(_("prior major versions  ( -1 = all )"));
 		hbox.add(label);
 		//hbox.set_tooltip_text(_("...show previous majors tooltip text..."));
 
@@ -93,21 +93,21 @@ public class SettingsWindow : Gtk.Window {
 
 		// notify major
 		var chk_notify_major = new Gtk.CheckButton.with_label(_("Notify if a major release is available"));
+		pgbox.add(chk_notify_major);
 		chk_notify_major.active = App.notify_major;
 		chk_notify_major.toggled.connect(()=>{ App.notify_major = chk_notify_major.active; });
-		pgbox.add(chk_notify_major);
 
-		// notify point
-		var chk_notify_minor = new Gtk.CheckButton.with_label(_("Notify if a point release is available"));
+		// notify minor
+		var chk_notify_minor = new Gtk.CheckButton.with_label(_("Notify if a minor release is available"));
+		pgbox.add(chk_notify_minor);
 		chk_notify_minor.active = App.notify_minor;
 		chk_notify_minor.toggled.connect(()=>{ App.notify_minor = chk_notify_minor.active; });
-		pgbox.add(chk_notify_minor);
 
 		// notification interval
 		if (Main.VERBOSE>1) {
 			label = new Gtk.Label("( VERBOSE="+Main.VERBOSE.to_string()+" : "+_("Seconds interval enabled for debugging")+" )");
-			label.xalign = 0;
 			pgbox.add(label);
+			label.xalign = 0;
 		}
 		// replace invalid debug-only values with valid values
 		int max_intervals = 52;
@@ -129,17 +129,17 @@ public class SettingsWindow : Gtk.Window {
 		// value
 		var adj_interval = new Gtk.Adjustment(App.notify_interval_value, 1, max_intervals, 1, 1, 0);
 		var spn_interval = new Gtk.SpinButton(adj_interval, 1, 0);
-		spn_interval.changed.connect(()=>{ App.notify_interval_value = (int)spn_interval.get_value(); });
 		hbox.add(spn_interval);
+		spn_interval.changed.connect(()=>{ App.notify_interval_value = (int)spn_interval.get_value(); });
 		// units
 		var cbt_units = new Gtk.ComboBoxText();
+		hbox.add(cbt_units);
 		cbt_units.append_text(_("Hours"));
 		cbt_units.append_text(_("Days"));
 		cbt_units.append_text(_("Weeks"));
 		if (Main.VERBOSE>1) cbt_units.append_text(_("Seconds"));
 		cbt_units.active = App.notify_interval_unit;
 		cbt_units.changed.connect(() => { App.notify_interval_unit = cbt_units.active; });
-		hbox.add(cbt_units);
 		//hbox.set_tooltip_text(_("...notification interval tooltip text..."));
 
 		//==============================================================
@@ -156,13 +156,13 @@ public class SettingsWindow : Gtk.Window {
 		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, SPACING);
 		pgbox.add(hbox);
 		//
-		label = new Gtk.Label(_("Internet connection timeout in"));
+		label = new Gtk.Label(_("Connection Timeout:"));
 		hbox.add(label);
 		//
 		var adj_ict = new Gtk.Adjustment(App.connect_timeout_seconds, 1, 60, 1, 1, 0);
 		var spn_ict = new Gtk.SpinButton (adj_ict, 1, 0);
-		spn_ict.changed.connect(()=>{ App.connect_timeout_seconds = (int)spn_ict.get_value(); });
 		hbox.add(spn_ict);
+		spn_ict.changed.connect(()=>{ App.connect_timeout_seconds = (int)spn_ict.get_value(); });
 		//
 		label = new Gtk.Label(_("seconds"));
 		hbox.add(label);
@@ -172,51 +172,52 @@ public class SettingsWindow : Gtk.Window {
 		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, SPACING);
 		pgbox.add (hbox);
 		//
-		label = new Gtk.Label(_("Max concurrent downloads"));
+		label = new Gtk.Label(_("Concurrent Downloads:"));
 		hbox.add(label);
 		//
 		var adj_pdl = new Gtk.Adjustment(App.concurrent_downloads, 1, 25, 1, 1, 0);
 		var spn_pdl = new Gtk.SpinButton (adj_pdl, 1, 0);
-		spn_pdl.changed.connect(()=>{ App.concurrent_downloads = (int)spn_pdl.get_value(); });
 		hbox.add(spn_pdl);
+		spn_pdl.changed.connect(()=>{ App.concurrent_downloads = (int)spn_pdl.get_value(); });
 		//hbox.set_tooltip_text(_("...concurrent downloads tooltip text..."));
 
 		// verify checksums
-		var chk_checksums = new Gtk.CheckButton.with_label(_("Verify Downloads with the CHECKSUMS files"));
-		chk_checksums.active = App.verify_checksums;
-		chk_checksums.set_tooltip_text(_("Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file downloads."));
-		chk_checksums.toggled.connect(()=>{ App.verify_checksums = chk_checksums.active; });
+		var chk_checksums = new Gtk.CheckButton.with_label(_("Verify Checksums"));
 		pgbox.add(chk_checksums);
+		chk_checksums.active = App.verify_checksums;
+		chk_checksums.set_tooltip_text(_("Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file downloads."));
+		chk_checksums.toggled.connect(()=>{ App.verify_checksums = chk_checksums.active; });
 
 		// keep downloads
 		var chk_keep = new Gtk.CheckButton.with_label(_("Keep Downloads"));
-		chk_keep.set_tooltip_text(_(
-			"Retain downloaded .deb files after install and re-use them for uninstall/reinstall instead of downloading again.\n"
+		pgbox.add(chk_keep);
+		chk_keep.set_tooltip_text(
+			_("Retain downloaded *.deb files after install and re-use them for uninstall/reinstall instead of downloading again.") + "\n"
 			+ "\n"
-			+ "They are still deleted once they become older than the \"Show previous major versions\" setting, or if they have been updated on the mainline-ppa site."
-		));
+			+ _("They are still deleted once they become older than the \"Show N prior major versions\" setting, or if they have been updated on the mainline-ppa site.")
+		);
 		chk_keep.active = App.keep_downloads;
 		chk_keep.toggled.connect(()=>{ App.keep_downloads = chk_keep.active; });
-		pgbox.add(chk_keep);
 
 		// proxy
 		label = new Gtk.Label(_("Proxy"));
-		label.xalign = 0;
 		pgbox.add(label);
+		label.xalign = 0;
 
 		var ent_proxy = new Gtk.Entry ();
+		pgbox.add(ent_proxy);
 		ent_proxy.set_placeholder_text("[http://][USER:PASSWORD@]HOST[:PORT]");
 		//ent_proxy.set_tooltip_text(_("..."));
 		ent_proxy.set_text(App.all_proxy);
 		ent_proxy.activate.connect(()=>{ App.all_proxy = ent_proxy.get_text(); });
-		pgbox.add(ent_proxy);
 
 		// ppa url
-		label = new Gtk.Label("mainline-ppa url");
-		label.xalign = 0;
+		label = new Gtk.Label(_("Mainline-PPA URL"));
 		pgbox.add(label);
+		label.xalign = 0;
 
 		var ent_ppaurl = new Gtk.Entry ();
+		pgbox.add(ent_ppaurl);
 		//ent_ppaurl.set_tooltip_text(_("..."));
 		ent_ppaurl.set_text(App.ppa_uri);
 		ent_ppaurl.activate.connect(()=>{
@@ -226,7 +227,6 @@ public class SettingsWindow : Gtk.Window {
 				ent_ppaurl.set_text(App.ppa_uri);
 			}
 		});
-		pgbox.add(ent_ppaurl);
 
 		//==============================================================
 		// Page 4 - EXTERNAL COMMANDS
@@ -239,11 +239,12 @@ public class SettingsWindow : Gtk.Window {
 		pgbox.margin = SPACING*2;
 
 		// auth command
-		label = new Gtk.Label("auth command");
-		label.xalign = 0;
+		label = new Gtk.Label(_("Superuser Authorization"));
 		pgbox.add(label);
+		label.xalign = 0;
 
 		var cbt_authcmd = new Gtk.ComboBoxText.with_entry();
+		pgbox.add(cbt_authcmd);
 		cbt_authcmd.active = -1;
 		for (int i=0;i<DEFAULT_AUTH_CMDS.length;i++) {
 			cbt_authcmd.append_text(DEFAULT_AUTH_CMDS[i]);
@@ -259,20 +260,24 @@ public class SettingsWindow : Gtk.Window {
 			string s = cbt_authcmd.get_active_text().strip();
 			if (s != App.auth_cmd) App.auth_cmd = s;
 		});
-		cbt_authcmd.set_tooltip_text(_(
-			"Command used to run dpkg with root permissions.\n"
+		cbt_authcmd.set_tooltip_text(
+			_("Command used to run dpkg with root permissions.") + "\n"
 			+ "\n"
-			+ "If the auth programs commandline syntax requires the execute command to be enclosed in quotes rather than merely appended to the end of the command line, you can include a single %s in the string, and it will be replaced with the dpkg command, otherwise it will be appended to the end.\n"
-			+ "See \"su -c\" in the drop down list for an example of that."
-		));
-		pgbox.add(cbt_authcmd);
+			+ _("The dpkg command is appended to the end, unless a %s is present.") + "\n"
+			+ _("If a %s is present, then the %s is replaced with the dpkg command.") + "\n"
+			+ _("The built-in list contains examples of both.") +"\n"
+			+ "\n"
+			+ _("You may edit any of the built-in default commands to customize it.") + "\n"
+			+ _("The edited command will be saved as a new custom command without changing the original.")
+		);
 
 		// xterm command
-		label = new Gtk.Label("terminal window");
-		label.xalign = 0;
+		label = new Gtk.Label(_("Terminal Window"));
 		pgbox.add(label);
+		label.xalign = 0;
 
 		var cbt_termcmd = new Gtk.ComboBoxText.with_entry();
+		pgbox.add(cbt_termcmd);
 		cbt_termcmd.active = -1;
 		for (int i=0;i<DEFAULT_TERM_CMDS.length;i++) {
 			cbt_termcmd.append_text(DEFAULT_TERM_CMDS[i]);
@@ -289,23 +294,21 @@ public class SettingsWindow : Gtk.Window {
 			if (s != App.term_cmd) App.term_cmd = s;
 		});
 		cbt_termcmd.set_tooltip_text(
-			_("Terminal command used to run")+" \""+BRANDING_SHORTNAME+" --install ...\"\n"
-			+ _("Example")+": \"xterm -e\" "+_("will result in")+" \"xterm -e "+BRANDING_SHORTNAME+" --pause --install 6.3.7\"\n"
+			_("Terminal command used to run")+" \""+BRANDING_SHORTNAME+" --install|--uninstall ...\"\n"
 			+ "\n"
-			+ _("If the terminal programs commandline syntax requires the execute command to be enclosed in quotes rather than merely appended to the end of the command line, you can include a single %s in the string, and it will be replaced with the install command, otherwise it will be appended to the end.\n"
-			+ "See mate-terminal in the drop down list for an example of that.\n"
+			+ _("The install/uninstall command is appended to the end, unless a %s is present.") + "\n"
+			+ _("If a %s is present, then the %s is replaced with the install/uninstall command.") + "\n"
+			+ _("The built-in list contains examples of both.") + "\n"
 			+ "\n"
-			+ "You may write any commandline you want, but the specified program must stay in the foreground and block while the command is running, not fork and return immediately.\n"
-			+ "Most terminal programs work fine by default, but some require special command line flags, and some are not usable at all.\n"
+			+ _("The terminal program must stay in the foreground and block while the command is running, not fork and return immediately.") + "\n"
+			+ _("Most terminal programs block by default, some don't by default but can be told to, and some are not usable at all.") + "\n"
+			+ _("Examples") + ":\n"
+			+ _("gnome-terminal is usable because it can be made to block by using it's \"--wait\" option.") + "\n"
+			+ _("xfce4-terminal is not usable because it can not be made to block.") + "\n"
 			+ "\n"
-			+ "Examples:\n"
-			+ "gnome-terminal can be made to block by using it's --wait option.\n"
-			+ "xfce4-terminal can not be made to block.\n"
-			+ "\n"
-			+ "Edit the command to customize the appearance of the terminal.")
+			+ _("You may edit any of the built-in default commands to customize it.") + "\n"
+			+ _("The edited command will be saved as a new custom command without changing the original.")
 		);
-
-		pgbox.add(cbt_termcmd);
 
 	}
 

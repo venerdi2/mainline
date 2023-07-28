@@ -27,7 +27,7 @@ public class Package : GLib.Object {
 		if (std_out!=null) foreach (var row in std_out.split("\n")) {
 			var cols = row.split("|");
 			if (cols.length != 4) continue;
-			if (cols[3].substring(1,1) != "i" ) continue;
+			if (cols[3].substring(1,1) == "n" ) continue;
 
 			var name = cols[0].strip();
 			var vers = cols[1].strip();

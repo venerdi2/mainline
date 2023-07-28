@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 00:50-0400\n"
+"POT-Creation-Date: 2023-07-28 05:01-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -25,7 +25,7 @@ msgstr "Системна архитектура"
 msgid "Running kernel"
 msgstr "Запуск ядра"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:492
 msgid "Running"
 msgstr "Використовується"
 
@@ -79,19 +79,16 @@ msgid "is locked."
 msgstr "заблоковано."
 
 #: src/Common/LinuxKernel.vala:565
-#, fuzzy
 msgid "minor available"
-msgstr "доступний"
+msgstr "незначні доступні"
 
 #: src/Common/LinuxKernel.vala:566
-#, fuzzy
 msgid "major available"
-msgstr "доступний"
+msgstr "основні доступні"
 
 #: src/Common/LinuxKernel.vala:567
-#, fuzzy
 msgid "latest available"
-msgstr "доступний"
+msgstr "останні доступні"
 
 #: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
@@ -101,7 +98,7 @@ msgstr "Доступні пакети"
 msgid "Packages Installed"
 msgstr "Встановлені пакети"
 
-#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:190
+#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:192
 msgid "Notes"
 msgstr "Нотатки"
 
@@ -133,7 +130,7 @@ msgstr "потребує оновлення"
 msgid "Available Kernels"
 msgstr "Доступні ядра"
 
-#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:139
+#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:141
 msgid "Kernel"
 msgstr "Ядро"
 
@@ -169,7 +166,7 @@ msgstr "вже встановлено."
 msgid "download failed."
 msgstr "не вдалося завантажити."
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:519
 msgid "Install: no installable kernels specified"
 msgstr "Встановити: ядра які можна встановити не вказано"
 
@@ -181,7 +178,7 @@ msgstr "Видаліть конкретні ядра"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Не видалення поточного запущеного ядра"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:515
 msgid "is locked"
 msgstr "заблоковано"
 
@@ -414,11 +411,11 @@ msgstr "сповіщення про основні випуски вимкнен
 msgid "Kernel %s Available"
 msgstr "Ядро %s Доступне"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsWindow.vala:74
 msgid "Show"
 msgstr "Показати"
 
-#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:320
+#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:322
 msgid "Install"
 msgstr "Встановити"
 
@@ -438,62 +435,67 @@ msgstr "Роздрукувати зневадження"
 msgid "Show all options"
 msgstr "Показати усі параметри"
 
-#: src/Gtk/MainWindow.vala:162
+#: src/Gtk/MainWindow.vala:164
 msgid "Lock"
 msgstr "Блок"
 
-#: src/Gtk/MainWindow.vala:179
+#: src/Gtk/MainWindow.vala:181
 msgid "Status"
 msgstr "Стан"
 
-#: src/Gtk/MainWindow.vala:325
+#: src/Gtk/MainWindow.vala:327
 msgid "Uninstall"
 msgstr "Видалити"
 
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Changelog, build status, etc"
 msgstr "Журнал змін, статус збірки тощо"
 
-#: src/Gtk/MainWindow.vala:336 src/lib/l.exec.vala:7
+#: src/Gtk/MainWindow.vala:338 src/lib/l.exec.vala:7
 msgid "Unable to launch"
 msgstr "Неможливо запустити"
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:342
 msgid "Uninstall Old"
 msgstr "Видалити старе"
 
-#: src/Gtk/MainWindow.vala:341
+#: src/Gtk/MainWindow.vala:343
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
 "* the currently running kernel\n"
 "* any kernels that are locked"
 msgstr ""
+"Видалити все, крім:\n"
+"* найвища встановлена версія\n"
+"* Наразі запущене ядро\n"
+"* будь-які заблоковані ядра"
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:348
 msgid "Reload"
 msgstr "Перезавантажити"
 
-#: src/Gtk/MainWindow.vala:347
-#, fuzzy
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
-msgstr "Видаліть і перезавантажте всю кешовану інформацію про ядро"
+msgstr ""
+"Видаліть і перезавантажте всю кешовану інформацію про ядро\n"
+"(те саме, що \"mainline --delete-cache\")"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:354
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:359
 msgid "About"
 msgstr "Про программу"
 
-#: src/Gtk/MainWindow.vala:362
+#: src/Gtk/MainWindow.vala:364
 msgid "Exit"
 msgstr "Вихід"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:423
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -501,52 +503,51 @@ msgstr ""
 "Інструмент для встановлення пакетів ядра\n"
 "з Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:425
 msgid "Original"
 msgstr "Оригінал"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:426
 msgid "Forked"
 msgstr "Двоєний"
 
-#: src/Gtk/MainWindow.vala:442
+#: src/Gtk/MainWindow.vala:444
 msgid "Updating kernels"
 msgstr "Оновлення ядер"
 
-#: src/Gtk/MainWindow.vala:484
+#: src/Gtk/MainWindow.vala:495
 msgid "available"
 msgstr "доступний"
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:514
 msgid "is already installed"
 msgstr "вже встановлено"
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:516
 msgid "adding"
 msgstr "додавання"
 
-#: src/Gtk/SettingsDialog.vala:12
-#, fuzzy
+#: src/Gtk/SettingsWindow.vala:12
 msgid "Configuration"
-msgstr "Повідомлення"
+msgstr "Конфігурації"
 
-#: src/Gtk/SettingsDialog.vala:24
+#: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr "Готово"
 
-#: src/Gtk/SettingsDialog.vala:40
-msgid "Filters"
-msgstr "Фільтри"
+#: src/Gtk/SettingsWindow.vala:40
+msgid "Filter"
+msgstr "Фільтр"
 
-#: src/Gtk/SettingsDialog.vala:47
+#: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "Приховати нестабільні та RC випуски"
 
-#: src/Gtk/SettingsDialog.vala:54
+#: src/Gtk/SettingsWindow.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr "Приховати невдалі або незавершені збірки"
 
-#: src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsWindow.vala:57
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -555,11 +556,11 @@ msgstr ""
 "Якщо версія ядра існує на сайті mainline-ppa, але є неповною або не вдалося "
 "створити для вашої архи (%s), тоді не показуйте її в списку."
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsWindow.vala:63
 msgid "Hide flavors other than \"generic\""
 msgstr "Приховати варіанти, відмінні від \"generic\""
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsWindow.vala:66
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
@@ -567,172 +568,199 @@ msgstr ""
 "Не показувати альтернативні варіанти, такі як \"lowlatency\", "
 "\"generic-64k\", \"generic-lpae\", \"server\", \"virtual\" тощо."
 
-#: src/Gtk/SettingsDialog.vala:80
-msgid "previous major versions  ( -1 = all )"
+#: src/Gtk/SettingsWindow.vala:80
+msgid "prior major versions  ( -1 = all )"
 msgstr "попередніх основних версій ( -1 = усі )"
 
-#: src/Gtk/SettingsDialog.vala:88
+#: src/Gtk/SettingsWindow.vala:88
 msgid "Notification"
 msgstr "Повідомлення"
 
-#: src/Gtk/SettingsDialog.vala:95
+#: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
-msgstr "Повідомити, чи доступний великий випуск"
+msgstr "Сповіщення про доступність основного випуску"
 
-#: src/Gtk/SettingsDialog.vala:101
-msgid "Notify if a point release is available"
-msgstr "Повідомити, чи доступний невеликий випуск"
+#: src/Gtk/SettingsWindow.vala:101
+msgid "Notify if a minor release is available"
+msgstr "Сповіщення про доступність проміжного випуску"
 
-#: src/Gtk/SettingsDialog.vala:108
+#: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
 msgstr "Увімкнено інтервал секунд для налагодження"
 
-#: src/Gtk/SettingsDialog.vala:127
+#: src/Gtk/SettingsWindow.vala:127
 msgid "Check every"
 msgstr "Перевіряти кожні"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsWindow.vala:137
 msgid "Hours"
 msgstr "годин"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsWindow.vala:138
 msgid "Days"
 msgstr "днів"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsWindow.vala:139
 msgid "Weeks"
 msgstr "тижнів"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsWindow.vala:140
 msgid "Seconds"
 msgstr "секунд"
 
-#: src/Gtk/SettingsDialog.vala:149
+#: src/Gtk/SettingsWindow.vala:149
 msgid "Network"
 msgstr "Мережа"
 
-#: src/Gtk/SettingsDialog.vala:159
-msgid "Internet connection timeout in"
-msgstr "Час очікування підключення до Інтернету в "
+#: src/Gtk/SettingsWindow.vala:159
+msgid "Connection Timeout:"
+msgstr "Тайм-аут підключення:"
 
-#: src/Gtk/SettingsDialog.vala:167
+#: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "секунди"
 
-#: src/Gtk/SettingsDialog.vala:175
-msgid "Max concurrent downloads"
-msgstr "Максимальна кількість завантажень"
+#: src/Gtk/SettingsWindow.vala:175
+msgid "Concurrent Downloads:"
+msgstr "Одночасні завантаження:"
 
-#: src/Gtk/SettingsDialog.vala:185
-msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "Перевірте завантаження за допомогою файлів CHECKSUMS"
+#: src/Gtk/SettingsWindow.vala:185
+msgid "Verify Checksums"
+msgstr "Перевірка контрольних сум"
 
-#: src/Gtk/SettingsDialog.vala:187
+#: src/Gtk/SettingsWindow.vala:188
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
-"Використовуйте хеші sha-256 із файлу CHECKSUMS, щоб перевірити файл .deb "
+"Використовуйте хеші sha-256 із файлу CHECKSUMS, щоб перевірити файл *.deb "
 "завантаження."
 
-#: src/Gtk/SettingsDialog.vala:192
+#: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
 msgstr "Зберегти Завантаження"
 
-#: src/Gtk/SettingsDialog.vala:194
+#: src/Gtk/SettingsWindow.vala:195
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/"
-"reinstall instead of downloading again.\n"
-"\n"
-"They are still deleted once they become older than the \"Show previous major "
+"Retain downloaded *.deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again."
+msgstr ""
+"Зберігайте завантажені файли *.deb після встановлення та повторно "
+"використовуйте їх для видалення/встановіть повторно замість завантаження "
+"знову."
+
+#: src/Gtk/SettingsWindow.vala:197
+msgid ""
+"They are still deleted once they become older than the \"Show N prior major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-"Зберігайте завантажені файли .deb після встановлення та повторно "
-"використовуйте їх для видалення/встановіть повторно замість завантаження "
-"знову.\n"
-"\n"
 "Вони все одно видаляються, коли стають старшими за \"Показати попередній "
 "основний параметр версії\", або якщо вони були оновлені на сайті mainline-"
 "ppa."
 
-#: src/Gtk/SettingsDialog.vala:203
+#: src/Gtk/SettingsWindow.vala:203
 msgid "Proxy"
 msgstr "Проксі"
 
-#: src/Gtk/SettingsDialog.vala:235
+#: src/Gtk/SettingsWindow.vala:215
+msgid "Mainline-PPA URL"
+msgstr "Mainline-PPA URL"
+
+#: src/Gtk/SettingsWindow.vala:235
 msgid "External Commands"
 msgstr "Зовнішні Команди"
 
-#: src/Gtk/SettingsDialog.vala:263
-#, c-format
-msgid ""
-"Command used to run dpkg with root permissions.\n"
-"\n"
-"If the auth programs commandline syntax requires the execute command to be "
-"enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that."
-msgstr ""
-"Команда, яка використовується для запуску dpkg із правами root.\n"
-"\n"
-"Якщо синтаксис командного рядка програм автентифікації вимагає, щоб команда "
-"виконання була береться в лапки, а не просто додається в кінці командирядок, "
-"ви можете включити один %s у рядок, і він буде замінений за допомогою "
-"команди dpkg, інакше її буде додано в кінець.\n"
-"Див. \"su -c\" у розкривному списку для прикладу цього."
+#: src/Gtk/SettingsWindow.vala:242
+msgid "Superuser Authorization"
+msgstr "Авторизація суперкористувача"
 
-#: src/Gtk/SettingsDialog.vala:292
+#: src/Gtk/SettingsWindow.vala:264
+msgid "Command used to run dpkg with root permissions."
+msgstr "Команда, яка використовується для запуску dpkg з правами доступу root."
+
+#: src/Gtk/SettingsWindow.vala:266
+#, c-format
+msgid "The dpkg command is appended to the end, unless a %s is present."
+msgstr "Команда dpkg додається до кінця, якщо немає %s."
+
+#: src/Gtk/SettingsWindow.vala:267
+#, c-format
+msgid "If a %s is present, then the %s is replaced with the dpkg command."
+msgstr "Якщо %s присутній, то %s замінюється командою dpkg."
+
+#: src/Gtk/SettingsWindow.vala:268 src/Gtk/SettingsWindow.vala:301
+msgid "The built-in list contains examples of both."
+msgstr "Вбудований список містить приклади обох."
+
+#: src/Gtk/SettingsWindow.vala:270 src/Gtk/SettingsWindow.vala:309
+msgid "You may edit any of the built-in default commands to customize it."
+msgstr ""
+"Ви можете редагувати будь-яку з вбудованих команд за замовчуванням, щоб "
+"налаштувати його."
+
+#: src/Gtk/SettingsWindow.vala:271 src/Gtk/SettingsWindow.vala:310
+msgid ""
+"The edited command will be saved as a new custom command without changing "
+"the original."
+msgstr ""
+"Відредагована команда буде збережена як нова власна команда без зміни "
+"оригіналу."
+
+#: src/Gtk/SettingsWindow.vala:275
+msgid "Terminal Window"
+msgstr "Вікно клеми"
+
+#: src/Gtk/SettingsWindow.vala:297
 msgid "Terminal command used to run"
 msgstr "Команда терміналу, яка використовується для запуску"
 
-#: src/Gtk/SettingsDialog.vala:293
-msgid "Example"
-msgstr "Приклад"
-
-#: src/Gtk/SettingsDialog.vala:293
-msgid "will result in"
-msgstr "призведе до"
-
-#: src/Gtk/SettingsDialog.vala:295
+#: src/Gtk/SettingsWindow.vala:299
 #, c-format
 msgid ""
-"If the terminal programs commandline syntax requires the execute command to "
-"be enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the install command, otherwise it will be appended to the end.\n"
-"See mate-terminal in the drop down list for an example of that.\n"
-"\n"
-"You may write any commandline you want, but the specified program must stay "
-"in the foreground and block while the command is running, not fork and "
-"return immediately.\n"
-"Most terminal programs work fine by default, but some require special "
-"command line flags, and some are not usable at all.\n"
-"\n"
-"Examples:\n"
-"gnome-terminal can be made to block by using it's --wait option.\n"
-"xfce4-terminal can not be made to block.\n"
-"\n"
-"Edit the command to customize the appearance of the terminal."
+"The install/uninstall command is appended to the end, unless a %s is present."
+msgstr "Команда встановлення/видалення додається до кінця, якщо немає %s."
+
+#: src/Gtk/SettingsWindow.vala:300
+#, c-format
+msgid ""
+"If a %s is present, then the %s is replaced with the install/uninstall "
+"command."
+msgstr "Якщо %s присутній, то %s замінюється командою install/uninstall."
+
+#: src/Gtk/SettingsWindow.vala:303
+msgid ""
+"The terminal program must stay in the foreground and block while the command "
+"is running, not fork and return immediately."
 msgstr ""
-"Якщо синтаксис командного рядка програм терміналу вимагає виконання команди "
-"брати в лапки, а не просто додавати в кінці командирядок, ви можете включити "
-"один %s у рядок, і він буде замінений за допомогою команди встановлення, "
-"інакше її буде додано в кінець.\n"
-"Див. приклад mate-terminal у спадному списку.\n"
-"\n"
-"Ви можете написати будь-який командний рядок, але зазначена програма має "
-"залишитисяна передньому плані та блокувати під час виконання команди, а не "
-"fork і повернути негайно.\n"
-"Більшість термінальних програм працюють нормально за замовчуванням, але "
-"деякі вимагають спеціального прапорці командного рядка, а деякі взагалі "
-"непридатні для використання.\n"
-"\n"
-"Приклади:\n"
-"gnome-terminal можна заблокувати за допомогою параметра --wait.\n"
-"xfce4-terminal неможливо заблокувати.\n"
-"\n"
-"Відредагуйте команду, щоб налаштувати зовнішній вигляд терміналу."
+"Термінальна програма повинна залишатися на передньому плані і блокуватися "
+"під час виконання команди, а не розгалужуватися і повертатися відразу."
+
+#: src/Gtk/SettingsWindow.vala:304
+msgid ""
+"Most terminal programs block by default, some don't by default but can be "
+"told to, and some are not usable at all."
+msgstr ""
+"Більшість термінальних програм блокуються за замовчуванням, деякі не "
+"блокуються за замовчуванням, але їх можна сказати, а деякі взагалі не можна "
+"використовувати."
+
+#: src/Gtk/SettingsWindow.vala:305
+msgid "Examples"
+msgstr "Приклади"
+
+#: src/Gtk/SettingsWindow.vala:306
+msgid ""
+"gnome-terminal is usable because it can be made to block by using it's \"--"
+"wait\" option."
+msgstr ""
+"gnome-terminal можна використовувати, оскільки його можна заблокувати, "
+"використовуючи параметр \"--wait\"."
+
+#: src/Gtk/SettingsWindow.vala:307
+msgid "xfce4-terminal is not usable because it can not be made to block."
+msgstr ""
+"xfce4-terminal не придатний для використання, оскільки його неможливо "
+"змусити блокувати."
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 00:50-0400\n"
+"POT-Creation-Date: 2023-07-28 05:01-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -25,7 +25,7 @@ msgstr "Arkitektur"
 msgid "Running kernel"
 msgstr "Löpande kernel"
 
-#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:480
+#: src/Common/LinuxKernel.vala:262 src/Gtk/MainWindow.vala:492
 msgid "Running"
 msgstr "Pågående"
 
@@ -79,19 +79,16 @@ msgid "is locked."
 msgstr "är låst."
 
 #: src/Common/LinuxKernel.vala:565
-#, fuzzy
 msgid "minor available"
-msgstr "tillgänglig"
+msgstr "mindre tillgänglig"
 
 #: src/Common/LinuxKernel.vala:566
-#, fuzzy
 msgid "major available"
-msgstr "tillgänglig"
+msgstr "större tillgänglig"
 
 #: src/Common/LinuxKernel.vala:567
-#, fuzzy
 msgid "latest available"
-msgstr "tillgänglig"
+msgstr "senast tillgängliga"
 
 #: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
@@ -101,27 +98,25 @@ msgstr "Tillgängliga paket"
 msgid "Packages Installed"
 msgstr "Installerade paket"
 
-#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:190
+#: src/Common/LinuxKernel.vala:771 src/Gtk/MainWindow.vala:192
 msgid "Notes"
 msgstr "Anteckningar"
 
 #: src/Common/LinuxKernel.vala:777
-#, fuzzy
 msgid "Locked"
-msgstr "låst"
+msgstr "Låst"
 
 #: src/Common/LinuxKernel.vala:778
-#, fuzzy
 msgid "installation"
-msgstr "Avinstallera"
+msgstr "installation"
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
-msgstr ""
+msgstr "borttagning"
 
 #: src/Common/LinuxKernel.vala:779
 msgid "prevented"
-msgstr ""
+msgstr "förhindras"
 
 #: src/Common/LinuxKernel.vala:791 src/Common/LinuxKernel.vala:945
 msgid "not found"
@@ -135,7 +130,7 @@ msgstr "behöver uppdateras"
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
-#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:139
+#: src/Common/LinuxKernel.vala:945 src/Gtk/MainWindow.vala:141
 msgid "Kernel"
 msgstr "Kärna"
 
@@ -171,7 +166,7 @@ msgstr "är redan installerat."
 msgid "download failed."
 msgstr "nedladdning misslyckad."
 
-#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:506
+#: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:519
 msgid "Install: no installable kernels specified"
 msgstr "Installera: inga installerade kärnor har angetts"
 
@@ -183,7 +178,7 @@ msgstr "Avinstallera valda kärnor"
 msgid "Not uninstalling the currently running kernel"
 msgstr "Avinstallerar inte kärnan som körs för närvarande"
 
-#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:502
+#: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:515
 msgid "is locked"
 msgstr "är låst"
 
@@ -415,11 +410,11 @@ msgstr "aviseringar för större versioner inaktiverade"
 msgid "Kernel %s Available"
 msgstr "Kernel %s tillgängliga"
 
-#: src/Console/AppConsole.vala:273 src/Gtk/SettingsDialog.vala:74
+#: src/Console/AppConsole.vala:273 src/Gtk/SettingsWindow.vala:74
 msgid "Show"
 msgstr "Visa"
 
-#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:320
+#: src/Console/AppConsole.vala:274 src/Gtk/MainWindow.vala:322
 msgid "Install"
 msgstr "Installera"
 
@@ -439,62 +434,67 @@ msgstr "Skriv ut felsökningsinformation"
 msgid "Show all options"
 msgstr "Visa alla alternativ"
 
-#: src/Gtk/MainWindow.vala:162
+#: src/Gtk/MainWindow.vala:164
 msgid "Lock"
 msgstr "Låsa"
 
-#: src/Gtk/MainWindow.vala:179
+#: src/Gtk/MainWindow.vala:181
 msgid "Status"
 msgstr "Status"
 
-#: src/Gtk/MainWindow.vala:325
+#: src/Gtk/MainWindow.vala:327
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-#: src/Gtk/MainWindow.vala:331
+#: src/Gtk/MainWindow.vala:333
 msgid "Changelog, build status, etc"
 msgstr "Ändringslogg, byggstatus, etc"
 
-#: src/Gtk/MainWindow.vala:336 src/lib/l.exec.vala:7
+#: src/Gtk/MainWindow.vala:338 src/lib/l.exec.vala:7
 msgid "Unable to launch"
 msgstr "Oförmögen att starta"
 
-#: src/Gtk/MainWindow.vala:340
+#: src/Gtk/MainWindow.vala:342
 msgid "Uninstall Old"
 msgstr "Avinstallera Gamla"
 
-#: src/Gtk/MainWindow.vala:341
+#: src/Gtk/MainWindow.vala:343
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
 "* the currently running kernel\n"
 "* any kernels that are locked"
 msgstr ""
+"Avinstallera allt utom:\n"
+"* den högsta installerade versionen\n"
+"* den kärna som för närvarande körs\n"
+"* alla kärnor som är låsta"
 
-#: src/Gtk/MainWindow.vala:346
+#: src/Gtk/MainWindow.vala:348
 msgid "Reload"
 msgstr "Reload"
 
-#: src/Gtk/MainWindow.vala:347
-#, fuzzy
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
-msgstr "Ta bort och ladda om all cachad kärninformation"
+msgstr ""
+"Ta bort och ladda om all cachad kärninformation(samma som \"mainline --"
+"delete-cache\")"
 
-#: src/Gtk/MainWindow.vala:352
+#: src/Gtk/MainWindow.vala:354
 msgid "Settings"
 msgstr "Inställningar"
 
-#: src/Gtk/MainWindow.vala:357
+#: src/Gtk/MainWindow.vala:359
 msgid "About"
 msgstr "Om"
 
-#: src/Gtk/MainWindow.vala:362
+#: src/Gtk/MainWindow.vala:364
 msgid "Exit"
 msgstr "Utgång"
 
-#: src/Gtk/MainWindow.vala:421
+#: src/Gtk/MainWindow.vala:423
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -502,52 +502,51 @@ msgstr ""
 "Ett verktyg för att installera kärnpaket\n"
 "från Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:423
+#: src/Gtk/MainWindow.vala:425
 msgid "Original"
 msgstr "Original"
 
-#: src/Gtk/MainWindow.vala:424
+#: src/Gtk/MainWindow.vala:426
 msgid "Forked"
 msgstr "Forked"
 
-#: src/Gtk/MainWindow.vala:442
+#: src/Gtk/MainWindow.vala:444
 msgid "Updating kernels"
 msgstr "Uppdatera kärnor"
 
-#: src/Gtk/MainWindow.vala:484
+#: src/Gtk/MainWindow.vala:495
 msgid "available"
 msgstr "tillgänglig"
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:514
 msgid "is already installed"
 msgstr "är redan installerat."
 
-#: src/Gtk/MainWindow.vala:503
+#: src/Gtk/MainWindow.vala:516
 msgid "adding"
 msgstr "lägga till"
 
-#: src/Gtk/SettingsDialog.vala:12
-#, fuzzy
+#: src/Gtk/SettingsWindow.vala:12
 msgid "Configuration"
-msgstr "Avisering"
+msgstr "Konfiguration"
 
-#: src/Gtk/SettingsDialog.vala:24
+#: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr "Gjort"
 
-#: src/Gtk/SettingsDialog.vala:40
-msgid "Filters"
+#: src/Gtk/SettingsWindow.vala:40
+msgid "Filter"
 msgstr "Filter"
 
-#: src/Gtk/SettingsDialog.vala:47
+#: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
 msgstr "Dölj instabila- och RC-publiceringar"
 
-#: src/Gtk/SettingsDialog.vala:54
+#: src/Gtk/SettingsWindow.vala:54
 msgid "Hide failed or incomplete builds"
 msgstr "Dölj misslyckade eller ofullständiga builds"
 
-#: src/Gtk/SettingsDialog.vala:56
+#: src/Gtk/SettingsWindow.vala:57
 #, c-format
 msgid ""
 "If a kernel version exists on the mainline-ppa site, but is an incomplete or "
@@ -556,179 +555,208 @@ msgstr ""
 "Om en kärnversion finns på mainline-ppa-webbplatsen, men är en ofullständig "
 "eller misslyckad konstruktion för din båge (%s), visa den inte i listan."
 
-#: src/Gtk/SettingsDialog.vala:63
+#: src/Gtk/SettingsWindow.vala:63
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Dölj andra smaker än \"generic\""
 
-#: src/Gtk/SettingsDialog.vala:65
+#: src/Gtk/SettingsWindow.vala:66
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Visa inte alternativa smaker som \"lowlatency\", \"generic-64k\", \"generic-"
+"lpae\", \"server\", \"virtual\", etc."
 
-#: src/Gtk/SettingsDialog.vala:80
-msgid "previous major versions  ( -1 = all )"
-msgstr "tidigare huvudversioner ( -1 = alla )"
+#: src/Gtk/SettingsWindow.vala:80
+msgid "prior major versions  ( -1 = all )"
+msgstr "tidigare huvudversioner (-1 = alla)"
 
-#: src/Gtk/SettingsDialog.vala:88
+#: src/Gtk/SettingsWindow.vala:88
 msgid "Notification"
 msgstr "Avisering"
 
-#: src/Gtk/SettingsDialog.vala:95
+#: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
 msgstr "Meddela om en större version är tillgänglig"
 
-#: src/Gtk/SettingsDialog.vala:101
-msgid "Notify if a point release is available"
-msgstr "Meddela om en punktrelease är tillgänglig"
+#: src/Gtk/SettingsWindow.vala:101
+msgid "Notify if a minor release is available"
+msgstr "Meddela om en mindre version är tillgänglig"
 
-#: src/Gtk/SettingsDialog.vala:108
+#: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
 msgstr "Sekundintervall aktiverat för felsökning"
 
-#: src/Gtk/SettingsDialog.vala:127
+#: src/Gtk/SettingsWindow.vala:127
 msgid "Check every"
 msgstr "Kontrollera varje"
 
-#: src/Gtk/SettingsDialog.vala:136
+#: src/Gtk/SettingsWindow.vala:137
 msgid "Hours"
 msgstr "timmar"
 
-#: src/Gtk/SettingsDialog.vala:137
+#: src/Gtk/SettingsWindow.vala:138
 msgid "Days"
 msgstr "dagar"
 
-#: src/Gtk/SettingsDialog.vala:138
+#: src/Gtk/SettingsWindow.vala:139
 msgid "Weeks"
 msgstr "veckor"
 
-#: src/Gtk/SettingsDialog.vala:139
+#: src/Gtk/SettingsWindow.vala:140
 msgid "Seconds"
 msgstr "sekunder"
 
-#: src/Gtk/SettingsDialog.vala:149
+#: src/Gtk/SettingsWindow.vala:149
 msgid "Network"
 msgstr "Nätverk"
 
-#: src/Gtk/SettingsDialog.vala:159
-msgid "Internet connection timeout in"
-msgstr "Internetuppkopplingen är inte aktiv"
+#: src/Gtk/SettingsWindow.vala:159
+msgid "Connection Timeout:"
+msgstr "Timeout för anslutning:"
 
-#: src/Gtk/SettingsDialog.vala:167
+#: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "sekunder"
 
-#: src/Gtk/SettingsDialog.vala:175
-msgid "Max concurrent downloads"
-msgstr "Max antal nedladdningar av konkurrenter"
+#: src/Gtk/SettingsWindow.vala:175
+msgid "Concurrent Downloads:"
+msgstr "Samtidiga nedladdningar:"
 
-#: src/Gtk/SettingsDialog.vala:185
-msgid "Verify Downloads with the CHECKSUMS files"
-msgstr "Verifiera kontrollsummor med CHECKSUMS-filerna"
+#: src/Gtk/SettingsWindow.vala:185
+msgid "Verify Checksums"
+msgstr "Verifiera kontrollsummor"
 
-#: src/Gtk/SettingsDialog.vala:187
+#: src/Gtk/SettingsWindow.vala:188
 msgid ""
-"Use the sha-256 hashes from the CHECKSUMS file to verify the .deb file "
+"Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
 "Använd sha-256-hasharna från CHECKSUMS-filen för att verifiera "
-"nedladdningarna av .deb-filen."
+"nedladdningarna av *.deb-filen."
 
-#: src/Gtk/SettingsDialog.vala:192
+#: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
 msgstr "Behåll Nedladdningar"
 
-#: src/Gtk/SettingsDialog.vala:194
+#: src/Gtk/SettingsWindow.vala:195
 msgid ""
-"Retain downloaded .deb files after install and re-use them for uninstall/"
-"reinstall instead of downloading again.\n"
-"\n"
-"They are still deleted once they become older than the \"Show previous major "
-"versions\" setting, or if they have been updated on the mainline-ppa site."
+"Retain downloaded *.deb files after install and re-use them for uninstall/"
+"reinstall instead of downloading again."
 msgstr ""
 "Behåll nedladdade .deb-filer efter installationen och återanvänd dem för "
-"avinstallation/ominstallation istället för att ladda ner igen.\n"
-"\n"
+"avinstallation/ominstallation istället för att ladda ner igen."
+
+#: src/Gtk/SettingsWindow.vala:197
+msgid ""
+"They are still deleted once they become older than the \"Show N prior major "
+"versions\" setting, or if they have been updated on the mainline-ppa site."
+msgstr ""
 "De raderas fortfarande när de blir äldre än inställningen \"Visa tidigare "
 "huvudversioner\" eller om de har uppdaterats på mainline-ppa-webbplatsen."
 
-#: src/Gtk/SettingsDialog.vala:203
+#: src/Gtk/SettingsWindow.vala:203
 msgid "Proxy"
 msgstr "Proxyserver"
 
-#: src/Gtk/SettingsDialog.vala:235
+#: src/Gtk/SettingsWindow.vala:215
+msgid "Mainline-PPA URL"
+msgstr "Mainline-PPA URL"
+
+#: src/Gtk/SettingsWindow.vala:235
 msgid "External Commands"
 msgstr "Externa Kommandon"
 
-#: src/Gtk/SettingsDialog.vala:263
-#, c-format
-msgid ""
-"Command used to run dpkg with root permissions.\n"
-"\n"
-"If the auth programs commandline syntax requires the execute command to be "
-"enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the dpkg command, otherwise it will be appended to the end.\n"
-"See \"su -c\" in the drop down list for an example of that."
-msgstr ""
-"Kommandot används för att köra dpkg med root-behörigheter.\n"
-"\n"
-"Om auth-programmets kommandoradssyntax kräver att exekveringskommandot omges "
-"av citattecken istället för att bara läggas till i slutet av kommandoraden, "
-"kan du inkludera en enda %s i strängen, och den kommer att ersättas med "
-"kommandot dpkg, annars det kommer att läggas till i slutet.\n"
-"Se \"su -c\" i rullgardinsmenyn för ett exempel på det."
+#: src/Gtk/SettingsWindow.vala:242
+msgid "Superuser Authorization"
+msgstr "Auktorisering Superanvändare"
 
-#: src/Gtk/SettingsDialog.vala:292
+#: src/Gtk/SettingsWindow.vala:264
+msgid "Command used to run dpkg with root permissions."
+msgstr "Kommando som används för att köra dpkg med root-behörigheter."
+
+#: src/Gtk/SettingsWindow.vala:266
+#, c-format
+msgid "The dpkg command is appended to the end, unless a %s is present."
+msgstr "Kommandot dpkg läggs till i slutet, såvida inte %s finns."
+
+#: src/Gtk/SettingsWindow.vala:267
+#, c-format
+msgid "If a %s is present, then the %s is replaced with the dpkg command."
+msgstr "Om det finns en %s ersätts %s med kommandot dpkg."
+
+#: src/Gtk/SettingsWindow.vala:268 src/Gtk/SettingsWindow.vala:301
+msgid "The built-in list contains examples of both."
+msgstr "Den inbyggda listan innehåller exempel på båda."
+
+#: src/Gtk/SettingsWindow.vala:270 src/Gtk/SettingsWindow.vala:309
+msgid "You may edit any of the built-in default commands to customize it."
+msgstr ""
+"Du kan redigera något av de inbyggda standardkommandona för att anpassa det."
+
+#: src/Gtk/SettingsWindow.vala:271 src/Gtk/SettingsWindow.vala:310
+msgid ""
+"The edited command will be saved as a new custom command without changing "
+"the original."
+msgstr ""
+"Det redigerade kommandot sparas som ett nytt anpassat kommando utan att "
+"ändra originalet."
+
+#: src/Gtk/SettingsWindow.vala:275
+msgid "Terminal Window"
+msgstr "Terminalfönster"
+
+#: src/Gtk/SettingsWindow.vala:297
 msgid "Terminal command used to run"
 msgstr "Terminalkommando som används för att köra"
 
-#: src/Gtk/SettingsDialog.vala:293
-msgid "Example"
-msgstr "Exempel"
-
-#: src/Gtk/SettingsDialog.vala:293
-msgid "will result in"
-msgstr "kommer att resultera i"
-
-#: src/Gtk/SettingsDialog.vala:295
+#: src/Gtk/SettingsWindow.vala:299
 #, c-format
 msgid ""
-"If the terminal programs commandline syntax requires the execute command to "
-"be enclosed in quotes rather than merely appended to the end of the command "
-"line, you can include a single %s in the string, and it will be replaced "
-"with the install command, otherwise it will be appended to the end.\n"
-"See mate-terminal in the drop down list for an example of that.\n"
-"\n"
-"You may write any commandline you want, but the specified program must stay "
-"in the foreground and block while the command is running, not fork and "
-"return immediately.\n"
-"Most terminal programs work fine by default, but some require special "
-"command line flags, and some are not usable at all.\n"
-"\n"
-"Examples:\n"
-"gnome-terminal can be made to block by using it's --wait option.\n"
-"xfce4-terminal can not be made to block.\n"
-"\n"
-"Edit the command to customize the appearance of the terminal."
+"The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
-"Om kommandoradssyntaxen för terminalprogram kräver kommandot execute till "
-"omges av citationstecken i stället för att bara läggas till i slutet av "
-"kommandotlinje, du kan inkludera en enda %s i strängen, och den kommer att "
-"ersättas med installationskommandot, annars läggs det till i slutet.\n"
-"Se mate-terminal i rullgardinslistan för ett exempel på det.\n"
-"\n"
-"Du kan skriva vilken kommandorad du vill, men det angivna programmet måste "
-"stanna i förgrunden och blockera medan kommandot körs, inte gaffel och "
-"Återvänd omedelbart.\n"
-"De flesta terminalprogram fungerar bra som standard, men vissa kräver "
-"speciella kommandoradsflaggor, och vissa kan inte användas alls.\n"
-"\n"
-"Exempel:\n"
-"gnome-terminal kan fås att blockera genom att använda alternativet --wait.\n"
-"xfce4-terminal kan inte fås att blockera.\n"
-"\n"
-"Redigera kommandot för att anpassa terminalens utseende."
+"Kommandot install/uninstall läggs till i slutet, såvida det inte finns ett "
+"%s."
+
+#: src/Gtk/SettingsWindow.vala:300
+#, c-format
+msgid ""
+"If a %s is present, then the %s is replaced with the install/uninstall "
+"command."
+msgstr "Om det finns en %s ersätts %s med kommandot install/install."
+
+#: src/Gtk/SettingsWindow.vala:303
+msgid ""
+"The terminal program must stay in the foreground and block while the command "
+"is running, not fork and return immediately."
+msgstr ""
+"Terminalprogrammet måste stanna i förgrunden och blockera medan kommandot "
+"körs, inte gaffel och returnera omedelbart."
+
+#: src/Gtk/SettingsWindow.vala:304
+msgid ""
+"Most terminal programs block by default, some don't by default but can be "
+"told to, and some are not usable at all."
+msgstr ""
+"De flesta terminalprogram blockeras som standard, vissa gör det inte som "
+"standard men kan bli tillsagda, och vissa är inte användbara alls."
+
+#: src/Gtk/SettingsWindow.vala:305
+msgid "Examples"
+msgstr "Exempel"
+
+#: src/Gtk/SettingsWindow.vala:306
+msgid ""
+"gnome-terminal is usable because it can be made to block by using it's \"--"
+"wait\" option."
+msgstr ""
+"gnome-terminal är användbar eftersom den kan fås att blockera genom att "
+"använda alternativet \"--wait\"."
+
+#: src/Gtk/SettingsWindow.vala:307
+msgid "xfce4-terminal is not usable because it can not be made to block."
+msgstr ""
+"xfce4-terminal är inte användbar eftersom den inte kan fås att blockera."
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

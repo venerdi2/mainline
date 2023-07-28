@@ -38,6 +38,8 @@ public class MainWindow : Window {
 	Button btn_uninstall_old;
 	Button btn_reload;
 	Label lbl_info;
+	Spinner spn_info;
+
 	bool updating;
 
 	Gee.ArrayList<LinuxKernel> selected_kernels;
@@ -446,7 +448,7 @@ public class MainWindow : Window {
 
 		updating = true;
 		set_button_state();
-		set_infobar(msg);
+		set_infobar(msg,updating);
 		LinuxKernel.mk_kernel_list(false, (last) => { update_status_line(msg, last); });
 	}
 
@@ -460,30 +462,41 @@ public class MainWindow : Window {
 		}
 
 		Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
-			if (updating) set_infobar("%s: %s %d/%d".printf(message, App.status_line, App.progress_count, App.progress_total));
+			if (updating) set_infobar("%s: %s %d/%d".printf(message, App.status_line, App.progress_count, App.progress_total),updating);
 			return false;
 		});
 	}
 
 	void init_infobar() {
-		var hbox = new Box(Orientation.HORIZONTAL, SPACING);
+		var hbox = new Box(Orientation.HORIZONTAL,SPACING);
 		vbox_main.add(hbox);
 		lbl_info = new Label("");
+		spn_info = new Spinner();
+		hbox.set_homogeneous(false);
+		hbox.pack_start(lbl_info);
+		hbox.pack_end(spn_info);
 		lbl_info.set_use_markup(true);
 		lbl_info.selectable = false;
-		hbox.add(lbl_info);
+		lbl_info.hexpand = true;
+		lbl_info.halign = Align.START;
+		spn_info.active = false;
+		spn_info.hexpand = false;
+		spn_info.halign = Align.END;
 	}
 
-	void set_infobar(string? s=null) {
-		if (s!=null) { lbl_info.set_label(s); return; }
+	void set_infobar(string? text=null, bool busy=false) {
+		string s;
 
-		string l = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
-		if (LinuxKernel.kernel_active.is_mainline) l += " (mainline)";
-		else l += " (ubuntu)";
-		if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0)
-			l += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
+		if (text!=null) s = text;
+		else {
+			s = _("Running")+" <b>%s</b>".printf(LinuxKernel.kernel_active.version_main);
+			if (LinuxKernel.kernel_active.is_mainline) s += " (mainline)"; else s += " (ubuntu)";
+			if (LinuxKernel.kernel_latest_available.compare_to(LinuxKernel.kernel_latest_installed) > 0)
+				s += " ~ <b>%s</b> ".printf(LinuxKernel.kernel_latest_available.version_main)+_("available");
+		}
 
-		lbl_info.set_label(l);
+		lbl_info.set_label(s);
+		spn_info.active = busy;
 	}
 
 	public void do_install(Gee.ArrayList<LinuxKernel> klist) {
