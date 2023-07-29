@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 05:01-0400\n"
+"POT-Creation-Date: 2023-07-28 20:14-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -676,12 +676,12 @@ msgid "Command used to run dpkg with root permissions."
 msgstr "Kommando som används för att köra dpkg med root-behörigheter."
 
 #: src/Gtk/SettingsWindow.vala:266
-#, c-format
+#, fuzzy
 msgid "The dpkg command is appended to the end, unless a %s is present."
 msgstr "Kommandot dpkg läggs till i slutet, såvida inte %s finns."
 
 #: src/Gtk/SettingsWindow.vala:267
-#, c-format
+#, fuzzy
 msgid "If a %s is present, then the %s is replaced with the dpkg command."
 msgstr "Om det finns en %s ersätts %s med kommandot dpkg."
 
@@ -711,15 +711,15 @@ msgid "Terminal command used to run"
 msgstr "Terminalkommando som används för att köra"
 
 #: src/Gtk/SettingsWindow.vala:299
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
 "Kommandot install/uninstall läggs till i slutet, såvida det inte finns ett "
 "%s."
 
-#: src/Gtk/SettingsWindow.vala:300
-#, c-format
+#: src/Gtk/SettingsWindow.vala:30
+#, fuzzy
 msgid ""
 "If a %s is present, then the %s is replaced with the install/uninstall "
 "command."

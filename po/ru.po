@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 19:42-0400\n"
+"POT-Creation-Date: 2023-07-28 20:14-0400\n"
 "PO-Revision-Date: 2023-07-26 20:35+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -677,12 +677,12 @@ msgid "Command used to run dpkg with root permissions."
 msgstr "Команда, используемая для запуска dpkg с правами root."
 
 #: src/Gtk/SettingsWindow.vala:266
-#, c-format
+#, fuzzy
 msgid "The dpkg command is appended to the end, unless a %s is present."
 msgstr "Команда dpkg добавляется в конец, если не присутствует %s."
 
 #: src/Gtk/SettingsWindow.vala:267
-#, c-format
+#, fuzzy
 msgid "If a %s is present, then the %s is replaced with the dpkg command."
 msgstr "Если %s присутствует, то %s заменяется командой dpkg."
 
@@ -713,14 +713,14 @@ msgid "Terminal command used to run"
 msgstr "Команда терминала, используемая для запуска"
 
 #: src/Gtk/SettingsWindow.vala:299
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
 "Команда install/uninstall добавляется в конец, если не присутствует %s."
 
-#: src/Gtk/SettingsWindow.vala:300
-#, c-format
+#: src/Gtk/SettingsWindow.vala:30
+#, fuzzy
 msgid ""
 "If a %s is present, then the %s is replaced with the install/uninstall "
 "command."
