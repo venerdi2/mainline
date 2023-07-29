@@ -104,19 +104,19 @@ msgstr "Bilješke"
 
 #: src/Common/LinuxKernel.vala:777
 msgid "Locked"
-msgstr ""
+msgstr "Zaključan"
 
 #: src/Common/LinuxKernel.vala:778
 msgid "installation"
-msgstr ""
+msgstr "montaža"
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
-msgstr ""
+msgstr "uklanjanje"
 
 #: src/Common/LinuxKernel.vala:779
 msgid "prevented"
-msgstr ""
+msgstr "spriječeno"
 
 #: src/Common/LinuxKernel.vala:791 src/Common/LinuxKernel.vala:945
 msgid "not found"
@@ -467,6 +467,10 @@ msgid ""
 "* the currently running kernel\n"
 "* any kernels that are locked"
 msgstr ""
+"Deinstaliraj sve osim:\n"
+"* najviša instalirana verzija\n"
+"* trenutačno pokrenuta jezgra\n"
+"* sve kernele koje su zaključane"
 
 #: src/Gtk/MainWindow.vala:348
 msgid "Reload"
@@ -477,6 +481,8 @@ msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
 msgstr ""
+"Izbriši i ponovno učitaj sve podatke o jezgri u predmemoriji\n"
+"(isto kao \"mainline --delete-cache\")"
 
 #: src/Gtk/MainWindow.vala:354
 msgid "Settings"
@@ -524,7 +530,7 @@ msgstr "dodajući"
 
 #: src/Gtk/SettingsWindow.vala:12
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguracija"
 
 #: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
@@ -532,7 +538,7 @@ msgstr "Gotovo"
 
 #: src/Gtk/SettingsWindow.vala:40
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
@@ -553,13 +559,15 @@ msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:63
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Sakrij okuse koji nisu \"generic\""
 
 #: src/Gtk/SettingsWindow.vala:66
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Ne prikazuj alternativne okuse kao što su \"lowlatency\", \"generic-64k\", "
+"\"generički-lpae\", \"poslužitelj\", \"virtualni\", itd."
 
 #: src/Gtk/SettingsWindow.vala:80
 msgid "prior major versions  ( -1 = all )"
@@ -571,11 +579,11 @@ msgstr "Obavijesti"
 
 #: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
-msgstr ""
+msgstr "Obavijesti ako je dostupno glavno izdanje"
 
 #: src/Gtk/SettingsWindow.vala:101
 msgid "Notify if a minor release is available"
-msgstr ""
+msgstr "Obavijesti ako je dostupno manje izdanje"
 
 #: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
@@ -607,7 +615,7 @@ msgstr "Mreža"
 
 #: src/Gtk/SettingsWindow.vala:159
 msgid "Connection Timeout:"
-msgstr ""
+msgstr "Vrijeme povezanosti je isteklo:"
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
@@ -615,11 +623,11 @@ msgstr "sekunde"
 
 #: src/Gtk/SettingsWindow.vala:175
 msgid "Concurrent Downloads:"
-msgstr ""
+msgstr "Istovremena preuzimanja:"
 
 #: src/Gtk/SettingsWindow.vala:185
 msgid "Verify Checksums"
-msgstr ""
+msgstr "Provjerite kontrolne zbrojeve"
 
 #: src/Gtk/SettingsWindow.vala:188
 msgid ""
@@ -655,7 +663,7 @@ msgstr "Proxy"
 
 #: src/Gtk/SettingsWindow.vala:215
 msgid "Mainline-PPA URL"
-msgstr ""
+msgstr "Mainline-PPA URL"
 
 #: src/Gtk/SettingsWindow.vala:235
 msgid "External Commands"
@@ -663,39 +671,38 @@ msgstr "Vanjske Naredbe"
 
 #: src/Gtk/SettingsWindow.vala:242
 msgid "Superuser Authorization"
-msgstr ""
+msgstr "Autorizacija superkorisnika"
 
 #: src/Gtk/SettingsWindow.vala:264
 msgid "Command used to run dpkg with root permissions."
-msgstr ""
+msgstr "Naredba koja se koristi za pokretanje dpkg s root dopuštenjima."
 
 #: src/Gtk/SettingsWindow.vala:266
 #, c-format
 msgid "The dpkg command is appended to the end, unless a %s is present."
-msgstr ""
+msgstr "Naredba dpkg dodaje se na kraj, osim ako %s nije prisutan."
 
 #: src/Gtk/SettingsWindow.vala:267
 #, c-format
 msgid "If a %s is present, then the %s is replaced with the dpkg command."
-msgstr ""
+msgstr "Ako je %s prisutan, tada se %s zamjenjuje naredbom dpkg."
 
 #: src/Gtk/SettingsWindow.vala:268 src/Gtk/SettingsWindow.vala:301
 msgid "The built-in list contains examples of both."
-msgstr ""
+msgstr "Ugrađeni popis sadrži primjere oba."
 
 #: src/Gtk/SettingsWindow.vala:270 src/Gtk/SettingsWindow.vala:309
 msgid "You may edit any of the built-in default commands to customize it."
-msgstr ""
+msgstr "Možete urediti bilo koju od ugrađenih zadanih naredbi kako biste je prilagodili."
 
 #: src/Gtk/SettingsWindow.vala:271 src/Gtk/SettingsWindow.vala:310
 msgid ""
-"The edited command will be saved as a new custom command without changing "
-"the original."
-msgstr ""
+"The edited command will be saved as a new custom command without changing the original."
+msgstr "Uređena naredba bit će spremljena kao nova prilagođena naredba bez mijenjanja izvorne."
 
 #: src/Gtk/SettingsWindow.vala:275
 msgid "Terminal Window"
-msgstr ""
+msgstr "Prozor terminala"
 
 #: src/Gtk/SettingsWindow.vala:297
 msgid "Terminal command used to run"
@@ -705,40 +712,36 @@ msgstr "Naredba terminala koja se koristi za pokretanje"
 #, c-format
 msgid ""
 "The install/uninstall command is appended to the end, unless a %s is present."
-msgstr ""
+msgstr "Naredba za instalaciju/deinstalaciju dodaje se na kraj, osim ako %s nije prisutan."
 
 #: src/Gtk/SettingsWindow.vala:300
 #, c-format
 msgid ""
-"If a %s is present, then the %s is replaced with the install/uninstall "
-"command."
-msgstr ""
+"If a %s is present, then the %s is replaced with the install/uninstall command."
+msgstr "Ako je prisutan %s, tada se %s zamjenjuje naredbom za instaliranje/deinstaliranje."
 
 #: src/Gtk/SettingsWindow.vala:303
 msgid ""
-"The terminal program must stay in the foreground and block while the command "
-"is running, not fork and return immediately."
-msgstr ""
+"The terminal program must stay in the foreground and block while the command is running, not fork and return immediately."
+msgstr "Terminalni program mora ostati u prvom planu i blokirati dok se naredba izvodi, a ne račvati se i odmah se vraćati."
 
 #: src/Gtk/SettingsWindow.vala:304
 msgid ""
-"Most terminal programs block by default, some don't by default but can be "
-"told to, and some are not usable at all."
-msgstr ""
+"Most terminal programs block by default, some don't by default but can be told to, and some are not usable at all."
+msgstr "Većina terminalskih programa blokira prema zadanim postavkama, neki ne blokiraju prema zadanim postavkama, ali im se može reći, a neki se uopće ne mogu koristiti."
 
 #: src/Gtk/SettingsWindow.vala:305
 msgid "Examples"
-msgstr ""
+msgstr "Primjeri"
 
 #: src/Gtk/SettingsWindow.vala:306
 msgid ""
-"gnome-terminal is usable because it can be made to block by using it's \"--"
-"wait\" option."
-msgstr ""
+"gnome-terminal is usable because it can be made to block by using it's \"--wait\" option."
+msgstr "gnome-terminal je upotrebljiv jer se može blokirati korištenjem opcije \"--wait\"."
 
 #: src/Gtk/SettingsWindow.vala:307
 msgid "xfce4-terminal is not usable because it can not be made to block."
-msgstr ""
+msgstr "xfce4-terminal nije upotrebljiv jer ga se ne može natjerati da blokira."
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"

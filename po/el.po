@@ -104,19 +104,19 @@ msgstr "Σημειώσεις"
 
 #: src/Common/LinuxKernel.vala:777
 msgid "Locked"
-msgstr ""
+msgstr "Κλειδωμένο"
 
 #: src/Common/LinuxKernel.vala:778
 msgid "installation"
-msgstr ""
+msgstr "εγκατάσταση"
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
-msgstr ""
+msgstr "μετακόμιση"
 
 #: src/Common/LinuxKernel.vala:779
 msgid "prevented"
-msgstr ""
+msgstr "αποτραπεί"
 
 #: src/Common/LinuxKernel.vala:791 src/Common/LinuxKernel.vala:945
 msgid "not found"
@@ -472,6 +472,10 @@ msgid ""
 "* the currently running kernel\n"
 "* any kernels that are locked"
 msgstr ""
+"Κατάργηση εγκατάστασης όλων εκτός από:\n"
+"* η υψηλότερη εγκατεστημένη έκδοση\n"
+"* ο τρέχων πυρήνας\n"
+"* τυχόν πυρήνες που είναι κλειδωμένοι"
 
 #: src/Gtk/MainWindow.vala:348
 msgid "Reload"
@@ -482,6 +486,8 @@ msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
 msgstr ""
+"Διαγραφή και επαναφόρτωση όλων των πληροφοριών του πυρήνα που έχουν αποθηκευτεί στην κρυφή μνήμη\n"
+"(το ίδιο με το \"mainline --delete-cache\")"
 
 #: src/Gtk/MainWindow.vala:354
 msgid "Settings"
@@ -529,7 +535,7 @@ msgstr "προσθέτωντας"
 
 #: src/Gtk/SettingsWindow.vala:12
 msgid "Configuration"
-msgstr ""
+msgstr "Διαμόρφωση"
 
 #: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
@@ -537,7 +543,7 @@ msgstr "Εγινε"
 
 #: src/Gtk/SettingsWindow.vala:40
 msgid "Filter"
-msgstr ""
+msgstr "Φίλτρο"
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
@@ -559,13 +565,15 @@ msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:63
 msgid "Hide flavors other than \"generic\""
-msgstr ""
+msgstr "Απόκρυψη γεύσεων εκτός από \"generic\""
 
 #: src/Gtk/SettingsWindow.vala:66
 msgid ""
 "Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", "
 "\"generic-lpae\", \"server\", \"virtual\", etc."
 msgstr ""
+"Μην εμφανίζετε τις εναλλακτικές γεύσεις όπως \"lowlatency\", \"generic-64k\", "
+"\"generic-lpae\", \"server\", \"virtual\", etc."
 
 #: src/Gtk/SettingsWindow.vala:80
 msgid "prior major versions  ( -1 = all )"
@@ -577,11 +585,11 @@ msgstr "Ειδοποίηση"
 
 #: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
-msgstr ""
+msgstr "Ειδοποιήστε εάν είναι διαθέσιμη μια σημαντική έκδοση"
 
 #: src/Gtk/SettingsWindow.vala:101
 msgid "Notify if a minor release is available"
-msgstr ""
+msgstr "Ειδοποιήστε εάν είναι διαθέσιμη μια μικρή έκδοση"
 
 #: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
@@ -613,7 +621,7 @@ msgstr "Δίκτυο"
 
 #: src/Gtk/SettingsWindow.vala:159
 msgid "Connection Timeout:"
-msgstr ""
+msgstr "Σύνδεση Timeout:"
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
@@ -621,11 +629,11 @@ msgstr "δευτερόλεπτα"
 
 #: src/Gtk/SettingsWindow.vala:175
 msgid "Concurrent Downloads:"
-msgstr ""
+msgstr "Ταυτόχρονες λήψεις:"
 
 #: src/Gtk/SettingsWindow.vala:185
 msgid "Verify Checksums"
-msgstr ""
+msgstr "Επαληθεύστε τα αθροίσματα ελέγχου"
 
 #: src/Gtk/SettingsWindow.vala:188
 msgid ""
@@ -662,7 +670,7 @@ msgstr "Διακομιστής"
 
 #: src/Gtk/SettingsWindow.vala:215
 msgid "Mainline-PPA URL"
-msgstr ""
+msgstr "Mainline-PPA URL"
 
 #: src/Gtk/SettingsWindow.vala:235
 msgid "External Commands"
@@ -670,39 +678,38 @@ msgstr "Εξωτερικές εντολές"
 
 #: src/Gtk/SettingsWindow.vala:242
 msgid "Superuser Authorization"
-msgstr ""
+msgstr "Εξουσιοδότηση Υπερχρήστης"
 
 #: src/Gtk/SettingsWindow.vala:264
 msgid "Command used to run dpkg with root permissions."
-msgstr ""
+msgstr "Εντολή που χρησιμοποιείται για την εκτέλεση dpkg με δικαιώματα root."
 
 #: src/Gtk/SettingsWindow.vala:266
 #, c-format
 msgid "The dpkg command is appended to the end, unless a %s is present."
-msgstr ""
+msgstr "Η εντολή dpkg προσαρτάται στο τέλος, εκτός εάν υπάρχει %s."
 
 #: src/Gtk/SettingsWindow.vala:267
 #, c-format
 msgid "If a %s is present, then the %s is replaced with the dpkg command."
-msgstr ""
+msgstr "Εάν υπάρχει ένα %s, τότε το %s αντικαθίσταται με την εντολή dpkg."
 
 #: src/Gtk/SettingsWindow.vala:268 src/Gtk/SettingsWindow.vala:301
 msgid "The built-in list contains examples of both."
-msgstr ""
+msgstr "Η ενσωματωμένη λίστα περιέχει παραδείγματα και των δύο."
 
 #: src/Gtk/SettingsWindow.vala:270 src/Gtk/SettingsWindow.vala:309
 msgid "You may edit any of the built-in default commands to customize it."
-msgstr ""
+msgstr "Μπορείτε να επεξεργαστείτε οποιαδήποτε από τις ενσωματωμένες προεπιλεγμένες εντολές για να την προσαρμόσετε."
 
 #: src/Gtk/SettingsWindow.vala:271 src/Gtk/SettingsWindow.vala:310
 msgid ""
-"The edited command will be saved as a new custom command without changing "
-"the original."
-msgstr ""
+"The edited command will be saved as a new custom command without changing the original."
+msgstr "Η επεξεργασμένη εντολή θα αποθηκευτεί ως νέα προσαρμοσμένη εντολή χωρίς αλλαγή της αρχικής."
 
 #: src/Gtk/SettingsWindow.vala:275
 msgid "Terminal Window"
-msgstr ""
+msgstr "Παράθυρο Τερματικού"
 
 #: src/Gtk/SettingsWindow.vala:297
 msgid "Terminal command used to run"
@@ -712,40 +719,36 @@ msgstr "Εντολή τερματικού που χρησιμοποιείται 
 #, c-format
 msgid ""
 "The install/uninstall command is appended to the end, unless a %s is present."
-msgstr ""
+msgstr "Η εντολή εγκατάστασης/απεγκατάστασης προσαρτάται στο τέλος, εκτός εάν υπάρχει %s."
 
 #: src/Gtk/SettingsWindow.vala:300
 #, c-format
 msgid ""
-"If a %s is present, then the %s is replaced with the install/uninstall "
-"command."
-msgstr ""
+"If a %s is present, then the %s is replaced with the install/uninstall command."
+msgstr "Εάν υπάρχει ένα %s, τότε το %s αντικαθίσταται με την εντολή εγκατάστασης/απεγκατάστασης."
 
 #: src/Gtk/SettingsWindow.vala:303
 msgid ""
-"The terminal program must stay in the foreground and block while the command "
-"is running, not fork and return immediately."
-msgstr ""
+"The terminal program must stay in the foreground and block while the command is running, not fork and return immediately."
+msgstr "Το πρόγραμμα τερματικού πρέπει να παραμένει στο προσκήνιο και να μπλοκάρει όσο εκτελείται η εντολή, να μην διακλαδίζεται και να επιστρέφει αμέσως."
 
 #: src/Gtk/SettingsWindow.vala:304
 msgid ""
-"Most terminal programs block by default, some don't by default but can be "
-"told to, and some are not usable at all."
-msgstr ""
+"Most terminal programs block by default, some don't by default but can be told to, and some are not usable at all."
+msgstr "Τα περισσότερα προγράμματα τερματικού μπλοκάρουν από προεπιλογή, μερικά όχι από προεπιλογή, αλλά μπορεί να γίνει δεκτό και μερικά δεν μπορούν να χρησιμοποιηθούν καθόλου."
 
 #: src/Gtk/SettingsWindow.vala:305
 msgid "Examples"
-msgstr ""
+msgstr "Παραδείγματα"
 
 #: src/Gtk/SettingsWindow.vala:306
 msgid ""
-"gnome-terminal is usable because it can be made to block by using it's \"--"
-"wait\" option."
-msgstr ""
+"gnome-terminal is usable because it can be made to block by using it's \"--wait\" option."
+msgstr "Το gnome-terminal μπορεί να χρησιμοποιηθεί επειδή μπορεί να γίνει αποκλεισμός χρησιμοποιώντας την επιλογή του \"--wait\"."
 
 #: src/Gtk/SettingsWindow.vala:307
 msgid "xfce4-terminal is not usable because it can not be made to block."
-msgstr ""
+msgstr "Το xfce4-terminal δεν μπορεί να χρησιμοποιηθεί γιατί δεν μπορεί να γίνει αποκλεισμός."
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
