@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the mainline package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: mainline 1.4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 20:14-0400\n"
+"POT-Creation-Date: 2023-07-29 01:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -658,10 +659,12 @@ msgid "Command used to run dpkg with root permissions."
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:266
+#, c-format
 msgid "The dpkg command is appended to the end, unless a %s is present."
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:267
+#, c-format
 msgid "If a %s is present, then the %s is replaced with the dpkg command."
 msgstr ""
 
@@ -690,11 +693,11 @@ msgstr ""
 #: src/Gtk/SettingsWindow.vala:299
 #, c-format
 msgid ""
-"The install/uninstall command is appended to the end, unless a %s is "
-"present."
+"The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
 
-#: src/Gtk/SettingsWindow.vala:30
+#: src/Gtk/SettingsWindow.vala:300
+#, c-format
 msgid ""
 "If a %s is present, then the %s is replaced with the install/uninstall "
 "command."

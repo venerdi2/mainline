@@ -1,3 +1,10 @@
+mainline (1.4.4) unstable; urgency=medium
+
+  * Fix vte child process management for vala<0.50
+    Fixes #293
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sat, 29 Jul 2023 01:31:00 -0400
+
 mainline (1.4.3) unstable; urgency=medium
 
   * Replace the all-on-one-page settings with a Gtk.Notebook with a page for each section

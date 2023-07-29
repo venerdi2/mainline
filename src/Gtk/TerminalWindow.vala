@@ -192,7 +192,7 @@ public class TerminalWindow : Gtk.Window {
 
 	void spawn_cb(Vte.Terminal t, Pid p, Error? e) {
 		vprint("child_pid="+p.to_string(),4);
-		if (p>1) { child_pid = p; t.watch_child(p); }
+		if (p>1) child_pid = p;
 		else child_has_exited(e.code);
 		if (e!=null) term.feed((uint8[])e.message);
 	}

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 20:14-0400\n"
+"POT-Creation-Date: 2023-07-29 00:38-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -479,7 +479,6 @@ msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
 msgstr ""
-""
 
 #: src/Gtk/MainWindow.vala:354
 msgid "Settings"
@@ -629,7 +628,8 @@ msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
-"Usa gli hash sha-256 dal file CHECKSUMS per verificare i download del file *.deb."
+"Usa gli hash sha-256 dal file CHECKSUMS per verificare i download del file *."
+"deb."
 
 #: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
@@ -673,10 +673,12 @@ msgid "Command used to run dpkg with root permissions."
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:266
+#, c-format
 msgid "The dpkg command is appended to the end, unless a %s is present."
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:267
+#, c-format
 msgid "If a %s is present, then the %s is replaced with the dpkg command."
 msgstr ""
 
@@ -708,7 +710,8 @@ msgid ""
 "The install/uninstall command is appended to the end, unless a %s is present."
 msgstr ""
 
-#: src/Gtk/SettingsWindow.vala:30
+#: src/Gtk/SettingsWindow.vala:300
+#, c-format
 msgid ""
 "If a %s is present, then the %s is replaced with the install/uninstall "
 "command."

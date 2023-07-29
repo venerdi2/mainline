@@ -35,15 +35,15 @@ public abstract class AsyncTask : GLib.Object {
 
 		try {
 			Process.spawn_async_with_pipes(
-				null,        // working dir
-				spawn_args,  // argv
-				null,        // environment
+				null,          // working dir
+				spawn_args,    // argv
+				null,          // environment
 				SpawnFlags.SEARCH_PATH,
-				null,        // child_setup()
+				null,          // child_setup()
 				out child_pid, // not used by us but must exist
 				out stdin_fd,
 				out stdout_fd,
-				null         //out stderr_fd
+				null           //out stderr_fd
 				);
 
 			// read stdout
