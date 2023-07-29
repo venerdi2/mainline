@@ -70,9 +70,8 @@ msgid "locked"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:514
-#, fuzzy
 msgid "running"
-msgstr "In gebruik"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:538 src/Common/LinuxKernel.vala:1029
 #: src/Common/LinuxKernel.vala:1111
@@ -80,19 +79,16 @@ msgid "is locked."
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:565
-#, fuzzy
 msgid "minor available"
-msgstr "beschikbaar"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:566
-#, fuzzy
 msgid "major available"
-msgstr "beschikbaar"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:567
-#, fuzzy
 msgid "latest available"
-msgstr "beschikbaar"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
@@ -111,9 +107,8 @@ msgid "Locked"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:778
-#, fuzzy
 msgid "installation"
-msgstr "Deïnstalleren"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
@@ -124,14 +119,12 @@ msgid "prevented"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:791 src/Common/LinuxKernel.vala:945
-#, fuzzy
 msgid "not found"
-msgstr "Het bestand is niet gevonden"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:821
-#, fuzzy
 msgid "needs update"
-msgstr "Recentste update"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:910
 msgid "Available Kernels"
@@ -142,9 +135,8 @@ msgid "Kernel"
 msgstr "Kernel"
 
 #: src/Common/LinuxKernel.vala:952
-#, fuzzy
 msgid "Download: no downloadable kernels specified"
-msgstr "Geen opdracht opgegeven"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:971
 msgid "enabled"
@@ -159,14 +151,12 @@ msgid "Cached"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1015
-#, fuzzy
 msgid "Installing selected kernels"
-msgstr "Geselecteerde kernels verwijderen"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1021 src/Common/LinuxKernel.vala:1058
-#, fuzzy
 msgid "Requested"
-msgstr "verzocht"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1024
 msgid "is already installed."
@@ -177,18 +167,16 @@ msgid "download failed."
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:519
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "Geen opdracht opgegeven"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1054
 msgid "Uninstalling selected kernels"
 msgstr "Geselecteerde kernels verwijderen"
 
 #: src/Common/LinuxKernel.vala:1061
-#, fuzzy
 msgid "Not uninstalling the currently running kernel"
-msgstr "de momenteel actieve kernel niet verwijderen"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:515
 msgid "is locked"
@@ -203,18 +191,16 @@ msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1107
-#, fuzzy
 msgid "is the highest installed version."
-msgstr "Verwijder alle behalve de hoogst geïnstalleerde versie"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1119
 msgid "Could not find running kernel in list"
 msgstr "De in gebruik zijnde kernel staat niet op de lijst"
 
 #: src/Common/LinuxKernel.vala:1124
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "Er zijn geen te verwijderen kernels"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1125 src/Console/AppConsole.vala:70
 msgid "done"
@@ -229,12 +215,11 @@ msgid "Continue? (y/N): "
 msgstr "Voortzetten? (j/N)"
 
 #: src/Common/LinuxKernel.vala:1146
-#, fuzzy
 msgid "No updates"
-msgstr "Geen updates gevonden"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1148
-#, fuzzy, c-format
+#, c-format
 msgid "Install Kernel Version %s ? (y/N): "
 msgstr "Wilt u versie %s installeren? (j/N): "
 
@@ -294,14 +279,12 @@ msgid "Check for kernel updates"
 msgstr "Controleren op kernelupdates"
 
 #: src/Console/AppConsole.vala:37
-#, fuzzy
 msgid "Check for kernel updates and send a desktop notification"
-msgstr "Controleren op kernelupdates en gebruiker op de hoogte brengen"
+msgstr ""
 
 #: src/Console/AppConsole.vala:38
-#, fuzzy
 msgid "List available kernels"
-msgstr "Alle beschikbare mainline-kernels tonen"
+msgstr ""
 
 #: src/Console/AppConsole.vala:39
 msgid "List installed kernels"
@@ -312,19 +295,16 @@ msgid "Install latest mainline kernel"
 msgstr "Recentste mainline-kernel installeren"
 
 #: src/Console/AppConsole.vala:41
-#, fuzzy
 msgid "Install latest point update in the current major version"
-msgstr "Recentste puntupdate uit huidige editie installeren"
+msgstr ""
 
 #: src/Console/AppConsole.vala:42
-#, fuzzy
 msgid "Install specified kernels"
-msgstr "Opgegeven kernel verwijderen"
+msgstr ""
 
 #: src/Console/AppConsole.vala:43
-#, fuzzy
 msgid "Uninstall specified kernels"
-msgstr "Opgegeven kernel verwijderen"
+msgstr ""
 
 #: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
@@ -367,9 +347,8 @@ msgid "Pause for keypress before exiting (for external terminal)"
 msgstr ""
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid "One or more version strings taken from the output of --list"
-msgstr "Een versietekenreeks uit de uitvoer van --list"
+msgstr ""
 
 #: src/Console/AppConsole.vala:59
 msgid ""
@@ -378,9 +357,8 @@ msgid ""
 msgstr ""
 
 #: src/Console/AppConsole.vala:60
-#, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "De momenteel actieve kernel wordt altijd genegeerd"
+msgstr ""
 
 #: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
@@ -395,9 +373,8 @@ msgid "Error deleting"
 msgstr ""
 
 #: src/Console/AppConsole.vala:215
-#, fuzzy
 msgid "Unknown command"
-msgstr "Onbekende optie"
+msgstr ""
 
 #: src/Console/AppConsole.vala:226
 msgid "Latest update"
@@ -412,23 +389,20 @@ msgid "No updates found"
 msgstr "Geen updates gevonden"
 
 #: src/Console/AppConsole.vala:235
-#, fuzzy
 msgid "Notifications disabled"
-msgstr "Meldingen zijn uitgeschakeld"
+msgstr ""
 
 #: src/Console/AppConsole.vala:240
 msgid "No"
 msgstr ""
 
 #: src/Console/AppConsole.vala:255
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "Melding tonen als er een puntupdate beschikbaar is"
+msgstr ""
 
 #: src/Console/AppConsole.vala:263
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "Melding tonen als er een grote update beschikbaar is"
+msgstr ""
 
 #: src/Console/AppConsole.vala:267
 #, c-format
@@ -528,36 +502,32 @@ msgid "Forked"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:444
-#, fuzzy
 msgid "Updating kernels"
-msgstr "Kernels bijwerken"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:495
 msgid "available"
 msgstr "beschikbaar"
 
 #: src/Gtk/MainWindow.vala:514
-#, fuzzy
 msgid "is already installed"
-msgstr "is al geïnstalleerd."
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
 msgid "adding"
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:12
-#, fuzzy
 msgid "Configuration"
-msgstr "Melding"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:40
-#, fuzzy
 msgid "Filter"
-msgstr "Filters"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
@@ -585,9 +555,8 @@ msgid ""
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:80
-#, fuzzy
 msgid "prior major versions  ( -1 = all )"
-msgstr "vorige hoofdversies ( -1 = alle )"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:88
 msgid "Notification"
@@ -598,9 +567,8 @@ msgid "Notify if a major release is available"
 msgstr "Melding tonen als er een grote update beschikbaar is"
 
 #: src/Gtk/SettingsWindow.vala:101
-#, fuzzy
 msgid "Notify if a minor release is available"
-msgstr "Melding tonen als er een grote update beschikbaar is"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
@@ -631,18 +599,16 @@ msgid "Network"
 msgstr "Netwerk"
 
 #: src/Gtk/SettingsWindow.vala:159
-#, fuzzy
 msgid "Connection Timeout:"
-msgstr "Verbindingstime-out na"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "seconden"
 
 #: src/Gtk/SettingsWindow.vala:175
-#, fuzzy
 msgid "Concurrent Downloads:"
-msgstr "Max. aantal gelijktijdige downloads"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:185
 msgid "Verify Checksums"
@@ -655,9 +621,8 @@ msgid ""
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:192
-#, fuzzy
 msgid "Keep Downloads"
-msgstr "Downloaden"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:195
 msgid ""
@@ -680,9 +645,8 @@ msgid "Mainline-PPA URL"
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:235
-#, fuzzy
 msgid "External Commands"
-msgstr "Opdrachten"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:242
 msgid "Superuser Authorization"

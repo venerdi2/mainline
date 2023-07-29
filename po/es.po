@@ -79,19 +79,16 @@ msgid "is locked."
 msgstr "está bloqueado"
 
 #: src/Common/LinuxKernel.vala:565
-#, fuzzy
 msgid "minor available"
-msgstr "disponibles"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:566
-#, fuzzy
 msgid "major available"
-msgstr "disponibles"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:567
-#, fuzzy
 msgid "latest available"
-msgstr "disponibles"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
@@ -106,14 +103,13 @@ msgid "Notes"
 msgstr "Notas"
 
 #: src/Common/LinuxKernel.vala:777
-#, fuzzy
 msgid "Locked"
 msgstr "bloqueado"
 
 #: src/Common/LinuxKernel.vala:778
-#, fuzzy
+
 msgid "installation"
-msgstr "Desinstalar"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
@@ -479,11 +475,10 @@ msgid "Reload"
 msgstr "Recargar"
 
 #: src/Gtk/MainWindow.vala:349
-#, fuzzy
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
-msgstr "Elimine y vuelva a cargar toda la información del kernel en caché"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:354
 msgid "Settings"
@@ -530,18 +525,16 @@ msgid "adding"
 msgstr "agregando"
 
 #: src/Gtk/SettingsWindow.vala:12
-#, fuzzy
 msgid "Configuration"
-msgstr "Notificación"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr "Terminado"
 
 #: src/Gtk/SettingsWindow.vala:40
-#, fuzzy
 msgid "Filter"
-msgstr "Filtros"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
@@ -572,7 +565,6 @@ msgid ""
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:80
-#, fuzzy
 msgid "prior major versions  ( -1 = all )"
 msgstr "Versiones principales anteriores  ( -1 = todas )"
 
@@ -582,12 +574,11 @@ msgstr "Notificación"
 
 #: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
-msgstr "Notificar si hay una versión importante disponible"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:101
-#, fuzzy
 msgid "Notify if a minor release is available"
-msgstr "Notificar si hay una versión importante disponible"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
@@ -618,60 +609,48 @@ msgid "Network"
 msgstr "Red"
 
 #: src/Gtk/SettingsWindow.vala:159
-#, fuzzy
+
 msgid "Connection Timeout:"
-msgstr "Tiempo de espera de conexión a Internet en"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "sobras"
 
 #: src/Gtk/SettingsWindow.vala:175
-#, fuzzy
 msgid "Concurrent Downloads:"
-msgstr "Descargas máximas de la competencia"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:185
 msgid "Verify Checksums"
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:188
-#, fuzzy
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
 "Utilice los hash sha-256 desde archivo CHECKSUMS para verificar las "
-"descargas del archivo .deb."
+"descargas del archivo *.deb."
 
 #: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
 msgstr "Mantener Descargas"
 
 #: src/Gtk/SettingsWindow.vala:195
-#, fuzzy
 msgid ""
 "Retain downloaded *.deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again."
 msgstr ""
-"Conserve los archivos .deb descargados después de la instalación y "
+"Conserve los archivos *.deb descargados después de la instalación y "
 "reutilícelos para desinstalarlos/reinstalarlos en lugar de volver a "
-"descargarlos.\n"
-"\n"
-"Todavía se eliminan una vez que se vuelven más antiguos que la configuración "
-"\"Mostrar versiones principales anteriores\", o si se han actualizado en el "
-"sitio de la línea principal-ppa."
+"descargarlos."
 
 #: src/Gtk/SettingsWindow.vala:197
-#, fuzzy
 msgid ""
 "They are still deleted once they become older than the \"Show N prior major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-"Conserve los archivos .deb descargados después de la instalación y "
-"reutilícelos para desinstalarlos/reinstalarlos en lugar de volver a "
-"descargarlos.\n"
-"\n"
 "Todavía se eliminan una vez que se vuelven más antiguos que la configuración "
 "\"Mostrar versiones principales anteriores\", o si se han actualizado en el "
 "sitio de la línea principal-ppa."

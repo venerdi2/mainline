@@ -70,9 +70,8 @@ msgid "locked"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:514
-#, fuzzy
 msgid "running"
-msgstr "구동 중"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:538 src/Common/LinuxKernel.vala:1029
 #: src/Common/LinuxKernel.vala:1111
@@ -80,19 +79,16 @@ msgid "is locked."
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:565
-#, fuzzy
 msgid "minor available"
-msgstr "사용가능"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:566
-#, fuzzy
 msgid "major available"
-msgstr "사용가능"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:567
-#, fuzzy
 msgid "latest available"
-msgstr "사용가능"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:758
 msgid "Packages Available"
@@ -111,9 +107,8 @@ msgid "Locked"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:778
-#, fuzzy
 msgid "installation"
-msgstr "삭제"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:778
 msgid "removal"
@@ -124,14 +119,12 @@ msgid "prevented"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:791 src/Common/LinuxKernel.vala:945
-#, fuzzy
 msgid "not found"
-msgstr "파일을 찾을 수 없습니다"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:821
-#, fuzzy
 msgid "needs update"
-msgstr "최신 업데이트"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:910
 msgid "Available Kernels"
@@ -142,9 +135,8 @@ msgid "Kernel"
 msgstr "커널"
 
 #: src/Common/LinuxKernel.vala:952
-#, fuzzy
 msgid "Download: no downloadable kernels specified"
-msgstr "지정한 명령어가 없습니다"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:971
 msgid "enabled"
@@ -159,14 +151,12 @@ msgid "Cached"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1015
-#, fuzzy
 msgid "Installing selected kernels"
-msgstr "선택한 커널 제거"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1021 src/Common/LinuxKernel.vala:1058
-#, fuzzy
 msgid "Requested"
-msgstr "요청"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1024
 msgid "is already installed."
@@ -177,18 +167,16 @@ msgid "download failed."
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1041 src/Gtk/MainWindow.vala:519
-#, fuzzy
 msgid "Install: no installable kernels specified"
-msgstr "지정한 명령어가 없습니다"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1054
 msgid "Uninstalling selected kernels"
 msgstr "선택한 커널 제거"
 
 #: src/Common/LinuxKernel.vala:1061
-#, fuzzy
 msgid "Not uninstalling the currently running kernel"
-msgstr "현재 실행 중인 커널을 제거하지 않음"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1066 src/Gtk/MainWindow.vala:515
 msgid "is locked"
@@ -203,18 +191,16 @@ msgid "Uninstall: no uninstallable packages found"
 msgstr ""
 
 #: src/Common/LinuxKernel.vala:1107
-#, fuzzy
 msgid "is the highest installed version."
-msgstr "설치된 가장 높은 버전을 제외한 모든 버전을 제거합니다"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1119
 msgid "Could not find running kernel in list"
 msgstr "현재 실행 중인 커널을 찾을 수 없습니다"
 
 #: src/Common/LinuxKernel.vala:1124
-#, fuzzy
 msgid "No old kernels to uninstall"
-msgstr "삭제할 커널을 찾을 수 없습니다"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1125 src/Console/AppConsole.vala:70
 msgid "done"
@@ -225,17 +211,14 @@ msgid "The following kernels will be uninstalled"
 msgstr "풀이"
 
 #: src/Common/LinuxKernel.vala:1132 src/lib/l.misc.vala:12
-#, fuzzy
 msgid "Continue? (y/N): "
 msgstr "계속하시겠습니까? (예/아): "
 
 #: src/Common/LinuxKernel.vala:1146
-#, fuzzy
 msgid "No updates"
-msgstr "업데이트를 찾을 수 없습니다"
+msgstr ""
 
 #: src/Common/LinuxKernel.vala:1148
-#, fuzzy, c-format
 msgid "Install Kernel Version %s ? (y/N): "
 msgstr "커널 %s 버전을 설치하시겠습니까? (예/아): "
 
@@ -293,14 +276,13 @@ msgid "Check for kernel updates"
 msgstr "커널 업데이트 확인"
 
 #: src/Console/AppConsole.vala:37
-#, fuzzy
 msgid "Check for kernel updates and send a desktop notification"
-msgstr "커널 업데이트를 확인하고 현재 사용자에게 알림"
+msgstr ""
 
 #: src/Console/AppConsole.vala:38
-#, fuzzy
+
 msgid "List available kernels"
-msgstr "사용 가능한 모든 메인라인 커널 보기"
+msgstr ""
 
 #: src/Console/AppConsole.vala:39
 msgid "List installed kernels"
@@ -311,19 +293,16 @@ msgid "Install latest mainline kernel"
 msgstr "최신 메인라인 커널 설치"
 
 #: src/Console/AppConsole.vala:41
-#, fuzzy
 msgid "Install latest point update in the current major version"
-msgstr "현재 사용중인 배포판을 위한 최신 포인트 업데이트 설치"
+msgstr ""
 
 #: src/Console/AppConsole.vala:42
-#, fuzzy
 msgid "Install specified kernels"
-msgstr "지정한 커널 삭제"
+msgstr ""
 
 #: src/Console/AppConsole.vala:43
-#, fuzzy
 msgid "Uninstall specified kernels"
-msgstr "지정한 커널 삭제"
+msgstr ""
 
 #: src/Console/AppConsole.vala:44
 msgid "Uninstall all but the highest installed version"
@@ -366,9 +345,8 @@ msgid "Pause for keypress before exiting (for external terminal)"
 msgstr ""
 
 #: src/Console/AppConsole.vala:58
-#, fuzzy
 msgid "One or more version strings taken from the output of --list"
-msgstr "--list 의 출력에서 가져온 버전 문자열"
+msgstr ""
 
 #: src/Console/AppConsole.vala:59
 msgid ""
@@ -377,9 +355,8 @@ msgid ""
 msgstr ""
 
 #: src/Console/AppConsole.vala:60
-#, fuzzy
 msgid "Locked kernels and the currently running kernel are ignored"
-msgstr "현재 실행중인 커널은 항상 무시됩니다"
+msgstr ""
 
 #: src/Console/AppConsole.vala:162 src/Gtk/AppGtk.vala:89
 msgid "Unknown option"
@@ -394,9 +371,8 @@ msgid "Error deleting"
 msgstr ""
 
 #: src/Console/AppConsole.vala:215
-#, fuzzy
 msgid "Unknown command"
-msgstr "알 수 없는 옵션"
+msgstr ""
 
 #: src/Console/AppConsole.vala:226
 msgid "Latest update"
@@ -411,23 +387,20 @@ msgid "No updates found"
 msgstr "업데이트를 찾을 수 없습니다"
 
 #: src/Console/AppConsole.vala:235
-#, fuzzy
 msgid "Notifications disabled"
-msgstr "알림이 비활성화 되었습니다"
+msgstr ""
 
 #: src/Console/AppConsole.vala:240
 msgid "No"
 msgstr ""
 
 #: src/Console/AppConsole.vala:255
-#, fuzzy
 msgid "notify point releases disabled"
-msgstr "포인트 릴리즈가 있으면 알림"
+msgstr ""
 
 #: src/Console/AppConsole.vala:263
-#, fuzzy
 msgid "notify major releases disabled"
-msgstr "메이저 릴리즈가 있으면 알림"
+msgstr ""
 
 #: src/Console/AppConsole.vala:267
 #, c-format
@@ -527,36 +500,32 @@ msgid "Forked"
 msgstr ""
 
 #: src/Gtk/MainWindow.vala:444
-#, fuzzy
 msgid "Updating kernels"
-msgstr "커널 업데이트"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:495
 msgid "available"
 msgstr "사용가능"
 
 #: src/Gtk/MainWindow.vala:514
-#, fuzzy
 msgid "is already installed"
-msgstr "가 이미 설치되어 있습니다"
+msgstr ""
 
 #: src/Gtk/MainWindow.vala:516
 msgid "adding"
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:12
-#, fuzzy
 msgid "Configuration"
-msgstr "알림"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:24
 msgid "Done"
 msgstr "끝난"
 
 #: src/Gtk/SettingsWindow.vala:40
-#, fuzzy
 msgid "Filter"
-msgstr "필터"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide unstable and RC releases"
@@ -586,9 +555,8 @@ msgid ""
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:80
-#, fuzzy
 msgid "prior major versions  ( -1 = all )"
-msgstr "이전 주 버전  ( -1 = 모두 )"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:88
 msgid "Notification"
@@ -596,12 +564,11 @@ msgstr "알림"
 
 #: src/Gtk/SettingsWindow.vala:95
 msgid "Notify if a major release is available"
-msgstr "메이저 릴리즈가 있으면 알림"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:101
-#, fuzzy
 msgid "Notify if a minor release is available"
-msgstr "메이저 릴리즈가 있으면 알림"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:108
 msgid "Seconds interval enabled for debugging"
@@ -632,56 +599,45 @@ msgid "Network"
 msgstr "네트워크"
 
 #: src/Gtk/SettingsWindow.vala:159
-#, fuzzy
 msgid "Connection Timeout:"
-msgstr "인터넷 연결 시간 초과"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
 msgstr "초"
 
 #: src/Gtk/SettingsWindow.vala:175
-#, fuzzy
 msgid "Concurrent Downloads:"
-msgstr "동시 다운로드 최대 수"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:185
 msgid "Verify Checksums"
 msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:188
-#, fuzzy
 msgid ""
 "Use the sha-256 hashes from the CHECKSUMS file to verify the *.deb file "
 "downloads."
 msgstr ""
-"CHECKSUMS 파일에서 sha-256 해시를 사용하여 .deb 파일 다운로드를 확인하십시오."
+""
 
 #: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Downloads"
-msgstr "다운로드한 .deb 파일 유지"
+msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:195
-#, fuzzy
 msgid ""
 "Retain downloaded *.deb files after install and re-use them for uninstall/"
 "reinstall instead of downloading again."
 msgstr ""
 "설치 후 다운로드한 .deb 파일을 유지하고 다시 다운로드하는 대신 제거/재설치에 "
-"다시 사용하십시오.\n"
-"\n"
-"\"이전 주 버전 표시\" 설정보다 오래되었거나 mainline-ppa 사이트에서 업데이트"
-"된 경우 여전히 삭제됩니다."
+"다시 사용하십시오."
 
 #: src/Gtk/SettingsWindow.vala:197
-#, fuzzy
 msgid ""
 "They are still deleted once they become older than the \"Show N prior major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
-"설치 후 다운로드한 .deb 파일을 유지하고 다시 다운로드하는 대신 제거/재설치에 "
-"다시 사용하십시오.\n"
-"\n"
 "\"이전 주 버전 표시\" 설정보다 오래되었거나 mainline-ppa 사이트에서 업데이트"
 "된 경우 여전히 삭제됩니다."
 
