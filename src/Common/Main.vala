@@ -75,7 +75,7 @@ const string[] DEFAULT_AUTH_CMDS = {
 	"gksudo",
 	"gksu --su-mode",
 	"pbrun"
-	};
+};
 
 // Terminal command must stay foreground and block, not fork and return immediately.
 // Most like xterm block naturally.
@@ -100,12 +100,10 @@ const string[] DEFAULT_TERM_CMDS = {
 	"stterm -e",
 	"pterm -e",
 	"xterm -e"
-	};
-	// It's a shame, x-terminal-emulator would be the perfect thing to use,
-	// automatic most-likely terminal for most users.
-	// But since it might point to xfce terminal, we can't use it.
+};
+	// It's a shame but we cannot use any of these:
+	//"xfce4-terminal -e \"%s\"",           // does not block
 	//"x-terminal-emulator -e",             // might point to xfce
-	//"xfce4-terminal -e \"%s\"",           // xfce4-terminal refuses to block
 	//"exo-open --launch TerminalEmulator", // might point to xfce
 
 // window sizes
@@ -118,6 +116,15 @@ const int      DEFAULT_TERM_HEIGHT             = 600   ;
 const int      DEFAULT_TERM_X                  = -1    ;
 const int      DEFAULT_TERM_Y                  = -1    ;
 const double   DEFAULT_TERM_FONT_SCALE         = 1     ;
+
+// Translators: uppercase, or otherwise emphasized, display version of a single character for "yes", ex: "Y" or "[y]"
+const string YN_Y = _("Y");
+// Translators: uppercase, or otherwise emphasized, display version of a single character for "no", ex: "N" or "[n]"
+const string YN_N = _("N");
+// Translators: literal single keypress response for "yes", matching Y above, ex: "y"
+const string YN_y = _("y");
+// Translators: literal single keypress response for "no", matching N above, ex: "n"
+const string YN_n = _("n");
 
 enum SIG {
 #if VALA_0_40
@@ -161,7 +168,8 @@ public class Main : GLib.Object {
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;
 	public bool RUN_NOTIFY_SCRIPT = false;
-	public bool yes = false;
+	public bool no_mode = false;
+	public bool yes_mode = false;
 
 	// config
 	public string ppa_uri              = DEFAULT_PPA_URI;

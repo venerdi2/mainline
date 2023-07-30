@@ -50,9 +50,10 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ "  --include-unstable  " + _("Include unstable and RC releases") + "\n"
 		+ "  --exclude-unstable  " + _("Exclude unstable and RC releases") + "\n"
-		+ "  -v|--verbose [n]    " + _("Verbosity. Set to n if given, or increment.") + "\n"
-		+ "  -y|--yes            " + _("Assume Yes for all prompts (non-interactive mode)") + "\n"
-		+ "  --pause             " + _("Pause for keypress before exiting (for external terminal)") + "\n"
+		+ "  -y|--yes            " + _("Assume Yes for all prompts") + "\n"
+		+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over --yes") + "\n"
+		+ "  -v|--verbose [#]    " + _("Verbosity - sets to level # if given, or increments by 1") + "\n"
+		+ "  --pause             " + _("Pause for keypress before exiting") + "\n"
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
@@ -68,7 +69,7 @@ public class AppConsole : GLib.Object {
 		var console = new AppConsole();
 		var r = console.parse_arguments(argv);
 		vprint(BRANDING_SHORTNAME+": "+_("done"));
-		if (hold_on_exit) ask("(press Enter to close)");
+		if (hold_on_exit) ask("(press Enter to close)",false,true);
 		return r;
 	}
 
@@ -78,6 +79,7 @@ public class AppConsole : GLib.Object {
 		vprint(help,0);
 	}
 
+	// misnomer, it's not just parsing but dispatching and doing everything
 	public int parse_arguments(string[] args) {
 
 		// check argument count -----------------
@@ -105,7 +107,13 @@ public class AppConsole : GLib.Object {
 
 				case "-y":
 				case "--yes":
-					App.yes = true;
+					App.yes_mode = true;
+					break;
+
+				case "-n":
+				case "--no":
+				case "--dry-run":
+					App.no_mode = true;
 					break;
 
 				// used by gui with external terminal
@@ -163,6 +171,9 @@ public class AppConsole : GLib.Object {
 					return 1;
 			}
 		}
+
+		if (App.no_mode) vprint(_("DRY-RUN MODE"));
+		else if (App.yes_mode) vprint(_("NO-CONFIRM MODE"));
 
 		// run command --------------------------------------
 

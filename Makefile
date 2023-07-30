@@ -107,16 +107,19 @@ $(misc_files): %: %.src BRANDING.mak
 
 $(pot_file): $(common_vala_files) $(tui_vala_files) $(gui_vala_files)
 	xgettext \
-		--sort-by-file \
 		--package-name="$(BRANDING_SHORTNAME)" \
 		--package-version="$(BRANDING_VERSION)" \
+		--copyright-holder="" \
+		--from-code=UTF-8 \
 		--language=Vala \
+		--add-comments="Translators:" \
+		--no-wrap \
 		--output=$(@) \
 		$(common_vala_files) $(tui_vala_files) $(gui_vala_files)
 
 $(po_files): %: $(pot_file)
-	msgmerge --backup=none --update -v $(@) $(pot_file)
-	msgattrib --output-file=$(@) --no-obsolete $(@)
+	msgmerge --backup=none --previous --no-fuzzy-matching --update --no-wrap -v $(@) $(pot_file)
+	msgattrib --output-file=$(@) --no-obsolete --previous --clear-fuzzy --empty $(@)
 	@touch $(@)
 
 TRANSLATORS: $(po_files)

@@ -1,3 +1,4 @@
+
 namespace l.misc {
 
 	public void set_locale() {
@@ -9,12 +10,14 @@ namespace l.misc {
 		//Intl.bindtextdomain(BRANDING_SHORTNAME,LOCALE_DIR);
 	}
 
-	public bool ask(string prompt = "\n"+_("Continue? (y/N): "), bool def = false) {
-		if (App.yes) return true;
-		vprint(prompt,0,stdout,false);
+	public bool ask(string? prompt = null, bool def = false, bool force = false) {
+		if (App.no_mode && !force) return false; // --no takes precedence over --yes
+		if (App.yes_mode && !force) return true;
+		var p = (prompt==null) ? _("Continue?")+" ("+YN_y+"/"+YN_N+"):" : prompt;
+		vprint(p,0,stdout,false);
 		var a = stdin.read_line().strip().down();
-		if (a.has_prefix(_("y"))) return true;
-		if (a.has_prefix(_("n"))) return false;
+		if (a.has_prefix(YN_y)) return true;
+		if (a.has_prefix(YN_n)) return false;
 		return def;
 	}
 

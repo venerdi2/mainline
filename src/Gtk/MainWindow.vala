@@ -511,14 +511,14 @@ public class MainWindow : Window {
 
 		vlist = {};
 		foreach (var k in klist) {
-			if (k.is_installed) { vprint(k.version_main+" "+_("is already installed")); continue; }
-			if (k.is_locked) { vprint(k.version_main+" "+_("is locked")); continue; }
+			if (k.is_installed) { vprint(_("%s is already installed").printf(k.version_main)); continue; }
+			if (k.is_locked) { vprint(_("%s is locked").printf(k.version_main)); continue; }
 			vprint(_("adding")+" "+k.version_main);
 			vlist += k.version_main;
 		}
 		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
 
-		string[] cmd = { BRANDING_SHORTNAME };
+		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
 		cmd += "--install";
@@ -532,7 +532,7 @@ public class MainWindow : Window {
 		string[] vlist = {};
 		foreach(var k in klist) vlist += k.version_main;
 
-		string[] cmd = { BRANDING_SHORTNAME };
+		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
 		cmd += "--uninstall";
@@ -541,7 +541,7 @@ public class MainWindow : Window {
 	}
 
 	public void uninstall_old() {
-		string[] cmd = { BRANDING_SHORTNAME };
+		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
 		cmd += "--uninstall-old";

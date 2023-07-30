@@ -60,10 +60,10 @@ public class SettingsWindow : Gtk.Window {
 		chk_hide_invalid.toggled.connect(()=>{ App.hide_invalid = chk_hide_invalid.active; });
 
 		// hide flavors
-		var chk_hide_flavors = new Gtk.CheckButton.with_label(_("Hide flavors other than \"generic\""));
+		var chk_hide_flavors = new Gtk.CheckButton.with_label(_("Hide flavors other than %s").printf("\"generic\""));
 		pgbox.add(chk_hide_flavors);
 		chk_hide_flavors.set_tooltip_text(
-			_("Don't show the alternative flavors like \"lowlatency\", \"generic-64k\", \"generic-lpae\", \"server\", \"virtual\", etc.")
+			_("Hide the alternative flavors like %s, and %s, etc.").printf("\"lowlatency\"","\"generic-64k\"")
 		);
 		chk_hide_flavors.active = App.hide_flavors;
 		chk_hide_flavors.toggled.connect(()=>{ App.hide_flavors = chk_hide_flavors.active; });
@@ -263,8 +263,8 @@ public class SettingsWindow : Gtk.Window {
 		cbt_authcmd.set_tooltip_text(
 			_("Command used to run dpkg with root permissions.") + "\n"
 			+ "\n"
-			+ _("The dpkg command is appended to the end, unless a %s is present.") + "\n"
-			+ _("If a %s is present, then the %s is replaced with the dpkg command.") + "\n"
+			+ /* xgettext:no-c-format */ _("The dpkg command is appended to the end, unless a %s is present.") + "\n"
+			+ /* xgettext:no-c-format */ _("If a %s is present, then the %s is replaced with the dpkg command.") + "\n"
 			+ _("The built-in list contains examples of both.") +"\n"
 			+ "\n"
 			+ _("You may edit any of the built-in default commands to customize it.") + "\n"
@@ -296,8 +296,8 @@ public class SettingsWindow : Gtk.Window {
 		cbt_termcmd.set_tooltip_text(
 			_("Terminal command used to run")+" \""+BRANDING_SHORTNAME+" --install|--uninstall ...\"\n"
 			+ "\n"
-			+ _("The install/uninstall command is appended to the end, unless a %s is present.") + "\n"
-			+ _("If a %s is present, then the %s is replaced with the install/uninstall command.") + "\n"
+			+ /* xgettext:no-c-format */ _("The install/uninstall command is appended to the end, unless a %s is present.") + "\n"
+			+ /* xgettext:no-c-format */ _("If a %s is present, then the %s is replaced with the install/uninstall command.") + "\n"
 			+ _("The built-in list contains examples of both.") + "\n"
 			+ "\n"
 			+ _("The terminal program must stay in the foreground and block while the command is running, not fork and return immediately.") + "\n"
