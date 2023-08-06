@@ -23,6 +23,7 @@ using l.misc;
 using l.exec;
 
 public Main App;
+public AppConsole CLI;
 
 public class AppConsole : GLib.Object {
 
@@ -38,22 +39,29 @@ public class AppConsole : GLib.Object {
 		+ "  --list              " + _("List available kernels") + "\n"
 		+ "  --list-installed    " + _("List installed kernels") + "\n"
 		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
-		+ "  --install-point     " + _("Install latest point update in the current major version") + "\n"
+		+ "  --install-minor     " + _("Install latest mainline kernel without going to a new major version") + "\n"
 		+ "  --install <names>   " + _("Install specified kernels") + "(1)(2)\n"
 		+ "  --uninstall <names> " + _("Uninstall specified kernels") + "(1)(2)\n"
 		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(2)\n"
-		+ "  --download <names>  " + _("Download specified kernels") + "(1)\n"
+		+ "  --download <names>  " + _("Download the specified kernels") + "(1)\n"
+		+ "  --lock <names>      " + _("Lock the specified kernels") + "(1)\n"
+		+ "  --unlock <names>    " + _("Unlock the specified kernels") + "(1)\n"
 		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
 		+ "  -h|--help           " + _("This help") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
-		+ "  --include-unstable  " + _("Include unstable and RC releases") + "\n"
-		+ "  --exclude-unstable  " + _("Exclude unstable and RC releases") + "\n"
+		+ "  --include-rc        " + _("Include RC and unstable releases") + "\n"
+		+ "  --exclude-rc        " + _("Exclude RC and unstable releases") + "\n"
+		+ "  --include-flavors   " + _("Include flavors other than \"generic\"") + "\n"
+		+ "  --exclude-flavors   " + _("Exclude flavors other than \"generic\"") + "\n"
+		+ "  --include-invalid   " + _("Include failed/incomplete builds") + "\n"
+		+ "  --exclude-invalid   " + _("Exclude failed/incomplete builds") + "\n"
+		+ "  --previous-majors # " + _("Include # (or \"all\" or \"none\") previous major versions") +"\n"
 		+ "  -y|--yes            " + _("Assume Yes for all prompts") + "\n"
 		+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over --yes") + "\n"
 		+ "  -v|--verbose [#]    " + _("Verbosity - sets to level # if given, or increments by 1") + "\n"
-		+ "  --pause             " + _("Pause for keypress before exiting") + "\n"
+		+ "  --pause             " + _("Pause and require keypress before exiting") + "\n"
 		+ "\n"
 		+ "Notes:\n"
 		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
@@ -66,10 +74,10 @@ public class AppConsole : GLib.Object {
 
 	public static int main (string[] argv) {
 		App = new Main();
-		var console = new AppConsole();
-		var r = console.parse_arguments(argv);
+		CLI = new AppConsole();
+		var r = CLI.parse_arguments(argv);
 		vprint(BRANDING_SHORTNAME+": "+_("done"));
-		if (hold_on_exit) ask("(press Enter to close)",false,true);
+		if (hold_on_exit) ask(_("(press Enter to close)"),false,true);
 		return r;
 	}
 
@@ -127,13 +135,31 @@ public class AppConsole : GLib.Object {
 					App.index_is_fresh = true;
 					break;
 
+				// config file overrides
 				case "--show-unstable": // back compat
 				case "--include-unstable":
-					App.hide_unstable = false;
+				case "--include-rc":
+					App.opt_hide_unstable = false;
 					break;
 				case "--hide-unstable": // back compat
 				case "--exclude-unstable":
-					App.hide_unstable = true;
+				case "--exclude-rc":
+					App.opt_hide_unstable = true;
+					break;
+				case "--include-flavors":
+					App.opt_hide_flavors = false;
+					break;
+				case "--exclude-flavors":
+					App.opt_hide_flavors = true;
+					break;
+				case "--include-invalid":
+					App.opt_hide_invalid = false;
+					break;
+				case "--exclude-invalid":
+					App.opt_hide_invalid = true;
+					break;
+				case "--previous-majors":
+					if (set_previous_majors(args[i+1])) i++;
 					break;
 
 				case "--list":
@@ -144,11 +170,11 @@ public class AppConsole : GLib.Object {
 				case "--install-point":
 				case "--purge-old-kernels": // back compat
 				case "--uninstall-old":
-				case "--clean-cache": // back compat
-				case "--delete-cache":
 					cmd = a;
 					break;
 
+				case "--lock":
+				case "--unlock":
 				case "--download":
 				case "--remove":
 				case "--uninstall":
@@ -157,13 +183,20 @@ public class AppConsole : GLib.Object {
 					if (++i < args.length) vlist = args[i];
 					break;
 
+				case "--clean-cache":
+				case "--delete-cache":
+					int r = 1;
+					if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted")+" "+Main.CACHE_DIR); }
+					else vprint(_("Error deleting")+" "+Main.CACHE_DIR,1,stderr);
+					return r;
+
 				case "":
 				case "-?":
 				case "-h":
 				case "--help":
 				case "--version":
 					show_help();
-					break;
+					return 0;
 
 				default:
 					show_help();
@@ -172,8 +205,10 @@ public class AppConsole : GLib.Object {
 			}
 		}
 
-		if (App.no_mode) vprint(_("DRY-RUN MODE"));
-		else if (App.yes_mode) vprint(_("NO-CONFIRM MODE"));
+		if (App.no_mode) vprint(_("DRY-RUN MODE"),2);
+		else if (App.yes_mode && !App.index_is_fresh) vprint(_("NO-CONFIRM MODE"),2);
+
+		App.init2();
 
 		// run command --------------------------------------
 
@@ -184,8 +219,16 @@ public class AppConsole : GLib.Object {
 				break;
 
 			case "--list-installed":
+				// --- method a
+				//Package.mk_dpkg_list();
+				//LinuxKernel.check_installed(true);
+				// --- method b
+				//LinuxKernel.mk_kernel_list(true);
+				//LinuxKernel.print_list(true);
+				// --- method c
 				Package.mk_dpkg_list();
-				LinuxKernel.check_installed();
+				vprint(_("Installed Kernels")+":");
+				foreach (var p in Package.dpkg_list) if (p.name.has_prefix("linux-image-")) vprint(p.name);
 				break;
 
 			case "--check":
@@ -205,12 +248,11 @@ public class AppConsole : GLib.Object {
 			case "--uninstall-old":
 				return LinuxKernel.kunin_old();
 
-			case "--clean-cache":
-			case "--delete-cache":
-				int r = 1;
-				if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted")+" "+Main.CACHE_DIR); }
-				else vprint(_("Error deleting")+" "+Main.CACHE_DIR,1,stderr);
-				return r;
+			case "--lock":
+				return LinuxKernel.lock_klist(LinuxKernel.vlist_to_klist(vlist,true),true);
+
+			case "--unlock":
+				return LinuxKernel.lock_klist(LinuxKernel.vlist_to_klist(vlist,true),false);
 
 			case "--download":
 				return LinuxKernel.download_klist(LinuxKernel.vlist_to_klist(vlist,true));
@@ -230,7 +272,16 @@ public class AppConsole : GLib.Object {
 		return 0;
 	}
 
-	private void print_updates() {
+	bool set_previous_majors(string? s) {
+		string a = (s==null) ? "" : s.strip();
+		if (a.length<1 || a.has_prefix("-")) return false;
+		if (a=="none") a = "0";
+		if (a=="all") a = "-1";
+		App.opt_previous_majors = int.parse(a);
+		return true;
+	}
+
+	void print_updates() {
 		LinuxKernel.mk_kernel_list(true);
 		var km = LinuxKernel.kernel_update_major;
 		var kp = LinuxKernel.kernel_update_minor;
@@ -239,7 +290,7 @@ public class AppConsole : GLib.Object {
 		if ((km == null) && (kp == null)) vprint(_("No updates found"));
 	}
 
-	private int notify_user() {
+	int notify_user() {
 		vprint("notify_user()",3);
 
 		if (!App.notify_major && !App.notify_minor) {
@@ -263,7 +314,7 @@ public class AppConsole : GLib.Object {
 			if (k!=null && k.version_main!="") available = k.version_main;
 			if (exists(App.MINOR_SEEN_FILE)) seen = fread(App.MINOR_SEEN_FILE).strip();
 			if (seen!=available) fwrite(App.MINOR_SEEN_FILE,available);
-		} else vprint(_("notify point releases disabled"),2);
+		} else vprint(_("notify minor releases disabled"),2);
 
 		// if notify_major enabled and there is one, simply overwrite available
 		if (App.notify_major) {

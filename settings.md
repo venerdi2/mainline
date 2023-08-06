@@ -70,7 +70,6 @@ terminal window
 xterm-equivalent command used to run `BRANDING_SHORTNAME --install/--uninstall` in.
 
 You can specify almost any terminal program, but one limitation is the program must stay in the foreground and block while the command is running.  
-Most do this by default, but some will fork and return immediately by default, but have a command line flag you can use to control that, and some just always fork and have no way to tell them not to.  
-This is why xfce4-terminal is not in the built-in list of supported terminal apps, and gnome-terminal is, but only because it has a --wait option.
+Most do this by default, but some need special commandline flags, ie gnome -> `--wait`, kde -> `--no-fork`, xfce4 -> `--disable-server`
 
 After selecting a command (other than the default \[internal-vte\])), you can edit it to customize the terminal's appearance.

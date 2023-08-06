@@ -240,7 +240,7 @@ public class MainWindow : Window {
 	}
 
 	void tv_refresh() {
-		vprint("tv_refresh()",2);
+		vprint("tv_refresh()",3);
 
 		int i = -1;
 		Gdk.Pixbuf p;
@@ -249,11 +249,10 @@ public class MainWindow : Window {
 
 		foreach (var k in LinuxKernel.kernel_list) {
 
-			if (!k.is_installed) { // don't hide anything that's installed
-				if (k.is_invalid && App.hide_invalid) continue; // hide invalid if settings say to
-				if (k.is_unstable && App.hide_unstable) continue; // hide unstable if settings say to
-				if (k.flavor!="generic" && App.hide_flavors) continue; // hide flavors if settings say to
-				if (k.version_major < LinuxKernel.THRESHOLD_MAJOR) continue; // hide below show_previous setting
+			if (!k.is_installed) {
+				if (k.is_invalid && App.hide_invalid) continue;
+				if (k.is_unstable && App.hide_unstable) continue;
+				if (k.flavor!="generic" && App.hide_flavors) continue;
 			}
 
 			tm.append(out iter);
@@ -369,11 +368,13 @@ public class MainWindow : Window {
 
 	void do_settings () {
 		// capture some settings before to detect if they change
+
 		// settings that change the selection set -> trigger cache update
-		var old_previous_majors = App.previous_majors;
-		var old_hide_unstable = App.hide_unstable;
 		var old_hide_invalid = App.hide_invalid;
+		var old_hide_unstable = App.hide_unstable;
 		var old_hide_flavors = App.hide_flavors;
+		var old_previous_majors = App.previous_majors;
+
 		// settings that change the notification behavior -> trigger notify script update
 		var old_notify_interval_unit = App.notify_interval_unit;
 		var old_notify_interval_value = App.notify_interval_value;
@@ -386,19 +387,19 @@ public class MainWindow : Window {
 
 			App.save_app_config(); // blindly sets RUN_NOTIFY_SCRIPT = true;
 
-			// if no notify settings changed, then un-flag the automatic notify script update
+			// if notify settings did not change, then un-flag notify script update
 			if (App.notify_interval_value == old_notify_interval_value &&
 				App.notify_interval_unit == old_notify_interval_unit &&
 				App.notify_major == old_notify_major &&
 				App.notify_minor == old_notify_minor) App.RUN_NOTIFY_SCRIPT = false;
 
 			// if the selection set changed, then update cache
-			if (App.previous_majors != old_previous_majors ||
+			if (App.hide_invalid != old_hide_invalid ||
 				App.hide_unstable != old_hide_unstable ||
-				App.hide_invalid != old_hide_invalid ||
-				App.hide_flavors != old_hide_flavors) update_cache();
+				App.hide_flavors != old_hide_flavors ||
+				App.previous_majors != old_previous_majors) update_cache();
 
-			// in case it was due but we didn't run update_cache()
+			// in case we didn't run update_cache()
 			App.run_notify_script_if_due();
 
 		});
@@ -432,7 +433,7 @@ public class MainWindow : Window {
 
 	// Full re-load. Delete cache and clear session state and start over.
 	void reload_cache() {
-		vprint("reload_cache()",2);
+		vprint("reload_cache()",3);
 		LinuxKernel.delete_cache();
 		App.ppa_tried = false;
 		update_cache();
@@ -440,9 +441,8 @@ public class MainWindow : Window {
 
 	// Update the cache as optimally as possible.
 	void update_cache() {
-		vprint("update_cache()",2);
-		string msg = _("Updating kernels");
-		vprint(msg);
+		vprint("update_cache()",3);
+		string msg = _("Updating Kernels...");
 
 		if (!App.try_ppa()) return;
 
@@ -505,18 +505,9 @@ public class MainWindow : Window {
 			foreach (var k in klist) vlist += k.version_main;
 			vprint("do_install("+string.joinv(" ",vlist)+")");
 		}
-
-		// if we jumped directly here from a notification, switch to normal interactive mode after this
-		if (App.command == "install") App.command = "list";
-
+		if (klist==null || klist.size<1) return;
 		vlist = {};
-		foreach (var k in klist) {
-			if (k.is_installed) { vprint(_("%s is already installed").printf(k.version_main)); continue; }
-			if (k.is_locked) { vprint(_("%s is locked").printf(k.version_main)); continue; }
-			vprint(_("adding")+" "+k.version_main);
-			vlist += k.version_main;
-		}
-		if (vlist.length==0) { vprint(_("Install: no installable kernels specified")); return; }
+		foreach (var k in klist) vlist += k.version_main;
 
 		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
@@ -524,12 +515,19 @@ public class MainWindow : Window {
 		cmd += "--install";
 		cmd += string.joinv(",",vlist);
 		exec_in_term(cmd);
+
+		// if we jumped directly here from a notification, switch to normal interactive mode
+		if (App.command == "install") App.command = "list";
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
-		if (klist==null || klist.size<1) return;
-
 		string[] vlist = {};
+		if (Main.VERBOSE>2) {
+			foreach (var k in klist) vlist += k.version_main;
+			vprint("do_uninstall("+string.joinv(" ",vlist)+")");
+		}
+		if (klist==null || klist.size<1) return;
+		vlist = {};
 		foreach(var k in klist) vlist += k.version_main;
 
 		string[] cmd = { BRANDING_SHORTNAME, "--yes" };

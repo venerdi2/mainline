@@ -188,9 +188,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 * Replace the commandline parser  
 * Toggles to show/hide the rc or invalid kernels in the main ui instead of going to settings  
 * Right-click menu for more functions for a given kernel, such as reloading the cache just for a single kernel to check for new build status etc, without adding 18 buttons all over the ui.  
-* Add commandline flags for all settings. Currently the console app is controlled by several settings that it has no way to edit or override, other than by the user manually editing config.json  
 * Properly handle when a kernel has multiple builds like 5.16
-* When uninstalling one flavor, do not uninstall the common _all.deb package(s) if another flaver using the same package is installed
 
 # hints  
 * cron job to always have the latest kernel installed.  

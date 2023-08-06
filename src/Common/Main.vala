@@ -50,9 +50,12 @@ const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/~ker
 const string   DEFAULT_ALL_PROXY               = ""    ;
 const int      DEFAULT_CONNECT_TIMEOUT_SECONDS = 15    ;
 const int      DEFAULT_CONCURRENT_DOWNLOADS    = 4     ;
+const bool     DEFAULT_VERIFY_CHECKSUMS        = true  ;
+const bool     DEFAULT_KEEP_DEBS               = false ;
+const bool     DEFAULT_KEEP_CACHE              = false ;
 // filters
-const bool     DEFAULT_HIDE_UNSTABLE           = true  ;
 const bool     DEFAULT_HIDE_INVALID            = true  ;
+const bool     DEFAULT_HIDE_UNSTABLE           = true  ;
 const bool     DEFAULT_HIDE_FLAVORS            = false ;
 const int      DEFAULT_PREVIOUS_MAJORS         = 0     ;
 // notifications
@@ -60,12 +63,10 @@ const bool     DEFAULT_NOTIFY_MAJOR            = false ;
 const bool     DEFAULT_NOTIFY_MINOR            = false ;
 const int      DEFAULT_NOTIFY_INTERVAL_VALUE   = 4     ;
 const int      DEFAULT_NOTIFY_INTERVAL_UNIT    = 0     ;
-// other
-const bool     DEFAULT_VERIFY_CHECKSUMS        = true  ;
-const bool     DEFAULT_KEEP_DOWNLOADS          = false ;
+// external commands - the first in each list is the default
 const string[] DEFAULT_AUTH_CMDS = {
-	//"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}", // only needed for gui apps
 	"pkexec",
+	//"pkexec env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY}", // only needed for gui apps
 	"sudo",
 	"su -c \"%s\"",
 	"doas",
@@ -76,21 +77,22 @@ const string[] DEFAULT_AUTH_CMDS = {
 	"gksu --su-mode",
 	"pbrun"
 };
-
 // Terminal command must stay foreground and block, not fork and return immediately.
-// Most like xterm block naturally.
-// Some like gnome-terminal have a special commandline option to make them block.
-// Some like xfce4-terminal do not block no matter what you do, and can not be used.
-// so not all terminals are usable
+// Most terminal apps are like like xterm and naturally block by default.
+// Some require special commandline options to make them block.
+// Don't try to include wrappers like exo-open or x-terminal-emulator
+// because the needed commandline options varies depending on the actual
+// terminal app they happen to point to at any given time.
 const string[] DEFAULT_TERM_CMDS = {
 	"[internal-vte]",
 	"gnome-terminal --wait --",
-	"konsole --no-fork -e", // hoping --no-fork does what it says
-	"mate-terminal -e \"%s\"",
+	"konsole --no-fork -e",
+	"xfce4-terminal --disable-server -e \"%s\"",
 	"lxterminal -e",
 	"Eterm -e",
+	"rxvt -name "+BRANDING_SHORTNAME+" -bg black -fg white -sr -e",
+	"mate-terminal -e \"%s\"",
 	"cool-retro-term -e",
-	"urxvt -name "+BRANDING_SHORTNAME+" -bg black -fg white -sr -e",
 	"sakura -e",
 	"termit -e",
 	"kitty",
@@ -101,10 +103,6 @@ const string[] DEFAULT_TERM_CMDS = {
 	"pterm -e",
 	"xterm -e"
 };
-	// It's a shame but we cannot use any of these:
-	//"xfce4-terminal -e \"%s\"",           // does not block
-	//"x-terminal-emulator -e",             // might point to xfce
-	//"exo-open --launch TerminalEmulator", // might point to xfce
 
 // window sizes
 const int      DEFAULT_WINDOW_WIDTH            = 800   ;
@@ -117,13 +115,17 @@ const int      DEFAULT_TERM_X                  = -1    ;
 const int      DEFAULT_TERM_Y                  = -1    ;
 const double   DEFAULT_TERM_FONT_SCALE         = 1     ;
 
-// Translators: uppercase, or otherwise emphasized, display version of a single character for "yes", ex: "Y" or "[y]"
+/* Translators: uppercase, or otherwise emphasized, display version of a single character for "yes",
+ * string may be longer than one character. Examples: "Y" or "[y]" */
 const string YN_Y = _("Y");
-// Translators: uppercase, or otherwise emphasized, display version of a single character for "no", ex: "N" or "[n]"
-const string YN_N = _("N");
-// Translators: literal single keypress response for "yes", matching Y above, ex: "y"
+/* Translators: lowercase, or otherwise not-emphasized, single keypress user response for "yes",
+ * Example: "y" */
 const string YN_y = _("y");
-// Translators: literal single keypress response for "no", matching N above, ex: "n"
+/* Translators: uppercase, or otherwise emphasized, display version of a single character for "no",
+ * string may be longer than one character. Examples: "N" or "[n]" */
+const string YN_N = _("N");
+/* Translators: lowercase, or otherwise not-emphasized, single keypress user response for "no",
+ * Example: "n" */
 const string YN_n = _("n");
 
 enum SIG {
@@ -170,14 +172,15 @@ public class Main : GLib.Object {
 	public bool RUN_NOTIFY_SCRIPT = false;
 	public bool no_mode = false;
 	public bool yes_mode = false;
+	public bool gui_mode = false;
 
 	// config
 	public string ppa_uri              = DEFAULT_PPA_URI;
 	public string all_proxy            = DEFAULT_ALL_PROXY;
 	public int connect_timeout_seconds = DEFAULT_CONNECT_TIMEOUT_SECONDS;
 	public int concurrent_downloads    = DEFAULT_CONCURRENT_DOWNLOADS;
-	public bool hide_unstable          = DEFAULT_HIDE_UNSTABLE;
 	public bool hide_invalid           = DEFAULT_HIDE_INVALID;
+	public bool hide_unstable          = DEFAULT_HIDE_UNSTABLE;
 	public bool hide_flavors           = DEFAULT_HIDE_FLAVORS;
 	public int previous_majors         = DEFAULT_PREVIOUS_MAJORS;
 	public bool notify_major           = DEFAULT_NOTIFY_MAJOR;
@@ -185,7 +188,8 @@ public class Main : GLib.Object {
 	public int notify_interval_unit    = DEFAULT_NOTIFY_INTERVAL_UNIT;
 	public int notify_interval_value   = DEFAULT_NOTIFY_INTERVAL_VALUE;
 	public bool verify_checksums       = DEFAULT_VERIFY_CHECKSUMS;
-	public bool keep_downloads         = DEFAULT_KEEP_DOWNLOADS;
+	public bool keep_debs              = DEFAULT_KEEP_DEBS;
+	public bool keep_cache             = DEFAULT_KEEP_CACHE;
 	public string auth_cmd             = DEFAULT_AUTH_CMDS[0];
 	public string term_cmd             = DEFAULT_TERM_CMDS[0];
 	// save & restore window size & position
@@ -199,30 +203,52 @@ public class Main : GLib.Object {
 	public int    term_y               = DEFAULT_TERM_Y;
 	public double term_font_scale      = DEFAULT_TERM_FONT_SCALE;
 
+	// commandline config overrides
+	public bool? opt_hide_invalid    = null;
+	public bool? opt_hide_unstable   = null;
+	public bool? opt_hide_flavors    = null;
+	public int?  opt_previous_majors = null;
+
 	public static Rand rnd;
 
 	public Main() {
+		Intl.setlocale(LocaleCategory.ALL,"");
 		get_env();
-		set_locale();
 		vprint(BRANDING_SHORTNAME+" "+BRANDING_VERSION);
+	}
+
+	public void init2() {
 		if (!Thread.supported()) { vprint(_("Missing Thread support in GLib."),1,stderr); exit(1); }
+
+		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
+		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
+		STARTUP_DESKTOP_FILE = CONFIG_DIR + "/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
+		NOTIFICATION_ID_FILE = CONFIG_DIR + "/notification_id";
+		MAJOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.major";
+		MINOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.minor";
+
 		rnd = new Rand();
-		init_paths();
+
 		load_app_config();
+
 		Package.initialize();
 		LinuxKernel.initialize();
 	}
 
 	public void get_env() {
+		// VERBOSE - do before any vprint() you want affected
 		var s = Environment.get_variable("VERBOSE");
-		if (s != null) set_verbose(s.down().strip()); // don't do VERBOSE++
+		if (s != null) set_verbose(s.down().strip());
 
+		// TERM - set window title
 		s = Environment.get_variable("TERM");
-		string[] tlist = { "xterm", "linux", "ansi", "vt" };
-		foreach (var t in tlist) if (s.contains(t)) {
-			vprint("\033]0;"+BRANDING_LONGNAME+"\007",1,stdout,false);
-			break;
-		}
+		string[] l = { "xterm", "linux", "ansi", "vt" };
+		foreach (var t in l) if (s.contains(t)) { vprint("\033]0;"+BRANDING_LONGNAME+"\007",1,stdout,false); break; }
+
+		// PATHS
+		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
+		DATA_DIR = Environment.get_user_data_dir() + "/" + BRANDING_SHORTNAME;
+		CACHE_DIR = Environment.get_user_cache_dir() + "/" + BRANDING_SHORTNAME;
 	}
 
 	public bool set_verbose(string? s) {
@@ -246,28 +272,16 @@ public class Main : GLib.Object {
 		return r;
 	}
 
-	public void init_paths() {
-		CONFIG_DIR = Environment.get_user_config_dir() + "/" + BRANDING_SHORTNAME;
-		DATA_DIR = Environment.get_user_data_dir() + "/" + BRANDING_SHORTNAME;
-		CACHE_DIR = Environment.get_user_cache_dir() + "/" + BRANDING_SHORTNAME;
-		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
-		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
-		STARTUP_DESKTOP_FILE = CONFIG_DIR + "/autostart/" + BRANDING_SHORTNAME + "-notify.desktop";
-		NOTIFICATION_ID_FILE = CONFIG_DIR + "/notification_id";
-		MAJOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.major";
-		MINOR_SEEN_FILE = CONFIG_DIR + "/notification_seen.minor";
-	}
-
 	public void save_app_config() {
-		vprint("save_app_config()",2);
+		vprint("save_app_config()",3);
 
 		var config = new Json.Object();
 		config.set_string_member(  "ppa_uri",                 ppa_uri                 );
 		config.set_string_member(  "all_proxy",               all_proxy               );
 		config.set_int_member(     "connect_timeout_seconds", connect_timeout_seconds );
 		config.set_int_member(     "concurrent_downloads",    concurrent_downloads    );
-		config.set_boolean_member( "hide_unstable",           hide_unstable           );
 		config.set_boolean_member( "hide_invalid",            hide_invalid            );
+		config.set_boolean_member( "hide_unstable",           hide_unstable           );
 		config.set_boolean_member( "hide_flavors",            hide_flavors            );
 		config.set_int_member(     "previous_majors",         previous_majors         );
 		config.set_boolean_member( "notify_major",            notify_major            );
@@ -275,7 +289,8 @@ public class Main : GLib.Object {
 		config.set_int_member(     "notify_interval_unit",    notify_interval_unit    );
 		config.set_int_member(     "notify_interval_value",   notify_interval_value   );
 		config.set_boolean_member( "verify_checksums",        verify_checksums        );
-		config.set_boolean_member( "keep_downloads",          keep_downloads          );
+		config.set_boolean_member( "keep_debs",               keep_debs               );
+		config.set_boolean_member( "keep_cache",              keep_cache              );
 		config.set_string_member(  "auth_cmd",                auth_cmd                );
 		config.set_string_member(  "term_cmd",                term_cmd                );
 		config.set_int_member(     "window_width",            window_width            );
@@ -299,7 +314,7 @@ public class Main : GLib.Object {
 		try { json.to_file(APP_CONFIG_FILE); }
 		catch (Error e) { vprint(e.message,1,stderr); }
 
-		vprint(_("Wrote config file")+": "+APP_CONFIG_FILE,2);
+		vprint(_("Wrote config file")+": "+APP_CONFIG_FILE,3);
 
 		update_notification_files();
 	}
@@ -310,7 +325,7 @@ public class Main : GLib.Object {
 	}
 
 	public void load_app_config() {
-		vprint("load_app_config()",2);
+		vprint("load_app_config()",3);
 
 		var parser = new Json.Parser();
 
@@ -318,11 +333,13 @@ public class Main : GLib.Object {
 		try { parser.load_from_file(APP_CONFIG_FILE); }
 		catch (Error e) { cf = false; vprint(e.message,2); }
 		if (!cf) {
-			vprint(_("No config file"),2);
+			vprint(_("No config file"),3);
 			save_app_config();
 			try { parser.load_from_file(APP_CONFIG_FILE); }
 			catch (Error e) { vprint(e.message,1,stderr); exit(1); }
 		}
+
+		if (VERBOSE>2) vprint(fread(APP_CONFIG_FILE));
 
 		var node = parser.get_root();
 		var config = node.get_object();
@@ -332,8 +349,8 @@ public class Main : GLib.Object {
 		all_proxy               =       config.get_string_member_with_default(  "all_proxy",               DEFAULT_ALL_PROXY               );
 		connect_timeout_seconds = (int) config.get_int_member_with_default(     "connect_timeout_seconds", DEFAULT_CONNECT_TIMEOUT_SECONDS );
 		concurrent_downloads    = (int) config.get_int_member_with_default(     "concurrent_downloads",    DEFAULT_CONCURRENT_DOWNLOADS    );
-		hide_unstable           =       config.get_boolean_member_with_default( "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
 		hide_invalid            =       config.get_boolean_member_with_default( "hide_invalid",            DEFAULT_HIDE_INVALID            );
+		hide_unstable           =       config.get_boolean_member_with_default( "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
 		hide_flavors            =       config.get_boolean_member_with_default( "hide_flavors",            DEFAULT_HIDE_FLAVORS            );
 		previous_majors         = (int) config.get_int_member_with_default(     "previous_majors",         DEFAULT_PREVIOUS_MAJORS         );
 		notify_major            =       config.get_boolean_member_with_default( "notify_major",            DEFAULT_NOTIFY_MAJOR            );
@@ -341,7 +358,8 @@ public class Main : GLib.Object {
 		notify_interval_unit    = (int) config.get_int_member_with_default(     "notify_interval_unit",    DEFAULT_NOTIFY_INTERVAL_UNIT    );
 		notify_interval_value   = (int) config.get_int_member_with_default(     "notify_interval_value",   DEFAULT_NOTIFY_INTERVAL_VALUE   );
 		verify_checksums        =       config.get_boolean_member_with_default( "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
-		keep_downloads          =       config.get_boolean_member_with_default( "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
+		keep_debs               =       config.get_boolean_member_with_default( "keep_debs",               DEFAULT_KEEP_DEBS               );
+		keep_cache              =       config.get_boolean_member_with_default( "keep_cache",              DEFAULT_KEEP_CACHE              );
 		auth_cmd                =       config.get_string_member_with_default(  "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
 		term_cmd                =       config.get_string_member_with_default(  "term_cmd",                DEFAULT_TERM_CMDS[0]            );
 		window_width            = (int) config.get_int_member_with_default(     "window_width",            DEFAULT_WINDOW_WIDTH            );
@@ -358,8 +376,8 @@ public class Main : GLib.Object {
 		all_proxy               = json_get_string( config, "all_proxy",               DEFAULT_ALL_PROXY               );
 		connect_timeout_seconds = json_get_int(    config, "connect_timeout_seconds", DEFAULT_CONNECT_TIMEOUT_SECONDS );
 		concurrent_downloads    = json_get_int(    config, "concurrent_downloads",    DEFAULT_CONCURRENT_DOWNLOADS    );
-		hide_unstable           = json_get_bool(   config, "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
 		hide_invalid            = json_get_bool(   config, "hide_invalid",            DEFAULT_HIDE_INVALID            );
+		hide_unstable           = json_get_bool(   config, "hide_unstable",           DEFAULT_HIDE_UNSTABLE           );
 		hide_flavors            = json_get_bool(   config, "hide_flavors",            DEFAULT_HIDE_FLAVORS            );
 		previous_majors         = json_get_int(    config, "previous_majors",         DEFAULT_PREVIOUS_MAJORS         );
 		notify_major            = json_get_bool(   config, "notify_major",            DEFAULT_NOTIFY_MAJOR            );
@@ -367,7 +385,8 @@ public class Main : GLib.Object {
 		notify_interval_unit    = json_get_int(    config, "notify_interval_unit",    DEFAULT_NOTIFY_INTERVAL_UNIT    );
 		notify_interval_value   = json_get_int(    config, "notify_interval_value",   DEFAULT_NOTIFY_INTERVAL_VALUE   );
 		verify_checksums        = json_get_bool(   config, "verify_checksums",        DEFAULT_VERIFY_CHECKSUMS        );
-		keep_downloads          = json_get_bool(   config, "keep_downloads",          DEFAULT_KEEP_DOWNLOADS          );
+		keep_debs               = json_get_bool(   config, "keep_debs",               DEFAULT_KEEP_DEBS               );
+		keep_cache              = json_get_bool(   config, "keep_cache",              DEFAULT_KEEP_CACHE              );
 		auth_cmd                = json_get_string( config, "auth_cmd",                DEFAULT_AUTH_CMDS[0]            );
 		term_cmd                = json_get_string( config, "term_cmd",                DEFAULT_TERM_CMDS[0]            );
 		window_width            = json_get_int(    config, "window_width",            DEFAULT_WINDOW_WIDTH            );
@@ -381,17 +400,27 @@ public class Main : GLib.Object {
 		term_font_scale         = json_get_double( config, "term_font_scale",         DEFAULT_TERM_FONT_SCALE         );
 #endif
 
+		// update old or otherwise invalid config file
 		bool resave = false;
 		if (ppa_uri.length==0) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
 		if (!ppa_uri.has_suffix("/")) { ppa_uri += "/"; resave = true; }
 		if (connect_timeout_seconds>600) connect_timeout_seconds = 600; // aria2c max allowed
 		if (resave) save_app_config();
 
-		vprint(_("Loaded config file")+": "+APP_CONFIG_FILE,2);
+		// apply commandline overrides
+		if (opt_hide_invalid != null) hide_invalid = opt_hide_invalid;
+		if (opt_hide_unstable != null) hide_unstable = opt_hide_unstable;
+		if (opt_hide_flavors != null) hide_flavors = opt_hide_flavors;
+		if (opt_previous_majors != null && opt_previous_majors != previous_majors) {
+			previous_majors = opt_previous_majors;
+			keep_cache = true;
+		}
+
+		vprint(_("Loaded config file")+": "+APP_CONFIG_FILE,3);
 	}
 
 	private void update_startup_script() {
-		vprint("update_startup_script()",2);
+		vprint("update_startup_script()",3);
 
 		// construct the commandline argument for "sleep"
 		int n = notify_interval_value; string u = "";
@@ -458,7 +487,7 @@ public class Main : GLib.Object {
 	}
 
 	private void update_startup_desktop_file() {
-		vprint("update_startup_desktop_file()",2);
+		vprint("update_startup_desktop_file()",3);
 
 		if (notify_minor || notify_major) {
 			string s = "[Desktop Entry]\n"

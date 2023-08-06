@@ -44,7 +44,7 @@ public class SettingsWindow : Gtk.Window {
 		pgbox.margin = SPACING*2;
 
 		// hide unstable
-		var chk_hide_rc = new Gtk.CheckButton.with_label(_("Hide unstable and RC releases"));
+		var chk_hide_rc = new Gtk.CheckButton.with_label(_("Hide RC and unstable releases"));
 		pgbox.add(chk_hide_rc);
 		//chk_hide_rc.set_tooltip_text(_("..."));
 		chk_hide_rc.active = App.hide_unstable;
@@ -63,7 +63,7 @@ public class SettingsWindow : Gtk.Window {
 		var chk_hide_flavors = new Gtk.CheckButton.with_label(_("Hide flavors other than %s").printf("\"generic\""));
 		pgbox.add(chk_hide_flavors);
 		chk_hide_flavors.set_tooltip_text(
-			_("Hide the alternative flavors like %s, and %s, etc.").printf("\"lowlatency\"","\"generic-64k\"")
+			_("Don't show the alternative flavors such as %s and %s").printf("\"lowlatency\"","\"generic-64k\"")
 		);
 		chk_hide_flavors.active = App.hide_flavors;
 		chk_hide_flavors.toggled.connect(()=>{ App.hide_flavors = chk_hide_flavors.active; });
@@ -189,15 +189,29 @@ public class SettingsWindow : Gtk.Window {
 		chk_checksums.toggled.connect(()=>{ App.verify_checksums = chk_checksums.active; });
 
 		// keep downloads
-		var chk_keep = new Gtk.CheckButton.with_label(_("Keep Downloads"));
-		pgbox.add(chk_keep);
-		chk_keep.set_tooltip_text(
+		var chk_keep_debs = new Gtk.CheckButton.with_label(_("Keep Debs"));
+		pgbox.add(chk_keep_debs);
+		chk_keep_debs.set_tooltip_text(
 			_("Retain downloaded *.deb files after install and re-use them for uninstall/reinstall instead of downloading again.") + "\n"
 			+ "\n"
-			+ _("They are still deleted once they become older than the \"Show N prior major versions\" setting, or if they have been updated on the mainline-ppa site.")
+			+ _("They are still deleted once they become older than the \"prior major versions\" setting, or if they have been updated on the mainline-ppa site.")
 		);
-		chk_keep.active = App.keep_downloads;
-		chk_keep.toggled.connect(()=>{ App.keep_downloads = chk_keep.active; });
+		chk_keep_debs.active = App.keep_debs;
+		chk_keep_debs.toggled.connect(()=>{ App.keep_debs = chk_keep_debs.active; });
+
+		// keep cache
+		var chk_keep_cache = new Gtk.CheckButton.with_label(_("Keep Cache"));
+		pgbox.add(chk_keep_cache);
+		chk_keep_cache.set_tooltip_text(
+			_("Don't trim the cached index.html files to just the installed versions and higher, instead essentially maintain a local mirror of the entire history from the mainline-ppa site.") + "\n"
+			+ "\n"
+			+ _("This speeds up some things a little at the cost of about 20M of hard drive space.") + "\n"
+			+ _("It skips a step on every startup that loops through all known kernel versions just to see if there are any old ones to delete, and avoids deleting and re-downloading the same files if you change the \"prior major versions\" setting up and down.") + "\n"
+			+ "\n"
+			+ _("As of 6.5.x a full cache is about 22M, and a trimmed cache is about 2M.")
+		);
+		chk_keep_cache.active = App.keep_cache;
+		chk_keep_cache.toggled.connect(()=>{ App.keep_cache = chk_keep_cache.active; });
 
 		// proxy
 		label = new Gtk.Label(_("Proxy"));

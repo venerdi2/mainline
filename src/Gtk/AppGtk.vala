@@ -26,13 +26,16 @@ public Main App;
 public class AppGtk : GLib.Object {
 
 	public static int main (string[] argv) {
+		App = new Main();
+		App.gui_mode = true;
+		parse_arguments(argv);
+		App.init2();
+
 		X.init_threads();
 		Gtk.init(ref argv);
-		App = new Main();
-		parse_arguments(argv);
-		var appwin = new MainWindow();
-		appwin.destroy.connect(Gtk.main_quit);
-		appwin.show_all();
+		var GUI = new MainWindow();
+		GUI.destroy.connect(Gtk.main_quit);
+		GUI.show_all();
 
 		Gtk.main();
 
@@ -55,8 +58,8 @@ public class AppGtk : GLib.Object {
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
-		+ "  --debug      " + _("Print debug information") + "\n"
-		+ "  --help       " + _("Show all options") + "\n"
+		+ "  -v|--verbose [#]    " + _("Verbosity - sets to level # if given, or increments by 1") + "\n"
+		+ "  -h|--help           " + _("This help") + "\n"
 		+ "\n"
 		;
 
@@ -65,16 +68,16 @@ public class AppGtk : GLib.Object {
 		{
 			switch (args[i].down()) {
 
-			case "-v":
-			case "--debug":
-			case "--verbose":
-				if (App.set_verbose(args[i+1])) i++;
-				break;
-
 			// this is the notification action
 			case "--install":
 				App.command = "install";
 				if (++i < args.length) App.requested_versions = args[i].down();
+				break;
+
+			case "-v":
+			case "--debug":
+			case "--verbose":
+				if (App.set_verbose(args[i+1])) i++;
 				break;
 
 			case "-?":

@@ -4,12 +4,13 @@ using l.exec;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
-	public string kname = "";
-	public string kver = "";
-	public string version_main = "";
+	public string version = ""; // display version without _flavor
+	public string flavor = "";  // generic, lowlatency, lpae, etc
+	public string name = "";    // dpkg name
+	public string vers = "";    // dpkg version
+	public string version_main = ""; // display version with _flavor
 	public string page_uri = "";
 	public string notes = "";
-	public string flavor = ""; // generic, generic-64k, lowlatency, etc
 
 	public int version_major = -1;
 	public int version_minor = -1;
@@ -18,7 +19,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string version_extra = "";
 	public string version_sort = "";
 
-	public string deb_image = "";
 	public Gee.HashMap<string,string> deb_url_list = new Gee.HashMap<string,string>(); // assosciated .deb files K=filename,V=url
 	public Gee.HashMap<string,string> deb_checksum_list = new Gee.HashMap<string,string>(); // assosciated .deb files K=filename,V=checksum
 	public string[] pkg_list = {}; // assosciated dpkg package names
@@ -59,7 +59,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static LinuxKernel kernel_oldest_installed;
 	public static LinuxKernel kernel_last_stable_ppa_dirs_v1;
 	public static LinuxKernel kernel_last_unstable_ppa_dirs_v1;
-	//public static LinuxKernel kernel_last_stable_ppa_dirs_v2; // if the site changes again
+	//public static LinuxKernel kernel_last_stable_ppa_dirs_v2; // add more if the site changes again
 	//public static LinuxKernel kernel_last_unstable_ppa_dirs_v2;
 
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
@@ -75,13 +75,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Regex rex_modules = null;
 
 	// constructor
-	public LinuxKernel(string s="") {
-		vprint("LinuxKernel("+s+")",4);
+	public LinuxKernel(string v="",string f="generic") {
+		vprint("LinuxKernel("+v+","+f+")",4);
 
-		split_version_string(s);
+		version = v;
+		flavor = f;
+
+		split_version_string();
+		version_main = version;
+		if (flavor!="generic") version_main+="_"+flavor;
 
 		// for cache dir, strip off "_flavor"
-		CACHE_KDIR = Main.CACHE_DIR+"/"+version_main.split("_")[0];
+		CACHE_KDIR = Main.CACHE_DIR+"/"+version;
 		CACHED_PAGE = CACHE_KDIR+"/index.html";
 		CHECKSUMS_FILE = CACHE_KDIR+"/CHECKSUMS";
 		INVALID_FILE = CACHE_KDIR+"/invalid";
@@ -94,6 +99,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// wrap kernel_list.add(k) to avoid doing some work unless we're actually going to use it
 	public void kernel_list_add() {
+		vprint("kernel_list_add("+this.version_main+")",4);
+
 		PPA_DIRS_VER = ppa_dirs_ver();
 		CHECKSUMS_URI = checksums_uri();
 		if (exists(NOTES_FILE)) notes = fread(NOTES_FILE).strip();
@@ -106,6 +113,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// class initialize
 	public static void initialize() {
+		vprint("LinuxKernel initialize()",3);
 		new LinuxKernel(); // instance must be created before setting static members
 
 		MAIN_INDEX_FILE = Main.CACHE_DIR+"/index.html";
@@ -131,19 +139,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_last_unstable_ppa_dirs_v1 = new LinuxKernel("5.7-rc7");
 		//kernel_last_stable_ppa_dirs_v2 = new LinuxKernel("x.y.z"); // if the site changes again
 		//kernel_last_unstable_ppa_dirs_v2 = new LinuxKernel("x.y-rcZ");
-
 	}
 
 	// dep: lsb_release
 	public static string check_distribution() {
-		vprint("check_distribution()",2);
+		vprint("check_distribution()",3);
 		string dist = "";
 
 		string std_out, std_err;
 		int e = exec_sync("lsb_release -sd", out std_out, out std_err);
 		if ((e == 0) && (std_out != null)) {
 			dist = std_out.strip();
-			vprint(_("Distribution") + ": %s".printf(dist));
+			vprint(_("Distribution")+": "+dist,2);
 		}
 
 		return dist;
@@ -151,14 +158,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: dpkg
 	public static string check_package_architecture() {
-		vprint("check_package_architecture()",2);
+		vprint("check_package_architecture()",3);
 		string arch = "";
 
 		string std_out, std_err;
 		int e = exec_sync("dpkg --print-architecture", out std_out, out std_err);
 		if ((e == 0) && (std_out != null)) {
 			arch = std_out.strip();
-			vprint(_("Architecture") + ": %s".printf(arch));
+			vprint(_("Architecture")+": "+arch,2);
 		}
 
 		return arch;
@@ -166,19 +173,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: uname
 	public static string check_running_kernel() {
-		vprint("check_running_kernel()",2);
+		vprint("check_running_kernel()",3);
 		string ver = "";
 
 		string std_out;
 		exec_sync("uname -r", out std_out, null);
-
 		ver = std_out.strip().replace("\n","");
-		vprint(_("Running kernel") + ": %s".printf(ver));
 
 		return ver;
 	}
 
 	public static void initialize_regex() {
+		vprint("initialize_regex()",3);
 		try {
 
 			// uri to a kernel page and it's datetime, in the main index.html
@@ -224,6 +230,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	static void trim_cache() {
+		if (App.keep_cache) return;
 		foreach (var k in kall) {
 			if (k.is_installed) continue;
 			// don't remove anything >= threshold_major even if hidden
@@ -232,7 +239,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public static void delete_cache() {
-		vprint("delete_cache()",2);
+		vprint("delete_cache()",3);
 		kernel_list.clear();
 		kall.clear();
 		rm(Main.CACHE_DIR);
@@ -267,7 +274,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public delegate void Notifier(bool last = false);
 
 	public static void mk_kernel_list(bool wait = true, owned Notifier? notifier = null) {
-		vprint("mk_kernel_list()",2);
+		vprint("mk_kernel_list()",3);
 		try {
 			var worker = new Thread<bool>.try(null, () => mk_kernel_list_worker((owned)notifier) );
 			if (wait) worker.join();
@@ -275,7 +282,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	static bool mk_kernel_list_worker(owned Notifier? notifier) {
-		vprint("mk_kernel_list_worker()",2);
+		vprint("mk_kernel_list_worker()",3);
+		if (!App.gui_mode || Main.VERBOSE>1) vprint("Updating Kernels...");
 
 		kernel_list.clear();
 		App.progress_total = 0;
@@ -297,6 +305,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var downloads = new Gee.ArrayList<DownloadItem>();
 
 		// add files to download list
+		vprint(_("loading cached pages"),3);
 		foreach (var k in kernel_list) {
 			if (App.cancelled) break;
 
@@ -335,7 +344,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (downloads.size>0 && App.ppa_up) {
 
 			// download the indexes
-			vprint(_("Fetching individual kernel indexes")+"...");
+			vprint(_("downloading new pages"),3);
 			App.progress_total = downloads.size;
 			var mgr = new DownloadTask();
 			foreach (var item in downloads) mgr.add_to_queue(item);
@@ -349,6 +358,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			pbar(0,0);
 
 			// load the indexes
+			vprint(_("loading new pages"),3);
 			foreach (var k in kernels_to_update) {
 				k.load_cached_page();
 				k.set_status();
@@ -361,6 +371,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		trim_cache();
 		check_updates();
 
+		// print summary
+		if (Main.VERBOSE>1) {
+			vprint(_("Currently Running")+": "+kernel_active.version_main);
+			vprint(_("Oldest Installed")+": "+kernel_oldest_installed.version_main);
+			vprint(_("Newest Installed")+": "+kernel_latest_installed.version_main);
+			vprint(_("Newest Available")+": "+kernel_latest_available.version_main);
+			if (kernel_update_minor!=null) vprint(_("Available Minor Update")+": "+kernel_update_minor.version_main);
+			if (kernel_update_major!=null) vprint(_("Available Major Update")+": "+kernel_update_major.version_main);
+		}
+
 		// This is here because it had to be delayed from whenever settings
 		// changed until now, so that the notify script instance of ourself
 		// doesn't do it's own mk_kernel_list() at the same time while we still are.
@@ -372,7 +392,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// download the main index.html listing all mainline kernels
 	static bool download_main_index() {
-		vprint("download_main_index()",2);
+		vprint("download_main_index()",3);
 
 		if (!exists(MAIN_INDEX_FILE)) App.index_is_fresh=false;
 		if (App.index_is_fresh) return true;
@@ -388,14 +408,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var mgr = new DownloadTask();
 		mgr.add_to_queue(item);
 
-		vprint(_("Updating from")+": '"+App.ppa_uri+"'");
 		mgr.execute();
 		while (mgr.is_running) Thread.usleep(250000);
 
 		if (exists(tfn)) {
 			FileUtils.rename(tfn,MAIN_INDEX_FILE);
 			App.index_is_fresh=true;
-			vprint(_("OK"),2);
+			vprint(_("OK"),3);
 			return true;
 		} else {
 			vprint(_("FAILED"),1,stderr);
@@ -405,7 +424,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// read the main index.html listing all kernels
 	static void load_main_index() {
-		vprint("load_main_index()",2);
+		vprint("load_main_index()",3);
 		if (THRESHOLD_MAJOR<0) find_thresholds(true);
 		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
 
@@ -428,7 +447,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			k.is_mainline = true;
 			if (k.version_major>=THRESHOLD_MAJOR) {
 				k.ppa_datetime = int64.parse(mi.fetch(2)+mi.fetch(3)+mi.fetch(4)+mi.fetch(5)+mi.fetch(6));
-				vprint("kernel_list.add("+k.version_main+") "+k.ppa_datetime.to_string(),2);
 				k.kernel_list_add(); // the active list
 			}
 			kall.add(k); // a seperate list with nothing removed, used in trim_cache()
@@ -440,42 +458,57 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public static void check_installed() {
-		vprint("check_installed()",2);
+		vprint("check_installed()",3);
 
-		string msg = "";
+		//string msg = "";
 
 		if (Package.dpkg_list.size<1) vprint("!!! dpkg_list empty!");
 		if (kernel_list.size<1) vprint("!!! kernel_list empty!");
 
 		foreach (var p in Package.dpkg_list) {
-			if (!p.pname.has_prefix("linux-image-")) continue;
+			if (!p.name.has_prefix("linux-image-")) continue;
+			vprint("\t"+p.name,3);
 
-			// temp kernel object for current pkg
-			var pk = new LinuxKernel(p.version);
-			pk.kname = p.pname;
-			pk.is_installed = true;
-			pk.set_pkg_list(); // find assosciated packages
-
-			// search the mainline list for matching package name
-			// fill k.pkg_list list of associated pkgs
-			bool found = false;
+			// search kernel_list for matching package,
+			// fill k.pkg_list with list of associated pkgs
+			bool found_mainline = false;
 			foreach (var k in kernel_list) {
-				if (k.is_invalid) continue;
-				if (k.kname==pk.kname) {
-					if (!pk.kname.has_suffix("-"+k.flavor)) continue;
-					found = true;
-					k.pkg_list = pk.pkg_list;
-					k.is_installed = true;
-					break;
-				}
+				if (k.name != p.name) continue;
+				found_mainline = true;
+				k.is_installed = true;
+				//vprint("mainline: n:"+k.name+" v:"+k.vers+" f:"+k.flavor);
+				k.set_pkg_list();
+				break;
 			}
 
 			// installed package was not found in the mainline list
 			// add to kernel_list as a distro kernel
-			if (!found) {
-				pk.is_mainline = false;
-				vprint("kernel_list.add("+pk.version_main+" "+pk.kname+" "+pk.kver+")",2);
-				pk.kernel_list_add();
+			if (!found_mainline) {
+				// FIXME - see also load_cached_page() rex_image
+				// flavor isn't really just the last field delimited by "-"
+				// flavor is always a suffix "-flavor", but "flavor" itself can contain "-"
+				// like generic-64k and generic-lpae
+				// but the regex rex_image used in load_cached_page()
+				// will also get only the trailing -foo for flavor,
+				// so they are both wrong the same way and so things will work,
+				// and the only problem is the kernel list display will be
+				// slightly wrong, where it should say "6.5.0-rc4-generic-64k"
+				// it will say "6.5.0-rc4-64k"
+				// Even a regex will be hard because the last part of the version
+				// before the flavor might contain anything.
+				// The only chance at a solid answer will be to reconstruct the
+				// base name and version from the split_version_string() results
+				// according to the same rules, and subtract that from p.name,
+				// and whatever is left is the flavor. Blech.
+				var x = p.name.split("-");
+				var k = new LinuxKernel(p.vers,x[x.length-1]);
+				k.name = p.name;
+				k.vers = p.vers;
+				k.is_mainline = false;
+				k.is_installed = true;
+				//vprint("non-mainline: n:"+k.name+" v:"+k.vers+" f:"+k.flavor);
+				k.set_pkg_list();
+				k.kernel_list_add();
 			}
 		}
 
@@ -487,7 +520,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// kernel_list contains both mainline and installed distro kernels now
 		// find the running kernel
 		foreach (var k in kernel_list) {
-			if (k.kname.has_suffix(RUNNING_KERNEL)) {
+			if (k.name.has_suffix(RUNNING_KERNEL)) {
 				k.is_running = true;
 				kernel_active = k;
 				break;
@@ -505,21 +538,17 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				k.set_status();
 				if (kernel_latest_installed.version_major==0) kernel_latest_installed = k;
 				kernel_oldest_installed = k;
-				msg = _("Found installed")+": "+k.kname;
-				if (k.is_locked) msg += " (" + _("locked") +")";
-				if (k.is_running) msg += " (" + _("running") +")";
-				vprint(msg);
+				//msg = _("Found installed")+": "+k.name;
+				//if (k.is_locked) msg += " (" + _("locked") +")";
+				//if (k.is_running) msg += " (" + _("running") +")";
+				//vprint(msg,2);
 			}
 		}
-
-		vprint("oldest_installed: "+kernel_oldest_installed.version_main,2);
-		vprint("latest_installed: "+kernel_latest_installed.version_main,2);
-//		vprint("latest_available: "+kernel_latest_available.version_main,2);
 	}
 
 	// scan kernel_list for versions newer than latest installed
 	public static void check_updates() {
-		vprint("check_updates()",2);
+		vprint("check_updates()",3);
 		kernel_update_major = null;
 		kernel_update_minor = null;
 		kernel_latest_available = kernel_latest_installed;
@@ -531,7 +560,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			vprint(k.version_main,3);
 			if (k.is_invalid) continue;
 			if (k.is_installed) continue;
-			if (k.is_locked) { vprint(k.version_main+" "+_("is locked."),2); continue; }
+			if (k.is_locked) continue;
 			if (k.is_unstable && App.hide_unstable) continue;
 			if (k.version_major < THRESHOLD_MAJOR) break;
 			if (k.compare_to(kernel_latest_installed)<1) break;
@@ -557,11 +586,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (kernel_update_minor != null) kernel_latest_available = kernel_update_minor;
 		if (kernel_update_major != null) kernel_latest_available = kernel_update_major;
-
-		if (kernel_update_minor != null) vprint(_("minor available")+": "+kernel_update_minor.version_main,2);
-		if (kernel_update_major != null) vprint(_("major available")+": "+kernel_update_major.version_main,2);
-		if (kernel_latest_available != kernel_latest_installed) vprint(_("latest available")+": "+kernel_latest_available.version_main,2);
-
 	}
 
 	// There is a circular dependency here.
@@ -574,11 +598,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	//     and see if a given installed package matches one of those.
 	// (4) But we don't have kernel_list[] yet, and we can't get it yet, because GOTO (1)
 	// 
-	// So for this early task, we rely on a weak is_mainline assertion that was made
-	// from an unsafe assumption in split_version_string(), when mk_dpkg_list()
-	// generates some kernel objects from the installed package info from dpkg.
-	// The version field from dpkg for mainline kernels includes a 12-byte
-	// date/time stamp that distro packages don't have.
+	// So for this early task, we rely on a weak assumption made previously in
+	// split_version_string(), when mk_dpkg_list() generates some kernel objects from
+	// the installed package info from dpkg, which is just that if the version
+	// has 12 bytes after a ".", then it's an installed mainline package.
 	//
 	// TODO maybe...
 	// Get a full kernel_list from a preliminary pass with load_index() before runing mk_dpkg_list().
@@ -587,7 +610,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// Then mk_kernel_list() can just process that kernel_list[].
 	// 
 	static void find_thresholds(bool up=false) {
-		vprint("find_thresholds()",2);
+		vprint("find_thresholds()",3);
 
 		if (up || Package.dpkg_list.size<1) Package.mk_dpkg_list();
 
@@ -596,8 +619,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// start from the latest available and work down, ignore distro kernels
 		kernel_oldest_installed = kernel_latest_installed;
 		foreach (var p in Package.dpkg_list) {
-			if (!p.pname.has_prefix("linux-image-")) continue;
-			var k = new LinuxKernel(p.version);
+			if (!p.name.has_prefix("linux-image-")) continue;
+			var k = new LinuxKernel(p.vers);
 			if (k.version_major < kernel_oldest_installed.version_major && k.is_mainline) kernel_oldest_installed = k;
 		}
 
@@ -626,10 +649,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	//
 	// version field from dpkg from installed packages
 	//    5.19.0-42.43                  distro package
+	//    5.4.0-155.172                 distro package
 	//    6.3.6-060306.202306050836     mainline package
-	//    4.6.0-040600rc1.201603261930  sigh, rc without a delimiter...
+	//    4.6.0-040600rc1.201603261930  sigh, rc without a delimiter, and "040600" is not always 6 characters
+	//
+	// We don't actually know is_mainline for sure yet, so at this point we just
+	// assume if it has 12 bytes after a ".", it's an installed mainline package.
+	//
+	// TODO: this should be split into seperate parsers for each type of version string,
+	// or maybe seperate modes controlled by a parameter.
+	// Ukuu originally did have a 2nd constructor .from_version(), but it didn't actually
+	// do anything useful, they still both used the same split_version_string().
 
-	void split_version_string(string s="") {
+	void split_version_string() {
 		//vprint("\n-new-: "+s);
 		version_major = 0;
 		version_minor = 0;
@@ -639,17 +671,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		is_mainline = true;
 		is_unstable = false;
 
-		string t = s.strip();
+		string t = version.strip();
 		if (t.has_prefix("v")) t = t[1: t.length - 1];
 		if (t.has_suffix("/")) t = t[0: t.length - 1];
 
 		if (t==null || t=="") t = "0";
-		version_main = t;
-		kver = t;
+		version = t;
 
 		//vprint("\n"+t);
 
-		var chunks = t.split_set(".-+_~ ");
+		var chunks = version.split_set(".-_+~ ");
 		int i = 0, n = 0;
 		foreach (string chunk in chunks) {
 			++i;
@@ -680,47 +711,87 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		//vprint(version_sort);
 	}
 
-// complicated comparison logic for kernel version strings
-// * individual fields tested numerically if possible
-//   so that 1.12.0 is higher than 1.2.0
-// * 1.2.3-rc5 is higher than 1.2.3-rc4    normal
-//   1.2.3 is higher than 1.2.3-rc5        special
+// complicated comparison logic for kernel versions
+// * version_sort is delimited by . so the individual chunks can be numerically compared
+//   so 1.2.3-rc4-unstable is 1.2.3.rc4.unstable
+// * version_sort has at least the first 3 chunks filled with at least 0
+//   so 6 is 6.0.0
+// * 1.12.0 is higher than 1.2.0
+// * 1.2.3-rc5 is higher than 1.2.3-rc4
+// * 1.2.3 is higher than 1.2.3-rc4
+// * 1.2.3 is higher than 1.2.3-unstable
+// * 1.2.3-rc4 is higher than 1.2.3-rc4-unstable
+//
+// TODO version_sort is a transitional hack to keep doing the old way of
+// parsing version_main, since version_main has a different format now.
+// The better way will be to just examine the individual variables
+// which we already did the work of parsing in split_version_string()
+//
 // like strcmp(l,r), but l & r are LinuxKernel objects
 // l.compare_to(r)   name & interface to please Gee.Comparable
 //  l<r  return -1
 //  l==r return 0
 //  l>r  return 1
 	public int compare_to(LinuxKernel t) {
-		vprint(version_main+" compare_to() "+t.version_main,4);
-		// TODO version_sort is a transitional hack to keep doing the old way of
-		// parsing version_main, since version_main has a different format now.
-		// The better way will be to just examine the individual variables
-		// which we already did the work of parsing in split_version_string()
+		if (Main.VERBOSE>4) vprint(version_main+" compare_to() "+t.version_main);
 		var a = version_sort.split(".");
 		var b = t.version_sort.split(".");
 		int x, y, i = -1;
 		while (++i<a.length && i<b.length) {            // while both strings have chunks
 			if (a[i] == b[i]) continue;                 // both the same, next chunk
 			x = int.parse(a[i]); y = int.parse(b[i]);   // parse strings to ints
-			if (x>0 && y>0) return (x - y);             // both numerical >0, numerical compare
-			if (x==0 && y==0) return strcmp(a[i],b[i]); // neither numerical >0 (alpha or maybe 0), lexical compare
-			if (x>0) return 1;                          // only left is numerical>0, left is greater
-			return -1;                                  // only right is numerical>0, right is greater
+			if (x>0 && y>0) return (x - y);             // both numeric>0, numeric compare
+			if (x==0 && y==0) return strcmp(a[i],b[i]); // neither numeric>0 (alpha or maybe 0), lex compare
+			if (x>0) return 1;                          // only left is numeric>0, left is greater
+			return -1;                                  // only right is numeric>0, right is greater
 		}
-		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // only if left is longer: if left is numerical>0, left is greater else right is greater
-		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // only if right is longer: if right is numerical>0, right is greater else left is greater
+		if (i<a.length) { if (int.parse(a[i])>0) return 1; return -1; } // if left is longer { if left is numeric>0, left is greater else right is greater }
+		if (i<b.length) { if (int.parse(b[i])>0) return -1; return 1; } // if right is longer { if right is numeric>0, right is greater else left is greater }
 		return 0;                                       // left & right identical the whole way
 	}
 
 	void set_pkg_list() {
-		vprint("set_pkg_list("+kver+")",2);
+		vprint("set_pkg_list("+version_main+")",3);
 		foreach(var p in Package.dpkg_list) {
-			if (p.version == kver) {
-				var l = pkg_list;
-				l += p.pname;
-				pkg_list = l;
-				vprint("  p: "+p.pname,2);
-			}
+			//vprint("vers="+vers+"\tp.vers="+p.vers,4);
+			// BLARGH!!!!
+			// The mainline-ppa site sometimes updates and replaces .deb packages after
+			// you've installed them. The new packages have the same base name & version,
+			// just with a new later .123456789012 datestamp suffix in the vers field.
+			// This breaks us because the 'vers' we get from todays index.html
+			// no longer matches the 'p.vers' we get from the installed packages in dpkg.
+			//
+			// pkg on kernel.ubuntu.com today   installed pkg from kernel.ubuntu.com a week ago
+			// vers=6.4.6-060406.202308041557   p.vers=6.4.6-060406.202307241739
+			//
+			// Until I think of a better way, strip off the .datetime before compare.
+			//
+			// It's crap. Two builds with only different datetime should be
+			// installable and removable side-by-side, but we just have very little
+			// reliable way to associate dpkg info with mainline-ppa site info.
+			// This code to do the crappy thing is itself also brute force crap, but working,
+			// if you can call deliberately ignoring a part of a unique key value "working".
+			var tv = vers;
+			var pv = p.vers;
+			var tvs = tv.split(".");
+			var pvs = pv.split(".");
+			var tvse = tvs[tvs.length-1];
+			var pvse = pvs[pvs.length-1];
+			//vprint("tvse="+tvse+"\tpvse="+pvse);
+			// if the last part is exactly 12 bytes long, and is all numbers, then strip it off.
+			if (tvse.length==12 && uint64.parse(tvse)>0) tv = tv.substring(0,tv.length-13);
+			if (pvse.length==12 && uint64.parse(pvse)>0) pv = pv.substring(0,pv.length-13);
+			// TODO - if tvse>pvse alert user that the package has been updated on the server.
+			// TODO - preserve a copy of cached_page at install-time until the matching
+			// packages are uninstalled, so we can track builds seperately like versions,flavors,archs
+			//vprint("tv="+tv+"\tpv="+pv);
+			if (pv != tv) continue;
+			//vprint("\tp.name="+p.name+"\tp.arch="+p.arch+"\tflavor="+flavor);
+			if (!p.name.has_suffix("-"+flavor) && p.arch != "all") continue;
+			var l = pkg_list;
+			l += p.name;
+			pkg_list = l;
+			vprint("  p: "+p.name,3);
 		}
 	}
 
@@ -783,26 +854,27 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// return true if we have a valid cached page,
 	//   whether the kernel itself is a valid build or not
 	bool load_cached_page() {
-		vprint("load_cached_page("+CACHED_PAGE+")",2);
-		if (!exists(CACHED_PAGE)) { vprint(_("not found"),3); return false; }
+		vprint("load_cached_page("+CACHED_PAGE+")",4);
+		name = "";
+		vers = "";
+		deb_url_list.clear();
+		if (!exists(CACHED_PAGE)) { vprint(_("not found"),4); return false; }
 
 		string txt = "";
 		int64 d_this = 0;
 		int64 d_max = 0;
 		MatchInfo mi;
-		deb_image = "";
-		deb_url_list.clear();
 		var _url_list = new Gee.HashMap<string,string>(); // local temp deb_url_list
-		var _flavors = new Gee.HashMap<string,string>(); // flavors[flavor]=kname
+		var _flavors = new Gee.HashMap<string,string>(); // flavors[flavor]=name
 		string? _flavor;
-		string? _kname;
-		string? _kver;
+		string? _name;
+		string? _vers;
 
 		// read cached page
 		txt = fread(CACHED_PAGE);
 
 		// detect and delete out-of-date cache
-
+		//
 		// find the latest timestamp anywhere in the cached page
 		foreach (string l in txt.split("\n")) {
 			if (rex_datetime.match(l, 0, out mi)) {
@@ -810,7 +882,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				if (d_this>d_max) d_max = d_this;
 			}
 		}
-
 		// if this kernel's timestamp from the main index is later than the latest in this
 		// kernel's cached page, then delete the cache for this kernel and return false.
 		if (ppa_datetime>d_max) {
@@ -829,37 +900,36 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			string file_name = Path.get_basename(file_uri);
 			if (_url_list.has_key(file_name)) continue;
 
-			_kname = null;
-			_kver = null;
+			_name = null;
+			_vers = null;
 			_flavor = null;
 			if (rex_image.match(file_name, 0, out mi)) {
-				// use linux-image-*.deb to define valid kernels and flavors
-				// besides just the file itself
+				// linux-image-*.deb also defines !is_invalid and flavor
 
 				// TODO FIXME
 				// some kernels have multiple builds
 				// amd64/linux-image-unsigned-5.16.0-051600-generic_5.16.0-051600.202201091830_amd64.deb
 				// amd64/linux-image-unsigned-5.16.0-051600-generic_5.16.0-051600.202201092355_amd64.deb
 				// We are not handling that at all. We end up creating a single LinuxKernel
-				// for "5.16" whith a deb_url_list that has two full sets of files
+				// for "5.16" with a deb_url_list that has two full sets of files
 
 				//  linux-image-4.6.0-040600rc1-generic_4.6.0-040600rc1.201603261930_amd64.deb
 				// |                           |flavor-|                            |
-				// |---------------kname---------------|------------kver------------|
+				// |----------------name---------------|------------vers------------|
 				//
 				//  linux-image-unsigned-6.4.3-060403-generic-64k_6.4.3-060403.202307110536_arm64.deb
 				// |                                 |--flavor---|                         |
-				// |--------------------kname--------------------|----------kver-----------|
+				// |---------------------name--------------------|----------vers-----------|
 				var x = file_name.split("_");
-				_kname = x[0];
-				_kver = x[1];
+				_name = x[0];
+				_vers = x[1];
 				_flavor = mi.fetch(1);
+				if (_flavor==null) _flavor = "generic"; // ensure !null but never actually happens
 				if (_flavor=="generic") {
-					deb_image = file_name;
-					kname = _kname;
-					kver = _kver;
+					name = _name;
+					vers = _vers;
 				}
-				if (_flavor!=null) _flavors[_flavor] = _kname;
+				_flavors[_flavor] = _name;
 
 			} else if (rex_image_extra.match(file_name, 0, out mi)) {
 			} else if (rex_modules.match(file_name, 0, out mi)) {
@@ -872,28 +942,27 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		}
 
-		// minimum requirement is linux-image*.deb
-		if (deb_image.length<1) set_invalid(true);
+		if (name.length<1) set_invalid(true);
 
 		// create a new LinuxKernel for each detected flavor
-		if (_flavors.size<1) _flavors[""] = kname; // non-mainline
 		foreach (var flv in _flavors.keys) {
 			LinuxKernel k;
-			if (flv.length>0 && flv!="generic") {
-				k = new LinuxKernel(version_main+"_"+flv);
+			if (flv!="generic") {
+				k = new LinuxKernel(version_main,flv);
 				k.is_mainline = is_mainline;
 				k.page_uri = page_uri;
-				k.kname = _flavors[flv];
+				k.name = _flavors[flv];
+				k.vers = vers;
 			} else {
 				k = this;
 			}
-			k.flavor = flv;
 			k.deb_url_list.clear();
 			foreach (var f in _url_list.keys) {
-				var da = f.split("_");
-				if (da[0].has_suffix("-"+flv) || f.has_suffix("_all.deb")) k.deb_url_list[f] = _url_list[f];
+				if (f.split("_")[0].has_suffix("-"+flv) || f.has_suffix("_all.deb")) k.deb_url_list[f] = _url_list[f];
 			}
 			if (k != this) k.kernel_list_add();
+			//vprint(k.version_main+"\t"+k.name+"\t"+k.vers);
+			//foreach (var f in k.deb_url_list.keys) vprint("  "+f);
 		}
 
 		return true;
@@ -906,22 +975,30 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(_("Available Kernels"));
 		vprint("----------------------------------------------------------------");
 
-		int nl = 16; // name length
+		int nl = 8; // initial/minimum name length
 		foreach(var k in kernel_list) {
-			if (k.is_invalid && App.hide_invalid) continue;
-
-			// hide hidden, but don't hide any installed
 			if (!k.is_installed) {
+				if (App.hide_invalid && k.is_invalid) continue;
 				if (App.hide_unstable && k.is_unstable) continue;
 				if (App.hide_flavors && k.flavor!="generic") continue;
-				if (k.version_major < THRESHOLD_MAJOR) continue;
+			}
+			if (k.version_main.length>nl) nl = k.version_main.length;
+		}
+
+		foreach(var k in kernel_list) {
+
+			// apply filters, but don't hide any installed
+			if (!k.is_installed) {
+				if (App.hide_invalid && k.is_invalid) continue;
+				if (App.hide_unstable && k.is_unstable) continue;
+				if (App.hide_flavors && k.flavor!="generic") continue;
 			}
 
-			string lck = "  ";
+			string lck = "";
 			if (k.is_locked) lck = "🔒";
 
 			if (k.version_main.length>nl) nl = k.version_main.length;
-			vprint("%-*s %s %-10s %s".printf(nl, k.version_main, lck, k.status, k.notes));
+			vprint("%-*s %2s %-10s %s".printf(nl, k.version_main, lck, k.status, k.notes));
 		}
 	}
 
@@ -945,12 +1022,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: aria2c
 	public bool download_packages() {
-		vprint("download_packages("+version_main+")",2);
+		vprint("download_packages("+version_main+")",3);
 		bool r = true;
 		int MB = 1024 * 1024;
 		string[] flist = {};
 
-		foreach (var f in deb_url_list.keys) if (!App.keep_downloads || !exists(CACHE_KDIR+"/"+f)) flist += f;
+		// if keep_debs, then only download if missing
+		// if not keep_debs, then always download
+		foreach (var f in deb_url_list.keys) if (!App.keep_debs || !exists(CACHE_KDIR+"/"+f)) flist += f;
 
 		// CHECKSUMS
 		if (flist.length>0) {
@@ -1003,9 +1082,26 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 // download_klist()
 // install_klist()
 // uninstall_klist()
+// lock_klist()
+
+	public static int lock_klist(Gee.ArrayList<LinuxKernel> klist,bool lck) {
+		vprint("lock_klist("+lck.to_string()+")",3);
+		if (klist.size<1) vprint(_("Lock/Unlock: no kernels specified"));
+		int r = 0;
+		string action = _("lock");
+		if (!lck) action = _("unlock");
+		string msg;
+		foreach (var k in klist) {
+			k.set_locked(lck);
+			msg = action + " " + k.name + " ";
+			if (k.is_locked==lck) msg += _("ok"); else { msg += _("failed"); r++; }
+			vprint(msg);
+		}
+		return r;
+	}
 
 	public static int download_klist(Gee.ArrayList<LinuxKernel> klist) {
-		vprint("download_klist()",2);
+		vprint("download_klist()",3);
 		if (klist.size<1) vprint(_("Download: no downloadable kernels specified")); 
 		int r = 0;
 		foreach (var k in klist) if (!k.download_packages()) r++;
@@ -1014,7 +1110,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: dpkg
 	public static int install_klist(Gee.ArrayList<LinuxKernel> klist) {
-		vprint("install_klist()",2);
+		vprint("install_klist()",3);
 
 		if (!App.try_ppa()) return 1;
 
@@ -1054,25 +1150,25 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(cmd,2);
 		if (!ask()) return 1;
 		var r = Posix.system(cmd);
-		if (!App.keep_downloads) foreach (var f in flist) rm(f);
+		if (!App.keep_debs) foreach (var f in flist) rm(f);
 		return r;
 	}
 
 	// dep: dpkg
 	public static int uninstall_klist(Gee.ArrayList<LinuxKernel> klist) {
-		vprint("uninstall_klist()",2);
+		vprint("uninstall_klist()",3);
 
 		string pnames = "";
 		foreach (var k in klist) {
 			var v = k.version_main;
 
 			if (k.is_running) {
-				vprint(_("%s is running").printf(v));
+				vprint(_("%s is running").printf(v),1,stderr);
 				continue;
 			}
 
 			if (k.is_locked) {
-				vprint(_("%s is locked").printf(v));
+				vprint(_("%s is locked").printf(v),1,stderr);
 				continue;
 			}
 
@@ -1096,7 +1192,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 // kinst_latest()
 
 	public static int kunin_old() {
-		vprint("kunin_old()",2);
+		vprint("kunin_old()",3);
 
 		find_thresholds(true);
 		download_main_index();
@@ -1104,7 +1200,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_installed();
 
 		var klist = new Gee.ArrayList<LinuxKernel>();
-		//string vl = "";
 		bool found_running_kernel = false;
 
 		foreach(var k in kernel_list) {
@@ -1127,7 +1222,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			klist.add(k);
-			//vl += "\n ▰ "+v;
 		}
 
 		if (!found_running_kernel) {
@@ -1140,13 +1234,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return 0;
 		}
 
-		//vprint("\n"+_("Uninstalling")+"\n"+vl);
-
 		return uninstall_klist(klist);
 	}
 
 	public static int kinst_latest(bool point_only = false) {
-		vprint("kinst_latest()",2);
+		vprint("kinst_latest()",3);
 
 		mk_kernel_list(true);
 
@@ -1154,8 +1246,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (!point_only && kernel_update_major!=null) k = kernel_update_major;
 
 		if (k==null) { vprint(_("No updates")); return 1; }
-
-		//vprint(_("Installing %s").printf(k.version_main));
 
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		klist.add(k);

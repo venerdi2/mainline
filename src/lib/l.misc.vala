@@ -1,15 +1,6 @@
 
 namespace l.misc {
 
-	public void set_locale() {
-		vprint("set_locale()",3);
-		Intl.setlocale(LocaleCategory.ALL,"");
-		//Intl.setlocale(LocaleCategory.MESSAGES,BRANDING_SHORTNAME);
-		//Intl.textdomain(BRANDING_SHORTNAME);
-		//Intl.bind_textdomain_codeset(BRANDING_SHORTNAME,"utf-8");
-		//Intl.bindtextdomain(BRANDING_SHORTNAME,LOCALE_DIR);
-	}
-
 	public bool ask(string? prompt = null, bool def = false, bool force = false) {
 		if (App.no_mode && !force) return false; // --no takes precedence over --yes
 		if (App.yes_mode && !force) return true;
@@ -32,6 +23,7 @@ namespace l.misc {
 
 	public void pbar(int64 part=0,int64 whole=100,string units="") {
 		if (Main.VERBOSE<1) return;
+		if (App.gui_mode && Main.VERBOSE<2) return;
 		int l = 70; // cool-retro-term defaults to 70 wide
 		if (whole<1) { vprint("\r%*.s\r".printf(l,""),1,stdout,false); return; }
 		int64 c = 0, plen = 0, wlen = l/2;
@@ -63,7 +55,7 @@ namespace l.misc {
 
 	// rm -rf
 	public bool rm(string path) {
-		vprint("rm("+path+")",3);
+		vprint("rm("+path+")",4);
 		File p = File.new_for_path(path);
 		if (!p.query_exists()) return true;
 		if (p.query_file_type(FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.DIRECTORY) try {
@@ -82,12 +74,12 @@ namespace l.misc {
 
 	// mkdir -p
 	public bool mkdir(string path) {
-		vprint("mkdir("+path+")",3);
+		vprint("mkdir("+path+")",4);
 		return (DirUtils.create_with_parents(path,0775)==0);
 	}
 
 	public string? fread(string fname) {
-		vprint("fread("+fname+")",3);
+		vprint("fread("+fname+")",4);
 		string fdata = "";
 		try { FileUtils.get_contents(fname, out fdata); }
 		catch (Error e) { vprint(e.message,1,stderr); }
@@ -95,7 +87,7 @@ namespace l.misc {
 	}
 
 	public bool fwrite(string fname, string fdata) {
-		vprint("fwrite("+fname+")",3);
+		vprint("fwrite("+fname+")",4);
 		mkdir(Path.get_dirname(fname));
 		try { FileUtils.set_contents(fname,fdata); return true;}
 		catch (Error e) { vprint(e.message,1,stderr); return false; }

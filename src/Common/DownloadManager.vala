@@ -32,7 +32,6 @@ public class DownloadTask : AsyncTask {
 	}
 
 	public void prepare() {
-		vprint("prepare():",2);
 		stdin_data = "";
 
 		foreach (var item in downloads) {

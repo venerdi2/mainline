@@ -1,3 +1,16 @@
+mainline (1.4.5) unstable; urgency=medium
+
+  * sort list with flavors & rc versions better
+  * handle the case where the mainline-ppa site replaces the packages you already have installed with newer ones with different datestamp in the version numbers
+  * new commandline flags for the cli app
+    --include-flavors / --exclude-flavors - override the Hide Flavors config file setting
+    --include-invalid / --exclude-invalid - override the Hide Invalid config file setting
+    --previous-majors # - override the Previous Majors config file setting
+    --lock / --unlock <list> - lock or unlock the given list of kernerls, same as the lock checkbox in the gui
+    --no|--dry-run - Assume No for all prompts
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 06 Aug 2023 02:20:01 -0400
+
 mainline (1.4.4) unstable; urgency=medium
 
   * Fix vte child process management for vala<0.50
