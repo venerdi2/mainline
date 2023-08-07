@@ -249,7 +249,7 @@ msgstr "н"
 
 #: src/Common/Main.vala:221
 msgid "Missing threads support in GLib."
-msgstr ""
+msgstr "Підтримка відсутніх потоків у GLib."
 
 #: src/Common/Main.vala:317
 msgid "Wrote config file"
@@ -296,7 +296,7 @@ msgstr "Продовжити?"
 #: src/Console/AppConsole.vala:31
 #, c-format
 msgid "install kernel packages from %s"
-msgstr ""
+msgstr "встановити пакети ядра з %s"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "Syntax"
@@ -304,7 +304,7 @@ msgstr "Синтаксис"
 
 #: src/Console/AppConsole.vala:33
 msgid "command"
-msgstr ""
+msgstr "команда"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "options"
@@ -325,33 +325,33 @@ msgstr ""
 
 #: src/Console/AppConsole.vala:39
 msgid "List the available kernels"
-msgstr ""
+msgstr "Список доступних ядер"
 
 #: src/Console/AppConsole.vala:40
 msgid "List the installed kernels"
-msgstr ""
+msgstr "Список встановленних ядер"
 
 #: src/Console/AppConsole.vala:41
 msgid "Install the latest mainline kernel"
-msgstr ""
+msgstr "Встановіть останню основну версію ядра"
 
 #: src/Console/AppConsole.vala:42
 msgid "Install the latest mainline kernel without going to a new major version"
-msgstr ""
+msgstr "Встановіть останнє основне ядро, не переходячи до нової основної версії"
 
 #: src/Console/AppConsole.vala:43 src/Console/AppConsole.vala:44
 #: src/Console/AppConsole.vala:46 src/Console/AppConsole.vala:47
 #: src/Console/AppConsole.vala:48
 msgid "names"
-msgstr ""
+msgstr "імена"
 
 #: src/Console/AppConsole.vala:43
 msgid "Install the specified kernels"
-msgstr ""
+msgstr "Встановіть вказані ядра"
 
 #: src/Console/AppConsole.vala:44
 msgid "Uninstall the specified kernels"
-msgstr ""
+msgstr "Видалити вказані ядра"
 
 #: src/Console/AppConsole.vala:45
 msgid "Uninstall all but the highest installed version"
@@ -371,7 +371,7 @@ msgstr "Розблокувати вказані ядра"
 
 #: src/Console/AppConsole.vala:49
 msgid "Delete the cached info about available kernels"
-msgstr ""
+msgstr "Видаліть кешовану інформацію про доступні ядра"
 
 #: src/Console/AppConsole.vala:50 src/Gtk/AppGtk.vala:62
 msgid "This help"
@@ -383,21 +383,21 @@ msgstr "Параметри"
 
 #: src/Console/AppConsole.vala:54
 msgid "Include release-candidate and unstable releases"
-msgstr ""
+msgstr "Включіть випуски-кандидати та нестабільні випуски"
 
 #: src/Console/AppConsole.vala:55
 msgid "Exclude release-candidate and unstable releases"
-msgstr ""
+msgstr "Виключіть випуски-кандидати та нестабільні випуски"
 
 #: src/Console/AppConsole.vala:56
 #, c-format
 msgid "Include flavors other than \"%s\""
-msgstr ""
+msgstr "Включати варіанти, відмінні від \"%s\""
 
 #: src/Console/AppConsole.vala:57
 #, c-format
 msgid "Exclude flavors other than \"%s\""
-msgstr ""
+msgstr "Виключати варіанти, відмінні від \"%s\""
 
 #: src/Console/AppConsole.vala:58
 msgid "Include failed/incomplete builds"
@@ -410,12 +410,12 @@ msgstr "Виключити невдалі/незавершені збірки"
 #: src/Console/AppConsole.vala:60
 #, c-format
 msgid "Include # (or \"%s\" or \"%s\") previous major versions"
-msgstr ""
+msgstr "Включити # (або \"%s\" або \"%s\") попередні основні версії"
 
 #: src/Console/AppConsole.vala:61 src/Console/AppConsole.vala:62
 #, c-format
 msgid "Short for \"%s\""
-msgstr ""
+msgstr "Скорочення від \"%s\""
 
 #: src/Console/AppConsole.vala:63
 msgid "Assume Yes for all prompts"
@@ -424,11 +424,11 @@ msgstr "Припустимо Так для всіх підказок"
 #: src/Console/AppConsole.vala:64
 #, c-format
 msgid "Assume No for all prompts - takes precedence over \"%s\""
-msgstr ""
+msgstr "Припустимо, ні для всіх підказок - має перевагу над \"%s\""
 
 #: src/Console/AppConsole.vala:65 src/Gtk/AppGtk.vala:61
 msgid "Set verbosity level to #, or increment by 1"
-msgstr ""
+msgstr "Установіть рівень докладності на # або збільште на 1"
 
 #: src/Console/AppConsole.vala:66
 msgid "Pause and require keypress before exiting"
@@ -437,7 +437,7 @@ msgstr "Призупинити та натиснути клавішу перед
 #: src/Console/AppConsole.vala:69
 #, c-format
 msgid "One or more version strings taken from the output of \"%s\""
-msgstr ""
+msgstr "Один або більше рядків версій, взятих із результату \"%s\""
 
 #: src/Console/AppConsole.vala:70
 msgid ""
@@ -462,7 +462,7 @@ msgstr "(натисніть Enter, щоб закрити)"
 #: src/Console/AppConsole.vala:223
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr ""
+msgstr "Невідомий варіант \"%s\""
 
 #: src/Console/AppConsole.vala:229
 msgid "DRY-RUN MODE"
@@ -475,12 +475,12 @@ msgstr "НЕІНТЕРАКТИВНИЙ РЕЖИМ"
 #: src/Console/AppConsole.vala:237
 #, c-format
 msgid "Deleted %s"
-msgstr ""
+msgstr "Видалено %s"
 
 #: src/Console/AppConsole.vala:238
 #, c-format
 msgid "Error deleting %s"
-msgstr ""
+msgstr "Помилка видалення %s"
 
 #: src/Console/AppConsole.vala:260
 msgid "Installed Kernels"
