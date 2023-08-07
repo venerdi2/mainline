@@ -39,16 +39,17 @@ public class MainWindow : Window {
 	Button btn_reload;
 	Label lbl_info;
 	Spinner spn_info;
+	Gdk.Pixbuf pix_ubuntu;
+	Gdk.Pixbuf pix_mainline;
+	Gdk.Pixbuf pix_mainline_rc;
+	Gdk.Cursor cursor_busy;
+	Gdk.Window? win = null;
 
 	bool updating;
 
 	Gee.ArrayList<LinuxKernel> selected_kernels;
 	Gtk.ListStore tm;
 	TreeView tv;
-
-	Gdk.Pixbuf pix_ubuntu;
-	Gdk.Pixbuf pix_mainline;
-	Gdk.Pixbuf pix_mainline_rc;
 
 	enum TM {
 		INDEX,
@@ -63,6 +64,9 @@ public class MainWindow : Window {
 	}
 
 	public MainWindow() {
+
+		destroy.connect(Gtk.main_quit);
+
 		set_default_size(App.window_width,App.window_height);
 		if (App.window_x>=0 && App.window_y>=0) move(App.window_x,App.window_y);
 
@@ -78,6 +82,7 @@ public class MainWindow : Window {
 		set_default_icon_name(BRANDING_SHORTNAME);
 		try { set_default_icon(IconTheme.get_default().load_icon(BRANDING_SHORTNAME,48,0)); }
 		catch (Error e) { vprint(e.message,1,stderr); }
+		cursor_busy = new Gdk.Cursor.from_name(Gdk.Display.get_default(),"wait");
 
 		selected_kernels = new Gee.ArrayList<LinuxKernel>();
 		tm = new Gtk.ListStore(TM.N_COLS,
@@ -104,8 +109,10 @@ public class MainWindow : Window {
 		add(vbox_main);
 
 		init_ui();
-		if (App.command == "install") do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
+		show_all();
+		win = get_window();
 		update_cache();
+		if (App.command == "install") do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
 	}
 
 	void init_ui() {
@@ -249,6 +256,7 @@ public class MainWindow : Window {
 
 		foreach (var k in LinuxKernel.kernel_list) {
 
+			// apply filters, but don't hide any installed
 			if (!k.is_installed) {
 				if (k.is_invalid && App.hide_invalid) continue;
 				if (k.is_unstable && App.hide_unstable) continue;
@@ -300,13 +308,10 @@ public class MainWindow : Window {
 		btn_uninstall_old.sensitive = true;
 		btn_reload.sensitive = true;
 
-		if (selected_kernels.size > 0) {
-			foreach (var k in selected_kernels) {
-				if (k.is_invalid) continue;
-				if (k.is_locked || k.is_running) continue;
-				if (k.is_installed) btn_uninstall.sensitive = true;
-				else btn_install.sensitive = true;
-			}
+		foreach (var k in selected_kernels) {
+			if (k.is_locked || k.is_running) continue;
+			if (k.is_installed) btn_uninstall.sensitive = true;
+			else if (!k.is_invalid) btn_install.sensitive = true;
 		}
 	}
 
@@ -347,7 +352,7 @@ public class MainWindow : Window {
 		btn_reload = new Button.with_label (_("Reload"));
 		btn_reload.set_tooltip_text(_("Delete and reload all cached kernel info\n(the same as \"mainline --delete-cache\")"));
 		hbox.pack_start (btn_reload, true, true, 0);
-		btn_reload.clicked.connect(reload_cache);
+		btn_reload.clicked.connect(() => { update_cache(true); });
 
 		// settings
 		button = new Button.with_label (_("Settings"));
@@ -431,32 +436,25 @@ public class MainWindow : Window {
 		);
 	}
 
-	// Full re-load. Delete cache and clear session state and start over.
-	void reload_cache() {
-		vprint("reload_cache()",3);
-		LinuxKernel.delete_cache();
-		App.ppa_tried = false;
-		update_cache();
-	}
-
 	// Update the cache as optimally as possible.
-	void update_cache() {
-		vprint("update_cache()",3);
+	void update_cache(bool reload=false) {
+		vprint("update_cache(reload="+reload.to_string()+")",3);
 		string msg = _("Updating Kernels...");
-
-		if (!App.try_ppa()) return;
-
+		win.set_cursor(cursor_busy);
 		updating = true;
 		set_button_state();
 		set_infobar(msg,updating);
+		//tm.clear(); // blank the list while updating
+		if (reload) LinuxKernel.delete_cache();
 		LinuxKernel.mk_kernel_list(false, (last) => { update_status_line(msg, last); });
 	}
 
+	// I really don't like this 'last' hack to detect end of job
 	void update_status_line(string message, bool last = false) {
-		//vprint("update_status_line("+message+","+last.to_string()+")");
 		if (last) {
 			Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
 				tv_refresh();
+				win.set_cursor(null);
 				return false;
 			});
 		}
@@ -548,17 +546,19 @@ public class MainWindow : Window {
 
 	public void exec_in_term(string[] argv) {
 
-		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) {
+		if (App.term_cmd==DEFAULT_TERM_CMDS[0]) {
+			// internal vte terminal
+			var term = new TerminalWindow.with_parent(this);
+			term.cmd_complete.connect(() => { update_cache(); });
+			term.execute_cmd(argv);
+		} else {
+			// external terminal app
 			var cmd = sanitize_cmd(App.term_cmd).printf(string.joinv(" ",argv));
-			vprint(cmd);
+			vprint(cmd,3);
 			Posix.system(cmd);
 			update_cache();
-			return;
 		}
 
-		var term = new TerminalWindow.with_parent(this);
-		term.cmd_complete.connect(update_cache);
-		term.execute_cmd(argv);
 	}
 
 }

@@ -11,6 +11,7 @@ namespace l.exec {
 	// blocking exec
 	public int exec_sync(string cmd, out string? std_out = null, out string? std_err = null) {
 		vprint("exec_sync("+cmd+")",3);
+		//if (App.no_mode) return 0;
 		int r = 0;
 		try { Process.spawn_command_line_sync(cmd, out std_out, out std_err); }
 		catch (SpawnError e) { r = 1; vprint(e.message,1,stderr); }
@@ -20,6 +21,7 @@ namespace l.exec {
 	// non-blocking exec
 	public void exec_async(string cmd) {
 		vprint("exec_async("+cmd+")",3);
+		//if (App.no_mode) return;
 		try { Process.spawn_command_line_async(cmd); }
 		catch (SpawnError e) { vprint(e.message,1,stderr); }
 	}

@@ -28,43 +28,45 @@ public AppConsole CLI;
 public class AppConsole : GLib.Object {
 
 	string help = "\n"
-		+ BRANDING_LONGNAME + " " + BRANDING_VERSION + " - " + _("install kernel packages from kernel.ubuntu.com") + "\n"
+		+ BRANDING_LONGNAME + " " + BRANDING_VERSION + " - " + _("install kernel packages from %s").printf(DEFAULT_PPA_URI) + "\n"
 		+ "\n"
-		+ _("Syntax") + ": " + BRANDING_SHORTNAME + " <command> [options]\n"
+		+ _("Syntax") + ": %s <"+_("command")+"> ["+_("options")+"]\n"
 		+ "\n"
 		+ _("Commands") + ":\n"
 		+ "\n"
 		+ "  --check             " + _("Check for kernel updates") + "\n"
 		+ "  --notify            " + _("Check for kernel updates and send a desktop notification") + "\n"
-		+ "  --list              " + _("List available kernels") + "\n"
-		+ "  --list-installed    " + _("List installed kernels") + "\n"
-		+ "  --install-latest    " + _("Install latest mainline kernel") + "\n"
-		+ "  --install-minor     " + _("Install latest mainline kernel without going to a new major version") + "\n"
-		+ "  --install <names>   " + _("Install specified kernels") + "(1)(2)\n"
-		+ "  --uninstall <names> " + _("Uninstall specified kernels") + "(1)(2)\n"
+		+ "  --list              " + _("List the available kernels") + "\n"
+		+ "  --list-installed    " + _("List the installed kernels") + "\n"
+		+ "  --install-latest    " + _("Install the latest mainline kernel") + "\n"
+		+ "  --install-minor     " + _("Install the latest mainline kernel without going to a new major version") + "\n"
+		+ "  --install <"+_("names")+">   " + _("Install the specified kernels") + "(1)(2)\n"
+		+ "  --uninstall <"+_("names")+"> " + _("Uninstall the specified kernels") + "(1)(2)\n"
 		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(2)\n"
-		+ "  --download <names>  " + _("Download the specified kernels") + "(1)\n"
-		+ "  --lock <names>      " + _("Lock the specified kernels") + "(1)\n"
-		+ "  --unlock <names>    " + _("Unlock the specified kernels") + "(1)\n"
-		+ "  --delete-cache      " + _("Delete cached info about available kernels") + "\n"
+		+ "  --download <"+_("names")+">  " + _("Download the specified kernels") + "(1)\n"
+		+ "  --lock <"+_("names")+">      " + _("Lock the specified kernels") + "(1)\n"
+		+ "  --unlock <"+_("names")+">    " + _("Unlock the specified kernels") + "(1)\n"
+		+ "  --delete-cache      " + _("Delete the cached info about available kernels") + "\n"
 		+ "  -h|--help           " + _("This help") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
-		+ "  --include-rc        " + _("Include RC and unstable releases") + "\n"
-		+ "  --exclude-rc        " + _("Exclude RC and unstable releases") + "\n"
-		+ "  --include-flavors   " + _("Include flavors other than \"generic\"") + "\n"
-		+ "  --exclude-flavors   " + _("Exclude flavors other than \"generic\"") + "\n"
+		+ "  --include-rc        " + _("Include release-candidate and unstable releases") + "\n"
+		+ "  --exclude-rc        " + _("Exclude release-candidate and unstable releases") + "\n"
+		+ "  --include-flavors   " + _("Include flavors other than \"%s\"").printf("generic") + "\n"
+		+ "  --exclude-flavors   " + _("Exclude flavors other than \"%s\"").printf("generic") + "\n"
 		+ "  --include-invalid   " + _("Include failed/incomplete builds") + "\n"
 		+ "  --exclude-invalid   " + _("Exclude failed/incomplete builds") + "\n"
-		+ "  --previous-majors # " + _("Include # (or \"all\" or \"none\") previous major versions") +"\n"
+		+ "  --previous-majors # " + _("Include # (or \"%s\" or \"%s\") previous major versions").printf("all","none") + "\n"
+		+ "  --include-all       " + _("Short for \"%s\"").printf("--include-rc --include-flavors --include-invalid --previous-majors all") + "\n"
+		+ "  --exclude-all       " + _("Short for \"%s\"").printf("--exclude-rc --exclude-flavors --exclude-invalid --previous-majors none") + "\n"
 		+ "  -y|--yes            " + _("Assume Yes for all prompts") + "\n"
-		+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over --yes") + "\n"
-		+ "  -v|--verbose [#]    " + _("Verbosity - sets to level # if given, or increments by 1") + "\n"
+		+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over \"%s\"").printf("--yes") + "\n"
+		+ "  -v|--verbose [#]    " + _("Set verbosity level to #, or increment by 1") + "\n"
 		+ "  --pause             " + _("Pause and require keypress before exiting") + "\n"
 		+ "\n"
 		+ "Notes:\n"
-		+ "(1) " +_("One or more version strings taken from the output of --list") + "\n"
+		+ "(1) " +_("One or more version strings taken from the output of \"%s\"").printf("--list") + "\n"
 		+ "    " +_("comma, pipe, colon, or space separated. (space requires quotes or backslashes)") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
@@ -81,20 +83,19 @@ public class AppConsole : GLib.Object {
 		return r;
 	}
 
-	void show_help() {
+	void show_help(string c=BRANDING_SHORTNAME) {
 		if (help_shown) return;
 		help_shown = true;
-		vprint(help,0);
+		vprint(help.printf(c),0);
 	}
 
 	// misnomer, it's not just parsing but dispatching and doing everything
 	public int parse_arguments(string[] args) {
 
 		// check argument count -----------------
-
 		if (args.length == 1) {
-			vprint(help,0);
-			return 1;
+			show_help(args[0]);
+			return 0;
 		}
 
 		string cmd = "";
@@ -102,7 +103,6 @@ public class AppConsole : GLib.Object {
 		string a = "";
 
 		// parse options first --------------
-
 		for (int i = 1; i < args.length; i++) {
 			a = args[i].down();
 			switch (a) {
@@ -161,6 +161,18 @@ public class AppConsole : GLib.Object {
 				case "--previous-majors":
 					if (set_previous_majors(args[i+1])) i++;
 					break;
+				case "--include-all":
+					App.opt_hide_unstable = false;
+					App.opt_hide_flavors = false;
+					App.opt_hide_invalid = false;
+					App.opt_previous_majors = -1;
+					break;
+				case "--exclude-all":
+					App.opt_hide_unstable = true;
+					App.opt_hide_flavors = true;
+					App.opt_hide_invalid = true;
+					App.opt_previous_majors = 0;
+					break;
 
 				case "--list":
 				case "--list-installed":
@@ -170,6 +182,8 @@ public class AppConsole : GLib.Object {
 				case "--install-point":
 				case "--purge-old-kernels": // back compat
 				case "--uninstall-old":
+				case "--clean-cache":
+				case "--delete-cache":
 					cmd = a;
 					break;
 
@@ -183,35 +197,38 @@ public class AppConsole : GLib.Object {
 					if (++i < args.length) vlist = args[i];
 					break;
 
-				case "--clean-cache":
-				case "--delete-cache":
-					int r = 1;
-					if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted")+" "+Main.CACHE_DIR); }
-					else vprint(_("Error deleting")+" "+Main.CACHE_DIR,1,stderr);
-					return r;
-
-				case "":
 				case "-?":
 				case "-h":
 				case "--help":
 				case "--version":
-					show_help();
+					show_help(args[0]);
 					return 0;
 
 				default:
-					show_help();
+					show_help(args[0]);
 					vprint(_("Unknown option") + ": \"%s\"".printf(args[i]),1,stderr);
 					return 1;
 			}
 		}
 
+		// apply some of the options effects
 		if (App.no_mode) vprint(_("DRY-RUN MODE"),2);
 		else if (App.yes_mode && !App.index_is_fresh) vprint(_("NO-CONFIRM MODE"),2);
+		vprint(string.joinv(" ",args),3);
+
+		// commands that don't require full init but do want to be affected by options
+		switch (cmd) {
+			case "--clean-cache":
+			case "--delete-cache":
+				int r = 1;
+				if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted %s").printf(Main.CACHE_DIR)); }
+				else vprint(_("Error deleting %s").printf(Main.CACHE_DIR),1,stderr);
+				return r;
+		}
 
 		App.init2();
 
-		// run command --------------------------------------
-
+		// commands that require full init
 		switch (cmd) {
 			case "--list":
 				LinuxKernel.mk_kernel_list(true);
@@ -264,7 +281,7 @@ public class AppConsole : GLib.Object {
 				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
 			default:
-				show_help();
+				show_help(args[0]);
 				vprint(_("Unknown command") + ": \""+cmd+"\"",1,stderr);
 				return 1;
 		}

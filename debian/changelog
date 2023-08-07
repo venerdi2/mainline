@@ -1,3 +1,16 @@
+mainline (1.4.6) UNRELEASED; urgency=medium
+
+  * add --include-all - short for "--include-rc --include-flavors --include-invalid --previous-majors all"
+  * add --exclude-all - short for "--exclude-rc --exclude-flavors --exclude-invalid --previous-majors none"
+  * localize more strings, and localize some existing ones more correctly
+  * handle a problem matching up installed packages with mainline .deb files
+    when the mainline-ppa server re-builds and replaces existing .deb files
+    after you've installed them, and so the version field in your installed
+    packages no longer matches the mainline-ppa site.
+  * busy indicator mouse cursor
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 06 Aug 2023 22:02:10 -0400
+
 mainline (1.4.5) unstable; urgency=medium
 
   * sort list with flavors & rc versions better
@@ -8,6 +21,7 @@ mainline (1.4.5) unstable; urgency=medium
     --previous-majors # - override the Previous Majors config file setting
     --lock / --unlock <list> - lock or unlock the given list of kernerls, same as the lock checkbox in the gui
     --no|--dry-run - Assume No for all prompts
+  * support xfce4-terminal for external terminal
 
  -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 06 Aug 2023 02:20:01 -0400
 

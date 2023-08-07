@@ -56,6 +56,7 @@ namespace l.misc {
 	// rm -rf
 	public bool rm(string path) {
 		vprint("rm("+path+")",4);
+		//if (App.no_mode) return true;
 		File p = File.new_for_path(path);
 		if (!p.query_exists()) return true;
 		if (p.query_file_type(FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.DIRECTORY) try {
@@ -75,6 +76,7 @@ namespace l.misc {
 	// mkdir -p
 	public bool mkdir(string path) {
 		vprint("mkdir("+path+")",4);
+		//if (App.no_mode) return true;
 		return (DirUtils.create_with_parents(path,0775)==0);
 	}
 
@@ -88,6 +90,7 @@ namespace l.misc {
 
 	public bool fwrite(string fname, string fdata) {
 		vprint("fwrite("+fname+")",4);
+		//if (App.no_mode) return true;
 		mkdir(Path.get_dirname(fname));
 		try { FileUtils.set_contents(fname,fdata); return true;}
 		catch (Error e) { vprint(e.message,1,stderr); return false; }

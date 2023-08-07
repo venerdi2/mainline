@@ -4,10 +4,10 @@ using l.exec;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
-	public string version = ""; // display version without _flavor
-	public string flavor = "";  // generic, lowlatency, lpae, etc
-	public string name = "";    // dpkg name
-	public string vers = "";    // dpkg version
+	public string version = "";      // display version without _flavor
+	public string flavor = "";       // generic, lowlatency, lpae, etc
+	public string name = "";         // dpkg name
+	public string vers = "";         // dpkg version
 	public string version_main = ""; // display version with _flavor
 	public string page_uri = "";
 	public string notes = "";
@@ -484,22 +484,42 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			// installed package was not found in the mainline list
 			// add to kernel_list as a distro kernel
 			if (!found_mainline) {
-				// FIXME - see also load_cached_page() rex_image
-				// flavor isn't really just the last field delimited by "-"
-				// flavor is always a suffix "-flavor", but "flavor" itself can contain "-"
-				// like generic-64k and generic-lpae
-				// but the regex rex_image used in load_cached_page()
-				// will also get only the trailing -foo for flavor,
-				// so they are both wrong the same way and so things will work,
-				// and the only problem is the kernel list display will be
-				// slightly wrong, where it should say "6.5.0-rc4-generic-64k"
-				// it will say "6.5.0-rc4-64k"
-				// Even a regex will be hard because the last part of the version
-				// before the flavor might contain anything.
-				// The only chance at a solid answer will be to reconstruct the
-				// base name and version from the split_version_string() results
-				// according to the same rules, and subtract that from p.name,
-				// and whatever is left is the flavor. Blech.
+				// FIXME - See also load_cached_page() rex_image
+				//
+				// We have to somehow determine the "flavor" from the information
+				// available from dpkg. The flavor is part of p.name, but it's
+				// hard to isolate it, because although it is always a suffix
+				// seperated by "-", like "-foo", "foo" itself can also contain
+				// anything, including "-". "###-generic-64k"  "###-generic-lpae"
+				//
+				// And the stuff before flavor isn't consistent either. The trailing
+				// end of the version component might contain anything, including
+				// non-numbers and multiple "." and "-", so there is no regex
+				// to tell where the version ends and the flavor begins.
+				//
+				// You can't count the number of "-" because that is also variable.
+				// Both the beginning name component and the version component may contain
+				// variable numbers of "-". "linux-image-#..." "linux-image-unsigned-#..."
+				//
+				// So we are merely splitting on "-" and calling the last field the "flavor".
+				//
+				// Right now at least the mechanics are working because check_installed()
+				// and load_cached_page() are both arriving at the same value for "flavor"
+				// for a given kernel, which is then needed by set_pkg_list().
+				// As long as it's only used internally as a unique identifier,
+				// then it only needs to be unique and reproducible from the different
+				// sources of info like dpkg and web pages, not meaningfully correct.
+				//
+				// The problems are:
+				// * It will break if there is ever a flavor named "64k" or
+				//   "someother-64k", at the same time with "generic-64k",
+				//   in the same arch, in the same base kernel version.
+				// * We are displaying this wrong "flavor" value in the kernel
+				//   list in the form of the constructed value version_main.
+				//
+				// Mostly no one sees the problem because the amd64 arch doesn't
+				// happen to have any flavors with embedded "-" so far.
+				//
 				var x = p.name.split("-");
 				var k = new LinuxKernel(p.vers,x[x.length-1]);
 				k.name = p.name;
@@ -512,15 +532,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		// finding the running kernel reliably is hard
-		// https://github.com/bkw777/mainline/issues/91
-		// RUNNING_KERNEL = uname -r      =                      6.3.4-060304-generic
-		// kname          = dpkg pkg name = linux-image-unsigned-6.3.4-060304-generic
-
 		// kernel_list contains both mainline and installed distro kernels now
 		// find the running kernel
+		var s = "-"+RUNNING_KERNEL;
 		foreach (var k in kernel_list) {
-			if (k.name.has_suffix(RUNNING_KERNEL)) {
+			if (k.name.has_suffix(s)) {
 				k.is_running = true;
 				kernel_active = k;
 				break;
@@ -975,30 +991,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		vprint(_("Available Kernels"));
 		vprint("----------------------------------------------------------------");
 
-		int nl = 8; // initial/minimum name length
-		foreach(var k in kernel_list) {
-			if (!k.is_installed) {
-				if (App.hide_invalid && k.is_invalid) continue;
-				if (App.hide_unstable && k.is_unstable) continue;
-				if (App.hide_flavors && k.flavor!="generic") continue;
-			}
-			if (k.version_main.length>nl) nl = k.version_main.length;
-		}
-
 		foreach(var k in kernel_list) {
 
 			// apply filters, but don't hide any installed
 			if (!k.is_installed) {
-				if (App.hide_invalid && k.is_invalid) continue;
-				if (App.hide_unstable && k.is_unstable) continue;
-				if (App.hide_flavors && k.flavor!="generic") continue;
+				if (k.is_invalid && App.hide_invalid) continue;
+				if (k.is_unstable && App.hide_unstable) continue;
+				if (k.flavor!="generic" && App.hide_flavors) continue;
 			}
 
-			string lck = "";
-			if (k.is_locked) lck = "🔒";
-
-			if (k.version_main.length>nl) nl = k.version_main.length;
-			vprint("%-*s %2s %-10s %s".printf(nl, k.version_main, lck, k.status, k.notes));
+			vprint("%-12s %2s %-10s %s".printf(k.version_main, (k.is_locked)?"🔒":"", k.status, k.notes));
 		}
 	}
 

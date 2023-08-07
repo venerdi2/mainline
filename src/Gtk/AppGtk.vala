@@ -29,13 +29,13 @@ public class AppGtk : GLib.Object {
 		App = new Main();
 		App.gui_mode = true;
 		parse_arguments(argv);
+		vprint(string.joinv(" ",argv),3);
 		App.init2();
 
 		X.init_threads();
 		Gtk.init(ref argv);
-		var GUI = new MainWindow();
-		GUI.destroy.connect(Gtk.main_quit);
-		GUI.show_all();
+		//var GUI = new MainWindow();
+		new MainWindow();
 
 		Gtk.main();
 
@@ -54,11 +54,11 @@ public class AppGtk : GLib.Object {
 		string help = ""
 		+ "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
-		+ _("Syntax") + ": " + BRANDING_SHORTNAME + "-gtk ["+_("options")+"]\n"
+		+ _("Syntax") + ": " + args[0] + " ["+_("options")+"]\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
-		+ "  -v|--verbose [#]    " + _("Verbosity - sets to level # if given, or increments by 1") + "\n"
+		+ "  -v|--verbose [#]    " + _("Set verbosity level to #, or increment by 1") + "\n"
 		+ "  -h|--help           " + _("This help") + "\n"
 		+ "\n"
 		;

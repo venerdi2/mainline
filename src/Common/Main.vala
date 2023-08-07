@@ -218,7 +218,7 @@ public class Main : GLib.Object {
 	}
 
 	public void init2() {
-		if (!Thread.supported()) { vprint(_("Missing Thread support in GLib."),1,stderr); exit(1); }
+		if (!Thread.supported()) { vprint(_("Missing threads support in GLib."),1,stderr); exit(1); }
 
 		APP_CONFIG_FILE = CONFIG_DIR + "/config.json";
 		STARTUP_SCRIPT_FILE = CONFIG_DIR + "/" + BRANDING_SHORTNAME + "-notify.sh";
