@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-07 10:15-0400\n"
-"PO-Revision-Date: 2023-08-06 12:17+0200\n"
+"PO-Revision-Date: 2023-08-07 16:47+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -248,7 +248,7 @@ msgstr "n"
 
 #: src/Common/Main.vala:221
 msgid "Missing threads support in GLib."
-msgstr ""
+msgstr "Brak obsługi wątków w GLib."
 
 #: src/Common/Main.vala:317
 msgid "Wrote config file"
@@ -296,7 +296,7 @@ msgstr "Kontynuować?"
 #: src/Console/AppConsole.vala:31
 #, c-format
 msgid "install kernel packages from %s"
-msgstr ""
+msgstr "zainstaluj pakiety jąder z %s"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "Syntax"
@@ -304,7 +304,7 @@ msgstr "Składnia"
 
 #: src/Console/AppConsole.vala:33
 msgid "command"
-msgstr ""
+msgstr "polecenie"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "options"
@@ -324,33 +324,33 @@ msgstr "Sprawdź aktualizacje jąder i wyślij powiadomienie na pulpicie"
 
 #: src/Console/AppConsole.vala:39
 msgid "List the available kernels"
-msgstr ""
+msgstr "Wyświetl listę dostępnych jąder"
 
 #: src/Console/AppConsole.vala:40
 msgid "List the installed kernels"
-msgstr ""
+msgstr "Wyświetl listę zainstalowanych jąder"
 
 #: src/Console/AppConsole.vala:41
 msgid "Install the latest mainline kernel"
-msgstr ""
+msgstr "Zainstaluj najnowsze jądro"
 
 #: src/Console/AppConsole.vala:42
 msgid "Install the latest mainline kernel without going to a new major version"
-msgstr ""
+msgstr "Zainstaluj najnowsze jądro bez przechodzenia do nowej wersji głównej"
 
 #: src/Console/AppConsole.vala:43 src/Console/AppConsole.vala:44
 #: src/Console/AppConsole.vala:46 src/Console/AppConsole.vala:47
 #: src/Console/AppConsole.vala:48
 msgid "names"
-msgstr ""
+msgstr "nazwy"
 
 #: src/Console/AppConsole.vala:43
 msgid "Install the specified kernels"
-msgstr ""
+msgstr "Zainstaluj określone jądra"
 
 #: src/Console/AppConsole.vala:44
 msgid "Uninstall the specified kernels"
-msgstr ""
+msgstr "Odinstaluj określone jądra"
 
 #: src/Console/AppConsole.vala:45
 msgid "Uninstall all but the highest installed version"
@@ -370,7 +370,7 @@ msgstr "Odblokuj określone jądra"
 
 #: src/Console/AppConsole.vala:49
 msgid "Delete the cached info about available kernels"
-msgstr ""
+msgstr "Usuń informacje z pamięci podręcznej o dostępnych jądrach"
 
 #: src/Console/AppConsole.vala:50 src/Gtk/AppGtk.vala:62
 msgid "This help"
@@ -382,21 +382,21 @@ msgstr "Opcje"
 
 #: src/Console/AppConsole.vala:54
 msgid "Include release-candidate and unstable releases"
-msgstr ""
+msgstr "Uwzględnij wersje kandydujące do wydania i wersje niestabilne"
 
 #: src/Console/AppConsole.vala:55
 msgid "Exclude release-candidate and unstable releases"
-msgstr ""
+msgstr "Wyklucz wersje kandydujące do wydania i wersje niestabilne"
 
 #: src/Console/AppConsole.vala:56
 #, c-format
 msgid "Include flavors other than \"%s\""
-msgstr ""
+msgstr "Uwzględnij warianty inne niż „%s”"
 
 #: src/Console/AppConsole.vala:57
 #, c-format
 msgid "Exclude flavors other than \"%s\""
-msgstr ""
+msgstr "Wyklucz warianty inne niż „%s”"
 
 #: src/Console/AppConsole.vala:58
 msgid "Include failed/incomplete builds"
@@ -409,12 +409,12 @@ msgstr "Wyklucz nieudane/niekompletne kompilacje"
 #: src/Console/AppConsole.vala:60
 #, c-format
 msgid "Include # (or \"%s\" or \"%s\") previous major versions"
-msgstr ""
+msgstr "Uwzględnij # (lub „%s” albo „%s”) poprzednich wersji głównych"
 
 #: src/Console/AppConsole.vala:61 src/Console/AppConsole.vala:62
 #, c-format
 msgid "Short for \"%s\""
-msgstr ""
+msgstr "Skrót od „%s”"
 
 #: src/Console/AppConsole.vala:63
 msgid "Assume Yes for all prompts"
@@ -423,11 +423,11 @@ msgstr "Załóż Tak dla wszystkich monitów"
 #: src/Console/AppConsole.vala:64
 #, c-format
 msgid "Assume No for all prompts - takes precedence over \"%s\""
-msgstr ""
+msgstr "Załóż Nie dla wszystkich monitów – ma pierwszeństwo przed „%s”"
 
 #: src/Console/AppConsole.vala:65 src/Gtk/AppGtk.vala:61
 msgid "Set verbosity level to #, or increment by 1"
-msgstr ""
+msgstr "Ustaw poziom gadatliwości na # lub zwiększ o 1"
 
 #: src/Console/AppConsole.vala:66
 msgid "Pause and require keypress before exiting"
@@ -436,7 +436,7 @@ msgstr "Wstrzymaj i wymagaj naciśnięcia klawisza przed wyjściem"
 #: src/Console/AppConsole.vala:69
 #, c-format
 msgid "One or more version strings taken from the output of \"%s\""
-msgstr ""
+msgstr "Jeden lub więcej ciągów wersji pobranych z danych wyjściowych „%s”"
 
 #: src/Console/AppConsole.vala:70
 msgid ""
@@ -461,7 +461,7 @@ msgstr "(naciśnij Enter, aby zamknąć)"
 #: src/Console/AppConsole.vala:223
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr ""
+msgstr "Nieznana opcja „%s”"
 
 #: src/Console/AppConsole.vala:229
 msgid "DRY-RUN MODE"
@@ -474,12 +474,12 @@ msgstr "TRYB BEZ POTWIERDZANIA"
 #: src/Console/AppConsole.vala:237
 #, c-format
 msgid "Deleted %s"
-msgstr ""
+msgstr "Usunięto %s"
 
 #: src/Console/AppConsole.vala:238
 #, c-format
 msgid "Error deleting %s"
-msgstr ""
+msgstr "Błąd podczas usuwania %s"
 
 #: src/Console/AppConsole.vala:260
 msgid "Installed Kernels"
