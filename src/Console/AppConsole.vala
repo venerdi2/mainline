@@ -92,13 +92,7 @@ public class AppConsole : GLib.Object {
 	// misnomer, it's not just parsing but dispatching and doing everything
 	public int parse_arguments(string[] args) {
 
-		// check argument count -----------------
-		if (args.length == 1) {
-			show_help(args[0]);
-			return 0;
-		}
-
-		string cmd = "";
+		string cmd = "--help";
 		string vlist = "";
 		string a = "";
 
@@ -106,6 +100,51 @@ public class AppConsole : GLib.Object {
 		for (int i = 1; i < args.length; i++) {
 			a = args[i].down();
 			switch (a) {
+
+				// ==== commands ====
+
+				// commands that take no argument
+				case "":
+				case "-?":
+				case "-h":
+				case "--help":
+				case "--version":
+					cmd = "--help";
+					return 0;
+
+				case "--list":
+				case "--list-installed":
+				case "--check":
+				case "--notify":
+				case "--install-latest":
+					cmd = a;
+					break;
+
+				case "--clean-cache":
+				case "--delete-cache":
+					cmd = "--delete-cache";
+					break;
+
+				case "--install-point":
+				case "--install-minor":
+					cmd = "--install-minor";
+					break;
+
+				case "--purge-old-kernels":
+				case "--uninstall-old":
+					cmd = "--uninstall-old";
+					break;
+
+				// commands that take a list of names argument
+				case "--lock":
+				case "--unlock":
+				case "--download":
+				case "--install":
+					cmd = (a=="--remove") ? "--uninstall" : a ;
+					if (++i < args.length) vlist = args[i];
+					break;
+
+				// ==== options ====
 
 				case "-v":
 				case "--debug":
@@ -124,49 +163,54 @@ public class AppConsole : GLib.Object {
 					App.no_mode = true;
 					break;
 
-				// used by gui with external terminal
 				case "--hold":
 				case "--pause":
 					hold_on_exit = true;
 					break;
 
-				// used by gui front-end
 				case "--index-is-fresh":
 					App.index_is_fresh = true;
 					break;
 
-				// config file overrides
 				case "--show-unstable": // back compat
 				case "--include-unstable":
 				case "--include-rc":
 					App.opt_hide_unstable = false;
 					break;
+
 				case "--hide-unstable": // back compat
 				case "--exclude-unstable":
 				case "--exclude-rc":
 					App.opt_hide_unstable = true;
 					break;
+
 				case "--include-flavors":
 					App.opt_hide_flavors = false;
 					break;
+
 				case "--exclude-flavors":
 					App.opt_hide_flavors = true;
 					break;
+
 				case "--include-invalid":
 					App.opt_hide_invalid = false;
 					break;
+
 				case "--exclude-invalid":
 					App.opt_hide_invalid = true;
 					break;
+
 				case "--previous-majors":
 					if (set_previous_majors(args[i+1])) i++;
 					break;
+
 				case "--include-all":
 					App.opt_hide_unstable = false;
 					App.opt_hide_flavors = false;
 					App.opt_hide_invalid = false;
 					App.opt_previous_majors = -1;
 					break;
+
 				case "--exclude-all":
 					App.opt_hide_unstable = true;
 					App.opt_hide_flavors = true;
@@ -174,39 +218,9 @@ public class AppConsole : GLib.Object {
 					App.opt_previous_majors = 0;
 					break;
 
-				case "--list":
-				case "--list-installed":
-				case "--check":
-				case "--notify":
-				case "--install-latest":
-				case "--install-point":
-				case "--purge-old-kernels": // back compat
-				case "--uninstall-old":
-				case "--clean-cache":
-				case "--delete-cache":
-					cmd = a;
-					break;
-
-				case "--lock":
-				case "--unlock":
-				case "--download":
-				case "--remove":
-				case "--uninstall":
-				case "--install":
-					cmd = (a=="--remove") ? "--uninstall" : a ;
-					if (++i < args.length) vlist = args[i];
-					break;
-
-				case "-?":
-				case "-h":
-				case "--help":
-				case "--version":
-					show_help(args[0]);
-					return 0;
-
 				default:
 					show_help(args[0]);
-					vprint(_("Unknown option") + ": \"%s\"".printf(args[i]),1,stderr);
+					vprint(_("Unknown option \"%s\"").printf(args[i]),1,stderr);
 					return 1;
 			}
 		}
@@ -218,7 +232,6 @@ public class AppConsole : GLib.Object {
 
 		// commands that don't require full init but do want to be affected by options
 		switch (cmd) {
-			case "--clean-cache":
 			case "--delete-cache":
 				int r = 1;
 				if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted %s").printf(Main.CACHE_DIR)); }
@@ -236,13 +249,13 @@ public class AppConsole : GLib.Object {
 				break;
 
 			case "--list-installed":
-				// --- method a
+				// -- output from check_installed()
 				//Package.mk_dpkg_list();
 				//LinuxKernel.check_installed(true);
-				// --- method b
+				// -- full normal mk_kernel_list() and print_list(), just filtered
 				//LinuxKernel.mk_kernel_list(true);
 				//LinuxKernel.print_list(true);
-				// --- method c
+				// -- just read dpkg, avoid mk_kernel_list()
 				Package.mk_dpkg_list();
 				vprint(_("Installed Kernels")+":");
 				foreach (var p in Package.dpkg_list) if (p.name.has_prefix("linux-image-")) vprint(p.name);
@@ -258,10 +271,9 @@ public class AppConsole : GLib.Object {
 			case "--install-latest":
 				return LinuxKernel.kinst_latest(false);
 
-			case "--install-point":
+			case "--install-minor":
 				return LinuxKernel.kinst_latest(true);
 
-			case "--purge-old-kernels":
 			case "--uninstall-old":
 				return LinuxKernel.kunin_old();
 
@@ -280,6 +292,11 @@ public class AppConsole : GLib.Object {
 			case "--install":
 				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
+			case "--help":
+				show_help(args[0]);
+				return 0;
+
+			// should be unreachable
 			default:
 				show_help(args[0]);
 				vprint(_("Unknown command") + ": \""+cmd+"\"",1,stderr);

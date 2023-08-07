@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-06 21:14-0400\n"
+"POT-Creation-Date: 2023-08-07 10:15-0400\n"
 "PO-Revision-Date: 2020-08-22 15:35+0100\n"
 "Last-Translator: Demetrio Mendozzi\n"
 "Language-Team: Italian\n"
@@ -460,80 +460,85 @@ msgstr "finito"
 msgid "(press Enter to close)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:209 src/Gtk/AppGtk.vala:92
-msgid "Unknown option"
-msgstr "Opzione sconosciuta"
+#: src/Console/AppConsole.vala:223
+#, c-format
+msgid "Unknown option \"%s\""
+msgstr ""
 
-#: src/Console/AppConsole.vala:215
+#: src/Console/AppConsole.vala:229
 msgid "DRY-RUN MODE"
 msgstr ""
 
-#: src/Console/AppConsole.vala:216
+#: src/Console/AppConsole.vala:230
 msgid "NO-CONFIRM MODE"
 msgstr ""
 
-#: src/Console/AppConsole.vala:224
+#: src/Console/AppConsole.vala:237
 #, c-format
 msgid "Deleted %s"
 msgstr ""
 
-#: src/Console/AppConsole.vala:225
+#: src/Console/AppConsole.vala:238
 #, c-format
 msgid "Error deleting %s"
 msgstr ""
 
-#: src/Console/AppConsole.vala:247
+#: src/Console/AppConsole.vala:260
 msgid "Installed Kernels"
 msgstr ""
 
-#: src/Console/AppConsole.vala:285
+#: src/Console/AppConsole.vala:302
 msgid "Unknown command"
 msgstr "Comando sconosciuto"
 
-#: src/Console/AppConsole.vala:305
+#: src/Console/AppConsole.vala:322
 msgid "Latest update"
 msgstr "Ultimo aggiornamento"
 
-#: src/Console/AppConsole.vala:306
+#: src/Console/AppConsole.vala:323
 msgid "Latest point update"
 msgstr "Ultimo aggiornamento del rilascio parziale"
 
-#: src/Console/AppConsole.vala:307 src/Console/AppConsole.vala:325
+#: src/Console/AppConsole.vala:324 src/Console/AppConsole.vala:342
 msgid "No updates found"
 msgstr "Nessun aggiornamento trovato"
 
-#: src/Console/AppConsole.vala:314
+#: src/Console/AppConsole.vala:331
 msgid "Notifications disabled"
 msgstr "Le notifiche sono disabilitate"
 
-#: src/Console/AppConsole.vala:319
+#: src/Console/AppConsole.vala:336
 msgid "No"
 msgstr "Nessun"
 
-#: src/Console/AppConsole.vala:334
+#: src/Console/AppConsole.vala:351
 msgid "notify minor releases disabled"
 msgstr ""
 
-#: src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:359
 msgid "notify major releases disabled"
 msgstr "notifica release principali disabilitato"
 
-#: src/Console/AppConsole.vala:346
+#: src/Console/AppConsole.vala:363
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s Disponibile"
 
-#: src/Console/AppConsole.vala:352 src/Gtk/SettingsWindow.vala:74
+#: src/Console/AppConsole.vala:369 src/Gtk/SettingsWindow.vala:74
 msgid "Show"
 msgstr "Mostra"
 
-#: src/Console/AppConsole.vala:353 src/Gtk/MainWindow.vala:326
+#: src/Console/AppConsole.vala:370 src/Gtk/MainWindow.vala:326
 msgid "Install"
 msgstr "Installa"
 
-#: src/Console/AppConsole.vala:358
+#: src/Console/AppConsole.vala:375
 msgid "Previously notified"
 msgstr "Notificato in precedenza"
+
+#: src/Gtk/AppGtk.vala:92
+msgid "Unknown option"
+msgstr "Opzione sconosciuta"
 
 #: src/Gtk/MainWindow.vala:171
 msgid "Lock"
