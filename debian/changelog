@@ -1,12 +1,16 @@
-mainline (1.4.6) UNRELEASED; urgency=medium
+mainline (1.4.7) unstable; urgency=medium
+
+  * fix uninstall command broken 1.4.6
+  * distinguish commands from options by renaming all comands from "--command" to "command"
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Tue, 08 Aug 2023 16:12:43 -0400
+
+mainline (1.4.6) unstable; urgency=medium
 
   * add --include-all - short for "--include-rc --include-flavors --include-invalid --previous-majors all"
   * add --exclude-all - short for "--exclude-rc --exclude-flavors --exclude-invalid --previous-majors none"
   * localize more strings, and localize some existing ones more correctly
-  * handle a problem matching up installed packages with mainline .deb files
-    when the mainline-ppa server re-builds and replaces existing .deb files
-    after you've installed them, and so the version field in your installed
-    packages no longer matches the mainline-ppa site.
+  * fix bug failing to recognize installed mainline packages when the the mainline-ppa site replaces the packages you already have installed with newer ones with different datestamp in the version number
   * busy indicator mouse cursor
 
  -- Brian K. White <b.kenyon.w@gmail.com>  Sun, 06 Aug 2023 22:02:10 -0400
@@ -19,7 +23,7 @@ mainline (1.4.5) unstable; urgency=medium
     --include-flavors / --exclude-flavors - override the Hide Flavors config file setting
     --include-invalid / --exclude-invalid - override the Hide Invalid config file setting
     --previous-majors # - override the Previous Majors config file setting
-    --lock / --unlock <list> - lock or unlock the given list of kernerls, same as the lock checkbox in the gui
+    --lock / --unlock <list> - lock or unlock the given list of kernels, same as the lock checkbox in the gui
     --no|--dry-run - Assume No for all prompts
   * support xfce4-terminal for external terminal
 

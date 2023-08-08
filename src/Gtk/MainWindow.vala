@@ -510,7 +510,7 @@ public class MainWindow : Window {
 		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
-		cmd += "--install";
+		cmd += "install";
 		cmd += string.joinv(",",vlist);
 		exec_in_term(cmd);
 
@@ -531,7 +531,7 @@ public class MainWindow : Window {
 		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
-		cmd += "--uninstall";
+		cmd += "uninstall";
 		cmd += string.joinv(",",vlist);
 		exec_in_term(cmd);
 	}
@@ -540,7 +540,7 @@ public class MainWindow : Window {
 		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
 		if (App.index_is_fresh) cmd += "--index-is-fresh";
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
-		cmd += "--uninstall-old";
+		cmd += "uninstall-old";
 		exec_in_term(cmd);
 	}
 

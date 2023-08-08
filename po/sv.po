@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-07 10:15-0400\n"
+"POT-Creation-Date: 2023-08-08 15:45-0400\n"
 "PO-Revision-Date: 2018-01-13 16:56+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team:Swedish\n"
@@ -247,40 +247,40 @@ msgstr "N"
 msgid "n"
 msgstr "n"
 
-#: src/Common/Main.vala:221
+#: src/Common/Main.vala:222
 msgid "Missing threads support in GLib."
 msgstr ""
 
-#: src/Common/Main.vala:317
+#: src/Common/Main.vala:318
 msgid "Wrote config file"
 msgstr "Skrev konfigurationsfil"
 
-#: src/Common/Main.vala:336
+#: src/Common/Main.vala:337
 msgid "No config file"
 msgstr "Ingen konfigurationsfil"
 
-#: src/Common/Main.vala:419
+#: src/Common/Main.vala:421
 msgid "Loaded config file"
 msgstr "Laddad konfigurationsfil"
 
-#: src/Common/Main.vala:440
+#: src/Common/Main.vala:443
 msgid "Called from"
 msgstr "Ringde från"
 
-#: src/Common/Main.vala:440
+#: src/Common/Main.vala:443
 msgid "at logon"
 msgstr "vid start"
 
-#: src/Common/Main.vala:441
+#: src/Common/Main.vala:444
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr "Den här filen skrivs över och körs igen när inställningar sparas i"
 
-#: src/Common/Main.vala:481
+#: src/Common/Main.vala:484
 msgid "Notifications are disabled"
 msgstr "Meddelanden är inaktiverade"
 
-#: src/Common/Main.vala:534
+#: src/Common/Main.vala:537
 msgid "Can not reach site"
 msgstr "Kan inte nå webbplatsen"
 
@@ -416,28 +416,32 @@ msgid "Short for \"%s\""
 msgstr ""
 
 #: src/Console/AppConsole.vala:63
+msgid "Write the include/exclude & previous-majors options to the config file"
+msgstr ""
+
+#: src/Console/AppConsole.vala:64
 msgid "Assume Yes for all prompts"
 msgstr "Antag Ja för alla uppmaningar"
 
-#: src/Console/AppConsole.vala:64
+#: src/Console/AppConsole.vala:65
 #, c-format
 msgid "Assume No for all prompts - takes precedence over \"%s\""
 msgstr ""
 
-#: src/Console/AppConsole.vala:65 src/Gtk/AppGtk.vala:61
+#: src/Console/AppConsole.vala:66 src/Gtk/AppGtk.vala:61
 msgid "Set verbosity level to #, or increment by 1"
 msgstr ""
 
-#: src/Console/AppConsole.vala:66
+#: src/Console/AppConsole.vala:67
 msgid "Pause and require keypress before exiting"
 msgstr ""
 
-#: src/Console/AppConsole.vala:69
+#: src/Console/AppConsole.vala:70
 #, c-format
 msgid "One or more version strings taken from the output of \"%s\""
 msgstr ""
 
-#: src/Console/AppConsole.vala:70
+#: src/Console/AppConsole.vala:71
 msgid ""
 "comma, pipe, colon, or space separated. (space requires quotes or "
 "backslashes)"
@@ -445,91 +449,98 @@ msgstr ""
 "kommatecken, pipa, kolon eller mellanslag separerade. (mellanslag kräver "
 "citattecken eller snedstreck)"
 
-#: src/Console/AppConsole.vala:71
+#: src/Console/AppConsole.vala:72
 msgid "Locked kernels and the currently running kernel are ignored"
 msgstr "Låsta kärnor och den aktuella kärnan ignoreras"
 
-#: src/Console/AppConsole.vala:81
+#: src/Console/AppConsole.vala:82
 msgid "done"
 msgstr "klart"
 
-#: src/Console/AppConsole.vala:82
+#: src/Console/AppConsole.vala:83
 msgid "(press Enter to close)"
 msgstr ""
 
-#: src/Console/AppConsole.vala:223
+#: src/Console/AppConsole.vala:235
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr ""
 
-#: src/Console/AppConsole.vala:229
+#: src/Console/AppConsole.vala:242 src/Console/AppConsole.vala:246
+#: src/Console/AppConsole.vala:250 src/Console/AppConsole.vala:254
+#: src/Console/AppConsole.vala:259
+#, c-format
+msgid "Notice: \"%s\" has been renamed to \"%s\""
+msgstr ""
+
+#: src/Console/AppConsole.vala:263
 msgid "DRY-RUN MODE"
 msgstr "TORRKÖRINGSLÄGE"
 
-#: src/Console/AppConsole.vala:230
+#: src/Console/AppConsole.vala:264
 msgid "NO-CONFIRM MODE"
 msgstr "INGEN-BEKRÄFTANDE LÄGE"
 
-#: src/Console/AppConsole.vala:237
+#: src/Console/AppConsole.vala:271
 #, c-format
 msgid "Deleted %s"
 msgstr ""
 
-#: src/Console/AppConsole.vala:238
+#: src/Console/AppConsole.vala:272
 #, c-format
 msgid "Error deleting %s"
 msgstr ""
 
-#: src/Console/AppConsole.vala:260
+#: src/Console/AppConsole.vala:295
 msgid "Installed Kernels"
 msgstr ""
 
-#: src/Console/AppConsole.vala:302
+#: src/Console/AppConsole.vala:337
 msgid "Unknown command"
 msgstr "Okänt kommando"
 
-#: src/Console/AppConsole.vala:322
+#: src/Console/AppConsole.vala:357
 msgid "Latest update"
 msgstr "Senaste uppdatering"
 
-#: src/Console/AppConsole.vala:323
+#: src/Console/AppConsole.vala:358
 msgid "Latest point update"
 msgstr "Senaste punktuppdatering"
 
-#: src/Console/AppConsole.vala:324 src/Console/AppConsole.vala:342
+#: src/Console/AppConsole.vala:359 src/Console/AppConsole.vala:377
 msgid "No updates found"
 msgstr "Inga uppdateringar hittades"
 
-#: src/Console/AppConsole.vala:331
+#: src/Console/AppConsole.vala:366
 msgid "Notifications disabled"
 msgstr "Aviseringar inaktiverade"
 
-#: src/Console/AppConsole.vala:336
+#: src/Console/AppConsole.vala:371
 msgid "No"
 msgstr "Nej"
 
-#: src/Console/AppConsole.vala:351
+#: src/Console/AppConsole.vala:386
 msgid "notify minor releases disabled"
 msgstr ""
 
-#: src/Console/AppConsole.vala:359
+#: src/Console/AppConsole.vala:394
 msgid "notify major releases disabled"
 msgstr "aviseringar för större versioner inaktiverade"
 
-#: src/Console/AppConsole.vala:363
+#: src/Console/AppConsole.vala:398
 #, c-format
 msgid "Kernel %s Available"
 msgstr "Kernel %s tillgängliga"
 
-#: src/Console/AppConsole.vala:369 src/Gtk/SettingsWindow.vala:74
+#: src/Console/AppConsole.vala:404 src/Gtk/SettingsWindow.vala:74
 msgid "Show"
 msgstr "Visa"
 
-#: src/Console/AppConsole.vala:370 src/Gtk/MainWindow.vala:326
+#: src/Console/AppConsole.vala:405 src/Gtk/MainWindow.vala:326
 msgid "Install"
 msgstr "Installera"
 
-#: src/Console/AppConsole.vala:375
+#: src/Console/AppConsole.vala:410
 msgid "Previously notified"
 msgstr "Tidigare anmält"
 

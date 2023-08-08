@@ -34,20 +34,20 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ _("Commands") + ":\n"
 		+ "\n"
-		+ "  --check             " + _("Check for kernel updates") + "\n"
-		+ "  --notify            " + _("Check for kernel updates and send a desktop notification") + "\n"
-		+ "  --list              " + _("List the available kernels") + "\n"
-		+ "  --list-installed    " + _("List the installed kernels") + "\n"
-		+ "  --install-latest    " + _("Install the latest mainline kernel") + "\n"
-		+ "  --install-minor     " + _("Install the latest mainline kernel without going to a new major version") + "\n"
-		+ "  --install <"+_("names")+">   " + _("Install the specified kernels") + "(1)(2)\n"
-		+ "  --uninstall <"+_("names")+"> " + _("Uninstall the specified kernels") + "(1)(2)\n"
-		+ "  --uninstall-old     " + _("Uninstall all but the highest installed version") + "(2)\n"
-		+ "  --download <"+_("names")+">  " + _("Download the specified kernels") + "(1)\n"
-		+ "  --lock <"+_("names")+">      " + _("Lock the specified kernels") + "(1)\n"
-		+ "  --unlock <"+_("names")+">    " + _("Unlock the specified kernels") + "(1)\n"
-		+ "  --delete-cache      " + _("Delete the cached info about available kernels") + "\n"
-		+ "  -h|--help           " + _("This help") + "\n"
+		+ "  check               " + _("Check for kernel updates") + "\n"
+		+ "  notify              " + _("Check for kernel updates and send a desktop notification") + "\n"
+		+ "  list                " + _("List the available kernels") + "\n"
+		+ "  list-installed      " + _("List the installed kernels") + "\n"
+		+ "  install-latest      " + _("Install the latest mainline kernel") + "\n"
+		+ "  install-minor       " + _("Install the latest mainline kernel without going to a new major version") + "\n"
+		+ "  install <"+_("names")+">     " + _("Install the specified kernels") + "(1)(2)\n"
+		+ "  uninstall <"+_("names")+">   " + _("Uninstall the specified kernels") + "(1)(2)\n"
+		+ "  uninstall-old       " + _("Uninstall all but the highest installed version") + "(2)\n"
+		+ "  download <"+_("names")+">    " + _("Download the specified kernels") + "(1)\n"
+		+ "  lock <"+_("names")+">        " + _("Lock the specified kernels") + "(1)\n"
+		+ "  unlock <"+_("names")+">      " + _("Unlock the specified kernels") + "(1)\n"
+		+ "  delete-cache        " + _("Delete the cached info about available kernels") + "\n"
+		+ "  help                " + _("This help") + "\n"
 		+ "\n"
 		+ _("Options") + ":\n"
 		+ "\n"
@@ -60,13 +60,14 @@ public class AppConsole : GLib.Object {
 		+ "  --previous-majors # " + _("Include # (or \"%s\" or \"%s\") previous major versions").printf("all","none") + "\n"
 		+ "  --include-all       " + _("Short for \"%s\"").printf("--include-rc --include-flavors --include-invalid --previous-majors all") + "\n"
 		+ "  --exclude-all       " + _("Short for \"%s\"").printf("--exclude-rc --exclude-flavors --exclude-invalid --previous-majors none") + "\n"
+		+ "  --save-config       " + _("Write the include/exclude & previous-majors options to the config file") + "\n"
 		+ "  -y|--yes            " + _("Assume Yes for all prompts") + "\n"
 		+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over \"%s\"").printf("--yes") + "\n"
 		+ "  -v|--verbose [#]    " + _("Set verbosity level to #, or increment by 1") + "\n"
 		+ "  --pause             " + _("Pause and require keypress before exiting") + "\n"
 		+ "\n"
 		+ "Notes:\n"
-		+ "(1) " +_("One or more version strings taken from the output of \"%s\"").printf("--list") + "\n"
+		+ "(1) " +_("One or more version strings taken from the output of \"%s\"").printf("list") + "\n"
 		+ "    " +_("comma, pipe, colon, or space separated. (space requires quotes or backslashes)") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
 		;
@@ -92,7 +93,7 @@ public class AppConsole : GLib.Object {
 	// misnomer, it's not just parsing but dispatching and doing everything
 	public int parse_arguments(string[] args) {
 
-		string cmd = "--help";
+		string cmd = "help";
 		string vlist = "";
 		string a = "";
 
@@ -108,39 +109,46 @@ public class AppConsole : GLib.Object {
 				case "-?":
 				case "-h":
 				case "--help":
+				case "help":
 				case "--version":
-					cmd = "--help";
-					return 0;
+					cmd = "help";
+					break;
 
 				case "--list":
+				case "list":
 				case "--list-installed":
+				case "list-installed":
 				case "--check":
+				case "check":
 				case "--notify":
+				case "notify":
 				case "--install-latest":
-					cmd = a;
-					break;
-
+				case "install-latest":
 				case "--clean-cache":
 				case "--delete-cache":
-					cmd = "--delete-cache";
-					break;
-
+				case "delete-cache":
 				case "--install-point":
 				case "--install-minor":
-					cmd = "--install-minor";
-					break;
-
+				case "install-minor":
 				case "--purge-old-kernels":
 				case "--uninstall-old":
-					cmd = "--uninstall-old";
+				case "uninstall-old":
+					cmd = a;
 					break;
 
 				// commands that take a list of names argument
 				case "--lock":
+				case "lock":
 				case "--unlock":
+				case "unlock":
 				case "--download":
+				case "download":
 				case "--install":
-					cmd = (a=="--remove") ? "--uninstall" : a ;
+				case "install":
+				case "--remove":
+				case "--uninstall":
+				case "uninstall":
+					cmd = a;
 					if (++i < args.length) vlist = args[i];
 					break;
 
@@ -218,11 +226,37 @@ public class AppConsole : GLib.Object {
 					App.opt_previous_majors = 0;
 					break;
 
+				case "--save-config":
+					App.opt_save_config = true;
+					break;
+
 				default:
 					show_help(args[0]);
 					vprint(_("Unknown option \"%s\"").printf(args[i]),1,stderr);
 					return 1;
 			}
+		}
+
+		// transition notices
+		if (cmd=="--remove") {
+			vprint(_("Notice: \"%s\" has been renamed to \"%s\"").printf(cmd,"uninstall"));
+			cmd = "uninstall";
+		}
+		if (cmd=="--clean-cache") {
+			vprint(_("Notice: \"%s\" has been renamed to \"%s\"").printf(cmd,"delete-cache"));
+			cmd = "delete-cache";
+		}
+		if (cmd=="--install-point") {
+			vprint(_("Notice: \"%s\" has been renamed to \"%s\"").printf(cmd,"install-minor"));
+			cmd = "install-minor";
+		}
+		if (cmd=="--purge-old-kernels") {
+			vprint(_("Notice: \"%s\" has been renamed to \"%s\"").printf(cmd,"uninstall-old"));
+			cmd = "uninstall-old";
+		}
+		if (cmd.has_prefix("--")) {
+			cmd = cmd.substring(2);
+			vprint(_("Notice: \"%s\" has been renamed to \"%s\"").printf("--"+cmd,cmd));
 		}
 
 		// apply some of the options effects
@@ -232,23 +266,24 @@ public class AppConsole : GLib.Object {
 
 		// commands that don't require full init but do want to be affected by options
 		switch (cmd) {
-			case "--delete-cache":
+			case "delete-cache":
 				int r = 1;
 				if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted %s").printf(Main.CACHE_DIR)); }
 				else vprint(_("Error deleting %s").printf(Main.CACHE_DIR),1,stderr);
 				return r;
 		}
 
+		// finish full init
 		App.init2();
 
 		// commands that require full init
 		switch (cmd) {
-			case "--list":
+			case "list":
 				LinuxKernel.mk_kernel_list(true);
 				LinuxKernel.print_list();
 				break;
 
-			case "--list-installed":
+			case "list-installed":
 				// -- output from check_installed()
 				//Package.mk_dpkg_list();
 				//LinuxKernel.check_installed(true);
@@ -261,38 +296,38 @@ public class AppConsole : GLib.Object {
 				foreach (var p in Package.dpkg_list) if (p.name.has_prefix("linux-image-")) vprint(p.name);
 				break;
 
-			case "--check":
+			case "check":
 				print_updates();
 				break;
 
-			case "--notify":
+			case "notify":
 				return notify_user();
 
-			case "--install-latest":
+			case "install-latest":
 				return LinuxKernel.kinst_latest(false);
 
-			case "--install-minor":
+			case "install-minor":
 				return LinuxKernel.kinst_latest(true);
 
-			case "--uninstall-old":
+			case "uninstall-old":
 				return LinuxKernel.kunin_old();
 
-			case "--lock":
+			case "lock":
 				return LinuxKernel.lock_klist(LinuxKernel.vlist_to_klist(vlist,true),true);
 
-			case "--unlock":
+			case "unlock":
 				return LinuxKernel.lock_klist(LinuxKernel.vlist_to_klist(vlist,true),false);
 
-			case "--download":
+			case "download":
 				return LinuxKernel.download_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-			case "--uninstall":
+			case "uninstall":
 				return LinuxKernel.uninstall_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-			case "--install":
+			case "install":
 				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
 
-			case "--help":
+			case "help":
 				show_help(args[0]);
 				return 0;
 

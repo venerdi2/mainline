@@ -208,6 +208,7 @@ public class Main : GLib.Object {
 	public bool? opt_hide_unstable   = null;
 	public bool? opt_hide_flavors    = null;
 	public int?  opt_previous_majors = null;
+	public bool opt_save_config      = false;
 
 	public static Rand rnd;
 
@@ -415,8 +416,10 @@ public class Main : GLib.Object {
 			previous_majors = opt_previous_majors;
 			keep_cache = true;
 		}
+		if (opt_save_config) save_app_config();
 
 		vprint(_("Loaded config file")+": "+APP_CONFIG_FILE,3);
+
 	}
 
 	private void update_startup_script() {

@@ -283,7 +283,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	static bool mk_kernel_list_worker(owned Notifier? notifier) {
 		vprint("mk_kernel_list_worker()",3);
-		if (!App.gui_mode || Main.VERBOSE>1) vprint("Updating Kernels...");
+		if ((!App.gui_mode && !App.index_is_fresh) || Main.VERBOSE>1) vprint("Updating Kernels...");
 
 		kernel_list.clear();
 		App.progress_total = 0;
