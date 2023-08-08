@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-08 15:45-0400\n"
-"PO-Revision-Date: 2023-08-07 16:47+0200\n"
+"PO-Revision-Date: 2023-08-08 23:14+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
@@ -419,6 +419,8 @@ msgstr "Skrót od „%s”"
 #: src/Console/AppConsole.vala:63
 msgid "Write the include/exclude & previous-majors options to the config file"
 msgstr ""
+"Zapisz opcje dołączania/wykluczania i poprzednich wersji głównych w pliku "
+"konfiguracyjnym"
 
 #: src/Console/AppConsole.vala:64
 msgid "Assume Yes for all prompts"
@@ -472,7 +474,7 @@ msgstr "Nieznana opcja „%s”"
 #: src/Console/AppConsole.vala:259
 #, c-format
 msgid "Notice: \"%s\" has been renamed to \"%s\""
-msgstr ""
+msgstr "Uwaga: „%s” zmieniono na „%s”"
 
 #: src/Console/AppConsole.vala:263
 msgid "DRY-RUN MODE"
