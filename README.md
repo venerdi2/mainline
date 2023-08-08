@@ -1,3 +1,5 @@
+# ***TODAY ONLY - Uninstall is broken in 1.4.6, fixed in 1.4.7<br>the PPA may take 24 hours to update***
+
 # Mainline Kernels
 A tool for installing [Ubuntu Mainline Kernel Builds](https://wiki.ubuntu.com/Kernel/MainlineBuilds) onto debian-based distributions.
 
