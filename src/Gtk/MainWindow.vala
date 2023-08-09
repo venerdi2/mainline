@@ -109,20 +109,20 @@ public class MainWindow : Window {
 		add(vbox_main);
 
 		init_ui();
-		show_all();
+		/*vprint("show_all()");*/ show_all();
 		win = get_window();
 		update_cache();
-		if (App.command == "install") do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
 	}
 
 	void init_ui() {
+		//vprint("init_ui()");
 		init_treeview();
 		init_actions();
 		init_infobar();
 	}
 
 	void init_treeview() {
-
+		//vprint("init_treeview()");
 		hbox_list = new Box(Orientation.HORIZONTAL, SPACING);
 		vbox_main.add(hbox_list);
 
@@ -247,7 +247,7 @@ public class MainWindow : Window {
 	}
 
 	void tv_refresh() {
-		vprint("tv_refresh()",3);
+		//vprint("tv_refresh()",3);
 
 		int i = -1;
 		Gdk.Pixbuf p;
@@ -316,6 +316,7 @@ public class MainWindow : Window {
 	}
 
 	void init_actions() {
+		//vprint("init_actions()");
 
 		Button button;
 
@@ -445,7 +446,7 @@ public class MainWindow : Window {
 		set_button_state();
 		set_infobar(msg,updating);
 		//tm.clear(); // blank the list while updating
-		if (reload) LinuxKernel.delete_cache();
+		if (reload) { tm.clear(); LinuxKernel.delete_cache(); }
 		LinuxKernel.mk_kernel_list(false, (last) => { update_status_line(msg, last); });
 	}
 
@@ -455,6 +456,12 @@ public class MainWindow : Window {
 			Gdk.threads_add_idle_full(Priority.DEFAULT_IDLE, () => {
 				tv_refresh();
 				win.set_cursor(null);
+				// I hate that this is here, there must be a better way
+				// it's here because it requires mk_kernel_list finished
+				if (App.command == "install") {
+					App.command = "";
+					do_install(LinuxKernel.vlist_to_klist(App.requested_versions));
+				}
 				return false;
 			});
 		}
@@ -466,6 +473,7 @@ public class MainWindow : Window {
 	}
 
 	void init_infobar() {
+		//vprint("init_infobar()");
 		var hbox = new Box(Orientation.HORIZONTAL,SPACING);
 		vbox_main.add(hbox);
 		lbl_info = new Label("");
@@ -507,15 +515,11 @@ public class MainWindow : Window {
 		vlist = {};
 		foreach (var k in klist) vlist += k.version_main;
 
-		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
-		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		string[] cmd = { BRANDING_SHORTNAME, "--from-gui" };
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
 		cmd += "install";
 		cmd += string.joinv(",",vlist);
 		exec_in_term(cmd);
-
-		// if we jumped directly here from a notification, switch to normal interactive mode
-		if (App.command == "install") App.command = "list";
 	}
 
 	public void do_uninstall(Gee.ArrayList<LinuxKernel> klist) {
@@ -528,8 +532,7 @@ public class MainWindow : Window {
 		vlist = {};
 		foreach(var k in klist) vlist += k.version_main;
 
-		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
-		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		string[] cmd = { BRANDING_SHORTNAME, "--from-gui" };
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
 		cmd += "uninstall";
 		cmd += string.joinv(",",vlist);
@@ -537,8 +540,7 @@ public class MainWindow : Window {
 	}
 
 	public void uninstall_old() {
-		string[] cmd = { BRANDING_SHORTNAME, "--yes" };
-		if (App.index_is_fresh) cmd += "--index-is-fresh";
+		string[] cmd = { BRANDING_SHORTNAME, "--from-gui" };
 		if (App.term_cmd!=DEFAULT_TERM_CMDS[0]) cmd += "--pause";
 		cmd += "uninstall-old";
 		exec_in_term(cmd);
@@ -555,7 +557,7 @@ public class MainWindow : Window {
 			// external terminal app
 			var cmd = sanitize_cmd(App.term_cmd).printf(string.joinv(" ",argv));
 			vprint(cmd,3);
-			Posix.system(cmd);
+			Posix.system(cmd); // cmd must block!
 			update_cache();
 		}
 

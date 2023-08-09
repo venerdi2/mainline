@@ -1,3 +1,11 @@
+mainline (1.4.8) unstable; urgency=medium
+
+  * change option --save-config to command write-config
+  * remove --yes, yes-mode by default, since the auth prompt serves as a confirmation
+  * reorganize the startup sequence to avoid some dupes and some misses
+
+ -- Brian K. White <b.kenyon.w@gmail.com>  Wed, 09 Aug 2023 02:38:03 -0400
+
 mainline (1.4.7) unstable; urgency=medium
 
   * fix uninstall command broken 1.4.6

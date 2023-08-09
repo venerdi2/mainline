@@ -2,8 +2,10 @@
 namespace l.misc {
 
 	public bool ask(string? prompt = null, bool def = false, bool force = false) {
-		if (App.no_mode && !force) return false; // --no takes precedence over --yes
-		if (App.yes_mode && !force) return true;
+		if (!force) {
+			if (App.no_mode) return false; // --no takes precedence over --yes
+			if (App.yes_mode) return true;
+		}
 		var p = (prompt==null) ? _("Continue?")+" ("+YN_y+"/"+YN_N+"):" : prompt;
 		vprint(p,0,stdout,false);
 		var a = stdin.read_line().strip().down();

@@ -40,6 +40,8 @@ using l.json;
 
 const string LOCALE_DIR = INSTALL_PREFIX + "/share/locale";
 const string APP_LIB_DIR = INSTALL_PREFIX + "/lib/" + BRANDING_SHORTNAME;
+const string CLI_EXE = BRANDING_SHORTNAME;
+const string GUI_EXE = BRANDING_SHORTNAME+"gtk";
 
 //////////////////////////////////////////////////////////////////////////////
 // CONFIG FILE DEFAULTS
@@ -164,14 +166,14 @@ public class Main : GLib.Object {
 
 	// state flags ----------
 	public static int VERBOSE = 1;
-	public string command = "list";
+	public string command = "";
 	public string requested_versions = "";
 	public bool ppa_tried = false;
 	public bool ppa_up = true;
 	public bool index_is_fresh = false;
 	public bool RUN_NOTIFY_SCRIPT = false;
+	public bool yes_mode = true;
 	public bool no_mode = false;
-	public bool yes_mode = false;
 	public bool gui_mode = false;
 
 	// config
@@ -208,7 +210,6 @@ public class Main : GLib.Object {
 	public bool? opt_hide_unstable   = null;
 	public bool? opt_hide_flavors    = null;
 	public int?  opt_previous_majors = null;
-	public bool opt_save_config      = false;
 
 	public static Rand rnd;
 
@@ -416,7 +417,6 @@ public class Main : GLib.Object {
 			previous_majors = opt_previous_majors;
 			keep_cache = true;
 		}
-		if (opt_save_config) save_app_config();
 
 		vprint(_("Loaded config file")+": "+APP_CONFIG_FILE,3);
 
@@ -475,7 +475,7 @@ public class Main : GLib.Object {
 		if (notify_minor || notify_major) {
 			s += "VERBOSE=0\n"
 			+ "while [[ -f $F ]] ;do\n"
-			+ "\t"+BRANDING_SHORTNAME+" --notify >&- 2>&-\n"
+			+ "\t"+CLI_EXE+" notify >&- 2>&-\n"
 			+ "\tsleep %d%s &\n".printf(n,u)
 			+ "\ts=$!\n"
 			+ "\twait $s  # respond to signals during sleep\n"

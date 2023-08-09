@@ -291,7 +291,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		App.cancelled = false;
 
 		// find the oldest major version to include
-		find_thresholds(true);
+		Package.mk_dpkg_list();
+		find_thresholds();
 
 		// ===== download the main index.html listing all kernels =====
 		download_main_index(); // download the main index.html
@@ -425,8 +426,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// read the main index.html listing all kernels
 	static void load_main_index() {
 		vprint("load_main_index()",3);
-		if (THRESHOLD_MAJOR<0) find_thresholds(true);
-		if (THRESHOLD_MAJOR<0) { vprint("load_index(): THRESHOLD_MAJOR not initialized"); exit(1); }
+		if (THRESHOLD_MAJOR<0) { vprint("load_index(): MISSING THRESHOLD_MAJOR"); exit(1); }
 
 		if (!exists(MAIN_INDEX_FILE)) return;
 		string txt = fread(MAIN_INDEX_FILE);
@@ -624,11 +624,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// Have mk_dpkg_list() use that to fill in a real actual is_mainline for each item in dpkg_list[].
 	// Use that here, and along the way delete the unwanted items from kernel_list[].
 	// Then mk_kernel_list() can just process that kernel_list[].
-	// 
-	static void find_thresholds(bool up=false) {
+	//
+	static void find_thresholds() {
 		vprint("find_thresholds()",3);
 
-		if (up || Package.dpkg_list.size<1) Package.mk_dpkg_list();
+		if (Package.dpkg_list.size<1) { vprint("MISSING dpkg_list") ;exit(1); }
 
 		if (App.previous_majors<0 || App.previous_majors>=kernel_latest_available.version_major) { THRESHOLD_MAJOR = 0; return; }
 
@@ -640,7 +640,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (k.version_major < kernel_oldest_installed.version_major && k.is_mainline) kernel_oldest_installed = k;
 		}
 
-		// threshold is whichever is lower: latest_available - show_N_previous_majors, or oldest installed mainline.
 		THRESHOLD_MAJOR = kernel_latest_available.version_major - App.previous_majors;
 		if (kernel_oldest_installed.is_mainline && kernel_oldest_installed.version_major < THRESHOLD_MAJOR) THRESHOLD_MAJOR = kernel_oldest_installed.version_major;
 	}
@@ -1004,14 +1003,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public static Gee.ArrayList<LinuxKernel> vlist_to_klist(string list="",bool update_kernel_list=false) {
+	public static Gee.ArrayList<LinuxKernel> vlist_to_klist(string list="") {
 		vprint("vlist_to_klist("+list+")",3);
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		var vlist = list.split_set(",;:| ");
 		int i=vlist.length;
 		foreach (var v in vlist) if (v.strip()=="") i-- ;
 		if (i<1) return klist;
-		if (update_kernel_list || kernel_list.size<1) mk_kernel_list(true);
 		bool e = false;
 		foreach (var v in vlist) {
 			e = false;
@@ -1081,12 +1079,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 // ---------------------------------------------------------------------
-// download_klist()
-// install_klist()
-// uninstall_klist()
+// lock_vlist()
 // lock_klist()
+// download_vlist()
+// download_klist()
+// install_vlist()
+// install_klist()
+// uninstall_vlist()
+// uninstall_klist()
 
-	public static int lock_klist(Gee.ArrayList<LinuxKernel> klist,bool lck) {
+	public static int lock_vlist(bool lck,string list="") {
+		return lock_klist(lck,vlist_to_klist(list));
+	}
+
+	public static int lock_klist(bool lck,Gee.ArrayList<LinuxKernel> klist) {
 		vprint("lock_klist("+lck.to_string()+")",3);
 		if (klist.size<1) vprint(_("Lock/Unlock: no kernels specified"));
 		int r = 0;
@@ -1102,12 +1108,20 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return r;
 	}
 
+	public static int download_vlist(string list="") {
+		return download_klist(vlist_to_klist(list));
+	}
+
 	public static int download_klist(Gee.ArrayList<LinuxKernel> klist) {
 		vprint("download_klist()",3);
 		if (klist.size<1) vprint(_("Download: no downloadable kernels specified")); 
 		int r = 0;
 		foreach (var k in klist) if (!k.download_packages()) r++;
 		return r;
+	}
+
+	public static int install_vlist(string list="") {
+		return install_klist(vlist_to_klist(list));
 	}
 
 	// dep: dpkg
@@ -1156,6 +1170,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return r;
 	}
 
+	public static int uninstall_vlist(string list="") {
+		return uninstall_klist(vlist_to_klist(list));
+	}
+
 	// dep: dpkg
 	public static int uninstall_klist(Gee.ArrayList<LinuxKernel> klist) {
 		vprint("uninstall_klist()",3);
@@ -1196,11 +1214,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static int kunin_old() {
 		vprint("kunin_old()",3);
 
-		find_thresholds(true);
-		download_main_index();
-		load_main_index();
-		check_installed();
-
 		var klist = new Gee.ArrayList<LinuxKernel>();
 		bool found_running_kernel = false;
 
@@ -1239,13 +1252,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return uninstall_klist(klist);
 	}
 
-	public static int kinst_latest(bool point_only = false) {
+	public static int kinst_latest(bool minor_only = false) {
 		vprint("kinst_latest()",3);
 
-		mk_kernel_list(true);
-
 		var k = kernel_update_minor;
-		if (!point_only && kernel_update_major!=null) k = kernel_update_major;
+		if (!minor_only && kernel_update_major!=null) k = kernel_update_major;
 
 		if (k==null) { vprint(_("No updates")); return 1; }
 

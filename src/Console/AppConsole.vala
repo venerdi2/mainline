@@ -32,7 +32,7 @@ public class AppConsole : GLib.Object {
 		+ "\n"
 		+ _("Syntax") + ": %s <"+_("command")+"> ["+_("options")+"]\n"
 		+ "\n"
-		+ _("Commands") + ":\n"
+		+ _("Commands") + "\n"
 		+ "\n"
 		+ "  check               " + _("Check for kernel updates") + "\n"
 		+ "  notify              " + _("Check for kernel updates and send a desktop notification") + "\n"
@@ -47,9 +47,10 @@ public class AppConsole : GLib.Object {
 		+ "  lock <"+_("names")+">        " + _("Lock the specified kernels") + "(1)\n"
 		+ "  unlock <"+_("names")+">      " + _("Unlock the specified kernels") + "(1)\n"
 		+ "  delete-cache        " + _("Delete the cached info about available kernels") + "\n"
+		+ "  write-config        " + _("Write the given include/exclude & previous-majors options to the config file") + "\n"
 		+ "  help                " + _("This help") + "\n"
 		+ "\n"
-		+ _("Options") + ":\n"
+		+ _("Options") + "\n"
 		+ "\n"
 		+ "  --include-rc        " + _("Include release-candidate and unstable releases") + "\n"
 		+ "  --exclude-rc        " + _("Exclude release-candidate and unstable releases") + "\n"
@@ -60,13 +61,13 @@ public class AppConsole : GLib.Object {
 		+ "  --previous-majors # " + _("Include # (or \"%s\" or \"%s\") previous major versions").printf("all","none") + "\n"
 		+ "  --include-all       " + _("Short for \"%s\"").printf("--include-rc --include-flavors --include-invalid --previous-majors all") + "\n"
 		+ "  --exclude-all       " + _("Short for \"%s\"").printf("--exclude-rc --exclude-flavors --exclude-invalid --previous-majors none") + "\n"
-		+ "  --save-config       " + _("Write the include/exclude & previous-majors options to the config file") + "\n"
-		+ "  -y|--yes            " + _("Assume Yes for all prompts") + "\n"
-		+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over \"%s\"").printf("--yes") + "\n"
+		//+ "  -y|--yes            " + _("Assume Yes for all prompts") + "\n"
+		//+ "  -n|--no|--dry-run   " + _("Assume No for all prompts - takes precedence over \"%s\"").printf("--yes") + "\n"
+		+ "  -n|--dry-run        " + _("Don't actually install or uninstall") + "\n"
 		+ "  -v|--verbose [#]    " + _("Set verbosity level to #, or increment by 1") + "\n"
 		+ "  --pause             " + _("Pause and require keypress before exiting") + "\n"
 		+ "\n"
-		+ "Notes:\n"
+		+ _("Notes") + "\n"
 		+ "(1) " +_("One or more version strings taken from the output of \"%s\"").printf("list") + "\n"
 		+ "    " +_("comma, pipe, colon, or space separated. (space requires quotes or backslashes)") + "\n"
 		+ "(2) " +_("Locked kernels and the currently running kernel are ignored") + "\n"
@@ -114,6 +115,10 @@ public class AppConsole : GLib.Object {
 					cmd = "help";
 					break;
 
+				case "--clean-cache":
+				case "--delete-cache":
+				case "delete-cache":
+				case "write-config":
 				case "--list":
 				case "list":
 				case "--list-installed":
@@ -124,9 +129,6 @@ public class AppConsole : GLib.Object {
 				case "notify":
 				case "--install-latest":
 				case "install-latest":
-				case "--clean-cache":
-				case "--delete-cache":
-				case "delete-cache":
 				case "--install-point":
 				case "--install-minor":
 				case "install-minor":
@@ -160,10 +162,10 @@ public class AppConsole : GLib.Object {
 					if (App.set_verbose(args[i+1])) i++;
 					break;
 
-				case "-y":
-				case "--yes":
-					App.yes_mode = true;
-					break;
+				//case "-y":
+				//case "--yes":
+				//	App.yes_mode = true;
+				//	break;
 
 				case "-n":
 				case "--no":
@@ -171,13 +173,15 @@ public class AppConsole : GLib.Object {
 					App.no_mode = true;
 					break;
 
-				case "--hold":
 				case "--pause":
 					hold_on_exit = true;
 					break;
 
-				case "--index-is-fresh":
+				case "--from-gui":
 					App.index_is_fresh = true;
+					string c = "";
+					for (int j = 1; j < args.length; j++) if (args[j]!="--from-gui" && args[j]!="--pause") c += args[j]+" ";
+					vprint(c);
 					break;
 
 				case "--show-unstable": // back compat
@@ -226,15 +230,19 @@ public class AppConsole : GLib.Object {
 					App.opt_previous_majors = 0;
 					break;
 
-				case "--save-config":
-					App.opt_save_config = true;
-					break;
-
 				default:
 					show_help(args[0]);
 					vprint(_("Unknown option \"%s\"").printf(args[i]),1,stderr);
 					return 1;
 			}
+		}
+
+		// ================= perform the actions ==================
+
+		// commands that don't need anything
+		if (cmd=="help") {
+			show_help(args[0]);
+			return 0;
 		}
 
 		// transition notices
@@ -260,41 +268,60 @@ public class AppConsole : GLib.Object {
 		}
 
 		// apply some of the options effects
-		if (App.no_mode) vprint(_("DRY-RUN MODE"),2);
-		else if (App.yes_mode && !App.index_is_fresh) vprint(_("NO-CONFIRM MODE"),2);
+		if (App.no_mode) vprint(_("DRY-RUN"),2);
 		vprint(string.joinv(" ",args),3);
 
 		// commands that don't require full init but do want to be affected by options
-		switch (cmd) {
-			case "delete-cache":
-				int r = 1;
-				if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted %s").printf(Main.CACHE_DIR)); }
-				else vprint(_("Error deleting %s").printf(Main.CACHE_DIR),1,stderr);
-				return r;
+		if (cmd=="delete-cache") {
+			int r = 1;
+			if (rm(Main.CACHE_DIR)) { r = 0; vprint(_("Deleted %s").printf(Main.CACHE_DIR)); }
+			else vprint(_("Error deleting %s").printf(Main.CACHE_DIR),1,stderr);
+			return r;
 		}
 
-		// finish full init
+		// finish init
 		App.init2();
 
-		// commands that require full init
+		// commands that don't need kernel_list
+		if (cmd=="write-config") {
+			App.save_app_config();
+			vprint(_("Wrote %s").printf(App.APP_CONFIG_FILE));
+			if (Main.VERBOSE>1) vprint(fread(App.APP_CONFIG_FILE));
+			return 0;
+		}
+		if (cmd=="list-installed") {
+			Package.mk_dpkg_list();
+			vprint(_("Installed Kernels")+":");
+			foreach (var p in Package.dpkg_list) if (p.name.has_prefix("linux-image-")) vprint(p.name);
+			return 0;
+		}
+		if (cmd=="notify") {
+			if (!App.notify_major && !App.notify_minor) {
+				vprint(_("Notifications disabled"),2);
+				return 1;
+			}
+			if (Environment.get_variable("DISPLAY")==null) {
+				vprint(_("No")+" $DISPLAY",2);
+				return 1;
+			}
+		}
+
+		// populate kernel_list
+		LinuxKernel.mk_kernel_list(true);
+
+		// commands that require everything
 		switch (cmd) {
 			case "list":
-				LinuxKernel.mk_kernel_list(true);
 				LinuxKernel.print_list();
 				break;
 
-			case "list-installed":
+			//case "list-installed":
 				// -- output from check_installed()
 				//Package.mk_dpkg_list();
 				//LinuxKernel.check_installed(true);
-				// -- full normal mk_kernel_list() and print_list(), just filtered
-				//LinuxKernel.mk_kernel_list(true);
+				// -- full normal print_list(), just filtered
 				//LinuxKernel.print_list(true);
-				// -- just read dpkg, avoid mk_kernel_list()
-				Package.mk_dpkg_list();
-				vprint(_("Installed Kernels")+":");
-				foreach (var p in Package.dpkg_list) if (p.name.has_prefix("linux-image-")) vprint(p.name);
-				break;
+				//break;
 
 			case "check":
 				print_updates();
@@ -313,23 +340,19 @@ public class AppConsole : GLib.Object {
 				return LinuxKernel.kunin_old();
 
 			case "lock":
-				return LinuxKernel.lock_klist(LinuxKernel.vlist_to_klist(vlist,true),true);
+				return LinuxKernel.lock_vlist(true,vlist);
 
 			case "unlock":
-				return LinuxKernel.lock_klist(LinuxKernel.vlist_to_klist(vlist,true),false);
+				return LinuxKernel.lock_vlist(false,vlist);
 
 			case "download":
-				return LinuxKernel.download_klist(LinuxKernel.vlist_to_klist(vlist,true));
+				return LinuxKernel.download_vlist(vlist);
 
 			case "uninstall":
-				return LinuxKernel.uninstall_klist(LinuxKernel.vlist_to_klist(vlist,true));
+				return LinuxKernel.uninstall_vlist(vlist);
 
 			case "install":
-				return LinuxKernel.install_klist(LinuxKernel.vlist_to_klist(vlist,true));
-
-			case "help":
-				show_help(args[0]);
-				return 0;
+				return LinuxKernel.install_vlist(vlist);
 
 			// should be unreachable
 			default:
@@ -351,7 +374,6 @@ public class AppConsole : GLib.Object {
 	}
 
 	void print_updates() {
-		LinuxKernel.mk_kernel_list(true);
 		var km = LinuxKernel.kernel_update_major;
 		var kp = LinuxKernel.kernel_update_minor;
 		if (km != null) vprint(_("Latest update")+": "+km.version_main);
@@ -361,18 +383,6 @@ public class AppConsole : GLib.Object {
 
 	int notify_user() {
 		vprint("notify_user()",3);
-
-		if (!App.notify_major && !App.notify_minor) {
-			vprint(_("Notifications disabled"),2);
-			return 1;
-		}
-
-		if (Environment.get_variable("DISPLAY")==null) {
-			vprint(_("No")+" $DISPLAY",2);
-			return 1;
-		}
-
-		LinuxKernel.mk_kernel_list(true);
 
 		string title = _("No updates found");
 		string seen = "";
@@ -401,8 +411,8 @@ public class AppConsole : GLib.Object {
 				+ " -N \""+BRANDING_LONGNAME+"\""
 				+ " -n "+BRANDING_SHORTNAME
 				+ " -t0"
-				+ " -a \""+_("Show")+":"+BRANDING_SHORTNAME+"-gtk\""
-				+ " -a \""+_("Install")+":"+BRANDING_SHORTNAME+"-gtk --install "+available+"\""
+				+ " -a \""+_("Show")+":"+GUI_EXE+"\""
+				+ " -a \""+_("Install")+":"+GUI_EXE+" install "+available+"\""
 				+ " -s \""+title+"\""
 			;
 			exec_async(s);

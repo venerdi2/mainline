@@ -281,8 +281,8 @@ public class SettingsWindow : Gtk.Window {
 			+ /* xgettext:no-c-format */ _("If a %s is present, then the %s is replaced with the dpkg command.") + "\n"
 			+ _("The built-in list contains examples of both.") +"\n"
 			+ "\n"
-			+ _("You may edit any of the built-in default commands to customize it.") + "\n"
-			+ _("The edited command will be saved as a new custom command without changing the original.")
+			+ _("To modify any of the built-in default commands, just select it and edit.") + "\n"
+			+ _("The edited command is saved in the config file, the original is not changed.")
 		);
 
 		// xterm command
@@ -308,20 +308,18 @@ public class SettingsWindow : Gtk.Window {
 			if (s != App.term_cmd) App.term_cmd = s;
 		});
 		cbt_termcmd.set_tooltip_text(
-			_("Terminal command used to run")+" \""+BRANDING_SHORTNAME+" --install|--uninstall ...\"\n"
+			_("Terminal command used to run")+" \""+BRANDING_SHORTNAME+" install|uninstall ...\"\n"
 			+ "\n"
 			+ /* xgettext:no-c-format */ _("The install/uninstall command is appended to the end, unless a %s is present.") + "\n"
 			+ /* xgettext:no-c-format */ _("If a %s is present, then the %s is replaced with the install/uninstall command.") + "\n"
 			+ _("The built-in list contains examples of both.") + "\n"
 			+ "\n"
 			+ _("The terminal program must stay in the foreground and block while the command is running, not fork and return immediately.") + "\n"
-			+ _("Most terminal programs block by default, some don't by default but can be told to, and some are not usable at all.") + "\n"
-			+ _("Examples") + ":\n"
-			+ _("gnome-terminal is usable because it can be made to block by using it's \"--wait\" option.") + "\n"
-			+ _("xfce4-terminal is not usable because it can not be made to block.") + "\n"
+			+ _("Most terminal programs block by default, some require special commandline options.") + "\n"
+			+ _("For example, %s requires \"%s\".").printf("gnome-terminal","--wait") + "\n"
 			+ "\n"
-			+ _("You may edit any of the built-in default commands to customize it.") + "\n"
-			+ _("The edited command will be saved as a new custom command without changing the original.")
+			+ _("To modify any of the built-in default commands, just select it and edit.") + "\n"
+			+ _("The edited command is saved in the config file, the original is not changed.")
 		);
 
 	}

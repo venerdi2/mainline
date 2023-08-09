@@ -33,6 +33,6 @@ public class Package : GLib.Object {
 			//var ar = x[2].strip() if (ar != LinuxKernel.NATIVE_ARCH && ar != "all" && ar != "any") continue;
 			dpkg_list.add(new Package(x[0].strip(),x[1].strip(),x[2].strip()));
 		}
-		if (dpkg_list.size<1) vprint("!!! Error running dpkg-query: \n"+std_err,1,stderr);
+		if (dpkg_list.size<1) vprint(_("!!! Error running %s").printf("dpkg-query")+": \n"+std_err,1,stderr);
 	}
 }

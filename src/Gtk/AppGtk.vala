@@ -54,12 +54,13 @@ public class AppGtk : GLib.Object {
 		string help = ""
 		+ "\n" + BRANDING_SHORTNAME + " " + BRANDING_VERSION + " - " + BRANDING_LONGNAME + "\n"
 		+ "\n"
-		+ _("Syntax") + ": " + args[0] + " ["+_("options")+"]\n"
+		+ _("Syntax") + ": " + args[0] + " ["+_("command")+"] ["+_("options")+"]\n"
 		+ "\n"
-		+ _("Options") + ":\n"
+		+ _("Commands") + "\n"
+		+ "  help                " + _("This help") + "\n"
 		+ "\n"
+		+ _("Options") + "\n"
 		+ "  -v|--verbose [#]    " + _("Set verbosity level to #, or increment by 1") + "\n"
-		+ "  -h|--help           " + _("This help") + "\n"
 		+ "\n"
 		;
 
@@ -70,6 +71,7 @@ public class AppGtk : GLib.Object {
 
 			// this is the notification action
 			case "--install":
+			case "install":
 				App.command = "install";
 				if (++i < args.length) App.requested_versions = args[i].down();
 				break;
@@ -83,13 +85,14 @@ public class AppGtk : GLib.Object {
 			case "-?":
 			case "-h":
 			case "--help":
+			case "help":
 			case "--version":
 				vprint(help,0);
 				exit(0);
 				break;
 
 			default:
-				vprint(_("Unknown option") + ": %s".printf(args[i]),1,stderr);
+				vprint(_("Unknown option") + ": \""+args[i]+"\"",1,stderr);
 				vprint(help,0);
 				exit(1);
 				break;
