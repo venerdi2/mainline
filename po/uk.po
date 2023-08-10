@@ -289,7 +289,7 @@ msgstr "Не вдається дістатися до сайту"
 #: src/Common/Package.vala:36
 #, c-format
 msgid "!!! Error running %s"
-msgstr ""
+msgstr "!!! Помилка запуску %s"
 
 #: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:343
 msgid "Unable to launch"
@@ -384,6 +384,7 @@ msgstr "Видаліть кешовану інформацію про досту
 msgid ""
 "Write the given include/exclude & previous-majors options to the config file"
 msgstr ""
+"Запишіть надані параметри включення/виключення та попередні основні параметри до файлу конфігурації"
 
 #: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
 msgid "This help"
@@ -431,7 +432,7 @@ msgstr "Скорочення від \"%s\""
 
 #: src/Console/AppConsole.vala:66
 msgid "Don't actually install or uninstall"
-msgstr ""
+msgstr "Насправді не встановлюйте та не видаляйте"
 
 #: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:63
 msgid "Set verbosity level to #, or increment by 1"
@@ -476,11 +477,11 @@ msgstr "Невідомий варіант \"%s\""
 #: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Notice: \"%s\" has been renamed to \"%s\""
-msgstr ""
+msgstr "Примітка: \"%s\" було перейменовано на \"%s\""
 
 #: src/Console/AppConsole.vala:271
 msgid "DRY-RUN"
-msgstr ""
+msgstr "СУХИЙ ХОД"
 
 #: src/Console/AppConsole.vala:277
 #, c-format
@@ -495,7 +496,7 @@ msgstr "Помилка видалення %s"
 #: src/Console/AppConsole.vala:288
 #, c-format
 msgid "Wrote %s"
-msgstr ""
+msgstr "Написав %s"
 
 #: src/Console/AppConsole.vala:294
 msgid "Installed Kernels"
@@ -782,7 +783,7 @@ msgid ""
 "space."
 msgstr ""
 "Це трохи пришвидшує деякі речі за рахунок приблизно 20 МБ жорсткого "
-"дискапростір."
+"диска простір."
 
 #: src/Gtk/SettingsWindow.vala:209
 msgid ""
@@ -840,11 +841,13 @@ msgstr "Вбудований список містить приклади обо
 msgid ""
 "To modify any of the built-in default commands, just select it and edit."
 msgstr ""
+"Щоб змінити будь-яку з вбудованих команд за замовчуванням, просто виберіть її та відредагуйте."
 
 #: src/Gtk/SettingsWindow.vala:285 src/Gtk/SettingsWindow.vala:322
 msgid ""
 "The edited command is saved in the config file, the original is not changed."
 msgstr ""
+"Відредагована команда зберігається у файлі конфігурації, оригінал не змінюється."
 
 #: src/Gtk/SettingsWindow.vala:289
 msgid "Terminal Window"
@@ -880,11 +883,13 @@ msgid ""
 "Most terminal programs block by default, some require special commandline "
 "options."
 msgstr ""
+"Більшість термінальних програм блокуються за замовчуванням, деякі вимагають спеціального командного рядка"
+"опції."
 
 #: src/Gtk/SettingsWindow.vala:319
 #, c-format
 msgid "For example, %s requires \"%s\"."
-msgstr ""
+msgstr "Наприклад, %s вимагає \"%s\"."
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
