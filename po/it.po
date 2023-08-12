@@ -102,7 +102,7 @@ msgstr ""
 
 #: src/Common/LinuxKernel.vala:860
 msgid "installation"
-msgstr ""
+msgstr "installazione"
 
 #: src/Common/LinuxKernel.vala:861
 msgid "prevented"
@@ -147,11 +147,11 @@ msgstr ""
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "failed"
-msgstr ""
+msgstr "fallito"
 
 #: src/Common/LinuxKernel.vala:1117
 msgid "Download: no downloadable kernels specified"
