@@ -1,4 +1,4 @@
-msgid ""
+pagine della cachemsgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
@@ -33,7 +33,7 @@ msgstr "Non valido"
 
 #: src/Common/LinuxKernel.vala:309
 msgid "loading cached pages"
-msgstr ""
+msgstr "caricamento pagine della cache"
 
 #: src/Common/LinuxKernel.vala:335
 msgid "queuing download"
@@ -41,7 +41,7 @@ msgstr "download in coda"
 
 #: src/Common/LinuxKernel.vala:348
 msgid "downloading new pages"
-msgstr ""
+msgstr "caricamento nuove pagine"
 
 #: src/Common/LinuxKernel.vala:362
 msgid "loading new pages"
