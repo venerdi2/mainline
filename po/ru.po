@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-09 02:18-0400\n"
-"PO-Revision-Date: 2023-07-29 21:01+0300\n"
+"PO-Revision-Date: 2023-08-15 01:24+0300\n"
 "Last-Translator: Danik2343 <krutalevex@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/Common/LinuxKernel.vala:153
 msgid "Distribution"
@@ -35,7 +35,7 @@ msgstr "Негодно"
 
 #: src/Common/LinuxKernel.vala:309
 msgid "loading cached pages"
-msgstr ""
+msgstr "загрузка кешированных страниц"
 
 #: src/Common/LinuxKernel.vala:335
 msgid "queuing download"
@@ -43,35 +43,35 @@ msgstr "загрузка очередей"
 
 #: src/Common/LinuxKernel.vala:348
 msgid "downloading new pages"
-msgstr ""
+msgstr "скачивание новых страниц"
 
 #: src/Common/LinuxKernel.vala:362
 msgid "loading new pages"
-msgstr ""
+msgstr "загрузка новых страниц"
 
 #: src/Common/LinuxKernel.vala:377
 msgid "Currently Running"
-msgstr ""
+msgstr "Запущенное в данный момент"
 
 #: src/Common/LinuxKernel.vala:378
 msgid "Oldest Installed"
-msgstr ""
+msgstr "Старое установленное"
 
 #: src/Common/LinuxKernel.vala:379
 msgid "Newest Installed"
-msgstr ""
+msgstr "Новое установленное"
 
 #: src/Common/LinuxKernel.vala:380
 msgid "Newest Available"
-msgstr ""
+msgstr "Новое доступное"
 
 #: src/Common/LinuxKernel.vala:381
 msgid "Available Minor Update"
-msgstr ""
+msgstr "Доступно минорное обновление"
 
 #: src/Common/LinuxKernel.vala:382
 msgid "Available Major Update"
-msgstr ""
+msgstr "Доступно мажорное обновление"
 
 #: src/Common/LinuxKernel.vala:418
 msgid "OK"
@@ -79,7 +79,7 @@ msgstr "OK"
 
 #: src/Common/LinuxKernel.vala:421
 msgid "FAILED"
-msgstr "НЕУДАВШИЙСЯ"
+msgstr "НЕУДАЧА"
 
 #: src/Common/LinuxKernel.vala:840
 msgid "Packages Available"
@@ -137,23 +137,23 @@ msgstr "Скачивается %s"
 
 #: src/Common/LinuxKernel.vala:1097
 msgid "Lock/Unlock: no kernels specified"
-msgstr ""
+msgstr "Блокировка/Разблокировка: ядра не указаны"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "lock"
-msgstr ""
+msgstr "блокировка"
 
 #: src/Common/LinuxKernel.vala:1100
 msgid "unlock"
-msgstr ""
+msgstr "разблокировка"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "ok"
-msgstr ""
+msgstr "ок"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "failed"
-msgstr ""
+msgstr "неудача"
 
 #: src/Common/LinuxKernel.vala:1117
 msgid "Download: no downloadable kernels specified"
@@ -250,7 +250,7 @@ msgstr "н"
 
 #: src/Common/Main.vala:223
 msgid "Missing threads support in GLib."
-msgstr ""
+msgstr "Поддержка отсутствующих потоков в GLib."
 
 #: src/Common/Main.vala:319
 msgid "Wrote config file"
@@ -289,7 +289,7 @@ msgstr "Не удается связаться с сайтом"
 #: src/Common/Package.vala:36
 #, c-format
 msgid "!!! Error running %s"
-msgstr ""
+msgstr "!!! Ошибка запуска %s"
 
 #: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:343
 msgid "Unable to launch"
@@ -302,7 +302,7 @@ msgstr "Продолжать?"
 #: src/Console/AppConsole.vala:31
 #, c-format
 msgid "install kernel packages from %s"
-msgstr ""
+msgstr "установить пакеты ядра из %s"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "Syntax"
@@ -310,7 +310,7 @@ msgstr "Синтаксис"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "command"
-msgstr ""
+msgstr "команда"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "options"
@@ -330,33 +330,34 @@ msgstr "Проверка обновлений ядра и отправка ув�
 
 #: src/Console/AppConsole.vala:39
 msgid "List the available kernels"
-msgstr ""
+msgstr "Список доступных ядер"
 
 #: src/Console/AppConsole.vala:40
 msgid "List the installed kernels"
-msgstr ""
+msgstr "Список установленных ядер"
 
 #: src/Console/AppConsole.vala:41
 msgid "Install the latest mainline kernel"
-msgstr ""
+msgstr "Установить последнее основное ядро"
 
 #: src/Console/AppConsole.vala:42
 msgid "Install the latest mainline kernel without going to a new major version"
 msgstr ""
+"Установить последнее основное ядро, не переходя на новую основную версию."
 
 #: src/Console/AppConsole.vala:43 src/Console/AppConsole.vala:44
 #: src/Console/AppConsole.vala:46 src/Console/AppConsole.vala:47
 #: src/Console/AppConsole.vala:48
 msgid "names"
-msgstr ""
+msgstr "имена"
 
 #: src/Console/AppConsole.vala:43
 msgid "Install the specified kernels"
-msgstr ""
+msgstr "Установить указанные ядра"
 
 #: src/Console/AppConsole.vala:44
 msgid "Uninstall the specified kernels"
-msgstr ""
+msgstr "Удалить указанные ядра"
 
 #: src/Console/AppConsole.vala:45
 msgid "Uninstall all but the highest installed version"
@@ -364,24 +365,26 @@ msgstr "Удаление всех установленных версий, кр�
 
 #: src/Console/AppConsole.vala:46
 msgid "Download the specified kernels"
-msgstr ""
+msgstr "Загрузить указанные ядра"
 
 #: src/Console/AppConsole.vala:47
 msgid "Lock the specified kernels"
-msgstr ""
+msgstr "Заблокировать указанные ядра"
 
 #: src/Console/AppConsole.vala:48
 msgid "Unlock the specified kernels"
-msgstr ""
+msgstr "Разблокировать указанные ядра"
 
 #: src/Console/AppConsole.vala:49
 msgid "Delete the cached info about available kernels"
-msgstr ""
+msgstr "Удалить кешированную информацию о доступных ядрах"
 
 #: src/Console/AppConsole.vala:50
 msgid ""
 "Write the given include/exclude & previous-majors options to the config file"
 msgstr ""
+"Записать указанные параметры включения/исключения и предыдущих мажорных "
+"версий в файл конфигурации."
 
 #: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
 msgid "This help"
@@ -393,56 +396,56 @@ msgstr "Параметры"
 
 #: src/Console/AppConsole.vala:55
 msgid "Include release-candidate and unstable releases"
-msgstr ""
+msgstr "Включить версии-кандидаты и нестабильные версии"
 
 #: src/Console/AppConsole.vala:56
 msgid "Exclude release-candidate and unstable releases"
-msgstr ""
+msgstr "Исключить версии-кандидаты и нестабильные версии"
 
 #: src/Console/AppConsole.vala:57
 #, c-format
 msgid "Include flavors other than \"%s\""
-msgstr ""
+msgstr "Включить варианты, отличные от \"%s\""
 
 #: src/Console/AppConsole.vala:58
 #, c-format
 msgid "Exclude flavors other than \"%s\""
-msgstr ""
+msgstr "Исключить варианты, кроме \"%s\""
 
 #: src/Console/AppConsole.vala:59
 msgid "Include failed/incomplete builds"
-msgstr ""
+msgstr "Включить неудачные/незавершенные сборки"
 
 #: src/Console/AppConsole.vala:60
 msgid "Exclude failed/incomplete builds"
-msgstr ""
+msgstr "Исключить неудачные/незавершенные сборки"
 
 #: src/Console/AppConsole.vala:61
 #, c-format
 msgid "Include # (or \"%s\" or \"%s\") previous major versions"
-msgstr ""
+msgstr "Включить # (или \"%s\" или \"%s\") предыдущие основные версии"
 
 #: src/Console/AppConsole.vala:62 src/Console/AppConsole.vala:63
 #, c-format
 msgid "Short for \"%s\""
-msgstr ""
+msgstr "Сокращение для \"%s\""
 
 #: src/Console/AppConsole.vala:66
 msgid "Don't actually install or uninstall"
-msgstr ""
+msgstr "Не устанавливать и не удалять"
 
 #: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:63
 msgid "Set verbosity level to #, or increment by 1"
-msgstr ""
+msgstr "Установить уровень отчёта на # или увеличить на 1"
 
 #: src/Console/AppConsole.vala:68
 msgid "Pause and require keypress before exiting"
-msgstr ""
+msgstr "Пауза и требование нажатия клавиши перед выходом"
 
 #: src/Console/AppConsole.vala:71
 #, c-format
 msgid "One or more version strings taken from the output of \"%s\""
-msgstr ""
+msgstr "Одна или несколько строк версии, взятых из вывода \"%s\""
 
 #: src/Console/AppConsole.vala:72
 msgid ""
@@ -462,42 +465,42 @@ msgstr "готово"
 
 #: src/Console/AppConsole.vala:84
 msgid "(press Enter to close)"
-msgstr ""
+msgstr "(нажмите Enter, чтобы закрыть)"
 
 #: src/Console/AppConsole.vala:235
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr ""
+msgstr "Неизвестный параметр \"%s\""
 
 #: src/Console/AppConsole.vala:250 src/Console/AppConsole.vala:254
 #: src/Console/AppConsole.vala:258 src/Console/AppConsole.vala:262
 #: src/Console/AppConsole.vala:267
 #, c-format
 msgid "Notice: \"%s\" has been renamed to \"%s\""
-msgstr ""
+msgstr "Примечание: \"%s\" был переименован в \"%s\""
 
 #: src/Console/AppConsole.vala:271
 msgid "DRY-RUN"
-msgstr ""
+msgstr "ПРОБНЫЙ-ЗАПУСК"
 
 #: src/Console/AppConsole.vala:277
 #, c-format
 msgid "Deleted %s"
-msgstr ""
+msgstr "Удалено %s"
 
 #: src/Console/AppConsole.vala:278
 #, c-format
 msgid "Error deleting %s"
-msgstr ""
+msgstr "Ошибка удаления %s"
 
 #: src/Console/AppConsole.vala:288
 #, c-format
 msgid "Wrote %s"
-msgstr ""
+msgstr "Записано %s"
 
 #: src/Console/AppConsole.vala:294
 msgid "Installed Kernels"
-msgstr ""
+msgstr "Установленные ядра"
 
 #: src/Console/AppConsole.vala:300
 msgid "Notifications disabled"
@@ -525,7 +528,7 @@ msgstr "Обновлений не найдено"
 
 #: src/Console/AppConsole.vala:396
 msgid "notify minor releases disabled"
-msgstr ""
+msgstr "отключено уведомления о минорных выпусках "
 
 #: src/Console/AppConsole.vala:404
 msgid "notify major releases disabled"
@@ -626,7 +629,7 @@ msgstr "Форк"
 
 #: src/Gtk/MainWindow.vala:443
 msgid "Updating Kernels..."
-msgstr ""
+msgstr "Обновление ядер..."
 
 #: src/Gtk/MainWindow.vala:501
 msgid "available"
@@ -646,7 +649,7 @@ msgstr "Фильтр"
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide RC and unstable releases"
-msgstr ""
+msgstr "Скрыть RC и нестабильные версии"
 
 #: src/Gtk/SettingsWindow.vala:54
 msgid "Hide failed or incomplete builds"
@@ -669,7 +672,7 @@ msgstr "Скрыть вкусы, отличные от %s"
 #: src/Gtk/SettingsWindow.vala:66
 #, c-format
 msgid "Don't show the alternative flavors such as %s and %s"
-msgstr ""
+msgstr "Не показывать альтернативные варианты, такие как %s и %s"
 
 #: src/Gtk/SettingsWindow.vala:80
 msgid "prior major versions  ( -1 = all )"
@@ -741,7 +744,7 @@ msgstr ""
 
 #: src/Gtk/SettingsWindow.vala:192
 msgid "Keep Debs"
-msgstr ""
+msgstr "Сохранить Debs"
 
 #: src/Gtk/SettingsWindow.vala:195
 msgid ""
@@ -756,10 +759,12 @@ msgid ""
 "They are still deleted once they become older than the \"prior major "
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
+"Они по-прежнему удаляются, когда становятся старше, чем параметр «предыдущие "
+"основные версии», или если они были обновлены на сайте mainline-ppa."
 
 #: src/Gtk/SettingsWindow.vala:203
 msgid "Keep Cache"
-msgstr ""
+msgstr "Сохранять кеш"
 
 #: src/Gtk/SettingsWindow.vala:206
 msgid ""
@@ -767,12 +772,17 @@ msgid ""
 "higher, instead essentially maintain a local mirror of the entire history "
 "from the mainline-ppa site."
 msgstr ""
+"Не обрезать кешированные файлы index.html только до установленных версий и "
+"выше, вместо этого по существу сохраняйте локальное зеркало всей истории с "
+"сайта mainline-ppa."
 
 #: src/Gtk/SettingsWindow.vala:208
 msgid ""
 "This speeds up some things a little at the cost of about 20M of hard drive "
 "space."
 msgstr ""
+"Это немного ускоряет некоторые вещи за счет около 20 МБ места на жестком "
+"диске."
 
 #: src/Gtk/SettingsWindow.vala:209
 msgid ""
@@ -781,10 +791,16 @@ msgid ""
 "deleting and re-downloading the same files if you change the \"prior major "
 "versions\" setting up and down."
 msgstr ""
+"Он пропускает шаг при каждом запуске, который перебирает все известные "
+"версии ядра, просто чтобы увидеть, есть ли какие-либо старые версии для "
+"удаления, и избегает удаления и повторной загрузки одних и тех же файлов, "
+"если вы меняете настройку «предыдущие основные версии» вверх и вниз."
 
 #: src/Gtk/SettingsWindow.vala:211
 msgid "As of 6.5.x a full cache is about 22M, and a trimmed cache is about 2M."
 msgstr ""
+"Начиная с версии 6.5.x полный кеш составляет около 22 МБ, а урезанный кеш — "
+"около 2 МБ."
 
 #: src/Gtk/SettingsWindow.vala:217
 msgid "Proxy"
@@ -824,11 +840,15 @@ msgstr "Встроенный список содержит примеры и т�
 msgid ""
 "To modify any of the built-in default commands, just select it and edit."
 msgstr ""
+"Чтобы изменить любую из встроенных команд по умолчанию, просто выберите ее и "
+"отредактируйте."
 
 #: src/Gtk/SettingsWindow.vala:285 src/Gtk/SettingsWindow.vala:322
 msgid ""
 "The edited command is saved in the config file, the original is not changed."
 msgstr ""
+"Отредактированная команда сохраняется в файле конфигурации, исходная не "
+"изменяется."
 
 #: src/Gtk/SettingsWindow.vala:289
 msgid "Terminal Window"
@@ -865,11 +885,13 @@ msgid ""
 "Most terminal programs block by default, some require special commandline "
 "options."
 msgstr ""
+"Большинство терминальных программ блокируются по умолчанию, для некоторых "
+"требуются специальные параметры командной строки."
 
 #: src/Gtk/SettingsWindow.vala:319
 #, c-format
 msgid "For example, %s requires \"%s\"."
-msgstr ""
+msgstr "Например, для %s требуется \"%s\"."
 
 #: src/Gtk/TerminalWindow.vala:130
 msgid "Copy"
