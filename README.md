@@ -143,9 +143,9 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 
 # Help / FAQ
 
-* [MainlineBuilds WIKI](https://wiki.ubuntu.com/Kernel/MainlineBuilds)
+## [MainlineBuilds WIKI](https://wiki.ubuntu.com/Kernel/MainlineBuilds)
 
-* General debugging  
+## General debugging  
   The `-v` or `-v #` option, or the environment variable `VERBOSE=#`, enables increasing levels of verbosity.  
   Example: `$ mainline-gtk -v 3` or `$ VERBOSE=3 mainline-gtk`  
   The -v option may also be used alone or repeated. The default with no `-v` is the same as `-v 1`.  
@@ -164,16 +164,16 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
   The exit value is also meaningful.  
   `VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes`  
 
-* If **Uninstall Old** doesn't remove some distribution kernel packages  
+## If **Uninstall Old** doesn't remove some distribution kernel packages  
   Use your normal package manager like apt or synaptic to remove the parent meta-package:  
   `$ sudo apt remove linux-image-generic`  
   Then **Uninstall Old** should successfully remove everything.  
 
-* Secure Boot  
+## Secure Boot  
   Possibly useful, I have not tried:  
   https://github.com/M-P-P-C/Signing-a-Linux-Kernel-for-Secure-Boot
 
-* Kernels with broken dependencies  
+## Kernels with broken dependencies  
   The build environment that builds the kernels is newer than most installed systems, and so the built kernels occasionally but regularly break compatibility with all current release and older systems.  
 
   The only convenient, practical, clean, safe resolution is "Update your system to the level that includes those dependencies naturally.".  
@@ -184,7 +184,7 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
 
   See [Not Features](#not-features)
 
-* Missing kernels  
+## Missing kernels  
   Only viable installable kernels are shown by default. Failed or incomplete builds for your platform/arch are not shown unless the "Hide Invalid" setting is un-selected.  
   If you think the list is missing a kernel, press the "PPA" button to jump to the mainline-ppa web site where the .deb packages come from, and look at the build results for the missing kernel, and you will usually find that it is a failed or incomplete build for your arch (ex: amd64), and can not be installed.
 
