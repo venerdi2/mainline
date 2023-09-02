@@ -173,8 +173,16 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
   Possibly useful, I have not tried:  
   https://github.com/M-P-P-C/Signing-a-Linux-Kernel-for-Secure-Boot
 
-* Kernel versions 5.15.7+ and libssl3  
-  [Install libssl3](../../wiki/Install-libssl3)
+* Kernels with broken dependencies  
+  The build environment that builds the kernels is newer than most installed systems, and so the built kernels occasionally but regularly break compatibility with all current release and older systems.  
+
+  The only convenient, practical, clean, safe resolution is "Update your system to the level that includes those dependencies naturally.".  
+  And don't install any newer kernels until that is possible. And if that means the next version of Ubuntu isn't even due to be released for another 6 months, so be it.  
+  
+  Otherwise, here are some hack options you may amuse yourself with (substitute "libssl3" for whatever is actually broken for you today): [Install libssl3](../../wiki/Install-libssl3)  
+  TLDR: monkey with apt configs to add beta repos and use priority settings and pinning to try to only let certain packages auto update from them, or manually download specific .deb files from the beta repos and install them with dpkg.  
+
+  See [Not Features](#not-features)
 
 * Missing kernels  
   Only viable installable kernels are shown by default. Failed or incomplete builds for your platform/arch are not shown unless the "Hide Invalid" setting is un-selected.  
