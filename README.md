@@ -159,10 +159,10 @@ Sorting on the "Notes" column is a way to see all kernels that have any notes to
   
   A few lines of output are printed before the commandline has been parsed, so `-v 0` doesn't silence them.  
   The environment variable is read earlier in the process and can silence all output.  
-  `VERBOSE=0 mainline --install-latest --yes`
+  `VERBOSE=0 mainline install-latest --yes`
 
   The exit value is also meaningful.  
-  `VERBOSE=0 ;mainline --install-latest --yes && mainline --uninstall-old --yes`  
+  `VERBOSE=0 ;mainline install-latest --yes && mainline uninstall-old --yes`  
 
 ## If **Uninstall Old** doesn't remove some distribution kernel packages  
   Use your normal package manager like apt or synaptic to remove the parent meta-package:  
