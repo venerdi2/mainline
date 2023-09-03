@@ -761,7 +761,7 @@ msgid ""
 "versions\" setting, or if they have been updated on the mainline-ppa site."
 msgstr ""
 "Sie werden weiterhin gelöscht, wenn sie älter sind als die Einstellung \"vorherige Hauptversionen".
-"versions\" oder wenn sie auf der mainline-ppa site aktualisiert wurden."
+"versions\", oder wenn sie auf der mainline-ppa site aktualisiert wurden."
 
 #: src/Gtk/SettingsWindow.vala:203
 msgid "Keep Cache"
