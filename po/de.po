@@ -648,7 +648,7 @@ msgstr "Filter"
 
 #: src/Gtk/SettingsWindow.vala:47
 msgid "Hide RC and unstable releases"
-msgstr "RC und instabile Versionen ausblenden"
+msgstr "RC und instabile versionen ausblenden"
 
 #: src/Gtk/SettingsWindow.vala:54
 msgid "Hide failed or incomplete builds"
