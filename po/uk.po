@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-09 02:18-0400\n"
+"POT-Creation-Date: 2023-08-11 20:47-0400\n"
 "PO-Revision-Date: 2019-07-25 11:00+0300\n"
 "Last-Translator: Serhii Golovko <cappelikan@gmail.com>\n"
 "Language-Team: Ukranian\n"
@@ -21,7 +21,7 @@ msgstr "Дистрибутив"
 msgid "Architecture"
 msgstr "Системна архитектура"
 
-#: src/Common/LinuxKernel.vala:268 src/Gtk/MainWindow.vala:498
+#: src/Common/LinuxKernel.vala:268 src/Gtk/MainWindow.vala:499
 msgid "Running"
 msgstr "Використовується"
 
@@ -90,7 +90,7 @@ msgid "Packages Installed"
 msgstr "Встановлені пакети"
 
 #: src/Common/LinuxKernel.vala:853 src/Console/AppConsole.vala:70
-#: src/Gtk/MainWindow.vala:199
+#: src/Gtk/MainWindow.vala:200
 msgid "Notes"
 msgstr "Нотатки"
 
@@ -122,7 +122,7 @@ msgstr "потребує оновлення"
 msgid "Available Kernels"
 msgstr "Доступні ядра"
 
-#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:148
+#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:149
 msgid "Kernel"
 msgstr "Ядро"
 
@@ -291,7 +291,7 @@ msgstr "Не вдається дістатися до сайту"
 msgid "!!! Error running %s"
 msgstr "!!! Помилка запуску %s"
 
-#: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:343
+#: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:344
 msgid "Unable to launch"
 msgstr "Неможливо запустити"
 
@@ -304,19 +304,19 @@ msgstr "Продовжити?"
 msgid "install kernel packages from %s"
 msgstr "встановити пакети ядра з %s"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "Syntax"
 msgstr "Синтаксис"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "command"
 msgstr "команда"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "options"
 msgstr "параметри"
 
-#: src/Console/AppConsole.vala:35 src/Gtk/AppGtk.vala:59
+#: src/Console/AppConsole.vala:35 src/Gtk/AppGtk.vala:58
 msgid "Commands"
 msgstr "Команди"
 
@@ -384,13 +384,14 @@ msgstr "Видаліть кешовану інформацію про досту
 msgid ""
 "Write the given include/exclude & previous-majors options to the config file"
 msgstr ""
-"Запишіть надані параметри включення/виключення та попередні основні параметри до файлу конфігурації"
+"Запишіть надані параметри включення/виключення та попередні основні "
+"параметри до файлу конфігурації"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
+#: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:59
 msgid "This help"
 msgstr "Ця допомога"
 
-#: src/Console/AppConsole.vala:53 src/Gtk/AppGtk.vala:62
+#: src/Console/AppConsole.vala:53 src/Gtk/AppGtk.vala:61
 msgid "Options"
 msgstr "Параметри"
 
@@ -434,7 +435,7 @@ msgstr "Скорочення від \"%s\""
 msgid "Don't actually install or uninstall"
 msgstr "Насправді не встановлюйте та не видаляйте"
 
-#: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:63
+#: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:62
 msgid "Set verbosity level to #, or increment by 1"
 msgstr "Установіть рівень докладності на # або збільште на 1"
 
@@ -543,7 +544,7 @@ msgstr "Ядро %s Доступне"
 msgid "Show"
 msgstr "Показати"
 
-#: src/Console/AppConsole.vala:415 src/Gtk/MainWindow.vala:327
+#: src/Console/AppConsole.vala:415 src/Gtk/MainWindow.vala:328
 msgid "Install"
 msgstr "Встановити"
 
@@ -551,31 +552,31 @@ msgstr "Встановити"
 msgid "Previously notified"
 msgstr "Попередньо повідомлено"
 
-#: src/Gtk/AppGtk.vala:95
+#: src/Gtk/AppGtk.vala:94
 msgid "Unknown option"
-msgstr "Невідомий параметр"
+msgstr ""
 
-#: src/Gtk/MainWindow.vala:171
+#: src/Gtk/MainWindow.vala:172
 msgid "Lock"
 msgstr "Блокування"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:189
 msgid "Status"
 msgstr "Стан"
 
-#: src/Gtk/MainWindow.vala:332
+#: src/Gtk/MainWindow.vala:333
 msgid "Uninstall"
 msgstr "Видалити"
 
-#: src/Gtk/MainWindow.vala:338
+#: src/Gtk/MainWindow.vala:339
 msgid "Changelog, build status, etc"
 msgstr "Журнал змін, статус збірки тощо"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:348
 msgid "Uninstall Old"
 msgstr "Видалити старе"
 
-#: src/Gtk/MainWindow.vala:348
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
@@ -587,11 +588,11 @@ msgstr ""
 "* Наразі запущене ядро\n"
 "* будь-які заблоковані ядра"
 
-#: src/Gtk/MainWindow.vala:353
+#: src/Gtk/MainWindow.vala:354
 msgid "Reload"
 msgstr "Перезавантажити"
 
-#: src/Gtk/MainWindow.vala:354
+#: src/Gtk/MainWindow.vala:355
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
@@ -599,19 +600,19 @@ msgstr ""
 "Видаліть і перезавантажте всю кешовану інформацію про ядро\n"
 "(те саме, що \"mainline --delete-cache\")"
 
-#: src/Gtk/MainWindow.vala:359
+#: src/Gtk/MainWindow.vala:360
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/Gtk/MainWindow.vala:364
+#: src/Gtk/MainWindow.vala:365
 msgid "About"
 msgstr "Про программу"
 
-#: src/Gtk/MainWindow.vala:369
+#: src/Gtk/MainWindow.vala:370
 msgid "Exit"
 msgstr "Вихід"
 
-#: src/Gtk/MainWindow.vala:430
+#: src/Gtk/MainWindow.vala:431
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -619,19 +620,19 @@ msgstr ""
 "Інструмент для встановлення пакетів ядра\n"
 "з Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:432
+#: src/Gtk/MainWindow.vala:433
 msgid "Original"
 msgstr "Оригінал"
 
-#: src/Gtk/MainWindow.vala:433
+#: src/Gtk/MainWindow.vala:434
 msgid "Forked"
 msgstr "Двоєний"
 
-#: src/Gtk/MainWindow.vala:443
+#: src/Gtk/MainWindow.vala:444
 msgid "Updating Kernels..."
 msgstr "Оновлення ядер..."
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:502
 msgid "available"
 msgstr "доступний"
 
@@ -782,8 +783,8 @@ msgid ""
 "This speeds up some things a little at the cost of about 20M of hard drive "
 "space."
 msgstr ""
-"Це трохи пришвидшує деякі речі за рахунок приблизно 20 МБ жорсткого "
-"диска простір."
+"Це трохи пришвидшує деякі речі за рахунок приблизно 20 МБ жорсткого диска "
+"простір."
 
 #: src/Gtk/SettingsWindow.vala:209
 msgid ""
@@ -841,13 +842,15 @@ msgstr "Вбудований список містить приклади обо
 msgid ""
 "To modify any of the built-in default commands, just select it and edit."
 msgstr ""
-"Щоб змінити будь-яку з вбудованих команд за замовчуванням, просто виберіть її та відредагуйте."
+"Щоб змінити будь-яку з вбудованих команд за замовчуванням, просто виберіть "
+"її та відредагуйте."
 
 #: src/Gtk/SettingsWindow.vala:285 src/Gtk/SettingsWindow.vala:322
 msgid ""
 "The edited command is saved in the config file, the original is not changed."
 msgstr ""
-"Відредагована команда зберігається у файлі конфігурації, оригінал не змінюється."
+"Відредагована команда зберігається у файлі конфігурації, оригінал не "
+"змінюється."
 
 #: src/Gtk/SettingsWindow.vala:289
 msgid "Terminal Window"
@@ -883,8 +886,8 @@ msgid ""
 "Most terminal programs block by default, some require special commandline "
 "options."
 msgstr ""
-"Більшість термінальних програм блокуються за замовчуванням, деякі вимагають спеціального командного рядка"
-"опції."
+"Більшість термінальних програм блокуються за замовчуванням, деякі вимагають "
+"спеціального командного рядкаопції."
 
 #: src/Gtk/SettingsWindow.vala:319
 #, c-format

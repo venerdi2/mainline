@@ -485,7 +485,7 @@ msgstr "DRY-RUN"
 #: src/Console/AppConsole.vala:277
 #, c-format
 msgid "Deleted %s"
-msgstr "5s cancellato"
+msgstr "%s Cancellato"
 
 #: src/Console/AppConsole.vala:278
 #, c-format
@@ -495,7 +495,7 @@ msgstr "Errore cancellando %s"
 #: src/Console/AppConsole.vala:288
 #, c-format
 msgid "Wrote %s"
-msgstr "5s scritto"
+msgstr "%s Scritto"
 
 #: src/Console/AppConsole.vala:294
 msgid "Installed Kernels"

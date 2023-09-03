@@ -25,7 +25,7 @@ public Main App;
 
 public class AppGtk : GLib.Object {
 
-	public static int main (string[] argv) {
+	public static int main(string[] argv) {
 		App = new Main();
 		App.gui_mode = true;
 		parse_arguments(argv);
@@ -34,7 +34,6 @@ public class AppGtk : GLib.Object {
 
 		X.init_threads();
 		Gtk.init(ref argv);
-		//var GUI = new MainWindow();
 		new MainWindow();
 
 		Gtk.main();

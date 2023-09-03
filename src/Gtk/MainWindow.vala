@@ -27,6 +27,7 @@ using l.misc;
 using l.exec;
 
 public class MainWindow : Window {
+//public class MainWindow : ApplicationWindow {
 
 	const int SPACING = 6;
 

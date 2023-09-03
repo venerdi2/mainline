@@ -144,8 +144,8 @@ enum SIG {
 
 extern void exit(int exit_code);
 
-public class Main : GLib.Object {
-//public class Main : Application {
+//public class Main : GLib.Object {
+public class Main : Application {
 
 	// constants ----------
 	public string CONFIG_DIR = "";

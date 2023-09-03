@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-09 02:18-0400\n"
+"POT-Creation-Date: 2023-08-11 20:47-0400\n"
 "PO-Revision-Date: 2023-01-10 02:03-0600\n"
 "Last-Translator: Vasilis Kosmidis <skyhirules@gmail.com>\n"
 "Language-Team: Greek\n"
@@ -21,7 +21,7 @@ msgstr "Διανομή"
 msgid "Architecture"
 msgstr "Αρχιτεκτονική"
 
-#: src/Common/LinuxKernel.vala:268 src/Gtk/MainWindow.vala:498
+#: src/Common/LinuxKernel.vala:268 src/Gtk/MainWindow.vala:499
 msgid "Running"
 msgstr "Ενεργός"
 
@@ -90,7 +90,7 @@ msgid "Packages Installed"
 msgstr "Εγκατεστημένα πακέτα"
 
 #: src/Common/LinuxKernel.vala:853 src/Console/AppConsole.vala:70
-#: src/Gtk/MainWindow.vala:199
+#: src/Gtk/MainWindow.vala:200
 msgid "Notes"
 msgstr "Σημειώσεις"
 
@@ -122,7 +122,7 @@ msgstr "χρειάζεται ενημέρωση"
 msgid "Available Kernels"
 msgstr "Διαθέσιμοι πυρήνες"
 
-#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:148
+#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:149
 msgid "Kernel"
 msgstr "Πυρήνας"
 
@@ -293,7 +293,7 @@ msgstr "Αποτυχία ανάγνωσης του αρχείου"
 msgid "!!! Error running %s"
 msgstr ""
 
-#: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:343
+#: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:344
 msgid "Unable to launch"
 msgstr "Δεν είναι δυνατή η εκκίνηση"
 
@@ -306,19 +306,19 @@ msgstr ""
 msgid "install kernel packages from %s"
 msgstr ""
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "Syntax"
 msgstr "Σύνταξη"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "command"
 msgstr ""
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "options"
 msgstr "επιλογές"
 
-#: src/Console/AppConsole.vala:35 src/Gtk/AppGtk.vala:59
+#: src/Console/AppConsole.vala:35 src/Gtk/AppGtk.vala:58
 msgid "Commands"
 msgstr "Εντολές"
 
@@ -386,11 +386,11 @@ msgid ""
 "Write the given include/exclude & previous-majors options to the config file"
 msgstr ""
 
-#: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
+#: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:59
 msgid "This help"
 msgstr "Αυτή η βοήθεια"
 
-#: src/Console/AppConsole.vala:53 src/Gtk/AppGtk.vala:62
+#: src/Console/AppConsole.vala:53 src/Gtk/AppGtk.vala:61
 msgid "Options"
 msgstr "Επιλογές"
 
@@ -434,7 +434,7 @@ msgstr ""
 msgid "Don't actually install or uninstall"
 msgstr ""
 
-#: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:63
+#: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:62
 msgid "Set verbosity level to #, or increment by 1"
 msgstr ""
 
@@ -543,7 +543,7 @@ msgstr "Πυρήνας %s διαθέσιμος"
 msgid "Show"
 msgstr "Προβολή"
 
-#: src/Console/AppConsole.vala:415 src/Gtk/MainWindow.vala:327
+#: src/Console/AppConsole.vala:415 src/Gtk/MainWindow.vala:328
 msgid "Install"
 msgstr "Εγκατάσταση"
 
@@ -551,31 +551,31 @@ msgstr "Εγκατάσταση"
 msgid "Previously notified"
 msgstr "Έχει ήδη κοινοποιηθεί"
 
-#: src/Gtk/AppGtk.vala:95
+#: src/Gtk/AppGtk.vala:94
 msgid "Unknown option"
-msgstr "Άγνωστη επιλογή"
+msgstr ""
 
-#: src/Gtk/MainWindow.vala:171
+#: src/Gtk/MainWindow.vala:172
 msgid "Lock"
 msgstr "κλειδώνω"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:189
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: src/Gtk/MainWindow.vala:332
+#: src/Gtk/MainWindow.vala:333
 msgid "Uninstall"
 msgstr "Απεγκατάσταση"
 
-#: src/Gtk/MainWindow.vala:338
+#: src/Gtk/MainWindow.vala:339
 msgid "Changelog, build status, etc"
 msgstr "Καταγραφή αλλαγών, κατάσταση κατασκευής κ.λπ"
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:348
 msgid "Uninstall Old"
 msgstr "Απεγκατάσταση παλαιών"
 
-#: src/Gtk/MainWindow.vala:348
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
@@ -587,11 +587,11 @@ msgstr ""
 "* ο τρέχων πυρήνας\n"
 "* τυχόν πυρήνες που είναι κλειδωμένοι"
 
-#: src/Gtk/MainWindow.vala:353
+#: src/Gtk/MainWindow.vala:354
 msgid "Reload"
 msgstr "Δροσίζω"
 
-#: src/Gtk/MainWindow.vala:354
+#: src/Gtk/MainWindow.vala:355
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
@@ -600,19 +600,19 @@ msgstr ""
 "αποθηκευτεί στην κρυφή μνήμη\n"
 "(το ίδιο με το \"mainline --delete-cache\")"
 
-#: src/Gtk/MainWindow.vala:359
+#: src/Gtk/MainWindow.vala:360
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: src/Gtk/MainWindow.vala:364
+#: src/Gtk/MainWindow.vala:365
 msgid "About"
 msgstr "Σχετικά"
 
-#: src/Gtk/MainWindow.vala:369
+#: src/Gtk/MainWindow.vala:370
 msgid "Exit"
 msgstr "Έξοδος"
 
-#: src/Gtk/MainWindow.vala:430
+#: src/Gtk/MainWindow.vala:431
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -620,19 +620,19 @@ msgstr ""
 "Ένα εργαλείο για την εγκατάσταση πακέτων πυρήνα\n"
 "από το Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:432
+#: src/Gtk/MainWindow.vala:433
 msgid "Original"
 msgstr "Πρωτότυπο"
 
-#: src/Gtk/MainWindow.vala:433
+#: src/Gtk/MainWindow.vala:434
 msgid "Forked"
 msgstr "Διχαλωτός"
 
-#: src/Gtk/MainWindow.vala:443
+#: src/Gtk/MainWindow.vala:444
 msgid "Updating Kernels..."
 msgstr ""
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:502
 msgid "available"
 msgstr "διαθέσιμος"
 

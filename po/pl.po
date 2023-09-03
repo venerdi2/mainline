@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-09 02:18-0400\n"
+"POT-Creation-Date: 2023-08-11 20:47-0400\n"
 "PO-Revision-Date: 2023-08-10 00:24+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -20,7 +20,7 @@ msgstr "Dystrybucja"
 msgid "Architecture"
 msgstr "Architektura"
 
-#: src/Common/LinuxKernel.vala:268 src/Gtk/MainWindow.vala:498
+#: src/Common/LinuxKernel.vala:268 src/Gtk/MainWindow.vala:499
 msgid "Running"
 msgstr "Uruchomione"
 
@@ -89,7 +89,7 @@ msgid "Packages Installed"
 msgstr "Zainstalowane pakiety"
 
 #: src/Common/LinuxKernel.vala:853 src/Console/AppConsole.vala:70
-#: src/Gtk/MainWindow.vala:199
+#: src/Gtk/MainWindow.vala:200
 msgid "Notes"
 msgstr "Notatki"
 
@@ -121,7 +121,7 @@ msgstr "wymaga aktualizacji"
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
-#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:148
+#: src/Common/LinuxKernel.vala:1018 src/Gtk/MainWindow.vala:149
 msgid "Kernel"
 msgstr "Jądro"
 
@@ -291,7 +291,7 @@ msgstr "Nie można dotrzeć do witryny"
 msgid "!!! Error running %s"
 msgstr "!!! Błąd podczas uruchamiania %s"
 
-#: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:343
+#: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:344
 msgid "Unable to launch"
 msgstr "Nie można uruchomić"
 
@@ -304,19 +304,19 @@ msgstr "Kontynuować?"
 msgid "install kernel packages from %s"
 msgstr "zainstaluj pakiety jąder z %s"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "Syntax"
 msgstr "Składnia"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "command"
 msgstr "polecenie"
 
-#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
+#: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:56
 msgid "options"
 msgstr "opcje"
 
-#: src/Console/AppConsole.vala:35 src/Gtk/AppGtk.vala:59
+#: src/Console/AppConsole.vala:35 src/Gtk/AppGtk.vala:58
 msgid "Commands"
 msgstr "Polecenia"
 
@@ -385,11 +385,11 @@ msgstr ""
 "Zapisz opcje dołączania/wykluczania i poprzednich wersji głównych w pliku "
 "konfiguracyjnym"
 
-#: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
+#: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:59
 msgid "This help"
 msgstr "Ta pomoc"
 
-#: src/Console/AppConsole.vala:53 src/Gtk/AppGtk.vala:62
+#: src/Console/AppConsole.vala:53 src/Gtk/AppGtk.vala:61
 msgid "Options"
 msgstr "Opcje"
 
@@ -433,7 +433,7 @@ msgstr "Skrót od „%s”"
 msgid "Don't actually install or uninstall"
 msgstr "W rzeczywistości nie instaluj ani nie odinstalowuj"
 
-#: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:63
+#: src/Console/AppConsole.vala:67 src/Gtk/AppGtk.vala:62
 msgid "Set verbosity level to #, or increment by 1"
 msgstr "Ustaw poziom gadatliwości na # lub zwiększ o 1"
 
@@ -542,7 +542,7 @@ msgstr "Dostępne jądro %s"
 msgid "Show"
 msgstr "Pokaż"
 
-#: src/Console/AppConsole.vala:415 src/Gtk/MainWindow.vala:327
+#: src/Console/AppConsole.vala:415 src/Gtk/MainWindow.vala:328
 msgid "Install"
 msgstr "Zainstaluj"
 
@@ -550,31 +550,31 @@ msgstr "Zainstaluj"
 msgid "Previously notified"
 msgstr "Wcześniej powiadomiono"
 
-#: src/Gtk/AppGtk.vala:95
+#: src/Gtk/AppGtk.vala:94
 msgid "Unknown option"
-msgstr "Nieznana opcja"
+msgstr ""
 
-#: src/Gtk/MainWindow.vala:171
+#: src/Gtk/MainWindow.vala:172
 msgid "Lock"
 msgstr "Zablokuj"
 
-#: src/Gtk/MainWindow.vala:188
+#: src/Gtk/MainWindow.vala:189
 msgid "Status"
 msgstr "Stan"
 
-#: src/Gtk/MainWindow.vala:332
+#: src/Gtk/MainWindow.vala:333
 msgid "Uninstall"
 msgstr "Odinstaluj"
 
-#: src/Gtk/MainWindow.vala:338
+#: src/Gtk/MainWindow.vala:339
 msgid "Changelog, build status, etc"
 msgstr "Dziennik zmian, status kompilacji itd."
 
-#: src/Gtk/MainWindow.vala:347
+#: src/Gtk/MainWindow.vala:348
 msgid "Uninstall Old"
 msgstr "Odinstaluj stare"
 
-#: src/Gtk/MainWindow.vala:348
+#: src/Gtk/MainWindow.vala:349
 msgid ""
 "Uninstall everything except:\n"
 "* the highest installed version\n"
@@ -586,11 +586,11 @@ msgstr ""
 "* aktualnie działającego jądra\n"
 "* wszelkich jąder, które są zablokowane"
 
-#: src/Gtk/MainWindow.vala:353
+#: src/Gtk/MainWindow.vala:354
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
-#: src/Gtk/MainWindow.vala:354
+#: src/Gtk/MainWindow.vala:355
 msgid ""
 "Delete and reload all cached kernel info\n"
 "(the same as \"mainline --delete-cache\")"
@@ -598,19 +598,19 @@ msgstr ""
 "Usuń i wczytaj ponownie wszystkie informacje o jądrze\n"
 "z pamięci podręcznej (to samo co „mainline --delete-cache”)"
 
-#: src/Gtk/MainWindow.vala:359
+#: src/Gtk/MainWindow.vala:360
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: src/Gtk/MainWindow.vala:364
+#: src/Gtk/MainWindow.vala:365
 msgid "About"
 msgstr "O programie"
 
-#: src/Gtk/MainWindow.vala:369
+#: src/Gtk/MainWindow.vala:370
 msgid "Exit"
 msgstr "Wyjdź"
 
-#: src/Gtk/MainWindow.vala:430
+#: src/Gtk/MainWindow.vala:431
 msgid ""
 "A tool for installing kernel packages\n"
 "from the Ubuntu Mainline Kernels PPA"
@@ -618,19 +618,19 @@ msgstr ""
 "Narzędzie do instalowania pakietów\n"
 "jąder z Ubuntu Mainline Kernels PPA"
 
-#: src/Gtk/MainWindow.vala:432
+#: src/Gtk/MainWindow.vala:433
 msgid "Original"
 msgstr "Oryginalne"
 
-#: src/Gtk/MainWindow.vala:433
+#: src/Gtk/MainWindow.vala:434
 msgid "Forked"
 msgstr "Sforkowane"
 
-#: src/Gtk/MainWindow.vala:443
+#: src/Gtk/MainWindow.vala:444
 msgid "Updating Kernels..."
 msgstr "Aktualizowanie jąder..."
 
-#: src/Gtk/MainWindow.vala:501
+#: src/Gtk/MainWindow.vala:502
 msgid "available"
 msgstr "dostępne"
 
