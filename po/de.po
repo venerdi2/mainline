@@ -779,7 +779,7 @@ msgid ""
 "This speeds up some things a little at the cost of about 20M of hard drive "
 "space."
 msgstr ""
-"Das beschleunigt die Dinge ein wenig, verbraucht etwa 20 MB der festplatte space."
+"Das beschleunigt die Dinge ein wenig, verbraucht etwa 20 MB der festplatte raum."
 
 #: src/Gtk/SettingsWindow.vala:209
 msgid ""
