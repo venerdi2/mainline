@@ -128,7 +128,7 @@ msgstr "Kernel"
 
 #: src/Common/LinuxKernel.vala:1038
 msgid "checksums enabled"
-msgstr "checksum Aktiviert"
+msgstr "checksum ektiviert"
 
 #: src/Common/LinuxKernel.vala:1065
 #, c-format
@@ -137,7 +137,7 @@ msgstr "Wird Heruntergeladen %s"
 
 #: src/Common/LinuxKernel.vala:1097
 msgid "Lock/Unlock: no kernels specified"
-msgstr "Sperren/Entsperren: kein Kernel ausgewählt"
+msgstr "Sperren/Entsperren: kein kernel ausgewählt"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "lock"
@@ -157,12 +157,12 @@ msgstr "Fehlgeschlagen"
 
 #: src/Common/LinuxKernel.vala:1117
 msgid "Download: no downloadable kernels specified"
-msgstr "Herunterladen: keine herunterladbaren Kernel angegeben"
+msgstr "Herunterladen: keine herunterladbaren kernel angegeben"
 
 #: src/Common/LinuxKernel.vala:1138
 #, c-format
 msgid "%s is already installed"
-msgstr "%s ist bereits Installiert"
+msgstr "%s ist bereits installiert"
 
 #: src/Common/LinuxKernel.vala:1143 src/Common/LinuxKernel.vala:1191
 #: src/Common/LinuxKernel.vala:1235
@@ -187,7 +187,7 @@ msgstr "Installiert %s"
 
 #: src/Common/LinuxKernel.vala:1161
 msgid "Install: no installable kernels specified"
-msgstr "Installieren: keine installierbaren Kernel angegeben"
+msgstr "Installieren: keine installierbaren kernel angegeben"
 
 #: src/Common/LinuxKernel.vala:1186 src/Common/LinuxKernel.vala:1227
 #, c-format
@@ -205,7 +205,7 @@ msgstr "gefunden"
 
 #: src/Common/LinuxKernel.vala:1202
 msgid "Uninstall: no uninstallable packages found"
-msgstr "Deinstallieren: keine deinstallierbaren Pakete gefunden"
+msgstr "Deinstallieren: keine deinstallierbaren pakete gefunden"
 
 #: src/Common/LinuxKernel.vala:1231
 #, c-format
@@ -214,7 +214,7 @@ msgstr "%s ist die höchst installierte version"
 
 #: src/Common/LinuxKernel.vala:1243
 msgid "Could not find running kernel in list"
-msgstr "Konnte keinen laufenden Kernel in der liste finden"
+msgstr "Konnte keinen laufenden kernel in der liste finden"
 
 #: src/Common/LinuxKernel.vala:1248
 msgid "No old kernels to uninstall"
