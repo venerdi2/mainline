@@ -35,27 +35,27 @@ msgstr "Ungültig"
 
 #: src/Common/LinuxKernel.vala:309
 msgid "loading cached pages"
-msgstr "Laden zwischengespeicherter Seiten  "
+msgstr "Laden zwischengespeicherter seiten"
 
 #: src/Common/LinuxKernel.vala:335
 msgid "queuing download"
-msgstr "Warteschlangen-Download"
+msgstr "warteschlangen download"
 
 #: src/Common/LinuxKernel.vala:348
 msgid "downloading new pages"
-msgstr "Download neuer Seiten "
+msgstr "download neuer seiten"
 
 #: src/Common/LinuxKernel.vala:362
 msgid "loading new pages"
-msgstr "Laden neue Seiten "
+msgstr "laden neue seiten"
 
 #: src/Common/LinuxKernel.vala:377
 msgid "Currently Running"
-msgstr "Bereits am Laufen "
+msgstr "Bereits am Laufen"
 
 #: src/Common/LinuxKernel.vala:378
 msgid "Oldest Installed"
-msgstr "Ältere instatllieren "
+msgstr "Ältere Instatllieren"
 
 #: src/Common/LinuxKernel.vala:379
 msgid "Newest Installed"
@@ -67,11 +67,11 @@ msgstr "Neuer Verfügbar"
 
 #: src/Common/LinuxKernel.vala:381
 msgid "Available Minor Update"
-msgstr "kleines Update verfügbar"
+msgstr "Kleines Update Verfügbar"
 
 #: src/Common/LinuxKernel.vala:382
 msgid "Available Major Update"
-msgstr "Major Update verfügbar"
+msgstr "Major Update Verfügbar"
 
 #: src/Common/LinuxKernel.vala:418
 msgid "OK"
@@ -112,7 +112,7 @@ msgstr "Verhindert"
 
 #: src/Common/LinuxKernel.vala:876 src/Common/LinuxKernel.vala:1018
 msgid "not found"
-msgstr "nicht gefunden "
+msgstr "nicht gefunden"
 
 #: src/Common/LinuxKernel.vala:903
 msgid "needs update"
@@ -168,12 +168,12 @@ msgstr "%s ist bereits Installiert"
 #: src/Common/LinuxKernel.vala:1235
 #, c-format
 msgid "%s is locked"
-msgstr "%s ist Gesperrt"
+msgstr "%s ist lesperrt"
 
 #: src/Common/LinuxKernel.vala:1148
 #, c-format
 msgid "%s is invalid"
-msgstr "%s ist Ungültig"
+msgstr "%s ist ungültig"
 
 #: src/Common/LinuxKernel.vala:1153
 #, c-format
@@ -192,7 +192,7 @@ msgstr "Installieren: keine installierbaren Kernel angegeben"
 #: src/Common/LinuxKernel.vala:1186 src/Common/LinuxKernel.vala:1227
 #, c-format
 msgid "%s is running"
-msgstr "%s ist am Laufen"
+msgstr "%s ist am laufen"
 
 #: src/Common/LinuxKernel.vala:1195
 #, c-format
@@ -210,11 +210,11 @@ msgstr "Deinstallieren: keine deinstallierbaren Pakete gefunden"
 #: src/Common/LinuxKernel.vala:1231
 #, c-format
 msgid "%s is the highest installed version"
-msgstr "%s ist die höchst installierte Version"
+msgstr "%s ist die höchst installierte version"
 
 #: src/Common/LinuxKernel.vala:1243
 msgid "Could not find running kernel in list"
-msgstr "Konnte keinen laufenden Kernel in der Liste finden"
+msgstr "Konnte keinen laufenden Kernel in der liste finden"
 
 #: src/Common/LinuxKernel.vala:1248
 msgid "No old kernels to uninstall"
@@ -258,11 +258,11 @@ msgstr "Konfigurationsdatei geschrieben"
 
 #: src/Common/Main.vala:338
 msgid "No config file"
-msgstr "Keine Konfigurationsdatei"
+msgstr "Keine konfigurationsdatei"
 
 #: src/Common/Main.vala:421
 msgid "Loaded config file"
-msgstr "Geladene Konfigurationsdatei"
+msgstr "Geladene konfigurationsdatei"
 
 #: src/Common/Main.vala:443
 msgid "Called from"
@@ -270,13 +270,13 @@ msgstr "Aufgerufen von"
 
 #: src/Common/Main.vala:443
 msgid "at logon"
-msgstr "bei der Anmeldung"
+msgstr "bei der anmeldung"
 
 #: src/Common/Main.vala:444
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
-"Diese Datei wird überschrieben und erneut ausgeführt, wenn Einstellungen in"
+"Diese datei wird überschrieben und erneut ausgeführt, wenn einstellungen in"
 
 #: src/Common/Main.vala:484
 msgid "Notifications are disabled"
@@ -284,12 +284,12 @@ msgstr "Benachrichtigungen sind deaktiviert"
 
 #: src/Common/Main.vala:537
 msgid "Can not reach site"
-msgstr "Fehler beim lesen der Datei"
+msgstr "Die site kann nicht erreicht werden"
 
 #: src/Common/Package.vala:36
 #, c-format
 msgid "!!! Error running %s"
-msgstr "!!! Fehler beim Ausführen %s"
+msgstr "!!! Fehler beim ausführen %s"
 
 #: src/lib/l.exec.vala:7 src/Gtk/MainWindow.vala:343
 msgid "Unable to launch"
@@ -302,7 +302,7 @@ msgstr "Weiter ?"
 #: src/Console/AppConsole.vala:31
 #, c-format
 msgid "install kernel packages from %s"
-msgstr "Installiere Kernel packete von %s"
+msgstr "Installiere kernel packete von %s"
 
 #: src/Console/AppConsole.vala:33 src/Gtk/AppGtk.vala:57
 msgid "Syntax"
@@ -322,12 +322,12 @@ msgstr "Befehle"
 
 #: src/Console/AppConsole.vala:37
 msgid "Check for kernel updates"
-msgstr "Nach Kernel-Updates suchen"
+msgstr "Nach kernel updates suchen"
 
 #: src/Console/AppConsole.vala:38
 msgid "Check for kernel updates and send a desktop notification"
 msgstr ""
-"Nach Kernel-Updates suchen und eine Desktop-Benachrichtigung senden"
+"Nach kernel updates suchen und eine desktop benachrichtigung senden"
 
 #: src/Console/AppConsole.vala:39
 msgid "List the available kernels"
@@ -335,7 +335,7 @@ msgstr "Auflisten der verfügbaren kernel"
 
 #: src/Console/AppConsole.vala:40
 msgid "List the installed kernels"
-msgstr "Auflisten der Installierten kernel"
+msgstr "Auflisten der installierten kernel"
 
 #: src/Console/AppConsole.vala:41
 msgid "Install the latest mainline kernel"
@@ -343,7 +343,7 @@ msgstr "Installiere den neusten Hauptzweig kernel"
 
 #: src/Console/AppConsole.vala:42
 msgid "Install the latest mainline kernel without going to a new major version"
-msgstr "Installiere den Neusten kernel ohne auf die Hauptversion zu springen"
+msgstr "Installiere den neusten kernel ohne auf die Hauptversion zu springen"
 
 #: src/Console/AppConsole.vala:43 src/Console/AppConsole.vala:44
 #: src/Console/AppConsole.vala:46 src/Console/AppConsole.vala:47
@@ -353,11 +353,11 @@ msgstr "namen"
 
 #: src/Console/AppConsole.vala:43
 msgid "Install the specified kernels"
-msgstr "Installiere den Ausgewählten kernel"
+msgstr "Installiere den ausgewählten kernel"
 
 #: src/Console/AppConsole.vala:44
 msgid "Uninstall the specified kernels"
-msgstr "Deinstalliert den Ausgewählten kernel"
+msgstr "Deinstalliert den ausgewählten kernel"
 
 #: src/Console/AppConsole.vala:45
 msgid "Uninstall all but the highest installed version"
@@ -365,25 +365,25 @@ msgstr "Deinstallieren sie alle bis auf die höchste installierte version"
 
 #: src/Console/AppConsole.vala:46
 msgid "Download the specified kernels"
-msgstr "Download den Ausgewählten kernel"
+msgstr "Download den ausgewählten kernel"
 
 #: src/Console/AppConsole.vala:47
 msgid "Lock the specified kernels"
-msgstr "Sperrt den Ausgewählten kernel"
+msgstr "Sperrt den ausgewählten kernel"
 
 #: src/Console/AppConsole.vala:48
 msgid "Unlock the specified kernels"
-msgstr "Entsperrt den Ausgewählten kernel"
+msgstr "Entsperrt den ausgewählten kernel"
 
 #: src/Console/AppConsole.vala:49
 msgid "Delete the cached info about available kernels"
-msgstr "Löscht die zwischengespeicherten Informationen über verfügbare Kernel"
+msgstr "Löscht die zwischengespeicherten informationen über verfügbare kernel"
 
 #: src/Console/AppConsole.vala:50
 msgid ""
 "Write the given include/exclude & previous-majors options to the config file"
 msgstr ""
-"Schreiben Sie die angegebenen Einschluss/Ausschlussoptionen und vorherigen Hauptoptionen in die Konfigurationsdatei"
+"Schreiben Sie die angegebenen einschluss/ausschlussoptionen und vorherigen hauptoptionen in die konfigurationsdatei"
 
 #: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
 msgid "This help"
@@ -395,7 +395,7 @@ msgstr "Optionen"
 
 #: src/Console/AppConsole.vala:55
 msgid "Include release-candidate and unstable releases"
-msgstr "Einschließlich Release-Kandidaten und instabile Releases"
+msgstr "Einschließlich release-kandidaten und instabile Releases"
 
 #: src/Console/AppConsole.vala:56
 msgid "Exclude release-candidate and unstable releases"
