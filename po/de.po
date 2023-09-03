@@ -720,7 +720,7 @@ msgstr "Netzwerk"
 
 #: src/Gtk/SettingsWindow.vala:159
 msgid "Connection Timeout:"
-msgstr "Zeitüberschreitung der Verbindung"
+msgstr "Zeitüberschreitung der Verbindung:"
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
