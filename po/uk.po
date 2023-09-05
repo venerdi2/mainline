@@ -554,7 +554,7 @@ msgstr "Попередньо повідомлено"
 
 #: src/Gtk/AppGtk.vala:94
 msgid "Unknown option"
-msgstr ""
+msgstr "Невідомий варіант"
 
 #: src/Gtk/MainWindow.vala:172
 msgid "Lock"
