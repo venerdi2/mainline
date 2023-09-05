@@ -624,7 +624,7 @@ msgstr "Originale"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Forked"
-msgstr "Biforcuto"
+msgstr "Derivazione"
 
 #: src/Gtk/MainWindow.vala:443
 msgid "Updating Kernels..."
@@ -719,7 +719,7 @@ msgstr "Rete"
 
 #: src/Gtk/SettingsWindow.vala:159
 msgid "Connection Timeout:"
-msgstr ""
+msgstr "Timeout della connessione"
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
