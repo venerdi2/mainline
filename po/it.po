@@ -719,7 +719,7 @@ msgstr "Rete"
 
 #: src/Gtk/SettingsWindow.vala:159
 msgid "Connection Timeout:"
-msgstr "Timeout della connessione"
+msgstr "Timeout della connessione:"
 
 #: src/Gtk/SettingsWindow.vala:167
 msgid "seconds"
