@@ -218,7 +218,7 @@ msgstr "Konnte keinen laufenden kernel in der liste finden"
 
 #: src/Common/LinuxKernel.vala:1248
 msgid "No old kernels to uninstall"
-msgstr "Kein alter kernel zum deinstallieren"
+msgstr "Keine älter kernel zum deinstallieren"
 
 #: src/Common/LinuxKernel.vala:1261
 msgid "No updates"
@@ -284,7 +284,7 @@ msgstr "Benachrichtigungen sind deaktiviert"
 
 #: src/Common/Main.vala:537
 msgid "Can not reach site"
-msgstr "Die seite kann nicht erreicht werden"
+msgstr "Die Webseite kann nicht erreicht werden"
 
 #: src/Common/Package.vala:36
 #, c-format
