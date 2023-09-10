@@ -141,11 +141,11 @@ msgstr "Sperren/Entsperren: kein kernel ausgewählt"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "lock"
-msgstr "Sperren"
+msgstr "sperren"
 
 #: src/Common/LinuxKernel.vala:1100
 msgid "unlock"
-msgstr "Entsperrt"
+msgstr "entsperrt"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "ok"
@@ -153,7 +153,7 @@ msgstr "ok"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "failed"
-msgstr "Fehlgeschlagen"
+msgstr "fehlgeschlagen"
 
 #: src/Common/LinuxKernel.vala:1117
 msgid "Download: no downloadable kernels specified"
@@ -168,7 +168,7 @@ msgstr "%s ist bereits installiert"
 #: src/Common/LinuxKernel.vala:1235
 #, c-format
 msgid "%s is locked"
-msgstr "%s ist Gesperrt"
+msgstr "%s ist gesperrt"
 
 #: src/Common/LinuxKernel.vala:1148
 #, c-format
@@ -284,7 +284,7 @@ msgstr "Benachrichtigungen sind deaktiviert"
 
 #: src/Common/Main.vala:537
 msgid "Can not reach site"
-msgstr "Die Webseite kann nicht erreicht werden"
+msgstr "Die webseite kann nicht erreicht werden"
 
 #: src/Common/Package.vala:36
 #, c-format
@@ -620,7 +620,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:432
 msgid "Original"
-msgstr "Orginal "
+msgstr "Orginal"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Forked"
@@ -847,7 +847,7 @@ msgstr "Terminalfenster"
 
 #: src/Gtk/SettingsWindow.vala:311
 msgid "Terminal command used to run"
-msgstr "Terminal-befehl zur Ausführung"
+msgstr "Terminal befehl zur Ausführung"
 
 #: src/Gtk/SettingsWindow.vala:313
 #, no-c-format
