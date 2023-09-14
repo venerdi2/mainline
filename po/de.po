@@ -620,7 +620,7 @@ msgstr ""
 
 #: src/Gtk/MainWindow.vala:432
 msgid "Original"
-msgstr "Orginal"
+msgstr "Original"
 
 #: src/Gtk/MainWindow.vala:433
 msgid "Forked"
@@ -847,7 +847,7 @@ msgstr "Terminalfenster"
 
 #: src/Gtk/SettingsWindow.vala:311
 msgid "Terminal command used to run"
-msgstr "Terminal befehl zur Ausführung"
+msgstr "Terminal befehl zur ausführung"
 
 #: src/Gtk/SettingsWindow.vala:313
 #, no-c-format
