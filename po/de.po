@@ -43,7 +43,7 @@ msgstr "warteschlangen download"
 
 #: src/Common/LinuxKernel.vala:348
 msgid "downloading new pages"
-msgstr "download neuer seiten"
+msgstr "downloaden neuer seiten"
 
 #: src/Common/LinuxKernel.vala:362
 msgid "loading new pages"
@@ -71,7 +71,7 @@ msgstr "Kleines Update Verfügbar"
 
 #: src/Common/LinuxKernel.vala:382
 msgid "Available Major Update"
-msgstr "Major Update Verfügbar"
+msgstr "Haupt Update Verfügbar"
 
 #: src/Common/LinuxKernel.vala:418
 msgid "OK"
@@ -141,11 +141,11 @@ msgstr "Sperren/Entsperren: kein kernel ausgewählt"
 
 #: src/Common/LinuxKernel.vala:1099
 msgid "lock"
-msgstr "Gesperrt"
+msgstr "sperren"
 
 #: src/Common/LinuxKernel.vala:1100
 msgid "unlock"
-msgstr "Entsperrt"
+msgstr "entsperrt"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "ok"
@@ -153,7 +153,7 @@ msgstr "ok"
 
 #: src/Common/LinuxKernel.vala:1105
 msgid "failed"
-msgstr "Fehlgeschlagen"
+msgstr "fehlgeschlagen"
 
 #: src/Common/LinuxKernel.vala:1117
 msgid "Download: no downloadable kernels specified"
@@ -168,7 +168,7 @@ msgstr "%s ist bereits installiert"
 #: src/Common/LinuxKernel.vala:1235
 #, c-format
 msgid "%s is locked"
-msgstr "%s ist lesperrt"
+msgstr "%s ist gesperrt"
 
 #: src/Common/LinuxKernel.vala:1148
 #, c-format
@@ -218,7 +218,7 @@ msgstr "Konnte keinen laufenden kernel in der liste finden"
 
 #: src/Common/LinuxKernel.vala:1248
 msgid "No old kernels to uninstall"
-msgstr "Keine alten kernel zum deinstallieren"
+msgstr "Keine älter kernel zum deinstallieren"
 
 #: src/Common/LinuxKernel.vala:1261
 msgid "No updates"
@@ -250,7 +250,7 @@ msgstr "n"
 
 #: src/Common/Main.vala:223
 msgid "Missing threads support in GLib."
-msgstr "Fehlende thread-unterstützung in GLib"
+msgstr "Fehlende thread unterstützung in GLib"
 
 #: src/Common/Main.vala:319
 msgid "Wrote config file"
@@ -284,7 +284,7 @@ msgstr "Benachrichtigungen sind deaktiviert"
 
 #: src/Common/Main.vala:537
 msgid "Can not reach site"
-msgstr "Die site kann nicht erreicht werden"
+msgstr "Die webseite kann nicht erreicht werden"
 
 #: src/Common/Package.vala:36
 #, c-format
@@ -297,7 +297,7 @@ msgstr "Start nicht möglich"
 
 #: src/lib/l.misc.vala:9
 msgid "Continue?"
-msgstr "Weiter ?"
+msgstr "Weiter?"
 
 #: src/Console/AppConsole.vala:31
 #, c-format
@@ -383,7 +383,7 @@ msgstr "Löscht die zwischengespeicherten informationen über verfügbare kernel
 msgid ""
 "Write the given include/exclude & previous-majors options to the config file"
 msgstr ""
-"Schreiben Sie die angegebenen einschluss/ausschlussoptionen und vorherigen hauptoptionen in die konfigurationsdatei"
+"Schreiben Sie die angegebenen einschluss/ausschlussoptionen & vorherigen hauptoptionen in die konfigurationsdatei"
 
 #: src/Console/AppConsole.vala:51 src/Gtk/AppGtk.vala:60
 msgid "This help"
@@ -556,7 +556,7 @@ msgstr "Unbekannte option"
 
 #: src/Gtk/MainWindow.vala:171
 msgid "Lock"
-msgstr "Gesperrt"
+msgstr "Sperren"
 
 #: src/Gtk/MainWindow.vala:188
 msgid "Status"
@@ -732,7 +732,7 @@ msgstr "Parallele Downloads:"
 
 #: src/Gtk/SettingsWindow.vala:185
 msgid "Verify Checksums"
-msgstr "Prüfsummen Überprüfen"
+msgstr "Checksum Überprüfen"
 
 #: src/Gtk/SettingsWindow.vala:188
 msgid ""
@@ -847,7 +847,7 @@ msgstr "Terminalfenster"
 
 #: src/Gtk/SettingsWindow.vala:311
 msgid "Terminal command used to run"
-msgstr "Zur ausführung verwendeter terminalbefehl"
+msgstr "Terminal befehl zur ausführung"
 
 #: src/Gtk/SettingsWindow.vala:313
 #, no-c-format
