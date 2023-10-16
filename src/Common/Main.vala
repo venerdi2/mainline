@@ -48,7 +48,8 @@ const string GUI_EXE = BRANDING_SHORTNAME+"gtk";
 // .h files are a pain in the ass in vala so dump these here
 
 // network
-const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/mainline/";
+const string   MATCH_PPA_URI_OLD_1             = "//kernel.ubuntu.com/~kernel-ppa/mainline/"; // obsolete 20231014
+const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/mainline/"; // new 20231014
 const string   DEFAULT_ALL_PROXY               = ""    ;
 const int      DEFAULT_CONNECT_TIMEOUT_SECONDS = 15    ;
 const int      DEFAULT_CONCURRENT_DOWNLOADS    = 4     ;
@@ -404,7 +405,7 @@ public class Main : Application {
 
 		// update old or otherwise invalid config file
 		bool resave = false;
-		if (ppa_uri.length==0) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
+		if ( ppa_uri.length==0 || ppa_uri.contains(MATCH_PPA_URI_OLD_1) ) { ppa_uri = DEFAULT_PPA_URI; resave = true; }
 		if (!ppa_uri.has_suffix("/")) { ppa_uri += "/"; resave = true; }
 		if (connect_timeout_seconds>600) connect_timeout_seconds = 600; // aria2c max allowed
 		if (resave) save_app_config();

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-11 20:47-0400\n"
+"POT-Creation-Date: 2023-10-16 01:53-0400\n"
 "PO-Revision-Date: 2022-08-06 16:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -226,63 +226,63 @@ msgstr "Güncelleme yok"
 
 #. Translators: uppercase, or otherwise emphasized, display version of a single character for "yes",
 #. * string may be longer than one character. Examples: "Y" or "[y]"
-#: src/Common/Main.vala:122
+#: src/Common/Main.vala:123
 msgid "Y"
 msgstr "E"
 
 #. Translators: lowercase, or otherwise not-emphasized, single keypress user response for "yes",
 #. * Example: "y"
-#: src/Common/Main.vala:125
+#: src/Common/Main.vala:126
 msgid "y"
 msgstr "e"
 
 #. Translators: uppercase, or otherwise emphasized, display version of a single character for "no",
 #. * string may be longer than one character. Examples: "N" or "[n]"
-#: src/Common/Main.vala:128
+#: src/Common/Main.vala:129
 msgid "N"
 msgstr "H"
 
 #. Translators: lowercase, or otherwise not-emphasized, single keypress user response for "no",
 #. * Example: "n"
-#: src/Common/Main.vala:131
+#: src/Common/Main.vala:132
 msgid "n"
 msgstr "h"
 
-#: src/Common/Main.vala:223
+#: src/Common/Main.vala:224
 msgid "Missing threads support in GLib."
 msgstr ""
 
-#: src/Common/Main.vala:319
+#: src/Common/Main.vala:320
 msgid "Wrote config file"
 msgstr "Yapılandırma dosyasını yazdı"
 
-#: src/Common/Main.vala:338
+#: src/Common/Main.vala:339
 msgid "No config file"
 msgstr "Yapılandırma dosyası yok"
 
-#: src/Common/Main.vala:421
+#: src/Common/Main.vala:422
 msgid "Loaded config file"
 msgstr "Yapılandırma dosyası yüklendi"
 
-#: src/Common/Main.vala:443
+#: src/Common/Main.vala:444
 msgid "Called from"
 msgstr "Çağrı konumu"
 
-#: src/Common/Main.vala:443
+#: src/Common/Main.vala:444
 msgid "at logon"
 msgstr "başlangıçta"
 
-#: src/Common/Main.vala:444
+#: src/Common/Main.vala:445
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Bu dosyanın üzerine yazılır ve ayarlar her kaydedildiğinde yeniden yürütülür"
 
-#: src/Common/Main.vala:484
+#: src/Common/Main.vala:485
 msgid "Notifications are disabled"
 msgstr "Bildirimler devre dışı bırakılmış"
 
-#: src/Common/Main.vala:537
+#: src/Common/Main.vala:538
 msgid "Can not reach site"
 msgstr "Siteye ulaşılamıyor"
 

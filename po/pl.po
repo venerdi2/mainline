@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mainline\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-11 20:47-0400\n"
+"POT-Creation-Date: 2023-10-16 01:53-0400\n"
 "PO-Revision-Date: 2023-08-10 00:24+0200\n"
 "Last-Translator: Matthaiks\n"
 "Language-Team: Polish\n"
@@ -225,64 +225,64 @@ msgstr "Brak aktualizacji"
 
 #. Translators: uppercase, or otherwise emphasized, display version of a single character for "yes",
 #. * string may be longer than one character. Examples: "Y" or "[y]"
-#: src/Common/Main.vala:122
+#: src/Common/Main.vala:123
 msgid "Y"
 msgstr "T"
 
 #. Translators: lowercase, or otherwise not-emphasized, single keypress user response for "yes",
 #. * Example: "y"
-#: src/Common/Main.vala:125
+#: src/Common/Main.vala:126
 msgid "y"
 msgstr "t"
 
 #. Translators: uppercase, or otherwise emphasized, display version of a single character for "no",
 #. * string may be longer than one character. Examples: "N" or "[n]"
-#: src/Common/Main.vala:128
+#: src/Common/Main.vala:129
 msgid "N"
 msgstr "N"
 
 #. Translators: lowercase, or otherwise not-emphasized, single keypress user response for "no",
 #. * Example: "n"
-#: src/Common/Main.vala:131
+#: src/Common/Main.vala:132
 msgid "n"
 msgstr "n"
 
-#: src/Common/Main.vala:223
+#: src/Common/Main.vala:224
 msgid "Missing threads support in GLib."
 msgstr "Brak obsługi wątków w GLib."
 
-#: src/Common/Main.vala:319
+#: src/Common/Main.vala:320
 msgid "Wrote config file"
 msgstr "Zapisano plik konfiguracyjny"
 
-#: src/Common/Main.vala:338
+#: src/Common/Main.vala:339
 msgid "No config file"
 msgstr "Brak pliku konfiguracyjnego"
 
-#: src/Common/Main.vala:421
+#: src/Common/Main.vala:422
 msgid "Loaded config file"
 msgstr "Załadowano plik konfiguracyjny"
 
-#: src/Common/Main.vala:443
+#: src/Common/Main.vala:444
 msgid "Called from"
 msgstr "Wywołano z"
 
-#: src/Common/Main.vala:443
+#: src/Common/Main.vala:444
 msgid "at logon"
 msgstr "przy logowaniu"
 
-#: src/Common/Main.vala:444
+#: src/Common/Main.vala:445
 msgid ""
 "This file is over-written and executed again whenever settings are saved in"
 msgstr ""
 "Ten plik jest nadpisywany i wykonywany ponownie za każdym razem, gdy "
 "ustawienia są zapisywane w"
 
-#: src/Common/Main.vala:484
+#: src/Common/Main.vala:485
 msgid "Notifications are disabled"
 msgstr "Powiadomienia są wyłączone"
 
-#: src/Common/Main.vala:537
+#: src/Common/Main.vala:538
 msgid "Can not reach site"
 msgstr "Nie można dotrzeć do witryny"
 
