@@ -34,7 +34,7 @@ mainline is a fork of [ukuu](https://github.com/teejee2008/ukuu)
 * Support the alternative flavors besides "generic", ex: lowlatency, generic-64k, server, virtual, etc
 
 ## Features
-* Download the list of available kernels from the [Ubuntu Mainline PPA](http://kernel.ubuntu.com/~kernel-ppa/mainline/)
+* Download the list of available kernels from the [Ubuntu Mainline PPA](http://kernel.ubuntu.com/mainline/)
 * Display, install, and uninstall mainline-ppa kernels conveniently, gui and cli
 * For each kernel the associated headers & modules packages are downloaded, installed, or uninstalled together
 * .deb file downloads are verified with the sha256 hashes from the CHECKSUMS files

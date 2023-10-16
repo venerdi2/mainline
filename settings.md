@@ -45,7 +45,7 @@ The cache is still kept trimmed even with this option enabled. The cache for any
 proxy support via aria2c's [all-proxy](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-all-proxy) setting
 
 **mainline-ppa url  
-\[https://kernel.ubuntu.com/~kernel-ppa/mainline/  \]**  
+\[https://kernel.ubuntu.com/mainline/  \]**  
 
 ## External Commands  
 auth command  

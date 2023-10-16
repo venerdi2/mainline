@@ -48,7 +48,7 @@ const string GUI_EXE = BRANDING_SHORTNAME+"gtk";
 // .h files are a pain in the ass in vala so dump these here
 
 // network
-const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/~kernel-ppa/mainline/";
+const string   DEFAULT_PPA_URI                 = "https://kernel.ubuntu.com/mainline/";
 const string   DEFAULT_ALL_PROXY               = ""    ;
 const int      DEFAULT_CONNECT_TIMEOUT_SECONDS = 15    ;
 const int      DEFAULT_CONCURRENT_DOWNLOADS    = 4     ;
